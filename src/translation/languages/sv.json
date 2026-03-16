@@ -19,6 +19,10 @@
     "developer_comment": "continue reset password",
     "string": "Fortsätt återställa lösenordet"
   },
+  "+I0Nrj": {
+    "developer_comment": "login eduid - passkey paragraph - error 2",
+    "string": "Det kan också vara för att den registrerats {implementation} av denna funktionalitet, varpå den behöver läggas till igen under Säkerhet i eduID.se efter inloggning med annan metod, för att kunna nyttja din passkey för direkt inloggning."
+  },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
     "string": "Vad är Ladok och ESI?"
@@ -223,10 +227,6 @@
     "developer_comment": "why have eduID - heading",
     "string": "Varför finns eduID?"
   },
-  "31khG0": {
-    "developer_comment": "login eduid - passkey paragraph",
-    "string": "När en passkey lagts till som inloggningsuppgift i eduID.se varierar presentation och användningsflöde beroende av din enhet, webbläsare och typ av passkey:"
-  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Om du accepterar att få ett brev hem måste du skriva in koden här för att bevisa att personnumret är ditt. Av säkerhetsskäl går koden ut om två veckor."
@@ -271,8 +271,8 @@
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
   },
-  "3rv5mk": {
-    "developer_comment": "login eduid - passkey paragraph",
+  "3rJIKc": {
+    "developer_comment": "login eduid - passkey paragraph - note",
     "string": "Obs: du kan läsa mer om passkeys och hur man lägger till dem i hjälpavsnittet \"Utökad säkerhet med ditt eduID\"."
   },
   "4+MTla": {
@@ -350,6 +350,10 @@
     "developer_comment": "accordion item eidas additional info",
     "string": "Med eIDAS elektronisk identifiering"
   },
+  "5bp389": {
+    "developer_comment": "login eduid - passkey paragraph 1",
+    "string": "En passkey som lagts till ditt eduID kan antingen användas för inloggning tillsammans med användarnamn och lösenord eller utan. För lösenordsfri inloggning behöver en passkey som stöds (även kallad \"discoverable\" eller sökbar passkey) ha registrerats efter oktober 2025, då eduID inkluderade stöd därav, eftersom de inte räknades som passkeys i full utsträckning innan dess."
+  },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
   },
@@ -376,6 +380,10 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "Stäng det här fönstret och fortsätt på den andra enheten."
+  },
+  "63LHlB": {
+    "developer_comment": "login eduid - passkey list item 1",
+    "string": "Fokusera användarnamnsfältet, eller så kan du behöva klicka på knappen \"Logga in med passkey\" i inloggningsformuläret. (Om kontrollen \"Kom ihåg mig..\" nedanför aktiveras kan du komma direkt till inloggning med passkey vid nästa inloggning.)"
   },
   "65yiON": {
     "string": "Du kan bli ombedd att acceptera villkoren på nytt om du inte har använt tjänsten sedan en tid, eller närsomhelst om villkoren har ändrats."
@@ -652,10 +660,6 @@
     "developer_comment": "login this device, security key button",
     "string": "Enhetsnyckel/säkerhetsnyckel"
   },
-  "D6zoIk": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in, om du inte har stängt av MFA inställningen under Säkerhet. Du kan ändå behöva använda säkerhetsnyckeln för åtkomst till andra anslutande tjänster som kräver det."
-  },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 siffror"
@@ -679,10 +683,6 @@
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
     "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
-  },
-  "DjsdhX": {
-    "developer_comment": "login eduid - passkey list item 3",
-    "string": "Följ instruktionerna; t.ex. för ansiktsigenkänning, fingeravtryck eller ange PIN-kod. (eduID har inte tillgång till dessa uppgifter då passkeys sparas lokalt på din egen enhet eller externa lösning.)"
   },
   "DmmgDx": {
     "developer_comment": "popover info",
@@ -723,10 +723,6 @@
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Brevet är giltigt till"
-  },
-  "E8UHSN": {
-    "developer_comment": "how more secure description 2",
-    "string": "Ett exempel på en säkerhetsnyckel är en fysisk ändamålsenlig USB-nyckel som kräver att du är närvarande vid enheten. Du har också möjlighet att lägga till biometrisk information som fingeravtryck eller ansiktsigenkänning som stöds av enheten du loggar in med, för att kunna låsa upp säkerhetsnyckeln vid behov."
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -823,6 +819,10 @@
   "Fg16nQ": {
     "developer_comment": "MFA paragraph",
     "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID."
+  },
+  "FnYrj3": {
+    "developer_comment": "passkey bullet",
+    "string": "Knappen \"Den här enheten\" för passkeys"
   },
   "FqWKK0": {
     "developer_comment": "Security zone MFA heading",
@@ -991,6 +991,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verifierad användare) / RAF High / LoA2"
   },
+  "JvvCFU": {
+    "developer_comment": "login eduid - passkey list item 3",
+    "string": "Följ instruktionerna; t.ex. för ansiktsigenkänning, fingeravtryck eller ange PIN-kod. (eduID har inte tillgång till dessa uppgifter då passkeys sparas lokalt på din egen enhet eller lösenordshanterare.)"
+  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -998,6 +1002,10 @@
   "KCuRyE": {
     "developer_comment": "Login MFA heading",
     "string": "Logga in: med MFA"
+  },
+  "KEV7Uc": {
+    "developer_comment": "login eduid - passkey paragraph - error 1",
+    "string": "Definition och stöd för passkeys utvecklas löpande. Om inloggning misslyckas med din valda nyckel kan det vara för att den inte stöder  {discoverable}, vilket du kan vända dig till leverantören av din passkey för att kontrollera."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1250,6 +1258,10 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "Vad är eduIDs Personuppgiftspolicy?"
   },
+  "P9PdoB": {
+    "developer_comment": "what are keys - heading",
+    "string": "Vad är säkerhetsnycklar och passkeys?"
+  },
   "PAkUpS": {
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "Du kan läsa mer om att använda Freja med ditt eduID nedan i avsnittet \"Om Freja (med Svenskt person/samordnings-nummer)\" och på deras hemsida {FrejaProtectedId}."
@@ -1262,6 +1274,10 @@
     "developer_comment": "account eduid - list item 2",
     "string": "Standardspråket baseras på din webbläsares språkinställning. I eduID kan du kan välja mellan svenska och engelska."
   },
+  "PPKvDN": {
+    "developer_comment": "about security key - info",
+    "string": "Lägga till MFA/2FA säkerhetsnycklar och passkeys"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Felaktig kod, försök igen"
@@ -1273,10 +1289,6 @@
   "Pa6Av7": {
     "developer_comment": "Display name select placeholder",
     "string": "välj visningsnamn"
-  },
-  "Pd9suV": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "När du är inloggad kan du lägga till och bekräfta säkerhetsnycklar som du har möjlighet att använda, under Säkerhet i eduID och följa instruktionerna."
   },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
@@ -1297,6 +1309,10 @@
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tänk på att välja ett säkert lösenord"
+  },
+  "Q/+yAJ": {
+    "developer_comment": "add several keys - paragraph",
+    "string": "Det rekommenderas att lägga till mer än en nyckel för att säkerställa tillgång till ditt konto."
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
@@ -1321,6 +1337,10 @@
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
+  },
+  "QbA6Vf": {
+    "developer_comment": "what are keys description 3",
+    "string": "Dessa tekniker är en form av kryptografi där ett publikt/privat nyckelpar kopplas till ditt unika användarkonto på en specifik webbplats, i vårt fall eduID.se. Den privata nyckeln lagras i en autenticeringsmodul, antingen i din hårdvarunyckel, inbyggd i din enhet eller i en lösenordshanterare. De anses resistenta för phishing/nätfiske och tar bort behovet av ihågkomna lösenord."
   },
   "QgXq1A": {
     "developer_comment": "identity eduid - list item 2-3",
@@ -1381,6 +1401,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "För att byta visningsnamn, ta bort och välj igen"
   },
+  "S3iDJT": {
+    "developer_comment": "what are keys description 1",
+    "string": "Det kan variera hur termerna används men exempel på en {securityKey} är en fysisk ändamålsenlig USB-nyckel som kräver att du är närvarande vid enheten, vilket bidrar till hög säkerhet."
+  },
   "SF58xZ": {
     "string": "eIDAS"
   },
@@ -1417,6 +1441,10 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET bedömer som oetiskt när någon:"
   },
+  "SviZcU": {
+    "developer_comment": "error strong - implementation",
+    "string": "innan implementationen"
+  },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
     "string": "Inloggningen har redan genomförts."
@@ -1428,6 +1456,10 @@
   "TBeUL3": {
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Klicka på länken \"Glömt ditt lösenord?\" under inloggningsformuläret."
+  },
+  "TOMSwW": {
+    "developer_comment": "how add security key - verify",
+    "string": "När du lägger till, eller efteråt i tabellen som listar dina tillagda nycklar, har du möjlighet att verifiera din nyckel med någon av metoderna som listas. Genom att göra det kopplas nyckeln ytterligare till din identitet och höjer generellt tillitsnivån för ditt eduID (läs mer i hjälpavsnittet \"Tillitsnivåer\")."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1566,6 +1598,10 @@
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
   },
+  "W0692S": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Vilka fysiska säkerhetsnycklar kan jag använda för eduID?"
+  },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
     "string": "Om du använder en passkey för din inloggning, spara den inte på samma nyckelring som ditt lösenord."
@@ -1622,10 +1658,6 @@
     "developer_comment": "when use eduID - list item 5",
     "string": "administrera studenter som ska utföra digitala nationella prov,"
   },
-  "WwRwTR": {
-    "developer_comment": "how more secure description 1",
-    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas multifaktorautentisering (MFA) eller i vissa fall tvåfaktorautentisering (2FA)."
-  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Epostadresser:"
@@ -1649,6 +1681,14 @@
   "XEwaQ9": {
     "developer_comment": "login eduid - re-login list item 5",
     "string": "Radera din verifierade identitet."
+  },
+  "XFQH17": {
+    "developer_comment": "error strong - discoverable",
+    "string": "sökbara passkeys"
+  },
+  "XJViPe": {
+    "developer_comment": "choosing usb key - list definition",
+    "string": "Kontrollera med tillverkaren eller återförsäljaren om produkten möter dessa krav innan den införskaffas: "
   },
   "XJtkTo": {
     "developer_comment": "privacy policy - list item 1",
@@ -1690,17 +1730,9 @@
     "developer_comment": "use freja - link text",
     "string": "Freja-appen"
   },
-  "XzQO4I": {
-    "developer_comment": "choosing usb key - list definition",
-    "string": "Kontrollera med tillverkaren eller återförsäljaren om produkten möter dessa krav: "
-  },
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Visningsnamn"
-  },
-  "Y/GtN8": {
-    "developer_comment": "about security key - info",
-    "string": "Lägga till MFA/2FA Säkerhetsnyckel"
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -1733,10 +1765,6 @@
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "tjänster som kräver en stark koppling mellan din identitet och din inloggning, ofta kallad {emphasis}."
-  },
-  "Yegdv4": {
-    "developer_comment": "login eduid - passkey paragraph",
-    "string": "Definition och stöd för passkeys utvecklas löpande, om du inte kan använda en säkerhetsnyckel som tidigare lagts till eduID för direkt passkey-inloggning, kan du behöva ta bort och lägga till den igen i eduID.se under Säkerhet, efter att ha loggat in med en annan metod."
   },
   "YhOtY3": {
     "developer_comment": "copied button label",
@@ -1936,6 +1964,10 @@
     "developer_comment": "SAML login finished",
     "string": "Redan inloggad"
   },
+  "bkleG+": {
+    "developer_comment": "how more secure description",
+    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas multifaktorautentisering (MFA) eller i vissa fall tvåfaktorautentisering (2FA)."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
@@ -1959,10 +1991,6 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Framåt"
-  },
-  "cPJsE0": {
-    "developer_comment": "login eduid - passkey list item 1",
-    "string": "Fokusera användarnamnsfältet, eller så kan du behöva klicka på knappen \"Logga in med passkey\" i inloggningsformuläret. (Om kontrollen \"Kom ihåg mig..\" nedanför aktiveras kommer du direkt till inloggning med passkey vid nästa inloggning.)"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2288,9 +2316,17 @@
     "developer_comment": "Signup",
     "string": "Skapa eduID: Bekräfta att du är en människa"
   },
+  "g6PqMv": {
+    "developer_comment": "how add security key - must be used",
+    "string": "Obs: om du har lagt till en säkerhetsnyckel till ditt eduID behöver du sedan använda den för att kunna logga in, om du inte har stängt av MFA inställningen under Säkerhet. Du kan ändå behöva använda säkerhetsnyckeln för åtkomst till andra anslutande tjänster som kräver det."
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "Ett fel uppstod under åtkomst till tjänsten."
+  },
+  "gDUzRq": {
+    "developer_comment": "how add security key",
+    "string": "När du är inloggad kan du lägga till, verifiera och ta bort säkerhetsnycklar som du har möjlighet att använda, under Säkerhet i eduID och följa instruktionerna. Under \"Lägg till en ny säkerhetsnyckel\" finns alternativen:"
   },
   "gG7nHO": {
     "developer_comment": "Confirmed account heading",
@@ -2355,6 +2391,10 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Logga ut"
+  },
+  "hZEPqD": {
+    "developer_comment": "what are keys description 2",
+    "string": "Du har också möjlighet att lägga till en {passkey} med biometrisk information som fingeravtryck, ansiktsigenkänning eller PIN som stöds av din enhet för att logga in. Biometriska informationen eller PIN-koden delas aldrig, endast själva nyckeln. Passkeys är ofta synkroniserade mellan dina enheter, vilket gör dem lättanvända."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2451,6 +2491,10 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "Jag accepterar"
   },
+  "j4hzPZ": {
+    "developer_comment": "security key term",
+    "string": "Säkerhetsnyckel"
+  },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "Hur du kan använda Freja+ med eduID:"
@@ -2478,10 +2522,6 @@
   "jeyOYu": {
     "developer_comment": "login eduid - forgot pw list item 3",
     "string": "Följ instruktionerna i mejlet inom 2 timmar. Stegen för att bekräfta din epostadress och välja nytt lösenord är samma som när du skapar ditt eduID."
-  },
-  "jfBwcl": {
-    "developer_comment": "login eduid - passkey heading",
-    "string": "Med passkey"
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2902,6 +2942,10 @@
     "developer_comment": "use orcid - list definition",
     "string": "Hur du kan länka ORCID med eduID:"
   },
+  "oqzXsG": {
+    "developer_comment": "passkey term",
+    "string": "passkey"
+  },
   "orc.already_connected": {
     "string": "Ditt ORCID-konto är redan kopplat till det här kontot"
   },
@@ -3058,6 +3102,10 @@
     "developer_comment": "Security keys list - heading",
     "string": "Giltiga modeller av fysiska säkerhetsnycklar"
   },
+  "qClP7W": {
+    "developer_comment": "login eduid - passkey paragraph 2",
+    "string": "När en passkey används som inloggningsuppgift varierar presentation och användningsflöde beroende av din enhet, webbläsare och typ av passkey:"
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Välkommen tillbaka, {username}!"
@@ -3108,6 +3156,10 @@
   },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
+  },
+  "rBmN/b": {
+    "developer_comment": "security key bullet",
+    "string": "Knappen \"Säkerhetsnyckel\" för fysisk USB-nyckel"
   },
   "rHjPO1": {
     "developer_comment": "delete.modal_info",
@@ -3291,10 +3343,6 @@
   "security.webauthn_register_success": {
     "string": "Säkerhetsnyckel registrerad"
   },
-  "sf+Nbv": {
-    "developer_comment": "which type of security key - heading",
-    "string": "Vilka säkerhetsnycklar kan jag använda för eduID?"
-  },
   "signup.already-verified": {
     "string": "Du har redan verifierat ditt konto."
   },
@@ -3460,6 +3508,10 @@
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Namn"
+  },
+  "uoOwpa": {
+    "developer_comment": "login eduid - passkey heading",
+    "string": "Med passkey"
   },
   "us/TbC": {
     "developer_comment": "Go to dashboard",
