@@ -1005,7 +1005,7 @@
   },
   "KEV7Uc": {
     "developer_comment": "login eduid - passkey paragraph - error 1",
-    "string": "Definition och stöd för passkeys utvecklas löpande. Om inloggning misslyckas med din valda nyckel kan det vara för att den inte stöder  {discoverable}, vilket du kan vända dig till leverantören av din passkey för att kontrollera."
+    "string": "Definition och stöd för passkeys utvecklas löpande. Om inloggning misslyckas med din valda nyckel kan det vara för att den inte stöder {discoverable}, vilket du kan vända dig till leverantören av din passkey för att kontrollera."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
