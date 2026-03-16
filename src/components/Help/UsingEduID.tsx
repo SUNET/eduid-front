@@ -131,7 +131,7 @@ export function UsingEduID(): React.JSX.Element {
             </dd>
             <dd>
               <a className="text-link" href="#loginPasskeyHeading">
-                <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+                <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With Passkey`} />
               </a>
             </dd>
             <dd>
@@ -236,12 +236,19 @@ export function UsingEduID(): React.JSX.Element {
           </article>
           <article>
             <h5 id="loginPasskeyHeading">
-              <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With passkey`} />
+              <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With Passkey`} />
             </h5>
             <p>
               <FormattedMessage
-                description="login eduid - passkey paragraph"
-                defaultMessage={`When using a device passkey credential added to eduid.se the access, presentation and required steps will vary depending on your device, browser and type of passkey:`}
+                description="login eduid - passkey paragraph 1"
+                defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. For passwordless login using only your passkey, you need to have registered a supported passkey (sometimes called a "discoverable passkey") after October 2025, when eduID included support of this functionality, as they were not fully considered passkeys before.`}
+              />
+              not considered
+            </p>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph 2"
+                defaultMessage={`When using a passkey credential, the access, presentation and required steps will vary depending on your device, browser and type of key:`}
               />
             </p>
 
@@ -249,7 +256,7 @@ export function UsingEduID(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="login eduid - passkey list item 1"
-                  defaultMessage={`Focus the username field, or you may need to press the "Log in with passkey" button in the login form. (If first setting the "Remember me.." toggle below you will directly use your key at your next login.)`}
+                  defaultMessage={`Focus the username field, or you may need to press the "Log in with passkey" button in the login form. (If first setting the "Remember me.." toggle below you could directly use your key at your next login.)`}
                 />
               </li>
               <li>
@@ -261,25 +268,53 @@ export function UsingEduID(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="login eduid - passkey list item 3"
-                  defaultMessage={`Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or managed location.)`}
+                  defaultMessage={`Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or credential manager.)`}
                 />
               </li>
             </ol>
-            <p>
-              <FormattedMessage
-                description="login eduid - passkey paragraph"
-                defaultMessage={`Note: you can read more about passkeys and how to add them in the "Enhancing the security level of eduID" help section.`}
-              />
-            </p>
+
             <section>
-              <p className="error-txt">
+              <p>
                 <FormattedMessage
-                  description="login eduid - passkey paragraph"
-                  defaultMessage={`Definition and support of passkeys continually evolve, if you are unable to use a security key 
-                  previously added to eduID for your direct passkey login, it might need to be removed and readded in the Security section of eduID.se after logging in using another method.`}
+                  description="login eduid - passkey paragraph - error 1"
+                  defaultMessage={`Definition and support of passkeys continually evolve. If login fails with your selected key it could be because of the key not supporting {discoverable}, 
+                    which you can check with your passkey provider.`}
+                  values={{
+                    discoverable: (
+                      <strong>
+                        <FormattedMessage
+                          description="error strong - discoverable"
+                          defaultMessage={`discoverable passkeys`}
+                        />
+                      </strong>
+                    ),
+                  }}
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  description="login eduid - passkey paragraph - error 2"
+                  defaultMessage={`It could also be due to it being registered {implementation} of this feature, 
+                    so will need to be readded in the Security section of eduID.se after logging in using another method, to get the full advantage of using your passkey.`}
+                  values={{
+                    implementation: (
+                      <strong>
+                        <FormattedMessage
+                          description="error strong - implementation"
+                          defaultMessage={`prior to the implementation`}
+                        />
+                      </strong>
+                    ),
+                  }}
                 />
               </p>
             </section>
+            <p>
+              <FormattedMessage
+                description="login eduid - passkey paragraph - note"
+                defaultMessage={`Note: you can read more about passkeys and how to add them in the "Enhancing the security level of eduID" help section.`}
+              />
+            </p>
           </article>
           <article>
             <h5 id="loginOtherDeviceHeading">

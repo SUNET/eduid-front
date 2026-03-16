@@ -30,7 +30,10 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         />
       }
       additionalInfo={
-        <FormattedMessage description="about security key - info" defaultMessage="Adding an MFA Security Key" />
+        <FormattedMessage
+          description="about security key - info"
+          defaultMessage="Adding MFA Security Keys and Passkeys"
+        />
       }
     >
       <article>
@@ -42,19 +45,58 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         </h4>
         <p>
           <FormattedMessage
-            description="how more secure description 1"
+            description="how more secure description"
             defaultMessage={`Some services will require a higher security level and to improve the security of 
                   your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password 
                   combination, you can use another layer of authentication to log in. This is called multi-Factor 
                   authentication (MFA); and in eduID's case usually two-factor authentication (2FA).`}
           />
         </p>
+        <h4>
+          <FormattedMessage
+            description="what are keys - heading"
+            defaultMessage="What are Security keys and Passkeys?"
+          />
+        </h4>
         <p>
           <FormattedMessage
-            description="how more secure description 2"
-            defaultMessage={`Examples can be a physical device in your possession such as a USB security token, 
-                  or biometric information such as fingerprint or face-recognition supported on the device you are 
-                  using, and we refer to these techniques as a 'Security key'.`}
+            description="what are keys description 1"
+            defaultMessage={`Though the terms are sometimes used interchangeably, an example of a {securityKey} would be a physical device in your possession, 
+              such as a specific type of USB hardware token for this purpose, that requires you to be present by the device, providing a high level of security.`}
+            values={{
+              securityKey: (
+                <em>
+                  <FormattedMessage description="security key term" defaultMessage="security key" />
+                </em>
+              ),
+            }}
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            description="what are keys description 2"
+            defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
+            values={{
+              passkey: (
+                <em>
+                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                </em>
+              ),
+            }}
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            description="what are keys description 3"
+            defaultMessage={`These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se.
+The private key is stored in an "authenticator" module, either built into your hardware key, your device or a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords.`}
+            values={{
+              passkey: (
+                <em>
+                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                </em>
+              ),
+            }}
           />
         </p>
         <h4>
@@ -65,23 +107,49 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         </h4>
         <p>
           <FormattedMessage
-            description="how add security key - paragraph 1"
-            defaultMessage={`When logged in you can add and confirm security keys of your choice (provided you 
-                    have access to any of these methods) in the Security area of eduID and follow the instructions.`}
+            description="how add security key"
+            defaultMessage={`When logged in you can add, verify and remove keys of your choice (provided you 
+                    have access to any of these methods) in the Security area of eduID and follow the instructions. 
+                    Under the "Add a new security key" label are the options:`}
+          />
+        </p>
+        <ul className="bullets">
+          <li>
+            <FormattedMessage description="passkey bullet" defaultMessage={`"This device" button for passkeys`} />
+          </li>
+          <li>
+            <FormattedMessage
+              description="security key bullet"
+              defaultMessage={`"Security key" button for physical USB keys`}
+            />
+          </li>
+        </ul>
+        <section className="error-text">
+          <p>
+            <FormattedMessage
+              description="add several keys - paragraph"
+              defaultMessage={`It is recommended to add more than one key to make sure you always have supported access to your account.`}
+            />
+          </p>
+        </section>
+        <p>
+          <FormattedMessage
+            description="how add security key - verify"
+            defaultMessage={`When adding a key or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
           />
         </p>
         <p>
           <FormattedMessage
-            description="how add security key - paragraph 2"
+            description="how add security key - must be used"
             defaultMessage={`Note: if you have added a security key to your eduID it must be used to log in to eduID, 
-              unless you turn off this feature under Manage your security keys in Security. You might still need to use 
+              unless you turn off this feature under "Manage your security keys" in the Security section. You might still need to use 
               your security key if other connecting services require MFA.`}
           />
         </p>
         <h4>
           <FormattedMessage
             description="which type of security key - heading"
-            defaultMessage="Which type of security key can I use with eduID?"
+            defaultMessage="Which type of physical security key can I use with eduID?"
           />
         </h4>
         <p>
@@ -111,7 +179,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
               <p>
                 <FormattedMessage
                   description="choosing usb key - list definition"
-                  defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements:"
+                  defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements before it is acquired:"
                 />
               </p>
 
