@@ -62,7 +62,7 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
           <FormattedMessage
             description="what are keys description 1"
             defaultMessage={`Though the terms are sometimes used interchangeably, an example of a {securityKey} would be a physical device in your possession, 
-              such as a specific type of USB token for this purpose, that requires you to be present by the device, providing a high level of security.`}
+              such as a specific type of USB hardware token for this purpose, that requires you to be present by the device, providing a high level of security.`}
             values={{
               securityKey: (
                 <em>
@@ -76,6 +76,20 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
           <FormattedMessage
             description="what are keys description 2"
             defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
+            values={{
+              passkey: (
+                <em>
+                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                </em>
+              ),
+            }}
+          />
+        </p>
+        <p>
+          <FormattedMessage
+            description="what are keys description 3"
+            defaultMessage={`These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se.
+The private key is stored in an "authenticator" module, either built into your hardware key, your device or a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords.`}
             values={{
               passkey: (
                 <em>

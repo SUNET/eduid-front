@@ -241,8 +241,9 @@ export function UsingEduID(): React.JSX.Element {
             <p>
               <FormattedMessage
                 description="login eduid - passkey paragraph 1"
-                defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. To log in using only your passkey you need to have registered a supported passkey (sometimes called a "discoverable passkey") after October 2025, when eduID included this functionality.`}
+                defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. For passwordless login using only your passkey, you need to have registered a supported passkey (sometimes called a "discoverable passkey") after October 2025, when eduID included support of this functionality, as they were not fully considered passkeys before.`}
               />
+              not considered
             </p>
             <p>
               <FormattedMessage
@@ -267,13 +268,13 @@ export function UsingEduID(): React.JSX.Element {
               <li>
                 <FormattedMessage
                   description="login eduid - passkey list item 3"
-                  defaultMessage={`Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or managed location.)`}
+                  defaultMessage={`Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or credential manager.)`}
                 />
               </li>
             </ol>
 
             <section>
-              <p className="error-txt">
+              <p>
                 <FormattedMessage
                   description="login eduid - passkey paragraph - error 1"
                   defaultMessage={`Definition and support of passkeys continually evolve. If login fails with your selected key it could be because of the key not supporting {discoverable}, 
@@ -290,11 +291,11 @@ export function UsingEduID(): React.JSX.Element {
                   }}
                 />
               </p>
-              <p className="error-txt">
+              <p>
                 <FormattedMessage
                   description="login eduid - passkey paragraph - error 2"
                   defaultMessage={`It could also be due to it being registered {implementation} of this feature, 
-                    so will need to be removed and readded in the Security section of eduID.se after logging in using another method.`}
+                    so will need to be readded in the Security section of eduID.se after logging in using another method, to get the full advantage of using your passkey.`}
                   values={{
                     implementation: (
                       <strong>
