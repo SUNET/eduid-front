@@ -19,6 +19,10 @@
     "developer_comment": "continue reset password",
     "string": "Continue resetting password"
   },
+  "+I0Nrj": {
+    "developer_comment": "login eduid - passkey paragraph - error 2",
+    "string": "It could also be due to it being registered {implementation} of this feature, so will need to be readded in the Security section of eduID.se after logging in using another method, to get the full advantage of using your passkey for direct login."
+  },
   "+KnmnQ": {
     "developer_comment": "what is ladok - heading",
     "string": "What is Ladok and ESI?"
@@ -223,10 +227,6 @@
     "developer_comment": "why have eduID - heading",
     "string": "Why have eduID?"
   },
-  "31khG0": {
-    "developer_comment": "login eduid - passkey paragraph",
-    "string": "When using a device passkey credential added to eduid.se the access, presentation and required steps will vary depending on your device, browser and type of passkey:"
-  },
   "385FXU": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter will contain a code that you enter here to verify your identity. The code sent to you will expire in 2 weeks starting from now"
@@ -271,8 +271,8 @@
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
   },
-  "3rv5mk": {
-    "developer_comment": "login eduid - passkey paragraph",
+  "3rJIKc": {
+    "developer_comment": "login eduid - passkey paragraph - note",
     "string": "Note: you can read more about passkeys and how to add them in the \"Enhancing the security level of eduID\" help section."
   },
   "4+MTla": {
@@ -350,6 +350,10 @@
     "developer_comment": "accordion item eidas additional info",
     "string": "With eIDAS electronic identification"
   },
+  "5bp389": {
+    "developer_comment": "login eduid - passkey paragraph 1",
+    "string": "A passkey added to your eduID account can either be used to log in following username and password or by itself. For passwordless login using only your passkey, you need to have registered a supported passkey (sometimes called a \"discoverable passkey\") after October 2025, when eduID included support of this functionality, as they were not fully considered passkeys before."
+  },
   "5l4hxp": {
     "string": "Log in on another device"
   },
@@ -376,6 +380,10 @@
   "5zpZKp": {
     "developer_comment": "Use other device 2",
     "string": "You can now close this window and continue on the other device."
+  },
+  "63LHlB": {
+    "developer_comment": "login eduid - passkey list item 1",
+    "string": "Focus the username field, or you may need to press the \"Log in with passkey\" button in the login form. (If first setting the \"Remember me..\" toggle below you could directly use your key at your next login.)"
   },
   "65yiON": {
     "string": "You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed."
@@ -652,10 +660,6 @@
     "developer_comment": "login this device, security key button",
     "string": "This Device / Security key"
   },
-  "D6zoIk": {
-    "developer_comment": "how add security key - paragraph 2",
-    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under Manage your security keys in Security. You might still need to use your security key if other connecting services require MFA."
-  },
   "DD8rTQ": {
     "developer_comment": "nins input help text",
     "string": "12 digits"
@@ -679,10 +683,6 @@
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
     "string": "Add by clicking on the '+ add more' link and remove by clicking on the bin icon."
-  },
-  "DjsdhX": {
-    "developer_comment": "login eduid - passkey list item 3",
-    "string": "Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or managed location.)"
   },
   "DmmgDx": {
     "developer_comment": "popover info",
@@ -723,10 +723,6 @@
   "E8EtNL": {
     "developer_comment": "explanation text for letter proofing",
     "string": "The letter is valid to"
-  },
-  "E8UHSN": {
-    "developer_comment": "how more secure description 2",
-    "string": "An example of a security key would be a physical device in your possession, such as a specific type of USB token for this purpose, that requires you to be present by the device. You may also add biometric information such as fingerprint or face-recognition supported on the device you are using, to be able to unlock your security key, if needed."
   },
   "E8b/ig": {
     "developer_comment": "ToU second paragraph",
@@ -823,6 +819,10 @@
   "Fg16nQ": {
     "developer_comment": "MFA paragraph",
     "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID."
+  },
+  "FnYrj3": {
+    "developer_comment": "passkey bullet",
+    "string": "\"This device\" button for passkeys"
   },
   "FqWKK0": {
     "developer_comment": "Security zone MFA heading",
@@ -991,6 +991,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
   },
+  "JvvCFU": {
+    "developer_comment": "login eduid - passkey list item 3",
+    "string": "Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or credential manager.)"
+  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
@@ -998,6 +1002,10 @@
   "KCuRyE": {
     "developer_comment": "Login MFA heading",
     "string": "Log in: with MFA"
+  },
+  "KEV7Uc": {
+    "developer_comment": "login eduid - passkey paragraph - error 1",
+    "string": "Definition and support of passkeys continually evolve. If login fails with your selected key it could be because of the key not supporting {discoverable}, which you can check with your passkey provider."
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1250,6 +1258,10 @@
     "developer_comment": "what is privacy policy - heading",
     "string": "What is eduIDs Privacy policy?"
   },
+  "P9PdoB": {
+    "developer_comment": "what are keys - heading",
+    "string": "What are Security keys and Passkeys?"
+  },
   "PAkUpS": {
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "You can read more about using Freja with your eduID below in the \"About Freja (with Swedish ID/COORD number)\" section and on their website at {FrejaProtectedId}."
@@ -1262,6 +1274,10 @@
     "developer_comment": "account eduid - list item 2",
     "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
   },
+  "PPKvDN": {
+    "developer_comment": "about security key - info",
+    "string": "Adding MFA Security Keys and Passkeys"
+  },
   "PQoWSY": {
     "developer_comment": "Short code form",
     "string": "Incorrect code, please try again"
@@ -1273,10 +1289,6 @@
   "Pa6Av7": {
     "developer_comment": "Display name select placeholder",
     "string": "select display name"
-  },
-  "Pd9suV": {
-    "developer_comment": "how add security key - paragraph 1",
-    "string": "When logged in you can add and confirm security keys of your choice (provided you have access to any of these methods) in the Security area of eduID and follow the instructions."
   },
   "Pi/dSU": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
@@ -1297,6 +1309,10 @@
   "PxROOc": {
     "developer_comment": "help text for custom password label",
     "string": "Tip: Choose a strong password"
+  },
+  "Q/+yAJ": {
+    "developer_comment": "add several keys - paragraph",
+    "string": "It is recommended to add more than one key to make sure you always have supported access to your account."
   },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
@@ -1321,6 +1337,10 @@
   "Qa3Xhm": {
     "developer_comment": "orcid id",
     "string": "orcid id"
+  },
+  "QbA6Vf": {
+    "developer_comment": "what are keys description 3",
+    "string": "These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se. The private key is stored in an \"authenticator\" module, either on your hardware key, built into your device or in a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords."
   },
   "QgXq1A": {
     "developer_comment": "identity eduid - list item 2-3",
@@ -1381,6 +1401,10 @@
     "developer_comment": "Display name noOptionsMessage",
     "string": "To change the display name, delete and choose again"
   },
+  "S3iDJT": {
+    "developer_comment": "what are keys description 1",
+    "string": "Though the terms are sometimes used interchangeably, an example of a {securityKey} would be a physical device in your possession, such as a specific type of USB hardware token for this purpose, that requires you to be present by the device, providing a high level of security."
+  },
   "SF58xZ": {
     "string": "eIDAS"
   },
@@ -1417,6 +1441,10 @@
     "developer_comment": "ToU 2016-v1 paragraph 2 heading",
     "string": "SUNET judges unethical behaviour to be when someone:"
   },
+  "SviZcU": {
+    "developer_comment": "error strong - implementation",
+    "string": "prior to the implementation"
+  },
   "T0Y5mk": {
     "developer_comment": "SAML login finished",
     "string": "This login has already been processed."
@@ -1428,6 +1456,10 @@
   "TBeUL3": {
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Press the \"Forgot your password?\" link below the login form."
+  },
+  "TOMSwW": {
+    "developer_comment": "how add security key - verify",
+    "string": "When adding a key, or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the \"Assurance levels\" help section)."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
@@ -1566,6 +1598,10 @@
     "developer_comment": "Ladok account linking",
     "string": "ESI information"
   },
+  "W0692S": {
+    "developer_comment": "which type of security key - heading",
+    "string": "Which type of physical security key can I use with eduID?"
+  },
   "W0anmW": {
     "developer_comment": "account eduid - list item 3-3",
     "string": "If you are using a passkey for your login, don't save it on the same key chain as your password."
@@ -1622,10 +1658,6 @@
     "developer_comment": "when use eduID - list item 5",
     "string": "administrate students taking the digital national exam,"
   },
-  "WwRwTR": {
-    "developer_comment": "how more secure description 1",
-    "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case usually two-factor authentication (2FA)."
-  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
@@ -1649,6 +1681,14 @@
   "XEwaQ9": {
     "developer_comment": "login eduid - re-login list item 5",
     "string": "Deleting your verified identity."
+  },
+  "XFQH17": {
+    "developer_comment": "error strong - discoverable",
+    "string": "discoverable passkeys"
+  },
+  "XJViPe": {
+    "developer_comment": "choosing usb key - list definition",
+    "string": "Check with the manufacturer or retailer that the product meets the following requirements before it is acquired:"
   },
   "XJtkTo": {
     "developer_comment": "privacy policy - list item 1",
@@ -1690,17 +1730,9 @@
     "developer_comment": "use freja - link text",
     "string": "Freja app"
   },
-  "XzQO4I": {
-    "developer_comment": "choosing usb key - list definition",
-    "string": "Check with the manufacturer or retailer that the product meets the following requirements:"
-  },
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Display name"
-  },
-  "Y/GtN8": {
-    "developer_comment": "about security key - info",
-    "string": "Adding an MFA Security Key"
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -1733,10 +1765,6 @@
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
     "string": "services requiring a strong binding between your identity and your login, often called {emphasis}."
-  },
-  "Yegdv4": {
-    "developer_comment": "login eduid - passkey paragraph",
-    "string": "Definition and support of passkeys continually evolve, if you are unable to use a security key previously added to eduID for your direct passkey login, it might need to be removed and readded in the Security section of eduID.se after logging in using another method."
   },
   "YhOtY3": {
     "developer_comment": "copied button label",
@@ -1936,6 +1964,10 @@
     "developer_comment": "SAML login finished",
     "string": "Already logged in"
   },
+  "bkleG+": {
+    "developer_comment": "how more secure description",
+    "string": "Some services will require a higher security level and to improve the security of your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password combination, you can use another layer of authentication to log in. This is called multi-Factor authentication (MFA); and in eduID's case usually two-factor authentication (2FA)."
+  },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
@@ -1959,10 +1991,6 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
-  },
-  "cPJsE0": {
-    "developer_comment": "login eduid - passkey list item 1",
-    "string": "Focus the username field, or you may need to press the \"Log in with passkey\" button in the login form. (If first setting the \"Remember me..\" toggle below you will directly use your key at your next login.)"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2288,9 +2316,17 @@
     "developer_comment": "Signup",
     "string": "Create eduID: Confirm that you are a human"
   },
+  "g6PqMv": {
+    "developer_comment": "how add security key - must be used",
+    "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under \"Manage your security keys\" in the Security section. You might still need to use your security key if other connecting services require MFA."
+  },
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
+  },
+  "gDUzRq": {
+    "developer_comment": "how add security key",
+    "string": "When logged in you can add, verify and remove keys of your choice (provided you have access to any of these methods) in the Security area of eduID and follow the instructions. Under the \"Add a new security key\" label are the options:"
   },
   "gG7nHO": {
     "developer_comment": "Confirmed account heading",
@@ -2355,6 +2391,10 @@
   "hRXpVn": {
     "developer_comment": "Header logout",
     "string": "Log out"
+  },
+  "hZEPqD": {
+    "developer_comment": "what are keys description 2",
+    "string": "You can also add a {passkey} on your device that you can use to log in. The passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the passkey itself. Passkeys are often synced between your devices, providing ease of use."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
@@ -2451,6 +2491,10 @@
     "developer_comment": "Terms of use (accept button text)",
     "string": "I accept"
   },
+  "j4hzPZ": {
+    "developer_comment": "security key term",
+    "string": "security key"
+  },
   "j8RvSZ": {
     "developer_comment": "use freja - list definition",
     "string": "How to use Freja+ with eduID:"
@@ -2478,10 +2522,6 @@
   "jeyOYu": {
     "developer_comment": "login eduid - forgot pw list item 3",
     "string": "Follow the instructions in the email within 2 hours. The steps to verify your email address and selecting a new password are the same as when you created your eduID."
-  },
-  "jfBwcl": {
-    "developer_comment": "login eduid - passkey heading",
-    "string": "With passkey"
   },
   "jgCAmP": {
     "developer_comment": "about privacy accessibility - handle",
@@ -2902,6 +2942,10 @@
     "developer_comment": "use orcid - list definition",
     "string": "How to link ORCID with eduID:"
   },
+  "oqzXsG": {
+    "developer_comment": "passkey term",
+    "string": "passkey"
+  },
   "orc.already_connected": {
     "string": "ORCID already connected to this account"
   },
@@ -3058,6 +3102,10 @@
     "developer_comment": "Security keys list - heading",
     "string": "Valid physical Security Key options"
   },
+  "qClP7W": {
+    "developer_comment": "login eduid - passkey paragraph 2",
+    "string": "When using a passkey credential, the access, presentation and required steps will vary depending on your device, browser and type of key:"
+  },
   "qHomsQ": {
     "developer_comment": "Login username input",
     "string": "Welcome back, {username}!"
@@ -3108,6 +3156,10 @@
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
+  },
+  "rBmN/b": {
+    "developer_comment": "security key bullet",
+    "string": "\"Security key\" button for physical USB keys"
   },
   "rHjPO1": {
     "developer_comment": "delete.modal_info",
@@ -3291,10 +3343,6 @@
   "security.webauthn_register_success": {
     "string": "Security key added"
   },
-  "sf+Nbv": {
-    "developer_comment": "which type of security key - heading",
-    "string": "Which type of security key can I use with eduID?"
-  },
   "signup.already-verified": {
     "string": "You have already verified your account."
   },
@@ -3460,6 +3508,10 @@
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"
+  },
+  "uoOwpa": {
+    "developer_comment": "login eduid - passkey heading",
+    "string": "With Passkey"
   },
   "us/TbC": {
     "developer_comment": "Go to dashboard",
