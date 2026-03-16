@@ -352,7 +352,7 @@
   },
   "5bp389": {
     "developer_comment": "login eduid - passkey paragraph 1",
-    "string": "En passkey som lagts till ditt eduID kan antingen användas för inloggning tillsammans med användarnamn och lösenord eller utan. För lösenordsfri inloggning behöver en passkey som stöds (även kallad \"discoverable\" eller sökbar passkey) ha registrerats efter oktober 2025, då eduID inkluderade stöd därav, eftersom de inte räknades som passkeys i full utsträckning innan dess."
+    "string": "En passkey som lagts till ditt eduID kan antingen användas för inloggning tillsammans med användarnamn och lösenord eller utan. För lösenordsfri inloggning behöver en passkey som stöds (även kallad \"discoverable\" eller upptäckbar passkey) ha registrerats efter oktober 2025, då eduID inkluderade stöd därav, eftersom de inte räknades som passkeys i full utsträckning innan dess."
   },
   "5l4hxp": {
     "string": "Logga in på en annan enhet"
