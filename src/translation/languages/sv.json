@@ -2394,7 +2394,7 @@
   },
   "hZEPqD": {
     "developer_comment": "what are keys description 2",
-    "string": "Du har också möjlighet att lägga till en {passkey}/lösennyckel med biometrisk information som fingeravtryck, ansiktsigenkänning eller PIN som stöds av din enhet för att logga in. Biometriska informationen eller PIN-koden delas aldrig, endast själva nyckeln. Passkeys är ofta synkroniserade mellan dina enheter, vilket gör dem lättanvända."
+    "string": "Du har även möjlighet att lägga till en {passkey}/lösennyckel med biometrisk information som fingeravtryck, ansiktsigenkänning eller PIN som stöds av din enhet för att logga in. Biometriska informationen eller PIN-koden delas aldrig, endast själva nyckeln. Passkeys är ofta synkroniserade mellan dina enheter, vilket gör dem lättanvända."
   },
   "hc40Q5": {
     "developer_comment": "Generated password - lead",
