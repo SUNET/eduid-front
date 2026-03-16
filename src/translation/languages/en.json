@@ -1459,7 +1459,7 @@
   },
   "TOMSwW": {
     "developer_comment": "how add security key - verify",
-    "string": "When adding a key or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the \"Assurance levels\" help section)."
+    "string": "When adding a key, or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the \"Assurance levels\" help section)."
   },
   "TRK0+N": {
     "developer_comment": "button proceed",
