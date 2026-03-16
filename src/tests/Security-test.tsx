@@ -54,8 +54,8 @@ const passKeyCredentialExtra: CredentialType = {
   verified: false,
 };
 
-async function linkToAdvancedSettings() {
-  // Navigate to Advanced settings
+async function linkToSecuritySettings() {
+  // Navigate to Security settings
   const nav = screen.getByRole("link", { name: "Security" });
   act(() => {
     nav.click();
@@ -66,7 +66,7 @@ async function linkToAdvancedSettings() {
 
 test("renders security key as expected, not security key added", async () => {
   render(<IndexMain />);
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 });
 
 test("renders security key as expected, with added security key", async () => {
@@ -79,7 +79,7 @@ test("renders security key as expected, with added security key", async () => {
     },
   });
 
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   expect(screen.getByRole("figure")).toBeInTheDocument();
   expect(screen.getByText("touchID")).toBeInTheDocument();
@@ -113,7 +113,7 @@ test("can remove a security key", async () => {
       },
     },
   });
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   const RemoveButton = screen.getAllByLabelText("Remove")[1];
   expect(RemoveButton).toBeEnabled();
@@ -139,7 +139,7 @@ test("api call webauthn/remove", async () => {
   render(<IndexMain />, {
     state: { ...defaultDashboardTestState, security: { credentials: response.credentials } },
   });
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
   await waitFor(() => {
     expect(screen.getByRole("figure")).toBeInTheDocument();
   });
@@ -179,7 +179,7 @@ test("security reducer, registerWebauthn", async () => {
 
 test("render the security key table without any security keys", async () => {
   render(<IndexMain />);
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   expect(screen.getByRole("heading", { level: 2, name: "Manage your security keys" })).toBeInTheDocument();
   const figure = screen.getByRole("figure");
@@ -195,7 +195,7 @@ test("renders the security key table with verification methods", async () => {
       },
     },
   });
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   const figure = screen.getByRole("figure");
   expect(within(figure).getByText("BankID")).toBeInTheDocument();
