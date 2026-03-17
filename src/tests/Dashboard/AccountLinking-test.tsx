@@ -4,7 +4,7 @@ import { IndexMain } from "components/IndexMain";
 import { http } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
-import { defaultDashboardTestState, fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {

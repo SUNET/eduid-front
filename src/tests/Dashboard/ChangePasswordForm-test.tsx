@@ -1,7 +1,7 @@
 import { ChangePassword } from "components/Dashboard/ChangePassword";
 import { initialState as configInitialState } from "slices/IndexConfig";
 
-import { fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 const suggestPassword = "test-password";
 

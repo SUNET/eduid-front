@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { act } from "react";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("renders LetterProofing without ID number", () => {
   render(<LetterProofing disabled={true} />, {

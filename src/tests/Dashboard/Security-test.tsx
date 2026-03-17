@@ -4,7 +4,7 @@ import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor, within } from "../helperFunctions/DashboardTestApp-rtl";
 
 const securityKeyCredential: CredentialType = {
   mfa_approved: false,

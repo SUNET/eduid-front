@@ -3,7 +3,7 @@ import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
-import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 async function linkToAccountSettings() {
   // Navigate to Identity
@@ -33,7 +33,7 @@ test("can delete eduid account", async () => {
     }),
     http.get("https://dashboard.eduid.docker/services/security/credentials", () => {
       return HttpResponse.json({ type: "stub", payload: { credentials: "dummy-credentials" } });
-    })
+    }),
   );
 
   render(<IndexMain />, {
