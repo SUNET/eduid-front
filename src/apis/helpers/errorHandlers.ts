@@ -61,13 +61,11 @@ export async function handleBaseQueryError(
       // should be errors only, i.e. 400 and 500 series
       api.dispatch(showNotification({ message: "HTTP " + result.error.status, level: "error" }));
     }
-  } else {
+  } else if (result.error?.status === "FETCH_ERROR") {
     // fetchBaseQuery wrapped errors
-    if (result.error?.status === "FETCH_ERROR") {
-      api.dispatch(showNotification({ message: "general.failed_to_fetch", level: "error" }));
-    } else {
-      api.dispatch(showNotification({ message: result.error.status + " " + result.error.error, level: "error" }));
-    }
+    api.dispatch(showNotification({ message: "general.failed_to_fetch", level: "error" }));
+  } else {
+    api.dispatch(showNotification({ message: result.error.status + " " + result.error.error, level: "error" }));
   }
 }
 
