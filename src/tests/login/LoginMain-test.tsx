@@ -128,5 +128,5 @@ test("renders passkey button as expected", async () => {
   expect(usernameInput).toHaveValue("test@example.com");
   expect(passwordInput).toHaveValue("password123");
 
-  expect(loginButton).not.toBeDisabled();
+  expect(loginButton).toBeEnabled();
 });
