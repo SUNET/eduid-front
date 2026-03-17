@@ -2352,6 +2352,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Var vänlig försök igen. Kontakta eduID support om problemet kvarstår och inkludera den detaljerade informationen nedan."
   },
+  "general.failed_to_fetch": {
+    "string": "Det gick inte att ansluta till servern. Försök igen senare."
+  },
   "ggGC2l": {
     "developer_comment": "login this device, security key button",
     "string": "Säkerhetsnyckel"
