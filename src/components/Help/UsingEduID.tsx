@@ -243,7 +243,6 @@ export function UsingEduID(): React.JSX.Element {
                 description="login eduid - passkey paragraph 1"
                 defaultMessage={`A passkey added to your eduID account can either be used to log in following username and password or by itself. For passwordless login using only your passkey, you need to have registered a supported passkey (sometimes called a "discoverable passkey") after October 2025, when eduID included support of this functionality, as they were not fully considered passkeys before.`}
               />
-              not considered
             </p>
             <p>
               <FormattedMessage
