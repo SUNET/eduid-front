@@ -2352,6 +2352,9 @@
     "developer_comment": "ErrorURL other error",
     "string": "Please try again. Contact eduID support if the problem persists, and make sure to include the Technical Information below."
   },
+  "general.failed_to_fetch": {
+    "string": "Failed to contact the server. Please try again later."
+  },
   "ggGC2l": {
     "developer_comment": "login this device, security key button",
     "string": "Security key"
