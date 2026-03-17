@@ -9,7 +9,11 @@ import { useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
 import passKeyGray from "../../../img/pass-key-gray.svg";
+import passKey from "../../../img/pass-key.svg";
 import securityKeyGray from "../../../img/security-key-gray.svg";
+import securityKey from "../../../img/security-key.svg";
+
+import { useTheme } from "components/Common/ThemeContext";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
   readonly wrapperRef: React.RefObject<HTMLElement | null>;
@@ -31,6 +35,7 @@ export function SecurityKeyTable({
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
+  const { theme } = useTheme();
 
   async function handleConfirmDeleteModal(cred: CredentialType) {
     credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
@@ -73,7 +78,14 @@ export function SecurityKeyTable({
       tokens.map((cred: CredentialType) => {
         // date created
         const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
-        const authenticatorIcon = cred.authenticator === "cross-platform" ? securityKeyGray : passKeyGray;
+        const isCrossPlatform = cred.authenticator === "cross-platform";
+        const isDarkTheme = theme === "dark";
+        let authenticatorIcon;
+        if (isDarkTheme) {
+          authenticatorIcon = isCrossPlatform ? securityKey : passKey;
+        } else {
+          authenticatorIcon = isCrossPlatform ? securityKeyGray : passKeyGray;
+        }
         // date last used
         if (cred.success_ts) {
           date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
