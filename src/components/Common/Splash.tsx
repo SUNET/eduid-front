@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Spinner } from "spin.js";
-import "/node_modules/spin.js/spin.css"; // without this import, the spinner is frozen
+import "spin.js/spin.css"; // without this import, the spinner is frozen
 
 export const spinnerOpts = {
   rotate: 0, // The rotation offset

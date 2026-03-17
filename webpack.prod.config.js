@@ -5,7 +5,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 //const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-var webpackProd = {
+const webpackProd = {
   entry: webpackConfig.entry,
   resolve: webpackConfig.resolve,
   module: webpackConfig.module,
