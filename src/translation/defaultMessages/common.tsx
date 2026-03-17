@@ -47,6 +47,14 @@ export const apiResponse = {
   "common.locked_identity_not_matching": (
     <FormattedMessage id="common.locked_identity_not_matching" defaultMessage={`Identity not matching`} />
   ),
+
+  // network error, could be problems with the server or with the user's connection
+  "general.failed_to_fetch": (
+    <FormattedMessage
+      id="general.failed_to_fetch"
+      defaultMessage={`Failed to contact the server. Please try again later.`}
+    />
+  ),
 };
 
 export const proofing = {

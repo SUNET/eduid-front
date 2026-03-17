@@ -24,7 +24,7 @@ export async function re_authenticate(csrf_token: string | undefined, api: BaseQ
       const reauth_result = await customBaseQuery(
         { url: "authenticate", body: { frontend_action: "login", csrf_token: csrf_token } },
         api,
-        { service: "authn" }
+        { service: "authn" },
       );
 
       if (reauth_result.data && isApiResponse<AuthenticateResponse>(reauth_result.data)) {
@@ -44,7 +44,7 @@ export async function handleBaseQueryError(
   result: Extract<QueryReturnValue<unknown, FetchBaseQueryError, FetchBaseQueryMeta>, { error: FetchBaseQueryError }>,
   csrf_token: string | undefined,
   api: BaseQueryApi,
-  state: StateWithCommonConfig
+  state: StateWithCommonConfig,
 ) {
   // FetchBaseQuery errors
   if (typeof result.error.status === "number") {
@@ -63,7 +63,11 @@ export async function handleBaseQueryError(
     }
   } else {
     // fetchBaseQuery wrapped errors
-    api.dispatch(showNotification({ message: result.error.status + " " + result.error.error, level: "error" }));
+    if (result.error?.status === "FETCH_ERROR") {
+      api.dispatch(showNotification({ message: "general.failed_to_fetch", level: "error" }));
+    } else {
+      api.dispatch(showNotification({ message: result.error.status + " " + result.error.error, level: "error" }));
+    }
   }
 }
 
@@ -71,7 +75,7 @@ export async function handleApiError<T>(
   data: ApiError<T>,
   meta: FetchBaseQueryMeta | undefined,
   csrf_token: string | undefined,
-  api: BaseQueryApi
+  api: BaseQueryApi,
 ): Promise<{ error: ApiError<T>; meta: FetchBaseQueryMeta | undefined }> {
   // validation errors from backend has slightly different format
   if (data.payload.error?.csrf_token && data.payload.error.csrf_token[0] === "CSRF failed to validate") {
