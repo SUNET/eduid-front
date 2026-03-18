@@ -1,4 +1,6 @@
-@use "variables" as *; /** Site wide typography **/
+@use "variables" as *;
+
+/** Site wide typography **/
 
 h1,
 h2,
@@ -100,12 +102,6 @@ p.verified {
   color: var(--body-txt);
 }
 
-// these styles are the same as input values and placeholder
-// p.data {
-//   font-size: 1.5rem;
-//   font-weight: 500;
-// }
-
 p.no-data.data {
   color: var(--txt-gray);
 }
@@ -126,14 +122,10 @@ b,
 .text-bold {
   font-family: $inter-bold;
   font-weight: normal;
-  //font-weight: bold;
-  //@extend b;
 }
 
 em {
   font-style: italic;
-  // TODO: Confirm that the page works correctly, then remove @extend i.
-  // @extend i;
 }
 
 .verbatim {

@@ -70,8 +70,6 @@ table {
     }
 
     & tr {
-      // height: 3rem;
-
       &.border-row {
         font-size: $txt-xs;
         border-bottom: 1px solid var(--border-gray);

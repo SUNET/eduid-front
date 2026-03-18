@@ -3,7 +3,6 @@
 /* Form layout elements */
 
 //top margin here assumes that text above has bottom margin of 1rem
-
 .single-input-form .form-group {
   margin-bottom: 0;
   width: 100%;
@@ -38,7 +37,6 @@ form {
   }
 
   //places two wrapped input groups on one row
-
   .input-pair {
     @media (min-width: $bp-xl) {
       display: flex;
@@ -107,7 +105,7 @@ form {
   }
 }
 
-//fieldset
+//fieldset used to group, possibly incorrectly
 fieldset {
   width: 100%;
   position: relative;
@@ -124,18 +122,6 @@ fieldset {
     content: " *";
     color: var(--txt-orange);
   }
-}
-
-.transparent-input-error {
-  background-color: transparent;
-  color: transparent;
-}
-
-// in use?
-.input-error {
-  color: $bright-orange;
-  letter-spacing: 0.025rem;
-  @extend .text-bold;
 }
 
 .input-validate-error {
@@ -187,10 +173,3 @@ fieldset {
     }
   }
 }
-
-// .legend-2fa {
-//   flex-direction: column;
-//   p {
-//     font-family: $inter-regular;
-//   }
-// }
