@@ -17,7 +17,6 @@ export interface ResponseCodeValues {
 }
 
 export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
-  // const valueChars = (props.code || "").split("");
   const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],

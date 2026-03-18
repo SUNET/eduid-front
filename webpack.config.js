@@ -1,8 +1,6 @@
 const webpack = require("webpack");
 const path = require("path");
 const autoprefixer = require("autoprefixer");
-//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const transform = require("@formatjs/ts-transformer").transform;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // You can leverage your IDE's Intellisense (autocompletion, type check, etc.) with the helper function `defineReactCompilerLoaderOption`:
