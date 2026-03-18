@@ -146,7 +146,7 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
         <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
       </h4> */}
 
-      <p className="proofing-btn-help">
+      <p>
         <FormattedMessage
           description="letter initialize proofing help text"
           defaultMessage="You will receive a letter which contains a code that for security reasons expires in two weeks."
