@@ -63,10 +63,10 @@ const Footer = (): React.JSX.Element => {
 
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
-              <a className="link" href="#" onClick={changeLanguage}>
+              <button className="link text-link" onClick={changeLanguage}>
                 <FontAwesomeIcon icon={faGlobe as IconProp} />
                 {language}
-              </a>
+              </button>
             </span>
           </li>
         </ul>

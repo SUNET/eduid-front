@@ -44,7 +44,7 @@ function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JS
 
   return (
     <div>
-      <span role="alert" aria-invalid="true" tabIndex={-1} className="input-validate-error">
+      <span role="alert" tabIndex={-1} className="input-validate-error">
         {errorMsg || submitErrorMsg}
       </span>
       {props.passwordStrengthMeter ? props.passwordStrengthMeter : null}

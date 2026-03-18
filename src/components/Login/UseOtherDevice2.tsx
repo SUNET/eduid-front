@@ -216,22 +216,22 @@ function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): Re
         <table className="table">
           <tbody>
             <tr className="border-row">
-              <td>
+              <th scope="row">
                 <strong>
                   <FormattedMessage defaultMessage="IP address" description="device info" />
                 </strong>
-              </td>
+              </th>
 
               <td>
                 {props.data.device1_info.addr} {proximity}
               </td>
             </tr>
             <tr className="border-row">
-              <td>
+              <th scope="row">
                 <strong>
                   <FormattedMessage defaultMessage="Description" description="device info" />
                 </strong>
-              </td>
+              </th>
 
               <td>{props.data.device1_info.description}</td>
             </tr>
