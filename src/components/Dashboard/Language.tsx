@@ -60,7 +60,7 @@ export function LanguagePreference() {
       <p>
         <FormattedMessage
           description="pd long description"
-          defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
+          defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you are logged in and in any emails sent to you."
         />
       </p>
       <FinalForm<UserLanguageRequest>
