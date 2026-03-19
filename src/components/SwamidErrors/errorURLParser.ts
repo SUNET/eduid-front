@@ -28,7 +28,7 @@ export function parseErrorURL(query: URLSearchParams): ErrorURLData {
 
   if (ts && ts !== "ERRORURL_TS") {
     // Convert unix time stamp to a Date object
-    parsedDate = new Date(parseInt(ts) * 1000);
+    parsedDate = new Date(Number.parseInt(ts) * 1000);
   }
 
   /* An SP that doesn't understand one or more of the parameters will leave them unchanged from the template
