@@ -89,7 +89,7 @@ test("can remove an ORCID iD", async () => {
         return new Response("", { status: 400 });
       }
       return new Response(JSON.stringify({ type: "test success", payload: { orcid: undefined } }));
-    })
+    }),
   );
 
   render(<IndexMain />, {
@@ -117,15 +117,4 @@ test("can remove an ORCID iD", async () => {
   act(() => {
     fireEvent.click(button);
   });
-  //TODO: check why this is still present
-  // The ORCID iD shouldn't be visible anymore
-  // await waitFor(() => {
-  //   expect(screen.queryByRole("cell", { name: orcid.id })).not.toBeInTheDocument();
-  // });
-
-  // // The Add ORCID iD button should be here now
-  // expect(screen.queryByRole("button", { name: /add orcid/i })).toBeInTheDocument();
-
-  // // async tests need to await the last expect (to not get console warnings about logging after test finishes)
-  // await expect(removeCalled).toBe(true);
 });

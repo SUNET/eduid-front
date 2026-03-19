@@ -1,6 +1,5 @@
 const path = require("path");
 const webpackProd = require("./webpack.prod.config");
-//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const webpackStaging = {

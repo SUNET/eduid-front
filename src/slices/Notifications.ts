@@ -46,4 +46,3 @@ export const notificationsSlice = createSlice({
 // since all old code use imports like these
 export const showNotification = notificationsSlice.actions.showNotification;
 export const clearNotifications = notificationsSlice.actions.clearNotifications;
-//export const intlReducer = intlSlice.reducer;

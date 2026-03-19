@@ -2,7 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const webpackConfig = require("./webpack.config");
 const CompressionPlugin = require("compression-webpack-plugin");
-//const initialConfigPlugin = require("./src/init-config").initialConfigPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const webpackProd = {
@@ -14,7 +13,6 @@ const webpackProd = {
 delete webpackProd.entry.server;
 delete webpackProd.entry.hot;
 
-//webpackProd.devtool = 'inline-source-map';
 delete webpackProd.devtool;
 
 webpackProd.output = {
