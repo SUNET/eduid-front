@@ -44,7 +44,7 @@ const Footer = (): React.JSX.Element => {
   return (
     <footer key="0" id="footer">
       <div className="logo-wrapper">
-        <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se">
+        <a href="https://www.sunet.se/" aria-label="Sunet.se" title="Sunet.se" target="_blank" rel="noreferrer">
           <div className="sunet-logo" />
         </a>
         <span>&copy;2013-2026</span>
