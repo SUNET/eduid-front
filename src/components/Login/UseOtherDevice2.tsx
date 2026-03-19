@@ -115,6 +115,13 @@ function RenderOtherDevice2(props: {
     );
   }
 
+  let device2Buttons = <Device2Buttons showLogin={false} />;
+  if (data.state === "IN_PROGRESS") {
+    device2Buttons = <Device2Buttons showLogin={true} />;
+  } else if (data.state === "AUTHENTICATED") {
+    device2Buttons = <Device2Buttons showLogin={false} extra_className="x-adjust" />;
+  }
+
   return (
     <React.Fragment>
       {data.state === "IN_PROGRESS" && (
@@ -145,13 +152,7 @@ function RenderOtherDevice2(props: {
       )}
 
       <div className="expiration-info">
-        {data.state === "IN_PROGRESS" ? (
-          <Device2Buttons showLogin={true} />
-        ) : data.state === "AUTHENTICATED" ? (
-          <Device2Buttons showLogin={false} extra_className="x-adjust" />
-        ) : (
-          <Device2Buttons showLogin={false} />
-        )}
+        {device2Buttons}
         <TimeRemainingWrapper
           name="other-device-expires"
           unique_id={data.short_code}
