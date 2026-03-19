@@ -138,7 +138,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                 (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
               values={{
                 FrejaProtectedId: (
-                  <a className="text-link" href={FrejaProtectedIdURL} target="_blank" rel="noreferrer">
+                  <a href={FrejaProtectedIdURL} target="_blank" rel="noreferrer">
                     <FormattedMessage
                       description="use freja protected id - link text"
                       defaultMessage="freja-for-swedes-with-protected-identities"
@@ -230,7 +230,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                         Freja+ account according to the instructions,`}
                   values={{
                     Freja: (
-                      <a className="text-link" href={FrejaAppURL} target="_blank" rel="noreferrer">
+                      <a href={FrejaAppURL} target="_blank" rel="noreferrer">
                         <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                       </a>
                     ),
@@ -328,7 +328,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                   defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},`}
                   values={{
                     bankid: (
-                      <a className="text-link" href={BankIdURL} target="_blank" rel="noreferrer">
+                      <a href={BankIdURL} target="_blank" rel="noreferrer">
                         BankID.com
                       </a>
                     ),
@@ -422,7 +422,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                 defaultMessage={`Current information on included nationalities can be found at: {FrejaList}`}
                 values={{
                   FrejaList: (
-                    <a className="text-link" href={FrejaeIdURL} target="_blank" rel="noreferrer">
+                    <a href={FrejaeIdURL} target="_blank" rel="noreferrer">
                       Freja eID
                     </a>
                   ),
@@ -445,7 +445,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                          and following the instructions,`}
                   values={{
                     FrejaApp: (
-                      <a className="text-link" href={FrejaAppURL} target="_blank" rel="noreferrer">
+                      <a href={FrejaAppURL} target="_blank" rel="noreferrer">
                         <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
                       </a>
                     ),

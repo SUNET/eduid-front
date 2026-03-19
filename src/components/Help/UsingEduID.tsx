@@ -29,7 +29,7 @@ export function UsingEduID(): React.JSX.Element {
               defaultMessage="How to register your new eduID account at {eduidRegisterLink}:"
               values={{
                 eduidRegisterLink: (
-                  <a className="text-link" href={signup_link} target="_blank" rel="noreferrer">
+                  <a href={signup_link} target="_blank" rel="noreferrer">
                     eduid.se/register
                   </a>
                 ),
@@ -106,7 +106,7 @@ export function UsingEduID(): React.JSX.Element {
               />
             </dt>
             <dd>
-              <a className="text-link" href="#loginUsernameHeading">
+              <a href="#loginUsernameHeading">
                 <FormattedMessage
                   description="login eduid - username heading"
                   defaultMessage="With username and password"
@@ -114,7 +114,7 @@ export function UsingEduID(): React.JSX.Element {
               </a>
             </dd>
             <dd>
-              <a className="text-link" href="#loginSavedHeading">
+              <a href="#loginSavedHeading">
                 <FormattedMessage
                   description="login eduid - remember me heading"
                   defaultMessage="With saved credentials"
@@ -122,7 +122,7 @@ export function UsingEduID(): React.JSX.Element {
               </a>
             </dd>
             <dd>
-              <a className="text-link" href="#loginSecurityKeyHeading">
+              <a href="#loginSecurityKeyHeading">
                 <FormattedMessage
                   description="login eduid - security key heading"
                   defaultMessage={`With security key`}
@@ -130,12 +130,12 @@ export function UsingEduID(): React.JSX.Element {
               </a>
             </dd>
             <dd>
-              <a className="text-link" href="#loginPasskeyHeading">
+              <a href="#loginPasskeyHeading">
                 <FormattedMessage description="login eduid - passkey heading" defaultMessage={`With Passkey`} />
               </a>
             </dd>
             <dd>
-              <a className="text-link" href="#loginOtherDeviceHeading">
+              <a href="#loginOtherDeviceHeading">
                 <FormattedMessage
                   description="login eduid - other device heading"
                   defaultMessage="With another device"
@@ -157,7 +157,7 @@ export function UsingEduID(): React.JSX.Element {
                   and press the button "Log in". Your username can be`}
                 values={{
                   eduidLoginLink: (
-                    <a className="text-link" href={dashboard_link} target="_blank" rel="noreferrer">
+                    <a href={dashboard_link} target="_blank" rel="noreferrer">
                       eduid.se
                     </a>
                   ),

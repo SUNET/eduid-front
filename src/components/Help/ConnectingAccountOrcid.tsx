@@ -37,7 +37,7 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
               defaultMessage="read more and register for an ORCID at {orcid},"
               values={{
                 orcid: (
-                  <a className="text-link" href="https://orcid.org" target="_blank" rel="noreferrer">
+                  <a href="https://orcid.org" target="_blank" rel="noreferrer">
                     orcid.org
                   </a>
                 ),

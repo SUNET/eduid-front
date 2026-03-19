@@ -14,11 +14,11 @@ interface WizardLinkTypes {
 export function WizardLink({ previousLink, previousText, nextLink, nextText }: WizardLinkTypes) {
   return (
     <section className="wizard-link-wrapper">
-      <Link className="text-link left" to={previousLink} aria-label={previousText}>
+      <Link className="left" to={previousLink} aria-label={previousText}>
         <FontAwesomeIcon icon={faArrowLeft as IconProp} /> <span>{previousText}</span>
       </Link>
       {nextLink ? (
-        <Link className="text-link right" to={nextLink} aria-label={nextText}>
+        <Link className="right" to={nextLink} aria-label={nextText}>
           <span>{nextText}</span> <FontAwesomeIcon icon={faArrowRight as IconProp} />
         </Link>
       ) : null}

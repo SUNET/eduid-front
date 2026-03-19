@@ -190,7 +190,7 @@ The private key is stored in an "authenticator" module, either built into your h
                     defaultMessage="Certified FIDO 2.0, you can read more at {Fido}."
                     values={{
                       Fido: (
-                        <a className="text-link" href="https://fidoalliance.org/" target="_blank" rel="noreferrer">
+                        <a href="https://fidoalliance.org/" target="_blank" rel="noreferrer">
                           fidoalliance.org
                         </a>
                       ),
