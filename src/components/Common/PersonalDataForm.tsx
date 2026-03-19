@@ -188,12 +188,7 @@ function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) 
           onChange={handleSelectChange}
           className="basic-multi-select"
           classNamePrefix="select"
-          noOptionsMessage={() => (
-            <FormattedMessage
-              defaultMessage="To change the display name, delete and choose again"
-              description="Display name noOptionsMessage"
-            />
-          )}
+          noOptionsMessage={NoOptionsMessage}
           placeholder={
             <FormattedMessage defaultMessage="select display name..." description="Display name select placeholder" />
           }
@@ -255,6 +250,15 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
     </article>
   );
 };
+
+function NoOptionsMessage() {
+  return (
+    <FormattedMessage
+      defaultMessage="To change the display name, delete and choose again"
+      description="Display name noOptionsMessage"
+    />
+  );
+}
 
 function RenderEditableNames(props: { readonly labels: NameLabels }) {
   return (
