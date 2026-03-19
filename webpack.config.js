@@ -1,5 +1,5 @@
 const webpack = require("webpack");
-const path = require("path");
+const path = require("node:path");
 const autoprefixer = require("autoprefixer");
 const transform = require("@formatjs/ts-transformer").transform;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
