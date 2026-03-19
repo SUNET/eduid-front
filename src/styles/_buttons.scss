@@ -181,6 +181,16 @@ button.link {
       display: none;
     }
   }
+
+  &.text-link {
+    height: auto;
+    font-size: $txt-sm;
+    line-height: 1.5;
+    letter-spacing: normal;
+    font-weight: bold;
+    text-transform: none;
+  }
+
   &.disabled,
   &:disabled,
   &[disabled] {

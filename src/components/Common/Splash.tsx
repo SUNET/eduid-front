@@ -49,7 +49,7 @@ export default function Splash(props: SplashProps): React.JSX.Element {
    */
   return (
     <div id="eduid-splash-and-children">
-      {!showChildren && <span ref={eduidSplash} id="eduid-splash-spinner" role="presentation"></span>}
+      {!showChildren && <span ref={eduidSplash} id="eduid-splash-spinner"></span>}
       {children}
     </div>
   );
