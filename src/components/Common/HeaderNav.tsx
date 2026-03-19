@@ -56,7 +56,7 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   });
   const wrapperRef = useRef<HTMLElement | null>(null);
 
-  const userName = emails.filter((mail) => mail.primary)[0]?.email;
+  const userName = emails.find((mail) => mail.primary)?.email;
 
   const handleResize = () => {
     setIsOpen((prev) => {

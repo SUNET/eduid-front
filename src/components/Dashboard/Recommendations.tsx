@@ -230,7 +230,7 @@ export function Recommendations(): React.JSX.Element | null {
     return null;
   }
 
-  const email = emails?.filter((mail) => mail.primary)[0].email;
+  const email = emails?.find((mail) => mail.primary)?.email;
 
   if (!isLoaded) {
     return null;

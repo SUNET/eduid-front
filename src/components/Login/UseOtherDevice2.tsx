@@ -255,7 +255,7 @@ function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
   function handleLoginOnClick() {
-    if (data && data.login_ref) {
+    if (data?.login_ref) {
       dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
       navigate(`/login/${data.login_ref}`);

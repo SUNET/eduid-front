@@ -24,7 +24,7 @@ function validateNin(value: string): string | undefined {
     bEven = false;
   for (let n = value.length - 1; n >= 0; n--) {
     const cDigit = value.charAt(n);
-    let nDigit = parseInt(cDigit, 10);
+    let nDigit = Number.parseInt(cDigit, 10);
     if (bEven) {
       if ((nDigit *= 2) > 9) nDigit -= 9;
     }

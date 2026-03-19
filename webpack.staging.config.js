@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const webpackProd = require("./webpack.prod.config");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
