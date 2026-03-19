@@ -2,10 +2,6 @@
 
 /** Signup flow specific styles **/
 
-// #currentPassword-wrapper {
-//   margin-top: 2rem !important;
-// }
-
 h3 {
   &.register-header {
     margin-top: 0;
@@ -29,12 +25,6 @@ h3 {
 
   p {
     margin-right: 10px;
-  }
-}
-
-.enter-code {
-  form {
-    margin-bottom: 1.25rem;
   }
 }
 
@@ -62,6 +52,9 @@ h3 {
 }
 
 .enter-code {
+  form {
+    margin-bottom: 1.25rem;
+  }
   // TODO: This is a duplicate of the same things from Other Device
   .response-code-inputs {
     input {

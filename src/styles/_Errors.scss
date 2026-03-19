@@ -35,6 +35,7 @@
   & li {
     line-height: 1.5;
     font-family: $inter-regular;
+    margin-top: 24px;
   }
 
   & .technical-info-heading span {
@@ -71,10 +72,6 @@
   .specific-error {
     margin-bottom: 1.5rem;
   }
-}
-
-.error-page li {
-  margin-top: 24px;
 }
 
 // small reddish alert with exclamation symbol

@@ -112,11 +112,10 @@ html.dark {
     -webkit-text-fill-color: var(--txt-gray) !important;
   }
 
-  // Akkurat less legible in the dark
+  // Akkurat less legible in the dark, possibly add letter-spacing as well
   a,
   .text-link {
     font-weight: bold;
-    //letter-spacing: 0.5px;
   }
 
   ::placeholder {

@@ -64,7 +64,7 @@ function Eidas(): React.JSX.Element {
 
   return (
     <Fragment>
-      <p className="proofing-btn-help">
+      <p>
         <FormattedMessage
           description="eidas proofing help text"
           defaultMessage={`To use this option you will need to first create a digital ID in the 

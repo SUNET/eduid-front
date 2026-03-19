@@ -15,7 +15,7 @@ export function BankID(): React.JSX.Element {
 
   return (
     <Fragment>
-      <p className="proofing-btn-help">
+      <p>
         <FormattedMessage
           description="bankID proofing help text"
           defaultMessage="To use this option you will need to first create a digital ID in the {bankID_link} app."

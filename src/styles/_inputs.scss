@@ -1,7 +1,7 @@
 @use "variables" as *;
 @use "base";
-/* Inputs and form controls, mainly non button */
 
+/* Inputs and form controls, mainly non button */
 input {
   box-sizing: border-box;
   font-family: $inter-regular;
@@ -17,7 +17,6 @@ input {
 }
 
 /* Form controls and interactive states */
-
 input,
 input.is-valid,
 input:focus,
@@ -39,7 +38,6 @@ input::placeholder {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    //border-top: $border-width solid var(--contrast-color);
     padding-top: calc(1.25rem + $border-width);
     border-bottom: $border-width solid var(--body-txt) !important;
   }
@@ -227,10 +225,6 @@ input[type="checkbox"] {
     left: 3px;
     transition: left 0.25s;
   }
-
-  // &:hover {
-  //   background: $bright-orange;
-  // }
 
   .toggle:hover &::before {
     transform: scale(0.9);

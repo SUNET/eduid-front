@@ -20,7 +20,7 @@
     }
 
     #{$a}__heading::marker,
-    #{$a}__heading::-webkil-details-marker {
+    #{$a}__heading::-webkit-details-marker {
       display: none;
     }
     // Clickable
@@ -122,10 +122,6 @@
     }
   }
 
-  // &:not(#{$a}-nested) > .expanded + #{$a}__item {
-  //   border-top: 2px solid #c4c4c4;
-  // }
-
   form {
     margin-top: 0;
   }
@@ -141,10 +137,6 @@
       border: 2px solid var(--border-gray);
       border-radius: 6px;
       overflow: hidden;
-
-      // &.expanded {
-      //   border-color: #c4c4c4;
-      // }
 
       &:hover {
         border-color: $bright-orange;
