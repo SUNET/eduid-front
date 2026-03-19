@@ -129,9 +129,8 @@ export function InternalCaptcha(props: CaptchaProps) {
         <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
         <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
 
-        <button
-          type="button"
-          className="link lowercase sm icon refresh"
+        <EduIDButton
+          buttonstyle="link lowercase sm icon refresh"
           aria-label="refresh-captcha"
           disabled={!captchaResponse?.captcha_img}
           onClick={getNewCaptcha}
@@ -140,7 +139,7 @@ export function InternalCaptcha(props: CaptchaProps) {
           <span>
             <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
           </span>
-        </button>
+        </EduIDButton>
       </figure>
 
       <CaptchaForm {...props} />

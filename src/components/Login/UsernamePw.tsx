@@ -268,9 +268,9 @@ function UsernameInputPart(): React.JSX.Element {
                 }}
               />
             </legend>
-            <button className="link text-link" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <EduIDButton buttonstyle="link normal-case" id="wrong-person-button" onClick={handleClickWrongPerson}>
               <FormattedMessage defaultMessage="Different user?" description="Login username input" />
-            </button>
+            </EduIDButton>
           </div>
         )}
         <FinalField

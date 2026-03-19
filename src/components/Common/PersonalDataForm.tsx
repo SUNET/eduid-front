@@ -237,9 +237,8 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
 
       {/* Only available for Swedish identities */}
       {nin?.verified && (
-        <button
-          type="button"
-          className="link lowercase sm icon refresh"
+        <EduIDButton
+          buttonstyle="link lowercase sm icon refresh"
           aria-label="name-check"
           onClick={() => handleUpdateName()}
         >
@@ -250,7 +249,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
               description="Personal data update locked names"
             />
           </span>
-        </button>
+        </EduIDButton>
       )}
     </article>
   );
