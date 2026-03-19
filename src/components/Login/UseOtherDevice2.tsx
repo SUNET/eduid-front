@@ -357,7 +357,7 @@ function DeveloperInfo(props: { data: UseOtherDevice2ResponseLoggedIn }) {
         <FormattedMessage defaultMessage="Developer info, not shown in production:" />
       </span>
       <p>
-        Response code:
+        {"Response code: "}
         <span id="response_code">{props.data.response_code}</span>
       </p>
     </div>
