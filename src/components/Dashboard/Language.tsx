@@ -37,8 +37,7 @@ export function LanguagePreference() {
   const formSubmit = useCallback(
     async (values: UserLanguageRequest) => {
       // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
-      let postData = values;
-      postData = {
+      const postData = {
         language: values.language,
       };
       postLanguage(postData);
