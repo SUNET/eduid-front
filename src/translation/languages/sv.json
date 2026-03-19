@@ -696,10 +696,6 @@
     "developer_comment": "method international - heading",
     "string": "Om du inte är EU-medborgare och inte har ett svenskt personnummer"
   },
-  "DxCHSK": {
-    "developer_comment": "pd long description",
-    "string": "Du kan välja vilket språk du föredrar. Effekten kommer att synas i gränssnittet när du loggar in och när vi skickat mejl till dig."
-  },
   "Dzp8k8": {
     "developer_comment": "verify identity non swedish verified heading",
     "string": "Om du har en svensk identitet kan du verifiera den också, för att kunna använda fler tjänster."
@@ -1065,6 +1061,10 @@
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "Vad kan jag göra om legitimationskontrollen för Freja+ misslyckades?"
+  },
+  "LAOjK9": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "Du kan lägga till så många du önskar men behöver minst en epostadress som du har bekräftad åtkomst till. Du kan logga in med alla bekräftade adresser men den primära används om vi behöver kommunicera med dig. De listas i en tabell med följande alternativ:"
   },
   "LBmbm1": {
     "developer_comment": "Signup button",
@@ -2073,6 +2073,10 @@
     "developer_comment": "about eduid - info",
     "string": "Beskrivning och syfte"
   },
+  "dcWqae": {
+    "developer_comment": "delete eduid - paragraph",
+    "string": "Om du vill spärra åtkomst till ditt konto har du möjlighet att ta bort det under \"Spärra och radera eduID\" i kontosidan. Om du sedan väljer att behålla kontot behöver du byta lösenord inom en vecka."
+  },
   "delete account action": {
     "string": "radera konto"
   },
@@ -2542,9 +2546,9 @@
     "developer_comment": "security key title",
     "string": "Lägg till multifaktorautentisering (MFA)"
   },
-  "jqbSR+": {
-    "developer_comment": "account eduid - list item 1",
-    "string": "Du kan lägga till så många du önskar men behöver minst en epostadress som du har bekräftad åtkomst till. Du kan logga in med alla bekräftade adresser men den primära används för att kommunicera med dig. De listas i en tabell med följande alternativ:"
+  "joBqDK": {
+    "developer_comment": "pd long description",
+    "string": "Du kan välja vilket språk du föredrar. Effekten kommer att synas i gränssnittet när du är inloggad och i mejl till dig."
   },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
@@ -3538,10 +3542,6 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(Samma som nu)"
-  },
-  "v9a0TP": {
-    "developer_comment": "delete eduid - paragraph",
-    "string": "Om du vill spärra åtkomst till ditt konto har du möjlighet att ta bort det under Spärra och radera eduID i kontosidan. Om du väljer att behålla kontot behöver du byta lösenord inom en vecka."
   },
   "vG+ARA": {
     "developer_comment": "verify webauthn token modal title",
