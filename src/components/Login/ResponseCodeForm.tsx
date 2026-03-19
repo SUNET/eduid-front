@@ -83,16 +83,16 @@ interface CodeFieldProps {
   readonly?: boolean;
 }
 
+function validateCodeForm(value: number): string | undefined {
+  if (!value) {
+    return "required";
+  }
+}
+
 // helper-component to make for tidy code with one line per input field in ShortCodeForm
 function CodeField({ num, value, autoFocus = undefined, readonly }: Readonly<CodeFieldProps>) {
   const inputsRef = useRef<HTMLInputElement[]>([]);
   const form = useForm();
-
-  function validateCodeForm(value: number): string | undefined {
-    if (!value) {
-      return "required";
-    }
-  }
 
   function selectIfNotEmpty(event: React.FocusEvent<HTMLInputElement>) {
     if (event.target.value) {

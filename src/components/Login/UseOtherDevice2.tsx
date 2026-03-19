@@ -294,12 +294,12 @@ function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   );
 }
 
-function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
-  function handleSubmit(): undefined {
-    // No-op, have to provide it to the form but we don't expect submissions on device 2.
-    return undefined;
-  }
+// No-op submit handler for device 2 where we don't expect form submissions.
+function noopSubmit(): undefined {
+  return undefined;
+}
 
+function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
   if (props.data.response_code_required === false) {
     return (
       <p>
@@ -326,7 +326,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
       </span>
       <div className="x-adjust figure">
         <div className="device2">
-          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={handleSubmit} />
+          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={noopSubmit} />
 
           <div className="warning-text">
             <span className="warning-symbol">
