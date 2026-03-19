@@ -696,10 +696,6 @@
     "developer_comment": "method international - heading",
     "string": "If you are not an EU citizen and without a Swedish personal identity number"
   },
-  "DxCHSK": {
-    "developer_comment": "pd long description",
-    "string": "You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
-  },
   "Dzp8k8": {
     "developer_comment": "verify identity non swedish verified heading",
     "string": "If you have a Swedish identity you can verify that as well, to be able to access more services."
@@ -1065,6 +1061,10 @@
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "What should I do if my identity verification for Freja+ fails?"
+  },
+  "LAOjK9": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you if necessary. They are listed in a table with the following options:"
   },
   "LBmbm1": {
     "developer_comment": "Signup button",
@@ -2073,6 +2073,10 @@
     "developer_comment": "about eduid - info",
     "string": "What it is and may be used for"
   },
+  "dcWqae": {
+    "developer_comment": "delete eduid - paragraph",
+    "string": "If you wish to block access to your account you have the option to remove it under \"Block and delete eduID\" in the Account page. If you decide afterwards that you want to keep the account then reset your password within one week."
+  },
   "delete account action": {
     "string": "delete account"
   },
@@ -2542,9 +2546,9 @@
     "developer_comment": "security key title",
     "string": "Add multi-factor Authentication (MFA)"
   },
-  "jqbSR+": {
-    "developer_comment": "account eduid - list item 1",
-    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:"
+  "joBqDK": {
+    "developer_comment": "pd long description",
+    "string": "You can choose your preferred language. The effect will be visible in the interface when you are logged in and in any emails sent to you."
   },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
@@ -3538,10 +3542,6 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
-  },
-  "v9a0TP": {
-    "developer_comment": "delete eduid - paragraph",
-    "string": "If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week."
   },
   "vG+ARA": {
     "developer_comment": "verify webauthn token modal title",
