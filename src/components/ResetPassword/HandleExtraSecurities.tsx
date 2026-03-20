@@ -82,7 +82,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
           defaultMessage="Your account will require confirmation after the password has been reset."
         />
         &nbsp;
-        <EduIDButton buttonstyle="link lowercase" id="continue-without-security" onClick={continueSetPassword}>
+        <EduIDButton buttonstyle="link normal-case" id="continue-without-security" onClick={continueSetPassword}>
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>

@@ -23,11 +23,7 @@ export function ContactSupport(): React.JSX.Element {
             defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
             values={{
-              support: (
-                <a className="text-link" href="mailto:support@eduid.se">
-                  support@eduid.se
-                </a>
-              ),
+              support: <a href="mailto:support@eduid.se">support@eduid.se</a>,
             }}
           />
         </p>
@@ -66,9 +62,7 @@ export function ContactSupport(): React.JSX.Element {
             defaultMessage=", but for simple matters you can also reach us on phone number"
           />
           &nbsp;
-          <a className="text-link" href="tel:+468-55521362">
-            08-555 213 62
-          </a>
+          <a href="tel:+468-55521362">08-555 213 62</a>
         </p>
         <p>
           <FormattedMessage description="opening hours - list definition" defaultMessage="Opening hours:" />

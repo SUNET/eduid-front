@@ -110,8 +110,7 @@ html.dark {
   }
 
   // Akkurat less legible in the dark, possibly add letter-spacing as well
-  a,
-  .text-link {
+  a {
     font-weight: bold;
   }
 

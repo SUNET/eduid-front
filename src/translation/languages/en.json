@@ -408,10 +408,6 @@
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
   },
-  "6bBJYy": {
-    "developer_comment": "Copied tooltip",
-    "string": "Copied!"
-  },
   "6i0Tfo": {
     "developer_comment": "nin label",
     "string": "ID number"
@@ -696,10 +692,6 @@
     "developer_comment": "method international - heading",
     "string": "If you are not an EU citizen and without a Swedish personal identity number"
   },
-  "DxCHSK": {
-    "developer_comment": "pd long description",
-    "string": "You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
-  },
   "Dzp8k8": {
     "developer_comment": "verify identity non swedish verified heading",
     "string": "If you have a Swedish identity you can verify that as well, to be able to access more services."
@@ -908,10 +900,6 @@
     "developer_comment": "security webauthn describe paragraph",
     "string": "Note: this is only for your own use to be able to distinguish between your added keys."
   },
-  "HgjRtU": {
-    "developer_comment": "button add more",
-    "string": "+ add more"
-  },
   "Hi6qxM": {
     "developer_comment": "Account terminated - heading",
     "string": "Account terminated"
@@ -1065,6 +1053,10 @@
   "L94EOe": {
     "developer_comment": "what if verification for freja fails - heading",
     "string": "What should I do if my identity verification for Freja+ fails?"
+  },
+  "LAOjK9": {
+    "developer_comment": "account eduid - list item 1",
+    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you if necessary. They are listed in a table with the following options:"
   },
   "LBmbm1": {
     "developer_comment": "Signup button",
@@ -1456,6 +1448,10 @@
   "TBeUL3": {
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Press the \"Forgot your password?\" link below the login form."
+  },
+  "TI4Tiu": {
+    "developer_comment": "button add more",
+    "string": "+ Add more"
   },
   "TOMSwW": {
     "developer_comment": "how add security key - verify",
@@ -2073,6 +2069,10 @@
     "developer_comment": "about eduid - info",
     "string": "What it is and may be used for"
   },
+  "dcWqae": {
+    "developer_comment": "delete eduid - paragraph",
+    "string": "If you wish to block access to your account you have the option to remove it under \"Block and delete eduID\" in the Account page. If you decide afterwards that you want to keep the account then reset your password within one week."
+  },
   "delete account action": {
     "string": "delete account"
   },
@@ -2423,10 +2423,6 @@
     "developer_comment": "Use other device 2",
     "string": "Request cancelled."
   },
-  "hm1MQK": {
-    "developer_comment": "Copy tooltip",
-    "string": "Copy to clipboard"
-  },
   "hnyHof": {
     "developer_comment": "HandleExtraSecurities heading",
     "string": "Reset password: Verification method"
@@ -2542,9 +2538,9 @@
     "developer_comment": "security key title",
     "string": "Add multi-factor Authentication (MFA)"
   },
-  "jqbSR+": {
-    "developer_comment": "account eduid - list item 1",
-    "string": "You can add as many as you wish, but need to have at least one email address that you have confirmed access to. You can log in with all confirmed addresses but the primary one will be used for communication with you. They are listed in a table with the following options:"
+  "joBqDK": {
+    "developer_comment": "pd long description",
+    "string": "You can choose your preferred language. The effect will be visible in the interface when you are logged in and in any emails sent to you."
   },
   "k8/V1T": {
     "developer_comment": "about eidas - handle",
@@ -2820,6 +2816,10 @@
   "mwt1Dw": {
     "developer_comment": "Account terminated - reset password link",
     "string": "Go to reset password page"
+  },
+  "n0mqo6": {
+    "developer_comment": "DeleteAccount",
+    "string": "Delete eduID"
   },
   "n6sj+f": {
     "developer_comment": "connect your identity to eduID description",
@@ -3464,10 +3464,6 @@
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
   },
-  "u8ud2A": {
-    "developer_comment": "DeleteAccount",
-    "string": "delete eduID"
-  },
   "uMFspJ": {
     "developer_comment": "Temp info - continue button",
     "string": "Continue"
@@ -3538,10 +3534,6 @@
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
     "string": "(The same as now)"
-  },
-  "v9a0TP": {
-    "developer_comment": "delete eduid - paragraph",
-    "string": "If you wish to block access to your account you have the option to remove it under Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week."
   },
   "vG+ARA": {
     "developer_comment": "verify webauthn token modal title",

@@ -64,7 +64,7 @@ export default function TemporaryInfo(props: {
             description="Temp info - message5"
             values={{
               help: (
-                <a className="text-link" href="https://www.eduid.se/help" target="_blank" rel="noreferrer">
+                <a href="https://www.eduid.se/help" target="_blank" rel="noreferrer">
                   eduid.se/help
                 </a>
               ),

@@ -1,8 +1,7 @@
 @use "variables" as *;
 /* Textual non-button-styled links */
 
-a,
-.text-link {
+a {
   color: var(--txt-orange);
   font-family: $akkurat;
   text-decoration: none;
@@ -23,8 +22,7 @@ a,
 }
 
 a .disabled,
-a.disabled,
-.text-link.disabled {
+a.disabled {
   color: var(--txt-gray);
   text-decoration: none;
   pointer-events: none;
