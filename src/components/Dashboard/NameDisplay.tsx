@@ -1,10 +1,10 @@
 interface NameDisplayProps {
-  readonly label?: string | React.JSX.Element;
-  readonly name?: string | React.JSX.Element;
-  readonly htmlFor: string;
+  label?: string | React.JSX.Element;
+  name?: string | React.JSX.Element;
+  htmlFor: string;
 }
 
-export default function NameDisplay({ label, name, htmlFor }: NameDisplayProps) {
+export default function NameDisplay({ label, name, htmlFor }: Readonly<NameDisplayProps>) {
   return (
     <div className="profile-grid-cell">
       <span aria-label={htmlFor}>

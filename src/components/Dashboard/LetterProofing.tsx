@@ -10,7 +10,7 @@ import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns
 import AddNin from "./AddNin";
 
 export interface LetterProofingProps {
-  readonly disabled: boolean;
+  disabled: boolean;
 }
 
 function formatDateFromBackend(dateFromBackend: string) {
@@ -24,7 +24,7 @@ function formatDateFromBackend(dateFromBackend: string) {
   );
 }
 
-export default function LetterProofing(props: LetterProofingProps): React.JSX.Element {
+export default function LetterProofing(props: Readonly<LetterProofingProps>): React.JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

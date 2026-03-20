@@ -11,10 +11,10 @@ import { useLocation, useNavigate } from "react-router";
 import { HeaderNav } from "./HeaderNav";
 
 interface HeaderProps {
-  readonly loginRef?: string;
+  loginRef?: string;
 }
 
-export function Header(props: HeaderProps): React.JSX.Element {
+export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);

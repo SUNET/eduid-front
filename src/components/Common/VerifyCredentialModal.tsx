@@ -8,9 +8,9 @@ import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import EduIDButton from "./EduIDButton";
 
 interface VerifyCredentialModalProps {
-  readonly showVerifyWebauthnModal: boolean;
-  readonly setShowVerifyWebauthnModal: (value: boolean) => void;
-  readonly handleVerificationWebauthnToken: (token: string | undefined, type: AuthMethod) => Promise<void> | void;
+  showVerifyWebauthnModal: boolean;
+  setShowVerifyWebauthnModal: (value: boolean) => void;
+  handleVerificationWebauthnToken: (token: string | undefined, type: AuthMethod) => Promise<void> | void;
   tokenKey: string;
 }
 

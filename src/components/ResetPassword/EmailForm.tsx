@@ -6,15 +6,15 @@ import EmailInput from "components/Common/EmailInput";
 import { GoBackButton } from "./GoBackButton";
 
 export interface EmailFormProps {
-  readonly passEmailUp: (email: string) => void;
-  readonly disabled?: boolean; // disable the submit button if true
-  readonly defaultEmail?: string; // pre-fill the email field with this value
+  passEmailUp: (email: string) => void;
+  disabled?: boolean; // disable the submit button if true
+  defaultEmail?: string; // pre-fill the email field with this value
 }
 export interface EmailFormData {
   email?: string;
 }
 
-export function EmailForm(props: EmailFormProps): React.JSX.Element {
+export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 

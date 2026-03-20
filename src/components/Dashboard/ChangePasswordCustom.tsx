@@ -8,7 +8,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "./ChangePassword";
 
 interface ChangePasswordCustomFormProps extends ChangePasswordChildFormProps {
-  readonly handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
+  handleSubmit: (values: ChangePasswordFormData) => Promise<void>;
 }
 
 function validateNewPassword(values: { custom?: string; repeat?: string }) {
