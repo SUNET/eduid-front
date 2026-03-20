@@ -6,12 +6,12 @@ interface ExtraProps {
 }
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  readonly id?: string;
-  readonly buttonstyle: string;
+  id?: string;
+  buttonstyle: string;
 }
 
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
-const EduIDButton = forwardRef<HTMLButtonElement, EduIDButtonProps>((props, ref) => {
+const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((props, ref) => {
   const intl = useIntl();
   const extra: ExtraProps = {};
 
