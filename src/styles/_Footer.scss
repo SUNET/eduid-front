@@ -39,12 +39,12 @@ footer nav {
     margin-right: 1rem;
     letter-spacing: 1px;
     font-size: $txt-sm;
-    font-weight: bold;
     line-height: 1;
   }
   button {
     height: auto;
     font-size: $txt-sm;
+    font-weight: normal;
   }
 }
 footer nav .lang-selected {
