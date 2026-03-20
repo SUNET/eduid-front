@@ -32,11 +32,21 @@ footer nav ul {
   padding: 0;
 }
 
-footer nav .help-link {
-  padding: 0;
-  margin-right: 1rem;
+footer nav {
+  //button link lookalike
+  .help-link {
+    padding: 0;
+    margin-right: 1rem;
+    letter-spacing: 1px;
+    font-size: $txt-sm;
+    font-weight: bold;
+    line-height: 1;
+  }
+  button {
+    height: auto;
+    font-size: $txt-sm;
+  }
 }
-
 footer nav .lang-selected {
   margin: 0;
   cursor: pointer;
