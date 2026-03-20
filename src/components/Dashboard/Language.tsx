@@ -37,8 +37,7 @@ export function LanguagePreference() {
   const formSubmit = useCallback(
     async (values: UserLanguageRequest) => {
       // Send to backend as parameter: display name only for verified users. default display name is the combination of given_name and surname
-      let postData = values;
-      postData = {
+      const postData = {
         language: values.language,
       };
       postLanguage(postData);
@@ -60,7 +59,7 @@ export function LanguagePreference() {
       <p>
         <FormattedMessage
           description="pd long description"
-          defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you login in and when we sent emails to you."
+          defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you are logged in and in any emails sent to you."
         />
       </p>
       <FinalForm<UserLanguageRequest>

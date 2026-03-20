@@ -76,7 +76,7 @@ export async function handleApiError<T>(
   api: BaseQueryApi,
 ): Promise<{ error: ApiError<T>; meta: FetchBaseQueryMeta | undefined }> {
   // validation errors from backend has slightly different format
-  if (data.payload.error?.csrf_token && data.payload.error.csrf_token[0] === "CSRF failed to validate") {
+  if (data.payload.error?.csrf_token?.[0] === "CSRF failed to validate") {
     await re_authenticate(csrf_token, api);
   } else if (data.payload.error?.nin) {
     api.dispatch(showNotification({ message: data.payload.error.nin[0], level: "error" }));

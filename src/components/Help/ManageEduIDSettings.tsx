@@ -266,7 +266,7 @@ export function ManageEduIDSettings(): React.JSX.Element {
                   description="account eduid - list item 1"
                   defaultMessage={` You can add as many as you wish, but need to have at least one email address that 
                     you have confirmed access to. You can log in with all confirmed addresses but the primary one will 
-                    be used for communication with you. They are listed in a table with the following options:`}
+                    be used for communication with you if necessary. They are listed in a table with the following options:`}
                 />
                 <ul className="nested">
                   <li>
@@ -410,7 +410,7 @@ export function ManageEduIDSettings(): React.JSX.Element {
           <FormattedMessage
             description="delete eduid - paragraph"
             defaultMessage={`If you wish to block access to your account you have the option to remove it under 
-              Blocking and deleting eduID in the Account page. If you decide you want to keep the account then reset your password within one week.`}
+              "Block and delete eduID" in the Account page. If you decide afterwards that you want to keep the account then reset your password within one week.`}
           />
         </p>
       </article>

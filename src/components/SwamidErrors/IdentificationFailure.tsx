@@ -20,7 +20,7 @@ export function IdentificationFailure(props: FailureComponentProps): React.JSX.E
       <h1>
         <FormattedMessage defaultMessage="Identification failed" description="ErrorURL identification failure" />
       </h1>
-      {props.errorURL.ctx && props.errorURL.ctx.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
+      {props.errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
     </React.Fragment>
   );
 }

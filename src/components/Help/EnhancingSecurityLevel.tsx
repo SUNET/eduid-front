@@ -230,8 +230,7 @@ The private key is stored in an "authenticator" module, either built into your h
                         description="usb key technical section - list item 2 code"
                         defaultMessage='"fido certified"'
                       />
-                    </code>
-                    ,
+                    </code>{","}
                   </li>
                   <li>
                     <FormattedMessage
@@ -245,8 +244,7 @@ The private key is stored in an "authenticator" module, either built into your h
                         defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
                   "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
                       />
-                    </code>
-                    ,
+                    </code>{","}
                   </li>
                   <li>
                     <FormattedMessage
@@ -259,8 +257,7 @@ The private key is stored in an "authenticator" module, either built into your h
                         description="usb key technical section - list item 4 code"
                         defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
                       />
-                    </code>
-                    .
+                    </code>{"."}
                   </li>
                 </ul>
               </section>

@@ -115,6 +115,13 @@ function RenderOtherDevice2(props: {
     );
   }
 
+  let device2Buttons = <Device2Buttons showLogin={false} />;
+  if (data.state === "IN_PROGRESS") {
+    device2Buttons = <Device2Buttons showLogin={true} />;
+  } else if (data.state === "AUTHENTICATED") {
+    device2Buttons = <Device2Buttons showLogin={false} extra_className="x-adjust" />;
+  }
+
   return (
     <React.Fragment>
       {data.state === "IN_PROGRESS" && (
@@ -145,13 +152,7 @@ function RenderOtherDevice2(props: {
       )}
 
       <div className="expiration-info">
-        {data.state === "IN_PROGRESS" ? (
-          <Device2Buttons showLogin={true} />
-        ) : data.state === "AUTHENTICATED" ? (
-          <Device2Buttons showLogin={false} extra_className="x-adjust" />
-        ) : (
-          <Device2Buttons showLogin={false} />
-        )}
+        {device2Buttons}
         <TimeRemainingWrapper
           name="other-device-expires"
           unique_id={data.short_code}
@@ -255,7 +256,7 @@ function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
   function handleLoginOnClick() {
-    if (data && data.login_ref) {
+    if (data?.login_ref) {
       dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
       navigate(`/login/${data.login_ref}`);
@@ -294,12 +295,12 @@ function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
   );
 }
 
-function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
-  function handleSubmit(): undefined {
-    // No-op, have to provide it to the form but we don't expect submissions on device 2.
-    return undefined;
-  }
+// No-op submit handler for device 2 where we don't expect form submissions.
+function noopSubmit(): undefined {
+  return undefined;
+}
 
+function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
   if (props.data.response_code_required === false) {
     return (
       <p>
@@ -326,7 +327,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
       </span>
       <div className="x-adjust figure">
         <div className="device2">
-          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={handleSubmit} />
+          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={noopSubmit} />
 
           <div className="warning-text">
             <span className="warning-symbol">
@@ -357,7 +358,7 @@ function DeveloperInfo(props: { data: UseOtherDevice2ResponseLoggedIn }) {
         <FormattedMessage defaultMessage="Developer info, not shown in production:" />
       </span>
       <p>
-        Response code:
+        {"Response code: "}
         <span id="response_code">{props.data.response_code}</span>
       </p>
     </div>

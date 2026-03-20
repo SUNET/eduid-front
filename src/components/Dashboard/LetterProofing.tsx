@@ -89,47 +89,45 @@ export default function LetterProofing(props: LetterProofingProps): React.JSX.El
         />
       </p>
     );
+  } else if (letter_sent_date === undefined) {
+    description = <div />;
+  } else if (letter_expired) {
+    description = (
+      <Fragment>
+        <p className="description">
+          <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
+          <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
+        </p>
+        <p className="description">
+          <FormattedMessage
+            defaultMessage="To request a new code, proceed by clicking the button below."
+            description="explanation text for letter proofing"
+          />
+        </p>
+      </Fragment>
+    );
   } else {
-    if (letter_sent_date === undefined) {
-      description = <div />;
-    } else if (letter_expired) {
-      description = (
-        <Fragment>
-          <p className="description">
-            <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
-            <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
-          </p>
-          <p className="description">
-            <FormattedMessage
-              defaultMessage="To request a new code, proceed by clicking the button below."
-              description="explanation text for letter proofing"
-            />
-          </p>
-        </Fragment>
-      );
-    } else {
-      description = (
-        <Fragment>
-          <p className="description">
-            <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
-            <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
-          </p>
-          <p className="description">
-            <FormattedMessage
-              defaultMessage="The letter is valid to"
-              description="explanation text for letter proofing"
-            />
-            <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
-          </p>
-          <p className="description">
-            <FormattedMessage
-              defaultMessage="When you have received the letter, proceed by clicking the button below."
-              description="explanation text for letter proofing"
-            />
-          </p>
-        </Fragment>
-      );
-    }
+    description = (
+      <Fragment>
+        <p className="description">
+          <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
+          <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
+        </p>
+        <p className="description">
+          <FormattedMessage
+            defaultMessage="The letter is valid to"
+            description="explanation text for letter proofing"
+          />
+          <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
+        </p>
+        <p className="description">
+          <FormattedMessage
+            defaultMessage="When you have received the letter, proceed by clicking the button below."
+            description="explanation text for letter proofing"
+          />
+        </p>
+      </Fragment>
+    );
   }
 
   const intl = useIntl();
