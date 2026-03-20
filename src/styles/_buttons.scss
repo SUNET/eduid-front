@@ -358,19 +358,18 @@ button.scroll-to-top {
 }
 
 .remove {
-  width: 1.2rem;
-  height: 1.2rem !important;
-  background-image: url("../../img/remove-icon.svg");
+  width: 21px;
+  height: 17px;
+  background-image: url("../../img/remove-icon-black.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
   box-shadow: none !important;
   background-color: transparent;
-  filter: brightness(0) saturate(100%);
 
   &:hover {
-    filter: var(--bright-orange-filter);
+    background-image: url("../../img/remove-icon-orange.svg") !important;
     transform: scale(0.8);
   }
 }
