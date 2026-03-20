@@ -169,17 +169,6 @@ button.link {
 
   &.normal-case {
     text-transform: none;
-    font-size: $txt-sm;
-    letter-spacing: normal;
-    font-weight: normal;
-  }
-
-  &.lowercase {
-    text-transform: lowercase;
-
-    &.hide {
-      display: none;
-    }
   }
 
   &.disabled,

@@ -130,7 +130,7 @@ export function InternalCaptcha(props: CaptchaProps) {
         <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
 
         <EduIDButton
-          buttonstyle="link lowercase sm icon refresh"
+          buttonstyle="link normal-case sm icon refresh"
           aria-label="refresh-captcha"
           disabled={!captchaResponse?.captcha_img}
           onClick={getNewCaptcha}
