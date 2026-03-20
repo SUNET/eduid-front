@@ -408,10 +408,6 @@
     "developer_comment": "choosing usb key - heading",
     "string": "Choosing a Security Key"
   },
-  "6bBJYy": {
-    "developer_comment": "Copied tooltip",
-    "string": "Copied!"
-  },
   "6i0Tfo": {
     "developer_comment": "nin label",
     "string": "ID number"
@@ -903,10 +899,6 @@
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Note: this is only for your own use to be able to distinguish between your added keys."
-  },
-  "HgjRtU": {
-    "developer_comment": "button add more",
-    "string": "+ add more"
   },
   "Hi6qxM": {
     "developer_comment": "Account terminated - heading",
@@ -1456,6 +1448,10 @@
   "TBeUL3": {
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Press the \"Forgot your password?\" link below the login form."
+  },
+  "TI4Tiu": {
+    "developer_comment": "button add more",
+    "string": "+ Add more"
   },
   "TOMSwW": {
     "developer_comment": "how add security key - verify",
@@ -2427,10 +2423,6 @@
     "developer_comment": "Use other device 2",
     "string": "Request cancelled."
   },
-  "hm1MQK": {
-    "developer_comment": "Copy tooltip",
-    "string": "Copy to clipboard"
-  },
   "hnyHof": {
     "developer_comment": "HandleExtraSecurities heading",
     "string": "Reset password: Verification method"
@@ -2824,6 +2816,10 @@
   "mwt1Dw": {
     "developer_comment": "Account terminated - reset password link",
     "string": "Go to reset password page"
+  },
+  "n0mqo6": {
+    "developer_comment": "DeleteAccount",
+    "string": "Delete eduID"
   },
   "n6sj+f": {
     "developer_comment": "connect your identity to eduID description",
@@ -3467,10 +3463,6 @@
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
     "string": "to verify your identity in eduID, log in and choose the verification method for 'EU-citizens' in the Identity area and follow the instructions."
-  },
-  "u8ud2A": {
-    "developer_comment": "DeleteAccount",
-    "string": "delete eduID"
   },
   "uMFspJ": {
     "developer_comment": "Temp info - continue button",
