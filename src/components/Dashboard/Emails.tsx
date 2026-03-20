@@ -136,7 +136,7 @@ function Emails() {
           />
         ) : (
           <EduIDButton id="emails-add-more-button" buttonstyle="link normal-case" onClick={handleEmailForm}>
-            <FormattedMessage defaultMessage="+ add more" description="button add more" />
+            <FormattedMessage defaultMessage="+ Add more" description="button add more" />
           </EduIDButton>
         )}
       </div>
