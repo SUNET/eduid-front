@@ -72,7 +72,7 @@ export function AboutEduID(): React.JSX.Element {
                  `}
             values={{
               link: (
-                <a className="text-link" href={UniversityAdmissionURL} target="_blank" rel="noreferrer">
+                <a href={UniversityAdmissionURL} target="_blank" rel="noreferrer">
                   <FormattedMessage
                     description="universityadmissions - link text"
                     defaultMessage="universityadmissions.se"
@@ -122,7 +122,7 @@ export function AboutEduID(): React.JSX.Element {
               defaultMessage="electronically sign documents with eduSign, read more at {edusignLink}."
               values={{
                 edusignLink: (
-                  <a className="text-link" href={"https://edusign.sunet.se/"} target="_blank" rel="noreferrer">
+                  <a href={"https://edusign.sunet.se/"} target="_blank" rel="noreferrer">
                     edusign.sunet.se
                   </a>
                 ),

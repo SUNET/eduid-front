@@ -29,7 +29,7 @@ export function AboutSunet(): React.JSX.Element {
                   More information about SUNET is available at {sunet} (in Swedish).`}
             values={{
               sunet: (
-                <a className="text-link" href="https://www.sunet.se" target="_blank" rel="noreferrer">
+                <a href="https://www.sunet.se" target="_blank" rel="noreferrer">
                   www.sunet.se
                 </a>
               ),

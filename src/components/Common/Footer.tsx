@@ -7,6 +7,7 @@ import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
+import EduIDButton from "./EduIDButton";
 
 const Footer = (): React.JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
@@ -63,10 +64,10 @@ const Footer = (): React.JSX.Element => {
 
           <li id="language-selector">
             <span className="lang-selected" data-lang={locale}>
-              <button className="link text-link" onClick={changeLanguage}>
+              <EduIDButton buttonstyle="link normal-case" onClick={changeLanguage}>
                 <FontAwesomeIcon icon={faGlobe as IconProp} />
                 {language}
-              </button>
+              </EduIDButton>
             </span>
           </li>
         </ul>

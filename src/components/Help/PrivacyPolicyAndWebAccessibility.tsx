@@ -28,7 +28,6 @@ export function PrivacyPolicyAndWebAccessibility(): React.JSX.Element {
             values={{
               privacy: (
                 <a
-                  className="text-link"
                   href="https://sunet.se/om-sunet/behandling-av-personuppgifter-i-eduid"
                   target="_blank"
                   rel="noreferrer"
@@ -118,12 +117,7 @@ export function PrivacyPolicyAndWebAccessibility(): React.JSX.Element {
                   issues of the site (in Swedish).`}
             values={{
               accessibility: (
-                <a
-                  className="text-link"
-                  href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se" target="_blank" rel="noreferrer">
                   <FormattedMessage description="accessibility report - link" defaultMessage="Accessibility report" />
                 </a>
               ),

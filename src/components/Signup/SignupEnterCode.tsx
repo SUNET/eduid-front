@@ -97,7 +97,7 @@ export function SignupEnterCode(): React.JSX.Element {
           />
         </p>
 
-        <EduIDButton buttonstyle="link lowercase" onClick={registerEmail} id="send-new-code">
+        <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send a new code" description="send a new code" />
         </EduIDButton>
       </div>
@@ -156,7 +156,7 @@ export function ProcessEmailCode() {
   const verification_code = useAppSelector((state) => state.signup.email_code);
   const dispatch = useAppDispatch();
   const { isSuccess, isError } = signupApi.useVerifyEmailRequestQuery(
-    verification_code ? { verification_code } : skipToken
+    verification_code ? { verification_code } : skipToken,
   );
 
   useEffect(() => {

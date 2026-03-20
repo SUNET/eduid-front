@@ -155,7 +155,6 @@ button.link {
   margin: 0;
   text-decoration: none;
   padding: 0;
-
   &:hover,
   &:active {
     color: var(--txt-orange);
@@ -169,23 +168,6 @@ button.link {
   }
 
   &.normal-case {
-    text-transform: none;
-  }
-
-  &.lowercase {
-    text-transform: lowercase;
-
-    &.hide {
-      display: none;
-    }
-  }
-
-  &.text-link {
-    height: auto;
-    font-size: $txt-sm;
-    line-height: 1.5;
-    letter-spacing: normal;
-    font-weight: bold;
     text-transform: none;
   }
 
