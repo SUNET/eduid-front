@@ -33,7 +33,7 @@ function validateNewPassword(values: { custom?: string; repeat?: string }) {
   return errors;
 }
 
-export default function ChangePasswordCustomForm(props: ChangePasswordCustomFormProps) {
+export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordCustomFormProps>) {
   const intl = useIntl();
   const [pwScore, setPwScore] = useState(0);
 

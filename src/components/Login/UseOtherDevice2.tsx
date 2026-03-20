@@ -68,10 +68,12 @@ function UseOtherDevice2() {
   );
 }
 
-function RenderOtherDevice2(props: {
-  data: LoginUseOtherDevice2Response;
-  params: UseOtherParams;
-}): React.JSX.Element | null {
+function RenderOtherDevice2(
+  props: Readonly<{
+    data: LoginUseOtherDevice2Response;
+    params: UseOtherParams;
+  }>,
+): React.JSX.Element | null {
   const { data } = props;
   const [timerIsZero, setTimerIsZero] = useState(false);
 
@@ -168,7 +170,7 @@ function RenderOtherDevice2(props: {
   );
 }
 
-function InfoAboutKnownDevice(props: { data: LoginUseOtherDevice2Response }): React.JSX.Element | null {
+function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>): React.JSX.Element | null {
   return (
     <li>
       <FormattedMessage
@@ -186,7 +188,7 @@ function InfoAboutKnownDevice(props: { data: LoginUseOtherDevice2Response }): Re
   );
 }
 
-function InfoAboutOtherDevice(props: { data: LoginUseOtherDevice2Response }): React.JSX.Element | null {
+function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>): React.JSX.Element | null {
   const proximityMessages: { [key: string]: React.JSX.Element } = {
     SAME: (
       <FormattedMessage
@@ -249,7 +251,7 @@ interface Device2ButtonsProps {
   extra_className?: string;
 }
 
-function Device2Buttons(props: Device2ButtonsProps): React.JSX.Element {
+function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -300,7 +302,7 @@ function noopSubmit(): undefined {
   return undefined;
 }
 
-function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): React.JSX.Element {
+function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>): React.JSX.Element {
   if (props.data.response_code_required === false) {
     return (
       <p>
@@ -346,7 +348,7 @@ function RenderAuthenticated(props: { data: UseOtherDevice2ResponseLoggedIn }): 
   );
 }
 
-function DeveloperInfo(props: { data: UseOtherDevice2ResponseLoggedIn }) {
+function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
   const env = useAppSelector((state) => state.config.environment);
   if (env != "dev" && env != "staging") {
     return null;

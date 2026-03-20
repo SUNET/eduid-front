@@ -16,7 +16,7 @@ interface RenderAddPersonalDataPromptProps {
   setEditMode(value: boolean): void;
 }
 
-function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromptProps) {
+function RenderAddPersonalDataPrompt({ setEditMode }: Readonly<RenderAddPersonalDataPromptProps>) {
   return (
     <div className="button-pair">
       <p>
@@ -29,7 +29,7 @@ function RenderAddPersonalDataPrompt({ setEditMode }: RenderAddPersonalDataPromp
   );
 }
 
-function RenderPersonalData(props: { labels: NameLabels }) {
+function RenderPersonalData(props: Readonly<{ labels: NameLabels }>) {
   const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);

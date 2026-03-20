@@ -29,7 +29,7 @@ function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const routes = args.routes || ["/profile/"];
   const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 
-  function Wrapper({ children }: { children: React.ReactNode }) {
+  function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
       <ReduxIntlProvider store={store}>
         <MemoryRouter initialEntries={routes}>{children}</MemoryRouter>

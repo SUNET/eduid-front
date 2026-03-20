@@ -45,7 +45,7 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
   }, [ref, handler]);
 }
 
-export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
+export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<{ [key in ButtonKey]: boolean }>({
@@ -79,10 +79,13 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];
-      const newState = Object.keys(prevState).reduce((buttonState, key) => {
-        buttonState[key as ButtonKey] = false;
-        return buttonState;
-      }, {} as { [key in ButtonKey]: boolean });
+      const newState = Object.keys(prevState).reduce(
+        (buttonState, key) => {
+          buttonState[key as ButtonKey] = false;
+          return buttonState;
+        },
+        {} as { [key in ButtonKey]: boolean },
+      );
       if (!isCurrentlyOpen) {
         newState[button] = true;
       }

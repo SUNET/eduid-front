@@ -25,7 +25,7 @@ interface SelectedNameValues {
   value: string;
 }
 
-export default function PersonalDataForm(props: PersonalDataFormProps) {
+export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>) {
   const { labels } = props;
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
