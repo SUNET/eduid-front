@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { Header } from "components/Common/Header";
 import { initialState as configInitialState } from "slices/IndexConfig";
+import { signupTestState } from "tests/helperFunctions/SignupTestApp-rtl";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
 
 test("renders eduID logo with correct link", () => {
@@ -126,15 +127,19 @@ test("shows HeaderNav when user has eppn", () => {
   expect(screen.queryByRole("button", { name: /log in/i })).not.toBeInTheDocument();
   expect(screen.queryByRole("button", { name: /create eduid/i })).not.toBeInTheDocument();
 });
-test("navigates to /register when Register button is clicked", async () => {
+test("when Register button is clicked and changes header button text to Login", async () => {
   render(<Header />, {
     state: {
       config: {
         ...configInitialState,
+        login_service_url: "https://login.eduid.se",
       },
       login: {
         ...loginTestState.login,
         authn_options: { webauthn: true },
+      },
+      signup: {
+        ...signupTestState.signup,
       },
     },
     routes: ["/login/abc123"],
@@ -144,8 +149,9 @@ test("navigates to /register when Register button is clicked", async () => {
   await userEvent.click(registerButton);
 
   await waitFor(() => {
-    expect(screen.getByRole("heading", { level: 1, name: /Enter your personal information/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /log in/i })).toBeInTheDocument();
   });
+  expect(screen.queryByRole("button", { name: /create eduid/i })).not.toBeInTheDocument();
 });
 
 test("shows Login button on error page", () => {
