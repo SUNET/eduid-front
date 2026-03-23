@@ -15,8 +15,7 @@ test("renders ChangePasswordForm, suggested password value is field in suggested
     },
   });
   expect(screen.getByRole("heading")).toHaveTextContent(/^Change password: Suggested password/);
-  const suggestedPasswordInput = screen.getByLabelText(/Repeat new password/i) as HTMLInputElement;
-  expect(suggestedPasswordInput.value).toBeDefined();
+  expect(screen.getByDisplayValue(suggestPassword)).toBeInTheDocument();
 });
 
 test("renders custom password form after clicking do not want a suggested password", async () => {
@@ -34,14 +33,14 @@ test("renders custom password form after clicking do not want a suggested passwo
   fireEvent.click(customPasswordButton);
   expect(customPasswordButton).toBeChecked();
 
-  const newPasswordInput = screen.getByLabelText(/Enter new password/i) as HTMLInputElement;
-  const repeatNewPasswordInput = screen.getByLabelText(/Repeat new password/i) as HTMLInputElement;
+  const newPasswordInput = screen.getByLabelText(/Enter new password/i);
+  const repeatNewPasswordInput = screen.getByLabelText(/Repeat new password/i);
 
   await waitFor(() => {
-    expect(newPasswordInput).toBeDefined();
+    expect(newPasswordInput).toBeInTheDocument();
   });
 
   await waitFor(() => {
-    expect(repeatNewPasswordInput).toBeDefined();
+    expect(repeatNewPasswordInput).toBeInTheDocument();
   });
 });
