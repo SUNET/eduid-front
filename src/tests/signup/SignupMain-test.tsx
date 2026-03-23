@@ -50,7 +50,7 @@ const correctEmailCode = "123456";
 
 const user = userEvent.setup();
 
-let currentState = JSON.parse(JSON.stringify(emptyState)); // make a copy of the state
+let currentState = structuredClone(emptyState); // make a copy of the state
 let getCaptchaCalled = false;
 let acceptToUCalled = false;
 let registerEmailCalled = false;
@@ -63,7 +63,7 @@ let verifyEmailCalled = false;
  * next function.
  */
 function happyCaseBackend(state: SignupState) {
-  currentState = JSON.parse(JSON.stringify(state)); // make a fresh copy of the state
+  currentState = structuredClone(state); // make a fresh copy of the state
 
   mswServer.use(
     // this request happens at render of SignupMain
