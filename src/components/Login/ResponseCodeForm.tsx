@@ -103,7 +103,7 @@ function CodeField({ num, value, autoFocus = undefined, readonly }: Readonly<Cod
   function handleInput(event: React.FormEvent<HTMLInputElement>) {
     const target = event.target as HTMLInputElement;
     const value = target.value;
-    const onlyNumbers = value.replace(/\D/g, ""); // Remove all non-numeric characters
+    const onlyNumbers = value.replaceAll(/\D/g, ""); // Remove all non-numeric characters
 
     // Update the input field's value with only numeric characters
     target.value = onlyNumbers;
@@ -145,7 +145,7 @@ function CodeField({ num, value, autoFocus = undefined, readonly }: Readonly<Cod
     event.preventDefault();
 
     const pastedText = event.clipboardData.getData("text");
-    const numbersOnly = pastedText.replace(/[^\d]/g, "");
+    const numbersOnly = pastedText.replaceAll(/[^\d]/g, "");
     const digits = numbersOnly.split("");
 
     // Get all the input elements

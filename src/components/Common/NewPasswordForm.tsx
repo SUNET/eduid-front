@@ -31,7 +31,7 @@ export function NewPasswordForm(props: NewPasswordFormProps): React.JSX.Element 
 
     if (!newPassword || emptyStringPattern.test(newPassword)) {
       errors.newPassword = "required";
-    } else if (newPassword?.replace(/\s/g, "") !== props.suggested_password?.replace(/\s/g, "")) {
+    } else if (newPassword?.replaceAll(/\s/g, "") !== props.suggested_password?.replaceAll(/\s/g, "")) {
       // Remove whitespace from both passwords before comparing
       errors.newPassword = "chpass.different-repeat";
     }
