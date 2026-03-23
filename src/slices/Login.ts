@@ -3,7 +3,6 @@ import {
   IdPAction,
   loginApi,
   LoginAuthnOptions,
-  LoginNextResponse,
   LoginUseOtherDevice1Response,
   LoginUseOtherDevice2Response,
   SAMLParameters,
@@ -86,15 +85,6 @@ export const loginSlice = createSlice({
       // Abort/cancel/recover from use another device state
       state.next_page = undefined;
       state.other_device1 = undefined;
-    },
-    postIdpNextSuccess: (state, action: PayloadAction<LoginNextResponse>) => {
-      // Process a successful response from the /next endpoint.
-      // TODO: Use the fetchNext thunk instead, and remove this
-      const samlParameters = action.payload.action === "FINISHED" ? action.payload.parameters : undefined;
-      state.next_page = action.payload.action;
-      state.post_to = action.payload.target;
-      state.saml_parameters = samlParameters;
-      if (action.payload.authn_options) state.authn_options = action.payload.authn_options;
     },
     callLoginNext: (state) => {
       // Trigger the Login component fetching of next action to perform from the backend.
