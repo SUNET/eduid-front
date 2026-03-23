@@ -48,22 +48,15 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
 export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<{ [key in ButtonKey]: boolean }>({
-    start: false,
-    identity: false,
-    security: false,
-    account: false,
-  });
+  const allClosed: Record<ButtonKey, boolean> = { start: false, identity: false, security: false, account: false };
+  const [isOpen, setIsOpen] = useState(allClosed);
   const wrapperRef = useRef<HTMLElement | null>(null);
 
   const userName = emails.find((mail) => mail.primary)?.email;
 
   const handleResize = () => {
-    setIsOpen((prev) => {
-      const anyOpen = Object.values(prev).some((val) => val === true);
-      if (!anyOpen) return prev;
-      return Object.fromEntries(Object.entries(prev).map(([k]) => [k, false])) as Record<ButtonKey, boolean>;
-    });
+    // Only update state if something is open, to avoid unnecessary re-renders
+    setIsOpen((prev) => (Object.values(prev).includes(true) ? allClosed : prev));
   };
 
   useEffect(() => {
