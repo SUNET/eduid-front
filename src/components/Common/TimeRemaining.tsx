@@ -26,7 +26,8 @@ function loadEndDate(name: string, unique_id?: string): Date | undefined {
 
   try {
     return new Date(data.end);
-  } catch (_error) {
+  } catch {
+    // invalid date string, treat as no end time
     return undefined;
   }
 }
