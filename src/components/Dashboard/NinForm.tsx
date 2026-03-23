@@ -13,7 +13,7 @@ function validateNin(value: string): string | undefined {
     return "required";
   }
   // accept only digits
-  if (/[^0-9]+/.test(value)) return "nins.illegal_chars";
+  if (/\D+/.test(value)) return "nins.illegal_chars";
   if (value.length !== 12) return "nins.wrong_length";
 
   value = value.slice(2); // To pass the Luhn check only use the 10 last digits
