@@ -20,7 +20,7 @@ function showErrorMsg() {
     const msg = params.get("msg");
     if (msg !== null) {
       if (msg.startsWith(":ERROR:")) {
-        eduidStore.dispatch(showNotification({ message: msg.substr(7), level: "error" }));
+        eduidStore.dispatch(showNotification({ message: msg.substring(7), level: "error" }));
       } else {
         eduidStore.dispatch(showNotification({ message: msg, level: "info" }));
       }
@@ -44,7 +44,7 @@ const getConfig = async function () {
             updateIntl({
               locale: personalData.data.payload.language,
               messages: LOCALIZED_MESSAGES[personalData.data.payload.language],
-            })
+            }),
           );
         }
         eduidStore.dispatch(indexSlice.actions.appLoaded());
@@ -84,6 +84,6 @@ root.render(
     <BrowserRouter>
       <IndexMain />
     </BrowserRouter>
-  </ReduxIntlProvider>
+  </ReduxIntlProvider>,
 );
 getConfig();
