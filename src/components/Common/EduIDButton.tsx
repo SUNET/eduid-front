@@ -3,6 +3,7 @@ import { useIntl } from "react-intl";
 
 interface ExtraProps {
   "aria-label"?: string;
+  "title"?: string;
 }
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,6 +23,7 @@ const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((p
       description: "Notification modal close label",
     });
     extra["aria-label"] = closeLabel;
+    extra["title"] = closeLabel;
   }
 
   return (
