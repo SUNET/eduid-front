@@ -3,7 +3,7 @@ import { IndexMain } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
-import { defaultDashboardTestState, render, screen, within } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, within } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("renders frejaeID as expected", () => {
   const method = "freja_eid";

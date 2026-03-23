@@ -4,7 +4,7 @@ import { http, HttpResponse } from "msw";
 import { act } from "react";
 import { mswServer } from "setupTests";
 import securitySlice, { initialState } from "slices/Security";
-import { defaultDashboardTestState, render, screen, waitFor, within } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor, within } from "../helperFunctions/DashboardTestApp-rtl";
 
 const securityKeyCredential: CredentialType = {
   mfa_approved: false,
@@ -54,8 +54,8 @@ const passKeyCredentialExtra: CredentialType = {
   verified: false,
 };
 
-async function linkToAdvancedSettings() {
-  // Navigate to Advanced settings
+async function linkToSecuritySettings() {
+  // Navigate to Security settings
   const nav = screen.getByRole("link", { name: "Security" });
   act(() => {
     nav.click();
@@ -66,7 +66,7 @@ async function linkToAdvancedSettings() {
 
 test("renders security key as expected, not security key added", async () => {
   render(<IndexMain />);
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 });
 
 test("renders security key as expected, with added security key", async () => {
@@ -79,7 +79,7 @@ test("renders security key as expected, with added security key", async () => {
     },
   });
 
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   expect(screen.getByRole("figure")).toBeInTheDocument();
   expect(screen.getByText("touchID")).toBeInTheDocument();
@@ -113,7 +113,7 @@ test("can remove a security key", async () => {
       },
     },
   });
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   const RemoveButton = screen.getAllByLabelText("Remove")[1];
   expect(RemoveButton).toBeEnabled();
@@ -133,13 +133,13 @@ test("api call webauthn/remove", async () => {
       }
 
       return new HttpResponse(JSON.stringify({ type: "test response", payload: response.credentials }));
-    })
+    }),
   );
 
   render(<IndexMain />, {
     state: { ...defaultDashboardTestState, security: { credentials: response.credentials } },
   });
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
   await waitFor(() => {
     expect(screen.getByRole("figure")).toBeInTheDocument();
   });
@@ -179,9 +179,27 @@ test("security reducer, registerWebauthn", async () => {
 
 test("render the security key table without any security keys", async () => {
   render(<IndexMain />);
-  await linkToAdvancedSettings();
+  await linkToSecuritySettings();
 
   expect(screen.getByRole("heading", { level: 2, name: "Manage your security keys" })).toBeInTheDocument();
   const figure = screen.getByRole("figure");
   expect(within(figure).getByText("No security key has been added")).toBeInTheDocument();
+});
+
+test("renders the security key table with verification methods", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      security: {
+        credentials: [securityKeyCredential, passwordCredential],
+      },
+    },
+  });
+  await linkToSecuritySettings();
+
+  const figure = screen.getByRole("figure");
+  expect(within(figure).getByText("BankID")).toBeInTheDocument();
+  expect(within(figure).getByText("Freja+")).toBeInTheDocument();
+  expect(within(figure).getByText("Freja eID")).toBeInTheDocument();
+  expect(within(figure).getByText("Eidas")).toBeInTheDocument();
 });

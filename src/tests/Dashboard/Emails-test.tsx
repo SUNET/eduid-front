@@ -1,6 +1,6 @@
 import Emails from "components/Dashboard/Emails";
 import { act } from "react";
-import { fireEvent, render, screen } from "./helperFunctions/DashboardTestApp-rtl";
+import { fireEvent, render, screen } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("renders Emails component as expected", () => {
   render(<Emails />);

@@ -1,6 +1,7 @@
+import userEvent from "@testing-library/user-event";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { act } from "react";
-import { render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("renders LetterProofing without ID number", () => {
   render(<LetterProofing disabled={true} />, {
@@ -39,7 +40,7 @@ test("renders LetterProofing, after sent letter enabled proceed button to enter 
   const button = screen.getByRole("button", { name: /proceed/i });
   expect(button).toBeEnabled();
   expect(
-    screen.getByText(/When you have received the letter, proceed by clicking the button below./i)
+    screen.getByText(/When you have received the letter, proceed by clicking the button below./i),
   ).toBeInTheDocument();
 });
 
@@ -73,4 +74,25 @@ test("renders LetterProofing, expired letter enabled to resend letter", async ()
 
   const modalConfirmButton = screen.getByRole("button", { name: /Accept/i });
   expect(modalConfirmButton).toBeEnabled();
+});
+
+test("show and hide button toggles NIN input visibility", async () => {
+  render(<LetterProofing disabled={false} />);
+
+  const ninInput = screen.getByRole("textbox");
+  await userEvent.type(ninInput, "198812120000");
+  expect(ninInput).toHaveValue("••••••••••••");
+
+  const showButton = screen.getByRole("button", { name: /show/i });
+  await act(async () => {
+    showButton.click();
+  });
+
+  expect(ninInput).toHaveValue("198812120000");
+  const hideButton = screen.getByRole("button", { name: /hide/i });
+  await act(async () => {
+    hideButton.click();
+  });
+
+  expect(ninInput).toHaveValue("••••••••••••");
 });

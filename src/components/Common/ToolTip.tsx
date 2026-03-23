@@ -41,7 +41,6 @@ export function ToolTip() {
             <FormattedMessage
               description="popover info"
               defaultMessage="To edit these settings you might be asked to re-login."
-              // values={{ action }}
             />
           </p>
         </div>

@@ -3,7 +3,7 @@ import VerifyIdentity from "components/Dashboard/Identity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 async function linkToIdentitySettings() {
   // Navigate to Identity

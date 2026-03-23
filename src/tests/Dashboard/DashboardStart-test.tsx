@@ -1,7 +1,7 @@
 import { IDENTITY_PATH, IndexMain, SECURITY_PATH } from "components/IndexMain";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
-import { defaultDashboardTestState, render, screen, waitFor } from "./helperFunctions/DashboardTestApp-rtl";
+import { defaultDashboardTestState, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
 test("start page heading text for new user", async () => {
   render(<IndexMain />, {
