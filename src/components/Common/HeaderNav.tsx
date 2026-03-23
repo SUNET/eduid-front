@@ -48,23 +48,25 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
 export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const allClosed: Record<ButtonKey, boolean> = { start: false, identity: false, security: false, account: false };
+  const allClosed = React.useMemo<Record<ButtonKey, boolean>>(
+    () => ({ start: false, identity: false, security: false, account: false }),
+    [],
+  );
   const [isOpen, setIsOpen] = useState(allClosed);
   const wrapperRef = useRef<HTMLElement | null>(null);
 
   const userName = emails.find((mail) => mail.primary)?.email;
 
-  const handleResize = () => {
-    // Only update state if something is open, to avoid unnecessary re-renders
-    setIsOpen((prev) => (Object.values(prev).includes(true) ? allClosed : prev));
-  };
-
   useEffect(() => {
+    const handleResize = () => {
+      // Only update state if something is open, to avoid unnecessary re-renders
+      setIsOpen((prev) => (Object.values(prev).includes(true) ? allClosed : prev));
+    };
     globalThis.addEventListener("resize", handleResize);
     return () => {
       globalThis.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [allClosed]);
 
   const toggleOpen = (button: ButtonKey) => {
     setIsOpen((prevState) => {
@@ -72,10 +74,13 @@ export function HeaderNav(props: HeaderNavProps): React.JSX.Element {
         return prevState;
       }
       const isCurrentlyOpen = prevState[button];
-      const newState = Object.keys(prevState).reduce((buttonState, key) => {
-        buttonState[key as ButtonKey] = false;
-        return buttonState;
-      }, {} as { [key in ButtonKey]: boolean });
+      const newState = Object.keys(prevState).reduce(
+        (buttonState, key) => {
+          buttonState[key as ButtonKey] = false;
+          return buttonState;
+        },
+        {} as { [key in ButtonKey]: boolean },
+      );
       if (!isCurrentlyOpen) {
         newState[button] = true;
       }
