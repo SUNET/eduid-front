@@ -12,14 +12,14 @@ import { FormApi } from "final-form";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 
 export interface SignupCaptchaFormProps extends CaptchaProps {
-  readonly disabled?: boolean; // disable the submit button if true
+  disabled?: boolean; // disable the submit button if true
 }
 
 interface SignupCaptchaFormData {
   value?: string;
 }
 
-function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
+function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element {
   function submitCaptchaForm(values: SignupCaptchaFormData, form: FormApi) {
     const errors: SignupCaptchaFormData = {};
 
@@ -85,12 +85,12 @@ function CaptchaForm(props: SignupCaptchaFormProps): React.JSX.Element {
 }
 
 export interface CaptchaProps {
-  readonly handleCaptchaCancel: () => void;
-  readonly handleCaptchaCompleted: (response: string) => void;
-  readonly getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
+  handleCaptchaCancel: () => void;
+  handleCaptchaCompleted: (response: string) => void;
+  getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
 }
 
-export function InternalCaptcha(props: CaptchaProps) {
+export function InternalCaptcha(props: Readonly<CaptchaProps>) {
   const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
   const is_configured = useAppSelector((state) => state.config.is_configured);
 

@@ -126,7 +126,7 @@ interface SAMLResponseFormProps {
   mode: "noscript" | "retry" | "forward";
 }
 
-function SAMLResponseForm(props: SAMLResponseFormProps) {
+function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
   const targetUrl = useAppSelector((state) => state.login.post_to);
   const navigate = useNavigate();

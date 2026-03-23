@@ -62,7 +62,7 @@ function UseOtherDevice1() {
 }
 
 // Render a fatal error message with a CANCEL button that will reset the use-other-device
-function RenderFatalError(props: { error: React.JSX.Element; handleNewQRCodeOnClick?: () => void }) {
+function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQRCodeOnClick?: () => void }>) {
   const dispatch = useAppDispatch();
 
   function handleCancelButtonOnClick() {
@@ -97,7 +97,7 @@ function RenderFatalError(props: { error: React.JSX.Element; handleNewQRCodeOnCl
   );
 }
 
-function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): React.JSX.Element {
+function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQR }>): React.JSX.Element {
   const { data } = props;
   const login_ref = useAppSelector((state) => state.login.ref);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
@@ -244,7 +244,7 @@ function RenderOtherDevice1(props: { data: UseOtherDevice1ResponseWithQR }): Rea
   );
 }
 
-function DeveloperInfo(props: { qr_url?: string }) {
+function DeveloperInfo(props: Readonly<{ qr_url?: string }>) {
   const env = useAppSelector((state) => state.config.environment);
   if (!props.qr_url || (env != "dev" && env != "staging")) {
     return null;

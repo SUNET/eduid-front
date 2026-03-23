@@ -2,16 +2,16 @@ import React from "react";
 import EduIDButton from "./EduIDButton";
 
 interface NotificationModalProps {
-  readonly id: string;
-  readonly title: React.ReactNode;
-  readonly mainText: React.ReactNode;
-  readonly showModal: boolean;
-  readonly closeModal: React.MouseEventHandler<HTMLButtonElement>;
-  readonly acceptModal: (event?: React.MouseEvent<HTMLElement>) => void;
-  readonly acceptButtonText: React.ReactNode;
+  id: string;
+  title: React.ReactNode;
+  mainText: React.ReactNode;
+  showModal: boolean;
+  closeModal: React.MouseEventHandler<HTMLButtonElement>;
+  acceptModal: (event?: React.MouseEvent<HTMLElement>) => void;
+  acceptButtonText: React.ReactNode;
 }
 
-function NotificationModal(props: NotificationModalProps) {
+function NotificationModal(props: Readonly<NotificationModalProps>) {
   if (!props.showModal) return null;
 
   return (

@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
 
-export default function ChangePasswordSuggestedForm(props: ChangePasswordChildFormProps) {
+export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswordChildFormProps>) {
   const ref = useRef<HTMLInputElement>(null);
 
   return (

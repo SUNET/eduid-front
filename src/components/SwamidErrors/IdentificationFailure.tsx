@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
-export function IdentificationFailure(props: FailureComponentProps): React.JSX.Element {
+export function IdentificationFailure(props: Readonly<FailureComponentProps>): React.JSX.Element {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 

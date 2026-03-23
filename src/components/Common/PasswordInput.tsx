@@ -12,7 +12,7 @@ interface PasswordInputProps {
   helpBlock?: React.ReactNode; // help text shown above input
 }
 
-export default function PasswordInput(props: PasswordInputProps): React.JSX.Element {
+export default function PasswordInput(props: Readonly<PasswordInputProps>): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 
 interface WizardLinkTypes {
-  readonly previousLink: string;
-  readonly previousText: string;
-  readonly nextLink?: string;
-  readonly nextText?: string;
+  previousLink: string;
+  previousText: string;
+  nextLink?: string;
+  nextText?: string;
 }
 
-export function WizardLink({ previousLink, previousText, nextLink, nextText }: WizardLinkTypes) {
+export function WizardLink({ previousLink, previousText, nextLink, nextText }: Readonly<WizardLinkTypes>) {
   return (
     <section className="wizard-link-wrapper">
       <Link className="left" to={previousLink} aria-label={previousText}>

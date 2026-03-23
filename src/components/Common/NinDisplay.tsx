@@ -8,11 +8,11 @@ import { Link } from "react-router";
 import { ShowAndHideButton } from "./ShowAndHideButton";
 
 interface NinDisplayProps {
-  readonly nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
-  readonly allowDelete?: boolean; // show delete option, if applicable to this NIN
+  nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
+  allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 
-function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
+function RenderShowHideNin(props: Readonly<NinDisplayProps>): React.JSX.Element | null {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const [removeNin] = securityApi.useLazyRemoveNinQuery();
 
@@ -41,7 +41,7 @@ function RenderShowHideNin(props: NinDisplayProps): React.JSX.Element | null {
   );
 }
 
-export function NinDisplay(props: NinDisplayProps) {
+export function NinDisplay(props: Readonly<NinDisplayProps>) {
   return (
     <div className="profile-grid-cell">
       {props.nin ? (

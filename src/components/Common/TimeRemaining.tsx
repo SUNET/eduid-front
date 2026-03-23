@@ -54,7 +54,7 @@ interface StoredData {
   end: string;
 }
 
-export function TimeRemainingWrapper(props: TimeRemainingWrapperProps): React.JSX.Element {
+export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>): React.JSX.Element {
   const [secondsLeft, setSecondsLeft] = useState(props.value > 0 ? props.value : 0);
 
   // Calculate timeRemaining directly from secondsLeft

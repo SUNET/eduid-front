@@ -11,7 +11,7 @@ interface TextInputProps extends FieldRenderProps<string> {
   onFocus?: () => void;
 }
 
-export default function TextInput(props: TextInputProps) {
+export default function TextInput(props: Readonly<TextInputProps>) {
   const intl = useIntl();
   const { label, helpBlock } = props;
   let className = "is-valid";

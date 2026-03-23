@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 
-function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.Element | null {
+function ConfirmedAccountStatus(props: Readonly<{ email?: string }>): React.JSX.Element | null {
   return (
     <div className={`status-box ${props.email ? "success" : ""}`}>
       <div className="checkbox-wrapper">
@@ -41,7 +41,7 @@ function ConfirmedAccountStatus(props: { readonly email?: string }): React.JSX.E
   );
 }
 
-function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities }): React.JSX.Element | null {
+function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>): React.JSX.Element | null {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
@@ -88,10 +88,10 @@ function VerifiedIdentityStatus(props: { readonly identities?: UserIdentities })
   );
 }
 
-function ImprovedSecurityStatus(props: {
-  readonly tokens?: CredentialType[];
-  readonly identities?: UserIdentities;
-}): React.JSX.Element | null {
+function ImprovedSecurityStatus(props: Readonly<{
+  tokens?: CredentialType[];
+  identities?: UserIdentities;
+}>): React.JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -155,7 +155,7 @@ function ImprovedSecurityStatus(props: {
   );
 }
 
-function VerifiedSecurityStatus(props: { readonly tokens?: CredentialType[] }): React.JSX.Element | null {
+function VerifiedSecurityStatus(props: Readonly<{ tokens?: CredentialType[] }>): React.JSX.Element | null {
   const manageSecurityKeyLink = (
     <Link
       key={`${SECURITY_PATH}#manage-security-keys`}

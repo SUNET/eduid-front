@@ -6,8 +6,8 @@ interface EmailProps {
 }
 
 interface ConfirmUserInfoProps {
-  readonly email_address: string;
-  readonly new_password: string;
+  email_address: string;
+  new_password: string;
 }
 
 export const EmailFieldset = ({ email }: EmailProps): React.JSX.Element => {
@@ -23,7 +23,7 @@ export const EmailFieldset = ({ email }: EmailProps): React.JSX.Element => {
   );
 };
 
-export function ConfirmUserInfo(props: ConfirmUserInfoProps) {
+export function ConfirmUserInfo(props: Readonly<ConfirmUserInfoProps>) {
   return (
     <div id="email-display">
       <EmailFieldset email={props.email_address} />
