@@ -42,18 +42,18 @@ function UseOtherDevice2() {
         setFetching(false);
       }
     }
-    if (!loginRef) {
+    if (loginRef) {
+      // after login, this page is rendered with a loginRef present in the state
+      fetchUseOtherDevice2({ ref: loginRef });
+    } else {
       // Fetching data from backend depends on state.config being loaded first (base_url being set)
-      if (base_url && !loginRef && params?.state_id) {
+      if (base_url && params?.state_id) {
         // When the user first follows the QR code, there is no loginRef but there is a state_id
         if (!fetching) {
           // the initial fetch will atomically grab the state in the database, *must* avoid two fetches at once
           initialFetch();
         }
       }
-    } else {
-      // after login, this page is rendered with a loginRef present in the state
-      fetchUseOtherDevice2({ ref: loginRef });
     }
   }, [base_url, fetchUseOtherDevice2, fetching, loginRef, params.state_id]);
 

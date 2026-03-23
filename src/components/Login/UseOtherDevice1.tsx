@@ -173,7 +173,9 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
 
   return (
     <React.Fragment>
-      {!isExpired ? (
+      {isExpired ? (
+        <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
+      ) : (
         <ol className="listed-steps">
           <li>
             <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
@@ -236,8 +238,6 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
             )}
           </li>
         </ol>
-      ) : (
-        <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
       )}
       <DeveloperInfo {...data} />
     </React.Fragment>

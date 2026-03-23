@@ -110,10 +110,10 @@ function RenderFinished(): React.JSX.Element {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
 
   let ComponentToRender;
-  if (!SAMLParameters) {
-    ComponentToRender = <UseOtherDevice2 />;
-  } else {
+  if (SAMLParameters) {
     ComponentToRender = <SubmitSamlResponse />;
+  } else {
+    ComponentToRender = <UseOtherDevice2 />;
   }
 
   return ComponentToRender;
