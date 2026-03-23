@@ -8,11 +8,7 @@ export const CopyToClipboardButton = forwardRef<HTMLInputElement>((_props, ref: 
   function copyToClipboard() {
     if (ref && typeof ref === "object" && ref.current) {
       ref.current.select();
-      if (!navigator.clipboard) {
-        document.execCommand("copy");
-      } else {
-        navigator.clipboard.writeText(ref.current.value);
-      }
+      navigator.clipboard.writeText(ref.current.value);
       setTooltipCopied(true);
 
       setTimeout(() => {
