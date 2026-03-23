@@ -19,13 +19,13 @@ export const defaultDashboardTestState = {
   },
 };
 
-interface renderArgs {
+interface RenderArgs {
   state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
-function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
+function render(ui: React.ReactElement, args: RenderArgs = {}): RenderResult {
   const routes = args.routes || ["/profile/"];
   const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 

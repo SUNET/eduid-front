@@ -1,6 +1,6 @@
 import { IntlProvider } from "react-intl";
 import { connect } from "react-redux";
-import { intlState } from "slices/Internationalisation";
+import { IntlState } from "slices/Internationalisation";
 
 /*
  * As I (ft@) understand things, this module takes parameters from our state.intl,
@@ -8,13 +8,13 @@ import { intlState } from "slices/Internationalisation";
  *
  */
 
-function defaultSelector(state: { intl: intlState }) {
+function defaultSelector(state: { intl: IntlState }) {
   return {
     key: state.intl.locale,
     ...state.intl,
   };
 }
 
-const mapStateToProps = (state: { intl: intlState }, { intlSelector = defaultSelector }) => intlSelector(state);
+const mapStateToProps = (state: { intl: IntlState }, { intlSelector = defaultSelector }) => intlSelector(state);
 
 export default connect(mapStateToProps)(IntlProvider);

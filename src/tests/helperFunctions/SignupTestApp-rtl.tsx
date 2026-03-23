@@ -44,13 +44,13 @@ export const signupTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigato
   authn: authnInitialState,
 };
 
-interface renderArgs {
+interface RenderArgs {
   state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
-function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
+function render(ui: React.ReactElement, args: RenderArgs = {}): RenderResult {
   const defaultState = {
     config: {
       ...configInitialState,
