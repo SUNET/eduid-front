@@ -118,9 +118,8 @@ test("renders passkey button as expected", async () => {
   expect(buttonText.closest("button")).toBeInTheDocument();
   await userEvent.click(buttonText);
 
-  // check that username and password inputs are disabled when passkey button is clicked
   const usernameInput = screen.getByRole("textbox");
-  const passwordInput = document.querySelector('input[type="password"]') as HTMLInputElement;
+  const passwordInput = screen.getByPlaceholderText(/enter password/i);
 
   await userEvent.type(usernameInput, "test@example.com");
   await userEvent.type(passwordInput, "password123");

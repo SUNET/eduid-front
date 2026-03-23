@@ -3,19 +3,19 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
-const suggestedValue = "abcd-1234-efgh";
+const suggestPassword = "test-password";
 
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
   render(<ChangePassword />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       chpass: {
-        suggested_password: suggestedValue,
+        suggested_password: suggestPassword,
       },
     },
   });
   expect(screen.getByRole("heading")).toHaveTextContent(/^Change password: Suggested password/);
-  expect(screen.getByDisplayValue(suggestedValue)).toBeInTheDocument();
+  expect(screen.getByDisplayValue(suggestPassword)).toBeInTheDocument();
 });
 
 test("renders custom password form after clicking do not want a suggested password", async () => {
@@ -23,7 +23,7 @@ test("renders custom password form after clicking do not want a suggested passwo
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       chpass: {
-        suggested_password: suggestedValue,
+        suggested_password: suggestPassword,
       },
     },
   });
