@@ -71,7 +71,7 @@ function happyCaseBackend(state: SignupState) {
       const payload: SignupStatusResponse = { state: currentState };
       console.debug("[payload]", payload);
       return HttpResponse.json({ type: "_SIGNUP_ test response", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -90,7 +90,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -119,7 +119,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -142,7 +142,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -151,7 +151,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -166,7 +166,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 }
 
@@ -240,7 +240,7 @@ test("handles wrong email code", async () => {
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() =>
-    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/)
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/),
   );
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
