@@ -6,7 +6,7 @@ import NotificationModal from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
 import passKeyGray from "../../../img/pass-key-gray.svg";
 import passKey from "../../../img/pass-key.svg";
@@ -36,6 +36,12 @@ export function SecurityKeyTable({
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
   const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const { theme } = useTheme();
+  const intl = useIntl();
+  //Translated assistive and visual aid for clickable icon
+  const removeLabel = intl.formatMessage({
+    defaultMessage: "Remove",
+    description: "aria-label and title for table item remove button",
+  });
 
   async function handleConfirmDeleteModal(cred: CredentialType) {
     credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
@@ -155,7 +161,8 @@ export function SecurityKeyTable({
                   <strong>{cred.description}</strong>
                 </span>
                 <EduIDButton
-                  aria-label="Remove"
+                  aria-label={removeLabel}
+                  title={removeLabel}
                   id="remove-webauthn"
                   buttonstyle="remove sm"
                   onClick={() => handleConfirmDeleteModal(cred)}
