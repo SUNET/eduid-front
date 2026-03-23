@@ -6,6 +6,15 @@ import { act } from "react";
 import { mswServer } from "setupTests";
 import { defaultDashboardTestState, fireEvent, render, screen } from "../helperFunctions/DashboardTestApp-rtl";
 
+function navigateToAccountSettings() {
+  const nav = screen.getByRole("link", { name: "Account" });
+  act(() => {
+    nav.click();
+  });
+  expect(nav).toHaveClass(activeClassName);
+  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+}
+
 test("renders AccountLinking as expected", async () => {
   render(<IndexMain />, {
     routes: ["/profile"],
@@ -14,13 +23,7 @@ test("renders AccountLinking as expected", async () => {
     },
   });
 
-  // Navigate to Advanced settings
-  const nav = await screen.getByRole("link", { name: "Account" });
-  act(() => {
-    nav.click();
-  });
-  expect(nav).toHaveClass(activeClassName);
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  navigateToAccountSettings();
   expect(screen.getByRole("heading", { name: /orcid account/i })).toBeInTheDocument();
 });
 
@@ -32,14 +35,7 @@ test("can add an ORCID iD", () => {
     },
   });
 
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Account" });
-  act(() => {
-    nav.click();
-  });
-  expect(nav).toHaveClass(activeClassName);
-
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  navigateToAccountSettings();
 
   const button = screen.getByRole("button", { name: /add orcid/i });
   expect(button).toBeEnabled();
@@ -61,14 +57,7 @@ test("can show an ORCID iD", () => {
     },
   });
 
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Account" });
-  act(() => {
-    nav.click();
-  });
-  expect(nav).toHaveClass(activeClassName);
-
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  navigateToAccountSettings();
 
   expect(screen.queryByRole("button", { name: /add orcid/i })).not.toBeInTheDocument();
 
@@ -98,14 +87,7 @@ test("can remove an ORCID iD", async () => {
       account_linking: { orcid },
     },
   });
-  // Navigate to Advanced settings
-  const nav = screen.getByRole("link", { name: "Account" });
-  act(() => {
-    nav.click();
-  });
-  expect(nav).toHaveClass(activeClassName);
-
-  expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
+  navigateToAccountSettings();
 
   expect(screen.queryByRole("button", { name: /add orcid/i })).not.toBeInTheDocument();
 
