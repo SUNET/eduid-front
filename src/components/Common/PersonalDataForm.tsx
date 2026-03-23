@@ -15,8 +15,8 @@ import CustomInput from "./CustomInput";
 import EduIDButton from "./EduIDButton";
 
 interface PersonalDataFormProps {
-  readonly labels: NameLabels;
-  readonly isVerifiedIdentity: boolean;
+  labels: NameLabels;
+  isVerifiedIdentity: boolean;
   setEditMode(value: boolean): void;
 }
 
@@ -25,7 +25,7 @@ interface SelectedNameValues {
   value: string;
 }
 
-export default function PersonalDataForm(props: PersonalDataFormProps) {
+export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>) {
   const { labels } = props;
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
@@ -85,7 +85,7 @@ export default function PersonalDataForm(props: PersonalDataFormProps) {
   );
 }
 
-function SelectDisplayName(props: { readonly setChosenGivenName: (name: string) => void }): React.JSX.Element {
+function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) => void }>): React.JSX.Element {
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
@@ -259,7 +259,7 @@ function NoOptionsMessage() {
   );
 }
 
-function RenderEditableNames(props: { readonly labels: NameLabels }) {
+function RenderEditableNames(props: Readonly<{ labels: NameLabels }>) {
   return (
     <article>
       <div className="input-pair">

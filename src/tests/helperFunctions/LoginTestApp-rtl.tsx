@@ -57,7 +57,7 @@ interface renderArgs {
 
 function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
   const store = getTestEduIDStore(args.state || loginTestState);
-  function Wrapper({ children }: { children: React.ReactNode }) {
+  function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
       <ReduxIntlProvider store={store}>
         <MemoryRouter initialEntries={args.routes}>{children}</MemoryRouter>

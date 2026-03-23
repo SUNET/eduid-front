@@ -16,15 +16,15 @@ export interface NewPasswordFormData {
 }
 
 interface NewPasswordFormProps {
-  readonly goBack?: () => void;
-  readonly extra_security?: ExtraSecurityAlternatives;
-  readonly suggested_password: string | undefined;
-  readonly submitNewPasswordForm: FormEventHandler<HTMLFormElement> | undefined;
-  readonly submitButtonText: React.ReactNode;
-  readonly handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
+  goBack?: () => void;
+  extra_security?: ExtraSecurityAlternatives;
+  suggested_password: string | undefined;
+  submitNewPasswordForm: FormEventHandler<HTMLFormElement> | undefined;
+  submitButtonText: React.ReactNode;
+  handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export function NewPasswordForm(props: NewPasswordFormProps): React.JSX.Element {
+export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JSX.Element {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
     const errors: NewPasswordFormData = {};

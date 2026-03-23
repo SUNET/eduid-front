@@ -29,9 +29,9 @@ const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
 
 export function RecoveryOptions({
   recoveryAvailable,
-}: {
-  readonly recoveryAvailable: RecoveryOptions;
-}): React.JSX.Element {
+}: Readonly<{
+  recoveryAvailable: RecoveryOptions;
+}>): React.JSX.Element {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);

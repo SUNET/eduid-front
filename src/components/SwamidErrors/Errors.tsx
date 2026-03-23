@@ -59,7 +59,7 @@ export function Errors() {
   );
 }
 
-export function ErrorTechnicalInfo(props: { errorURL: ErrorURLData }): React.JSX.Element {
+export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>): React.JSX.Element {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   return (

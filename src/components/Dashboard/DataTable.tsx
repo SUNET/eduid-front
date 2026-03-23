@@ -6,19 +6,19 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 
 interface DataTableProps {
-  readonly data?: EmailInfo[];
-  readonly setSelectedEmail: (email: string | undefined) => void;
+  data?: EmailInfo[];
+  setSelectedEmail: (email: string | undefined) => void;
 }
 
 interface DataStatusProps {
-  readonly name: string;
-  readonly verified: boolean;
-  readonly primary: boolean;
-  readonly handleStartConfirmation: (email: string) => void;
-  readonly handleMakePrimary: (email: string) => void;
+  name: string;
+  verified: boolean;
+  primary: boolean;
+  handleStartConfirmation: (email: string) => void;
+  handleMakePrimary: (email: string) => void;
 }
 
-function DataStatus(props: DataStatusProps) {
+function DataStatus(props: Readonly<DataStatusProps>) {
   if (!props.verified) {
     return (
       <EduIDButton buttonstyle="link sm" onClick={() => props.handleStartConfirmation(props.name)}>
@@ -44,7 +44,7 @@ function DataStatus(props: DataStatusProps) {
   );
 }
 
-function DataTableRows(props: DataTableProps) {
+function DataTableRows(props: Readonly<DataTableProps>) {
   const [makePrimaryEmail] = emailApi.useLazyMakePrimaryEmailQuery();
   const [removeEmail] = emailApi.useLazyRemoveEmailQuery();
   const dispatch = useAppDispatch();
@@ -109,7 +109,7 @@ function DataTableRows(props: DataTableProps) {
   );
 }
 
-function DataTable(props: DataTableProps) {
+function DataTable(props: Readonly<DataTableProps>) {
   return (
     <div className="table-responsive">
       <table className="table-form">

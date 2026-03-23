@@ -2,11 +2,11 @@ import { Field } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
 interface ChangePasswordRadioOptionProps {
-  readonly handleSwitchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  readonly renderSuggested: boolean;
+  handleSwitchChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  renderSuggested: boolean;
 }
 
-export function ChangePasswordRadioOption(props: ChangePasswordRadioOptionProps) {
+export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOptionProps>) {
   return (
     <fieldset className="toggle-change-password-options">
       <legend className="require">

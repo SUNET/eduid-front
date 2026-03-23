@@ -16,16 +16,16 @@ import securityKey from "../../../img/security-key.svg";
 import { useTheme } from "components/Common/ThemeContext";
 import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
-  readonly wrapperRef: React.RefObject<HTMLElement | null>;
-  readonly handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
-  readonly handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
+  wrapperRef: React.RefObject<HTMLElement | null>;
+  handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
+  handleRemoveWebauthnToken: (credential_key: string) => Promise<void>;
 }
 
 export function SecurityKeyTable({
   wrapperRef,
   handleVerificationWebauthnToken,
   handleRemoveWebauthnToken,
-}: SecurityKeyTable) {
+}: Readonly<SecurityKeyTable>) {
   const credentialKey = useRef<string>("");
   let btnVerify;
   let date_success;
