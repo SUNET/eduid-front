@@ -39,12 +39,6 @@ test("can add an ORCID iD", () => {
 
   const button = screen.getByRole("button", { name: /add orcid/i });
   expect(button).toBeEnabled();
-
-  // TODO: clicking the button assigns a new URL to globalThis.location.href in requestConnectOrcid(),
-  //       and that doesn't work in JSDOM. I can't manage to get any of the Internet's suggestions
-  //       of how to mock globalThis.location.assign() to work right now, so for now we only test that
-  //       the button is enabled above.
-  //button.click();
 });
 
 test("can show an ORCID iD", () => {
