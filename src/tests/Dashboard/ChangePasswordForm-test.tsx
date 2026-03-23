@@ -3,7 +3,7 @@ import { initialState as configInitialState } from "slices/IndexConfig";
 
 import { fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 
-const suggestedValue = "test-password";
+const suggestedValue = "abcd-1234-efgh";
 
 test("renders ChangePasswordForm, suggested password value is field in suggested-password-field", () => {
   render(<ChangePassword />, {
