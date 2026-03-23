@@ -49,13 +49,13 @@ export const loginTestState: Optional<EduIDAppRootState, "eduIDApi" | "navigator
   authn: authnInitialState,
 };
 
-interface renderArgs {
+interface RenderArgs {
   state?: Partial<EduIDAppRootState>;
   options?: Omit<RenderOptions, "wrapper">;
   routes?: InitialEntry[];
 }
 
-function render(ui: React.ReactElement, args: renderArgs = {}): RenderResult {
+function render(ui: React.ReactElement, args: RenderArgs = {}): RenderResult {
   const store = getTestEduIDStore(args.state || loginTestState);
   function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {
     return (

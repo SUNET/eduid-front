@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
-import { clearNotifications, eduidNotification, notificationLevel } from "slices/Notifications";
+import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
 import { UNKNOWN_MESSAGE } from "translation";
 import EduIDButton from "./EduIDButton";
 
@@ -24,7 +24,7 @@ export function Notifications(): React.JSX.Element | null {
   }
 
   // show errors first, information second
-  const show: eduidNotification | undefined = error || info;
+  const show: EduidNotification | undefined = error || info;
 
   if (!show) {
     // no messages to show
