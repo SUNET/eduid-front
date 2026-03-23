@@ -29,7 +29,7 @@ export const countFiveMin = (key: string) => {
   // Update the count down every 1 second
   const timer = setInterval(() => {
     // Get today's date and time
-    const now: number = new Date().getTime();
+    const now: number = Date.now();
     // Find the period between now and the count down date
     const period = JSON.parse(countDownTime) - now;
     // Time calculations for minutes and seconds
