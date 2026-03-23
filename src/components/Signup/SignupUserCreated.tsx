@@ -30,17 +30,17 @@ export function SignupConfirmPassword() {
     const newPassword = renderSuggested ? values.suggested : values.custom;
     if (!newPassword) {
       return;
-    } else {
-      const response = await createUser({
-        use_suggested_password: renderSuggested,
-        custom_password: renderSuggested ? undefined : newPassword,
-      });
+    }
 
-      if (response.isSuccess) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-      } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
-      }
+    const response = await createUser({
+      use_suggested_password: renderSuggested,
+      custom_password: renderSuggested ? undefined : newPassword,
+    });
+
+    if (response.isSuccess) {
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+    } else {
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
     }
   }
 

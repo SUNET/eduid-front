@@ -5,7 +5,7 @@ import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -23,7 +23,7 @@ function UseOtherDevice2() {
   const loginRef = useAppSelector((state) => state.login.ref);
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
-  const [fetching, setFetching] = useState(false);
+  const initialFetchDone = useRef(false);
   const intl = useIntl();
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
 
@@ -35,27 +35,16 @@ function UseOtherDevice2() {
   }, [intl]);
 
   useEffect(() => {
-    async function initialFetch() {
-      if (params?.state_id) {
-        setFetching(true);
-        await fetchUseOtherDevice2({ state_id: params.state_id });
-        setFetching(false);
-      }
-    }
-    if (!loginRef) {
-      // Fetching data from backend depends on state.config being loaded first (base_url being set)
-      if (base_url && !loginRef && params?.state_id) {
-        // When the user first follows the QR code, there is no loginRef but there is a state_id
-        if (!fetching) {
-          // the initial fetch will atomically grab the state in the database, *must* avoid two fetches at once
-          initialFetch();
-        }
-      }
-    } else {
+    if (loginRef) {
       // after login, this page is rendered with a loginRef present in the state
       fetchUseOtherDevice2({ ref: loginRef });
+    } else if (base_url && params?.state_id && !initialFetchDone.current) {
+      // When the user first follows the QR code, there is no loginRef but there is a state_id.
+      // The initial fetch will atomically grab the state in the database, must only happen once.
+      initialFetchDone.current = true;
+      fetchUseOtherDevice2({ state_id: params.state_id });
     }
-  }, [base_url, fetchUseOtherDevice2, fetching, loginRef, params.state_id]);
+  }, [base_url, fetchUseOtherDevice2, loginRef, params.state_id]);
 
   return (
     <div className="use-another-device device2">
