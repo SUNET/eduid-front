@@ -145,7 +145,7 @@ function CodeField({ num, value, autoFocus = undefined, readonly }: Readonly<Cod
     event.preventDefault();
 
     const pastedText = event.clipboardData.getData("text");
-    const numbersOnly = pastedText.replaceAll(/[^\d]/g, "");
+    const numbersOnly = pastedText.replaceAll(/\D/g, "");
     const digits = numbersOnly.split("");
 
     // Get all the input elements
