@@ -115,7 +115,7 @@ function happyCaseBackend(state: SignupState) {
       registerEmailCalled = true;
       currentState.email.address = testEmailAddress;
       currentState.email.expires_time_left = 60;
-      currentState.email.expires_time_total = 60;
+      currentState.email.expires_time_max = 60;
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
