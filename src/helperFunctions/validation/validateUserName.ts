@@ -27,7 +27,7 @@ export const validate = validateUserNameInForm;
  * @returns
  */
 export function validateUserNameField(value?: string): string | undefined {
-  const stringWithoutSpaces = value?.replace(/\s/g, "");
+  const stringWithoutSpaces = value?.replaceAll(/\s/g, "");
   if (!stringWithoutSpaces) {
     return "required";
   } else if (faultyEppnPattern.test(stringWithoutSpaces)) {

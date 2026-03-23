@@ -50,7 +50,7 @@ const correctEmailCode = "123456";
 
 const user = userEvent.setup();
 
-let currentState = JSON.parse(JSON.stringify(emptyState)); // make a copy of the state
+let currentState = structuredClone(emptyState); // make a copy of the state
 let getCaptchaCalled = false;
 let acceptToUCalled = false;
 let registerEmailCalled = false;
@@ -63,7 +63,7 @@ let verifyEmailCalled = false;
  * next function.
  */
 function happyCaseBackend(state: SignupState) {
-  currentState = JSON.parse(JSON.stringify(state)); // make a fresh copy of the state
+  currentState = structuredClone(state); // make a fresh copy of the state
 
   mswServer.use(
     // this request happens at render of SignupMain
@@ -71,7 +71,7 @@ function happyCaseBackend(state: SignupState) {
       const payload: SignupStatusResponse = { state: currentState };
       console.debug("[payload]", payload);
       return HttpResponse.json({ type: "_SIGNUP_ test response", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -90,7 +90,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -115,11 +115,11 @@ function happyCaseBackend(state: SignupState) {
       registerEmailCalled = true;
       currentState.email.address = testEmailAddress;
       currentState.email.expires_time_left = 60;
-      currentState.email.expires_time_total = 60;
+      currentState.email.expires_time_max = 60;
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -142,7 +142,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -151,7 +151,7 @@ function happyCaseBackend(state: SignupState) {
       currentState.credentials.completed = true;
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 
   mswServer.use(
@@ -166,7 +166,7 @@ function happyCaseBackend(state: SignupState) {
 
       const payload: SignupStatusResponse = { state: currentState };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
-    })
+    }),
   );
 }
 
@@ -240,7 +240,7 @@ test("handles wrong email code", async () => {
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() =>
-    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/)
+    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/),
   );
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();

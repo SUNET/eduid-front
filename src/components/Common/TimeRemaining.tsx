@@ -26,7 +26,8 @@ function loadEndDate(name: string, unique_id?: string): Date | undefined {
 
   try {
     return new Date(data.end);
-  } catch (_error) {
+  } catch {
+    // invalid date string, treat as no end time
     return undefined;
   }
 }
@@ -55,7 +56,7 @@ interface StoredData {
 }
 
 export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>): React.JSX.Element {
-  const [secondsLeft, setSecondsLeft] = useState(props.value > 0 ? props.value : 0);
+  const [secondsLeft, setSecondsLeft] = useState(Math.max(props.value, 0));
 
   // Calculate timeRemaining directly from secondsLeft
   const timeRemaining = React.useMemo<TimeRemaining>(() => {

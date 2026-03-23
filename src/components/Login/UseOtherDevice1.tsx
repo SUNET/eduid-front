@@ -29,7 +29,7 @@ function UseOtherDevice1() {
   useEffect(() => {
     if (loginRef && !other_device) {
       // refresh state on page reload
-      const _name = username ? username : undefined; // backend is picky and won't allow null
+      const _name = username || undefined; // backend is picky and won't allow null
       fetchUseOtherDevice1({ ref: loginRef, action: "FETCH", username: _name, this_device, remember_me });
     }
   }, [fetchUseOtherDevice1, loginRef, other_device, remember_me, this_device, username]);
@@ -123,7 +123,7 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
   function handleNewQRCodeOnClick() {
     // Get new code
     if (login_ref) {
-      const _name = username ? username : undefined; // backend is picky and won't allow null
+      const _name = username || undefined; // backend is picky and won't allow null
       fetchUseOtherDevice1({ ref: login_ref, action: "FETCH", username: _name, this_device, remember_me });
       setIsExpired(false);
     }

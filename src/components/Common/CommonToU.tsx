@@ -22,7 +22,7 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
         />
       </p>
 
-      {ToUs["2016-v1"]}
+      {ToUs[props.version]}
 
       <p>
         <strong>
