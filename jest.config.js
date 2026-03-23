@@ -44,7 +44,7 @@ const config = {
     ]
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\\.js$"
+    String.raw`/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\.js$`
   ],
   setupFilesAfterEnv: [
     "<rootDir>/src/setupTests.ts"
