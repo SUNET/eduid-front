@@ -352,6 +352,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
 function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
+  const usernameField = useField("username");
 
   if (!options.other_device || securityZoneAction) {
     return null;
@@ -360,8 +361,7 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   async function handleOnClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault(); // don't submit the form when this button is clicked
 
-    // TODO: get email from the form here, and provide it as 'username' so that it is passed to device2
-    dispatch(loginSlice.actions.startLoginWithAnotherDevice({ username: undefined }));
+    dispatch(loginSlice.actions.startLoginWithAnotherDevice({ username: usernameField.input.value || undefined }));
   }
 
   return (
