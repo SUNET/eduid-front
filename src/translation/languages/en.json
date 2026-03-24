@@ -2813,6 +2813,10 @@
     "developer_comment": "Notification modal close label",
     "string": "Close"
   },
+  "mszk0B": {
+    "developer_comment": "aria-label and title for table item remove button",
+    "string": "Remove"
+  },
   "mwt1Dw": {
     "developer_comment": "Account terminated - reset password link",
     "string": "Go to reset password page"
@@ -3459,6 +3463,10 @@
   "tcDXie": {
     "developer_comment": "account eduid - list item 4-heading",
     "string": "ORCID account:"
+  },
+  "tcRf4f": {
+    "developer_comment": "aria-label and title for scroll top button",
+    "string": "Till toppen av sidan"
   },
   "u2p5j+": {
     "developer_comment": "use eidas - list item 2",
