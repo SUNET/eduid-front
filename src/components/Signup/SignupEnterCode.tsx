@@ -2,18 +2,19 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
+import Splash from "components/Common/Splash";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 
 export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
-  const [isExpired, setIsExpired] = useState(false);
+  const [isExpired, setIsExpired] = useState<boolean | undefined>(undefined);
   const state = useAppSelector((state) => state.signup.state);
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
 
@@ -107,7 +108,7 @@ export function SignupEnterCode(): React.JSX.Element {
   // Not expired, show six input fields, a count down timer and an abort button
 
   return (
-    <Fragment>
+    <Splash showChildren={isExpired === false}>
       <h1>
         <FormattedMessage defaultMessage="Create eduID: Verification of email address" description="Signup" />
       </h1>
@@ -148,7 +149,7 @@ export function SignupEnterCode(): React.JSX.Element {
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
         </ResponseCodeForm>
       </div>
-    </Fragment>
+    </Splash>
   );
 }
 
