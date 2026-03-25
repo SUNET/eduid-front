@@ -14,9 +14,17 @@ import { signupSlice } from "slices/Signup";
 export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
-  const [isExpired, setIsExpired] = useState<boolean | undefined>(undefined);
   const state = useAppSelector((state) => state.signup.state);
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
+
+  const getInitialExpiredState = (): boolean => {
+    if (state?.email?.expires_time_left && state.email.expires_time_left > 0) {
+      return false;
+    }
+    return true;
+  };
+
+  const [isExpired, setIsExpired] = useState(getInitialExpiredState);
 
   useEffect(() => {
     if (state?.credentials.completed) {
