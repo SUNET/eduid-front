@@ -30,9 +30,9 @@ const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((p
     <button
       ref={ref}
       type={props.type ? props.type : "button"}
-      className={props.buttonstyle}
       {...extra}
-      {...{ ...props, buttonstyle: undefined }}
+      {...{ ...props, buttonstyle: undefined, className: undefined }}
+      className={`${props.buttonstyle} ${props.className ?? ""}`.trim()}
     >
       {props.children}
     </button>

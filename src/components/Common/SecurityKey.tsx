@@ -2,6 +2,7 @@ import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
+import EduIDButton from "./EduIDButton";
 
 interface SecurityKeyProps {
   disabled?: boolean;
@@ -82,10 +83,9 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           />
         )}
       </p>
-      {/* TODO: Use EduIDButton component after removing Reactstrap Button */}
-      <button
+      <EduIDButton
         ref={ref}
-        className="primary"
+        buttonstyle="primary"
         type="submit"
         onClick={() => {
           props.useSecurityKey();
@@ -94,7 +94,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         disabled={props.disabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
-      </button>
+      </EduIDButton>
     </Fragment>
   );
 }
