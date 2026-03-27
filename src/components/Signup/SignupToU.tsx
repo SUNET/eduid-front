@@ -9,14 +9,13 @@ import { signupSlice } from "slices/Signup";
 export function SignupToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const version = signupState?.tou.version;
-  const state = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (state?.tou.completed) {
+    if (signupState?.tou.completed) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
-  }, [state, dispatch]);
+  }, [signupState, dispatch]);
 
   function handleAccept() {
     dispatch(signupSlice.actions.setNextPage("PROCESS_TOU"));
