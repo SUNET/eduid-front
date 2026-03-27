@@ -154,9 +154,12 @@ export function RegisterEmail() {
     }
   }, [isSuccess, isError, dispatch]);
 
-  if (!email || !given_name || !surname) {
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
-  }
+  useEffect(() => {
+    // If we don't have the email or name in the state, go back to the email form
+    if (!email || !given_name || !surname) {
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    }
+  }, [email, given_name, surname, dispatch]);
 
   // Show a blank screen while we wait for the response from the backend
   return null;

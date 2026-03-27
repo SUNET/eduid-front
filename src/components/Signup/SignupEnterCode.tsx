@@ -64,7 +64,7 @@ export function SignupEnterCode(): React.JSX.Element {
     const code = values.v.join("");
 
     const match = code.match(/^\d\d\d\d\d\d$/);
-    if (match?.length == 1) {
+    if (match?.length === 1) {
       // match[0] is whole matched string
       const digits = match[0];
 

@@ -60,7 +60,7 @@ function SignupStart() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (data != undefined) {
+    if (data !== undefined) {
       if (data.payload.state.already_signed_up) {
         fetchLogout({});
       }
