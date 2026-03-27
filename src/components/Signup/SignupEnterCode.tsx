@@ -14,11 +14,10 @@ import { signupSlice } from "slices/Signup";
 export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.signup.state);
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
 
   const getInitialExpiredState = (): boolean => {
-    if (state?.email?.expires_time_left && state.email.expires_time_left > 0) {
+    if (signupState?.email?.expires_time_left && signupState.email.expires_time_left > 0) {
       return false;
     }
     return true;
@@ -27,10 +26,10 @@ export function SignupEnterCode(): React.JSX.Element {
   const [isExpired, setIsExpired] = useState(getInitialExpiredState);
 
   useEffect(() => {
-    if (state?.credentials.completed) {
+    if (signupState?.credentials.completed) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
     }
-  }, [state, dispatch]);
+  }, [signupState, dispatch]);
 
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
