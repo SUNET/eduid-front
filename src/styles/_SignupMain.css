@@ -44,6 +44,8 @@ h3 {
   }
 }
 
+/* TODO: consider using --bp-xs (414px) instead of hardcoded 375px.
+   375px matches iPhone SE/6/7/8 portrait — likely a targeted fix for text overflow on small phones. */
 @media (max-width: 375px) {
   #resend-button {
     font-size: var(--txt-xs);
