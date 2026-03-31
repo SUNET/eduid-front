@@ -1,7 +1,7 @@
 import { jsConfigApi } from "apis/eduidJsConfig";
 import personalDataApi from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { DASHBOARD_PATHS, IndexMain } from "components/IndexMain";
+import { IndexMain, SETTINGS_PATHS } from "components/IndexMain";
 import { eduidStore } from "eduid-init-app";
 import { LOCALIZED_MESSAGES } from "globals";
 import Raven from "raven-js";
@@ -35,9 +35,9 @@ const getConfig = async function () {
     if (jsConfig.data.payload.sentry_dsn) {
       Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
     }
-    const isDashboard = DASHBOARD_PATHS.some((path) => globalThis.location.href.includes(path));
+    const isSettings = SETTINGS_PATHS.some((path) => globalThis.location.href.includes(path));
 
-    if (isDashboard) {
+    if (isSettings) {
       const personalData_promise = eduidStore.dispatch(personalDataApi.endpoints.requestAllPersonalData.initiate());
       const personalData = await personalData_promise;
       if (personalData.isSuccess) {

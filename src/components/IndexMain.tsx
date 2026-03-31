@@ -36,13 +36,13 @@ export const IDENTITY_PATH = "/identity";
 export const SIGNUP_BASE_PATH = "/register";
 export const CHPASS_BASE_PATH = "/chpass";
 
-export const DASHBOARD_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
+export const SETTINGS_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
 
 export function IndexMain(): React.JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const showAuthenticateModal = DASHBOARD_PATHS.some((path) => location.pathname.startsWith(path));
+  const showAuthenticateModal = SETTINGS_PATHS.some((path) => location.pathname.startsWith(path));
   const isIndex = location.pathname === "/";
 
   // Legacy /profile redirects
