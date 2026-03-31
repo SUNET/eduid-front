@@ -62,7 +62,8 @@ form .react-select,
   &__option--is-selected {
     color: var(--txt-gray);
     background-color: inherit;
-    @extend .text-bold;
+    font-family: var(--inter-bold);
+    font-weight: normal;
   }
 }
 

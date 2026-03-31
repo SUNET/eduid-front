@@ -284,8 +284,9 @@ button.icon {
 
 /* Instance/icon unique styles to be set in targeted css */
 button.icon-only {
-  @extend .icon;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: none;
   background: transparent;
   border-color: transparent;
