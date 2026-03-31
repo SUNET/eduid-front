@@ -34,16 +34,20 @@ export const ACCOUNT_PATH = "/account";
 export const SECURITY_PATH = "/security";
 export const IDENTITY_PATH = "/identity";
 export const SIGNUP_BASE_PATH = "/register";
+export const CHPASS_BASE_PATH = "/chpass";
+
+export const DASHBOARD_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
 
 export function IndexMain(): React.JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const showAuthenticateModal = location.pathname.startsWith("/profile");
+  const showAuthenticateModal = DASHBOARD_PATHS.some((path) => location.pathname.startsWith(path));
   const isIndex = location.pathname === "/";
 
-  if (location.pathname === "/profile") {
-    return <Navigate to={`${location.pathname}/`} />;
+  // Legacy /profile redirects
+  if (location.pathname === "/profile" || location.pathname === "/profile/") {
+    return <Navigate to={START_PATH} replace />;
   }
 
   return (
@@ -74,9 +78,9 @@ export function IndexMain(): React.JSX.Element {
                     <Route path={SECURITY_PATH} element={<Security />} />
                     <Route path={ACCOUNT_PATH} element={<Account />} />
                     <Route path={IDENTITY_PATH} element={<Identity />} />
-                    <Route path="/chpass/" element={<ChangePassword />} />
-                    <Route path="/chpass/success" element={<ChangePasswordSuccess />} />
-                    <Route path="ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
+                    <Route path={CHPASS_BASE_PATH} element={<ChangePassword />} />
+                    <Route path={`${CHPASS_BASE_PATH}/success`} element={<ChangePasswordSuccess />} />
+                    <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                     <Route path={START_PATH} element={<Start />} />
                     {/* Errors*/}
                     <Route path="/errors" element={<Errors />} />
