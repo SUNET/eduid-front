@@ -83,7 +83,7 @@
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (--bp-sm) {
   .technical-info-text {
     flex-direction: column;
 

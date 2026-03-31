@@ -297,7 +297,7 @@ input:-webkit-autofill {
 }
 
 /* Responsive */
-@media (max-width: $bp-sm) {
+@media (--bp-sm) {
   input,
   .radio-input-container span {
     font-size: var(--txt-md);
@@ -321,7 +321,7 @@ input:-webkit-autofill {
   }
 }
 
-@media (max-width: $bp-md) {
+@media (--bp-md) {
   .radio-input-container {
     flex-direction: column;
   }

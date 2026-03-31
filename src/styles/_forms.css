@@ -36,7 +36,7 @@ form {
 
   /*places two wrapped input groups on one row */
   .input-pair {
-    @media (min-width: $bp-xl) {
+    @media (--bp-xl-up) {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -78,7 +78,7 @@ form {
     margin: 0.5rem 0 0 1rem;
   }
 
-  @media (max-width: $bp-sm) {
+  @media (--bp-sm) {
     flex-direction: column;
 
     button {
@@ -92,7 +92,7 @@ form {
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: $bp-sm) {
+  @media (--bp-sm) {
     flex-direction: column;
     align-items: unset;
 
@@ -163,11 +163,11 @@ fieldset {
   }
 
   .btn + & {
-    @media (max-width: $bp-md) {
+    @media (--bp-md) {
       text-align: center;
     }
 
-    @media (max-width: $bp-xs) {
+    @media (--bp-xs) {
       margin: 0 0 0.75rem;
     }
   }

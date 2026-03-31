@@ -240,16 +240,16 @@ button.icon {
     min-width: 100px;
   }
 
-  @media (min-width: $bp-xs) {
+  @media (--bp-xs-up) {
     width: auto;
   }
 
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     justify-content: center;
     align-self: normal;
   }
 
-  @media (max-width: $bp-xs) {
+  @media (--bp-xs) {
     flex-direction: column-reverse;
 
     &.flex-direction-column {
@@ -293,7 +293,7 @@ button.icon-only {
   padding: 0;
 }
 
-@media (max-width: $bp-xs) {
+@media (--bp-xs) {
   button:not(.sm) {
     font-size: var(--txt-sm);
   }
@@ -330,7 +330,7 @@ button.scroll-to-top {
   height: 50px;
   padding: 0 !important;
 
-  @media (max-width: $bp-sm) {
+  @media (--bp-sm) {
     width: 40px;
     height: 40px;
     right: 0.5rem;

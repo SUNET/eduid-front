@@ -25,7 +25,7 @@
   span {
     padding-right: 0.5rem;
 
-    @media (max-width: $bp-sm) {
+    @media (--bp-sm) {
       margin: 0;
     }
   }
@@ -43,19 +43,19 @@
       color: var(--bright-orange);
     }
 
-    @media (max-width: $bp-sm) {
+    @media (--bp-sm) {
       font-size: var(--txt-xs);
     }
   }
 
-  @media (max-width: $bp-sm) {
+  @media (--bp-sm) {
     padding: 1rem;
   }
 }
 
 /* Green italic recommendation, see typography */
 .suggestion-txt {
-  @media (min-width: $bp-xl) {
+  @media (--bp-xl-up) {
     position: absolute;
     right: 0;
     max-width: 25%;
@@ -100,7 +100,7 @@
       height: 1em;
     }
 
-    @media (max-width: $bp-xs) {
+    @media (--bp-xs) {
       width: 2rem;
       height: 2rem;
       min-width: 2rem;
@@ -120,7 +120,7 @@
     background: var(--contrast-color);
     padding: 1rem 1rem 1.125rem;
 
-    @media (max-width: $bp-lg) {
+    @media (--bp-lg) {
       transform: translateX(-82.5%);
     }
   }

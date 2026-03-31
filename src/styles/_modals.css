@@ -91,7 +91,7 @@ dialog[open] {
           }
         }
 
-        @media (max-width: $bp-lg) {
+        @media (--bp-lg) {
           font-size: var(--txt-lg);
           input {
             font-size: inherit;
@@ -116,7 +116,7 @@ dialog[open] {
       }
     }
 
-    @media (max-width: $bp-lg) {
+    @media (--bp-lg) {
       .modal-body {
         font-size: var(--txt-lg);
 

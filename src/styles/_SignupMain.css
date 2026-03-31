@@ -27,13 +27,13 @@ h3 {
   }
 }
 
-@media (max-width: $bp-sm) {
+@media (--bp-sm) {
   #resend-button {
     width: 100%;
   }
 }
 
-@media (max-width: $bp-xs) {
+@media (--bp-xs) {
   #captcha {
     transform: scale(0.9);
     margin-bottom: 0;
@@ -78,7 +78,7 @@ h3 {
     }
   }
 
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     .response-code-inputs {
       input {
         margin: 5px -1px 5px 0;
@@ -92,7 +92,7 @@ h3 {
     }
   }
 
-  @media (max-width: $bp-xs) {
+  @media (--bp-xs) {
     .response-code-inputs {
       display: flex;
       justify-content: space-around;

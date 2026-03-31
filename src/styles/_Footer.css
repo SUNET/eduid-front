@@ -68,7 +68,7 @@ footer nav .lang-selected {
   display: none;
 }
 
-@media (max-width: $bp-xs) {
+@media (--bp-xs) {
   footer {
     align-items: flex-end;
 

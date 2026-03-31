@@ -20,7 +20,7 @@ figure,
     padding: 1em 0.5em;
     align-items: center;
     margin: 0;
-    @media (max-width: $bp-md) {
+    @media (--bp-md) {
       padding: 0.5em;
     }
     &:not(:last-of-type) {
@@ -64,7 +64,7 @@ figure,
     margin-right: auto;
   }
 
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     width: 100%;
   }
 }

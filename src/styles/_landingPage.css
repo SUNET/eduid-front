@@ -26,7 +26,7 @@
     font-size: 2.75rem;
     margin-bottom: 0.75em;
 
-    @media (max-width: $bp-md) {
+    @media (--bp-md) {
       font-size: 2rem;
     }
   }
@@ -89,12 +89,12 @@
       margin: 5px;
     }
   }
-  @media (min-width: $bp-lg) {
+  @media (--bp-lg-up) {
     max-width: calc(870px + 4rem);
     margin: 1rem auto 2rem;
     border-radius: 0 0 4rem 3rem;
   }
-  @media (max-width: $bp-lg) {
+  @media (--bp-lg) {
     margin: 1rem auto 0;
 
     div {
@@ -105,7 +105,7 @@
       }
     }
   }
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     flex-direction: column;
     align-items: center;
     margin: 1rem 0 0.5rem;

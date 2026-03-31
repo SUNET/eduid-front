@@ -1,14 +1,14 @@
 
 .ladok {
   &-university {
-    @media (max-width: $bp-md) {
+    @media (--bp-md) {
       flex-direction: column;
 
       &.flex-between {
         align-items: flex-start;
       }
     }
-    @media (min-width: $bp-md) {
+    @media (--bp-md-up) {
       label {
         margin-bottom: 0;
       }

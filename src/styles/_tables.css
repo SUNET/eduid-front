@@ -7,7 +7,7 @@ table {
   table-layout: fixed;
   background-color: var(--contrast-color);
 
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     font-size: var(--txt-md);
   }
 

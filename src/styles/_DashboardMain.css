@@ -41,7 +41,7 @@
     color: var(--body-txt);
   }
 
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     font-size: var(--txt-lg);
 
     &:not(a) {

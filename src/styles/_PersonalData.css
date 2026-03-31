@@ -6,7 +6,7 @@
     margin-bottom: 1.25rem;
   }
 
-  @media (max-width: $bp-xs) {
+  @media (--bp-xs) {
     .button-pair {
       flex-direction: column;
     }

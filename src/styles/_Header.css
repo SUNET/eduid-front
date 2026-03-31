@@ -19,7 +19,7 @@ header {
     flex: 1;
     text-align: left;
 
-    @media (max-width: $bp-md) {
+    @media (--bp-md) {
       height: 34px;
       width: 95px;
     }
@@ -73,7 +73,7 @@ header {
           svg {
             color: var(--body-txt);
           }
-          @media (max-width: $bp-xl) {
+          @media (--bp-xl) {
             &:hover svg {
               color: var(--bright-orange);
             }
@@ -99,7 +99,7 @@ header {
       }
 
       /* individual desktop submenus */
-      @media (min-width: $bp-xl) {
+      @media (--bp-xl-up) {
         li {
           display: inline-block;
         }
@@ -164,7 +164,7 @@ header {
   }
 
   /* combined mobile menu */
-  @media (max-width: $bp-xl) {
+  @media (--bp-xl) {
     nav {
       flex: unset;
 
@@ -222,7 +222,7 @@ header {
         }
 
         /* small screen full width menu */
-        @media (max-width: $bp-xs) {
+        @media (--bp-xs) {
           min-width: calc(100% - #{2 * var(--margin)});
           left: var(--margin);
         }

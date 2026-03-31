@@ -91,12 +91,12 @@ form .react-select,
       box-shadow: none;
     }
   }
-  @media (max-width: $bp-md) {
+  @media (--bp-md) {
     > div:nth-child(1) {
       flex: 1;
     }
   }
-  @media (max-width: $bp-sm) {
+  @media (--bp-sm) {
     flex-direction: column;
     > div {
       width: 100%;
