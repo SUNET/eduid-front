@@ -6,7 +6,7 @@ import { defaultDashboardTestState, render, screen } from "../helperFunctions/Da
 test("shows splash screen when not configured", () => {
   render(<IndexMain />, {
     state: { config: { ...configInitialState, is_app_loaded: false } },
-    routes: ["/profile/"],
+    routes: ["/start/"],
   });
 
   expect(screen.getAllByRole("heading")[0]).toHaveTextContent(/Welcome, !/);
@@ -16,7 +16,7 @@ test("shows splash screen when not configured", () => {
 
 test("renders Profile page as expected", () => {
   render(<IndexMain />, {
-    routes: ["/profile/"],
+    routes: ["/start"],
     state: {
       ...defaultDashboardTestState,
       config: { ...defaultDashboardTestState.config, login_service_url: "https://example.com/login" },
@@ -45,7 +45,7 @@ test("renders Profile page as expected", () => {
 
 test("renders eduID status overview, confirmed account", () => {
   render(<IndexMain />, {
-    routes: ["/profile/"],
+    routes: ["/start"],
     state: {
       ...defaultDashboardTestState,
       emails: {
@@ -72,7 +72,7 @@ test("renders eduID status overview, confirmed account", () => {
 
 test("renders verified identity user", () => {
   render(<IndexMain />, {
-    routes: ["/profile/"],
+    routes: ["/start"],
     state: {
       ...defaultDashboardTestState,
       emails: {
@@ -96,7 +96,7 @@ test("renders verified identity user", () => {
 
 test("renders identity verification progress, verified user", () => {
   render(<IndexMain />, {
-    routes: ["/profile/"],
+    routes: ["/start"],
     state: {
       ...defaultDashboardTestState,
       emails: {

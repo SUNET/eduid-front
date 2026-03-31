@@ -15,17 +15,16 @@ import Splash from "./Common/Splash";
 export function Index() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
   const redirectToLogin = useCallback(async () => {
     dispatch(indexSlice.actions.appLoaded());
-    if (dashboard_link) {
-      document.location.href = dashboard_link;
+    if (eduid_site_link) {
+      document.location.href = eduid_site_link + "start";
     }
-  }, [dispatch, dashboard_link]);
+  }, [dispatch, eduid_site_link]);
 
   const deleteAccount = useCallback(async () => {
     const response = await postDeleteAccount();

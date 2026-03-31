@@ -29,10 +29,10 @@ import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
-export const START_PATH = "/profile/";
-export const ACCOUNT_PATH = "/profile/account/";
-export const SECURITY_PATH = "/profile/security/";
-export const IDENTITY_PATH = "/profile/identity/";
+export const START_PATH = "/start";
+export const ACCOUNT_PATH = "/account";
+export const SECURITY_PATH = "/security";
+export const IDENTITY_PATH = "/identity";
 export const SIGNUP_BASE_PATH = "/register";
 
 export function IndexMain(): React.JSX.Element {
@@ -74,17 +74,9 @@ export function IndexMain(): React.JSX.Element {
                     <Route path={SECURITY_PATH} element={<Security />} />
                     <Route path={ACCOUNT_PATH} element={<Account />} />
                     <Route path={IDENTITY_PATH} element={<Identity />} />
-                    <Route path="/profile/chpass/" element={<ChangePassword />} />
-                    <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
-                    <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
-                    {/* Navigates for old paths. TODO: redirect in backend server instead */}
-                    <Route path="/profile/accountlinking/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/nins/" element={<Navigate to={IDENTITY_PATH} />} />
-                    <Route path="/profile/emails/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/personaldata/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/advanced-settings/" element={<Navigate to={SECURITY_PATH} />} />
-                    <Route path="/profile/verify-identity/" element={<Navigate to={IDENTITY_PATH} />} />
+                    <Route path="/chpass/" element={<ChangePassword />} />
+                    <Route path="/chpass/success" element={<ChangePasswordSuccess />} />
+                    <Route path="ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
                     <Route path={START_PATH} element={<Start />} />
                     {/* Errors*/}
                     <Route path="/errors" element={<Errors />} />

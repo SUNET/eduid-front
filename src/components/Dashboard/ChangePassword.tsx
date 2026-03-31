@@ -10,7 +10,7 @@ import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
 // exported for use in tests
-export const finish_url = "/profile/account";
+export const finish_url = "account";
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
@@ -48,7 +48,7 @@ export function ChangePassword() {
       const response = await fetchSuggestedPassword();
       if (isMounted.current) {
         if (response.isSuccess) {
-          navigate("/profile/chpass");
+          navigate("chpass");
         }
       }
     } catch (error) {
@@ -62,7 +62,7 @@ export function ChangePassword() {
       if (newPassword) {
         const response = await changePassword({ new_password: newPassword });
         if (response.isSuccess) {
-          navigate("/profile/chpass/success", {
+          navigate("chpass/success", {
             state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
           });
         }

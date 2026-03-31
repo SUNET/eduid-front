@@ -61,7 +61,7 @@ export function LoginExternalReturnHandler() {
           const actionToRoute: { [key: string]: string } = {
             loginMfaAuthn: `/login/${status.frontend_state}`,
             resetpwMfaAuthn: `/reset-password/`,
-            login: "/profile/",
+            login: "/start",
           };
           if (!status.error && status.frontend_action === "resetpwMfaAuthn" && status.frontend_state) {
             verifyEmailLink({ email_code: status.frontend_state });

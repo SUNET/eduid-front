@@ -26,7 +26,7 @@ interface RenderArgs {
 }
 
 function render(ui: React.ReactElement, args: RenderArgs = {}): RenderResult {
-  const routes = args.routes || ["/profile/"];
+  const routes = args.routes || ["/start/"];
   const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {

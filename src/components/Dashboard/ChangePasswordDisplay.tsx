@@ -12,7 +12,7 @@ function ChangePasswordDisplay() {
   const handleSuggestedPassword = useCallback(async () => {
     const response = await fetchSuggestedPassword();
     if (response.isSuccess) {
-      navigate("/profile/chpass");
+      navigate("/chpass");
     }
   }, [fetchSuggestedPassword, navigate]);
 

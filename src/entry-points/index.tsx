@@ -35,7 +35,7 @@ const getConfig = async function () {
     if (jsConfig.data.payload.sentry_dsn) {
       Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
     }
-    if (globalThis.location.href.includes("/profile/")) {
+    if (globalThis.location.href.includes("/start")) {
       const personalData_promise = eduidStore.dispatch(personalDataApi.endpoints.requestAllPersonalData.initiate());
       const personalData = await personalData_promise;
       if (personalData.isSuccess) {

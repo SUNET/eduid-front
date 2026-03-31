@@ -37,7 +37,7 @@ export function ExternalReturnHandler() {
         const actionToRoute: { [key: string]: string } = {
           verifyIdentity: IDENTITY_PATH,
           verifyCredential: SECURITY_PATH,
-          changepwAuthn: "/profile/chpass",
+          changepwAuthn: "/chpass",
           terminateAccountAuthn: "/",
           addSecurityKeyAuthn: SECURITY_PATH,
           removeSecurityKeyAuthn: SECURITY_PATH,
@@ -51,9 +51,9 @@ export function ExternalReturnHandler() {
         }
       }
 
-      navigate("/profile/"); // GOTO start
+      navigate("/start"); // GOTO start
     },
-    [dispatch, navigate]
+    [dispatch, navigate],
   );
 
   const fetchEidasStatus = useCallback(
@@ -63,7 +63,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [eidasGetStatus, processStatus]
+    [eidasGetStatus, processStatus],
   );
 
   const fetchFrejaeIDStatus = useCallback(
@@ -73,7 +73,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [frejaeIDGetStatus, processStatus]
+    [frejaeIDGetStatus, processStatus],
   );
 
   const fetchBankIDStatus = useCallback(
@@ -83,7 +83,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [bankIDGetStatus, processStatus]
+    [bankIDGetStatus, processStatus],
   );
 
   const fetchAuthStatus = useCallback(
@@ -93,7 +93,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [authnGetStatus, processStatus]
+    [authnGetStatus, processStatus],
   );
 
   useEffect(() => {

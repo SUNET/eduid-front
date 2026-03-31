@@ -55,7 +55,7 @@ export function AuthenticateModal() {
   function handleCloseModal() {
     // navigate to account when user cancel re-authentication
     if (frontend_action === "changepwAuthn" && re_authenticate) {
-      navigate("profile/account/");
+      navigate("account");
     }
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     dispatch(authnSlice.actions.setReAuthenticate(false));

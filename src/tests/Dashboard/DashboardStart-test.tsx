@@ -19,7 +19,7 @@ test("start page heading text for new user", async () => {
         },
       },
     },
-    routes: ["/profile/"],
+    routes: ["/start/"],
   });
   expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
   expect(screen.getAllByRole("progressbar")[0]).toHaveClass("spinner");
@@ -43,7 +43,7 @@ test("recommendations for new users, connect your identity", async () => {
         },
       },
     },
-    routes: ["/profile/"],
+    routes: ["/start/"],
   });
 
   expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
@@ -90,7 +90,7 @@ test("recommendations for new users, add your security key", async () => {
         ],
       },
     },
-    routes: ["/profile/"],
+    routes: ["/start/"],
   });
 
   expect(screen.getByText(/Add multi-factor authentication at/i)).toBeInTheDocument();
@@ -139,7 +139,7 @@ test("recommendations for new user, verify security key", async () => {
         ],
       },
     },
-    routes: ["/profile/"],
+    routes: ["/start/"],
   });
   expect(screen.getByText(/Verify your Security key at/i)).toBeInTheDocument();
   const securityPath = screen.getAllByRole("link", { name: /Security/i })[0];
