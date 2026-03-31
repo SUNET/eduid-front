@@ -1,16 +1,14 @@
-@use "variables" as *;
-@use "typography";
 /** Table styles **/
 
 table {
   width: 100%;
-  font-size: $txt-lg;
-  font-family: $inter-light;
+  font-size: var(--txt-lg);
+  font-family: var(--inter-light);
   table-layout: fixed;
   background-color: var(--contrast-color);
 
   @media (max-width: $bp-md) {
-    font-size: $txt-md;
+    font-size: var(--txt-md);
   }
 
   & tbody {
@@ -33,18 +31,18 @@ table {
         }
 
         & span {
-          font-family: $akkurat;
+          font-family: var(--akkurat);
           letter-spacing: 1px;
           font-weight: bold;
           padding: 0;
-          font-size: $txt-xs;
+          font-size: var(--txt-xs);
           text-transform: uppercase;
         }
       }
 
       .verified {
         text-transform: uppercase;
-        font-size: $txt-xs;
+        font-size: var(--txt-xs);
         @extend .text-bold;
       }
 
@@ -71,7 +69,7 @@ table {
 
     & tr {
       &.border-row {
-        font-size: $txt-xs;
+        font-size: var(--txt-xs);
         border-bottom: 1px solid var(--border-gray);
         height: 2rem;
 
@@ -93,7 +91,7 @@ table {
         text-align: center;
 
         a {
-          font-size: $txt-xs;
+          font-size: var(--txt-xs);
         }
       }
     }
@@ -134,12 +132,12 @@ caption {
   color: inherit;
 }
 
-// Help page list
+/* Help page list */
 .keys,
-  // Security keys in use
+  /* Security keys in use */
   .active-keys {
   table-layout: auto;
-  font-size: $txt-sm;
+  font-size: var(--txt-sm);
 
   tr {
     height: auto;

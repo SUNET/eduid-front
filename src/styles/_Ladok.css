@@ -1,4 +1,3 @@
-@use "variables" as *;
 
 .ladok {
   &-university {
@@ -24,7 +23,7 @@
 
   &-universities-status {
     color: var(--error-red);
-    font-size: $txt-md;
+    font-size: var(--txt-md);
   }
 
   svg {

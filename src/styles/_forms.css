@@ -1,8 +1,6 @@
-@use "variables" as *;
-@use "typography";
 /* Form layout elements */
 
-//top margin here assumes that text above has bottom margin of 1rem
+/*top margin here assumes that text above has bottom margin of 1rem */
 .single-input-form .form-group {
   margin-bottom: 0;
   width: 100%;
@@ -12,7 +10,7 @@
   }
 }
 
-// text under inputs
+/* text under inputs */
 .small,
 small {
   font-size: 100% !important;
@@ -36,7 +34,7 @@ form {
     margin-bottom: 0.5rem;
   }
 
-  //places two wrapped input groups on one row
+  /*places two wrapped input groups on one row */
   .input-pair {
     @media (min-width: $bp-xl) {
       display: flex;
@@ -69,7 +67,7 @@ form {
   align-items: unset;
 }
 
-//single input and button on a row
+/*single input and button on a row */
 .single-input-form {
   flex-direction: row;
   align-items: center;
@@ -105,7 +103,7 @@ form {
   }
 }
 
-//fieldset used to group, possibly incorrectly
+/*fieldset used to group, possibly incorrectly */
 fieldset {
   width: 100%;
   position: relative;
@@ -126,7 +124,7 @@ fieldset {
 
 .input-validate-error {
   font-family: monospace;
-  font-size: $txt-xs;
+  font-size: var(--txt-xs);
   color: var(--error-red);
 }
 
@@ -137,27 +135,27 @@ fieldset {
 
   & label {
     letter-spacing: 0;
-    font-size: $txt-md;
+    font-size: var(--txt-md);
   }
 
-  //for orange asterisk after label
+  /*for orange asterisk after label */
   & label.required::after {
     content: " *";
     color: var(--txt-orange);
   }
 
-  // is this used? I think not //
+  /* is this used? I think not // */
   & .help-block {
-    font-size: $txt-md;
+    font-size: var(--txt-md);
     text-transform: lowercase;
   }
 }
 
-//smallish grayish additional info underneath corresponding form elements
+/*smallish grayish additional info underneath corresponding form elements */
 .help-text {
   margin: 0.5rem 0 0;
   color: var(--txt-gray);
-  font-size: $txt-sm;
+  font-size: var(--txt-sm);
   line-height: 1.3;
 
   &.black {

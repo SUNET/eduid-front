@@ -1,4 +1,3 @@
-@use "variables" as *;
 
 /** Signup flow specific styles **/
 
@@ -47,7 +46,7 @@ h3 {
 
 @media (max-width: 375px) {
   #resend-button {
-    font-size: $txt-xs;
+    font-size: var(--txt-xs);
   }
 }
 
@@ -55,7 +54,7 @@ h3 {
   form {
     margin-bottom: 1.25rem;
   }
-  // TODO: This is a duplicate of the same things from Other Device
+  /* TODO: This is a duplicate of the same things from Other Device */
   .response-code-inputs {
     input {
       display: inline-block;

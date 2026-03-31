@@ -1,4 +1,3 @@
-@use "variables" as *;
 /* Overall page structure */
 
 * {
@@ -14,7 +13,7 @@
 
 body {
   min-height: 100vh;
-  font-family: $inter-regular;
+  font-family: var(--inter-regular);
   font-size: 16px;
   line-height: 1.5;
   color: var(--body-txt);
@@ -47,13 +46,13 @@ body {
     }
   }
 }
-// in common for content pages and landing
+/* in common for content pages and landing */
 #content {
   height: 100%;
 }
 
-// same styling as .phoneview-form-container, #delete-account-container,#change-password-container
-// in Email.js = replaced these with with <article>
+/* same styling as .phoneview-form-container, #delete-account-container,#change-password-container */
+/* in Email.js = replaced these with with <article> */
 #content article {
   margin-bottom: 2.5rem;
   padding-bottom: 2.5rem;
@@ -69,7 +68,7 @@ body {
     padding-bottom: 1.75rem;
   }
 
-  //nested
+  /*nested */
   article {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
@@ -86,7 +85,7 @@ body {
   }
 }
 
-// this is a horizontal-margin and should be renamed
+/* this is a horizontal-margin and should be renamed */
 .horizontal-content-margin,
 .vertical-content-margin {
   padding: 0;
@@ -94,12 +93,12 @@ body {
   max-width: 870px;
   margin: 0 auto;
 
-  // this is added to prevent margin collapse (look for other solution if causing problems)
+  /* this is added to prevent margin collapse (look for other solution if causing problems) */
   display: flex;
   flex-direction: column;
 }
 
-// Mimic lead paragraph border
+/* Mimic lead paragraph border */
 hr.border-line {
   margin: 0.5rem 0 2rem;
   border-bottom: 2px solid var(--border-gray);
@@ -143,7 +142,7 @@ hr.border-line {
 @media (max-width: $bp-xs) {
   .horizontal-content-margin,
   .vertical-content-margin {
-    width: calc(100% - #{2 * $margin});
+    width: calc(100% - #{2 * var(--margin)});
   }
 }
 
@@ -157,7 +156,7 @@ hr.border-line {
   }
 }
 
-// hides object from view but still accessible to screen readers
+/* hides object from view but still accessible to screen readers */
 .visuallyhidden {
   border: 0;
   clip: rect(0 0 0 0);

@@ -1,9 +1,8 @@
-@use "variables" as *;
 /* Textual non-button-styled links */
 
 a {
   color: var(--txt-orange);
-  font-family: $akkurat;
+  font-family: var(--akkurat);
   text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -15,7 +14,7 @@ a {
     text-decoration: underline;
   }
 
-  // hiding opt in beta link
+  /* hiding opt in beta link */
   &#stable-link.hidden {
     display: none;
   }
@@ -37,7 +36,7 @@ a.disabled {
   justify-content: space-between;
   padding-top: 2.5rem;
   gap: 20px;
-  font-size: $txt-sm;
+  font-size: var(--txt-sm);
 
   a {
     display: grid;

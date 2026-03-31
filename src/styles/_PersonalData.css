@@ -1,4 +1,3 @@
-@use "variables" as *;
 
 /** Edit name form **/
 
@@ -44,14 +43,14 @@
   flex-wrap: wrap;
 }
 
-// styles for input on white bg
+/* styles for input on white bg */
 .edit-data {
   p.verified {
     padding-bottom: 0;
   }
 }
 
-// styles for displayed names
+/* styles for displayed names */
 .external-names {
   display: flex;
   flex-wrap: wrap;

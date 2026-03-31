@@ -1,6 +1,4 @@
-@use "variables" as *;
-@use "figure";
-// username and password
+/* username and password */
 .username-pw {
   margin-bottom: 2rem;
 
@@ -8,7 +6,7 @@
     margin-top: 0;
 
     .form-group {
-      margin-bottom: $margin;
+      margin-bottom: var(--margin);
     }
 
     .welcome-back-container {
@@ -57,13 +55,13 @@
   }
 }
 
-// multi-factor authentication
+/* multi-factor authentication */
 .options {
   display: flex;
   justify-content: center;
   flex-flow: column;
   align-items: center;
-  margin-top: $margin;
+  margin-top: var(--margin);
   position: relative;
 
   .option-wrapper {
@@ -81,7 +79,7 @@
       justify-content: space-between;
 
       h3 {
-        font-size: $txt-xl;
+        font-size: var(--txt-xl);
       }
 
       h3,
@@ -89,7 +87,7 @@
         margin: 0;
       }
 
-      // duplicate in _buttons.scss?
+      /* duplicate in _buttons.scss? */
       .icon {
         background: transparent;
         padding: 0;
@@ -123,7 +121,7 @@
   }
 }
 
-// use another device
+/* use another device */
 .use-another-device {
   .response-code-inputs {
     input {
@@ -206,7 +204,8 @@
   }
 
   .finished.device2 {
-    $warning_size: 1.5rem;
+    /* TODO: $warning_size was an unused SCSS variable — remove or convert to --warning-size if needed */
+    /* $warning_size: 1.5rem; */
 
     display: flex;
     flex-direction: column;
@@ -226,21 +225,21 @@
 
     @media (max-width: $bp-sm) {
       .x-adjust {
-        margin-left: #{-1 * $list-indent};
+        margin-left: #{-1 * var(--list-indent)};
       }
     }
   }
 
   .developer {
-    // show QR URL at the bottom for non-production environments
+    /* show QR URL at the bottom for non-production environments */
     height: 10rem;
-    font-size: $txt-xs;
+    font-size: var(--txt-xs);
     overflow: hidden;
     word-break: break-all;
   }
 }
 
-// MFA or-line
+/* MFA or-line */
 .or-container {
   display: flex;
   align-items: center;
@@ -257,7 +256,7 @@
   }
 }
 
-//security zone info
+/*security zone info */
 section.intro .status-box {
   margin-bottom: 2rem;
   &.passkey {
@@ -281,7 +280,7 @@ section.other-device-option .buttons {
   margin-bottom: 1.5rem;
 }
 
-// Remove margin-bottom from password field to eliminate extra space above forgot password link
+/* Remove margin-bottom from password field to eliminate extra space above forgot password link */
 section.username-pw-option form .form-group:nth-of-type(2) {
   margin-bottom: 0;
 }

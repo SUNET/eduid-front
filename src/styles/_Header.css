@@ -1,8 +1,5 @@
-@use "variables" as *;
-@use "typography";
-@use "base";
 
-// (desktop first)
+/* (desktop first) */
 
 header {
   background-color: var(--contrast-color);
@@ -17,7 +14,7 @@ header {
     background-image: url(../../img/eduid-logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    margin-right: $margin;
+    margin-right: var(--margin);
     display: flex;
     flex: 1;
     text-align: left;
@@ -49,7 +46,7 @@ header {
         }
       }
 
-      // top level menu item
+      /* top level menu item */
       .menu-item-wrapper {
         display: flex;
         width: 100%;
@@ -58,7 +55,7 @@ header {
 
         a {
           color: var(--body-txt);
-          font-size: $txt-sm;
+          font-size: var(--txt-sm);
           flex: 1;
         }
 
@@ -67,7 +64,7 @@ header {
           border-radius: 1.5rem;
           margin: 0.5rem 0 0.25rem;
         }
-        // chevron
+        /* chevron */
         button {
           background-color: transparent;
           box-shadow: none;
@@ -78,18 +75,18 @@ header {
           }
           @media (max-width: $bp-xl) {
             &:hover svg {
-              color: $bright-orange;
+              color: var(--bright-orange);
             }
           }
         }
       }
 
-      // note: submenu-open only applied for mobile
+      /* note: submenu-open only applied for mobile */
       .submenu,
       .submenu-open {
         li a {
           color: var(--txt-gray);
-          font-size: $txt-xs;
+          font-size: var(--txt-xs);
           display: inline-block;
           padding: 0.625rem 0.85rem;
         }
@@ -101,7 +98,7 @@ header {
         visibility: hidden;
       }
 
-      // individual desktop submenus
+      /* individual desktop submenus */
       @media (min-width: $bp-xl) {
         li {
           display: inline-block;
@@ -131,7 +128,7 @@ header {
           }
         }
 
-        // visible submenus on hover
+        /* visible submenus on hover */
         li:hover {
           svg {
             transform: rotate(180deg);
@@ -152,7 +149,7 @@ header {
       }
     }
 
-    // 2 items: in desktop header / mobile menu
+    /* 2 items: in desktop header / mobile menu */
     .user-name {
       overflow: hidden;
       max-width: 40vw;
@@ -160,8 +157,8 @@ header {
       white-space: nowrap;
       display: inline-block;
       padding: 0.5rem 1rem 0.5rem 0;
-      font-family: $inter-bold;
-      font-size: $txt-sm;
+      font-family: var(--inter-bold);
+      font-size: var(--txt-sm);
       text-align: right;
     }
   }
@@ -185,7 +182,7 @@ header {
           width: 24px;
         }
         &:hover svg {
-          color: $bright-orange;
+          color: var(--bright-orange);
         }
       }
 
@@ -196,19 +193,19 @@ header {
           width: 100%;
         }
 
-        // visible nav on click
+        /* visible nav on click */
         &.active {
           display: flex;
           flex-direction: column;
           opacity: 1;
           position: absolute;
           top: 4.5rem;
-          right: $margin;
+          right: var(--margin);
           width: 20rem;
           background-color: var(--contrast-color);
           box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.07);
           border-radius: 10px;
-          padding: $margin;
+          padding: var(--margin);
           z-index: 200;
           transition: all 0.5s ease;
         }
@@ -224,10 +221,10 @@ header {
           }
         }
 
-        // small screen full width menu
+        /* small screen full width menu */
         @media (max-width: $bp-xs) {
-          min-width: calc(100% - #{2 * $margin});
-          left: $margin;
+          min-width: calc(100% - #{2 * var(--margin)});
+          left: var(--margin);
         }
       }
     }

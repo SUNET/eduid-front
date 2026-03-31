@@ -1,11 +1,9 @@
-@use "variables" as *;
-@use "base";
 
 /* Inputs and form controls, mainly non button */
 input {
   box-sizing: border-box;
-  font-family: $inter-regular;
-  font-size: $txt-xl;
+  font-family: var(--inter-regular);
+  font-size: var(--txt-xl);
   color: var(--body-txt);
   box-shadow: none;
   border-radius: 0;
@@ -21,7 +19,7 @@ input,
 input.is-valid,
 input:focus,
 input.is-valid:focus {
-  outline: $border-width solid var(--border-gray);
+  outline: var(--border-width) solid var(--border-gray);
   background-image: none;
   background-color: var(--contrast-color);
   transition: none;
@@ -30,38 +28,38 @@ input.is-valid:focus {
 }
 
 input::placeholder {
-  font-family: $inter-regular;
-  font-size: $txt-xl;
+  font-family: var(--inter-regular);
+  font-size: var(--txt-xl);
 }
 
 :hover:not(:focus):not(:disabled) {
   &[type="text"],
   &[type="password"],
   &[type="email"] {
-    padding-top: calc(1.25rem + $border-width);
-    border-bottom: $border-width solid var(--body-txt) !important;
+    padding-top: calc(1.25rem + var(--border-width));
+    border-bottom: var(--border-width) solid var(--body-txt) !important;
   }
 }
 
 input.is-invalid,
 input.is-invalid:focus {
-  outline: $border-width solid var(--error-red-t);
+  outline: var(--border-width) solid var(--error-red-t);
   background-image: none;
 }
 
-//tab-focus
+/*tab-focus */
 :focus-visible,
 #mfa-security-key:focus {
-  outline: $border-width dashed var(--body-txt) !important;
+  outline: var(--border-width) dashed var(--body-txt) !important;
   transition: none !important;
 
-  //has parents with overflow hidden
+  /*has parents with overflow hidden */
   &.accordion__button,
   table & {
-    outline-offset: -$border-width;
+    outline-offset: -var(--border-width);
   }
   &.toggle-checkbox + .toggle-switch {
-    outline: $border-width dashed var(--body-txt) !important;
+    outline: var(--border-width) dashed var(--body-txt) !important;
     transition: none;
   }
 }
@@ -79,7 +77,7 @@ input[readonly] {
   outline: none;
 }
 
-//removing chrome autocomplete babyblue
+/*removing chrome autocomplete babyblue */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -94,11 +92,11 @@ select:-webkit-autofill:focus {
 
 /* Radio buttons */
 input[type="radio"] {
-  //remove standard background appearance
+  /*remove standard background appearance */
   appearance: none;
   outline: none;
 
-  //create custom radio button appearance
+  /*create custom radio button appearance */
   display: inline-block;
   width: 1rem;
   height: 1rem;
@@ -106,24 +104,24 @@ input[type="radio"] {
   min-height: 1rem;
   align-self: center;
 
-  //background-color only for content
+  /*background-color only for content */
   background-clip: content-box;
   box-shadow: 0 5px 17px rgb(89 89 89 / 7%);
-  border: $border-width solid $bright-orange;
+  border: var(--border-width) solid var(--bright-orange);
   background-color: transparent;
   border-radius: 50%;
 
-  //to prevent overwrite from input padding, this ensures that the radio button remains round
+  /*to prevent overwrite from input padding, this ensures that the radio button remains round */
   padding: 0;
 
   &:hover {
-    background-color: $bright-orange;
+    background-color: var(--bright-orange);
     cursor: pointer;
     border: none;
   }
 
   &:checked {
-    background-color: $bright-orange;
+    background-color: var(--bright-orange);
     border: none;
 
     .error {
@@ -134,7 +132,7 @@ input[type="radio"] {
   }
 }
 
-//optional styles for centering radio buttons
+/*optional styles for centering radio buttons */
 .radio-input-container {
   display: flex;
 
@@ -146,10 +144,10 @@ input[type="radio"] {
     }
   }
   span {
-    font-size: $txt-xl;
+    font-size: var(--txt-xl);
     align-self: center;
     color: var(--body-txt);
-    font-family: $inter-regular;
+    font-family: var(--inter-regular);
     font-weight: normal;
     margin: 0 2rem 0 0;
     margin-left: 8px;
@@ -231,7 +229,7 @@ input[type="checkbox"] {
   }
 
   .toggle-checkbox:checked + & {
-    background: $bright-orange;
+    background: var(--bright-orange);
 
     &::before {
       left: 29px;
@@ -239,14 +237,14 @@ input[type="checkbox"] {
   }
 }
 
-// orange moon bc default light bg
+/* orange moon bc default light bg */
 #color-mode + .toggle-switch {
   background-repeat: no-repeat;
   background-image: url("../../img/moon-icon-orange.png");
   background-position: 82%;
   background-size: 17px;
 }
-// checked is dark mode
+/* checked is dark mode */
 #color-mode:checked + .toggle-switch {
   background-image: url("../../img/sun-icon-white.png");
   background-position: 10%;
@@ -269,22 +267,22 @@ select {
   margin-top: 3px;
 }
 
-//react-select
+/*react-select */
 .select__multi-value__label {
-  font-size: $txt-xl !important;
+  font-size: var(--txt-xl) !important;
   align-self: center !important;
 }
 
 /* Cross browser */
 
-//Chrome, Safari, Edge, Opera
+/*Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
 }
 
-//Firefox
+/*Firefox */
 input[type="number"] {
   appearance: textfield;
 }
@@ -302,7 +300,7 @@ input:-webkit-autofill {
 @media (max-width: $bp-sm) {
   input,
   .radio-input-container span {
-    font-size: $txt-md;
+    font-size: var(--txt-md);
   }
 
   .input-container {
@@ -310,7 +308,7 @@ input:-webkit-autofill {
   }
 
   input::placeholder {
-    font-size: $txt-md;
+    font-size: var(--txt-md);
   }
 
   footer .toggle {

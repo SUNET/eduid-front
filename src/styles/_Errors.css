@@ -1,4 +1,3 @@
-@use "variables" as *;
 
 .error-page {
   h1 {
@@ -7,13 +6,13 @@
 
   & span {
     line-height: 1.5;
-    font-family: $inter-bold;
-    font-size: $txt-xxl;
+    font-family: var(--inter-bold);
+    font-size: var(--txt-xxl);
   }
 
   & ul {
     margin-bottom: 3.5rem;
-    font-size: $txt-xl;
+    font-size: var(--txt-xl);
 
     div {
       margin-left: 2rem;
@@ -23,7 +22,7 @@
       li:nth-child(5) {
         list-style-type: disc;
         margin-top: 1rem;
-        font-family: $inter-bold;
+        font-family: var(--inter-bold);
       }
 
       li:nth-child(even) {
@@ -34,13 +33,13 @@
 
   & li {
     line-height: 1.5;
-    font-family: $inter-regular;
+    font-family: var(--inter-regular);
     margin-top: 24px;
   }
 
   & .technical-info-heading span {
-    font-family: $inter-bold;
-    font-size: $txt-xl;
+    font-family: var(--inter-bold);
+    font-size: var(--txt-xl);
   }
 
   & .technical-info-box {
@@ -52,13 +51,13 @@
       justify-content: flex-start;
 
       p {
-        font-size: $txt-md;
+        font-size: var(--txt-md);
         padding-bottom: 0;
       }
 
       p:first-child {
         text-transform: uppercase;
-        font-family: $inter-bold;
+        font-family: var(--inter-bold);
         width: 8.125rem;
         padding-right: 1rem;
       }
@@ -74,10 +73,10 @@
   }
 }
 
-// small reddish alert with exclamation symbol
+/* small reddish alert with exclamation symbol */
 .warning-text {
   color: var(--error-red);
-  font-size: $txt-sm;
+  font-size: var(--txt-sm);
 
   .warning-symbol {
     padding-right: 0.5rem;
@@ -96,7 +95,7 @@
 
 .error-info {
   text-align: left;
-  font-size: $txt-md;
+  font-size: var(--txt-md);
 
   tr {
     height: auto;

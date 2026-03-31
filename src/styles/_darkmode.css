@@ -9,12 +9,12 @@ html.dark {
   --txt-orange: #ff6d32;
   --bg-orange: #36251e;
   --error-red: #ff5965;
-  --error-red-t: #ff596580; //with 50% transparency
+  --error-red-t: #ff596580; /* with 50% transparency */
   --bg-gray: #202020;
-  --shadow-green: #177d4d; //success green
+  --shadow-green: #177d4d; /* success green */
   --txt-green: #30d98a;
 
-  //header and footer
+  /*header and footer */
   header .eduid-logo {
     background-image: url(../../img/eduid-logo-darkmode.png) !important;
   }
@@ -35,7 +35,7 @@ html.dark {
     }
   }
 
-  //landing and start page
+  /*landing and start page */
   .status-box.success,
   .landing-howTo div {
     color: #fff;
@@ -66,7 +66,7 @@ html.dark {
 
     .icon-holder {
       color: #fff;
-      //success green color
+      /*success green color */
       img {
         filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
       }
@@ -90,7 +90,7 @@ html.dark {
     }
   }
 
-  //form
+  /*form */
   input:disabled,
   input[readonly] {
     background-color: var(--bg-gray);
@@ -112,7 +112,7 @@ html.dark {
     -webkit-text-fill-color: var(--txt-gray) !important;
   }
 
-  // Akkurat less legible in the dark, possibly add letter-spacing as well
+  /* Akkurat less legible in the dark, possibly add letter-spacing as well */
   a {
     font-weight: bold;
   }

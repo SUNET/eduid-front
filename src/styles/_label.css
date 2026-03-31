@@ -1,10 +1,9 @@
-@use "variables" as *;
 
 label,
 .form-label {
   display: flex;
-  font-size: $txt-md;
-  font-family: $inter-bold;
+  font-size: var(--txt-md);
+  font-family: var(--inter-bold);
   letter-spacing: 0.5px;
   line-height: 1;
   color: var(--body-txt);
@@ -13,10 +12,10 @@ label,
 
 .border-toggle-area {
   border-color: var(--border-gray);
-  border-width: $border-width;
+  border-width: var(--border-width);
   border-style: solid;
   border-radius: 10px;
-  padding: $margin;
+  padding: var(--margin);
   label {
     margin: 0;
   }

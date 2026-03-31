@@ -1,12 +1,11 @@
-@use "variables" as *;
 
 #suggested-password {
   display: table;
   padding: 0.125rem 0.5rem;
   background: var(--bg-orange);
-  font-size: $txt-xxl;
+  font-size: var(--txt-xxl);
   border: none;
-  color: $bright-orange;
+  color: var(--bright-orange);
 }
 
 .form-content {
