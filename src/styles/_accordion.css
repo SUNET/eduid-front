@@ -2,30 +2,28 @@
 /* Accordion */
 
 .accordion {
-  $a: &;
-
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
   border: 2px solid var(--border-gray);
   border-radius: 6px;
   overflow: hidden;
 
   &__item {
-    + #{$a}__item {
+    + .accordion__item {
       border-top: 2px solid var(--border-gray);
     }
 
-    &[open] > #{$a}__heading > #{$a}__button {
+    &[open] > .accordion__heading > .accordion__button {
       background: var(--bg-orange);
     }
 
-    #{$a}__heading::marker,
-    #{$a}__heading::-webkit-details-marker {
+    .accordion__heading::marker,
+    .accordion__heading::-webkit-details-marker {
       display: none;
     }
     /* Clickable */
-    #{$a}__heading {
+    .accordion__heading {
       list-style: none;
-      #{$a}__button {
+      .accordion__button {
         display: flex;
         cursor: pointer;
         background: var(--bg-gray);
@@ -41,12 +39,12 @@
           background: var(--btn-orange);
           color: var(--contrast-color);
 
-          #{$a}-title {
+          .accordion-title {
             text-decoration: underline;
           }
         }
 
-        #{$a}-icon {
+        .accordion-icon {
           svg {
             text-align: center;
             font-size: var(--txt-sm);
@@ -58,7 +56,7 @@
           }
         }
 
-        #{$a}-title {
+        .accordion-title {
           font-family: var(--akkurat);
           font-size: var(--txt-lg);
           line-height: 1.4;
@@ -69,7 +67,7 @@
           }
         }
 
-        #{$a}-description {
+        .accordion-description {
           font-size: var(--txt-xs);
           display: block;
           margin-bottom: 0;
@@ -84,7 +82,7 @@
     }
 
     /* Content */
-    #{$a}__panel {
+    .accordion__panel {
       background-color: var(--contrast-color);
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
@@ -106,16 +104,16 @@
     &.expanded.disabled {
       color: var(--txt-gray);
 
-      #{$a}__button,
-      #{$a}__button:hover {
+      .accordion__button,
+      .accordion__button:hover {
         color: var(--txt-gray) !important;
         background-color: var(--bg-gray) !important;
       }
-      #{$a}__panel {
+      .accordion__panel {
         color: var(--txt-gray);
       }
 
-      #{$a}-icon img {
+      .accordion-icon img {
         filter: grayscale(1);
       }
     }
@@ -131,7 +129,7 @@
     box-shadow: none;
     border-radius: 0;
 
-    #{$a}__item {
+    .accordion__item {
       margin-bottom: 10px;
       border: 2px solid var(--border-gray);
       border-radius: 6px;
@@ -145,19 +143,19 @@
         }
       }
 
-      &.expanded > #{$a}__heading > #{$a}__button {
+      &.expanded > .accordion__heading > .accordion__button {
         background: var(--bg-orange);
       }
 
       /* Clickable */
-      #{$a}__heading {
-        #{$a}__button {
+      .accordion__heading {
+        .accordion__button {
           &:hover {
             color: var(--contrast-color);
             background: var(--btn-orange);
           }
 
-          #{$a}-title {
+          .accordion-title {
             font-size: var(--txt-md);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -166,7 +164,7 @@
       }
 
       /* Content */
-      #{$a}__panel {
+      .accordion__panel {
         padding: 1rem 1rem 1.25rem;
 
         p {
@@ -183,15 +181,15 @@
 
       &.disabled,
       &.disabled:hover {
-        #{$a}__button,
-        #{$a}__button:hover {
+        .accordion__button,
+        .accordion__button:hover {
           background-color: var(--contrast-color) !important;
         }
       }
 
       &.expanded.disabled {
-        #{$a}__button,
-        #{$a}__button:hover {
+        .accordion__button,
+        .accordion__button:hover {
           background-color: var(--bg-gray) !important;
         }
       }
