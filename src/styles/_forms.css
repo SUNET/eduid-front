@@ -113,7 +113,13 @@ fieldset {
   }
 
   legend {
-    @extend label;
+    display: flex;
+    font-size: var(--txt-md);
+    font-family: var(--inter-bold);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    color: var(--body-txt);
+    margin: 0 5px 5px 0;
   }
 
   legend.required::after {

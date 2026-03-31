@@ -104,10 +104,10 @@ hr.border-line {
   border-bottom: 2px solid var(--border-gray);
   border-top: none;
   opacity: unset;
+}
 
-  &-lesser {
-    border-bottom: 1px dashed var(--border-gray);
-  }
+hr.border-line-lesser {
+  border-bottom: 1px dashed var(--border-gray);
 }
 
 /* eg for help-texts */

@@ -55,7 +55,10 @@
   margin: 1rem 0;
 }
 .status-box {
-  @extend .accordion;
+  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+  border: 2px solid var(--border-gray);
+  border-radius: 6px;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 30px 1fr;
   grid-template-rows: auto;

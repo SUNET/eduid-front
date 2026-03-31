@@ -49,8 +49,9 @@ header {
       /* top level menu item */
       .menu-item-wrapper {
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        @extend .flex-between;
         padding-left: 0.85rem;
 
         a {

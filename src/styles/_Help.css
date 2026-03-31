@@ -32,7 +32,11 @@
   }
 
   section {
-    @extend .notice-box;
+    padding: 1.25rem 1rem 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid var(--bright-orange);
+    border-radius: 10px;
+    background: var(--contrast-color);
   }
 
   .accordion:not(:last-child) {

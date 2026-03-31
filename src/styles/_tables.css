@@ -43,7 +43,8 @@ table {
       .verified {
         text-transform: uppercase;
         font-size: var(--txt-xs);
-        @extend .text-bold;
+        font-family: var(--inter-bold);
+        font-weight: normal;
       }
 
       &.remove-data {
@@ -171,7 +172,8 @@ caption {
 }
 
 .keys {
-  @extend code;
+  font-family: monospace;
+  color: var(--txt-gray);
   tr {
     &:nth-child(even) {
       background-color: var(--bg-gray);

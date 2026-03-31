@@ -27,8 +27,13 @@ dialog[open] {
     }
   }
 
-  &-dialog {
-    @extend .horizontal-content-margin;
+  /* Note: .modal-dialog styles are defined outside this block
+     because native CSS nesting & does not support BEM concatenation */
+}
+
+.modal-dialog {
+    padding: 0;
+    width: 58%;
     max-width: calc(870px - 4rem);
     background-color: var(--contrast-color);
     border-radius: 20px;
@@ -49,7 +54,8 @@ dialog[open] {
           display: flex;
           text-transform: none;
           justify-content: space-between;
-          @extend .heading-2;
+          font-size: 1.5rem;
+          margin-bottom: 0.75em;
         }
       }
 
@@ -130,4 +136,3 @@ dialog[open] {
       }
     }
   }
-}
