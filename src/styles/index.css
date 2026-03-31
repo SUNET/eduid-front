@@ -1,0 +1,37 @@
+/** Note! Order of import below affects cascaded application of styles, so change with care. **/
+
+@import "./_reset.css";
+@import "./_variables.css";
+@import "./_fonts.css";
+@import "./_typography.css";
+@import "./_base.css";
+@import "./_forms.css";
+@import "./_inputs.css";
+@import "./_label.css";
+@import "./_buttons.css";
+@import "./_links.css";
+@import "./_img.css";
+@import "./_modals.css";
+@import "./_tables.css";
+@import "./_lists.css";
+@import "./_figure.css";
+@import "./_timer.css";
+@import "./_Help.css";
+@import "./_AccountLinking.css";
+@import "./_ChangePassword.css";
+@import "./_DashboardMain.css";
+@import "./_Emails.css";
+@import "./_Footer.css";
+@import "./_Header.css";
+@import "./_Notifications.css";
+@import "./_ResetPassword.css";
+@import "./_SignupMain.css";
+@import "./_Splash.css";
+@import "./_Errors.css";
+@import "./_Login.css";
+@import "./_PersonalData.css";
+@import "./_Ladok.css";
+@import "./_reactSelect.css";
+@import "./_accordion.css";
+@import "./_landingPage.css";
+@import "./_darkmode.css";

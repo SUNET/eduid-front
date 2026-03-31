@@ -11,7 +11,7 @@ import indexSlice from "slices/IndexConfig";
 import { updateIntl } from "slices/Internationalisation";
 import { showNotification } from "slices/Notifications";
 import { setupLanguage } from "translation";
-import "../../src/styles/index.scss";
+import "../../src/styles/index.css";
 import "./public-path";
 
 function showErrorMsg() {
