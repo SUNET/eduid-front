@@ -223,7 +223,7 @@ header {
 
         /* small screen full width menu */
         @media (--bp-xs) {
-          min-width: calc(100% - #{2 * var(--margin)});
+          min-width: calc(100% - 2 * var(--margin));
           left: var(--margin);
         }
       }

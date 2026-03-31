@@ -225,7 +225,7 @@
 
     @media (--bp-sm) {
       .x-adjust {
-        margin-left: #{-1 * var(--list-indent)};
+        margin-left: calc(-1 * var(--list-indent));
       }
     }
   }

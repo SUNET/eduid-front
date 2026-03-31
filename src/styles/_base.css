@@ -142,7 +142,7 @@ hr.border-line {
 @media (--bp-xs) {
   .horizontal-content-margin,
   .vertical-content-margin {
-    width: calc(100% - #{2 * var(--margin)});
+    width: calc(100% - 2 * var(--margin));
   }
 }
 
