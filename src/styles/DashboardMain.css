@@ -55,7 +55,6 @@
 }
 .status-box {
   box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
-  border: 2px solid var(--border-gray);
   border-radius: 6px;
   overflow: hidden;
   display: grid;
@@ -66,7 +65,7 @@
   padding: 1rem;
   background-color: var(--contrast-color);
   margin-top: 0.5rem;
-  border: 1px var(--success-green) solid !important;
+  border: 1px var(--success-green) solid;
 
   h3 {
     line-height: 1.4;
