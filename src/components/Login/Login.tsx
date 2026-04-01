@@ -35,15 +35,7 @@ function Login(): React.JSX.Element {
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
-  // const intl = useIntl();
   const [fetchNext, { isError }] = loginApi.useLazyFetchNextQuery();
-
-  // useEffect(() => {
-  //   document.title = intl.formatMessage({
-  //     id: "document title Log in",
-  //     defaultMessage: "Log in | eduID",
-  //   });
-  // }, [intl]);
 
   useEffect(() => {
     if (isError) {

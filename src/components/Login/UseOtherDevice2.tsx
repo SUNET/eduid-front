@@ -25,15 +25,7 @@ function UseOtherDevice2() {
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
   const initialFetchDone = useRef(false);
-  // const intl = useIntl();
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
-
-  // useEffect(() => {
-  //   document.title = intl.formatMessage({
-  //     id: "document title Log in using another device",
-  //     defaultMessage: "Log in using another device | eduID",
-  //   });
-  // }, [intl]);
 
   useEffect(() => {
     if (loginRef) {

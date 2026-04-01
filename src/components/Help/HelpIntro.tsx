@@ -15,15 +15,6 @@ import { UsingEduID } from "./UsingEduID";
 import { VerificationOfIdentity } from "./VerificationOfIdentity";
 
 export function Help(): React.JSX.Element {
-  // const intl = useIntl();
-
-  // useEffect(() => {
-  //   document.title = intl.formatMessage({
-  //     id: "document title Help",
-  //     defaultMessage: "Help | eduID",
-  //   });
-  // }, [intl]);
-
   return (
     <React.Fragment>
       <section className="intro">

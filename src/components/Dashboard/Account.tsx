@@ -14,13 +14,6 @@ import LadokContainer from "./Ladok";
 export function Account(): React.JSX.Element {
   const intl = useIntl();
 
-  // useEffect(() => {
-  //   document.title = intl.formatMessage({
-  //     id: "document title Account",
-  //     defaultMessage: "Account | eduID",
-  //   });
-  // }, [intl]);
-
   return (
     <React.Fragment>
       <section className="intro">

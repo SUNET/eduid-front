@@ -8,13 +8,6 @@ import { FormattedMessage, useIntl } from "react-intl";
 export function Security(): React.JSX.Element {
   const intl = useIntl();
 
-  // useEffect(() => {
-  //   document.title = intl.formatMessage({
-  //     id: "document title Security",
-  //     defaultMessage: "Security | eduID",
-  //   });
-  // }, [intl]);
-
   return (
     <React.Fragment>
       <section className="intro">
