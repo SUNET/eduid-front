@@ -76,7 +76,7 @@
     margin-bottom: 0.5rem;
   }
   &.success {
-    border-color: rgba(23, 125, 77, 0.25) !important;
+    border-color: rgba(23, 125, 77, 0.25);
     &:nth-of-type(1) {
       background-color: #f3f9f5;
       background-color: rgba(23, 125, 77, 0.1);
