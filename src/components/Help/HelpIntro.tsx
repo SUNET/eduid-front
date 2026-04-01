@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import React from "react";
+import { FormattedMessage } from "react-intl";
 import { Accordion } from "../Common/AccordionItemTemplate";
 import ScrollToTopButton from "../ScrollToTopButton";
 import { AboutEduID } from "./AboutEduID";
@@ -15,14 +15,14 @@ import { UsingEduID } from "./UsingEduID";
 import { VerificationOfIdentity } from "./VerificationOfIdentity";
 
 export function Help(): React.JSX.Element {
-  const intl = useIntl();
+  // const intl = useIntl();
 
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Help",
-      defaultMessage: "Help | eduID",
-    });
-  }, [intl]);
+  // useEffect(() => {
+  //   document.title = intl.formatMessage({
+  //     id: "document title Help",
+  //     defaultMessage: "Help | eduID",
+  //   });
+  // }, [intl]);
 
   return (
     <React.Fragment>

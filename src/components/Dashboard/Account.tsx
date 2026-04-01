@@ -5,7 +5,7 @@ import DeleteAccount from "components/Dashboard/DeleteAccount";
 import Emails from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
 import { SECURITY_PATH } from "components/IndexMain";
-import React, { useEffect } from "react";
+import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountLinking } from "./AccountLinking";
 import LadokContainer from "./Ladok";
@@ -14,12 +14,12 @@ import LadokContainer from "./Ladok";
 export function Account(): React.JSX.Element {
   const intl = useIntl();
 
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Account",
-      defaultMessage: "Account | eduID",
-    });
-  }, [intl]);
+  // useEffect(() => {
+  //   document.title = intl.formatMessage({
+  //     id: "document title Account",
+  //     defaultMessage: "Account | eduID",
+  //   });
+  // }, [intl]);
 
   return (
     <React.Fragment>

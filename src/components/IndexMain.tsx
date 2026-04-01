@@ -1,7 +1,8 @@
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { useIntl } from "react-intl";
 import { Navigate, Route, Routes, useLocation } from "react-router";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
@@ -40,12 +41,45 @@ export const CHPASS_BASE_PATH = "/chpass";
 
 export const SETTINGS_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
 
+const TITLE_MAP: ReadonlyArray<{ match: string; id: string; defaultMessage: string }> = [
+  {
+    match: "/login/other/",
+    id: "document title Log in using another device",
+    defaultMessage: "Log in using another device | eduID",
+  },
+  { match: LOGIN_BASE_PATH, id: "document title Log in", defaultMessage: "Log in | eduID" },
+  { match: ACCOUNT_PATH, id: "document title Account", defaultMessage: "Account | eduID" },
+  { match: CHPASS_BASE_PATH, id: "document title Change Password", defaultMessage: "Change password | eduID" },
+  { match: START_PATH, id: "document title Start", defaultMessage: "Start | eduID" },
+  { match: IDENTITY_PATH, id: "document title Identity", defaultMessage: "Identity | eduID" },
+  { match: SECURITY_PATH, id: "document title Security", defaultMessage: "Security | eduID" },
+  { match: "/help", id: "document title Help", defaultMessage: "Help | eduID" },
+  { match: "/reset-password", id: "document title Reset Password", defaultMessage: "Reset password | eduID" },
+  { match: SIGNUP_BASE_PATH, id: "document title Register", defaultMessage: "Register | eduID" },
+];
+
+function useDocumentTitle() {
+  const { pathname } = useLocation();
+  const intl = useIntl();
+
+  useEffect(() => {
+    const entry = TITLE_MAP.find(({ match }) => pathname.startsWith(match));
+    if (entry) {
+      document.title = intl.formatMessage({ id: entry.id, defaultMessage: entry.defaultMessage });
+    } else {
+      document.title = "eduID";
+    }
+  }, [pathname, intl]);
+}
+
 export function IndexMain(): React.JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
   const showAuthenticateModal = SETTINGS_PATHS.some((path) => location.pathname.startsWith(path));
   const isIndex = location.pathname === "/";
+
+  useDocumentTitle();
 
   // Legacy /profile redirects
   if (location.pathname === "/profile" || location.pathname === "/profile/") {

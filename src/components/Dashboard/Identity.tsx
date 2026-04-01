@@ -32,12 +32,12 @@ function Identity(): React.JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Identity",
-      defaultMessage: "Identity | eduID",
-    });
-  }, [intl]);
+  // useEffect(() => {
+  //   document.title = intl.formatMessage({
+  //     id: "document title Identity",
+  //     defaultMessage: "Identity | eduID",
+  //   });
+  // }, [intl]);
 
   if (!isAppLoaded) {
     /* The accordions preExpanded option is only used at the first render of the component,
