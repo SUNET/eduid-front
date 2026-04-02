@@ -1,6 +1,6 @@
 import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
-import { CHPASS_BASE_PATH } from "components/IndexMain";
+import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -10,8 +10,7 @@ import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
-// exported for use in tests
-export const finish_url = "account";
+const finish_url = ACCOUNT_PATH;
 
 export interface ChangePasswordFormProps {
   finish_url: string; // URL to direct browser to when user cancels password change, or completes it
