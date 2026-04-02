@@ -95,7 +95,9 @@ test("renders UsernamePw as expected", async () => {
 });
 
 test("renders the login page title", () => {
-  render(<IndexMain />);
+  render(<IndexMain />, {
+    routes: [`/login/${TEST_REF}`],
+  });
   expect(document.title).toContain("Log in");
 });
 
