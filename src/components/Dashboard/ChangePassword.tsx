@@ -10,12 +10,6 @@ import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 
-const finish_url = ACCOUNT_PATH;
-
-export interface ChangePasswordFormProps {
-  finish_url: string; // URL to direct browser to when user cancels password change, or completes it
-}
-
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
@@ -76,7 +70,7 @@ export function ChangePassword() {
       // Callback from sub-component when the user clicks on the button to abort changing password
       event.preventDefault();
 
-      navigate(finish_url);
+      navigate(ACCOUNT_PATH);
     },
     [navigate],
   );
