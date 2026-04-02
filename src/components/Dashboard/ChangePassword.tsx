@@ -1,5 +1,6 @@
 import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
+import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -8,13 +9,6 @@ import { useNavigate } from "react-router";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
-
-// exported for use in tests
-export const finish_url = "/profile/account";
-
-export interface ChangePasswordFormProps {
-  finish_url: string; // URL to direct browser to when user cancels password change, or completes it
-}
 
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
@@ -48,7 +42,7 @@ export function ChangePassword() {
       const response = await fetchSuggestedPassword();
       if (isMounted.current) {
         if (response.isSuccess) {
-          navigate("/profile/chpass");
+          navigate(CHPASS_BASE_PATH);
         }
       }
     } catch (error) {
@@ -62,7 +56,7 @@ export function ChangePassword() {
       if (newPassword) {
         const response = await changePassword({ new_password: newPassword });
         if (response.isSuccess) {
-          navigate("/profile/chpass/success", {
+          navigate(`${CHPASS_BASE_PATH}/success`, {
             state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
           });
         }
@@ -76,7 +70,7 @@ export function ChangePassword() {
       // Callback from sub-component when the user clicks on the button to abort changing password
       event.preventDefault();
 
-      navigate(finish_url);
+      navigate(ACCOUNT_PATH);
     },
     [navigate],
   );

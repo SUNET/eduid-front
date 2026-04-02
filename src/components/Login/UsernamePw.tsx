@@ -5,6 +5,7 @@ import TextInput from "components/Common/EduIDTextInput";
 import { PassKey } from "components/Common/Passkey";
 import PasswordInput from "components/Common/PasswordInput";
 import UserNameInput from "components/Common/UserNameInput";
+import { RESET_PASSWORD_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
@@ -310,7 +311,7 @@ function RenderResetPasswordLink(): React.JSX.Element {
       dispatch(resetPasswordSlice.actions.setEmailAddress(usernameField.input.value));
     }
     dispatch(clearNotifications());
-    navigate("/reset-password/");
+    navigate(RESET_PASSWORD_PATH);
   };
 
   return (

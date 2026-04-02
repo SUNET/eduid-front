@@ -1,5 +1,6 @@
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -82,11 +83,11 @@ function Login(): React.JSX.Element {
        * change to/from 'login/password' when that module is used.
        */
       if (next_page === "USERNAMEPASSWORD") {
-        navigate(`/login/password/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/password/${ref}`);
       } else if (next_page === "PASSWORD") {
-        navigate(`/login/mfa/password/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/mfa/password/${ref}`);
       } else {
-        navigate(`/login/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/${ref}`);
       }
     }
   }, [navigate, next_page, ref]);

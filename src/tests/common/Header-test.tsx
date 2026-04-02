@@ -1,5 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import { Header } from "components/Common/Header";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { signupTestState } from "tests/helperFunctions/SignupTestApp-rtl";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
@@ -68,7 +69,7 @@ test.each(["/register", "/error", "/reset-password"])("shows Login button on %s 
 test("shows Register button on login page with auth options", () => {
   render(<Header />, {
     state: loginPageState,
-    routes: ["/login/abc123"],
+    routes: [`${LOGIN_BASE_PATH}/abc123`],
   });
 
   const registerButton = screen.getByRole("button", { name: /create eduid/i });
@@ -81,7 +82,7 @@ test("when Register button is clicked, changes header button text to Login", asy
       ...loginPageState,
       signup: { ...signupTestState.signup },
     },
-    routes: ["/login/abc123"],
+    routes: [`${LOGIN_BASE_PATH}/abc123`],
   });
 
   const registerButton = screen.getByRole("button", { name: /create eduid/i });

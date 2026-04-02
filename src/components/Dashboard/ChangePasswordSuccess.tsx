@@ -1,11 +1,11 @@
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
+import { ACCOUNT_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
-import { finish_url } from "./ChangePassword";
 
 export function ChangePasswordSuccess(): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
@@ -19,7 +19,7 @@ export function ChangePasswordSuccess(): React.JSX.Element {
 
   return (
     <Splash showChildren={is_loaded}>
-      <form method="GET" action={finish_url}>
+      <form method="GET" action={ACCOUNT_PATH}>
         <section className="intro">
           <h1>
             <FormattedMessage
