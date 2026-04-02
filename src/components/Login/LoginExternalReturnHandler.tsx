@@ -4,6 +4,7 @@ import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { resetPasswordApi } from "apis/eduidResetPassword";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOCALIZED_MESSAGES } from "globals";
 import { useCallback, useEffect } from "react";
@@ -88,7 +89,7 @@ export function LoginExternalReturnHandler() {
         }
 
         // TODO: Navigate to errors page here
-        navigate("/login/"); // GOTO start
+        navigate(LOGIN_BASE_PATH); // GOTO start
       }
     },
     [

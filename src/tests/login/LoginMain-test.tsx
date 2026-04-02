@@ -1,6 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { IndexMain } from "components/IndexMain";
+import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { initialState as configInitialState } from "slices/IndexConfig";
@@ -51,7 +51,7 @@ function renderLoginPage(route: string, options: StateOptions = {}) {
 test("show splash screen when not configured", () => {
   render(<IndexMain />, {
     state: { config: configInitialState },
-    routes: ["/login/abc123"],
+    routes: [`${LOGIN_BASE_PATH}/abc123`],
   });
 
   expect(screen.getByRole("progressbar")).toBeInTheDocument();
@@ -66,8 +66,7 @@ test("renders FINISHED as expected", async () => {
       parameters: { SAMLResponse: "saml-response" },
     }),
   );
-
-  renderLoginPage(`/login/${TEST_REF}`);
+  renderLoginPage(`${LOGIN_BASE_PATH}/${TEST_REF}`);
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -84,7 +83,7 @@ test("renders UsernamePw as expected", async () => {
     }),
   );
 
-  renderLoginPage(`/login/password/${TEST_REF}`);
+  renderLoginPage(`${LOGIN_BASE_PATH}/password/${TEST_REF}`);
 
   await waitFor(() => screen.getByRole("heading"));
 
@@ -108,7 +107,7 @@ test("renders passkey button as expected", async () => {
     }),
   );
 
-  renderLoginPage(`/login/password/${TEST_REF}`, { webauthn: true });
+  renderLoginPage(`${LOGIN_BASE_PATH}/password/${TEST_REF}`, { webauthn: true });
 
   await waitFor(() => screen.getByRole("heading", { level: 1 }));
 

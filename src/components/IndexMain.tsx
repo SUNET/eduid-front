@@ -29,6 +29,8 @@ import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
+export const LOGIN_BASE_PATH = "/login";
+export const RESET_PASSWORD_PATH = "/reset-password";
 export const START_PATH = "/start";
 export const ACCOUNT_PATH = "/account";
 export const SECURITY_PATH = "/security";
@@ -68,12 +70,15 @@ export function IndexMain(): React.JSX.Element {
                     {/* Signup */}
                     <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
                     {/* Login */}
-                    <Route path="/login/ext-return/:app_name/:authn_id" element={<LoginExternalReturnHandler />} />
-                    <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
-                    <Route path="/login/password/:ref" element={<Login />} />
-                    <Route path="/login/:ref" element={<Login />} />
-                    <Route path="/login/mfa/password/:ref" element={<Login />} />
-                    <Route path="/reset-password/*" element={<ResetPasswordApp />} />
+                    <Route
+                      path={`${LOGIN_BASE_PATH}/ext-return/:app_name/:authn_id`}
+                      element={<LoginExternalReturnHandler />}
+                    />
+                    <Route path={`${LOGIN_BASE_PATH}/other/:state_id`} element={<UseOtherDevice2 />} />
+                    <Route path={`${LOGIN_BASE_PATH}/password/:ref`} element={<Login />} />
+                    <Route path={`${LOGIN_BASE_PATH}/:ref`} element={<Login />} />
+                    <Route path={`${LOGIN_BASE_PATH}/mfa/password/:ref`} element={<Login />} />
+                    <Route path={RESET_PASSWORD_PATH} element={<ResetPasswordApp />} />
                     {/* Dashboard */}
                     <Route path={SECURITY_PATH} element={<Security />} />
                     <Route path={ACCOUNT_PATH} element={<Account />} />

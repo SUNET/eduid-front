@@ -11,7 +11,7 @@ import {
 } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
-import { IndexMain } from "components/IndexMain";
+import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
@@ -65,11 +65,11 @@ test("can click 'forgot password' with an e-mail address", async () => {
         throttled_seconds: 60,
       };
       return HttpResponse.json({ type: "test response", payload: payload });
-    })
+    }),
   );
 
   render(<IndexMain />, {
-    routes: [`/login/${ref}`],
+    routes: [`${LOGIN_BASE_PATH}/${ref}`],
     state: {
       ...loginTestState,
       resetPassword: {
@@ -178,7 +178,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
         }
         const payload: NewPasswordResponse = {};
         return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
-      }
+      },
     ),
     http.post("https://idp.eduid.docker/services/reset-password/new-password", async ({ request }) => {
       const body = (await request.json()) as NewPasswordRequest;
@@ -187,11 +187,11 @@ test("can click 'forgot password' without an e-mail address", async () => {
       }
       const payload: NewPasswordResponse = {};
       return new HttpResponse(JSON.stringify({ type: "test response", payload: payload }));
-    })
+    }),
   );
 
   render(<IndexMain />, {
-    routes: [`/login/${ref}`],
+    routes: [`${LOGIN_BASE_PATH}/${ref}`],
     state: {
       ...loginTestState,
       resetPassword: {

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -250,7 +251,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
     if (data?.login_ref) {
       dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
-      navigate(`/login/${data.login_ref}`);
+      navigate(`${LOGIN_BASE_PATH}/${data.login_ref}`);
     }
   }
 

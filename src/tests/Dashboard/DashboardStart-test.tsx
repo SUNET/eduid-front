@@ -1,4 +1,4 @@
-import { IDENTITY_PATH, IndexMain, SECURITY_PATH } from "components/IndexMain";
+import { IDENTITY_PATH, IndexMain, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
@@ -19,7 +19,7 @@ test("start page heading text for new user", async () => {
         },
       },
     },
-    routes: ["/start/"],
+    routes: [START_PATH],
   });
   expect(screen.getAllByRole("progressbar")[0]).toBeInTheDocument();
   expect(screen.getAllByRole("progressbar")[0]).toHaveClass("spinner");
@@ -43,7 +43,7 @@ test("recommendations for new users, connect your identity", async () => {
         },
       },
     },
-    routes: ["/start/"],
+    routes: [START_PATH],
   });
 
   expect(screen.getByText(/Connect your identity to eduID at/i)).toBeInTheDocument();
@@ -90,7 +90,7 @@ test("recommendations for new users, add your security key", async () => {
         ],
       },
     },
-    routes: ["/start/"],
+    routes: [START_PATH],
   });
 
   expect(screen.getByText(/Add multi-factor authentication at/i)).toBeInTheDocument();
@@ -139,7 +139,7 @@ test("recommendations for new user, verify security key", async () => {
         ],
       },
     },
-    routes: ["/start/"],
+    routes: [START_PATH],
   });
   expect(screen.getByText(/Verify your Security key at/i)).toBeInTheDocument();
   const securityPath = screen.getAllByRole("link", { name: /Security/i })[0];

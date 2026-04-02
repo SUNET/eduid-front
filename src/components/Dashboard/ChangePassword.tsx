@@ -1,5 +1,6 @@
 import securityApi from "apis/eduidSecurity";
 import Splash from "components/Common/Splash";
+import { CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
@@ -48,7 +49,7 @@ export function ChangePassword() {
       const response = await fetchSuggestedPassword();
       if (isMounted.current) {
         if (response.isSuccess) {
-          navigate("chpass");
+          navigate(CHPASS_BASE_PATH);
         }
       }
     } catch (error) {
@@ -62,7 +63,7 @@ export function ChangePassword() {
       if (newPassword) {
         const response = await changePassword({ new_password: newPassword });
         if (response.isSuccess) {
-          navigate("chpass/success", {
+          navigate(`${CHPASS_BASE_PATH}/success`, {
             state: { password: newPassword, isSuggested: renderSuggested } as ChangePasswordSuccessState,
           });
         }

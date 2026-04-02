@@ -2,7 +2,7 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
+import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -52,7 +52,7 @@ export function ExternalReturnHandler() {
         }
       }
 
-      navigate("/start"); // GOTO start
+      navigate(START_PATH); // GOTO start
     },
     [dispatch, navigate],
   );

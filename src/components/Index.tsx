@@ -11,6 +11,7 @@ import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
 import EduIDButton from "./Common/EduIDButton";
 import Splash from "./Common/Splash";
+import { SIGNUP_BASE_PATH } from "./IndexMain";
 
 export function Index() {
   const navigate = useNavigate();
@@ -83,7 +84,7 @@ export function Index() {
           />
         </p>
         <div className="buttons">
-          <EduIDButton onClick={() => navigate("/register")} buttonstyle="primary" id="sign-up-button">
+          <EduIDButton onClick={() => navigate(SIGNUP_BASE_PATH)} buttonstyle="primary" id="sign-up-button">
             <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
           </EduIDButton>
           <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
