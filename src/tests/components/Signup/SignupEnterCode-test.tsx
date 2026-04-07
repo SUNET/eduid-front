@@ -177,7 +177,7 @@ describe("ProcessEmailCode", () => {
     };
 
     const { container } = render(<ProcessEmailCode />, { state });
-    expect(container.innerHTML).toBe("");
+    expect(container).toBeEmptyDOMElement();
   });
 
   test("navigates to password page on successful verification", async () => {
