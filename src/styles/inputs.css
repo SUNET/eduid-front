@@ -53,7 +53,7 @@ input.is-invalid:focus {
   transition: none !important;
 
   /*has parents with overflow hidden */
-  &.accordion__button,
+  .accordion summary&,
   table & {
     outline-offset: -var(--border-width);
   }

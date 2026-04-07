@@ -360,7 +360,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         />
       </p>
 
-      <Accordion className="accordion accordion-nested">
+      <Accordion className="accordion nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
           title={<FormattedMessage description="BankID vetting button" defaultMessage="with a BankID" />}
