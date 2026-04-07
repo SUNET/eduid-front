@@ -4,7 +4,6 @@
   box-shadow: var(--shadow-sm);
   border: 2px solid var(--border-gray);
   border-radius: 6px;
-  overflow: hidden;
 
   form {
     margin-top: 0;
@@ -13,6 +12,35 @@
   & details {
     & + details {
       border-top: 2px solid var(--border-gray);
+    }
+
+    &:first-of-type summary > div {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:last-of-type summary > div {
+      border-radius: 0 0 4px 4px;
+    }
+
+    &:last-of-type[open] summary > div {
+      border-radius: 0;
+    }
+
+    &:last-of-type > .panel {
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* single item */
+    &:only-of-type summary > div {
+      border-radius: 4px;
+    }
+
+    &:only-of-type[open] summary > div {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:only-of-type > .panel {
+      border-radius: 0 0 4px 4px;
     }
 
     &[open] > summary > div {
@@ -26,6 +54,7 @@
       &::-webkit-details-marker {
         display: none;
       }
+
 
       & > div {
         display: flex;
@@ -113,7 +142,6 @@
       margin-bottom: 10px;
       border: 2px solid var(--border-gray);
       border-radius: 6px;
-      overflow: hidden;
 
       & + details {
         border-top: 2px solid var(--border-gray);
@@ -132,6 +160,8 @@
       }
 
       & summary > div {
+        border-radius: 4px;
+
         &:hover {
           color: var(--contrast-color);
           background: var(--btn-orange);
@@ -146,6 +176,7 @@
 
       & > .panel {
         padding: 1rem 1rem 1.25rem;
+        border-radius: 0 0 4px 4px;
 
         & p {
           font-size: var(--txt-lg);
