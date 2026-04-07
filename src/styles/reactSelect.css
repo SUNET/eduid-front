@@ -144,7 +144,7 @@ form .react-select,
     &.react-select__control--is-disabled {
       cursor: not-allowed;
       pointer-events: all !important;
-      background-color: #db3a00;
+      background-color: var(--btn-orange);
       border-color: inherit;
       color: #fff;
       opacity: 0.4;

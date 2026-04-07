@@ -1,5 +1,5 @@
 .help-content > li {
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid var(--border-gray);
   padding-top: 2rem;
   padding-bottom: 2rem;
   &:last-child {
