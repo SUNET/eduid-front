@@ -265,12 +265,14 @@ Uses lazy-loaded `zxcvbn`. Displays `<meter>` element with score 0-4 mapping to 
 
 ### Box Shadows
 
-| Value                                       | Usage                        |
-|---------------------------------------------|------------------------------|
-| `0 5px 17px rgb(89 89 89 / 7%)`            | Buttons, radio buttons       |
-| `0 4px 14px rgb(89 89 89 / 7%)`            | Login options, tooltips      |
-| `0 1px 3px 2px rgb(0 0 0 / 5%)`            | Accordion                    |
-| `0 -6px 17px rgba(89, 89, 89, 0.07)`       | Header navigation            |
+Defined as CSS custom properties on `:root` in `variables.css`.
+
+| Token          | Value                                       | Usage                              |
+|----------------|---------------------------------------------|------------------------------------|
+| `--shadow-sm`  | `0 1px 3px 2px rgb(0 0 0 / 5%)`            | Accordion, status boxes, icons     |
+| `--shadow-md`  | `0 4px 14px rgb(89 89 89 / 7%)`            | Login options, tooltips            |
+| `--shadow-lg`  | `0 5px 17px rgb(89 89 89 / 7%)`            | Buttons, radio buttons             |
+| `--shadow-nav` | `0 -6px 17px rgba(89, 89, 89, 0.07)`       | Header navigation (box + drop)     |
 
 ### Border Width
 

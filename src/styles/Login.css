@@ -71,7 +71,7 @@
     .option {
       border-radius: 20px;
       background: var(--contrast-color);
-      box-shadow: 0 4px 14px rgb(89 89 89 / 7%);
+      box-shadow: var(--shadow-md);
       padding: 1rem;
       min-height: 210px;
       display: flex;

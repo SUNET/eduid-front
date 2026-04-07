@@ -54,7 +54,7 @@
   margin: 1rem 0;
 }
 .status-box {
-  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+  box-shadow: var(--shadow-sm);
   border-radius: 6px;
   overflow: hidden;
   display: grid;

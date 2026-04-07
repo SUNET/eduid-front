@@ -29,7 +29,7 @@ svg {
 }
 
 .circle-icon {
-  box-shadow: 0 1px 3px 2px rgb(0 0 0 / 5%);
+  box-shadow: var(--shadow-sm);
   border-radius: 50%;
   width: 24px !important;
   height: 24px !important;
