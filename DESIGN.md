@@ -225,9 +225,9 @@ Use the native `<dialog>` HTML element. Structure: `.modal > .modal-dialog > .mo
 
 ### Accordion
 
-Uses native `<details>` / `<summary>` elements via `AccordionItemTemplate`. Supports hash-based URL targeting for deep linking.
+Uses native `<details>` / `<summary>` elements via `AccordionItemTemplate`. Supports hash-based URL targeting for deep linking. Styled with semantic element selectors nested under `.accordion` — no BEM classes on child elements except `.panel` on the content div. The nested variant (`.accordion.nested`) displays each item as an individual card.
 
-**Styles:** 2px border, 6px border-radius, fadein animation (0.2s), orange background on open/hover.
+**Styles:** 2px border, 6px border-radius, fadein animation (0.2s), orange background on open/hover. No `overflow: hidden` — border-radius clipping is handled by `border-radius` on first/last children to avoid clipping focus outlines.
 
 ### Notifications
 
@@ -258,8 +258,8 @@ Uses lazy-loaded `zxcvbn`. Displays `<meter>` element with score 0-4 mapping to 
 | Value   | Usage                                    |
 |---------|------------------------------------------|
 | `20px`  | Modals, buttons (also `1.5rem`)          |
-| `10px`  | Accordion, cards, tooltips, submenus     |
-| `6px`   | Nested accordion items                   |
+| `10px`  | Cards, tooltips, submenus                |
+| `6px`   | Accordion (base and nested items)        |
 | `4px`   | react-select                             |
 | `50%`   | Circular elements (toggle, radio, tooltip trigger) |
 
