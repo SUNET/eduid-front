@@ -16,7 +16,6 @@ import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 export function MultiFactorAuth(): React.JSX.Element {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
-  const mfa = useAppSelector((state) => state.login.mfa);
   const ref = useAppSelector((state) => state.login.ref);
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
@@ -71,12 +70,12 @@ export function MultiFactorAuth(): React.JSX.Element {
     );
   }
 
-  const isLoaded = mfa?.state === "loaded";
+  const isLoaded = data.isSuccess;
   const hasMfaOptions =
     authn_options.swedish_eid || authn_options.webauthn || authn_options.eidas || authn_options.freja_eid;
 
   useEffect(() => {
-    if (ref && mfa?.state === undefined) {
+    if (ref && data.isUninitialized) {
       // Always call the MFA auth endpoint to get the current MFA state:
       //
       // If webauthn is an available choice for this user, fetch a challenge
@@ -86,7 +85,7 @@ export function MultiFactorAuth(): React.JSX.Element {
       // to call the MFA endpoint for it to complete.
       fetchMfaAuth({ ref: ref, this_device: this_device });
     }
-  }, [fetchMfaAuth, mfa, ref, this_device]);
+  }, [fetchMfaAuth, data.isUninitialized, ref, this_device]);
 
   async function getChallenge() {
     if (ref) {

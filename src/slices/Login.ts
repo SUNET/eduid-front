@@ -20,9 +20,6 @@ interface LoginState {
   next_page?: IdPAction; // should be called 'current page'
   fetching_next?: boolean;
   post_to?: string; // the target endpoint for the action at the current page
-  mfa: {
-    state?: "loading" | "loaded";
-  };
   saml_parameters?: SAMLParameters;
   tou: {
     available_versions: string[];
@@ -37,7 +34,6 @@ interface LoginState {
 
 // Define the initial state using that type. Export for use as a baseline in tests.
 export const initialState: LoginState = {
-  mfa: {},
   tou: { available_versions: Object.keys(ToUs) },
   authn_options: {},
 };
@@ -146,19 +142,11 @@ export const loginSlice = createSlice({
       .addMatcher(loginApi.endpoints.fetchNewDevice.matchFulfilled, (state, action) => {
         state.this_device = action.payload.payload.new_device;
       })
-      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchPending, (state) => {
-        state.mfa = { state: "loading" };
-      })
       .addMatcher(loginApi.endpoints.fetchMfaAuth.matchFulfilled, (state, action) => {
         if (action.payload.payload.finished) {
           // Trigger fetching of /next on successful MFA authentication
           state.next_page = undefined;
         }
-        state.mfa.state = "loaded";
-      })
-      .addMatcher(loginApi.endpoints.fetchMfaAuth.matchRejected, (state) => {
-        // Handle error state, i.e. unknown credentials etc.
-        state.mfa.state = undefined;
       })
       .addMatcher(loginApi.endpoints.fetchToU.matchFulfilled, (state, action) => {
         if (action.payload.payload.version) {
