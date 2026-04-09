@@ -121,7 +121,7 @@ export default function UsernamePw() {
   // (and the effect) can wait for it before fetching a new challenge.
   const credentialSubmissionRef = useRef<Promise<unknown> | null>(null);
 
-  async function useCredential(credential: PublicKeyCredentialJSON) {
+  async function useCredential(credential: AuthenticationResponseJSON) {
     if (ref) {
       const promise = fetchMfaAuth({ ref: ref, webauthn_response: credential });
       credentialSubmissionRef.current = promise;

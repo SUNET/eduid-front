@@ -7,7 +7,7 @@ import EduIDButton from "./EduIDButton";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): void;
+  onSuccess(publicKeyCredential: AuthenticationResponseJSON): void;
   discoverable?: boolean;
 }
 

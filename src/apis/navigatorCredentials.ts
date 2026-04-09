@@ -66,13 +66,13 @@ export const navigatorCredentialsApi = createApi({
   baseQuery: navigatorCredentialsBaseQuery,
   reducerPath: "navigatorCredentialsApi",
   endpoints: (builder) => ({
-    performAuthentication: builder.query<PublicKeyCredentialJSON, AuthenticationRequest>({
+    performAuthentication: builder.query<AuthenticationResponseJSON, AuthenticationRequest>({
       query: (credentialRequestOptions) => ({
         action: "performAuthentication",
         payload: credentialRequestOptions,
       }),
     }),
-    createCredential: builder.query<PublicKeyCredentialJSON, PublicKeyCredentialCreationOptionsJSON>({
+    createCredential: builder.query<RegistrationResponseJSON, PublicKeyCredentialCreationOptionsJSON>({
       query: (registerRequestOptions) => ({
         action: "createCredential",
         payload: registerRequestOptions,

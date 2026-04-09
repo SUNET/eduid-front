@@ -90,7 +90,9 @@ function hasAttestationResponse(
   );
 }
 
-export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCredentialJSON {
+export function credentialToJSON(
+  credential: PublicKeyCredential
+): AuthenticationResponseJSON | RegistrationResponseJSON {
   try {
     return credential.toJSON();
   } catch (error) {
@@ -112,7 +114,7 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
             signature: bufferToBase64url(credential.response.signature),
             userHandle: bufferToBase64url(credential.response.userHandle),
           },
-        } as PublicKeyCredentialJSON;
+        } as AuthenticationResponseJSON;
       } else if (hasAttestationResponse(credential)) {
         // Intentionally omits authenticatorData/publicKeyAlgorithm/transports — those methods
         // break on Safari with extension-injected credentials. The backend only needs
@@ -126,7 +128,7 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
             clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
             attestationObject: bufferToBase64url(credential.response.attestationObject),
           },
-        } as PublicKeyCredentialJSON;
+        } as RegistrationResponseJSON;
       }
     }
     // re-throw unexpected errors, or fall through if credential type is unrecognized
