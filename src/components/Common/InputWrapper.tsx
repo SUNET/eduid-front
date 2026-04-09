@@ -1,4 +1,5 @@
 import { useIntl } from "react-intl";
+import { dynamicMessage } from "translation";
 import { CustomInputProps } from "./CustomInput";
 
 /**
@@ -36,11 +37,10 @@ function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JS
     return null;
   }
 
-  // Direct lookup — babel-plugin-formatjs requires id to be a string literal
-  const errorMsg = meta.error ? String(intl.messages[meta.error] ?? meta.error) : null;
+  const errorMsg = meta.error ? dynamicMessage(intl, meta.error) : null;
   let submitErrorMsg = null;
   if (meta.submitError && !meta.dirtySinceLastSubmit) {
-    submitErrorMsg = String(intl.messages[meta.submitError] ?? meta.submitError) || null;
+    submitErrorMsg = dynamicMessage(intl, meta.submitError) || null;
   }
 
   return (

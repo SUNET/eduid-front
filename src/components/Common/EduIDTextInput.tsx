@@ -1,6 +1,7 @@
 import React, { HTMLInputTypeAttribute } from "react";
 import { FieldRenderProps } from "react-final-form";
 import { useIntl } from "react-intl";
+import { dynamicMessage } from "translation";
 
 interface TextInputProps extends FieldRenderProps<string> {
   label?: string;
@@ -24,8 +25,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     className = "disabled";
   }
 
-  // Direct lookup — babel-plugin-formatjs requires id to be a string literal
-  const errorMsg = (Boolean(props.meta.invalid) && String(intl.messages[props.meta.error] ?? props.meta.error)) || "";
+  const errorMsg = (Boolean(props.meta.invalid) && dynamicMessage(intl, props.meta.error)) || "";
   let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;

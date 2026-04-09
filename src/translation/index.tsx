@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import type { IntlShape } from "react-intl";
 import { updateIntl } from "slices/Internationalisation";
 import { messages as untypedMessages } from "translation/messages";
 
@@ -28,4 +29,15 @@ export function setupLanguage(dispatch: Dispatch) {
       messages: messages[lang_code],
     })
   );
+}
+
+/**
+ * Look up a translated message by a dynamic ID.
+ *
+ * babel-plugin-formatjs requires the id argument to intl.formatMessage()
+ * to be a string literal so it can extract messages at compile time.
+ * This helper bypasses the plugin by reading from intl.messages directly.
+ */
+export function dynamicMessage(intl: IntlShape, id: string): string {
+  return String(intl.messages[id] ?? id);
 }

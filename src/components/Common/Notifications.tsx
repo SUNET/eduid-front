@@ -2,6 +2,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
+import { dynamicMessage } from "translation";
 import EduIDButton from "./EduIDButton";
 
 export function Notifications(): React.JSX.Element | null {
@@ -29,8 +30,7 @@ export function Notifications(): React.JSX.Element | null {
     return null;
   }
 
-  // Direct lookup — babel-plugin-formatjs requires id to be a string literal
-  const msg: string = String(intl.messages[show.message] ?? show.message);
+  const msg: string = dynamicMessage(intl, show.message);
 
   const color = show.level === "error" ? "danger" : "success";
   const label = getLabel(intl, show.level);
