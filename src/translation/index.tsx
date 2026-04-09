@@ -4,8 +4,6 @@ import { messages as untypedMessages } from "translation/messages";
 
 const messages = untypedMessages as unknown as { [key: string]: { [key: string]: string } };
 
-export const UNKNOWN_MESSAGE = "UNKNOWN MESSAGE ID";
-
 /**
  * Get the language from the browser and initialise locale with the best match
  * @param dispatch The current apps dispatch
