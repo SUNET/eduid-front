@@ -36,7 +36,7 @@ function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JS
     return null;
   }
 
-  // Direct lookup — @formatjs/ts-transformer requires id to be a string literal
+  // Direct lookup — babel-plugin-formatjs requires id to be a string literal
   const errorMsg = meta.error ? String(intl.messages[meta.error] ?? meta.error) : null;
   let submitErrorMsg = null;
   if (meta.submitError && !meta.dirtySinceLastSubmit) {

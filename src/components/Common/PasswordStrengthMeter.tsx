@@ -74,7 +74,7 @@ function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
   return (
     <React.Fragment>
       <span className={`code form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
-        {/* Direct lookup — @formatjs/ts-transformer requires id to be a string literal */}
+        {/* Direct lookup — babel-plugin-formatjs requires id to be a string literal */}
         {props.password !== undefined && (
           <div className="form-group">{String(intl.messages[pwStrengthMessages[pwScore]] ?? pwStrengthMessages[pwScore])}</div>
         )}

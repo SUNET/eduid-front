@@ -29,7 +29,7 @@ export function Notifications(): React.JSX.Element | null {
     return null;
   }
 
-  // Direct lookup — @formatjs/ts-transformer requires id to be a string literal
+  // Direct lookup — babel-plugin-formatjs requires id to be a string literal
   const msg: string = String(intl.messages[show.message] ?? show.message);
 
   const color = show.level === "error" ? "danger" : "success";
