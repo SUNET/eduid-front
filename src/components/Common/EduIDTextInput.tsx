@@ -24,7 +24,7 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     className = "disabled";
   }
 
-  // Direct lookup instead of intl.formatMessage() — babel-plugin-formatjs cannot statically evaluate dynamic IDs
+  // Direct lookup — @formatjs/ts-transformer requires id to be a string literal
   const errorMsg = (Boolean(props.meta.invalid) && String(intl.messages[props.meta.error] ?? props.meta.error)) || "";
   let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
