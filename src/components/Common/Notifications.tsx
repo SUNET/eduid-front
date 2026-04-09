@@ -31,7 +31,8 @@ export function Notifications(): React.JSX.Element | null {
     return null;
   }
 
-  let msg: string = intl.formatMessage({ id: show.message });
+  // Direct lookup instead of intl.formatMessage() — babel-plugin-formatjs cannot statically evaluate dynamic IDs
+  let msg: string = String(intl.messages[show.message] ?? show.message);
   if (!debug && isString(msg) && msg.startsWith(UNKNOWN_MESSAGE)) {
     if (show.level == "error") {
       msg = intl.formatMessage({

@@ -36,10 +36,11 @@ function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JS
     return null;
   }
 
-  const errorMsg = meta.error ? intl.formatMessage({ id: meta.error }) : null;
+  // Direct lookup instead of intl.formatMessage() — babel-plugin-formatjs cannot statically evaluate dynamic IDs
+  const errorMsg = meta.error ? String(intl.messages[meta.error] ?? meta.error) : null;
   let submitErrorMsg = null;
   if (meta.submitError && !meta.dirtySinceLastSubmit) {
-    submitErrorMsg = intl.formatMessage({ id: meta.submitError }) || null;
+    submitErrorMsg = String(intl.messages[meta.submitError] ?? meta.submitError) || null;
   }
 
   return (

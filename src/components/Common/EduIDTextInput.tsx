@@ -24,7 +24,8 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     className = "disabled";
   }
 
-  const errorMsg = (Boolean(props.meta.invalid) && intl.formatMessage({ id: props.meta.error })) || "";
+  // Direct lookup instead of intl.formatMessage() — babel-plugin-formatjs cannot statically evaluate dynamic IDs
+  const errorMsg = (Boolean(props.meta.invalid) && String(intl.messages[props.meta.error] ?? props.meta.error)) || "";
   let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
