@@ -112,9 +112,11 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
             signature: bufferToBase64url(credential.response.signature),
             userHandle: bufferToBase64url(credential.response.userHandle),
           },
-        };
+        } as PublicKeyCredentialJSON;
       } else if (hasAttestationResponse(credential)) {
-        // Include the data expected by backend and only that
+        // Intentionally omits authenticatorData/publicKeyAlgorithm/transports — those methods
+        // break on Safari with extension-injected credentials. The backend only needs
+        // clientDataJSON and attestationObject.
         return {
           id: credential.id,
           rawId: bufferToBase64url(credential.rawId),
@@ -124,11 +126,10 @@ export function credentialToJSON(credential: PublicKeyCredential): PublicKeyCred
             clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
             attestationObject: bufferToBase64url(credential.response.attestationObject),
           },
-        };
+        } as PublicKeyCredentialJSON;
       }
-    } else {
-      // re-throw the error
-      throw error;
     }
+    // re-throw unexpected errors, or fall through if credential type is unrecognized
+    throw error;
   }
 }

@@ -28,7 +28,7 @@ const config = {
     "^.+\\.[tj]sx?$": "babel-jest",
   },
   transformIgnorePatterns: [
-    String.raw`/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\.js$`
+    String.raw`/node_modules/(?!spin.js|react-intl|intl-messageformat|@formatjs).+\.js$`
   ],
   setupFilesAfterEnv: [
     "<rootDir>/src/setupTests.ts"
