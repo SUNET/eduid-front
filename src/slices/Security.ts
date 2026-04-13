@@ -6,7 +6,7 @@ export interface SecurityState {
   code?: string;
   location?: string;
   webauthn_token_description?: string;
-  webauthn_attestation?: PublicKeyCredentialJSON;
+  webauthn_attestation?: RegistrationResponseJSON;
   webauthn_authenticator?: string;
 }
 

@@ -1,4 +1,5 @@
 import { useIntl } from "react-intl";
+import { dynamicMessage } from "translation";
 import { CustomInputProps } from "./CustomInput";
 
 /**
@@ -36,10 +37,10 @@ function RenderErrorMessage(props: Readonly<CustomInputProps<string>>): React.JS
     return null;
   }
 
-  const errorMsg = meta.error ? intl.formatMessage({ id: meta.error }) : null;
+  const errorMsg = meta.error ? dynamicMessage(intl, meta.error) : null;
   let submitErrorMsg = null;
   if (meta.submitError && !meta.dirtySinceLastSubmit) {
-    submitErrorMsg = intl.formatMessage({ id: meta.submitError }) || null;
+    submitErrorMsg = dynamicMessage(intl, meta.submitError) || null;
   }
 
   return (

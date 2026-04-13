@@ -2,7 +2,7 @@ module.exports = function babelConfig(api) {
   api.cache(false);
   const presets = [
     ["@babel/preset-env", { targets: { node: "current" } }],
-    "@babel/preset-react",
+    ["@babel/preset-react", { runtime: "automatic" }],
     "@babel/preset-typescript",
   ];
   const plugins = [

@@ -25,26 +25,10 @@ const config = {
     "<rootDir>/src/"
   ],
   transform: {
-    "^.+\\.[tj]sx?$": [
-      "ts-jest",
-      {
-        "isolatedModules": true,
-        "astTransformers": {
-          "before": [
-            {
-              "path": "@formatjs/ts-transformer/ts-jest-integration",
-              "options": {
-                "overrideIdFn": "[sha512:contenthash:base64:6]",
-                "ast": true
-              }
-            }
-          ]
-        }
-      }
-    ]
+    "^.+\\.[tj]sx?$": "babel-jest",
   },
   transformIgnorePatterns: [
-    String.raw`/node_modules/(?!spin.js|intl-messageformat|@formatjs/icu-messageformat-parser).+\.js$`
+    String.raw`/node_modules/(?!spin.js|react-intl|intl-messageformat|@formatjs).+\.js$`
   ],
   setupFilesAfterEnv: [
     "<rootDir>/src/setupTests.ts"

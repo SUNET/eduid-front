@@ -1,8 +1,12 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext", "esnext.intl", "es2017.intl", "es2018.intl"],
-    "baseUrl": "src",
+    "lib": ["dom", "esnext", "esnext.intl", "es2017.intl", "es2018.intl"],
+    "paths": {
+      "*": ["./src/*"]
+    },
+    "types": ["node", "jest"],
+    "rootDir": ".",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -11,7 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noEmit": false,
     "outDir": "build",
     "resolveJsonModule": true,

@@ -86,7 +86,7 @@ export interface NewPasswordRequest {
   password: string;
 }
 export interface NewPasswordExtraSecurityKeyRequest extends NewPasswordRequest {
-  webauthn_response: PublicKeyCredentialJSON;
+  webauthn_response: AuthenticationResponseJSON;
 }
 
 export type NewPasswordResponse = object;

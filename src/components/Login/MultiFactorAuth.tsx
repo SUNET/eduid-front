@@ -96,7 +96,7 @@ export function MultiFactorAuth(): React.JSX.Element {
     }
   }
 
-  function useCredential(credential: PublicKeyCredentialJSON) {
+  function useCredential(credential: AuthenticationResponseJSON) {
     if (ref) {
       fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: credential });
     }

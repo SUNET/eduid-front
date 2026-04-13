@@ -20,7 +20,7 @@ export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
   phone: { index?: number; number?: string; phone_code?: string };
-  webauthn_assertion?: PublicKeyCredentialJSON;
+  webauthn_assertion?: AuthenticationResponseJSON;
   selected_option?: string;
   new_password?: string;
   suggested_password?: string;

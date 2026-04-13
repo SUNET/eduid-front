@@ -31,7 +31,7 @@ export interface SecurityResponse {
 }
 
 export interface RegisterWebAuthnRequest {
-  webauthn_attestation: PublicKeyCredentialJSON;
+  webauthn_attestation: RegistrationResponseJSON;
   description: string;
 }
 
