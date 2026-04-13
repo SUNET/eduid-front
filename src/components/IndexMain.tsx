@@ -66,7 +66,7 @@ function useDocumentTitle() {
   useEffect(() => {
     const entry = TITLE_MAP.find(({ match }) => pathname.startsWith(match));
     if (entry) {
-      document.title = dynamicMessage(intl, entry.id);
+      document.title = dynamicMessage(intl, entry.id, entry.defaultMessage);
     } else {
       document.title = "eduID";
     }
