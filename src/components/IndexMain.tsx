@@ -81,7 +81,7 @@ export function IndexMain(): React.JSX.Element {
   const isIndex = location.pathname === "/";
 
   useDocumentTitle();
-  console.log("huhuhuh");
+
   // Legacy /profile redirects
   if (location.pathname === "/profile" || location.pathname === "/profile/") {
     return <Navigate to={START_PATH} replace />;
