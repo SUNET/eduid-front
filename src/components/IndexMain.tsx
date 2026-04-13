@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes, useLocation } from "react-router";
+import { dynamicMessage } from "translation";
 import "../styles/index.scss";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -65,7 +66,7 @@ function useDocumentTitle() {
   useEffect(() => {
     const entry = TITLE_MAP.find(({ match }) => pathname.startsWith(match));
     if (entry) {
-      document.title = intl.formatMessage({ id: entry.id, defaultMessage: entry.defaultMessage });
+      document.title = dynamicMessage(intl, entry.id);
     } else {
       document.title = "eduID";
     }
@@ -80,7 +81,7 @@ export function IndexMain(): React.JSX.Element {
   const isIndex = location.pathname === "/";
 
   useDocumentTitle();
-
+  console.log("huhuhuh");
   // Legacy /profile redirects
   if (location.pathname === "/profile" || location.pathname === "/profile/") {
     return <Navigate to={START_PATH} replace />;
