@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
 import { useParams } from "react-router";
 import loginSlice from "slices/Login";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -20,15 +19,7 @@ export function ResetPasswordApp(): React.JSX.Element {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);
-  const intl = useIntl();
   const next_page = useAppSelector((state) => state.resetPassword.next_page);
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Reset Password",
-      defaultMessage: "Reset password | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     if (next_page === undefined) {

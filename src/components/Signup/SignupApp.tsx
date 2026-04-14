@@ -4,7 +4,6 @@ import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useIntl } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
@@ -14,15 +13,7 @@ import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
-  const intl = useIntl();
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Register",
-      defaultMessage: "Register | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     if (!next_page) {

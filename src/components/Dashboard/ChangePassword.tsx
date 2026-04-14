@@ -4,7 +4,7 @@ import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import ChangePasswordCustomForm from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
@@ -29,7 +29,6 @@ export interface ChangePasswordSuccessState {
 
 export function ChangePassword() {
   const is_app_loaded = useAppSelector((state) => state.config.is_app_loaded);
-  const intl = useIntl();
   const suggested = useAppSelector((state) => state.chpass.suggested_password);
   const [renderSuggested, setRenderSuggested] = useState(true); // toggle display of custom or suggested password forms
   const navigate = useNavigate();
@@ -80,13 +79,6 @@ export function ChangePassword() {
   const handleSwitchChange = useCallback(() => {
     setRenderSuggested((prev) => !prev);
   }, []);
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Change Password",
-      defaultMessage: "Change password | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     return () => {

@@ -133,7 +133,7 @@ export const loginSlice = createSlice({
       .addMatcher(loginApi.endpoints.fetchNext.matchRejected, (state, action) => {
         if (
           (action as ActionWithErrorMessage).payload.error &&
-          (action as ActionWithErrorMessage).payload.payload.message === "login.user_terminated"
+          (action as ActionWithErrorMessage).payload.payload?.message === "login.user_terminated"
         ) {
           state.error = (action as ActionWithErrorMessage).payload.payload.message;
         }

@@ -7,7 +7,7 @@ import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
@@ -25,15 +25,7 @@ function UseOtherDevice2() {
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
   const initialFetchDone = useRef(false);
-  const intl = useIntl();
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Log in using another device",
-      defaultMessage: "Log in using another device | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     if (loginRef) {
