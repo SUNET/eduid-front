@@ -8,6 +8,7 @@ import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
+import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
@@ -34,6 +35,7 @@ export function SignupApp(): React.JSX.Element {
       {next_page === "PROCESS_EMAIL_CODE" && <ProcessEmailCode />}
       {next_page === "SIGNUP_CREDENTIALS_ERROR" && <SignupCredentialsError />}
       {next_page === "SIGNUP_CREDENTIAL_PASSWORD" && <SignupCredentialPassword />}
+      {next_page === "SIGNUP_MFA" && <SignupMFA />}
       {next_page === "SIGNUP_CONFIRM_PASSWORD" && <SignupConfirmPassword />}
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
     </React.Fragment>

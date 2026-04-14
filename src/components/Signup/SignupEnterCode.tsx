@@ -169,7 +169,7 @@ export function ProcessEmailCode() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     }
