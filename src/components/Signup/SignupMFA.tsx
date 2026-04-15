@@ -1,15 +1,10 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi } from "apis/eduidEidas";
-import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { CredentialType, securityApi } from "apis/eduidSecurity";
+import { CredentialType } from "apis/eduidSecurity";
 import signupApi from "apis/eduidSignup";
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import React, { useRef, useState } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
@@ -29,25 +24,8 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
 );
 
 export function SignupMFA(): React.ReactElement | null {
-  const return_handled = useRef(false);
-  const dispatch = useAppDispatch();
-  const credentials = useAppSelector((state) => state.security.credentials);
-  const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
-  // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
-  const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !globalThis.PublicKeyCredential);
-  const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
-  const [showVerifyWebauthnModal, setShowVerifyWebauthnModal] = useState(false);
-  const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
-  const wrapperRef = useRef<HTMLElement | null>(null);
-  const identities = useAppSelector((state) => state.personal_data.response?.identities);
-  const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
+  // const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   const [startRegisterWebauthn] = signupApi.useLazyStartRegisterWebauthnQuery();
-  const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
-  const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
-  const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
-  const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
-  const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
 
   return (
     <article id="add-two-factor">
@@ -114,14 +92,14 @@ export function SignupMFA(): React.ReactElement | null {
                 defaultMessage="Internal passkey on your phone or laptop."
               />
             </p>
-            {!isPlatformAuthenticatorAvailable && (
+            {/* {!isPlatformAuthenticatorAvailable && (
               <p className="help-text black">
                 <FormattedMessage
                   description="platform authn device error text"
                   defaultMessage="*Your device is not compatible."
                 />
               </p>
-            )}
+            )} */}
           </div>
           <div>
             <EduIDButton
