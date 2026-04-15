@@ -1,5 +1,10 @@
 import { eduIDApi } from "./common";
-import { BeginRegisterWebauthnRequest, BeginRegisterWebauthnResponse } from "./eduidSecurity";
+import {
+  BeginRegisterWebauthnRequest,
+  BeginRegisterWebauthnResponse,
+  RegisterWebAuthnRequest,
+  SecurityResponse,
+} from "./eduidSecurity";
 import type { ApiResponse } from "./helpers/types";
 
 export interface SignupState {
@@ -140,6 +145,16 @@ export const signupApi = eduIDApi.injectEndpoints({
       query: (body) => ({
         url: "webauthn/register/begin",
         body,
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    signupRegisterWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
+      query: (body) => ({
+        url: "webauthn/register/complete",
+        body: {
+          response: body.webauthn_attestation,
+          description: body.description,
+        },
       }),
       extraOptions: { service: "signup" },
     }),
