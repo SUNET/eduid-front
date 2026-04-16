@@ -4,12 +4,14 @@ import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
+import { useTheme } from "components/Common/ThemeContext";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import { Link } from "react-router";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
+import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
+import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 
@@ -32,6 +34,7 @@ export function SignupMFA(): React.ReactElement | null {
   const [signupRegisterWebauthn] = signupApi.useLazySignupRegisterWebauthnQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
   const intl = useIntl();
+  const { theme } = useTheme();
 
   const placeholder = intl.formatMessage({
     id: "security.placeholder",
@@ -68,51 +71,61 @@ export function SignupMFA(): React.ReactElement | null {
 
   return (
     <Fragment>
-      <article id="add-two-factor">
-        <div className="flex-between baseline">
-          <h2>
-            <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
-          </h2>
-        </div>
+      <h1>
+        <FormattedMessage
+          defaultMessage="Create eduID: Set up your credentials"
+          description="Signup register credentials"
+        />
+      </h1>
 
+      <div className="lead">
         <p>
           <FormattedMessage
-            description="security second factor"
-            defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
-              to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins.`}
+            defaultMessage="Set up at least one way to sign in. We recommend using a passkey for a faster and more secure experience."
+            description="Signup register credentials lead text"
           />
         </p>
-        <p className="text-medium">
-          <strong>
-            <FormattedMessage
-              description="security second factor individual"
-              defaultMessage={`Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder.`}
-            />
-          </strong>
-        </p>
-        <p className="help-text">
-          <FormattedMessage
-            description="security second factor help info"
-            defaultMessage={`You can read more about supported security keys in the Help section: {HelpSecurityKeys}.`}
-            values={{
-              HelpSecurityKeys: (
-                <Link className="text-link" to={`../../../help#help-security-key-button`} target="_blank">
-                  <FormattedMessage
-                    description="about security key - handle"
-                    defaultMessage="Improving the security level of eduID"
-                  />
-                </Link>
-              ),
-            }}
-          />
-        </p>
-        <section className="add-key-section">
-          <span aria-label="select extra webauthn">
-            <strong>
-              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
-            </strong>
-          </span>
+      </div>
 
+      {/* status box for passkey option */}
+      <section className="passkey-option">
+        <div className="status-box">
+          <div className="text-wrapper">
+            <div className="flex-between">
+              <div>
+                <h2>
+                  <FormattedMessage
+                    defaultMessage="Faster and safer way to authenticate"
+                    description="passkey heading"
+                  />
+                </h2>
+                <p className="text-medium">
+                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than a password. Your account is created with one unless you choose another option." />
+                </p>
+                <p className="help-text">
+                  <FormattedMessage
+                    defaultMessage="If you prefer not to use a passkey, you can also {signUpWithPassword}."
+                    description="signup password alternative info"
+                    values={{
+                      signUpWithPassword: (
+                        <a>
+                          <FormattedMessage
+                            description="sign up with password link"
+                            defaultMessage="sign up with a password"
+                          />
+                        </a>
+                      ),
+                    }}
+                  />
+                </p>
+              </div>
+              <img
+                src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+                alt="Passkey images"
+                className="passkey-image"
+              />
+            </div>
+          </div>
           <div className="buttons">
             <div>
               <EduIDButton
@@ -135,14 +148,6 @@ export function SignupMFA(): React.ReactElement | null {
                   defaultMessage="Internal passkey on your phone or laptop."
                 />
               </p>
-              {/* {!isPlatformAuthenticatorAvailable && (
-              <p className="help-text black">
-                <FormattedMessage
-                  description="platform authn device error text"
-                  defaultMessage="*Your device is not compatible."
-                />
-              </p>
-            )} */}
             </div>
             <div>
               <EduIDButton
@@ -168,8 +173,9 @@ export function SignupMFA(): React.ReactElement | null {
               </p>
             </div>
           </div>
-        </section>
-      </article>
+        </div>
+      </section>
+
       <ConfirmModal
         id="describe-webauthn-token-modal"
         title={
