@@ -114,6 +114,7 @@ fieldset {
 
   legend {
     display: flex;
+    flex-direction: column;
     font-size: var(--txt-md);
     font-family: var(--inter-bold);
     letter-spacing: 0.5px;

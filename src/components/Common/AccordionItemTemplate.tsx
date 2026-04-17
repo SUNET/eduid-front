@@ -77,7 +77,7 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
           )}
         </div>
       </summary>
-      <div className="panel">{props.children}</div>
+      <div className="accordion-panel">{props.children}</div>
     </details>
   );
 }

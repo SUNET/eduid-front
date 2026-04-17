@@ -1,70 +1,82 @@
 /** React-select style overrides, final-form element prefixed by "react-select" **/
 
-form .react-select,
-.basic-multi-select .select,
-.select--is-disabled .select {
-  &__control {
-    border: 2px solid var(--border-gray);
-    background-color: var(--contrast-color);
-    color: var(--body-txt);
+form .react-select__control,
+.basic-multi-select .select__control,
+.select--is-disabled .select__control {
+  border: 2px solid var(--border-gray);
+  background-color: var(--contrast-color);
+  color: var(--body-txt);
 
-    .react-select__indicator {
-      color: var(--txt-gray);
-    }
-
-    .react-select__single-value {
-      color: var(--txt-gray);
-    }
-
-    &--is-disabled {
-      background-color: var(--bg-gray);
-      font-size: var(--txt-xl);
-      * {
-        color: var(--txt-gray);
-      }
-      .select__indicators {
-        display: none;
-      }
-    }
-  }
-
-  &__menu {
-    color: var(--body-txt);
-    background-color: var(--contrast-color);
-  }
-
-  &__control:hover {
-    border: 2px solid var(--txt-gray);
-    box-shadow: none;
-  }
-
-  /*also focus-visible */
-  &__control--is-focused {
-    outline: 2px dashed var(--body-txt) !important;
-    box-shadow: none;
-  }
-
-  &__indicator-separator {
-    width: 0;
-  }
-
-  &__placeholder {
-    font-family: var(--inter-regular);
-    color: var(--body-txt);
-  }
-
-  &__option--is-focused {
-    background-color: var(--bg-orange);
-    outline: 1px dashed var(--body-txt) !important;
-    outline-offset: -1px;
-  }
-
-  &__option--is-selected {
+  .react-select__indicator {
     color: var(--txt-gray);
-    background-color: inherit;
-    font-family: var(--inter-bold);
-    font-weight: normal;
   }
+
+  .react-select__single-value {
+    color: var(--txt-gray);
+  }
+
+  &--is-disabled {
+    background-color: var(--bg-gray);
+    font-size: var(--txt-xl);
+    * {
+      color: var(--txt-gray);
+    }
+    .select__indicators {
+      display: none;
+    }
+  }
+}
+
+form .react-select__menu,
+.basic-multi-select .select__menu,
+.select--is-disabled .select__menu {
+  color: var(--body-txt);
+  background-color: var(--contrast-color);
+}
+
+form .react-select__control:hover,
+.basic-multi-select .select__control:hover,
+.select--is-disabled .select__control:hover {
+  border: 2px solid var(--txt-gray);
+  box-shadow: none;
+}
+
+/*also focus-visible */
+form .react-select__control--is-focused,
+.basic-multi-select .select__control--is-focused,
+.select--is-disabled .select__control--is-focused {
+  outline: 2px dashed var(--body-txt) !important;
+  box-shadow: none;
+}
+
+form .react-select__indicator-separator,
+.basic-multi-select .select__indicator-separator,
+.select--is-disabled .select__indicator-separator {
+  width: 0;
+}
+
+form .react-select__placeholder,
+.basic-multi-select .select__placeholder,
+.select--is-disabled .select__placeholder {
+  font-family: var(--inter-regular);
+  color: var(--body-txt);
+}
+
+form .react-select__option--is-focused,
+.basic-multi-select .select__option--is-focused,
+.select--is-disabled .select__option--is-focused {
+  background-color: var(--bg-orange);
+  outline: 1px dashed var(--body-txt) !important;
+  outline-offset: -1px;
+}
+
+form .react-select__option--is-selected,
+.basic-multi-select .select__option--is-selected,
+.select--is-disabled .select__option--is-selected {
+  color: var(--txt-gray);
+  background-color: inherit;
+  font-family: var(--inter-bold);
+  font-weight: normal;
 }
 
 .select-group {

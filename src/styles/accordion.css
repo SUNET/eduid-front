@@ -26,7 +26,7 @@
       border-radius: 0;
     }
 
-    &:last-of-type > .panel {
+    &:last-of-type > .accordion-panel {
       border-radius: 0 0 4px 4px;
     }
 
@@ -39,7 +39,7 @@
       border-radius: 4px 4px 0 0;
     }
 
-    &:only-of-type > .panel {
+    &:only-of-type > .accordion-panel {
       border-radius: 0 0 4px 4px;
     }
 
@@ -115,7 +115,7 @@
       }
     }
 
-    & > .panel {
+    & > .accordion-panel {
       background-color: var(--contrast-color);
       padding: 1.5rem 1rem;
       animation: fadein 0.2s ease-in;
@@ -174,7 +174,7 @@
         }
       }
 
-      & > .panel {
+      & > .accordion-panel {
         padding: 1rem 1rem 1.25rem;
         border-radius: 0 0 4px 4px;
 

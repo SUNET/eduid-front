@@ -55,7 +55,7 @@ input.is-invalid:focus {
   /*has parents with overflow hidden */
   .accordion summary&,
   table & {
-    outline-offset: -var(--border-width);
+    outline-offset: calc(-1 * var(--border-width));
   }
   &.toggle-checkbox + .toggle-switch {
     outline: var(--border-width) dashed var(--body-txt) !important;
