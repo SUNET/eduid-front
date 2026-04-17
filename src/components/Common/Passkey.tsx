@@ -10,7 +10,7 @@ import { useTheme } from "./ThemeContext";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: PublicKeyCredentialJSON): Promise<void> | void;
+  onSuccess(publicKeyCredential: AuthenticationResponseJSON): Promise<void> | void;
   onComplete?(): void;
   discoverable?: boolean;
 }

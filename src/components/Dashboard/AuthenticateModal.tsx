@@ -1,6 +1,7 @@
 import authnApi from "apis/eduidAuthn";
 import { AuthMethod } from "apis/helpers/types";
 import NotificationModal from "components/Common/NotificationModal";
+import { ACCOUNT_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Fragment, useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
@@ -55,7 +56,7 @@ export function AuthenticateModal() {
   function handleCloseModal() {
     // navigate to account when user cancel re-authentication
     if (frontend_action === "changepwAuthn" && re_authenticate) {
-      navigate("profile/account/");
+      navigate(ACCOUNT_PATH);
     }
     dispatch(authnSlice.actions.setAuthnFrontendReset());
     dispatch(authnSlice.actions.setReAuthenticate(false));

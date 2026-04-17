@@ -193,7 +193,7 @@ export interface LoginNewDeviceRequest {
 
 export interface LoginMfaAuthRequest {
   ref: string;
-  webauthn_response?: PublicKeyCredentialJSON;
+  webauthn_response?: AuthenticationResponseJSON;
   this_device?: string;
 }
 

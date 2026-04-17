@@ -2,7 +2,7 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
+import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -37,7 +37,7 @@ export function ExternalReturnHandler() {
         const actionToRoute: { [key: string]: string } = {
           verifyIdentity: IDENTITY_PATH,
           verifyCredential: SECURITY_PATH,
-          changepwAuthn: "/profile/chpass",
+          changepwAuthn: CHPASS_BASE_PATH,
           terminateAccountAuthn: "/",
           addSecurityKeyAuthn: SECURITY_PATH,
           removeSecurityKeyAuthn: SECURITY_PATH,
@@ -45,15 +45,16 @@ export function ExternalReturnHandler() {
           removeIdentity: IDENTITY_PATH,
         };
         const _path = actionToRoute[status.frontend_action];
+
         if (_path) {
           navigate(_path);
           return;
         }
       }
 
-      navigate("/profile/"); // GOTO start
+      navigate(START_PATH); // GOTO start
     },
-    [dispatch, navigate]
+    [dispatch, navigate],
   );
 
   const fetchEidasStatus = useCallback(
@@ -63,7 +64,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [eidasGetStatus, processStatus]
+    [eidasGetStatus, processStatus],
   );
 
   const fetchFrejaeIDStatus = useCallback(
@@ -73,7 +74,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [frejaeIDGetStatus, processStatus]
+    [frejaeIDGetStatus, processStatus],
   );
 
   const fetchBankIDStatus = useCallback(
@@ -83,7 +84,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [bankIDGetStatus, processStatus]
+    [bankIDGetStatus, processStatus],
   );
 
   const fetchAuthStatus = useCallback(
@@ -93,7 +94,7 @@ export function ExternalReturnHandler() {
         processStatus(response.data.payload);
       }
     },
-    [authnGetStatus, processStatus]
+    [authnGetStatus, processStatus],
   );
 
   useEffect(() => {

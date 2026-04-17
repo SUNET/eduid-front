@@ -7,6 +7,7 @@ import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePasswor
 import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
+import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -51,7 +52,7 @@ export function SignupConfirmPassword() {
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
     dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
-    navigate("/register");
+    navigate(SIGNUP_BASE_PATH);
   }
 
   const suggested = signupState?.credentials.generated_password;

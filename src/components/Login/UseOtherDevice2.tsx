@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
@@ -24,15 +25,7 @@ function UseOtherDevice2() {
   const base_url = useAppSelector((state) => state.config.login_service_url);
   const params = useParams() as UseOtherParams;
   const initialFetchDone = useRef(false);
-  const intl = useIntl();
   const [fetchUseOtherDevice2] = loginApi.useLazyFetchUseOtherDevice2Query();
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Log in using another device",
-      defaultMessage: "Log in using another device | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     if (loginRef) {
@@ -250,7 +243,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
     if (data?.login_ref) {
       dispatch(loginSlice.actions.callLoginNext());
       // Send the user off to the regular login flow when they click the button
-      navigate(`/login/${data.login_ref}`);
+      navigate(`${LOGIN_BASE_PATH}/${data.login_ref}`);
     }
   }
 

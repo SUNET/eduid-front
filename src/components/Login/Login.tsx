@@ -1,8 +1,9 @@
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
+import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -34,15 +35,7 @@ function Login(): React.JSX.Element {
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
-  const intl = useIntl();
   const [fetchNext, { isError }] = loginApi.useLazyFetchNextQuery();
-
-  useEffect(() => {
-    document.title = intl.formatMessage({
-      id: "document title Log in",
-      defaultMessage: "Log in | eduID",
-    });
-  }, [intl]);
 
   useEffect(() => {
     if (isError) {
@@ -82,11 +75,11 @@ function Login(): React.JSX.Element {
        * change to/from 'login/password' when that module is used.
        */
       if (next_page === "USERNAMEPASSWORD") {
-        navigate(`/login/password/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/password/${ref}`);
       } else if (next_page === "PASSWORD") {
-        navigate(`/login/mfa/password/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/mfa/password/${ref}`);
       } else {
-        navigate(`/login/${ref}`);
+        navigate(`${LOGIN_BASE_PATH}/${ref}`);
       }
     }
   }, [navigate, next_page, ref]);

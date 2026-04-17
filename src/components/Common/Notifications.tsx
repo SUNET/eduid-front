@@ -2,11 +2,10 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
-import { UNKNOWN_MESSAGE } from "translation";
+import { dynamicMessage } from "translation";
 import EduIDButton from "./EduIDButton";
 
 export function Notifications(): React.JSX.Element | null {
-  const debug = useAppSelector((state) => state.config.debug);
   const info = useAppSelector((state) => state.notifications.info);
   const error = useAppSelector((state) => state.notifications.error);
   const dispatch = useAppDispatch();
@@ -31,23 +30,7 @@ export function Notifications(): React.JSX.Element | null {
     return null;
   }
 
-  let msg: string = intl.formatMessage({ id: show.message });
-  if (!debug && isString(msg) && msg.startsWith(UNKNOWN_MESSAGE)) {
-    if (show.level == "error") {
-      msg = intl.formatMessage({
-        id: "unexpected-problem",
-        defaultMessage: `There was an unexpected problem servicing your request, please try again or contact 
-        the site administrators`,
-        description: "unexpected problem error",
-      });
-    } else {
-      msg = intl.formatMessage({
-        id: "unexpected-success",
-        defaultMessage: "Success",
-        description: "unexpected success message",
-      });
-    }
-  }
+  const msg: string = dynamicMessage(intl, show.message);
 
   const color = show.level === "error" ? "danger" : "success";
   const label = getLabel(intl, show.level);
@@ -62,10 +45,6 @@ export function Notifications(): React.JSX.Element | null {
       </div>
     </div>
   );
-}
-
-function isString(translated: React.JSX.Element | string): translated is string {
-  return (translated as string).indexOf !== undefined;
 }
 
 function getLabel(intl: IntlShape, level: notificationLevel): string {

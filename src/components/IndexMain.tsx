@@ -1,8 +1,10 @@
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { useIntl } from "react-intl";
 import { Navigate, Route, Routes, useLocation } from "react-router";
+import { dynamicMessage } from "translation";
 import "../styles/index.css";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
@@ -29,21 +31,60 @@ import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { Errors } from "./SwamidErrors/Errors";
 
-export const START_PATH = "/profile/";
-export const ACCOUNT_PATH = "/profile/account/";
-export const SECURITY_PATH = "/profile/security/";
-export const IDENTITY_PATH = "/profile/identity/";
+export const LOGIN_BASE_PATH = "/login";
+export const RESET_PASSWORD_PATH = "/reset-password";
+export const START_PATH = "/start";
+export const ACCOUNT_PATH = "/account";
+export const SECURITY_PATH = "/security";
+export const IDENTITY_PATH = "/identity";
 export const SIGNUP_BASE_PATH = "/register";
+export const CHPASS_BASE_PATH = "/chpass";
+
+export const SETTINGS_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
+
+const TITLE_MAP: ReadonlyArray<{ match: string; id: string; defaultMessage: string }> = [
+  {
+    match: "/login/other/",
+    id: "document title Log in using another device",
+    defaultMessage: "Log in using another device | eduID",
+  },
+  { match: LOGIN_BASE_PATH, id: "document title Log in", defaultMessage: "Log in | eduID" },
+  { match: ACCOUNT_PATH, id: "document title Account", defaultMessage: "Account | eduID" },
+  { match: CHPASS_BASE_PATH, id: "document title Change Password", defaultMessage: "Change password | eduID" },
+  { match: START_PATH, id: "document title Start", defaultMessage: "Start | eduID" },
+  { match: IDENTITY_PATH, id: "document title Identity", defaultMessage: "Identity | eduID" },
+  { match: SECURITY_PATH, id: "document title Security", defaultMessage: "Security | eduID" },
+  { match: "/help", id: "document title Help", defaultMessage: "Help | eduID" },
+  { match: "/reset-password", id: "document title Reset Password", defaultMessage: "Reset password | eduID" },
+  { match: SIGNUP_BASE_PATH, id: "document title Register", defaultMessage: "Register | eduID" },
+];
+
+function useDocumentTitle() {
+  const { pathname } = useLocation();
+  const intl = useIntl();
+
+  useEffect(() => {
+    const entry = TITLE_MAP.find(({ match }) => pathname.startsWith(match));
+    if (entry) {
+      document.title = dynamicMessage(intl, entry.id, entry.defaultMessage);
+    } else {
+      document.title = "eduID";
+    }
+  }, [pathname, intl]);
+}
 
 export function IndexMain(): React.JSX.Element {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();
-  const showAuthenticateModal = location.pathname.startsWith("/profile");
+  const showAuthenticateModal = SETTINGS_PATHS.some((path) => location.pathname.startsWith(path));
   const isIndex = location.pathname === "/";
 
-  if (location.pathname === "/profile") {
-    return <Navigate to={`${location.pathname}/`} />;
+  useDocumentTitle();
+
+  // Legacy /profile redirects
+  if (location.pathname === "/profile" || location.pathname === "/profile/") {
+    return <Navigate to={START_PATH} replace />;
   }
 
   return (
@@ -64,27 +105,22 @@ export function IndexMain(): React.JSX.Element {
                     {/* Signup */}
                     <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
                     {/* Login */}
-                    <Route path="/login/ext-return/:app_name/:authn_id" element={<LoginExternalReturnHandler />} />
-                    <Route path="/login/other/:state_id" element={<UseOtherDevice2 />} />
-                    <Route path="/login/password/:ref" element={<Login />} />
-                    <Route path="/login/:ref" element={<Login />} />
-                    <Route path="/login/mfa/password/:ref" element={<Login />} />
-                    <Route path="/reset-password/*" element={<ResetPasswordApp />} />
+                    <Route
+                      path={`${LOGIN_BASE_PATH}/ext-return/:app_name/:authn_id`}
+                      element={<LoginExternalReturnHandler />}
+                    />
+                    <Route path={`${LOGIN_BASE_PATH}/other/:state_id`} element={<UseOtherDevice2 />} />
+                    <Route path={`${LOGIN_BASE_PATH}/password/:ref`} element={<Login />} />
+                    <Route path={`${LOGIN_BASE_PATH}/:ref`} element={<Login />} />
+                    <Route path={`${LOGIN_BASE_PATH}/mfa/password/:ref`} element={<Login />} />
+                    <Route path={RESET_PASSWORD_PATH} element={<ResetPasswordApp />} />
                     {/* Dashboard */}
                     <Route path={SECURITY_PATH} element={<Security />} />
                     <Route path={ACCOUNT_PATH} element={<Account />} />
                     <Route path={IDENTITY_PATH} element={<Identity />} />
-                    <Route path="/profile/chpass/" element={<ChangePassword />} />
-                    <Route path="/profile/chpass/success" element={<ChangePasswordSuccess />} />
+                    <Route path={CHPASS_BASE_PATH} element={<ChangePassword />} />
+                    <Route path={`${CHPASS_BASE_PATH}/success`} element={<ChangePasswordSuccess />} />
                     <Route path="/profile/ext-return/:app_name/:authn_id" element={<ExternalReturnHandler />} />
-                    {/* Navigates for old paths. TODO: redirect in backend server instead */}
-                    <Route path="/profile/accountlinking/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/nins/" element={<Navigate to={IDENTITY_PATH} />} />
-                    <Route path="/profile/emails/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/personaldata/" element={<Navigate to={ACCOUNT_PATH} />} />
-                    <Route path="/profile/settings/advanced-settings/" element={<Navigate to={SECURITY_PATH} />} />
-                    <Route path="/profile/verify-identity/" element={<Navigate to={IDENTITY_PATH} />} />
                     <Route path={START_PATH} element={<Start />} />
                     {/* Errors*/}
                     <Route path="/errors" element={<Errors />} />

@@ -1,6 +1,7 @@
 import { useAppSelector } from "eduid-hooks";
 import React, { useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
+import { dynamicMessage } from "translation";
 import type { ZXCVBNResult } from "zxcvbn";
 
 // Lazy-loaded zxcvbn module type
@@ -75,7 +76,7 @@ function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
     <React.Fragment>
       <span className={`code form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
         {props.password !== undefined && (
-          <div className="form-group">{intl.formatMessage({ id: pwStrengthMessages[pwScore] })}</div>
+          <div className="form-group">{dynamicMessage(intl, pwStrengthMessages[pwScore])}</div>
         )}
       </span>
       <div className="meter-wrapper">

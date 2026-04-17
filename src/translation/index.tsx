@@ -1,10 +1,9 @@
+import type { IntlShape } from "react-intl";
 import { Dispatch } from "redux";
 import { updateIntl } from "slices/Internationalisation";
 import { messages as untypedMessages } from "translation/messages";
 
 const messages = untypedMessages as unknown as { [key: string]: { [key: string]: string } };
-
-export const UNKNOWN_MESSAGE = "UNKNOWN MESSAGE ID";
 
 /**
  * Get the language from the browser and initialise locale with the best match
@@ -28,6 +27,21 @@ export function setupLanguage(dispatch: Dispatch) {
     updateIntl({
       locale: lang_code,
       messages: messages[lang_code],
-    })
+    }),
   );
+}
+
+/**
+ * Look up a translated message by a dynamic ID.
+ *
+ * babel-plugin-formatjs requires the id argument to intl.formatMessage()
+ * to be a string literal so it can extract messages at compile time.
+ * This helper bypasses the plugin by reading from intl.messages directly.
+ */
+export function dynamicMessage(intl: IntlShape, id: string, defaultMessage?: string): string {
+  const message = intl.messages[id];
+  if (typeof message === "string") {
+    return message;
+  }
+  return defaultMessage ?? id;
 }

@@ -1,5 +1,6 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
+import { START_PATH } from "components/IndexMain";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
@@ -26,7 +27,7 @@ interface RenderArgs {
 }
 
 function render(ui: React.ReactElement, args: RenderArgs = {}): RenderResult {
-  const routes = args.routes || ["/profile/"];
+  const routes = args.routes || [START_PATH];
   const store = getTestEduIDStore(args.state || defaultDashboardTestState);
 
   function Wrapper({ children }: Readonly<{ children: React.ReactNode }>) {
