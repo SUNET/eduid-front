@@ -134,11 +134,6 @@ html.dark {
     opacity: 1; /* Firefox */
   }
 
-  ::input-placeholder {
-    /* Edge 12 -18 */
-    color: var(--txt-gray) !important;
-  }
-
   .modal.show {
     background-color: rgb(46 46 46 / 75%);
   }
