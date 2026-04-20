@@ -70,3 +70,6 @@ jobs:
 
       - name: Run linters
         run: npm run lint
+
+      - name: Run stylelint
+        run: npx stylelint "src/**/*.css"
