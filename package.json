@@ -12,7 +12,9 @@
     "translations:extract": "formatjs extract 'src/**/*.{js,ts,tsx}' --ignore 'src/**/*.d.ts' --out-file src/translation/extractedMessages.json --format transifex --id-interpolation-pattern '[sha512:contenthash:base64:6]'",
     "serve": "webpack-dev-server --open",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix src"
+    "lint:fix": "eslint --fix src",
+    "stylelint": "stylelint '**/*.css'",
+    "stylelint:fix": "stylelint '**/*.css' --fix"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
