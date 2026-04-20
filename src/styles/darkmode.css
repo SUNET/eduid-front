@@ -41,7 +41,7 @@ html.dark {
 
   /* landing and start page */
   .status-box.success,
-  .landing-howTo div {
+  .landing-how-to div {
     color: #fff;
 
     &:nth-of-type(1) {

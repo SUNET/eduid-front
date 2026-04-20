@@ -42,7 +42,7 @@
   }
 }
 
-.landing-howTo {
+.landing-how-to {
   filter: drop-shadow(0 -6px 0 var(--shadow-green));
   transform: translateZ(0); /* prevent weird Safari filter bug */
   align-items: flex-end;
