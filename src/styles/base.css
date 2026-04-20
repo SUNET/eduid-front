@@ -162,7 +162,7 @@ hr.border-line-lesser {
 /* hides object from view but still accessible to screen readers */
 .visuallyhidden {
   border: 0;
-  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
