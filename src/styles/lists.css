@@ -14,10 +14,12 @@
       font-family: var(--akkurat);
       font-weight: bold;
     }
+
     fieldset:last-of-type {
       margin-bottom: 0;
     }
   }
+
   @media (--bp-sm) {
     /* counteracts additional list left margin in mobile mode */
     .x-adjust {
@@ -31,6 +33,7 @@ dl.terms {
     font-size: 1.25rem;
     margin-bottom: 0.5em;
   }
+
   dd {
     margin-bottom: 0.5rem;
     font-size: var(--txt-md);
@@ -41,6 +44,7 @@ dl.terms {
       margin-top: 1.5rem;
     }
   }
+
   margin-bottom: 1rem;
 }
 
@@ -57,17 +61,21 @@ ul.bullets,
 ol.numbers {
   list-style-position: inside;
   margin-bottom: 1.5rem;
+
   > li {
     list-style-position: inside;
     margin-bottom: 1rem;
   }
 }
+
 ul.bullets {
   list-style-type: disc;
 }
+
 ol.numbers {
   list-style: numeric;
 }
+
 ul.bullets ol {
   list-style: numeric;
   list-style-position: inside;

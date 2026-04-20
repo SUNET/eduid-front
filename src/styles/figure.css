@@ -20,19 +20,24 @@ figure,
     padding: 1em 0.5em;
     align-items: center;
     margin: 0;
+
     @media (--bp-md) {
       padding: 0.5em;
     }
+
     &:not(:last-of-type) {
       border-bottom: 1px solid var(--bg-gray);
     }
+
     &:last-of-type {
       margin-bottom: 1em;
     }
   }
+
   &.tight {
     padding: 0.5rem 1rem;
   }
+
   &.grid-container {
     display: grid;
     grid-template-columns: 10% 35% 50% 5%;
@@ -41,13 +46,14 @@ figure,
     line-height: 1;
 
     > div {
-      padding: 0.3rem 0.3rem;
+      padding: 0.3rem;
       align-self: center;
 
       .display-data.verified {
         font-size: var(--txt-md);
       }
     }
+
     .close {
       align-self: center;
     }
@@ -69,13 +75,14 @@ figure,
   }
 }
 
-/*white with orange rounded border */
+/* white with orange rounded border */
 .notice-box {
   padding: 1.25rem 1rem 0.5rem;
   margin: 1rem 0;
   border: 1px solid var(--bright-orange);
   border-radius: 10px;
   background: var(--contrast-color);
+
   .help-text {
     padding-bottom: 0.75rem;
   }
@@ -104,9 +111,11 @@ figure.webauthn-token-holder {
     margin-top: 0.3rem;
     width: 80%;
   }
+
   &:first-of-type {
     margin-top: 1rem;
   }
+
   &:last-of-type {
     border-bottom: none;
     margin-bottom: 1rem;
@@ -127,6 +136,7 @@ figure.webauthn-token-holder {
     font-size: var(--txt-sm);
     margin-bottom: 0.2rem;
   }
+
   .verified {
     strong {
       font-family: var(--akkurat);
@@ -137,10 +147,12 @@ figure.webauthn-token-holder {
       text-transform: uppercase;
     }
   }
+
   .link {
     height: auto;
     margin-right: 2rem;
   }
+
   button.close {
     justify-self: flex-end;
   }

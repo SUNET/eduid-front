@@ -14,40 +14,48 @@ html.dark {
   --shadow-green: #177d4d; /* success green */
   --txt-green: #30d98a;
 
-  /*header and footer */
+  /* header and footer */
   header .eduid-logo {
-    background-image: url(../../img/eduid-logo-darkmode.png) !important;
+    background-image: url("../../img/eduid-logo-darkmode.png") !important;
   }
+
   footer .sunet-logo {
     background-image: url("../../img/sunet_logo_white.svg") !important;
   }
+
   .header-user {
     color: #fff;
   }
+
   @media (--bp-xl) {
     header nav .nav-menu.active {
-      box-shadow: 0 -6px 17px rgba(89, 89, 89, 0.3);
-    }
-  }
-  @media (--bp-xl-up) {
-    header nav .nav-menu .submenu {
-      filter: drop-shadow(0 -6px 17px rgba(89, 89, 89, 0.3));
+      box-shadow: 0 -6px 17px rgb(89 89 89 / 30%);
     }
   }
 
-  /*landing and start page */
+  @media (--bp-xl-up) {
+    header nav .nav-menu .submenu {
+      filter: drop-shadow(0 -6px 17px rgb(89 89 89 / 30%));
+    }
+  }
+
+  /* landing and start page */
   .status-box.success,
   .landing-howTo div {
     color: #fff;
+
     &:nth-of-type(1) {
       background-color: #15221a;
     }
+
     &:nth-of-type(2) {
       background-color: #273e30;
     }
+
     &:nth-of-type(3) {
       background-color: #355543;
     }
+
     &:nth-of-type(4) {
       background-color: #3b634c;
     }
@@ -66,7 +74,8 @@ html.dark {
 
     .icon-holder {
       color: #fff;
-      /*success green color */
+
+      /* success green color */
       img {
         filter: brightness(0) saturate(100%) invert(94%) sepia(19%) hue-rotate(24deg) contrast(105%);
       }
@@ -74,10 +83,10 @@ html.dark {
   }
 
   button.secondary,
-  button.secondary:not(:disabled):not(.disabled):active,
-  button.secondary:not(:disabled):not(.disabled):focus,
-  button.secondary:not(:disabled):not(.disabled):active:focus,
-  button.secondary:not(:disabled):not(.disabled):hover,
+  button.secondary:not(:disabled, .disabled):active,
+  button.secondary:not(:disabled, .disabled):focus,
+  button.secondary:not(:disabled, .disabled):active:focus,
+  button.secondary:not(:disabled, .disabled):hover,
   .mfa-select .react-select__placeholder,
   .mfa-select .react-select__single-value .select-option-text {
     color: #fff;
@@ -85,16 +94,18 @@ html.dark {
 
   .remove {
     filter: invert(97%) sepia(0%) saturate(7500%) hue-rotate(295deg) brightness(105%) contrast(102%);
+
     &:hover {
       filter: var(--bright-orange-filter);
     }
   }
 
-  /*form */
+  /* form */
   input:disabled,
   input[readonly] {
     background-color: var(--bg-gray);
   }
+
   input:focus {
     color: var(--body-txt);
   }
@@ -104,6 +115,7 @@ html.dark {
     color: var(--txt-gray) !important;
     -webkit-text-fill-color: var(--txt-gray) !important;
   }
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -121,12 +133,13 @@ html.dark {
     color: var(--txt-gray) !important;
     opacity: 1; /* Firefox */
   }
-  ::-ms-input-placeholder {
+
+  ::input-placeholder {
     /* Edge 12 -18 */
     color: var(--txt-gray) !important;
   }
 
   .modal.show {
-    background-color: rgba(46, 46, 46, 0.75);
+    background-color: rgb(46 46 46 / 75%);
   }
 }

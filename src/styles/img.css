@@ -15,8 +15,10 @@ svg {
     &.remove:hover {
       fill: #ff500d;
     }
+
     &.close {
       fill: #808080;
+
       &:hover {
         fill: var(--txt-gray);
       }

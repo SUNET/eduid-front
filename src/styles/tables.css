@@ -57,6 +57,7 @@ table {
       &.primary {
         color: var(--body-txt);
       }
+
       &.verified,
       &.unverified,
       &.primary {
@@ -107,17 +108,20 @@ table {
     tr.display-none {
       display: none;
     }
+
     tr {
       display: grid;
       grid-template-columns: 3fr 1.5fr 0.5fr;
       gap: 5px;
       align-items: center;
     }
+
     tr > * {
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
     tr:not(:last-child) {
       border-bottom: 1px solid var(--body-gray);
     }
@@ -152,6 +156,7 @@ caption {
       width: 2rem;
     }
   }
+
   th,
   td {
     vertical-align: top;
@@ -160,13 +165,14 @@ caption {
     &:first-child {
       padding-left: 1rem;
     }
+
     &:last-child {
       padding-right: 1rem;
     }
   }
 
   td {
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     padding: 0.5rem;
   }
 }
@@ -174,6 +180,7 @@ caption {
 .keys {
   font-family: monospace;
   color: var(--txt-gray);
+
   tr {
     &:nth-child(even) {
       background-color: var(--bg-gray);

@@ -46,12 +46,14 @@ body {
     }
   }
 }
+
 /* in common for content pages and landing */
 #content {
   height: 100%;
 }
 
 /* same styling as .phoneview-form-container, #delete-account-container,#change-password-container */
+
 /* in Email.js = replaced these with with <article> */
 #content article {
   margin-bottom: 2.5rem;
@@ -68,7 +70,7 @@ body {
     padding-bottom: 1.75rem;
   }
 
-  /*nested */
+  /* nested */
   article {
     margin-bottom: 1.75rem;
     padding-bottom: 1.75rem;
@@ -113,7 +115,7 @@ hr.border-line-lesser {
 /* eg for help-texts */
 .top-divider {
   border-top: 1px dashed var(--txt-gray);
-  margin: 0.5rem 0 0 0;
+  margin: 0.5rem 0 0;
   padding: 0.5rem 1rem 0.25rem 0;
   display: block;
 }
@@ -151,6 +153,7 @@ hr.border-line-lesser {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   &.baseline {
     align-items: baseline;
   }

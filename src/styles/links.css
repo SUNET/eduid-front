@@ -42,9 +42,11 @@ a.disabled {
     display: grid;
     align-items: center;
     word-break: break-word;
+
     &.left {
       grid-template-columns: 0.1fr 1fr;
     }
+
     &.right {
       grid-template-columns: 1fr 0.1fr;
       justify-items: end;

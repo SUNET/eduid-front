@@ -22,6 +22,7 @@
       align-items: flex-start;
     }
   }
+
   @media (--bp-md-up) {
     label {
       margin-bottom: 0;

@@ -15,6 +15,7 @@
   footer {
     background-color: transparent;
   }
+
   footer {
     border-top: none;
   }
@@ -35,6 +36,7 @@
       font-size: var(--txt-sm) !important;
     }
   }
+
   .buttons {
     padding: 0.25rem 0 1rem;
   }
@@ -66,12 +68,15 @@
       background-color: #f3f9f5;
       margin-top: 1rem;
     }
+
     &:nth-of-type(2) {
       background-color: #e6f3eb;
     }
+
     &:nth-of-type(3) {
       background-color: #daede1;
     }
+
     &:nth-of-type(4) {
       background-color: #cde7d7;
       padding-top: 5rem;
@@ -88,11 +93,13 @@
       margin: 5px;
     }
   }
+
   @media (--bp-lg-up) {
     max-width: calc(870px + 4rem);
     margin: 1rem auto 2rem;
     border-radius: 0 0 4rem 3rem;
   }
+
   @media (--bp-lg) {
     margin: 1rem auto 0;
 
@@ -104,6 +111,7 @@
       }
     }
   }
+
   @media (--bp-md) {
     flex-direction: column;
     align-items: center;

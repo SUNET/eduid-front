@@ -2,6 +2,7 @@
   border-bottom: 1px solid var(--border-gray);
   padding-top: 2rem;
   padding-bottom: 2rem;
+
   &:last-child {
     border-bottom: none;
   }
@@ -22,9 +23,11 @@
     font-size: 1.5rem;
     margin-bottom: 0.75em;
   }
+
   h4:not(:first-of-type) {
     margin-top: 1.25em;
   }
+
   p {
     font-size: inherit;
     margin-bottom: 1.25em;
@@ -44,10 +47,12 @@
 
   dl.link-list {
     margin-bottom: 2rem;
+
     dt {
       margin-bottom: 0.5rem;
     }
-    dd a:before {
+
+    dd a::before {
       content: "➔ ";
     }
   }

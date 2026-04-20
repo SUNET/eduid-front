@@ -14,7 +14,7 @@ h5,
   font-weight: normal;
 
   @media (--bp-md) {
-    word-wrap: break-word;
+    overflow-wrap: break-word;
     word-break: break-word;
   }
 }
@@ -107,14 +107,16 @@ p.no-data.data {
 .text-large {
   font-size: var(--txt-lg);
 }
+
 .text-medium {
   font-size: var(--txt-md);
 }
+
 .text-small {
   font-size: var(--txt-sm);
 }
 
-/*only for body text, Akkurat links and buttons need separate handling */
+/* only for body text, Akkurat links and buttons need separate handling */
 strong,
 b,
 .text-bold {
@@ -135,6 +137,7 @@ code,
   font-family: monospace;
   color: var(--txt-gray);
 }
+
 .error-txt {
   color: var(--error-red);
   font-size: var(--txt-sm) !important;

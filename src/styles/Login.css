@@ -115,6 +115,7 @@
       width: 100%;
     }
   }
+
   .help-text {
     text-align: center;
     margin-bottom: 2rem;
@@ -210,6 +211,7 @@
 
   .finished.device2 {
     /* TODO: $warning_size was an unused SCSS variable — remove or convert to --warning-size if needed */
+
     /* $warning_size: 1.5rem; */
 
     display: flex;
@@ -261,9 +263,10 @@
   }
 }
 
-/*security zone info */
+/* security zone info */
 section.intro .status-box {
   margin-bottom: 2rem;
+
   &.passkey {
     display: block;
   }
@@ -271,10 +274,12 @@ section.intro .status-box {
 
 section.username-pw-option {
   margin-bottom: 1.5rem;
+
   a {
     text-align: right;
     margin-bottom: 1rem;
   }
+
   fieldset.border-toggle-area {
     margin-top: 1.5rem;
   }

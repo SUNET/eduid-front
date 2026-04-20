@@ -18,9 +18,11 @@ form .react-select__control,
   &--is-disabled {
     background-color: var(--bg-gray);
     font-size: var(--txt-xl);
+
     * {
       color: var(--txt-gray);
     }
+
     .select__indicators {
       display: none;
     }
@@ -41,7 +43,7 @@ form .react-select__control:hover,
   box-shadow: none;
 }
 
-/*also focus-visible */
+/* also focus-visible */
 form .react-select__control--is-focused,
 .basic-multi-select .select__control--is-focused,
 .select--is-disabled .select__control--is-focused {
@@ -84,19 +86,21 @@ form .react-select__option--is-selected,
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 0.75rem;
-  column-gap: 0.5rem;
-  row-gap: 0.5rem;
+  gap: 0.5rem;
 
   > div:nth-child(1) {
     flex: 2;
   }
+
   > div:nth-child(2) {
     flex: 1;
   }
+
   .select__control,
   div.default-surname {
     min-height: 3rem;
   }
+
   input {
     height: auto;
 
@@ -104,17 +108,21 @@ form .react-select__option--is-selected,
       box-shadow: none;
     }
   }
+
   @media (--bp-md) {
     > div:nth-child(1) {
       flex: 1;
     }
   }
+
   @media (--bp-sm) {
     flex-direction: column;
+
     > div {
       width: 100%;
     }
   }
+
   div.default-surname {
     display: inline-block;
     border: 2px solid var(--border-gray);
@@ -126,7 +134,8 @@ form .react-select__option--is-selected,
     font-size: var(--txt-xl);
   }
 }
-/*login react select */
+
+/* login react select */
 .mfa-select {
   height: 3rem;
   min-width: 100px;
@@ -164,6 +173,7 @@ form .react-select__option--is-selected,
       .react-select__placeholder {
         color: var(--contrast-color);
       }
+
       svg.css-tj5bde-Svg {
         display: none;
       }
@@ -173,6 +183,7 @@ form .react-select__option--is-selected,
   .react-select__control:hover {
     border: solid 2px var(--bright-orange);
   }
+
   .react-select__value-container {
     height: 3rem;
     padding: 0;
@@ -189,6 +200,7 @@ form .react-select__option--is-selected,
     width: 90%;
     background-color: var(--contrast-color);
   }
+
   .react-select__menu-list {
     .react-select__option {
       display: flex;
@@ -202,9 +214,11 @@ form .react-select__option--is-selected,
     font-weight: bold;
   }
 }
+
 .mfa-select__control--is-focused {
   border-color: transparent;
 }
+
 .mfa-select__control:not(.custom-select__control--is-focused) {
   border-color: transparent;
 }

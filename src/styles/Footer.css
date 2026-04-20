@@ -31,7 +31,7 @@ footer nav ul {
 }
 
 footer nav {
-  /*button link lookalike */
+  /* button link lookalike */
   .help-link {
     padding: 0;
     margin-right: 1rem;
@@ -39,12 +39,14 @@ footer nav {
     font-size: var(--txt-sm);
     line-height: 1;
   }
+
   button {
     height: auto;
     font-size: var(--txt-sm);
     font-weight: normal;
   }
 }
+
 footer nav .lang-selected {
   margin: 0;
   cursor: pointer;

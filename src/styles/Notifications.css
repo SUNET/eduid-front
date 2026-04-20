@@ -91,6 +91,7 @@
     box-shadow: none;
     border-radius: 50%;
     color: var(--txt-orange);
+
     &:hover {
       transform: scale(0.8);
     }

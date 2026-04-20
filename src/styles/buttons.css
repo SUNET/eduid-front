@@ -34,10 +34,10 @@ button {
 }
 
 button.primary,
-button.primary:not(:disabled):not(.disabled):active,
-button.primary:not(:disabled):not(.disabled):focus,
-button.primary:not(:disabled):not(.disabled):active:focus,
-button.primary:not(:disabled):not(.disabled):hover {
+button.primary:not(:disabled, .disabled):active,
+button.primary:not(:disabled, .disabled):focus,
+button.primary:not(:disabled, .disabled):active:focus,
+button.primary:not(:disabled, .disabled):hover {
   color: #fff;
   border: solid 2px var(--bright-orange);
   background-color: var(--btn-orange);
@@ -58,10 +58,10 @@ button.primary:not(:disabled):not(.disabled):hover {
 }
 
 button.secondary,
-button.secondary:not(:disabled):not(.disabled):active,
-button.secondary:not(:disabled):not(.disabled):focus,
-button.secondary:not(:disabled):not(.disabled):active:focus,
-button.secondary:not(:disabled):not(.disabled):hover {
+button.secondary:not(:disabled, .disabled):active,
+button.secondary:not(:disabled, .disabled):focus,
+button.secondary:not(:disabled, .disabled):active:focus,
+button.secondary:not(:disabled, .disabled):hover {
   color: var(--txt-orange);
   border: solid 2px var(--bright-orange);
   background-color: var(--contrast-color);
@@ -107,9 +107,9 @@ button.close {
   cursor: pointer;
 
   &:hover,
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled):focus,
-  &:not(:disabled):not(.disabled):active:focus {
+  &:not(:disabled, .disabled):active,
+  &:not(:disabled, .disabled):focus,
+  &:not(:disabled, .disabled):active:focus {
     background-color: transparent;
     box-shadow: none;
     transform: scale(0.8);
@@ -130,6 +130,7 @@ button.close {
   height: 2px;
   background-color: var(--body-txt);
   transform-origin: center;
+
   :hover > & {
     background-color: var(--bright-orange);
   }
@@ -153,6 +154,7 @@ button.link {
   margin: 0;
   text-decoration: none;
   padding: 0;
+
   &:hover,
   &:active {
     color: var(--txt-orange);
@@ -192,14 +194,16 @@ button.icon {
     transition: transform 0.5s;
   }
 
-  /*round arrow update link */
+  /* round arrow update link */
   &.refresh:hover svg {
     transform-origin: center;
     transform: rotate(360deg);
   }
+
   &.refresh[disabled]:hover svg {
     transform: none;
   }
+
   span {
     text-align: left;
     line-height: var(--line-height);
@@ -273,11 +277,11 @@ button.icon {
   align-items: center;
 }
 
-/*textual toggle control, eg. copy/copied right after input */
+/* textual toggle control, eg. copy/copied right after input */
 .txt-toggle-btn {
   height: auto;
 
-  /*and show/hide just before input */
+  /* and show/hide just before input */
   &:has(+ input) {
     position: absolute;
     right: 0;
@@ -313,7 +317,7 @@ button.icon-only {
   }
 }
 
-/*menu name control */
+/* menu name control */
 button.header-user {
   &:hover,
   &:focus-within {
@@ -321,12 +325,13 @@ button.header-user {
   }
 }
 
-/*Scroll To top button */
+/* Scroll To top button */
 button.scroll-to-top {
   display: block;
   position: fixed;
   bottom: 7rem;
   right: 1rem;
+
   /* round button */
   border-radius: 50% !important;
   min-width: fit-content !important;
