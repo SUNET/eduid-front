@@ -1,4 +1,5 @@
 /** React-select style overrides, final-form element prefixed by "react-select" **/
+/* stylelint-disable selector-class-pattern */
 
 form .react-select__control,
 .basic-multi-select .select__control,
@@ -222,3 +223,5 @@ form .react-select__option--is-selected,
 .mfa-select__control:not(.custom-select__control--is-focused) {
   border-color: transparent;
 }
+
+/* stylelint-enable selector-class-pattern */
