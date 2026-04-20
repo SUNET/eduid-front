@@ -14,8 +14,7 @@ h5,
   font-weight: normal;
 
   @media (--bp-md) {
-    overflow-wrap: break-word;
-    word-break: break-word;
+    overflow-wrap: anywhere;
   }
 }
 

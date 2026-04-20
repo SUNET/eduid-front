@@ -34,7 +34,7 @@ span.orcid-logo {
 .orcid-link {
   font-size: var(--txt-md);
   line-height: 1.2;
-  word-break: break-word;
+  overflow-wrap: anywhere;
 
   a {
     margin: 0;
