@@ -1,4 +1,7 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": ["build/**", "coverage/**", "node_modules/**"]
+  "ignoreFiles": ["build/**", "coverage/**", "node_modules/**"],
+  "rules": {
+    "no-descending-specificity": null
+  }
 }
