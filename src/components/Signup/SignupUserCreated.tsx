@@ -26,6 +26,7 @@ export function SignupConfirmPassword() {
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
+  const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
@@ -34,6 +35,7 @@ export function SignupConfirmPassword() {
     }
 
     const response = await createUser({
+      use_webauthn: webauthnRegistered,
       use_suggested_password: renderSuggested,
       custom_password: renderSuggested ? undefined : newPassword,
     });
@@ -127,6 +129,7 @@ export function SignupConfirmPassword() {
 export function SignupUserCreated(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
 
   return (
     <form method="GET" action={dashboard_link}>
@@ -142,7 +145,7 @@ export function SignupUserCreated(): React.JSX.Element {
           />
         </p>
       </div>
-      {signupState?.credentials.custom_password ? (
+      {signupState?.credentials.custom_password || webauthnRegistered ? (
         <div className="email-display">
           <EmailFieldset email={signupState?.email.address} />
         </div>
