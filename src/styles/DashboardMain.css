@@ -14,7 +14,8 @@
   }
 }
 
-#unique-id-container {
+/* stylelint-disable-next-line selector-id-pattern */
+#uniqueId-container {
   display: flex;
   flex-direction: row;
   align-items: baseline;

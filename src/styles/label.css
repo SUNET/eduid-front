@@ -25,6 +25,7 @@ label,
   }
 }
 
-#unique-id-container label {
+/* stylelint-disable-next-line selector-id-pattern */
+#uniqueId-container label {
   white-space: nowrap;
 }
