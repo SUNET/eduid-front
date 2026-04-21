@@ -27,7 +27,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (signupState?.credentials.completed) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
     }
   }, [signupState, dispatch]);
 
