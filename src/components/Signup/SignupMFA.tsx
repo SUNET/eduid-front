@@ -91,7 +91,7 @@ export function SignupMFA(): React.ReactElement | null {
         console.error("Error finishing signup:", error);
       }
     })();
-  }, [createUser]);
+  }, [createUser, dispatch, webauthnRegistered]);
 
   return (
     <Fragment>
