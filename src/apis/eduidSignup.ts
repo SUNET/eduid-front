@@ -39,6 +39,7 @@ export interface SignupState {
     generated_password?: string;
     use_suggested_password?: string;
     custom_password?: string;
+    webauthn_registered?: boolean;
   };
   user_created: boolean;
 }
