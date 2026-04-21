@@ -20,16 +20,17 @@ button {
   border: none;
   cursor: pointer;
 
-  &:disabled,
-  .disabled {
-    cursor: not-allowed !important;
-    pointer-events: all !important;
-    border-color: inherit;
-    color: var(--contrast-color);
+}
 
-    &.primary {
-      background-color: var(--btn-orange);
-    }
+button:disabled,
+button.disabled {
+  cursor: not-allowed !important;
+  pointer-events: all !important;
+  border-color: inherit;
+  color: var(--contrast-color);
+
+  &.primary {
+    background-color: var(--btn-orange);
   }
 }
 
