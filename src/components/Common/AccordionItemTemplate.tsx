@@ -57,19 +57,18 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
     <details
       ref={detailsRef}
       id={props.uuid}
-      className="accordion__item"
       onToggle={(event) => {
         setOpen(event.currentTarget.open);
       }}
       open={open}
       aria-labelledby={props.uuid + "-button"}
     >
-      <summary className="accordion__heading">
-        <div className="accordion__button" id={props.uuid + "-button"}>
-          {props.icon && <span className="accordion-icon">{props.icon}</span>}
+      <summary>
+        <div id={props.uuid + "-button"}>
+          {props.icon && <span>{props.icon}</span>}
           <div>
-            <h3 className="accordion-title">{props.title}</h3>
-            <span className="accordion-description">{props.additionalInfo}</span>
+            <h3>{props.title}</h3>
+            <span>{props.additionalInfo}</span>
           </div>
           {open ? (
             <FontAwesomeIcon icon={faChevronUp as IconProp} />
@@ -78,7 +77,7 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
           )}
         </div>
       </summary>
-      <div className="accordion__panel">{props.children}</div>
+      <div className="accordion-panel">{props.children}</div>
     </details>
   );
 }

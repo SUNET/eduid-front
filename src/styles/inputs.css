@@ -1,0 +1,338 @@
+/* Inputs and form controls, mainly non button */
+input {
+  box-sizing: border-box;
+  font-family: var(--inter-regular);
+  font-size: var(--txt-xl);
+  color: var(--body-txt);
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+  padding: 1.25rem 0.5rem;
+  height: 3rem;
+  background-color: var(--contrast-color);
+}
+
+/* Form controls and interactive states */
+input,
+input.is-valid,
+input:focus,
+input.is-valid:focus {
+  outline: var(--border-width) solid var(--border-gray);
+  background-image: none;
+  background-color: var(--contrast-color);
+  transition: none;
+  border: none;
+  box-shadow: none;
+}
+
+input::placeholder {
+  font-family: var(--inter-regular);
+  font-size: var(--txt-xl);
+}
+
+:hover:not(:focus, :disabled) {
+  &[type="text"],
+  &[type="password"],
+  &[type="email"] {
+    padding-top: calc(1.25rem + var(--border-width));
+    border-bottom: var(--border-width) solid var(--body-txt) !important;
+  }
+}
+
+input.is-invalid,
+input.is-invalid:focus {
+  outline: var(--border-width) solid var(--error-red-t);
+  background-image: none;
+}
+
+/* tab-focus */
+:focus-visible,
+#mfa-security-key:focus {
+  outline: var(--border-width) dashed var(--body-txt) !important;
+  transition: none !important;
+
+  /* has parents with overflow hidden */
+  table & {
+    outline-offset: calc(-1 * var(--border-width));
+  }
+
+  &.toggle-checkbox + .toggle-switch {
+    outline: var(--border-width) dashed var(--body-txt) !important;
+    transition: none;
+  }
+}
+
+input:disabled,
+input[readonly] {
+  color: var(--txt-txt);
+  background-color: var(--bg-gray);
+
+  :focus,
+  :hover {
+    pointer-events: none;
+  }
+}
+
+input[readonly] {
+  outline: none;
+}
+
+/* removing chrome autocomplete babyblue */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px var(--contrast-color) inset !important;
+}
+
+/* Radio buttons */
+input[type="radio"] {
+  /* remove standard background appearance */
+  appearance: none;
+  outline: none;
+
+  /* create custom radio button appearance */
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  min-width: 1rem;
+  min-height: 1rem;
+  align-self: center;
+
+  /* background-color only for content */
+  background-clip: content-box;
+  box-shadow: var(--shadow-lg);
+  border: var(--border-width) solid var(--bright-orange);
+  background-color: transparent;
+  border-radius: 50%;
+
+  /* to prevent overwrite from input padding, this ensures that the radio button remains round */
+  padding: 0;
+
+  &:hover {
+    background-color: var(--bright-orange);
+    cursor: pointer;
+    border: none;
+  }
+
+  &:checked {
+    background-color: var(--bright-orange);
+    border: none;
+
+    .error {
+      background: var(--error-red);
+      color: var(--contrast-color);
+      border: none;
+    }
+  }
+}
+
+/* optional styles for centering radio buttons */
+.radio-input-container {
+  display: flex;
+
+  label {
+    margin-top: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  span {
+    font-size: var(--txt-xl);
+    align-self: center;
+    color: var(--body-txt);
+    font-family: var(--inter-regular);
+    font-weight: normal;
+    margin: 0 2rem 0 0;
+    margin-left: 8px;
+  }
+}
+
+/* Login username-pw / reset-password set-new-password */
+.password-input {
+  position: relative;
+
+  input[name="currentPassword"].is-valid {
+    background-image: none;
+  }
+}
+
+#copy-new-password {
+  background-color: var(--bg-gray);
+}
+
+input#display-none-new-password {
+  display: none;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.5rem;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Switch toggle */
+.toggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > legend,
+  > span {
+    flex: 1;
+  }
+
+  > span {
+    margin-right: 10px;
+  }
+}
+
+.toggle-switch {
+  display: inline-block;
+  background: var(--border-gray);
+  border-radius: 16px;
+  width: 54px;
+  height: 28px;
+  position: relative;
+  vertical-align: middle;
+  transition: all 0.25s;
+
+  &::before,
+  &::after {
+    content: "";
+  }
+
+  &::before {
+    display: block;
+    background: var(--contrast-color);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    transition: left 0.25s;
+  }
+
+  .toggle:hover &::before {
+    transform: scale(0.9);
+  }
+
+  .toggle-checkbox:checked + & {
+    background: var(--bright-orange);
+
+    &::before {
+      left: 29px;
+    }
+  }
+}
+
+/* orange moon bc default light bg */
+#color-mode + .toggle-switch {
+  background-repeat: no-repeat;
+  background-image: url("../../img/moon-icon-orange.png");
+  background-position: 82%;
+  background-size: 17px;
+}
+
+/* checked is dark mode */
+#color-mode:checked + .toggle-switch {
+  background-image: url("../../img/sun-icon-white.png");
+  background-position: 10%;
+  background-size: 22px;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  width: 1px;
+}
+
+/* Select */
+select {
+  padding: 5px;
+  border-radius: 3px;
+  width: 100%;
+  background-color: var(--contrast-color);
+  height: 40px;
+  margin-top: 3px;
+}
+
+/* react-select */
+/* stylelint-disable-next-line selector-class-pattern */
+.select__multi-value__label {
+  font-size: var(--txt-xl) !important;
+  align-self: center !important;
+}
+
+/* Cross browser */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+input.display-none {
+  display: none;
+}
+
+input:-webkit-autofill {
+  background-color: transparent !important;
+  box-shadow: 0 0 0 50px var(--contrast-color) inset;
+}
+
+/* Responsive */
+@media (--bp-sm) {
+  input,
+  .radio-input-container span {
+    font-size: var(--txt-md);
+  }
+
+  .input-container {
+    margin: 0;
+  }
+
+  input::placeholder {
+    font-size: var(--txt-md);
+  }
+
+  footer .toggle {
+    flex-direction: column;
+    align-self: end;
+
+    > span {
+      margin: 0 0 5px;
+    }
+  }
+}
+
+@media (--bp-md) {
+  .radio-input-container {
+    flex-direction: column;
+  }
+}

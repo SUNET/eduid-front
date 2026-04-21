@@ -92,7 +92,7 @@ export function Index() {
           </EduIDButton>
         </div>
       </div>
-      <div className="flex-between landing-howTo">
+      <div className="flex-between landing-how-to">
         <div>
           <FormattedMessage defaultMessage="Create a basic account with your email address." description="how-to 1" />
 

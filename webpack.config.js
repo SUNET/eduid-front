@@ -77,12 +77,8 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
-      },
-      {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", { loader: "css-loader", options: { import: false } }, "postcss-loader"],
       },
       {
         test: /\.(gif|jpg|png)$/,

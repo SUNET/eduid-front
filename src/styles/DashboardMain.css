@@ -1,0 +1,134 @@
+/* --- PROFILE STYLES --- // */
+.profile-grid-cell {
+  display: flex;
+  flex-direction: column;
+
+  .display-nin-show-hide {
+    display: flex;
+
+    /* show and hide button */
+    button {
+      margin: 0 0.5rem;
+      height: auto;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-id-pattern */
+#uniqueId-container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+  button.link {
+    padding: 0.75rem 0 0.75rem 1rem;
+  }
+}
+
+.display-data {
+  font-size: var(--txt-xl);
+  overflow-wrap: break-word;
+
+  &:not(a) {
+    font-family: var(--inter-light);
+  }
+
+  &.no-data {
+    color: var(--txt-gray);
+  }
+
+  &.verified {
+    color: var(--body-txt);
+  }
+
+  @media (--bp-md) {
+    font-size: var(--txt-lg);
+
+    &:not(a) {
+      font-family: var(--inter-light);
+    }
+  }
+}
+
+/* --- STATUS OVERVIEW STYLES--- // */
+.status-boxes {
+  margin: 1rem 0;
+}
+
+.status-box {
+  box-shadow: var(--shadow-sm);
+  border-radius: 6px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--contrast-color);
+  margin-top: 0.5rem;
+  border: 1px var(--success-green) solid;
+
+  h3 {
+    line-height: 1.4;
+    margin-bottom: 0.3rem;
+    color: var(--body-txt);
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  &.success {
+    border-color: rgb(23 125 77 / 25%);
+
+    &:nth-of-type(1) {
+      background-color: #f3f9f5;
+      background-color: rgb(23 125 77 / 10%);
+    }
+
+    &:nth-of-type(2) {
+      background-color: #e6f3eb;
+      background-color: rgb(23 125 77 / 20%);
+    }
+
+    &:nth-of-type(3) {
+      background-color: #daede1;
+      background-color: rgb(23 125 77 / 30%);
+    }
+
+    &:nth-of-type(4) {
+      background-color: #cde7d7;
+      background-color: rgb(23 125 77 / 40%);
+    }
+  }
+}
+
+.checkbox-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  input[type="checkbox"] {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  svg {
+    color: var(--txt-green);
+    height: 1.5rem;
+
+    &.disabled {
+      color: var(--border-gray);
+    }
+  }
+
+  div {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--border-gray);
+    border-radius: 50%;
+    background-color: var(--contrast-color);
+  }
+}

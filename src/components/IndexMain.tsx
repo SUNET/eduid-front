@@ -5,7 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useIntl } from "react-intl";
 import { Navigate, Route, Routes, useLocation } from "react-router";
 import { dynamicMessage } from "translation";
-import "../styles/index.scss";
+import "../styles/index.css";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import Footer from "./Common/Footer";
 import { Header } from "./Common/Header";

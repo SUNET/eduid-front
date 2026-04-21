@@ -1,0 +1,322 @@
+/* username and password */
+.username-pw {
+  margin-bottom: 2rem;
+
+  form {
+    margin-top: 0;
+
+    .form-group {
+      margin-bottom: var(--margin);
+    }
+
+    .welcome-back-container {
+      margin: 0 0 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      @media (--bp-sm) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        h3 {
+          margin-bottom: 0.5em;
+        }
+      }
+
+      legend {
+        font-size: 1.375rem;
+        margin-bottom: 0.75em;
+        display: block;
+        width: fit-content !important;
+      }
+    }
+
+    .links {
+      a {
+        margin: 0.25rem 0;
+        display: inline-block;
+      }
+
+      @media (--bp-xl) {
+        margin-top: 1rem;
+      }
+    }
+
+    .flex-between {
+      flex-direction: row;
+      text-align: right;
+
+      @media (--bp-xl) {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* multi-factor authentication */
+.options {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  margin-top: var(--margin);
+  position: relative;
+
+  .option-wrapper {
+    width: 330px;
+    margin-bottom: 2rem;
+
+    .option {
+      border-radius: 20px;
+      background: var(--contrast-color);
+      box-shadow: var(--shadow-md);
+      padding: 1rem;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      h3 {
+        font-size: var(--txt-xl);
+      }
+
+      h3,
+      .help-text {
+        margin: 0;
+      }
+
+      /* duplicate in _buttons.scss? */
+      .icon {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        height: auto;
+        border: none;
+
+        svg {
+          color: var(--body-txt);
+          height: 1rem;
+          width: 1rem;
+        }
+      }
+
+      .bottom {
+        align-items: flex-end;
+
+        img {
+          max-width: 178px;
+        }
+      }
+    }
+
+    @media (--bp-xs) {
+      width: 100%;
+    }
+  }
+
+  .help-text {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+/* use another device */
+.use-another-device {
+  .response-code-inputs {
+    input {
+      display: inline-block;
+      border: 1px solid var(--txt-gray);
+      font-size: 1.75rem;
+      margin: 5px;
+      width: 2.5rem;
+      text-align: center;
+
+      &:focus {
+        box-shadow: none;
+        border: 2px solid var(--body-txt);
+        position: relative;
+      }
+
+      &:nth-child(3) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    @media (--bp-md) {
+      input {
+        margin: 5px -1px 5px 0;
+
+        &:nth-child(3) {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  &.device1 {
+    .response-code-inputs {
+      background: var(--contrast-color);
+      text-align: center;
+      margin: 1em 0;
+      padding: 1em;
+      position: relative;
+      margin-bottom: 0;
+    }
+
+    .input-validate-error {
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    .buttons {
+      margin-top: 1rem;
+    }
+  }
+
+  &.device2 .response-code-inputs {
+    input {
+      border: none;
+      width: 1.75rem;
+      padding: 0;
+
+      &:nth-child(3) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  .expiration-info {
+    position: relative;
+
+    @media (--bp-sm) {
+      margin-left: calc(-1 * var(--list-indent));
+    }
+  }
+
+  .expires-meter {
+    margin-top: 1.5rem;
+
+    @media (--bp-md-up) {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0;
+    }
+  }
+
+  form.response-code-form {
+    margin-top: 0;
+  }
+
+  .finished.device2 {
+    /* TODO: $warning_size was an unused SCSS variable — remove or convert to --warning-size if needed */
+
+    /* $warning_size: 1.5rem; */
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    .response-code-form {
+      align-items: center;
+    }
+  }
+
+  .listed-steps {
+    figure {
+      img.qr-code {
+        width: 200px;
+      }
+    }
+
+    @media (--bp-sm) {
+      .x-adjust {
+        margin-left: calc(-1 * var(--list-indent));
+      }
+    }
+  }
+
+  .developer {
+    /* show QR URL at the bottom for non-production environments */
+    height: 10rem;
+    font-size: var(--txt-xs);
+    overflow: hidden;
+    word-break: break-all;
+  }
+}
+
+/* MFA or-line */
+.or-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin: 2rem auto 0;
+  color: var(--txt-gray);
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-gray);
+  }
+}
+
+/* security zone info */
+section.intro .status-box {
+  margin-bottom: 2rem;
+
+  &.passkey {
+    display: block;
+  }
+}
+
+section.username-pw-option {
+  margin-bottom: 1.5rem;
+
+  a {
+    text-align: right;
+    margin-bottom: 1rem;
+  }
+
+  fieldset.border-toggle-area {
+    margin-top: 1.5rem;
+  }
+}
+
+section.other-device-option .buttons {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Remove margin-bottom from password field to eliminate extra space above forgot password link */
+section.username-pw-option form .form-group:nth-of-type(2) {
+  margin-bottom: 0;
+}
+
+.passkey-option .status-box {
+  display: block;
+  background-color: transparent;
+  border: 0 solid !important;
+  box-shadow: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+
+  .text-wrapper {
+    img {
+      width: 6rem;
+      margin-left: 1rem;
+    }
+  }
+
+  .buttons {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+section.add-key-section {
+  margin-top: 1rem;
+  position: relative;
+}

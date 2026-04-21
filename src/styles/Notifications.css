@@ -1,0 +1,128 @@
+/** Dynamic user communications **/
+
+/* Top notification bar */
+.notifications-area {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  opacity: 0.95;
+}
+
+.alert.alert-dismissible {
+  position: relative;
+  margin: 0;
+  padding: 1rem 0;
+  border-radius: 0;
+
+  &.alert-danger,
+  &.alert-success {
+    color: var(--error-red);
+    background-color: var(--bg-orange);
+    border: none;
+  }
+
+  span {
+    padding-right: 0.5rem;
+
+    @media (--bp-sm) {
+      margin: 0;
+    }
+  }
+
+  .close {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    right: 1rem;
+    top: 1rem;
+    padding: 0;
+    border-radius: 50%;
+
+    &:hover {
+      color: var(--bright-orange);
+    }
+
+    @media (--bp-sm) {
+      font-size: var(--txt-xs);
+    }
+  }
+
+  @media (--bp-sm) {
+    padding: 1rem;
+  }
+}
+
+/* Green italic recommendation, see typography */
+.suggestion-txt {
+  @media (--bp-xl-up) {
+    position: absolute;
+    right: 0;
+    max-width: 25%;
+    top: 1rem;
+  }
+
+  .status-box & {
+    position: static;
+    max-width: 100%;
+  }
+
+  .options & {
+    margin: 1rem auto 0;
+    width: 75%;
+  }
+}
+
+/* Hover info bubble */
+.custom-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .trigger {
+    width: 2.25rem;
+    height: 2.25rem;
+    min-width: 2.25rem;
+    min-height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--contrast-color);
+    margin-left: 0.5rem;
+    box-shadow: none;
+    border-radius: 50%;
+    color: var(--txt-orange);
+
+    &:hover {
+      transform: scale(0.8);
+    }
+
+    svg {
+      pointer-events: none;
+      height: 1em;
+    }
+
+    @media (--bp-xs) {
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+  }
+
+  .custom-tooltip-popover {
+    position: absolute;
+    top: 110%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    min-width: 250px;
+    max-width: 260px;
+    box-shadow: var(--shadow-md);
+    border-radius: 10px;
+    background: var(--contrast-color);
+    padding: 1rem 1rem 1.125rem;
+
+    @media (--bp-lg) {
+      transform: translateX(-82.5%);
+    }
+  }
+}

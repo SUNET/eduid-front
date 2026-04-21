@@ -1,0 +1,16 @@
+#suggested-password {
+  display: table;
+  padding: 0.125rem 0.5rem;
+  background: var(--bg-orange);
+  font-size: var(--txt-xxl);
+  border: none;
+  color: var(--bright-orange);
+}
+
+.form-content {
+  width: 100%;
+}
+
+.hide {
+  display: none;
+}

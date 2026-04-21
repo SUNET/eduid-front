@@ -1,0 +1,37 @@
+/** Note! Order of import below affects cascaded application of styles, so change with care. **/
+
+@import url("./reset.css");
+@import url("./variables.css");
+@import url("./fonts.css");
+@import url("./typography.css");
+@import url("./base.css");
+@import url("./forms.css");
+@import url("./inputs.css");
+@import url("./label.css");
+@import url("./buttons.css");
+@import url("./links.css");
+@import url("./img.css");
+@import url("./modals.css");
+@import url("./tables.css");
+@import url("./lists.css");
+@import url("./figure.css");
+@import url("./timer.css");
+@import url("./Help.css");
+@import url("./AccountLinking.css");
+@import url("./ChangePassword.css");
+@import url("./DashboardMain.css");
+@import url("./Emails.css");
+@import url("./Footer.css");
+@import url("./Header.css");
+@import url("./Notifications.css");
+@import url("./ResetPassword.css");
+@import url("./SignupMain.css");
+@import url("./Splash.css");
+@import url("./Errors.css");
+@import url("./Login.css");
+@import url("./PersonalData.css");
+@import url("./Ladok.css");
+@import url("./reactSelect.css");
+@import url("./accordion.css");
+@import url("./landingPage.css");
+@import url("./darkmode.css");

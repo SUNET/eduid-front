@@ -1,0 +1,36 @@
+/** Digital timer **/
+
+.expires-meter {
+  color: var(--body-txt);
+  font-size: var(--txt-xl);
+  text-align: center;
+
+  .expires-symbol {
+    padding-right: 0.5rem;
+    line-height: 1;
+
+    svg {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
+
+  .timer {
+    margin-top: 0;
+    font-family: var(--akkurat);
+
+    a {
+      margin-right: 0.5rem;
+    }
+
+    .display-none {
+      display: none;
+    }
+
+    span#timer-in {
+      font-family: var(--akkurat);
+      color: var(--txt-gray);
+      font-size: var(--txt-md);
+    }
+  }
+}

@@ -1,0 +1,181 @@
+/* Overall page structure */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--inter-regular);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--body-txt);
+  scroll-behavior: smooth;
+  display: flex;
+  padding: env(safe-area-inset-top, 1.25rem) env(safe-area-inset-right, 1.25rem) env(safe-area-inset-bottom, 1.25rem)
+    env(safe-area-inset-left, 1.25rem);
+}
+
+#root,
+.page-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: var(--body-gray);
+
+  .content {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+
+    @media (--bp-lg) {
+      padding-top: 1.5rem;
+      padding-bottom: 3rem;
+    }
+  }
+}
+
+/* in common for content pages and landing */
+#content {
+  height: 100%;
+}
+
+/* same styling as .phoneview-form-container, #delete-account-container,#change-password-container */
+
+/* in Email.js = replaced these with with <article> */
+#content article {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-gray);
+
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  @media (--bp-md) {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  /* nested */
+  article {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px dashed var(--border-gray);
+
+    @media (--bp-md) {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+}
+
+/* this is a horizontal-margin and should be renamed */
+.horizontal-content-margin,
+.vertical-content-margin {
+  padding: 0;
+  width: 58%;
+  max-width: 870px;
+  margin: 0 auto;
+
+  /* this is added to prevent margin collapse (look for other solution if causing problems) */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mimic lead paragraph border */
+hr.border-line {
+  margin: 0.5rem 0 2rem;
+  border-bottom: 2px solid var(--border-gray);
+  border-top: none;
+  opacity: unset;
+}
+
+hr.border-line-lesser {
+  border-bottom: 1px dashed var(--border-gray);
+}
+
+/* eg for help-texts */
+.top-divider {
+  border-top: 1px dashed var(--txt-gray);
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 1rem 0.25rem 0;
+  display: block;
+}
+
+@media (--bp-lg) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(80% - 2rem);
+  }
+}
+
+@media (--bp-md) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(80% - 1.25rem);
+  }
+}
+
+@media (--bp-sm) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (--bp-xs) {
+  .horizontal-content-margin,
+  .vertical-content-margin {
+    width: calc(100% - 2 * var(--margin));
+  }
+}
+
+/* Utility classes - possibly move to separate file */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.baseline {
+    align-items: baseline;
+  }
+}
+
+/* hides object from view but still accessible to screen readers */
+.visuallyhidden {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.display-none {
+  display: none;
+}
+
+/* Spacing utility classes */
+.m-b-md {
+  margin-bottom: 1.5rem;
+}

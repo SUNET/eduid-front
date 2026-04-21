@@ -1,0 +1,21 @@
+/** Content wrapping load spinner **/
+
+#eduid-splash-and-children {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+#eduid-splash-spinner {
+  height: 100%;
+  width: calc(100% + 2 * (var(--border-width)));
+  left: -var(--border-width);
+  background-color: var(--body-gray);
+  position: absolute;
+  z-index: 100;
+
+  .spinner {
+    opacity: 1;
+  }
+}

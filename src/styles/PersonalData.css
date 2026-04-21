@@ -1,0 +1,68 @@
+/** Edit name form **/
+
+.personal-data {
+  .title {
+    margin-bottom: 1.25rem;
+  }
+
+  @media (--bp-xs) {
+    .button-pair {
+      flex-direction: column;
+    }
+  }
+
+  .heading,
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    .link {
+      height: 100%;
+    }
+
+    .close {
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+
+  .edit-data {
+    background-color: var(--contrast-color);
+    padding: 1rem;
+  }
+}
+
+#add-personal-data {
+  align-self: unset;
+}
+
+.personal-data-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* styles for input on white bg */
+.edit-data {
+  p.verified {
+    padding-bottom: 0;
+  }
+}
+
+/* styles for displayed names */
+.external-names {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.external-names,
+.personal-data-info {
+  .profile-grid-cell {
+    flex: 1;
+    flex-basis: 47%;
+    justify-content: unset;
+    margin: 0 1rem 1rem 0;
+  }
+}

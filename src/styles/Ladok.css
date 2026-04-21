@@ -1,0 +1,42 @@
+.ladok {
+  svg {
+    transform: none;
+  }
+
+  input {
+    height: initial;
+  }
+
+  label {
+    &.flex-between {
+      margin-right: 0;
+    }
+  }
+}
+
+.ladok-university {
+  @media (--bp-md) {
+    flex-direction: column;
+
+    &.flex-between {
+      align-items: flex-start;
+    }
+  }
+
+  @media (--bp-md-up) {
+    label {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.ladok-university-name {
+  flex-grow: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ladok-universities-status {
+  color: var(--error-red);
+  font-size: var(--txt-md);
+}

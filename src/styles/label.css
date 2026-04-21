@@ -1,0 +1,31 @@
+label,
+.form-label {
+  display: flex;
+  font-size: var(--txt-md);
+  font-family: var(--inter-bold);
+  letter-spacing: 0.5px;
+  line-height: 1;
+  color: var(--body-txt);
+  margin: 0 5px 5px 0;
+}
+
+.border-toggle-area {
+  border-color: var(--border-gray);
+  border-width: var(--border-width);
+  border-style: solid;
+  border-radius: 10px;
+  padding: var(--margin);
+
+  label {
+    margin: 0;
+  }
+
+  legend {
+    margin-right: 5px;
+  }
+}
+
+/* stylelint-disable-next-line selector-id-pattern */
+#uniqueId-container label {
+  white-space: nowrap;
+}

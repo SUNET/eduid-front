@@ -1,0 +1,133 @@
+/* Pre login/register root landing page */
+
+.landing {
+  background-image: radial-gradient(
+    ellipse at 112% 100%,
+    var(--body-gray) 0,
+    var(--body-gray) 45%,
+    #fafafa 45%,
+    #fafafa 75%,
+    var(--contrast-color) 75%
+  );
+
+  header,
+  .panel,
+  footer {
+    background-color: transparent;
+  }
+
+  footer {
+    border-top: none;
+  }
+}
+
+.landing-content {
+  h1 {
+    font-size: 2.75rem;
+    margin-bottom: 0.75em;
+
+    @media (--bp-md) {
+      font-size: 2rem;
+    }
+  }
+
+  p {
+    &.med-txt {
+      font-size: var(--txt-sm) !important;
+    }
+  }
+
+  .buttons {
+    padding: 0.25rem 0 1rem;
+  }
+}
+
+.landing-how-to {
+  filter: drop-shadow(0 -6px 0 var(--shadow-green));
+  transform: translateZ(0); /* prevent weird Safari filter bug */
+  align-items: flex-end;
+  box-shadow: 0 10px 10px -10px rgb(89 89 89 / 50%);
+  overflow: hidden;
+  margin-top: 1rem;
+
+  div {
+    flex: 1;
+    padding: 4rem 3rem 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-radius: 100% 100% 0 0;
+    font-family: var(--inter-medium);
+    font-size: var(--txt-sm);
+    color: var(--txt-gray);
+
+    &:nth-of-type(1) {
+      background-color: #f3f9f5;
+      margin-top: 1rem;
+    }
+
+    &:nth-of-type(2) {
+      background-color: #e6f3eb;
+    }
+
+    &:nth-of-type(3) {
+      background-color: #daede1;
+    }
+
+    &:nth-of-type(4) {
+      background-color: #cde7d7;
+      padding-top: 5rem;
+    }
+  }
+
+  .icon-holder {
+    margin-top: 0.5rem;
+
+    img,
+    svg {
+      width: auto;
+      height: 24px;
+      margin: 5px;
+    }
+  }
+
+  @media (--bp-lg-up) {
+    max-width: calc(870px + 4rem);
+    margin: 1rem auto 2rem;
+    border-radius: 0 0 4rem 3rem;
+  }
+
+  @media (--bp-lg) {
+    margin: 1rem auto 0;
+
+    div {
+      padding: 3rem 2rem 2rem;
+
+      &:nth-of-type(4) {
+        padding-top: 3rem;
+      }
+    }
+  }
+
+  @media (--bp-md) {
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0 0.5rem;
+
+    div {
+      width: calc(100% + 4rem);
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: -5rem;
+      padding: 3.5rem 3rem 6rem;
+
+      &:nth-of-type(4) {
+        padding-bottom: 4rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
