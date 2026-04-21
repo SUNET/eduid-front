@@ -31,8 +31,6 @@ dialog[open] {
 }
 
 .modal-dialog {
-  padding: 0;
-  width: 58%;
   max-width: calc(870px - 4rem);
   background-color: var(--contrast-color);
   border-radius: 20px;

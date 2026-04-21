@@ -17,7 +17,7 @@ function NotificationModal(props: Readonly<NotificationModalProps>) {
   return (
     <dialog open={props.showModal}>
       <div className={props.showModal ? "modal fade show" : "modal"} id={props.id} tabIndex={-1}>
-        <div className={`modal-dialog ${props.id}`}>
+        <div className={`modal-dialog horizontal-content-margin ${props.id}`}>
           <div className={`modal-content ${props.id} `}>
             <div className="modal-header">
               <h4 className="modal-title">{props.title}</h4>
