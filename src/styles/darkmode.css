@@ -87,8 +87,10 @@ html.dark {
   button.secondary:not(:disabled, .disabled):focus,
   button.secondary:not(:disabled, .disabled):active:focus,
   button.secondary:not(:disabled, .disabled):hover,
-  .mfa-select .react-select__placeholder,                       /* stylelint-disable-line selector-class-pattern */
-  .mfa-select .react-select__single-value .select-option-text { /* stylelint-disable-line selector-class-pattern */
+  /* stylelint-disable-next-line selector-class-pattern */
+  .mfa-select .react-select__placeholder,
+  /* stylelint-disable-next-line selector-class-pattern */
+  .mfa-select .react-select__single-value .select-option-text {
     color: #fff;
   }
 

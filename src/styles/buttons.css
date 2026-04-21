@@ -84,7 +84,8 @@ button.secondary:not(:disabled, .disabled):hover {
 
 button.primary,
 button.secondary,
-.mfa-select .react-select__control { /* stylelint-disable-line selector-class-pattern */
+/* stylelint-disable-next-line selector-class-pattern */
+.mfa-select .react-select__control {
   &:hover {
     transform: scale(0.95);
 

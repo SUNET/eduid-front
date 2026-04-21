@@ -107,8 +107,10 @@
           margin-bottom: 0;
         }
 
-        & > svg.svg-inline--fa.fa-chevron-up,     /* stylelint-disable-line selector-class-pattern */
-        & > svg.svg-inline--fa.fa-chevron-down {  /* stylelint-disable-line selector-class-pattern */
+        /* stylelint-disable-next-line selector-class-pattern */
+        & > svg.svg-inline--fa.fa-chevron-up,  
+        /* stylelint-disable-next-line selector-class-pattern */
+        & > svg.svg-inline--fa.fa-chevron-down {
           position: absolute;
           right: 1rem;
         }

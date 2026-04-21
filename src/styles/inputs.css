@@ -278,7 +278,8 @@ select {
 }
 
 /* react-select */
-.select__multi-value__label { /* stylelint-disable-line selector-class-pattern */
+/* stylelint-disable-next-line selector-class-pattern */
+.select__multi-value__label {
   font-size: var(--txt-xl) !important;
   align-self: center !important;
 }
