@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { CredentialType } from "apis/eduidSecurity";
 import signupApi from "apis/eduidSignup";
@@ -207,14 +210,17 @@ export function SignupMFA(): React.ReactElement | null {
               </div>
             </div>
           )}
-          <EduIDButton
-            buttonstyle="secondary"
-            id="continue-with-password-button"
-            onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-          >
-            <FormattedMessage description="signup create account button" defaultMessage="Continue with password" />
-          </EduIDButton>
         </div>
+      </section>
+      <section className="wizard-link-wrapper">
+        <EduIDButton
+          buttonstyle="link normal-case"
+          id="continue-with-password-button"
+          onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+        >
+          <FormattedMessage description="signup create account button" defaultMessage="Sign up with password" />
+          <FontAwesomeIcon icon={faArrowRight as IconProp} />
+        </EduIDButton>
       </section>
 
       <ConfirmModal

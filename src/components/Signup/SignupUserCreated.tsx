@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
@@ -118,6 +121,21 @@ export function SignupConfirmPassword() {
                 handleCancel={handleCancel}
                 handleSubmit={submitNewPasswordForm}
               />
+            )}
+            {!webauthnRegistered && (
+              <section className="wizard-link-wrapper">
+                <EduIDButton
+                  buttonstyle="link normal-case"
+                  id="continue-with-password-button"
+                  onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
+                >
+                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
+                  <FormattedMessage
+                    description="signup create account button"
+                    defaultMessage="Back to add security key"
+                  />
+                </EduIDButton>
+              </section>
             )}
           </Splash>
         );
