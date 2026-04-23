@@ -150,7 +150,19 @@ export function SignupMFA(): React.ReactElement | null {
           </div>
           {webauthnRegistered ? (
             <Fragment>
-              <p>your added credentials: </p>
+              <figure>
+                <span>
+                  <FormattedMessage
+                    defaultMessage="Your registered security key: {keyName}"
+                    description="Signup added credentials label"
+                    values={{
+                      keyName: <strong> security key</strong>,
+                    }}
+                  />
+                  <strong>security key</strong>
+                </span>
+              </figure>
+
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="create-account" onClick={() => finishSignup()}>
                   <FormattedMessage description="signup create account button" defaultMessage="Finish sign up" />
