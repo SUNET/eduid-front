@@ -100,7 +100,7 @@ export function SignupMFA(): React.ReactElement | null {
     <Fragment>
       <h1>
         <FormattedMessage
-          defaultMessage="Create eduID: Set up your credentials"
+          defaultMessage="Create eduID:  Set up your sign-in method"
           description="Signup register credentials"
         />
       </h1>
@@ -108,7 +108,7 @@ export function SignupMFA(): React.ReactElement | null {
       <div className="lead">
         <p>
           <FormattedMessage
-            defaultMessage="Set up at least one way to sign in. We recommend using a passkey for a faster and more secure experience."
+            defaultMessage="Choose at least one way to signin to your eduID account."
             description="Signup register credentials lead text"
           />
         </p>
@@ -127,19 +127,16 @@ export function SignupMFA(): React.ReactElement | null {
                   />
                 </h2>
                 <p className="text-medium">
-                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than a password. Your account is created with one unless you choose another option." />
+                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than a password. We recommend setting one up to keep your account secure." />
                 </p>
                 <p className="help-text">
                   <FormattedMessage
-                    defaultMessage="If you prefer not to use a passkey, you can also {signUpWithPassword}."
-                    description="signup password alternative info"
+                    defaultMessage='Read more about passkeys and sign-in methods in the "Using eduID" section in  {helpLink}.'
+                    description="signup passkey help link"
                     values={{
-                      signUpWithPassword: (
-                        <a>
-                          <FormattedMessage
-                            description="sign up with password link"
-                            defaultMessage="sign up with a password"
-                          />
+                      helpLink: (
+                        <a href="/help" target="_blank" rel="noopener noreferrer">
+                          <FormattedMessage description="eduID help link" defaultMessage={`eduID Help`} />
                         </a>
                       ),
                     }}
@@ -163,52 +160,59 @@ export function SignupMFA(): React.ReactElement | null {
               </div>
             </Fragment>
           ) : (
-            <div className="buttons">
-              <div>
-                <EduIDButton
-                  id="security-webauthn-platform-button"
-                  buttonstyle="primary icon"
-                  onClick={async () => {
-                    const result = await startRegisterWebauthn({ authenticator: "platform" });
-                    if (result.isSuccess) {
-                      setRegistrationData(result.data.payload.registration_data.publicKey);
-                      setShowSecurityKeyNameModal(true);
-                    }
-                  }}
-                >
-                  <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                  <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-                </EduIDButton>
-                <p className="help-text">
-                  <FormattedMessage
-                    description="platform authn device help text"
-                    defaultMessage="Internal passkey on your phone or laptop."
-                  />
-                </p>
+            <Fragment>
+              <span aria-label="select extra webauthn">
+                <strong>
+                  <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+                </strong>
+              </span>
+              <div className="buttons">
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-platform-button"
+                    buttonstyle="primary icon"
+                    onClick={async () => {
+                      const result = await startRegisterWebauthn({ authenticator: "platform" });
+                      if (result.isSuccess) {
+                        setRegistrationData(result.data.payload.registration_data.publicKey);
+                        setShowSecurityKeyNameModal(true);
+                      }
+                    }}
+                  >
+                    <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
+                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn device help text"
+                      defaultMessage="Internal passkey on your phone or laptop."
+                    />
+                  </p>
+                </div>
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-button"
+                    buttonstyle="primary icon"
+                    onClick={async () => {
+                      const result = await startRegisterWebauthn({ authenticator: "cross-platform" });
+                      if (result.isSuccess) {
+                        setRegistrationData(result.data.payload.registration_data.publicKey);
+                        setShowSecurityKeyNameModal(true);
+                      }
+                    }}
+                  >
+                    <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                    <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn key help text"
+                      defaultMessage="Your external USB security key."
+                    />
+                  </p>
+                </div>
               </div>
-              <div>
-                <EduIDButton
-                  id="security-webauthn-button"
-                  buttonstyle="primary icon"
-                  onClick={async () => {
-                    const result = await startRegisterWebauthn({ authenticator: "cross-platform" });
-                    if (result.isSuccess) {
-                      setRegistrationData(result.data.payload.registration_data.publicKey);
-                      setShowSecurityKeyNameModal(true);
-                    }
-                  }}
-                >
-                  <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                  <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
-                </EduIDButton>
-                <p className="help-text">
-                  <FormattedMessage
-                    description="platform authn key help text"
-                    defaultMessage="Your external USB security key."
-                  />
-                </p>
-              </div>
-            </div>
+            </Fragment>
           )}
         </div>
       </section>
