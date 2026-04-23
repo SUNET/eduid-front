@@ -38,7 +38,8 @@ a.disabled {
   gap: 20px;
   font-size: var(--txt-sm);
 
-  a {
+  a,
+  .link {
     display: grid;
     align-items: center;
     overflow-wrap: anywhere;
@@ -52,5 +53,10 @@ a.disabled {
       justify-items: end;
       text-align: end;
     }
+  }
+  .link {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: normal;
   }
 }
