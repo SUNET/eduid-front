@@ -1,6 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createSelector } from "@reduxjs/toolkit";
 import { CredentialType } from "apis/eduidSecurity";
 import signupApi from "apis/eduidSignup";
@@ -8,6 +5,7 @@ import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import ConfirmModal from "components/Common/ConfirmModal";
 import EduIDButton from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
+import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
@@ -216,16 +214,13 @@ export function SignupMFA(): React.ReactElement | null {
           )}
         </div>
       </section>
-      <section className="wizard-link-wrapper">
-        <EduIDButton
-          buttonstyle="link normal-case"
-          id="continue-with-password-button"
-          onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-        >
-          <FormattedMessage description="signup create account button" defaultMessage="Sign up with password" />
-          <FontAwesomeIcon icon={faArrowRight as IconProp} />
-        </EduIDButton>
-      </section>
+      <WizardLink
+        nextText={intl.formatMessage({
+          id: "wizard link signup with password",
+          defaultMessage: "Sign up with password",
+        })}
+        nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+      />
 
       <ConfirmModal
         id="describe-webauthn-token-modal"

@@ -1,11 +1,9 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
 import Splash from "components/Common/Splash";
+import { WizardLink } from "components/Common/WizardLink";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
 import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
@@ -14,7 +12,7 @@ import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
 
@@ -30,6 +28,7 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
+  const intl = useIntl();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
@@ -123,19 +122,13 @@ export function SignupConfirmPassword() {
               />
             )}
             {!webauthnRegistered && (
-              <section className="wizard-link-wrapper">
-                <EduIDButton
-                  buttonstyle="link normal-case"
-                  id="continue-with-password-button"
-                  onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
-                >
-                  <FontAwesomeIcon icon={faArrowLeft as IconProp} />
-                  <FormattedMessage
-                    description="signup create account button"
-                    defaultMessage="Back to add security key"
-                  />
-                </EduIDButton>
-              </section>
+              <WizardLink
+                previousText={intl.formatMessage({
+                  id: "wizard link back to add security key",
+                  defaultMessage: "Back to add security key",
+                })}
+                previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
+              />
             )}
           </Splash>
         );
