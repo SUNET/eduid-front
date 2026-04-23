@@ -59,6 +59,9 @@ function SignupStart() {
       }
       if (data.payload.state.email?.address) {
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
+        if (data.payload.state.email?.completed) {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
+        }
       } else dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
     }
   }, [data, fetchLogout, dispatch]);
