@@ -159,7 +159,6 @@ export function SignupMFA(): React.ReactElement | null {
                       keyName: <strong> security key</strong>,
                     }}
                   />
-                  <strong>security key</strong>
                 </span>
               </figure>
 
