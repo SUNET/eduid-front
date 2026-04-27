@@ -171,7 +171,7 @@ export function SignupUserCreated(): React.JSX.Element {
         </div>
       ) : (
         <ConfirmUserInfo
-          email_address={signupState?.email.address as string}
+          email_address={signupState?.email.address ?? ""}
           new_password={formatPassword(signupState?.credentials.generated_password)}
         />
       )}
