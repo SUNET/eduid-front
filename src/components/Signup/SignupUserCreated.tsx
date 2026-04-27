@@ -146,13 +146,24 @@ export function SignupUserCreated(): React.JSX.Element {
         <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
       </h1>
       <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`These are your login details for eduID. 
-              Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
-            description="Registration finished"
-          />
-        </p>
+        {webauthnRegistered &&
+        !signupState?.credentials.custom_password &&
+        !signupState?.credentials.generated_password ? (
+          <p>
+            <FormattedMessage
+              defaultMessage="Your eduID account has been created. You can sign in using your registered security key."
+              description="Registration finished with webauthn only"
+            />
+          </p>
+        ) : (
+          <p>
+            <FormattedMessage
+              defaultMessage={`These are your login details for eduID. 
+                Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
+              description="Registration finished"
+            />
+          </p>
+        )}
       </div>
       {signupState?.credentials.custom_password || webauthnRegistered ? (
         <div className="email-display">
