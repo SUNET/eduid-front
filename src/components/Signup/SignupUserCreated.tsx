@@ -122,10 +122,17 @@ export function SignupConfirmPassword() {
               />
             )}
             <WizardLink
-              previousText={intl.formatMessage({
-                id: "wizard link back to add security key",
-                defaultMessage: "Back to add security key",
-              })}
+              previousText={
+                webauthnRegistered
+                  ? intl.formatMessage({
+                      id: "wizard link back to your security key",
+                      defaultMessage: "Back to your security key",
+                    })
+                  : intl.formatMessage({
+                      id: "wizard link back to add security key",
+                      defaultMessage: "Back to add security key",
+                    })
+              }
               previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
             />
           </Splash>

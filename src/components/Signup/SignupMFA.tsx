@@ -223,10 +223,17 @@ export function SignupMFA(): React.ReactElement | null {
         )}
       </section>
       <WizardLink
-        nextText={intl.formatMessage({
-          id: "wizard link signup with password",
-          defaultMessage: "Sign up with a password",
-        })}
+        nextText={
+          webauthnRegistered
+            ? intl.formatMessage({
+                id: "wizard link also add password",
+                defaultMessage: "Also add a password",
+              })
+            : intl.formatMessage({
+                id: "wizard link signup with password",
+                defaultMessage: "Sign up with a password",
+              })
+        }
         nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
       />
 
