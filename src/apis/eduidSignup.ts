@@ -40,6 +40,8 @@ export interface SignupState {
     use_suggested_password?: string;
     custom_password?: string;
     webauthn_registered?: boolean;
+    webauthn_description?: string;
+    webauthn_is_discoverable?: boolean;
   };
   user_created: boolean;
 }
@@ -155,6 +157,7 @@ export const signupApi = eduIDApi.injectEndpoints({
         body: {
           response: body.webauthn_attestation,
           description: body.description,
+          clientExtensionResults: body.clientExtensionResults,
         },
       }),
       extraOptions: { service: "signup" },

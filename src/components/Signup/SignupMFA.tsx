@@ -38,8 +38,11 @@ export function SignupMFA(): React.ReactElement | null {
   const [signupRegisterWebauthn] = signupApi.useLazySignupRegisterWebauthnQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
+  const credentials = signupState?.credentials;
+  const webauthnRegistered = credentials?.webauthn_registered ?? false;
+  const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
+  const webauthnDescription = credentials?.webauthn_description;
 
-  const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const intl = useIntl();
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
@@ -67,6 +70,7 @@ export function SignupMFA(): React.ReactElement | null {
             signupRegisterWebauthn({
               webauthn_attestation: createResponse.data,
               description,
+              clientExtensionResults: createResponse.data?.clientExtensionResults,
             });
           }
         } catch (error) {
@@ -154,17 +158,37 @@ export function SignupMFA(): React.ReactElement | null {
                   defaultMessage="Your registered security key: {keyName}"
                   description="Signup added credentials label"
                   values={{
-                    keyName: <strong> security key</strong>,
+                    keyName: <strong> {webauthnDescription}</strong>,
                   }}
                 />
               </span>
             </figure>
 
-            <div className="buttons">
-              <EduIDButton buttonstyle="primary" id="create-account" onClick={() => finishSignup()}>
-                <FormattedMessage description="signup create account button" defaultMessage="Finish sign up" />
-              </EduIDButton>
-            </div>
+            {webauthnIsDiscoverable ? (
+              <div className="buttons">
+                <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
+                  <FormattedMessage defaultMessage="Finish sign up" description="signup finish button" />
+                </EduIDButton>
+              </div>
+            ) : (
+              <>
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="continue-to-password"
+                    onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+                  >
+                    <FormattedMessage defaultMessage="set a password" description="continue to password button" />
+                  </EduIDButton>
+                </div>
+                <p className="help-text">
+                  <FormattedMessage
+                    defaultMessage="*a password is required to sign in with this key."
+                    description="non-discoverable key needs password"
+                  />
+                </p>
+              </>
+            )}
           </Fragment>
         ) : (
           <Fragment>
@@ -222,20 +246,22 @@ export function SignupMFA(): React.ReactElement | null {
           </Fragment>
         )}
       </section>
-      <WizardLink
-        nextText={
-          webauthnRegistered
-            ? intl.formatMessage({
-                id: "wizard link also add password",
-                defaultMessage: "Also add a password",
-              })
-            : intl.formatMessage({
-                id: "wizard link signup with password",
-                defaultMessage: "Sign up with a password",
-              })
-        }
-        nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-      />
+      {!(webauthnRegistered && !webauthnIsDiscoverable) && (
+        <WizardLink
+          nextText={
+            webauthnRegistered
+              ? intl.formatMessage({
+                  id: "wizard link also add password",
+                  defaultMessage: "Also add a password",
+                })
+              : intl.formatMessage({
+                  id: "wizard link signup with password",
+                  defaultMessage: "Sign up with a password",
+                })
+          }
+          nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+        />
+      )}
 
       <ConfirmModal
         id="describe-webauthn-token-modal"
