@@ -122,4 +122,10 @@ export const apiResponses = {
       defaultMessage={`The email verification failed. Please try again.`}
     />
   ),
+  "signup.password-required": (
+    <FormattedMessage
+      id="signup.password-required"
+      defaultMessage={`Your security key requires a password. Please set a password to complete your registration`}
+    />
+  ),
 };
