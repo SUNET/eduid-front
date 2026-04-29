@@ -2,6 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
+import signupApi from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
@@ -20,8 +21,10 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
+  const login_ref = useAppSelector((state) => state.login.ref);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
+  const [signupReturnToAuthn] = signupApi.useLazySignupReturnToAuthnQuery();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -37,8 +40,14 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);
 
-  const handleRegister = useCallback(() => {
-    navigate(SIGNUP_BASE_PATH);
+  const handleRegister = useCallback(async () => {
+    if (login_ref) {
+      const response = await signupReturnToAuthn({
+        ref: login_ref,
+      });
+      console.log("response", response);
+      navigate(SIGNUP_BASE_PATH);
+    }
   }, [navigate]);
 
   const handleLogin = useCallback(() => {

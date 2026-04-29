@@ -1,3 +1,4 @@
+import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
@@ -27,6 +28,8 @@ export function SignupConfirmPassword() {
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
+  const [signupAuthn] = signupApi.useLazySignupAuthnQuery();
+  const [fetchNext] = loginApi.useLazyFetchNextQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const intl = useIntl();
 
@@ -43,7 +46,13 @@ export function SignupConfirmPassword() {
     });
 
     if (response.isSuccess) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+      const idpRequestRef = response.data?.payload?.state?.idp_request_ref;
+      if (idpRequestRef) {
+        const signupResponse = await signupAuthn({ ref: idpRequestRef });
+        if (signupResponse.data?.payload.finished) {
+          fetchNext({ ref: idpRequestRef });
+        }
+      } else dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
     } else {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
     }
