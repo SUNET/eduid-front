@@ -4,7 +4,7 @@ import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useSearchParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
@@ -52,8 +52,9 @@ function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
-  const [searchParams] = useSearchParams();
-  const urlRef = searchParams.get("ref");
+  const params = useParams<{ ref?: string }>();
+  const urlRef = params.ref;
+  const navigate = useNavigate();
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured ? undefined : skipToken);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
@@ -66,15 +67,19 @@ function SignupStart() {
     // Check Redux first, then fall back to URL query parameter (survives refresh)
     const ref = loginRef || urlRef;
 
-    if (data.payload.state.idp_request_ref) return;
-    else if (ref) {
+    if (data.payload.state.idp_request_ref) {
+      // Update URL to include the ref if not already there
+      if (urlRef !== data.payload.state.idp_request_ref) {
+        navigate(`/register/${data.payload.state.idp_request_ref}`, { replace: true });
+      }
+    } else if (ref) {
       signupReturnToAuthn({ ref });
     } else if (eduid_site_link) {
       // No login ref - redirect to login to get one, then come back to register
       sessionStorage.setItem(SIGNUP_INTENT_KEY, "true");
       globalThis.location.href = eduid_site_link + "start";
     }
-  }, [is_configured, data, loginRef, urlRef, eduid_site_link, signupReturnToAuthn]);
+  }, [is_configured, data, loginRef, urlRef, eduid_site_link, signupReturnToAuthn, navigate]);
 
   useEffect(() => {
     if (data !== undefined) {
