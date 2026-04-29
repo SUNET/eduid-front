@@ -125,7 +125,13 @@ export const apiResponses = {
   "signup.password-required": (
     <FormattedMessage
       id="signup.password-required"
-      defaultMessage={`Your security key requires a password. Please set a password to complete your registration`}
+      defaultMessage={`Your security key requires a password. Please set a password to complete your registration.`}
+    />
+  ),
+  "signup.idp-request-ref-not-found": (
+    <FormattedMessage
+      id="signup.idp-request-ref-not-found"
+      defaultMessage={`The service request could not be found. Please try signing up again.`}
     />
   ),
 };
