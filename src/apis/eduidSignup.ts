@@ -1,5 +1,4 @@
 import { eduIDApi } from "./common";
-import { LoginUsernamePasswordResponse } from "./eduidLogin";
 import {
   BeginRegisterWebauthnRequest,
   BeginRegisterWebauthnResponse,
@@ -171,15 +170,6 @@ export const signupApi = eduIDApi.injectEndpoints({
     signupReturnToAuthn: builder.query<ApiResponse<SignupStatusResponse>, SignupReturnToAuthnRequest>({
       query: (body) => ({
         url: "return-to-auth",
-        body: {
-          ref: body.ref,
-        },
-      }),
-      extraOptions: { service: "signup" },
-    }),
-    signupAuthn: builder.query<ApiResponse<LoginUsernamePasswordResponse>, SignupReturnToAuthnRequest>({
-      query: (body) => ({
-        url: "signup_auth",
         body: {
           ref: body.ref,
         },

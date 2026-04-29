@@ -28,8 +28,6 @@ export function SignupConfirmPassword() {
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
-  const [signupAuthn] = signupApi.useLazySignupAuthnQuery();
-  const [fetchNext] = loginApi.useLazyFetchNextQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const intl = useIntl();
 
@@ -46,13 +44,7 @@ export function SignupConfirmPassword() {
     });
 
     if (response.isSuccess) {
-      const idpRequestRef = response.data?.payload?.state?.idp_request_ref;
-      if (idpRequestRef) {
-        const signupResponse = await signupAuthn({ ref: idpRequestRef });
-        if (signupResponse.data?.payload.finished) {
-          fetchNext({ ref: idpRequestRef, remember_me: true });
-        }
-      } else dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
     } else {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
     }
@@ -155,9 +147,22 @@ export function SignupUserCreated(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
+  const idpRequestRef = signupState?.idp_request_ref;
+  const [signupAuthn] = loginApi.useLazySignupAuthnQuery();
+
+  async function handleFinish() {
+    if (idpRequestRef) {
+      const signupResponse = await signupAuthn({ ref: idpRequestRef });
+      if (signupResponse.data?.payload?.finished) {
+        globalThis.location.href = `/login/${idpRequestRef}`;
+        return;
+      }
+    }
+    globalThis.location.href = dashboard_link ?? "/";
+  }
 
   return (
-    <form method="GET" action={dashboard_link}>
+    <div>
       <h1>
         <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
       </h1>
@@ -193,11 +198,15 @@ export function SignupUserCreated(): React.JSX.Element {
       )}
 
       <div className="buttons">
-        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" type="submit">
-          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
+        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
+          {idpRequestRef ? (
+            <FormattedMessage defaultMessage="Continue to the service" description="go to service after signup" />
+          ) : (
+            <FormattedMessage defaultMessage="Go to eduID to login" description="go to eduID link text" />
+          )}
         </EduIDButton>
       </div>
-    </form>
+    </div>
   );
 }
 

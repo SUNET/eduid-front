@@ -277,5 +277,14 @@ export const loginApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "login" },
     }),
+    signupAuthn: builder.query<ApiResponse<LoginUsernamePasswordResponse>, any>({
+      query: (body) => ({
+        url: "signup_auth",
+        body: {
+          ref: body.ref,
+        },
+      }),
+      extraOptions: { service: "login" },
+    }),
   }),
 });
