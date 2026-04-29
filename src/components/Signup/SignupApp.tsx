@@ -4,7 +4,7 @@ import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useSearchParams } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
@@ -52,8 +52,8 @@ function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
-  const params = useParams<{ ref?: string }>();
-  const urlRef = params.ref;
+  const [searchParams] = useSearchParams();
+  const urlRef = searchParams.get("ref");
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured ? undefined : skipToken);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
@@ -61,19 +61,20 @@ function SignupStart() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (!is_configured) return;
+    if (!is_configured || !data) return;
 
     // Check Redux first, then fall back to URL query parameter (survives refresh)
     const ref = loginRef || urlRef;
 
-    if (ref) {
+    if (data.payload.state.idp_request_ref) return;
+    else if (ref) {
       signupReturnToAuthn({ ref });
     } else if (eduid_site_link) {
       // No login ref - redirect to login to get one, then come back to register
       sessionStorage.setItem(SIGNUP_INTENT_KEY, "true");
       globalThis.location.href = eduid_site_link + "start";
     }
-  }, [is_configured, loginRef, urlRef, eduid_site_link, signupReturnToAuthn]);
+  }, [is_configured, data, loginRef, urlRef, eduid_site_link, signupReturnToAuthn]);
 
   useEffect(() => {
     if (data !== undefined) {
