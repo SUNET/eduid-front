@@ -1,4 +1,5 @@
 import { eduIDApi } from "./common";
+import { LoginUsernamePasswordResponse } from "./eduidLogin";
 import {
   BeginRegisterWebauthnRequest,
   BeginRegisterWebauthnResponse,
@@ -43,6 +44,7 @@ export interface SignupState {
     webauthn_description?: string;
     webauthn_is_discoverable?: boolean;
   };
+  idp_request_ref?: string;
   user_created: boolean;
 }
 
@@ -78,6 +80,10 @@ export interface CreateUserRequest {
   use_suggested_password?: boolean;
   use_webauthn?: boolean;
   custom_password?: string;
+}
+
+export interface SignupReturnToAuthnRequest {
+  ref: string;
 }
 
 export const signupApi = eduIDApi.injectEndpoints({
@@ -158,6 +164,24 @@ export const signupApi = eduIDApi.injectEndpoints({
           response: body.webauthn_attestation,
           description: body.description,
           clientExtensionResults: body.clientExtensionResults,
+        },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    signupReturnToAuthn: builder.query<ApiResponse<SignupStatusResponse>, SignupReturnToAuthnRequest>({
+      query: (body) => ({
+        url: "return-to-auth",
+        body: {
+          ref: body.ref,
+        },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    signupAuthn: builder.query<ApiResponse<LoginUsernamePasswordResponse>, SignupReturnToAuthnRequest>({
+      query: (body) => ({
+        url: "signup_auth",
+        body: {
+          ref: body.ref,
         },
       }),
       extraOptions: { service: "signup" },
