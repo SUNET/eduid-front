@@ -2,7 +2,6 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
-import signupApi from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
@@ -24,7 +23,6 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
   const login_ref = useAppSelector((state) => state.login.ref);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-  const [signupReturnToAuthn] = signupApi.useLazySignupReturnToAuthnQuery();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,16 +37,6 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
       }
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);
-
-  const handleRegister = useCallback(async () => {
-    if (login_ref) {
-      const response = await signupReturnToAuthn({
-        ref: login_ref,
-      });
-      console.log("response", response);
-      navigate(SIGNUP_BASE_PATH);
-    }
-  }, [navigate]);
 
   const handleLogin = useCallback(() => {
     if (dashboard_link) {
@@ -76,15 +64,16 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
         </EduIDButton>
       );
     } else if (location.pathname.includes("login") && Object.keys(authn_options).length > 0) {
+      const signupPath = login_ref ? `${SIGNUP_BASE_PATH}/${login_ref}` : SIGNUP_BASE_PATH;
       return (
-        <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
+        <EduIDButton buttonstyle="secondary sm" id="register" onClick={() => navigate(signupPath)}>
           <FormattedMessage defaultMessage="create eduid" description="Header register" />
         </EduIDButton>
       );
     } else if (eppn) {
       return <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
     }
-  }, [authn_options, eppn, login_url, location.pathname, handleLogin, handleLogout, handleRegister]);
+  }, [authn_options, eppn, login_ref, login_url, location.pathname, handleLogin, handleLogout, navigate]);
 
   return (
     <header id="header">

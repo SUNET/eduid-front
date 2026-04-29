@@ -1,8 +1,9 @@
 import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
-import { LOGIN_BASE_PATH } from "components/IndexMain";
+import { LOGIN_BASE_PATH, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { SIGNUP_INTENT_KEY } from "components/Signup/SignupApp";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
@@ -36,6 +37,7 @@ function Login(): React.JSX.Element {
   const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
   const [fetchNext, { isError }] = loginApi.useLazyFetchNextQuery();
+  const redirectingToSignup = useRef(false);
 
   useEffect(() => {
     if (isError) {
@@ -49,6 +51,15 @@ function Login(): React.JSX.Element {
       const url_ref = params.ref;
       init_ref = url_ref;
       dispatch(loginSlice.actions.addLoginRef({ ref: url_ref, start_url: globalThis.location.href }));
+
+      // If user intended to sign up, redirect to register with the ref in the URL
+      const signupIntent = sessionStorage.getItem(SIGNUP_INTENT_KEY);
+      if (signupIntent) {
+        sessionStorage.removeItem(SIGNUP_INTENT_KEY);
+        redirectingToSignup.current = true;
+        navigate(`${SIGNUP_BASE_PATH}/${url_ref}`);
+        return;
+      }
     }
 
     // Ask the backend what to do
@@ -67,9 +78,13 @@ function Login(): React.JSX.Element {
     error_state,
     fetchNext,
     isError,
+    navigate,
   ]);
 
   useEffect(() => {
+    if (redirectingToSignup.current) {
+      return;
+    }
     if (ref !== undefined) {
       /* Changing URL is apparently what triggers browsers password managers, so we
        * change to/from 'login/password' when that module is used.

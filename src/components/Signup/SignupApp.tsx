@@ -4,6 +4,7 @@ import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
+import { useParams } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
@@ -11,6 +12,8 @@ import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
 import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
+
+export const SIGNUP_INTENT_KEY = "eduid_signup_intent";
 
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
@@ -47,10 +50,30 @@ export function SignupApp(): React.JSX.Element {
  */
 function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
+  const loginRef = useAppSelector((state) => state.login.ref);
+  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
+  const params = useParams<{ ref?: string }>();
+  const urlRef = params.ref;
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured ? undefined : skipToken);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
+  const [signupReturnToAuthn] = signupApi.useLazySignupReturnToAuthnQuery();
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!is_configured) return;
+
+    // Check Redux first, then fall back to URL query parameter (survives refresh)
+    const ref = loginRef || urlRef;
+
+    if (ref) {
+      signupReturnToAuthn({ ref });
+    } else if (eduid_site_link) {
+      // No login ref - redirect to login to get one, then come back to register
+      sessionStorage.setItem(SIGNUP_INTENT_KEY, "true");
+      globalThis.location.href = eduid_site_link + "start";
+    }
+  }, [is_configured, loginRef, urlRef, eduid_site_link, signupReturnToAuthn]);
 
   useEffect(() => {
     if (data !== undefined) {
