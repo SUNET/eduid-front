@@ -157,8 +157,9 @@ export function SignupUserCreated(): React.JSX.Element {
         globalThis.location.href = `/login/${idpRequestRef}`;
         return;
       }
+    } else {
+      globalThis.location.href = dashboard_link ?? "/";
     }
-    globalThis.location.href = dashboard_link ?? "/";
   }
 
   return (

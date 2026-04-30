@@ -67,17 +67,8 @@ function SignupStart() {
     // Check Redux first, then fall back to URL query parameter (survives refresh)
     const ref = loginRef || urlRef;
 
-    if (data.payload.state.idp_request_ref) {
-      // Update URL to include the ref if not already there
-      if (urlRef !== data.payload.state.idp_request_ref) {
-        navigate(`/register/${data.payload.state.idp_request_ref}`, { replace: true });
-      }
-    } else if (ref) {
+    if (ref) {
       signupReturnToAuthn({ ref });
-    } else if (eduid_site_link) {
-      // No login ref - redirect to login to get one, then come back to register
-      sessionStorage.setItem(SIGNUP_INTENT_KEY, "true");
-      globalThis.location.href = eduid_site_link + "start";
     }
   }, [is_configured, data, loginRef, urlRef, eduid_site_link, signupReturnToAuthn, navigate]);
 
