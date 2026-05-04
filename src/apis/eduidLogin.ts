@@ -187,7 +187,7 @@ export interface LoginNewDeviceResponse {
   new_device: string;
 }
 
-export interface LoginNewDeviceRequest {
+export interface LoginRefRequest {
   ref: string;
 }
 
@@ -263,7 +263,7 @@ export const loginApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "login" },
     }),
-    fetchNewDevice: builder.query<ApiResponse<LoginNewDeviceResponse>, LoginNewDeviceRequest>({
+    fetchNewDevice: builder.query<ApiResponse<LoginNewDeviceResponse>, LoginRefRequest>({
       query: (body) => ({
         url: "new_device",
         body,
@@ -277,7 +277,7 @@ export const loginApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "login" },
     }),
-    signupAuthn: builder.query<ApiResponse<LoginUsernamePasswordResponse>, any>({
+    signupAuthn: builder.query<ApiResponse<LoginUsernamePasswordResponse>, LoginRefRequest>({
       query: (body) => ({
         url: "signup_auth",
         body: {
