@@ -1,11 +1,10 @@
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import ConfirmModal from "components/Common/ConfirmModal";
+import { WebauthnDescriptionModal } from "components/Common/ WebauthnDescriptionModal";
 import EduIDButton from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { signupSlice } from "slices/Signup";
@@ -31,12 +30,6 @@ export function SignupMFA(): React.ReactElement | null {
   const intl = useIntl();
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
-
-  const placeholder = intl.formatMessage({
-    id: "security.placeholder",
-    defaultMessage: "describe your security key",
-    description: "placeholder text for security key description input",
-  });
 
   const handleStopAskingWebauthnDescription = useCallback(() => {
     setShowSecurityKeyNameModal(false);
@@ -247,34 +240,10 @@ export function SignupMFA(): React.ReactElement | null {
         />
       )}
 
-      <ConfirmModal
-        id="describe-webauthn-token-modal"
-        title={
-          <FormattedMessage
-            description="security webauthn describe title"
-            defaultMessage="Add a name for your security key"
-          />
-        }
-        mainText={
-          <p>
-            <FormattedMessage
-              description="security webauthn describe paragraph"
-              defaultMessage={`Note: this is only for your own use to be able to distinguish between your added keys.`}
-            />
-          </p>
-        }
-        placeholder={placeholder}
+      <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
-        modalFormLabel={
-          <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
-        }
-        validationPattern={securityKeyPattern}
-        validationError="security.description_invalid_format"
-        helpBlock={
-          <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
-        }
       />
     </Fragment>
   );
