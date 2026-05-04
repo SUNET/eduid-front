@@ -1,5 +1,3 @@
-import { createSelector } from "@reduxjs/toolkit";
-import { CredentialType } from "apis/eduidSecurity";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import ConfirmModal from "components/Common/ConfirmModal";
@@ -7,7 +5,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { EduIDAppRootState } from "eduid-init-app";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -17,18 +14,6 @@ import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
-
-export const FRONTEND_ACTION = "frontend_action";
-
-const selectCredentials = (state: EduIDAppRootState) => state.security.credentials;
-
-export const filterTokensFromCredentials = createSelector([selectCredentials], (credentials): CredentialType[] =>
-  credentials.filter(
-    (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type",
-  ),
-);
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -97,6 +82,17 @@ export function SignupMFA(): React.ReactElement | null {
       }
     })();
   }, [createUser, dispatch, webauthnRegistered]);
+
+  const handleWebauthnButtonClick = useCallback(
+    async (authenticator: "platform" | "cross-platform") => {
+      const result = await startRegisterWebauthn({ authenticator });
+      if (result.isSuccess) {
+        setRegistrationData(result.data.payload.registration_data.publicKey);
+        setShowSecurityKeyNameModal(true);
+      }
+    },
+    [startRegisterWebauthn],
+  );
 
   return (
     <Fragment>
@@ -202,13 +198,7 @@ export function SignupMFA(): React.ReactElement | null {
                 <EduIDButton
                   id="security-webauthn-platform-button"
                   buttonstyle="primary icon"
-                  onClick={async () => {
-                    const result = await startRegisterWebauthn({ authenticator: "platform" });
-                    if (result.isSuccess) {
-                      setRegistrationData(result.data.payload.registration_data.publicKey);
-                      setShowSecurityKeyNameModal(true);
-                    }
-                  }}
+                  onClick={() => handleWebauthnButtonClick("platform")}
                 >
                   <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
                   <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
@@ -224,13 +214,7 @@ export function SignupMFA(): React.ReactElement | null {
                 <EduIDButton
                   id="security-webauthn-button"
                   buttonstyle="primary icon"
-                  onClick={async () => {
-                    const result = await startRegisterWebauthn({ authenticator: "cross-platform" });
-                    if (result.isSuccess) {
-                      setRegistrationData(result.data.payload.registration_data.publicKey);
-                      setShowSecurityKeyNameModal(true);
-                    }
-                  }}
+                  onClick={() => handleWebauthnButtonClick("cross-platform")}
                 >
                   <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
                   <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
