@@ -148,7 +148,7 @@ export interface DeviceInfo {
 export interface LoginNextRequest {
   ref: string;
   this_device?: string;
-  remember_me?: boolean;
+  remember_me: boolean;
 }
 
 export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED" | "PASSWORD";

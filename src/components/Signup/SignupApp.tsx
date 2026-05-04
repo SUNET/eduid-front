@@ -13,8 +13,6 @@ import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
 
-export const SIGNUP_INTENT_KEY = "eduid_signup_intent";
-
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
   const dispatch = useAppDispatch();
