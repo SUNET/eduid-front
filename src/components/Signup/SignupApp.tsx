@@ -4,7 +4,7 @@ import { signupApi } from "apis/eduidSignup";
 import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
@@ -49,10 +49,8 @@ export function SignupApp(): React.JSX.Element {
 function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
-  const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const params = useParams<{ ref?: string }>();
   const urlRef = params.ref;
-  const navigate = useNavigate();
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
   const { data } = signupApi.useFetchStateQuery(is_configured ? undefined : skipToken);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
@@ -68,7 +66,7 @@ function SignupStart() {
     if (ref) {
       signupReturnToAuthn({ ref });
     }
-  }, [is_configured, data, loginRef, urlRef, eduid_site_link, signupReturnToAuthn, navigate]);
+  }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn]);
 
   useEffect(() => {
     if (data !== undefined) {
