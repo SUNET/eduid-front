@@ -1,8 +1,8 @@
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { WebauthnDescriptionModal } from "components/Common/ WebauthnDescriptionModal";
 import EduIDButton from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
+import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useCallback, useState } from "react";
@@ -172,7 +172,7 @@ export function SignupMFA(): React.ReactElement | null {
                 </div>
                 <p className="help-text">
                   <FormattedMessage
-                    defaultMessage="*a password is required to sign in with this key."
+                    defaultMessage="A password is required to sign in with this key."
                     description="non-discoverable key needs password"
                   />
                 </p>

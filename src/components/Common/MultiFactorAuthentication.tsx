@@ -17,8 +17,8 @@ import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";
-import { WebauthnDescriptionModal } from "./ WebauthnDescriptionModal";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
+import { WebauthnDescriptionModal } from "./WebauthnDescriptionModal";
 
 export const FRONTEND_ACTION = "frontend_action";
 
