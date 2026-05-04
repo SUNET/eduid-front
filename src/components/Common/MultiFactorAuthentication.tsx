@@ -65,12 +65,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
 
   const intl = useIntl();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "security.placeholder",
-    defaultMessage: "describe your security key",
-    description: "placeholder text for security key description input",
-  });
 
   const tokenTypeMap = useMemo(
     () => ({
