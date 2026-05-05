@@ -39,9 +39,6 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
-  "+yNZuL": {
-    "string": "A passkey is a faster and safer way to sign in than a password. We recommend setting one up to keep your account secure."
-  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
@@ -610,6 +607,9 @@
   "B9GqT0": {
     "developer_comment": "create eduid - list item 5",
     "string": "Choose using the radio buttons between a suggested (automatically generated) password or one you create."
+  },
+  "BOb+Mu": {
+    "string": "A passkey is a faster and safer way to sign in than with a password. We recommend setting one up for eduID to keep access to your account secure."
   },
   "BQv3Ph": {
     "developer_comment": "read more in the help link",
@@ -1361,6 +1361,10 @@
     "developer_comment": "what are keys description 3",
     "string": "These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se. The private key is stored in an \"authenticator\" module, either built into your hardware key, your device or a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords."
   },
+  "QgRD70": {
+    "developer_comment": "signup finish button",
+    "string": "Complete sign up"
+  },
   "QgXq1A": {
     "developer_comment": "identity eduid - list item 2-3",
     "string": "With Freja eID for most nationalities."
@@ -1415,6 +1419,10 @@
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
     "string": "Summary of how eduID treats your information according to the policy:"
+  },
+  "Ro9dbk": {
+    "developer_comment": "select extra webauthn",
+    "string": "Add a security key:"
   },
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
@@ -1760,10 +1768,6 @@
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Display name"
-  },
-  "Y24DF4": {
-    "developer_comment": "signup finish button",
-    "string": "Finish sign up"
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
