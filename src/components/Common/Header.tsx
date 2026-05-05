@@ -38,6 +38,10 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
     }
   }, [fetchLogout, props.loginRef, eduid_site_link]);
 
+  const handleRegister = useCallback(() => {
+    navigate(SIGNUP_BASE_PATH);
+  }, [navigate]);
+
   const handleLogin = useCallback(() => {
     if (dashboard_link) {
       document.location.href = dashboard_link;
@@ -64,9 +68,8 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
         </EduIDButton>
       );
     } else if (location.pathname.includes("login") && Object.keys(authn_options).length > 0) {
-      const signupPath = login_ref ? `${SIGNUP_BASE_PATH}/${login_ref}` : SIGNUP_BASE_PATH;
       return (
-        <EduIDButton buttonstyle="secondary sm" id="register" onClick={() => navigate(signupPath)}>
+        <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
           <FormattedMessage defaultMessage="create eduid" description="Header register" />
         </EduIDButton>
       );
