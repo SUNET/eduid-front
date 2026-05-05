@@ -149,6 +149,9 @@ export function SignupUserCreated(): React.JSX.Element {
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const idpRequestRef = signupState?.idp_request_ref;
   const [signupAuthn] = loginApi.useLazySignupAuthnQuery();
+  const idp_service_info = signupState?.idp_service_info;
+  const locale = useAppSelector((state) => state.intl.locale);
+  const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
 
   async function handleFinish() {
     if (idpRequestRef) {
@@ -200,8 +203,14 @@ export function SignupUserCreated(): React.JSX.Element {
 
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
-          {idpRequestRef ? (
-            <FormattedMessage defaultMessage="Continue to the service" description="go to service after signup" />
+          {service_name ? (
+            <FormattedMessage
+              defaultMessage="Continue to {service_name}"
+              description="go to service after signup"
+              values={{
+                service_name: <strong>{service_name}</strong>,
+              }}
+            />
           ) : (
             <FormattedMessage defaultMessage="Go to eduID to login" description="go to eduID link text" />
           )}
