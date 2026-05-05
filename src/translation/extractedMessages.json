@@ -31,9 +31,16 @@
     "developer_comment": "what are assurance levels - heading",
     "string": "What are assurance levels?"
   },
+  "+U1bqz": {
+    "developer_comment": "continue to password button",
+    "string": "set a password"
+  },
   "+Z2aYk": {
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
+  },
+  "+yNZuL": {
+    "string": "A passkey is a faster and safer way to sign in than a password. We recommend setting one up to keep your account secure."
   },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
@@ -151,6 +158,10 @@
     "developer_comment": "login button",
     "string": "log in"
   },
+  "1EvpJi": {
+    "developer_comment": "non-discoverable key needs password",
+    "string": "A password is required to sign in with this key."
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -210,6 +221,10 @@
   "2WFt6m": {
     "developer_comment": "freja - error",
     "string": "Note: not all nationalities are yet supported by this solution but the work to substantially increase the range is in progress."
+  },
+  "2XmcDM": {
+    "developer_comment": "passkey heading",
+    "string": "Faster and safer way to sign in"
   },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
@@ -475,6 +490,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
+  },
+  "8FC20o": {
+    "developer_comment": "Signup register credentials",
+    "string": "Create eduID: Set up your sign-in method"
   },
   "8FSnax": {
     "developer_comment": "MFA as the first step of login, toggle off",
@@ -943,6 +962,10 @@
     "developer_comment": "Emails main title",
     "string": "Email addresses"
   },
+  "IohxGv": {
+    "developer_comment": "Signup added credentials label",
+    "string": "Your registered security key: {keyName}"
+  },
   "Ipp+o7": {
     "developer_comment": "confirm button",
     "string": "confirm"
@@ -1306,6 +1329,10 @@
     "developer_comment": "add several keys - paragraph",
     "string": "It is recommended to add more than one key to make sure you always have supported access to your account."
   },
+  "Q1W/Fk": {
+    "developer_comment": "go to eduID link text",
+    "string": "Go to eduID to login"
+  },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Are you sure you want to disconnect your identity from your eduID account?"
@@ -1478,6 +1505,10 @@
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "When creating your own password, make sure it's strong enough to keep your accounts safe."
+  },
+  "TpK3Mj": {
+    "developer_comment": "go to service after signup",
+    "string": "Continue to {service_name}"
   },
   "Ttf9Tr": {
     "developer_comment": "create eduid - list item 8",
@@ -1729,6 +1760,10 @@
   "XzScE+": {
     "developer_comment": "Display name select legend",
     "string": "Display name"
+  },
+  "Y24DF4": {
+    "developer_comment": "signup finish button",
+    "string": "Finish sign up"
   },
   "Y8KQSQ": {
     "developer_comment": "what is freja - heading",
@@ -2075,36 +2110,6 @@
   },
   "delete account action": {
     "string": "delete account"
-  },
-  "document title Account": {
-    "string": "Account | eduID"
-  },
-  "document title Change Password": {
-    "string": "Change password | eduID"
-  },
-  "document title Help": {
-    "string": "Help | eduID"
-  },
-  "document title Identity": {
-    "string": "Identity | eduID"
-  },
-  "document title Log in": {
-    "string": "Log in | eduID"
-  },
-  "document title Log in using another device": {
-    "string": "Log in using another device | eduID"
-  },
-  "document title Register": {
-    "string": "Register | eduID"
-  },
-  "document title Reset Password": {
-    "string": "Reset password | eduID"
-  },
-  "document title Security": {
-    "string": "Security | eduID"
-  },
-  "document title Start": {
-    "string": "Start | eduID"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -2723,6 +2728,9 @@
   "login.mfa_proofing_method_not_allowed": {
     "string": "This multi-factor authentication (MFA) method is not allowed. Please choose a valid authentication method."
   },
+  "login.must_authenticate": {
+    "string": "Please log in to continue."
+  },
   "login.no_sso_session": {
     "string": "Session not found. Please try again."
   },
@@ -2945,6 +2953,10 @@
     "developer_comment": "use ladok - list item 2",
     "string": "choose your institution from the drop down list - if it is available."
   },
+  "oamaNQ": {
+    "developer_comment": "eduID help link",
+    "string": "eduID Help"
+  },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
     "string": "How to link ORCID with eduID:"
@@ -3157,6 +3169,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
   },
+  "qzrg/8": {
+    "developer_comment": "Registration finished with webauthn only",
+    "string": "Your eduID account has been created. You can sign in using your registered security key."
+  },
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
@@ -3259,6 +3275,10 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "With Swedish digital ID (Freja+/BankID) or by post."
+  },
+  "s5VZhZ": {
+    "developer_comment": "signup passkey help link",
+    "string": "Read more about passkeys and sign-in methods in the \"Using eduID\" section in {helpLink}."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
@@ -3386,6 +3406,9 @@
   "signup.email-verification-to-many-tries": {
     "string": "Too many invalid verification attempts. Please try again."
   },
+  "signup.idp-request-ref-not-found": {
+    "string": "The service request could not be found. Please try signing up again."
+  },
   "signup.invite-already-completed": {
     "string": "Invitation already completed."
   },
@@ -3394,6 +3417,9 @@
   },
   "signup.password-not-generated": {
     "string": "Password not generated. Please try again."
+  },
+  "signup.password-required": {
+    "string": "Your security key requires a password. Please set a password to complete your registration."
   },
   "signup.recaptcha-not-verified": {
     "string": "There was a problem verifying that you are a human. Please try again"
@@ -3504,14 +3530,6 @@
     "developer_comment": "settings eduid - identity handle",
     "string": "Identity"
   },
-  "unexpected-problem": {
-    "developer_comment": "unexpected problem error",
-    "string": "There was an unexpected problem servicing your request, please try again or contact the site administrators"
-  },
-  "unexpected-success": {
-    "developer_comment": "unexpected success message",
-    "string": "Success"
-  },
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Name"
@@ -3609,6 +3627,9 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
   },
+  "wizard link also add password": {
+    "string": "Also add a password"
+  },
   "wizard link back identity": {
     "string": "To Identity Settings"
   },
@@ -3618,11 +3639,20 @@
   "wizard link back start": {
     "string": "To Overview on Start"
   },
+  "wizard link back to add security key": {
+    "string": "Back to add security key"
+  },
+  "wizard link back to your security key": {
+    "string": "Back to your security key"
+  },
   "wizard link next account": {
     "string": "To Account Settings"
   },
   "wizard link next security": {
     "string": "To Security Settings"
+  },
+  "wizard link signup with password": {
+    "string": "Sign up with a password"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
@@ -3651,6 +3681,10 @@
   "xbRi/k": {
     "developer_comment": "Captcha button",
     "string": "Continue"
+  },
+  "xf5WHH": {
+    "developer_comment": "Signup register credentials lead text",
+    "string": "Choose at least one way to sign in to your eduID account."
   },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
