@@ -115,7 +115,7 @@ export function SignupMFA(): React.ReactElement | null {
                   <FormattedMessage defaultMessage="Faster and safer way to sign in" description="passkey heading" />
                 </h2>
                 <p className="text-medium">
-                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than a password. We recommend setting one up to keep your account secure." />
+                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than with a password. We recommend setting one up for eduID to keep access to your account secure." />
                 </p>
                 <p className="help-text">
                   <FormattedMessage
@@ -156,7 +156,7 @@ export function SignupMFA(): React.ReactElement | null {
             {webauthnIsDiscoverable ? (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                  <FormattedMessage defaultMessage="Finish sign up" description="signup finish button" />
+                  <FormattedMessage defaultMessage="Complete sign up" description="signup finish button" />
                 </EduIDButton>
               </div>
             ) : (
@@ -183,7 +183,7 @@ export function SignupMFA(): React.ReactElement | null {
           <Fragment>
             <span aria-label="select extra webauthn">
               <strong>
-                <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+                <FormattedMessage description="select extra webauthn" defaultMessage="Add a security key:" />
               </strong>
             </span>
             <div className="buttons">
