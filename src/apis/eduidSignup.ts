@@ -1,4 +1,11 @@
 import { eduIDApi } from "./common";
+import { ServiceInfo } from "./eduidLogin";
+import {
+  BeginRegisterWebauthnRequest,
+  BeginRegisterWebauthnResponse,
+  RegisterWebAuthnRequest,
+  SecurityResponse,
+} from "./eduidSecurity";
 import type { ApiResponse } from "./helpers/types";
 
 export interface SignupState {
@@ -33,7 +40,12 @@ export interface SignupState {
     generated_password?: string;
     use_suggested_password?: string;
     custom_password?: string;
+    webauthn_registered?: boolean;
+    webauthn_description?: string;
+    webauthn_is_discoverable?: boolean;
   };
+  idp_request_ref?: string;
+  idp_service_info?: ServiceInfo;
   user_created: boolean;
 }
 
@@ -69,6 +81,11 @@ export interface CreateUserRequest {
   use_suggested_password?: boolean;
   use_webauthn?: boolean;
   custom_password?: string;
+}
+
+export interface SignupReturnToAuthnRequest {
+  ref: string;
+  service_info: ServiceInfo;
 }
 
 export const signupApi = eduIDApi.injectEndpoints({
@@ -131,6 +148,34 @@ export const signupApi = eduIDApi.injectEndpoints({
           custom_password: body.custom_password,
           use_suggested_password: Boolean(body.use_suggested_password),
           use_webauthn: Boolean(body.use_webauthn),
+        },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    startRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebauthnRequest>({
+      query: (body) => ({
+        url: "webauthn/register/begin",
+        body,
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    signupRegisterWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
+      query: (body) => ({
+        url: "webauthn/register/complete",
+        body: {
+          response: body.webauthn_attestation,
+          description: body.description,
+          clientExtensionResults: body.clientExtensionResults,
+        },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    signupReturnToAuthn: builder.query<ApiResponse<SignupStatusResponse>, SignupReturnToAuthnRequest>({
+      query: (body) => ({
+        url: "return-to-auth",
+        body: {
+          ref: body.ref,
+          service_info: body.service_info,
         },
       }),
       extraOptions: { service: "signup" },

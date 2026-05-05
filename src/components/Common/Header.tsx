@@ -20,6 +20,7 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);
   const authn_options = useAppSelector((state) => state.login.authn_options);
+  const login_ref = useAppSelector((state) => state.login.ref);
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
   const location = useLocation();
@@ -75,7 +76,7 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
     } else if (eppn) {
       return <HeaderNav handleLogout={handleLogout} login_url={login_url} />;
     }
-  }, [authn_options, eppn, login_url, location.pathname, handleLogin, handleLogout, handleRegister]);
+  }, [authn_options, eppn, login_ref, login_url, location.pathname, handleLogin, handleLogout, handleRegister]);
 
   return (
     <header id="header">

@@ -116,4 +116,8 @@ export const apiResponses = {
       defaultMessage={`This identity proofing method is not allowed. Please choose a valid proofing method.`}
     />
   ),
+
+  "login.must_authenticate": (
+    <FormattedMessage id="login.must_authenticate" defaultMessage="Please log in to continue." />
+  ),
 };

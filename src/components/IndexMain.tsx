@@ -103,6 +103,7 @@ export function IndexMain(): React.JSX.Element {
                     {/* Landing */}
                     <Route path="/" element={<Index />} />
                     {/* Signup */}
+                    <Route path={`${SIGNUP_BASE_PATH}/:ref`} element={<SignupApp />} />
                     <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
                     {/* Login */}
                     <Route

@@ -2,7 +2,7 @@ import { loginApi } from "apis/eduidLogin";
 import EduIDButton from "components/Common/EduIDButton";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
@@ -36,6 +36,7 @@ function Login(): React.JSX.Element {
   const ref = useAppSelector((state) => state.login.ref);
   const error_state = useAppSelector((state) => state.login.error);
   const [fetchNext, { isError }] = loginApi.useLazyFetchNextQuery();
+  const redirectingToSignup = useRef(false);
 
   useEffect(() => {
     if (isError) {
@@ -67,9 +68,13 @@ function Login(): React.JSX.Element {
     error_state,
     fetchNext,
     isError,
+    navigate,
   ]);
 
   useEffect(() => {
+    if (redirectingToSignup.current) {
+      return;
+    }
     if (ref !== undefined) {
       /* Changing URL is apparently what triggers browsers password managers, so we
        * change to/from 'login/password' when that module is used.

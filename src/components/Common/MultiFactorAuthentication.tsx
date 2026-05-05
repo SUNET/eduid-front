@@ -9,17 +9,16 @@ import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";
-import ConfirmModal from "./ConfirmModal";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
+import { WebauthnDescriptionModal } from "./WebauthnDescriptionModal";
 
 export const FRONTEND_ACTION = "frontend_action";
 
@@ -64,14 +63,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   const authn = useAppSelector((state) => state.authn);
   const [isRegisteringAuthenticator, setIsRegisteringAuthenticator] = useState(false);
-
-  const intl = useIntl();
-  // placeholder can't be an Element, we need to get the actual translated string here
-  const placeholder = intl.formatMessage({
-    id: "security.placeholder",
-    defaultMessage: "describe your security key",
-    description: "placeholder text for security key description input",
-  });
 
   const tokenTypeMap = useMemo(
     () => ({
@@ -390,34 +381,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         handleRemoveWebauthnToken={handleRemoveWebauthnToken}
       />
 
-      <ConfirmModal
-        id="describe-webauthn-token-modal"
-        title={
-          <FormattedMessage
-            description="security webauthn describe title"
-            defaultMessage="Add a name for your security key"
-          />
-        }
-        mainText={
-          <p>
-            <FormattedMessage
-              description="security webauthn describe paragraph"
-              defaultMessage={`Note: this is only for your own use to be able to distinguish between your added keys.`}
-            />
-          </p>
-        }
-        placeholder={placeholder}
+      <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
-        modalFormLabel={
-          <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
-        }
-        validationPattern={securityKeyPattern}
-        validationError="security.description_invalid_format"
-        helpBlock={
-          <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
-        }
       />
       <VerifyCredentialModal
         showVerifyWebauthnModal={showVerifyWebauthnModal}

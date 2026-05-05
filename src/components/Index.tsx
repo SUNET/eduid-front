@@ -18,6 +18,7 @@ export function Index() {
   const dispatch = useAppDispatch();
   const frontend_action = useAppSelector((state) => state.authn?.response?.frontend_action);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
+  const idp_request_ref = useAppSelector((state) => state.signup.state?.idp_request_ref);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
   const redirectToLogin = useCallback(async () => {
@@ -84,7 +85,11 @@ export function Index() {
           />
         </p>
         <div className="buttons">
-          <EduIDButton onClick={() => navigate(SIGNUP_BASE_PATH)} buttonstyle="primary" id="sign-up-button">
+          <EduIDButton
+            onClick={() => navigate(idp_request_ref ? `${SIGNUP_BASE_PATH}/${idp_request_ref}` : SIGNUP_BASE_PATH)}
+            buttonstyle="primary"
+            id="sign-up-button"
+          >
             <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
           </EduIDButton>
           <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">

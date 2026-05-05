@@ -1,8 +1,10 @@
+import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
 import Splash from "components/Common/Splash";
+import { WizardLink } from "components/Common/WizardLink";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
 import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
@@ -11,7 +13,7 @@ import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
 
@@ -26,6 +28,8 @@ export function SignupConfirmPassword() {
   const [renderSuggested, setRenderSuggested] = useState(true);
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
+  const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
+  const intl = useIntl();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
@@ -34,6 +38,7 @@ export function SignupConfirmPassword() {
     }
 
     const response = await createUser({
+      use_webauthn: webauthnRegistered,
       use_suggested_password: renderSuggested,
       custom_password: renderSuggested ? undefined : newPassword,
     });
@@ -117,6 +122,20 @@ export function SignupConfirmPassword() {
                 handleSubmit={submitNewPasswordForm}
               />
             )}
+            <WizardLink
+              previousText={
+                webauthnRegistered
+                  ? intl.formatMessage({
+                      id: "wizard link back to your security key",
+                      defaultMessage: "Back to your security key",
+                    })
+                  : intl.formatMessage({
+                      id: "wizard link back to add security key",
+                      defaultMessage: "Back to add security key",
+                    })
+              }
+              previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
+            />
           </Splash>
         );
       }}
@@ -127,38 +146,77 @@ export function SignupConfirmPassword() {
 export function SignupUserCreated(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
+  const idpRequestRef = signupState?.idp_request_ref;
+  const [signupAuthn] = loginApi.useLazySignupAuthnQuery();
+  const idp_service_info = signupState?.idp_service_info;
+  const locale = useAppSelector((state) => state.intl.locale);
+  const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
+
+  async function handleFinish() {
+    if (idpRequestRef) {
+      const signupResponse = await signupAuthn({ ref: idpRequestRef });
+      if (signupResponse.data?.payload?.finished) {
+        globalThis.location.href = `/login/${idpRequestRef}`;
+        return;
+      }
+    } else {
+      globalThis.location.href = dashboard_link ?? "/";
+    }
+  }
 
   return (
-    <form method="GET" action={dashboard_link}>
+    <div>
       <h1>
         <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
       </h1>
       <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`These are your login details for eduID. 
-              Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
-            description="Registration finished"
-          />
-        </p>
+        {webauthnRegistered &&
+        !signupState?.credentials.custom_password &&
+        !signupState?.credentials.generated_password ? (
+          <p>
+            <FormattedMessage
+              defaultMessage="Your eduID account has been created. You can sign in using your registered security key."
+              description="Registration finished with webauthn only"
+            />
+          </p>
+        ) : (
+          <p>
+            <FormattedMessage
+              defaultMessage={`These are your login details for eduID. 
+                Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
+              description="Registration finished"
+            />
+          </p>
+        )}
       </div>
-      {signupState?.credentials.custom_password ? (
+      {signupState?.credentials.custom_password || webauthnRegistered ? (
         <div className="email-display">
           <EmailFieldset email={signupState?.email.address} />
         </div>
       ) : (
         <ConfirmUserInfo
-          email_address={signupState?.email.address as string}
+          email_address={signupState?.email.address ?? ""}
           new_password={formatPassword(signupState?.credentials.generated_password)}
         />
       )}
 
       <div className="buttons">
-        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" type="submit">
-          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
+        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
+          {service_name ? (
+            <FormattedMessage
+              defaultMessage="Continue to {service_name}"
+              description="go to service after signup"
+              values={{
+                service_name: <strong>{service_name}</strong>,
+              }}
+            />
+          ) : (
+            <FormattedMessage defaultMessage="Go to eduID to login" description="go to eduID link text" />
+          )}
         </EduIDButton>
       </div>
-    </form>
+    </div>
   );
 }
 

@@ -33,6 +33,7 @@ export interface SecurityResponse {
 export interface RegisterWebAuthnRequest {
   webauthn_attestation: RegistrationResponseJSON;
   description: string;
+  clientExtensionResults?: AuthenticationExtensionsClientOutputsJSON;
 }
 
 export interface BeginRegisterWebauthnRequest {
