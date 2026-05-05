@@ -49,6 +49,7 @@ export function SignupApp(): React.JSX.Element {
 function SignupStart() {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
+  const service_info = useAppSelector((state) => state.login.service_info);
   const params = useParams<{ ref?: string }>();
   const urlRef = params.ref;
   // bootstrap signup state in redux store by asking the backend for it when configuration is done
@@ -63,8 +64,8 @@ function SignupStart() {
     // Check Redux first, then fall back to URL query parameter (survives refresh)
     const ref = loginRef || urlRef;
 
-    if (ref) {
-      signupReturnToAuthn({ ref });
+    if (ref && service_info) {
+      signupReturnToAuthn({ ref: ref, service_info: service_info });
     }
   }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn]);
 
@@ -73,12 +74,16 @@ function SignupStart() {
       if (data.payload.state.already_signed_up) {
         fetchLogout({});
       }
-      if (data.payload.state.email?.address) {
+      if (data.payload.state.user_created) {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      } else if (data.payload.state.email?.address) {
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
         if (data.payload.state.email?.completed) {
           dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
         }
-      } else dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      } else {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      }
     }
   }, [data, fetchLogout, dispatch]);
 
