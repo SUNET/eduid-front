@@ -1,4 +1,5 @@
 import { eduIDApi } from "./common";
+import { ServiceInfo } from "./eduidLogin";
 import {
   BeginRegisterWebauthnRequest,
   BeginRegisterWebauthnResponse,
@@ -44,6 +45,7 @@ export interface SignupState {
     webauthn_is_discoverable?: boolean;
   };
   idp_request_ref?: string;
+  idp_service_info?: ServiceInfo;
   user_created: boolean;
 }
 
@@ -83,6 +85,7 @@ export interface CreateUserRequest {
 
 export interface SignupReturnToAuthnRequest {
   ref: string;
+  service_info: any;
 }
 
 export const signupApi = eduIDApi.injectEndpoints({
@@ -172,6 +175,7 @@ export const signupApi = eduIDApi.injectEndpoints({
         url: "return-to-auth",
         body: {
           ref: body.ref,
+          service_info: body.service_info,
         },
       }),
       extraOptions: { service: "signup" },
