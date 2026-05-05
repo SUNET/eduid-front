@@ -31,6 +31,10 @@
     "developer_comment": "what are assurance levels - heading",
     "string": "Vad är tillitsnivåer?"
   },
+  "+U1bqz": {
+    "developer_comment": "continue to password button",
+    "string": "Ange ett lösenord"
+  },
   "+Z2aYk": {
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
@@ -151,6 +155,10 @@
     "developer_comment": "login button",
     "string": "Logga in"
   },
+  "1EvpJi": {
+    "developer_comment": "non-discoverable key needs password",
+    "string": "Ett lösenord krävs för att logga in med denna nyckel."
+  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
@@ -210,6 +218,10 @@
   "2WFt6m": {
     "developer_comment": "freja - error",
     "string": "Obs: alla nationaliteter stöds inte ännu av denna lösning men arbetet med att avsevärt öka omfattningen är pågående."
+  },
+  "2XmcDM": {
+    "developer_comment": "passkey heading",
+    "string": "Snabbare och säkrare sätt att logga in"
   },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
@@ -476,6 +488,10 @@
     "developer_comment": "Change password set new password success lead",
     "string": "Du har uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning."
   },
+  "8FC20o": {
+    "developer_comment": "Signup register credentials",
+    "string": "Skapa eduID: Ställ in din inloggningsmetod"
+  },
   "8FSnax": {
     "developer_comment": "MFA as the first step of login, toggle off",
     "string": "Om denna stängs av kommer du till inloggning med användarnamn och lösenord istället. "
@@ -591,6 +607,9 @@
   "B9GqT0": {
     "developer_comment": "create eduid - list item 5",
     "string": "Välj med hjälp av radioknapparna mellan ett föreslaget (automatiskt genererat) lösenord eller ett du skapar själv."
+  },
+  "BOb+Mu": {
+    "string": "En passkey är ett snabbare och säkrare sätt att logga in än med ett lösenord. Vi rekommenderar att du ställer in en för eduID för att hålla åtkomsten till ditt konto säker."
   },
   "BQv3Ph": {
     "developer_comment": "read more in the help link",
@@ -942,6 +961,10 @@
   "Ifusv7": {
     "developer_comment": "Emails main title",
     "string": "E-postadresser"
+  },
+  "IohxGv": {
+    "developer_comment": "Signup added credentials label",
+    "string": "Din registrerade säkerhetsnyckel: {keyName}"
   },
   "Ipp+o7": {
     "developer_comment": "confirm button",
@@ -1306,6 +1329,10 @@
     "developer_comment": "add several keys - paragraph",
     "string": "Det rekommenderas att lägga till mer än en nyckel för att säkerställa avsedd tillgång till ditt konto."
   },
+  "Q1W/Fk": {
+    "developer_comment": "go to eduID link text",
+    "string": "Gå till eduID för att logga in"
+  },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Är du säker på att du vill ta bort koppling till din identitet från ditt eduID konto?"
@@ -1333,6 +1360,10 @@
   "QbA6Vf": {
     "developer_comment": "what are keys description 3",
     "string": "Dessa tekniker är en form av kryptografi där ett publikt/privat nyckelpar kopplas till ditt unika användarkonto på en specifik webbplats, i vårt fall eduID.se. Den privata nyckeln lagras i en autenticeringsmodul, antingen i din hårdvarunyckel, inbyggd i din enhet eller i en lösenordshanterare. De anses resistenta för phishing/nätfiske och tar bort behovet av ihågkomna lösenord."
+  },
+  "QgRD70": {
+    "developer_comment": "signup finish button",
+    "string": "Slutför registreringen"
   },
   "QgXq1A": {
     "developer_comment": "identity eduid - list item 2-3",
@@ -1388,6 +1419,10 @@
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
     "string": "Sammanfattning av hur eduID behandlar dina personuppgifter enligt policyn:"
+  },
+  "Ro9dbk": {
+    "developer_comment": "select extra webauthn",
+    "string": "Lägg till en säkerhetsnyckel:"
   },
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
@@ -1478,6 +1513,10 @@
   "TlgxUw": {
     "developer_comment": "Strong password - lead",
     "string": "När du skapar ditt eget lösenord, bör du se till att det är tillräckligt starkt för att hålla ditt konto säkert."
+  },
+  "TpK3Mj": {
+    "developer_comment": "go to service after signup",
+    "string": "Fortsätt till {service_name}"
   },
   "Ttf9Tr": {
     "developer_comment": "create eduid - list item 8",
@@ -2075,36 +2114,6 @@
   },
   "delete account action": {
     "string": "radera konto"
-  },
-  "document title Account": {
-    "string": "Konto | eduID"
-  },
-  "document title Change Password": {
-    "string": "Byt lösenord | eduID"
-  },
-  "document title Help": {
-    "string": "Hjälp | eduID"
-  },
-  "document title Identity": {
-    "string": "Identitet | eduID"
-  },
-  "document title Log in": {
-    "string": "Logga in | eduID"
-  },
-  "document title Log in using another device": {
-    "string": "Logga in med hjälp av en annan enhet | eduID"
-  },
-  "document title Register": {
-    "string": "Registrera | eduID"
-  },
-  "document title Reset Password": {
-    "string": "Återställ lösenord | eduID"
-  },
-  "document title Security": {
-    "string": "Säkerhet | eduID"
-  },
-  "document title Start": {
-    "string": "Start | eduID"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -2723,6 +2732,9 @@
   "login.mfa_proofing_method_not_allowed": {
     "string": "Det är inte möjligt att använda detta alternativ för multifaktor-autentiseringen (MFA). Välj en giltig autentiseringsmetod."
   },
+  "login.must_authenticate": {
+    "string": "Logga in för att fortsätta."
+  },
   "login.no_sso_session": {
     "string": "Sessionen hittades inte. Var god försök igen."
   },
@@ -2945,6 +2957,10 @@
     "developer_comment": "use ladok - list item 2",
     "string": "välj din institution från listan - om den finns tillgänglig."
   },
+  "oamaNQ": {
+    "developer_comment": "eduID help link",
+    "string": "Hjälp"
+  },
   "ooRPYc": {
     "developer_comment": "use orcid - list definition",
     "string": "Hur du kan länka ORCID med eduID:"
@@ -3157,6 +3173,10 @@
     "developer_comment": "ToU second paragraph",
     "string": "försöker förolämpa eller förnedra andra"
   },
+  "qzrg/8": {
+    "developer_comment": "Registration finished with webauthn only",
+    "string": "Ditt eduID-konto har skapats. Du kan logga in med din registrerade säkerhetsnyckel."
+  },
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "Tjänsten du försöker logga in på kräver en högre säkerhetsnivå. Ditt eduID-konto har inte konfigurerats med något av de tillgängliga alternativen för detta."
@@ -3259,6 +3279,10 @@
   "rfUu2/": {
     "developer_comment": "identity eduid - list item 2-1",
     "string": "Med svenskt digitalt ID (Freja+/BankID) eller via post."
+  },
+  "s5VZhZ": {
+    "developer_comment": "signup passkey help link",
+    "string": "Läs mer om passnycklar och inloggningsmetoder i avsnittet ”Använda eduID” på {helpLink}."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
@@ -3386,6 +3410,9 @@
   "signup.email-verification-to-many-tries": {
     "string": "För många ogiltiga verifieringsförsök. Var god försök igen senare."
   },
+  "signup.idp-request-ref-not-found": {
+    "string": "Tjänsteförfrågan kunde inte hittas. Försök registrera dig igen."
+  },
   "signup.invite-already-completed": {
     "string": "Inbjudan är redan klar."
   },
@@ -3394,6 +3421,9 @@
   },
   "signup.password-not-generated": {
     "string": "Lösenordet har inte skapats. Var god försök igen."
+  },
+  "signup.password-required": {
+    "string": "Din säkerhetsnyckel kräver ett lösenord. Vänligen ange ett lösenord för att slutföra registreringen."
   },
   "signup.recaptcha-not-verified": {
     "string": "Vi kunde inte verifiera att du är människa. Var vänlig försök igen."
@@ -3504,14 +3534,6 @@
     "developer_comment": "settings eduid - identity handle",
     "string": "Identitet"
   },
-  "unexpected-problem": {
-    "developer_comment": "unexpected problem error",
-    "string": "Ett okänt fel inträffade. Var god försök igen och kontakta supporten om felet kvarstår."
-  },
-  "unexpected-success": {
-    "developer_comment": "unexpected success message",
-    "string": "Klart"
-  },
   "uo1E1v": {
     "developer_comment": "column name label",
     "string": "Namn"
@@ -3609,6 +3631,9 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "Under inloggade startsidan presenteras en statusöversikt av ditt eduID. Det här är vad den vanligtvis innebär för din tillitsnivå och tjänsterna som du kan autentisera dig för:"
   },
+  "wizard link also add password": {
+    "string": "Lägg även till ett lösenord"
+  },
   "wizard link back identity": {
     "string": "Till identitetsinställningar"
   },
@@ -3618,11 +3643,20 @@
   "wizard link back start": {
     "string": "Till översikten på startsidan"
   },
+  "wizard link back to add security key": {
+    "string": "Tillbaka för att lägga till säkerhetsnyckel"
+  },
+  "wizard link back to your security key": {
+    "string": "Tillbaka till din säkerhetsnyckel"
+  },
   "wizard link next account": {
     "string": "Till kontoinställningar"
   },
   "wizard link next security": {
     "string": "Till säkerhetsinställningar"
+  },
+  "wizard link signup with password": {
+    "string": "Registrera dig med ett lösenord"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
@@ -3651,6 +3685,10 @@
   "xbRi/k": {
     "developer_comment": "Captcha button",
     "string": "Fortsätt"
+  },
+  "xf5WHH": {
+    "developer_comment": "Signup register credentials lead text",
+    "string": "Välj minst ett sätt att logga in på ditt eduID-konto."
   },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
