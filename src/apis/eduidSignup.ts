@@ -85,7 +85,7 @@ export interface CreateUserRequest {
 
 export interface SignupReturnToAuthnRequest {
   ref: string;
-  service_info: any;
+  service_info: ServiceInfo;
 }
 
 export const signupApi = eduIDApi.injectEndpoints({
