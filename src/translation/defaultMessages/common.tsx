@@ -151,4 +151,23 @@ export const validations = {
       description="Error message for max length"
     />
   ),
+  "document title Log in using another device": (
+    <FormattedMessage
+      id="document title Log in using another device"
+      defaultMessage="Log in using another device | eduID"
+    />
+  ),
+  "document title Log in": <FormattedMessage id="document title Log in" defaultMessage="Log in | eduID" />,
+  "document title Account": <FormattedMessage id="document title Account" defaultMessage="Account | eduID" />,
+  "document title Change Password": (
+    <FormattedMessage id="document title Change Password" defaultMessage="Change password | eduID" />
+  ),
+  "document title Start": <FormattedMessage id="document title Start" defaultMessage="Start | eduID" />,
+  "document title Identity": <FormattedMessage id="document title Identity" defaultMessage="Identity | eduID" />,
+  "document title Security": <FormattedMessage id="document title Security" defaultMessage="Security | eduID" />,
+  "document title Help": <FormattedMessage id="document title Help" defaultMessage="Help | eduID" />,
+  "document title Reset Password": (
+    <FormattedMessage id="document title Reset Password" defaultMessage="Reset password | eduID" />
+  ),
+  "document title Register": <FormattedMessage id="document title Register" defaultMessage="Register | eduID" />,
 };
