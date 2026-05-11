@@ -2115,6 +2115,36 @@
   "delete account action": {
     "string": "radera konto"
   },
+  "document title Account": {
+    "string": "Konto | eduID"
+  },
+  "document title Change Password": {
+    "string": "Byt lösenord | eduID"
+  },
+  "document title Help": {
+    "string": "Hjälp | eduID"
+  },
+  "document title Identity": {
+    "string": "Identitet | eduID"
+  },
+  "document title Log in": {
+    "string": "Logga in | eduID"
+  },
+  "document title Log in using another device": {
+    "string": "Logga in med hjälp av en annan enhet | eduID"
+  },
+  "document title Register": {
+    "string": "Registrera | eduID"
+  },
+  "document title Reset Password": {
+    "string": "Återställ lösenord | eduID"
+  },
+  "document title Security": {
+    "string": "Säkerhet | eduID"
+  },
+  "document title Start": {
+    "string": "Start | eduID"
+  },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
     "string": "När använder jag eduID?"
