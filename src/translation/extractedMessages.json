@@ -2279,6 +2279,10 @@
     "developer_comment": "eidas freja instructions step2",
     "string": "Create a Freja eID Plus account (awarded the \"Svensk e-legitimation\" quality mark)"
   },
+  "exv0ye": {
+    "developer_comment": "delete.modal_info",
+    "string": "Deleting your eduID will permanently remove all your saved information. You need to log in again before you can delete your account."
+  },
   "ez2CnQ": {
     "developer_comment": "what is sunet - paragraph 2",
     "string": "SUNET developed eduID to provide a secure common routine for managing identity in the higher education community, with adequate authorization levels of confirmed accounts. More information about SUNET is available at {sunet} (in Swedish)."
@@ -3217,10 +3221,6 @@
   "rBmN/b": {
     "developer_comment": "security key bullet",
     "string": "\"Security key\" button for physical USB keys"
-  },
-  "rHjPO1": {
-    "developer_comment": "delete.modal_info",
-    "string": "Deleting your eduID will permanently remove all your saved information. If it has been a long time since you last logged in, you may need to log in again."
   },
   "rN3KF1": {
     "developer_comment": "security zone modal",
