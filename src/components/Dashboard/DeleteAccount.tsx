@@ -44,7 +44,7 @@ export default function DeleteAccount(): React.JSX.Element | null {
         }
         mainText={
           <FormattedMessage
-            defaultMessage="Deleting your eduID will permanently remove all your saved information. If it has been a long time since you last logged in, you may need to log in again."
+            defaultMessage="Deleting your eduID will permanently remove all your saved information. You need to log in again before you can delete your account."
             description="delete.modal_info"
           />
         }
