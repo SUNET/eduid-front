@@ -91,7 +91,7 @@ export function SignupMFA(): React.ReactElement | null {
     <Fragment>
       <h1>
         <FormattedMessage
-          defaultMessage="Create eduID:  Set up your sign-in method"
+          defaultMessage="Create eduID: Set up your sign-in method"
           description="Signup register credentials"
         />
       </h1>
@@ -160,7 +160,7 @@ export function SignupMFA(): React.ReactElement | null {
                 </EduIDButton>
               </div>
             ) : (
-              <>
+              <Fragment>
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="primary"
@@ -176,7 +176,7 @@ export function SignupMFA(): React.ReactElement | null {
                     description="non-discoverable key needs password"
                   />
                 </p>
-              </>
+              </Fragment>
             )}
           </Fragment>
         ) : (
