@@ -3312,7 +3312,7 @@
   },
   "s5VZhZ": {
     "developer_comment": "signup passkey help link",
-    "string": "Läs mer om passnycklar och inloggningsmetoder i avsnittet ”Använda eduID” på {helpLink}."
+    "string": "Läs mer om passkeys och inloggningsmetoder i avsnittet ”Använda eduID” på {helpLink}."
   },
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
