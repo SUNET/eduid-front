@@ -88,6 +88,11 @@ export interface SignupReturnToAuthnRequest {
   service_info: ServiceInfo;
 }
 
+export interface ExternalMfaRegisterRequest {
+  app_name: string;
+  authn_id: string;
+}
+
 export const signupApi = eduIDApi.injectEndpoints({
   endpoints: (builder) => ({
     fetchState: builder.query<ApiResponse<SignupStatusResponse>, void>({
@@ -177,6 +182,13 @@ export const signupApi = eduIDApi.injectEndpoints({
           ref: body.ref,
           service_info: body.service_info,
         },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    externalMfaRegister: builder.query<ApiResponse<SignupStatusResponse>, ExternalMfaRegisterRequest>({
+      query: (body) => ({
+        url: "external-mfa-register",
+        body,
       }),
       extraOptions: { service: "signup" },
     }),
