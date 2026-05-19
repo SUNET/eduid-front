@@ -45,7 +45,7 @@ export const bankIDApi = eduIDApi.injectEndpoints({
       query: () => ({
         url: "mfa-register",
         body: {
-          method: "eidas",
+          method: "bankid",
           frontend_action: "signupExternalMfa",
         },
       }),
