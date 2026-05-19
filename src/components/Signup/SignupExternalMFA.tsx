@@ -23,6 +23,20 @@ export function SignupExternalMFA(): React.JSX.Element {
     }
   };
 
+  const handleEidasMfa = async () => {
+    const response = await eidasMfaRegister();
+    if (response.isSuccess) {
+      response.data.payload.location && globalThis.location.assign(response.data.payload.location);
+    }
+  };
+
+  const handleBankIDMfa = async () => {
+    const response = await bankIDMfaRegister();
+    if (response.isSuccess) {
+      response.data.payload.location && globalThis.location.assign(response.data.payload.location);
+    }
+  };
+
   return (
     <Fragment>
       <section className="intro">
@@ -42,19 +56,13 @@ export function SignupExternalMFA(): React.JSX.Element {
         </div>
       </section>
       <div className="external-mfa-options">
-        <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => {}}>
+        <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={handleBankIDMfa}>
           BankID
         </EduIDButton>
-        <EduIDButton
-          buttonstyle="primary"
-          id="signup-freja"
-          onClick={() => {
-            handleFrejaEidMfa();
-          }}
-        >
+        <EduIDButton buttonstyle="primary" id="signup-freja" onClick={handleFrejaEidMfa}>
           Freja eID
         </EduIDButton>
-        <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={() => {}}>
+        <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={handleEidasMfa}>
           eIDAS
         </EduIDButton>
       </div>

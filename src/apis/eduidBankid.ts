@@ -41,12 +41,12 @@ export const bankIDApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "bankid" },
     }),
-    bankIDMfaRegister: builder.query<ApiResponse<AuthCommonResponse>, AuthCommonRequest>({
-      query: (body) => ({
+    bankIDMfaRegister: builder.query<ApiResponse<AuthCommonResponse>, void>({
+      query: () => ({
         url: "mfa-register",
         body: {
-          ...body,
-          method: body.method,
+          method: "eidas",
+          frontend_action: "signupExternalMfa",
         },
       }),
       extraOptions: { service: "bankid" },
