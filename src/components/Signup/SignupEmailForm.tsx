@@ -13,21 +13,34 @@ import { signupSlice } from "slices/Signup";
 export function SignupEmailForm(): React.JSX.Element {
   return (
     <Fragment>
-      <section className="intro">
-        <h1>
-          <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
-        </h1>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage={`Once you have created an eduID you will be able to log in and
-                             connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
-              description="Signup"
-            />
+      <div className="step-container">
+        <section className="intro">
+          <h1>
+            <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
+          </h1>
+          <p className="destination-info">
+            In order to access <strong>the thing</strong>
           </p>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                defaultMessage={`Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
+                description="Signup email form text"
+              />
+            </p>
+          </div>
+        </section>
+        <EmailForm />
+
+        <hr className="border-line border-line-lesser" />
+        <div className="step-indicator">
+          <div className="active">1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
         </div>
-      </section>
-      <EmailForm />
+      </div>
     </Fragment>
   );
 }

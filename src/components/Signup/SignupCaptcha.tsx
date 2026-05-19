@@ -44,20 +44,33 @@ export function SignupCaptcha(): React.JSX.Element | null {
 
   return (
     <Fragment>
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
-      </h1>
-
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
-            description="Signup captcha lead text"
-          />
+      <div className="step-container">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
         </p>
-      </div>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
+              description="Signup captcha lead text"
+            />
+          </p>
+        </div>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
+        <InternalCaptcha {...args} getCaptcha={getCaptcha} />
+
+        <hr className="border-line border-line-lesser" />
+        <div className="step-indicator">
+          <div className="completed">1</div>
+          <div className="active">2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+        </div>
+      </div>
     </Fragment>
   );
 }

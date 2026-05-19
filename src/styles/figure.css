@@ -157,3 +157,56 @@ figure.webauthn-token-holder {
     justify-self: flex-end;
   }
 }
+
+.step-container {
+  /* background-color: #daede1;
+  border-radius: 1.5rem; */
+  background-color: white;
+  padding: 1rem 1.5rem;
+  margin: 0 -1.5rem;
+  box-shadow: var(--shadow-sm);
+
+  h1 {
+    margin-bottom: 0.25em;
+  }
+
+  .destination-info {
+    color: var(--txt-green);
+    font-size: var(--txt-sm);
+  }
+
+  .lead p {
+    font-size: var(--txt-lg);
+    color: var(--txt-gray);
+  }
+
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    div {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--bg-gray);
+      color: var(--body-txt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 1.5rem;
+      font-family: monospace;
+
+      &.completed {
+        background-color: var(--bg-orange);
+        color: #161616;
+      }
+
+      &.active {
+        background-color: var(--bright-orange);
+        color: #f4f4f4;
+      }
+    }
+  }
+}
