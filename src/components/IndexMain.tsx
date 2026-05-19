@@ -29,6 +29,7 @@ import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
 import ScrollToHash from "./ScrollToHash";
 import ScrollToTop from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
+import { SignupExternalReturnHandler } from "./Signup/SignupExternalReturnHandler";
 import { Errors } from "./SwamidErrors/Errors";
 
 export const LOGIN_BASE_PATH = "/login";
@@ -105,6 +106,7 @@ export function IndexMain(): React.JSX.Element {
                     {/* Signup */}
                     <Route path={`${SIGNUP_BASE_PATH}/:ref`} element={<SignupApp />} />
                     <Route path={SIGNUP_BASE_PATH} element={<SignupApp />} />
+                    <Route path="/register/ext-return/:app_name/:authn_id" element={<SignupExternalReturnHandler />} />
                     {/* Login */}
                     <Route
                       path={`${LOGIN_BASE_PATH}/ext-return/:app_name/:authn_id`}

@@ -11,14 +11,13 @@ import { signupSlice } from "slices/Signup";
 export function SignupExternalMFA(): React.JSX.Element {
   const intl = useIntl();
   const dispatch = useAppDispatch();
-  const [bankIDMfaAuthenticate] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
-  const [eidasMfaAuthenticate] = eidasApi.useLazyEidasMfaAuthenticateQuery();
+  const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
+  const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const loginRef = useAppSelector((state) => state.login.ref);
-  console.log("1234", loginRef);
 
   const handleFrejaEidMfa = async () => {
-    const response = await frejaMfaRegister({ method: "freja_eid" });
+    const response = await frejaMfaRegister();
     if (response.isSuccess) {
       response.data.payload.location && globalThis.location.assign(response.data.payload.location);
     }

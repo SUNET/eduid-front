@@ -2,7 +2,7 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
+import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, SIGNUP_BASE_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -43,6 +43,7 @@ export function ExternalReturnHandler() {
           removeSecurityKeyAuthn: SECURITY_PATH,
           changeSecurityPreferencesAuthn: SECURITY_PATH,
           removeIdentity: IDENTITY_PATH,
+          signupExternalMfa: SIGNUP_BASE_PATH,
         };
         const _path = actionToRoute[status.frontend_action];
 
