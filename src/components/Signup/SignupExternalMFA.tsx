@@ -34,14 +34,14 @@ export function SignupExternalMFA(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Create eduID: Verify your identity"
+            defaultMessage="Create eduID: Register with a digital ID"
             description="Signup external MFA title"
           />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Use your digital ID to verify your identity. This is the fastest way to create your eduID account."
+              defaultMessage="Register using BankID, Freja eID, or eIDAS. Your name and personal information will be added automatically."
               description="Signup external MFA lead text"
             />
           </p>
