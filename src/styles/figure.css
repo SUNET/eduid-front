@@ -175,9 +175,17 @@ figure.webauthn-token-holder {
     font-size: var(--txt-sm);
   }
 
+  .lead {
+    margin-bottom: 1.5rem;
+  }
+
   .lead p {
     font-size: var(--txt-lg);
     color: var(--txt-gray);
+  }
+
+  .border-line {
+    margin-top: 1.5rem;
   }
 
   .step-indicator {

@@ -79,10 +79,13 @@ export function SignupEnterCode(): React.JSX.Element {
 
   if (isExpired) {
     return (
-      <div>
+      <div className="step-container">
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Code expired" description="Signup" />
         </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
+        </p>
         <div className="lead">
           <p>
             <FormattedMessage
@@ -98,17 +101,26 @@ export function SignupEnterCode(): React.JSX.Element {
               }}
             />
           </p>
+          <p>
+            <FormattedMessage
+              defaultMessage="Click the link below to receive a new code."
+              description="Signup, code expired"
+            />
+          </p>
         </div>
-        <p>
-          <FormattedMessage
-            defaultMessage="Click the link below to receive a new code. You will be redirected to a page where you can enter the new code."
-            description="Signup, code expired"
-          />
-        </p>
 
         <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
-          <FormattedMessage defaultMessage="Send a new code" description="send a new code" />
+          <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
+
+        <hr className="border-line border-line-lesser" />
+        <div className="step-indicator">
+          <div className="completed">1</div>
+          <div className="completed">2</div>
+          <div className="completed">3</div>
+          <div className="active">4</div>
+          <div>5</div>
+        </div>
       </div>
     );
   }
@@ -117,45 +129,57 @@ export function SignupEnterCode(): React.JSX.Element {
 
   return (
     <Splash showChildren={isExpired === false}>
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Verification of email address" description="Signup" />
-      </h1>
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address. You can also copy 
-            and paste the code from the email into the input field.`}
-            values={{
-              email: (
-                <span id="email_address">
-                  <output data-testid="email-address">
-                    <strong>{signupState?.email.address}</strong>
-                  </output>
-                </span>
-              ),
-            }}
-          />
+      <div className="step-container">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Verification of email address" description="Signup" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
         </p>
-      </div>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address.`}
+              values={{
+                email: (
+                  <span id="email_address">
+                    <output data-testid="email-address">
+                      <strong>{signupState?.email.address}</strong>
+                    </output>
+                  </span>
+                ),
+              }}
+            />
+          </p>
+        </div>
 
-      <div className="signup-timer-wrapper">
-        <p>
-          <FormattedMessage defaultMessage="Code expires in" description="Short code form" />
-        </p>
-        <TimeRemainingWrapper
-          name="signup-email-expires"
-          unique_id="signup.email"
-          value={signupState?.email.expires_time_left || 0}
-          onReachZero={handleTimerReachZero}
-        >
-          <ExpiresMeter showMeter={false} expires_max={signupState?.email.expires_time_max || 0} />
-        </TimeRemainingWrapper>
-      </div>
+        <div className="signup-timer-wrapper">
+          <p>
+            <FormattedMessage defaultMessage="Code expires in" description="Short code form" />
+          </p>
+          <TimeRemainingWrapper
+            name="signup-email-expires"
+            unique_id="signup.email"
+            value={signupState?.email.expires_time_left || 0}
+            onReachZero={handleTimerReachZero}
+          >
+            <ExpiresMeter showMeter={false} expires_max={signupState?.email.expires_time_max || 0} />
+          </TimeRemainingWrapper>
+        </div>
 
-      <div className="enter-code">
-        <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
-          <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
-        </ResponseCodeForm>
+        <div className="enter-code">
+          <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
+            <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
+          </ResponseCodeForm>
+        </div>
+        <hr className="border-line border-line-lesser" />
+        <div className="step-indicator">
+          <div className="completed">1</div>
+          <div className="completed">2</div>
+          <div className="completed">3</div>
+          <div className="active">4</div>
+          <div>5</div>
+        </div>
       </div>
     </Splash>
   );
