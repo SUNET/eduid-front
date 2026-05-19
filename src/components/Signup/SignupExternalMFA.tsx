@@ -16,24 +16,16 @@ export function SignupExternalMFA(): React.JSX.Element {
   const [frejaMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const loginRef = useAppSelector((state) => state.login.ref);
 
-  const handleFrejaEidMfa = async () => {
-    const response = await frejaMfaRegister();
-    if (response.isSuccess) {
-      response.data.payload.location && globalThis.location.assign(response.data.payload.location);
-    }
-  };
+  const handleExternalMfa = async (method: "bankid" | "freja_eid" | "eidas") => {
+    const authenticateMap = {
+      bankid: bankIDMfaRegister,
+      freja_eid: frejaMfaRegister,
+      eidas: eidasMfaRegister,
+    };
 
-  const handleEidasMfa = async () => {
-    const response = await eidasMfaRegister();
-    if (response.isSuccess) {
-      response.data.payload.location && globalThis.location.assign(response.data.payload.location);
-    }
-  };
-
-  const handleBankIDMfa = async () => {
-    const response = await bankIDMfaRegister();
-    if (response.isSuccess) {
-      response.data.payload.location && globalThis.location.assign(response.data.payload.location);
+    const response = await authenticateMap[method]();
+    if (response.isSuccess && response.data.payload.location) {
+      globalThis.location.assign(response.data.payload.location);
     }
   };
 
@@ -56,13 +48,13 @@ export function SignupExternalMFA(): React.JSX.Element {
         </div>
       </section>
       <div className="external-mfa-options">
-        <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={handleBankIDMfa}>
+        <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => handleExternalMfa("bankid")}>
           BankID
         </EduIDButton>
-        <EduIDButton buttonstyle="primary" id="signup-freja" onClick={handleFrejaEidMfa}>
+        <EduIDButton buttonstyle="primary" id="signup-freja" onClick={() => handleExternalMfa("freja_eid")}>
           Freja eID
         </EduIDButton>
-        <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={handleEidasMfa}>
+        <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={() => handleExternalMfa("eidas")}>
           eIDAS
         </EduIDButton>
       </div>
