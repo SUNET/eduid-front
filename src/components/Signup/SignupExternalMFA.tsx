@@ -47,7 +47,7 @@ export function SignupExternalMFA(): React.JSX.Element {
           </p>
         </div>
       </section>
-      <div className="external-mfa-options">
+      <div className="buttons">
         <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => handleExternalMfa("bankid")}>
           BankID
         </EduIDButton>
