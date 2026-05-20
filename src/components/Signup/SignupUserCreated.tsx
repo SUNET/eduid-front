@@ -56,7 +56,7 @@ export function SignupConfirmPassword() {
 
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     navigate(SIGNUP_BASE_PATH);
   }
 

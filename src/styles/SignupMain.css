@@ -101,3 +101,11 @@ h3 {
     }
   }
 }
+
+section#register-with-name {
+  margin-top: 2rem;
+}
+
+.with-digital-id .buttons {
+  margin-top: 1rem;
+}

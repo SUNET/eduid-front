@@ -163,14 +163,14 @@ export function RegisterEmail() {
     if (isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [isSuccess, isError, dispatch]);
 
   useEffect(() => {
     // If we don't have the email or name in the state, go back to the email form
     if (!email || !given_name || !surname) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [email, given_name, surname, dispatch]);
 

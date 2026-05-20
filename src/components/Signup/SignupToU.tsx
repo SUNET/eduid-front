@@ -22,7 +22,7 @@ export function SignupToU(): React.JSX.Element {
   }
 
   function handleCancel() {
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 
   return (
@@ -70,7 +70,7 @@ export function ProcessToU(): React.JSX.Element | null {
     if (isSuccess) {
       dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [isSuccess, isError, dispatch]);
 

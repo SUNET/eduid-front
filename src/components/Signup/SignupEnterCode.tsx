@@ -35,7 +35,7 @@ export function SignupEnterCode(): React.JSX.Element {
   useEffect(() => {
     if (signupState?.email.bad_attempts && signupState?.email.bad_attempts === signupState?.email.bad_attempts_max) {
       // user has used up all allowed attempts to enter the code
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [signupState, dispatch]);
 
@@ -58,7 +58,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 
   function handleSubmitCode(values: ResponseCodeValues) {

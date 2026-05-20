@@ -1,7 +1,7 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
-import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
+import { RegisterEmail } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
@@ -9,7 +9,7 @@ import { signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
-import { SignupExternalMFA } from "./SignupExternalMFA";
+import { SignupEntry } from "./SignupEntry";
 import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
@@ -27,8 +27,8 @@ export function SignupApp(): React.JSX.Element {
   return (
     <React.Fragment>
       {next_page === "SIGNUP_START" && <SignupStart />}
-      {next_page === "SIGNUP_EXTERNAL_MFA" && <SignupExternalMFA />}
-      {next_page === "SIGNUP_EMAIL_FORM" && <SignupEmailForm />}
+      {next_page === "SIGNUP_ENTRY" && <SignupEntry />}
+      {/* {next_page === "SIGNUP_EMAIL_FORM" && <SignupEmailForm />} */}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
       {next_page === "SIGNUP_CAPTCHA" && <SignupCaptcha />}
       {next_page === "SIGNUP_TOU" && <SignupToU />}
@@ -77,14 +77,14 @@ function SignupStart() {
         fetchLogout({});
       }
       if (data.payload.state.user_created) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_EXTERNAL_MFA"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
       } else if (data.payload.state.email?.address) {
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
         if (data.payload.state.email?.completed) {
           dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
         }
       } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_EXTERNAL_MFA"));
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
       }
     }
   }, [data, fetchLogout, dispatch]);

@@ -4,8 +4,7 @@ import { isFSA } from "apis/helpers/typeGuards";
 
 type NextPageTypes =
   | "SIGNUP_START"
-  | "SIGNUP_EXTERNAL_MFA"
-  | "SIGNUP_EMAIL_FORM"
+  | "SIGNUP_ENTRY"
   | "PROCESS_CAPTCHA"
   | "SIGNUP_CAPTCHA"
   | "SIGNUP_TOU"

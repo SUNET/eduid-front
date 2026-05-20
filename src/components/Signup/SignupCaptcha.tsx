@@ -26,7 +26,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   function handleCaptchaCancel() {
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 
   function handleCaptchaCompleted(response: string) {
