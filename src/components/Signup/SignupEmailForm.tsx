@@ -52,7 +52,7 @@ export interface SignupEmailFormData extends Record<string, string | undefined> 
 }
 
 /* FORM */
-function EmailForm() {
+export function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
   const intl = useIntl();

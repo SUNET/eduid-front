@@ -1,12 +1,16 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import EduIDButton from "components/Common/EduIDButton";
-import { WizardLink } from "components/Common/WizardLink";
+import { useTheme } from "components/Common/ThemeContext";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
-import { signupSlice } from "slices/Signup";
+import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import EuFlag from "../../../img/flags/EuFlag.svg";
+import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import { EmailForm } from "./SignupEmailForm";
 
 export function SignupExternalMFA(): React.JSX.Element {
   const intl = useIntl();
@@ -14,6 +18,7 @@ export function SignupExternalMFA(): React.JSX.Element {
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
+  const { theme } = useTheme();
   const loginRef = useAppSelector((state) => state.login.ref);
 
   const handleExternalMfa = async (method: "bankid" | "freja_eid" | "eidas") => {
@@ -34,37 +39,92 @@ export function SignupExternalMFA(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Create eduID: Register with a digital ID"
-            description="Signup external MFA title"
+            defaultMessage="Create eduID: Choose how to register"
+            description="Signup first page title"
           />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Register using BankID, Freja eID, or eIDAS. Your name and personal information will be added automatically."
-              description="Signup external MFA lead text"
+              defaultMessage="The fastest way to register is with a digital ID. your name and identity will be verified automatically."
+              description="Signup first page lead text"
             />
           </p>
         </div>
       </section>
-      <div className="buttons">
-        <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => handleExternalMfa("bankid")}>
-          BankID
-        </EduIDButton>
-        <EduIDButton buttonstyle="primary" id="signup-freja" onClick={() => handleExternalMfa("freja_eid")}>
-          Freja eID
-        </EduIDButton>
-        <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={() => handleExternalMfa("eidas")}>
-          eIDAS
-        </EduIDButton>
+      <section className="passkey-option">
+        <div className="status-box">
+          <div className="text-wrapper">
+            <div className="flex-between">
+              <div>
+                <h2>
+                  <FormattedMessage defaultMessage="Register with a digital ID" description="passkey heading" />
+                </h2>
+                <p className="text-medium">
+                  <FormattedMessage defaultMessage="Use BankID, Freja eID, or eIDAS to register. Your name and identity will be verified automatically — no need to fill in forms." />
+                </p>
+                <p className="help-text">
+                  <FormattedMessage
+                    defaultMessage='
+                Read more about logging in using passkeys in the "Using eduID" section in {howPasskeyWork}. '
+                    description="security zone redirect info"
+                    values={{
+                      howPasskeyWork: (
+                        <a href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
+                          <FormattedMessage description="passkey help text link" defaultMessage="eduID Help" />
+                        </a>
+                      ),
+                    }}
+                  />
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="buttons flex-column">
+            <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => handleExternalMfa("bankid")}>
+              <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
+              <span>BankID</span>
+            </EduIDButton>
+            <EduIDButton buttonstyle="primary" id="signup-freja" onClick={() => handleExternalMfa("freja_eid")}>
+              <img className="circle-icon freja" height="24" alt="Freja eID" src={FrejaFlag} />
+              <span>Freja eID</span>
+            </EduIDButton>
+            <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={() => handleExternalMfa("eidas")}>
+              <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
+              <span>eIDAS</span>
+            </EduIDButton>
+          </div>
+        </div>
+      </section>
+
+      <div className="or-container">
+        <div className="line"></div>
+        <span>
+          <FormattedMessage defaultMessage="or register another way" description="Alternative signup option" />
+        </span>
+        <div className="line"></div>
       </div>
-      <WizardLink
+      <Accordion>
+        <AccordionItemTemplate
+          title={
+            <FormattedMessage
+              description="Continue with email and name button"
+              defaultMessage="Continue with email and name"
+            />
+          }
+          additionalInfo={""}
+          uuid="continue-email-form"
+        >
+          <EmailForm />
+        </AccordionItemTemplate>
+      </Accordion>
+      {/* <WizardLink
         nextText={intl.formatMessage({
-          id: "wizard link signup with email and name",
-          defaultMessage: "Sign up with email and name",
+          id: "wizard link Continue with email and name",
+          defaultMessage: "Continue with email and name",
         })}
         nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
-      />
+      /> */}
     </Fragment>
   );
 }
