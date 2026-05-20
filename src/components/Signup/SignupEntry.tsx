@@ -122,7 +122,11 @@ export function SignupEntry(): React.JSX.Element {
           </EduIDButton>
         </div>
         <p className="text-medium">
-          <FormattedMessage defaultMessage="Create your account by providing your email and name. You'll complete a few extra steps. including a captcha, email verification, and security key registration." />
+          <FormattedMessage
+            description="Signup with email explanation"
+            defaultMessage={`Once you have created an eduID you will be able to log in and
+                             connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
+          />
         </p>
         {isEditMode && (
           <div className="edit-data">
