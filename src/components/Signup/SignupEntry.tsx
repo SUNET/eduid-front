@@ -86,6 +86,7 @@ export function SignupEntry(): React.JSX.Element {
             </div>
             {regionNames.of(external_mfa.country_code)}&nbsp;{external_mfa.date_of_birth}
           </figure>
+          <EmailForm />
         </section>
       ) : (
         <section className="with-digital-id">
