@@ -75,12 +75,23 @@ function SignupStart() {
     if (data !== undefined) {
       if (data.payload.state.already_signed_up) {
         fetchLogout({});
-      }
-      if (data.payload.state.user_created) {
+      } else if (data.payload.state.user_created) {
         dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+      } else if (data.payload.state.email?.completed) {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
+      } else if (data.payload.state.external_mfa?.completed) {
+        // External MFA done, skip captcha
+        if (data.payload.state.tou?.completed && data.payload.state.email?.address) {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
+        } else if (data.payload.state.tou?.completed) {
+          dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
+        } else {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
+        }
       } else if (data.payload.state.email?.address) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
-        if (data.payload.state.email?.completed) {
+        if (!data.payload.state.captcha.completed) {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
+        } else if (data.payload.state.email?.completed) {
           dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
         }
       } else {
