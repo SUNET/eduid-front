@@ -47,6 +47,17 @@ export interface SignupState {
   idp_request_ref?: string;
   idp_service_info?: ServiceInfo;
   user_created: boolean;
+  external_mfa?: ExternalMFAResponse;
+}
+
+interface ExternalMFAResponse {
+  app_name: string;
+  completed: boolean;
+  country_code: string;
+  date_of_birth: string;
+  given_name: string;
+  masked_nin: null;
+  surname: string;
 }
 
 export interface SignupStatusResponse {
