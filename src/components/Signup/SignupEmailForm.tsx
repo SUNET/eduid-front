@@ -82,9 +82,16 @@ export function EmailForm() {
 
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
-      if (state?.captcha.completed && state?.tou.completed) {
+      if (
+        (state?.captcha.completed && state?.tou.completed) ||
+        (state?.external_mfa?.completed && state?.tou.completed)
+      ) {
         // Go to RegisterEmail
         dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
+      } else if (state?.external_mfa?.completed) {
+        // External MFA already done, skip captcha and go to ToU
+        dispatch(clearNotifications());
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
       } else {
         dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
@@ -101,8 +108,8 @@ export function EmailForm() {
       validate={validateSignupUserInForm}
       initialValues={{
         email: "",
-        given_name: "",
-        surname: "",
+        given_name: state?.name.given_name ?? "",
+        surname: state?.name.surname ?? "",
       }}
       render={(formProps: FormRenderProps<SignupEmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
