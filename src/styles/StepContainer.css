@@ -1,0 +1,85 @@
+/* Plate to highlight content, with numbered steps at bottom.  */
+
+.step-container {
+  /* background-color: #daede1;
+  border-radius: 1.5rem; */
+  background-color: white;
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+
+  @media (--bp-sm-up) {
+    margin: 0 -1.5rem;
+  }
+
+  h1 {
+    margin-bottom: 0.25em;
+  }
+
+  .destination-info {
+    color: var(--txt-green);
+    font-size: var(--txt-sm);
+  }
+
+  .lead {
+    margin-bottom: 1.5rem;
+
+    p {
+      font-size: var(--txt-lg);
+      color: var(--txt-gray);
+    }
+  }
+
+  img.passkey-image {
+    width: 5rem !important;
+  }
+
+  .mfa-alternative {
+    border: 1px var(--success-green) solid;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+
+    .wizard-link-wrapper {
+      padding-top: 0;
+
+      button {
+        height: 2rem;
+      }
+    }
+  }
+
+  .border-line {
+    margin-top: 1.5rem;
+  }
+
+  .step-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    div {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-color: var(--bg-gray);
+      color: var(--body-txt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: 1.5rem;
+      font-family: monospace;
+
+      &.completed {
+        background-color: var(--bg-orange);
+        color: #161616;
+      }
+
+      &.active {
+        background-color: var(--bright-orange);
+        color: #f4f4f4;
+      }
+    }
+  }
+}

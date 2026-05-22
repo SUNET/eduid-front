@@ -80,47 +80,51 @@ export function SignupEnterCode(): React.JSX.Element {
   if (isExpired) {
     return (
       <div className="step-container">
-        <h1>
-          <FormattedMessage defaultMessage="Create eduID: Code expired" description="Signup" />
-        </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage="The code sent to {email} has expired."
-              values={{
-                email: (
-                  <span id="email_address">
-                    <output data-testid="email-address">
-                      <strong>{signupState?.email.address}</strong>
-                    </output>
-                  </span>
-                ),
-              }}
-            />
+        <section className="intro">
+          <h1>
+            <FormattedMessage defaultMessage="Create eduID: Code expired" description="Signup" />
+          </h1>
+          <p className="destination-info">
+            In order to access <strong>the thing</strong>
           </p>
-          <p>
-            <FormattedMessage
-              defaultMessage="Click the link below to receive a new code."
-              description="Signup, code expired"
-            />
-          </p>
-        </div>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                defaultMessage="The code sent to {email} has expired."
+                values={{
+                  email: (
+                    <span id="email_address">
+                      <output data-testid="email-address">
+                        <strong>{signupState?.email.address}</strong>
+                      </output>
+                    </span>
+                  ),
+                }}
+              />
+            </p>
+            <p>
+              <FormattedMessage
+                defaultMessage="Click the link below to receive a new code."
+                description="Signup, code expired"
+              />
+            </p>
+          </div>
+        </section>
 
         <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
 
         <hr className="border-line border-line-lesser" />
-        <div className="step-indicator">
+
+        <section className="step-indicator">
           <div className="completed">1</div>
           <div className="completed">2</div>
           <div className="completed">3</div>
           <div className="active">4</div>
           <div>5</div>
-        </div>
+          <div>6</div>
+        </section>
       </div>
     );
   }

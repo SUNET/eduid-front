@@ -88,11 +88,11 @@ export function SignupMFA(): React.ReactElement | null {
   );
 
   return (
-    <Fragment>
-      <div className="step-container">
+    <div className="step-container">
+      <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Create eduID:  Set up your sign-in method"
+            defaultMessage="Create eduID: Set up your sign-in method"
             description="Signup register credentials"
           />
         </h1>
@@ -107,158 +107,160 @@ export function SignupMFA(): React.ReactElement | null {
             />
           </p>
         </div>
+      </section>
 
-        {/* status box for passkey option */}
-        <section className="passkey-option">
-          <div className="status-box">
-            <div className="text-wrapper">
-              <div className="flex-between">
-                <div>
-                  <p className="text-medium">
-                    <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
-                  </p>
-                  <p className="help-text">
-                    <FormattedMessage
-                      defaultMessage='Read more about passkeys and sign-in methods in the "Using eduID" section in  {helpLink}.'
-                      description="signup passkey help link"
-                      values={{
-                        helpLink: (
-                          <a href="/help" target="_blank" rel="noopener noreferrer">
-                            <FormattedMessage description="eduID help link" defaultMessage={`eduID Help`} />
-                          </a>
-                        ),
-                      }}
-                    />
-                  </p>
-                </div>
-                <img
-                  src={theme === "dark" ? passkeyDarkImage : passkeyImage}
-                  alt="Passkey images"
-                  className="passkey-image"
-                />
-              </div>
-            </div>
-          </div>
-          {webauthnRegistered ? (
-            <Fragment>
-              <figure>
-                <span>
+      {/* status box for passkey option */}
+      <section className="passkey-option">
+        <div className="status-box">
+          <div className="text-wrapper">
+            <div className="flex-between">
+              <div>
+                <p className="text-medium">
+                  <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
+                </p>
+                <p className="help-text">
                   <FormattedMessage
-                    defaultMessage="Your registered security key: {keyName}"
-                    description="Signup added credentials label"
+                    defaultMessage='Read more about passkeys and sign-in methods in the "Using eduID" section in  {helpLink}.'
+                    description="signup passkey help link"
                     values={{
-                      keyName: <strong> {webauthnDescription}</strong>,
+                      helpLink: (
+                        <a href="/help" target="_blank" rel="noopener noreferrer">
+                          <FormattedMessage description="eduID help link" defaultMessage={`eduID Help`} />
+                        </a>
+                      ),
                     }}
                   />
-                </span>
-              </figure>
+                </p>
+              </div>
+              <img
+                src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+                alt="Passkey images"
+                className="passkey-image"
+              />
+            </div>
+          </div>
+        </div>
+        {webauthnRegistered ? (
+          <Fragment>
+            <figure>
+              <span>
+                <FormattedMessage
+                  defaultMessage="Your registered security key: {keyName}"
+                  description="Signup added credentials label"
+                  values={{
+                    keyName: <strong> {webauthnDescription}</strong>,
+                  }}
+                />
+              </span>
+            </figure>
 
-              {webauthnIsDiscoverable ? (
+            {webauthnIsDiscoverable ? (
+              <div className="buttons">
+                <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
+                  <FormattedMessage defaultMessage="Complete sign up" description="signup finish button" />
+                </EduIDButton>
+              </div>
+            ) : (
+              <>
                 <div className="buttons">
-                  <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                    <FormattedMessage defaultMessage="Complete sign up" description="signup finish button" />
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="continue-to-password"
+                    onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+                  >
+                    <FormattedMessage defaultMessage="set a password" description="continue to password button" />
                   </EduIDButton>
                 </div>
-              ) : (
-                <>
-                  <div className="buttons">
-                    <EduIDButton
-                      buttonstyle="primary"
-                      id="continue-to-password"
-                      onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-                    >
-                      <FormattedMessage defaultMessage="set a password" description="continue to password button" />
-                    </EduIDButton>
-                  </div>
+                <p className="help-text">
+                  <FormattedMessage
+                    defaultMessage="A password is required to sign in with this key."
+                    description="non-discoverable key needs password"
+                  />
+                </p>
+              </>
+            )}
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div className="mfa-alternative">
+              <span aria-label="select extra webauthn">
+                <strong>
+                  <FormattedMessage description="select extra webauthn" defaultMessage="Add a key:" />
+                </strong>
+              </span>
+              <div className="buttons">
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-platform-button"
+                    buttonstyle="primary icon"
+                    onClick={() => handleWebauthnButtonClick("platform")}
+                  >
+                    <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
+                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+                  </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage
-                      defaultMessage="A password is required to sign in with this key."
-                      description="non-discoverable key needs password"
+                      description="platform authn device help text"
+                      defaultMessage="Internal passkey on your phone or laptop."
                     />
                   </p>
-                </>
-              )}
-            </Fragment>
-          ) : (
-            <Fragment>
-              <div className="mfa-alternative">
-                <span aria-label="select extra webauthn">
-                  <strong>
-                    <FormattedMessage description="select extra webauthn" defaultMessage="Add a security key:" />
-                  </strong>
-                </span>
-                <div className="buttons">
-                  <div>
-                    <EduIDButton
-                      id="security-webauthn-platform-button"
-                      buttonstyle="primary icon"
-                      onClick={() => handleWebauthnButtonClick("platform")}
-                    >
-                      <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                      <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
-                    </EduIDButton>
-                    <p className="help-text">
-                      <FormattedMessage
-                        description="platform authn device help text"
-                        defaultMessage="Internal passkey on your phone or laptop."
-                      />
-                    </p>
-                  </div>
-                  <div>
-                    <EduIDButton
-                      id="security-webauthn-button"
-                      buttonstyle="primary icon"
-                      onClick={() => handleWebauthnButtonClick("cross-platform")}
-                    >
-                      <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                      <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
-                    </EduIDButton>
-                    <p className="help-text">
-                      <FormattedMessage
-                        description="platform authn key help text"
-                        defaultMessage="Your external USB security key."
-                      />
-                    </p>
-                  </div>
+                </div>
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-button"
+                    buttonstyle="primary icon"
+                    onClick={() => handleWebauthnButtonClick("cross-platform")}
+                  >
+                    <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                    <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn key help text"
+                      defaultMessage="Your external USB security key."
+                    />
+                  </p>
                 </div>
               </div>
-            </Fragment>
-          )}
-        </section>
-        {!(webauthnRegistered && !webauthnIsDiscoverable) && (
-          <div className="mfa-alternative">
-            <WizardLink
-              nextText={
-                webauthnRegistered
-                  ? intl.formatMessage({
-                      id: "wizard link also add password",
-                      defaultMessage: "Also add a password",
-                    })
-                  : intl.formatMessage({
-                      id: "wizard link signup with password",
-                      defaultMessage: "Sign up with a password",
-                    })
-              }
-              nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-            />
-          </div>
+            </div>
+          </Fragment>
         )}
-
-        <WebauthnDescriptionModal
-          showModal={showSecurityKeyNameModal}
-          closeModal={handleStopAskingWebauthnDescription}
-          handleConfirm={handleStartWebauthnRegistration}
-        />
-        <hr className="border-line border-line-lesser" />
-        <div className="step-indicator">
-          <div className="completed">1</div>
-          <div className="completed">2</div>
-          <div className="completed">3</div>
-          <div className="completed">4</div>
-          <div className="active">5</div>
-          <div>6</div>
+      </section>
+      {!(webauthnRegistered && !webauthnIsDiscoverable) && (
+        <div className="mfa-alternative">
+          <WizardLink
+            nextText={
+              webauthnRegistered
+                ? intl.formatMessage({
+                    id: "wizard link also create password",
+                    defaultMessage: "Also add a password",
+                  })
+                : intl.formatMessage({
+                    id: "wizard link signup with password",
+                    defaultMessage: "Add a password",
+                  })
+            }
+            nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+          />
         </div>
-      </div>
-    </Fragment>
+      )}
+
+      <WebauthnDescriptionModal
+        showModal={showSecurityKeyNameModal}
+        closeModal={handleStopAskingWebauthnDescription}
+        handleConfirm={handleStartWebauthnRegistration}
+      />
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="completed">1</div>
+        <div className="completed">2</div>
+        <div className="completed">3</div>
+        <div className="completed">4</div>
+        <div className="active">5</div>
+        <div>6</div>
+      </section>
+    </div>
   );
 }

@@ -11,7 +11,7 @@ import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRa
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
@@ -100,12 +100,15 @@ export function SignupConfirmPassword() {
                       defaultMessage="Create eduID: Set your own password"
                     />
                   </h1>
+                  <p className="destination-info">
+                    In order to access <strong>the thing</strong>
+                  </p>
                   <div className="lead">
                     <p>
                       <FormattedMessage
                         description="Strong password - lead"
-                        defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
-                        accounts safe.`}
+                        defaultMessage={`Create a strong enough password to keep your 
+                        account safe.`}
                       />
                     </p>
                   </div>
@@ -141,15 +144,17 @@ export function SignupConfirmPassword() {
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
                 />
               </div>
+
               <hr className="border-line border-line-lesser" />
-              <div className="step-indicator">
+
+              <section className="step-indicator">
                 <div className="completed">1</div>
                 <div className="completed">2</div>
                 <div className="completed">3</div>
                 <div className="completed">4</div>
-                <div className="active">5</div>
-                <div>6</div>
-              </div>
+                <div className="completed">5</div>
+                <div className="active">6</div>
+              </section>
             </div>
           </Splash>
         );
@@ -182,32 +187,50 @@ export function SignupUserCreated(): React.JSX.Element {
 
   return (
     <div className="step-container">
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
-      </h1>
-      <p className="destination-info">
-        In order to access <strong>the thing</strong>
-      </p>
-      <div className="lead">
-        {webauthnRegistered &&
-        !signupState?.credentials.custom_password &&
-        !signupState?.credentials.generated_password ? (
-          <p>
-            <FormattedMessage
-              defaultMessage="Your eduID account has been created. You can sign in using your registered security key."
-              description="Registration finished with webauthn only"
-            />
-          </p>
-        ) : (
-          <p>
-            <FormattedMessage
-              defaultMessage={`These are your login details for eduID. 
-                Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
-              description="Registration finished"
-            />
-          </p>
-        )}
-      </div>
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
+        </p>
+        <div className="lead">
+          {webauthnRegistered &&
+          !signupState?.credentials.custom_password &&
+          !signupState?.credentials.generated_password ? (
+            <Fragment>
+              <p>
+                <FormattedMessage
+                  defaultMessage="Your eduID account has been created and you can continue using your added key."
+                  description="Registration finished with webauthn only"
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  defaultMessage={`Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
+                  description="eduid more info"
+                />
+              </p>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <p>
+                <FormattedMessage
+                  defaultMessage={`Your eduID account has been created and you can continue using these details.`}
+                  description="Registration finished with pw"
+                />
+              </p>
+              <p>
+                <FormattedMessage
+                  defaultMessage={`Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
+                  description="eduid more info"
+                />
+              </p>
+            </Fragment>
+          )}
+        </div>
+      </section>
+
       {signupState?.credentials.custom_password || webauthnRegistered ? (
         <div className="email-display">
           <EmailFieldset email={signupState?.email.address} />
@@ -234,15 +257,17 @@ export function SignupUserCreated(): React.JSX.Element {
           )}
         </EduIDButton>
       </div>
+
       <hr className="border-line border-line-lesser" />
-      <div className="step-indicator">
+
+      <section className="step-indicator">
         <div className="completed">1</div>
         <div className="completed">2</div>
         <div className="completed">3</div>
         <div className="completed">4</div>
         <div className="completed">5</div>
         <div>6</div>
-      </div>
+      </section>
     </div>
   );
 }
