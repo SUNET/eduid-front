@@ -108,8 +108,8 @@ export function EmailForm() {
       validate={validateSignupUserInForm}
       initialValues={{
         email: "",
-        given_name: state?.name.given_name ?? "",
-        surname: state?.name.surname ?? "",
+        given_name: state?.name?.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+        surname: state?.name?.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
       }}
       render={(formProps: FormRenderProps<SignupEmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
