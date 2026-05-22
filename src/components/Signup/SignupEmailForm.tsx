@@ -122,10 +122,11 @@ export function EmailForm() {
                 component={CustomInput}
                 type="text"
                 name="given_name"
-                autoFocus={true}
+                autoFocus={!state?.external_mfa?.given_name}
                 required={true}
                 placeholder={firstNamePlaceholder}
                 label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
+                readOnly={!!state?.external_mfa?.given_name}
               />
               <FinalField
                 component={CustomInput}
@@ -134,6 +135,7 @@ export function EmailForm() {
                 required={true}
                 placeholder={lastNamePlaceholder}
                 label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
+                readOnly={!!state?.external_mfa?.surname}
               />
             </div>
             <EmailInput name="email" required={true} autoComplete="username" />

@@ -85,6 +85,8 @@ function SignupStart() {
           dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
         } else if (data.payload.state.tou?.completed) {
           dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
+        } else if (!data.payload.state.tou?.completed && !data.payload.state.email?.address) {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
         } else {
           dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
         }

@@ -66,7 +66,7 @@ export function SignupEntry(): React.JSX.Element {
           </h2>
           <p className="text-medium">
             <FormattedMessage
-              defaultMessage="Your identity has been verified and your name has been saved. To complete your registration, you'll need to:"
+              defaultMessage="Your identity has been verified and your name has been saved. To complete your registration, please enter your email address below."
               description="external mfa registered description"
             />
           </p>
