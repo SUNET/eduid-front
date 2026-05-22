@@ -138,7 +138,12 @@ export function EmailForm() {
                 readOnly={!!state?.external_mfa?.surname}
               />
             </div>
-            <EmailInput name="email" required={true} autoComplete="username" />
+            <EmailInput
+              name="email"
+              required={true}
+              autoComplete="username"
+              autoFocus={state?.external_mfa?.given_name ? true : false}
+            />
             <div className="buttons">
               <EduIDButton
                 buttonstyle="primary"
