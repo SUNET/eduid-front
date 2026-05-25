@@ -63,6 +63,7 @@
     border: 1px solid green;
     border-radius: 6px;
     padding: 1rem;
+    margin-top: 0.5rem;
   }
 
   .border-line {
