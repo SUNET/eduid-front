@@ -76,7 +76,7 @@ export function SignupConfirmPassword() {
                 <section className="intro">
                   <h1>
                     <FormattedMessage
-                      defaultMessage="Create eduID: Suggested password"
+                      defaultMessage="Create eduID: Register a suggested password"
                       description="Registration confirm password"
                     />
                   </h1>
@@ -97,7 +97,7 @@ export function SignupConfirmPassword() {
                   <h1>
                     <FormattedMessage
                       description="Register - headline"
-                      defaultMessage="Create eduID: Set your own password"
+                      defaultMessage="Create eduID: Register your own password"
                     />
                   </h1>
                   <p className="destination-info">
@@ -138,7 +138,7 @@ export function SignupConfirmPassword() {
                         })
                       : intl.formatMessage({
                           id: "wizard link back to add a security key",
-                          defaultMessage: "Back to also add a security key",
+                          defaultMessage: "Also add a security key?",
                         })
                   }
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
@@ -152,8 +152,8 @@ export function SignupConfirmPassword() {
                 <div className="completed">2</div>
                 <div className="completed">3</div>
                 <div className="completed">4</div>
-                <div className="completed">5</div>
-                <div className="active">6</div>
+                <div className="active">5</div>
+                <div>6</div>
               </section>
             </div>
           </Splash>
@@ -266,7 +266,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <div className="completed">3</div>
         <div className="completed">4</div>
         <div className="completed">5</div>
-        <div>6</div>
+        <div className="active">6</div>
       </section>
     </div>
   );

@@ -82,7 +82,7 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage defaultMessage="Create eduID: Code expired" description="Signup" />
+            <FormattedMessage defaultMessage="Create eduID: Request new code" description="Signup" />
           </h1>
           <p className="destination-info">
             In order to access <strong>the thing</strong>
@@ -134,28 +134,30 @@ export function SignupEnterCode(): React.JSX.Element {
   return (
     <Splash showChildren={isExpired === false}>
       <div className="step-container">
-        <h1>
-          <FormattedMessage defaultMessage="Create eduID: Verification of email address" description="Signup" />
-        </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
-        <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address.`}
-              values={{
-                email: (
-                  <span id="email_address">
-                    <output data-testid="email-address">
-                      <strong>{signupState?.email.address}</strong>
-                    </output>
-                  </span>
-                ),
-              }}
-            />
+        <section className="intro">
+          <h1>
+            <FormattedMessage defaultMessage="Create eduID: Verify email address" description="Signup" />
+          </h1>
+          <p className="destination-info">
+            In order to access <strong>the thing</strong>
           </p>
-        </div>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address.`}
+                values={{
+                  email: (
+                    <span id="email_address">
+                      <output data-testid="email-address">
+                        <strong>{signupState?.email.address}</strong>
+                      </output>
+                    </span>
+                  ),
+                }}
+              />
+            </p>
+          </div>
+        </section>
 
         <div className="signup-timer-wrapper">
           <p>
@@ -176,14 +178,17 @@ export function SignupEnterCode(): React.JSX.Element {
             <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
           </ResponseCodeForm>
         </div>
+
         <hr className="border-line border-line-lesser" />
-        <div className="step-indicator">
+
+        <section className="step-indicator">
           <div className="completed">1</div>
           <div className="completed">2</div>
           <div className="completed">3</div>
           <div className="active">4</div>
           <div>5</div>
-        </div>
+          <div>6</div>
+        </section>
       </div>
     </Splash>
   );

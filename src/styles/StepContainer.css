@@ -49,6 +49,10 @@
     }
   }
 
+  figure {
+    background-color: #daede1;
+  }
+
   .border-line {
     margin-top: 1.5rem;
   }

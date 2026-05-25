@@ -92,7 +92,7 @@ export function SignupMFA(): React.ReactElement | null {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Create eduID: Set up your sign-in method"
+            defaultMessage="Create eduID: Register your sign-in method"
             description="Signup register credentials"
           />
         </h1>
@@ -154,10 +154,29 @@ export function SignupMFA(): React.ReactElement | null {
               </span>
             </figure>
 
+            {!(webauthnRegistered && !webauthnIsDiscoverable) && (
+              <div className="mfa-alternative">
+                <WizardLink
+                  nextText={
+                    webauthnRegistered
+                      ? intl.formatMessage({
+                          id: "wizard link also register password",
+                          defaultMessage: "Also register a password?",
+                        })
+                      : intl.formatMessage({
+                          id: "wizard link register with password",
+                          defaultMessage: "Register a password",
+                        })
+                  }
+                  nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+                />
+              </div>
+            )}
+
             {webauthnIsDiscoverable ? (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                  <FormattedMessage defaultMessage="Complete sign up" description="signup finish button" />
+                  <FormattedMessage defaultMessage="Complete creating eduID" description="signup finish button" />
                 </EduIDButton>
               </div>
             ) : (
@@ -185,7 +204,7 @@ export function SignupMFA(): React.ReactElement | null {
             <div className="mfa-alternative">
               <span aria-label="select extra webauthn">
                 <strong>
-                  <FormattedMessage description="select extra webauthn" defaultMessage="Add a key:" />
+                  <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
                 </strong>
               </span>
               <div className="buttons">
@@ -226,24 +245,6 @@ export function SignupMFA(): React.ReactElement | null {
           </Fragment>
         )}
       </section>
-      {!(webauthnRegistered && !webauthnIsDiscoverable) && (
-        <div className="mfa-alternative">
-          <WizardLink
-            nextText={
-              webauthnRegistered
-                ? intl.formatMessage({
-                    id: "wizard link also create password",
-                    defaultMessage: "Also add a password",
-                  })
-                : intl.formatMessage({
-                    id: "wizard link signup with password",
-                    defaultMessage: "Add a password",
-                  })
-            }
-            nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-          />
-        </div>
-      )}
 
       <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}

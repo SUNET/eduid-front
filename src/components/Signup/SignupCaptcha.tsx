@@ -54,7 +54,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="As protection against automated spam, you'll need to confirm that you are a human."
+              defaultMessage="Confirm that you are a human as protection against automated spam."
               description="Signup captcha lead text"
             />
           </p>
