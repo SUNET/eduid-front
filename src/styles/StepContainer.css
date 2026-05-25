@@ -51,6 +51,18 @@
 
   figure {
     background-color: #daede1;
+
+    &.signin-details {
+      text-align: left;
+    }
+  }
+
+  .hint {
+    font-size: 14px !important;
+    font-style: italic;
+    border: 1px solid green;
+    border-radius: 6px;
+    padding: 1rem;
   }
 
   .border-line {

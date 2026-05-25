@@ -11,7 +11,7 @@ import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRa
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
@@ -198,49 +198,35 @@ export function SignupUserCreated(): React.JSX.Element {
           {webauthnRegistered &&
           !signupState?.credentials.custom_password &&
           !signupState?.credentials.generated_password ? (
-            <Fragment>
-              <p>
-                <FormattedMessage
-                  defaultMessage="Your eduID account has been created and you can continue using your added key."
-                  description="Registration finished with webauthn only"
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  defaultMessage={`Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
-                  description="eduid more info"
-                />
-              </p>
-            </Fragment>
+            <p>
+              <FormattedMessage
+                defaultMessage="Your eduID account has been created and you can continue using it with the details you have provided and your added security key."
+                description="Registration finished with webauthn only"
+              />
+            </p>
           ) : (
-            <Fragment>
-              <p>
-                <FormattedMessage
-                  defaultMessage={`Your eduID account has been created and you can continue using these details.`}
-                  description="Registration finished with pw"
-                />
-              </p>
-              <p>
-                <FormattedMessage
-                  defaultMessage={`Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
-                  description="eduid more info"
-                />
-              </p>
-            </Fragment>
+            <p>
+              <FormattedMessage
+                defaultMessage={`Your eduID account has been created and you can continue using it with the details you have provided.`}
+                description="Registration finished with pw"
+              />
+            </p>
           )}
         </div>
       </section>
 
-      {signupState?.credentials.custom_password || webauthnRegistered ? (
-        <div className="email-display">
-          <EmailFieldset email={signupState?.email.address} />
-        </div>
-      ) : (
-        <ConfirmUserInfo
-          email_address={signupState?.email.address ?? ""}
-          new_password={formatPassword(signupState?.credentials.generated_password)}
-        />
-      )}
+      <figure className="signin-details">
+        {signupState?.credentials.custom_password || webauthnRegistered ? (
+          <div className="email-display">
+            <EmailFieldset email={signupState?.email.address} />
+          </div>
+        ) : (
+          <ConfirmUserInfo
+            email_address={signupState?.email.address ?? ""}
+            new_password={formatPassword(signupState?.credentials.generated_password)}
+          />
+        )}
+      </figure>
 
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
@@ -258,6 +244,11 @@ export function SignupUserCreated(): React.JSX.Element {
         </EduIDButton>
       </div>
 
+      <p className="hint">
+        Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update
+        name and verify your identity. Read more about eduID in the help content accessible in the footer.
+      </p>
+
       <hr className="border-line border-line-lesser" />
 
       <section className="step-indicator">
@@ -266,7 +257,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <div className="completed">3</div>
         <div className="completed">4</div>
         <div className="completed">5</div>
-        <div className="active">6</div>
+        <div className="completed">6</div>
       </section>
     </div>
   );
