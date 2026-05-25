@@ -88,7 +88,7 @@ export function SignupMFA(): React.ReactElement | null {
         console.error("Error finishing signup:", error);
       }
     })();
-  }, [createUser, dispatch, webauthnRegistered]);
+  }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
 
   const handleWebauthnButtonClick = useCallback(
     async (authenticator: "platform" | "cross-platform") => {
