@@ -257,7 +257,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <div className="completed">3</div>
         <div className="completed">4</div>
         <div className="completed">5</div>
-        <div className="completed">6</div>
+        <div className="active">6</div>
       </section>
     </div>
   );
