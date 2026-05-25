@@ -39,6 +39,13 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
+  "+xBbuC": {
+    "developer_comment": "Registration finished with webauthn only",
+    "string": "Your eduID account has been created and you can continue using it with the details you have provided and your added key."
+  },
+  "/2bfBs": {
+    "string": "We recommend setting up a passkey for fast and secure access to your eduID account."
+  },
   "/Fi/nH": {
     "developer_comment": "security webauthn credential type",
     "string": "Security key"
@@ -86,6 +93,10 @@
   "02Y+QE": {
     "developer_comment": "Signup",
     "string": "Reset your password"
+  },
+  "05Bdlm": {
+    "developer_comment": "send a new code",
+    "string": "Send me a new code"
   },
   "0Biez9": {
     "developer_comment": "security zone redirect info",
@@ -219,10 +230,6 @@
     "developer_comment": "freja - error",
     "string": "Note: all nationalities are not yet supported by this solution but the work to substantially increase the range is in progress."
   },
-  "2XmcDM": {
-    "developer_comment": "passkey heading",
-    "string": "Faster and safer way to sign in"
-  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
@@ -298,6 +305,10 @@
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "with Freja+"
+  },
+  "42bkDt": {
+    "developer_comment": "Signup register credentials lead text",
+    "string": "Choose between a passkey/security key, password or both."
   },
   "43bN4Q": {
     "developer_comment": "opening hours - list item 1",
@@ -440,6 +451,10 @@
     "developer_comment": "security eduid - list item 2",
     "string": "Under \"Manage your security keys\" is a toggle control marked \"Always use a security key to log in\" which can let you log in with your eduID account without using your added security key when allowed. Default setting is on."
   },
+  "75VH86": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password."
+  },
   "75yL3y": {
     "developer_comment": "use ladok - list item 1",
     "string": "in the Account area of eduID, toggle the ESI control,"
@@ -451,10 +466,6 @@
   "7MHYRh": {
     "developer_comment": "login eduID - re-login handle",
     "string": "I'm already logged in, why do I need to log in again?"
-  },
-  "7S/TWJ": {
-    "developer_comment": "Register - headline",
-    "string": "Create eduID: Set your own password"
   },
   "7UpsOK": {
     "developer_comment": "settings eduid - account handle",
@@ -487,10 +498,6 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
-  },
-  "8FC20o": {
-    "developer_comment": "Signup register credentials",
-    "string": "Create eduID: Set up your sign-in method"
   },
   "8FSnax": {
     "developer_comment": "MFA as the first step of login, toggle off",
@@ -564,6 +571,10 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
+  "9oRtvS": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Request new code"
+  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -608,20 +619,17 @@
     "developer_comment": "create eduid - list item 5",
     "string": "Choose using the radio buttons between a suggested (automatically generated) password or one you create."
   },
-  "BOb+Mu": {
-    "string": "A passkey is a faster and safer way to sign in than with a password. We recommend setting one up for eduID to keep access to your account secure."
-  },
   "BQv3Ph": {
     "developer_comment": "read more in the help link",
     "string": ", always accessible from the footer. Register or log in using the buttons below!"
   },
-  "BhlUhw": {
-    "developer_comment": "Signup",
-    "string": "Once you have created an eduID you will be able to log in and connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code."
-  },
   "Bu8Qem": {
     "developer_comment": "Change password - headline",
     "string": "Change password: Suggested password"
+  },
+  "C2gVEX": {
+    "developer_comment": "Strong password - lead",
+    "string": "Create a strong enough password to keep your account safe."
   },
   "C3lfK7": {
     "developer_comment": "Reset Password set new password success lead",
@@ -899,10 +907,6 @@
     "developer_comment": "use freja - list item 2",
     "string": "if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
   },
-  "HM/Z3D": {
-    "developer_comment": "Terms of use (lead text)",
-    "string": "To create your eduID you need to accept the eduID terms of use."
-  },
   "HQ+JLY": {
     "developer_comment": "Display name select paragraph",
     "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services."
@@ -970,10 +974,6 @@
     "developer_comment": "confirm button",
     "string": "confirm"
   },
-  "ItxE7V": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Code expired"
-  },
   "Iu0UZA": {
     "developer_comment": "login eduid - security key heading",
     "string": "With security key"
@@ -1018,13 +1018,13 @@
     "developer_comment": "login eduid - passkey paragraph - error 1",
     "string": "Definition and support of passkeys continually evolve. If login fails with your selected key it could be because of the key not supporting {discoverable}, which you can check with your passkey provider."
   },
+  "KJo0j5": {
+    "developer_comment": "Signup captcha lead text",
+    "string": "Confirm that you are a human as protection against automated spam."
+  },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
     "string": "infringes on the privacy of others"
-  },
-  "KW/VIF": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Verification of email address"
   },
   "KWAMem": {
     "string": "Click \"continue\" once you have logged in on the other device"
@@ -1169,6 +1169,10 @@
     "developer_comment": "verify identity",
     "string": "If you have a {Freja_eID} you can connect it to your eduID."
   },
+  "NKnd8e": {
+    "developer_comment": "Signup email form text",
+    "string": "Make sure to use an email address you have access to, as it will need to be confirmed by a received code."
+  },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
     "string": "Use upper- and lowercase characters, but not at the beginning or end"
@@ -1281,10 +1285,6 @@
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "You can read more about using Freja with your eduID below in the \"About Freja (with Swedish ID/COORD number)\" section and on their website at {FrejaProtectedId}."
   },
-  "PJxPbg": {
-    "developer_comment": "send a new code",
-    "string": "Send a new code"
-  },
   "PLbXLW": {
     "developer_comment": "account eduid - list item 2",
     "string": "The default language is based on the language setting that your browser uses. Available options are Swedish and English."
@@ -1320,6 +1320,10 @@
   "Pnu06c": {
     "developer_comment": "status",
     "string": "status"
+  },
+  "Prwpbq": {
+    "developer_comment": "Signup, code expired",
+    "string": "Click the link below to receive a new code."
   },
   "PxROOc": {
     "developer_comment": "help text for custom password label",
@@ -1360,10 +1364,6 @@
   "QbA6Vf": {
     "developer_comment": "what are keys description 3",
     "string": "These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se. The private key is stored in an \"authenticator\" module, either on your hardware key, built into your device or in a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords."
-  },
-  "QgRD70": {
-    "developer_comment": "signup finish button",
-    "string": "Complete sign up"
   },
   "QgXq1A": {
     "developer_comment": "identity eduid - list item 2-3",
@@ -1419,10 +1419,6 @@
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
     "string": "Summary of how eduID treats your information according to the policy:"
-  },
-  "Ro9dbk": {
-    "developer_comment": "select extra webauthn",
-    "string": "Add a security key:"
   },
   "Ryb62w": {
     "developer_comment": "Display name noOptionsMessage",
@@ -1569,10 +1565,6 @@
     "developer_comment": "At what level is your eduID - heading",
     "string": "At what level is your eduID?"
   },
-  "UviVo2": {
-    "developer_comment": "Signup, code expired",
-    "string": "Click the link below to receive a new code. You will be redirected to a page where you can enter the new code."
-  },
   "V2oqjw": {
     "developer_comment": "not found link",
     "string": "Go to eduID"
@@ -1693,6 +1685,10 @@
     "developer_comment": "when use eduID - list item 5",
     "string": "administrate students taking the digital national exam,"
   },
+  "Wurx42": {
+    "developer_comment": "Register - headline",
+    "string": "Create eduID: Register your own password"
+  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
@@ -1720,6 +1716,10 @@
   "XFQH17": {
     "developer_comment": "error strong - discoverable",
     "string": "discoverable passkeys"
+  },
+  "XFU0eU": {
+    "developer_comment": "select extra webauthn",
+    "string": "Register a key:"
   },
   "XJViPe": {
     "developer_comment": "choosing usb key - list definition",
@@ -1856,6 +1856,10 @@
   "ZsPPwh": {
     "developer_comment": "Signup credentials button",
     "string": "Retry"
+  },
+  "aCGvng": {
+    "developer_comment": "Signup register credentials",
+    "string": "Create eduID: Register your sign-in method"
   },
   "aGIYob": {
     "developer_comment": "privacy policy - list item 8",
@@ -2007,6 +2011,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
   },
+  "btGR+H": {
+    "developer_comment": "Registration confirm password",
+    "string": "Create eduID: Register a suggested password"
+  },
   "bump4d": {
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Scan the presented QR-code with the other device where you have your login credentials, e.g. security key or saved password."
@@ -2152,9 +2160,6 @@
   "e+YGAd": {
     "developer_comment": "privacy policy - link",
     "string": "Privacy Policy"
-  },
-  "e/7hU+": {
-    "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address. You can also copy and paste the code from the email into the input field."
   },
   "e2YdEN": {
     "developer_comment": "start eduid - list item 3-1",
@@ -2494,6 +2499,9 @@
     "developer_comment": "login mfa primary option hint",
     "string": "If your Security Key has a button, don't forget to tap it."
   },
+  "iLsYDy": {
+    "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
+  },
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
@@ -2799,10 +2807,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "This may be because it requires additional steps which did not occur during login (such as using a second factor). Please try again."
   },
-  "lqzyzd": {
-    "developer_comment": "Signup captcha lead text",
-    "string": "As a protection against automated spam, you'll need to confirm that you are a human."
-  },
   "lsXO8d": {
     "developer_comment": "Account recovery Go back button",
     "string": "Go back"
@@ -2874,6 +2878,10 @@
   "n9J0vB": {
     "developer_comment": "about verification of identity - info",
     "string": "Methods of verifying eduID for different user groups"
+  },
+  "nA6Fq1": {
+    "developer_comment": "signup finish button",
+    "string": "Complete creating eduID"
   },
   "nBUguz": {
     "developer_comment": "what is eidas - paragraph",
@@ -2974,10 +2982,6 @@
   "oR7sIx": {
     "developer_comment": "button cancel",
     "string": "Cancel"
-  },
-  "oXHHnD": {
-    "developer_comment": "Registration finished",
-    "string": "These are your login details for eduID. Remember or save the password securely! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password."
   },
   "oXOfnD": {
     "developer_comment": "what are eduIDs terms of use - paragraph",
@@ -3191,10 +3195,6 @@
     "developer_comment": "Dashboard change password",
     "string": "Change password"
   },
-  "qm97Sh": {
-    "developer_comment": "Registration confirm password",
-    "string": "Create eduID: Suggested password"
-  },
   "qn24rz": {
     "developer_comment": "Reset Password email link sent",
     "string": "If you haven't receive the code, please cancel the process and restart from the beginning."
@@ -3202,10 +3202,6 @@
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to insult or offend others"
-  },
-  "qzrg/8": {
-    "developer_comment": "Registration finished with webauthn only",
-    "string": "Your eduID account has been created. You can sign in using your registered security key."
   },
   "r05joI": {
     "developer_comment": "Login MFA",
@@ -3536,6 +3532,10 @@
     "developer_comment": "Temp info - continue button",
     "string": "Continue"
   },
+  "uReEuO": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Verify email address"
+  },
   "uUvCmK": {
     "developer_comment": "recommendations help link",
     "string": "Help"
@@ -3590,6 +3590,10 @@
   "v1MVM6": {
     "developer_comment": "login eduid - forgot pw paragraph",
     "string": "Note: depending on your previous settings you might need to re-verify your identity in eduID."
+  },
+  "v425JA": {
+    "developer_comment": "Terms of use (lead text)",
+    "string": "To create your eduID account you need to accept the eduID terms of use."
   },
   "v8XEXB": {
     "developer_comment": "Use another device IP proximity",
@@ -3661,8 +3665,8 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate to:"
   },
-  "wizard link also add password": {
-    "string": "Also add a password"
+  "wizard link also register password": {
+    "string": "Also register a password?"
   },
   "wizard link back identity": {
     "string": "To Identity settings"
@@ -3673,11 +3677,11 @@
   "wizard link back start": {
     "string": "To Start page overview"
   },
-  "wizard link back to add security key": {
-    "string": "Back to add security key"
+  "wizard link back to add a security key": {
+    "string": "Also add a security key?"
   },
   "wizard link back to your security key": {
-    "string": "Back to your security key"
+    "string": "Back to your added security key"
   },
   "wizard link next account": {
     "string": "To Account settings"
@@ -3685,8 +3689,8 @@
   "wizard link next security": {
     "string": "To Security settings"
   },
-  "wizard link signup with password": {
-    "string": "Sign up with a password"
+  "wizard link register with password": {
+    "string": "Register a password"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
@@ -3716,10 +3720,6 @@
     "developer_comment": "Captcha button",
     "string": "Continue"
   },
-  "xf5WHH": {
-    "developer_comment": "Signup register credentials lead text",
-    "string": "Choose at least one way to sign in to your eduID account."
-  },
   "xjLF/u": {
     "developer_comment": "add webauthn token device",
     "string": "this device"
@@ -3747,6 +3747,10 @@
   "y4SB0a": {
     "developer_comment": "use orcid - list item 1",
     "string": "read more and register for an ORCID at {orcid},"
+  },
+  "yCqm8G": {
+    "developer_comment": "Registration finished with pw",
+    "string": "Your eduID account has been created and you can continue using it with the details you have provided."
   },
   "yGWQnw": {
     "developer_comment": "verification methods - list item 3",
