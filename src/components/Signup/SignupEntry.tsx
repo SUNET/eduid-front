@@ -44,7 +44,7 @@ export function SignupEntry(): React.JSX.Element {
   };
 
   return (
-    <Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -178,6 +178,17 @@ export function SignupEntry(): React.JSX.Element {
         )}
       </Splash>
 
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="active">1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </section>
+
       {/* <Accordion>
         <AccordionItemTemplate
           title={
@@ -199,6 +210,6 @@ export function SignupEntry(): React.JSX.Element {
         })}
         nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
       /> */}
-    </Fragment>
+    </div>
   );
 }
