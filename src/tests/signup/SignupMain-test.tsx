@@ -278,6 +278,7 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   if (email) {
     await user.type(firstNameInput, "test");
     await user.type(lastNameInput, "test");
+    await user.clear(emailInput);
     await user.type(emailInput, email);
     expect(button).toBeEnabled();
 
