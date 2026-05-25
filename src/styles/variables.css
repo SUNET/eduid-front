@@ -68,6 +68,7 @@
 
 /* min-width variants */
 @custom-media --bp-xs-up (min-width: 414px);
+@custom-media --bp-sm-up (min-width: 568px);
 @custom-media --bp-md-up (min-width: 768px);
 @custom-media --bp-lg-up (min-width: 823px);
 @custom-media --bp-xl-up (min-width: 1200px);

@@ -2,7 +2,7 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
@@ -43,22 +43,37 @@ export function SignupCaptcha(): React.JSX.Element | null {
   }
 
   return (
-    <Fragment>
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
-      </h1>
-
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
-            description="Signup captcha lead text"
-          />
+    <div className="step-container">
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
         </p>
-      </div>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Confirm that you are a human as protection against automated spam."
+              description="Signup captcha lead text"
+            />
+          </p>
+        </div>
+      </section>
 
       <InternalCaptcha {...args} getCaptcha={getCaptcha} />
-    </Fragment>
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="completed">1</div>
+        <div className="active">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </section>
+    </div>
   );
 }
 

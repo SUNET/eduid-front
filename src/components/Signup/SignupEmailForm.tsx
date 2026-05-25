@@ -4,7 +4,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { validateSignupUserInForm } from "helperFunctions/validation/validateEmail";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
@@ -12,23 +12,36 @@ import { signupSlice } from "slices/Signup";
 
 export function SignupEmailForm(): React.JSX.Element {
   return (
-    <Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
         </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
+        </p>
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage={`Once you have created an eduID you will be able to log in and
-                             connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
-              description="Signup"
+              defaultMessage={`Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
+              description="Signup email form text"
             />
           </p>
         </div>
       </section>
       <EmailForm />
-    </Fragment>
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="active">1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </section>
+    </div>
   );
 }
 

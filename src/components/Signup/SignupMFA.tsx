@@ -88,22 +88,26 @@ export function SignupMFA(): React.ReactElement | null {
   );
 
   return (
-    <Fragment>
-      <h1>
-        <FormattedMessage
-          defaultMessage="Create eduID:  Set up your sign-in method"
-          description="Signup register credentials"
-        />
-      </h1>
-
-      <div className="lead">
-        <p>
+    <div className="step-container">
+      <section className="intro">
+        <h1>
           <FormattedMessage
-            defaultMessage="Choose at least one way to sign in to your eduID account."
-            description="Signup register credentials lead text"
+            defaultMessage="Create eduID: Register your sign-in method"
+            description="Signup register credentials"
           />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
         </p>
-      </div>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="Choose between a passkey/security key, password or both."
+              description="Signup register credentials lead text"
+            />
+          </p>
+        </div>
+      </section>
 
       {/* status box for passkey option */}
       <section className="passkey-option">
@@ -111,11 +115,8 @@ export function SignupMFA(): React.ReactElement | null {
           <div className="text-wrapper">
             <div className="flex-between">
               <div>
-                <h2>
-                  <FormattedMessage defaultMessage="Faster and safer way to sign in" description="passkey heading" />
-                </h2>
                 <p className="text-medium">
-                  <FormattedMessage defaultMessage="A passkey is a faster and safer way to sign in than with a password. We recommend setting one up for eduID to keep access to your account secure." />
+                  <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
                 </p>
                 <p className="help-text">
                   <FormattedMessage
@@ -153,10 +154,29 @@ export function SignupMFA(): React.ReactElement | null {
               </span>
             </figure>
 
+            {!(webauthnRegistered && !webauthnIsDiscoverable) && (
+              <div className="mfa-alternative">
+                <WizardLink
+                  nextText={
+                    webauthnRegistered
+                      ? intl.formatMessage({
+                          id: "wizard link also register password",
+                          defaultMessage: "Also register a password?",
+                        })
+                      : intl.formatMessage({
+                          id: "wizard link register with password",
+                          defaultMessage: "Register a password",
+                        })
+                  }
+                  nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
+                />
+              </div>
+            )}
+
             {webauthnIsDiscoverable ? (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                  <FormattedMessage defaultMessage="Complete sign up" description="signup finish button" />
+                  <FormattedMessage defaultMessage="Complete creating eduID" description="signup finish button" />
                 </EduIDButton>
               </div>
             ) : (
@@ -180,10 +200,10 @@ export function SignupMFA(): React.ReactElement | null {
             )}
           </Fragment>
         ) : (
-          <Fragment>
+          <div className="mfa-alternative">
             <span aria-label="select extra webauthn">
               <strong>
-                <FormattedMessage description="select extra webauthn" defaultMessage="Add a security key:" />
+                <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
               </strong>
             </span>
             <div className="buttons">
@@ -220,31 +240,26 @@ export function SignupMFA(): React.ReactElement | null {
                 </p>
               </div>
             </div>
-          </Fragment>
+          </div>
         )}
       </section>
-      {!(webauthnRegistered && !webauthnIsDiscoverable) && (
-        <WizardLink
-          nextText={
-            webauthnRegistered
-              ? intl.formatMessage({
-                  id: "wizard link also add password",
-                  defaultMessage: "Also add a password",
-                })
-              : intl.formatMessage({
-                  id: "wizard link signup with password",
-                  defaultMessage: "Sign up with a password",
-                })
-          }
-          nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-        />
-      )}
 
       <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
       />
-    </Fragment>
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="completed">1</div>
+        <div className="completed">2</div>
+        <div className="completed">3</div>
+        <div className="completed">4</div>
+        <div className="active">5</div>
+        <div>6</div>
+      </section>
+    </div>
   );
 }

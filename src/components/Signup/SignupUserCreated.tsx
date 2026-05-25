@@ -71,71 +71,91 @@ export function SignupConfirmPassword() {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
           <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
-            {renderSuggested ? (
-              <section className="intro">
-                <h1>
-                  <FormattedMessage
-                    defaultMessage="Create eduID: Suggested password"
-                    description="Registration confirm password"
-                  />
-                </h1>
-                <div className="lead">
-                  <p>
+            <div className="step-container">
+              {renderSuggested ? (
+                <section className="intro">
+                  <h1>
                     <FormattedMessage
-                      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy
-                        the password in to the Repeat new password field and click the Save button to store it for future use.`}
-                      description="Generated password - lead"
+                      defaultMessage="Create eduID: Register a suggested password"
+                      description="Registration confirm password"
                     />
+                  </h1>
+                  <p className="destination-info">
+                    In order to access <strong>the thing</strong>
                   </p>
-                </div>
-              </section>
-            ) : (
-              <section className="intro">
-                <h1>
-                  <FormattedMessage
-                    description="Register - headline"
-                    defaultMessage="Create eduID: Set your own password"
-                  />
-                </h1>
-                <div className="lead">
-                  <p>
+                  <div className="lead">
+                    <p>
+                      <FormattedMessage
+                        defaultMessage={`A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password.`}
+                        description="Generated password - lead"
+                      />
+                    </p>
+                  </div>
+                </section>
+              ) : (
+                <section className="intro">
+                  <h1>
                     <FormattedMessage
-                      description="Strong password - lead"
-                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
-                        accounts safe.`}
+                      description="Register - headline"
+                      defaultMessage="Create eduID: Register your own password"
                     />
+                  </h1>
+                  <p className="destination-info">
+                    In order to access <strong>the thing</strong>
                   </p>
-                </div>
+                  <div className="lead">
+                    <p>
+                      <FormattedMessage
+                        description="Strong password - lead"
+                        defaultMessage={`Create a strong enough password to keep your 
+                        account safe.`}
+                      />
+                    </p>
+                  </div>
+                </section>
+              )}
+              <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+              {renderSuggested ? (
+                <ChangePasswordSuggestedForm
+                  {...child_props}
+                  handleCancel={handleCancel}
+                  suggestedPassword={formatPassword(suggested)}
+                />
+              ) : (
+                <ChangePasswordCustomForm
+                  {...child_props}
+                  handleCancel={handleCancel}
+                  handleSubmit={submitNewPasswordForm}
+                />
+              )}
+              <div className="mfa-alternative">
+                <WizardLink
+                  previousText={
+                    webauthnRegistered
+                      ? intl.formatMessage({
+                          id: "wizard link back to your security key",
+                          defaultMessage: "Back to your added security key",
+                        })
+                      : intl.formatMessage({
+                          id: "wizard link back to add a security key",
+                          defaultMessage: "Also add a security key?",
+                        })
+                  }
+                  previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
+                />
+              </div>
+
+              <hr className="border-line border-line-lesser" />
+
+              <section className="step-indicator">
+                <div className="completed">1</div>
+                <div className="completed">2</div>
+                <div className="completed">3</div>
+                <div className="completed">4</div>
+                <div className="active">5</div>
+                <div>6</div>
               </section>
-            )}
-            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
-            {renderSuggested ? (
-              <ChangePasswordSuggestedForm
-                {...child_props}
-                handleCancel={handleCancel}
-                suggestedPassword={formatPassword(suggested)}
-              />
-            ) : (
-              <ChangePasswordCustomForm
-                {...child_props}
-                handleCancel={handleCancel}
-                handleSubmit={submitNewPasswordForm}
-              />
-            )}
-            <WizardLink
-              previousText={
-                webauthnRegistered
-                  ? intl.formatMessage({
-                      id: "wizard link back to your security key",
-                      defaultMessage: "Back to your security key",
-                    })
-                  : intl.formatMessage({
-                      id: "wizard link back to add security key",
-                      defaultMessage: "Back to add security key",
-                    })
-              }
-              previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
-            />
+            </div>
           </Splash>
         );
       }}
@@ -166,40 +186,47 @@ export function SignupUserCreated(): React.JSX.Element {
   }
 
   return (
-    <div>
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
-      </h1>
-      <div className="lead">
-        {webauthnRegistered &&
-        !signupState?.credentials.custom_password &&
-        !signupState?.credentials.generated_password ? (
-          <p>
-            <FormattedMessage
-              defaultMessage="Your eduID account has been created. You can sign in using your registered security key."
-              description="Registration finished with webauthn only"
-            />
-          </p>
-        ) : (
-          <p>
-            <FormattedMessage
-              defaultMessage={`These are your login details for eduID. 
-                Save or remember the password! Note: spaces in the password are there for legibility and will be removed automatically if entered. Once you've logged in it is possible to change your password.`}
-              description="Registration finished"
-            />
-          </p>
-        )}
-      </div>
-      {signupState?.credentials.custom_password || webauthnRegistered ? (
-        <div className="email-display">
-          <EmailFieldset email={signupState?.email.address} />
+    <div className="step-container">
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
+        </p>
+        <div className="lead">
+          {webauthnRegistered &&
+          !signupState?.credentials.custom_password &&
+          !signupState?.credentials.generated_password ? (
+            <p>
+              <FormattedMessage
+                defaultMessage="Your eduID account has been created and you can continue using it with the details you have provided and your added security key."
+                description="Registration finished with webauthn only"
+              />
+            </p>
+          ) : (
+            <p>
+              <FormattedMessage
+                defaultMessage={`Your eduID account has been created and you can continue using it with the details you have provided.`}
+                description="Registration finished with pw"
+              />
+            </p>
+          )}
         </div>
-      ) : (
-        <ConfirmUserInfo
-          email_address={signupState?.email.address ?? ""}
-          new_password={formatPassword(signupState?.credentials.generated_password)}
-        />
-      )}
+      </section>
+
+      <figure className="signin-details">
+        {signupState?.credentials.custom_password || webauthnRegistered ? (
+          <div className="email-display">
+            <EmailFieldset email={signupState?.email.address} />
+          </div>
+        ) : (
+          <ConfirmUserInfo
+            email_address={signupState?.email.address ?? ""}
+            new_password={formatPassword(signupState?.credentials.generated_password)}
+          />
+        )}
+      </figure>
 
       <div className="buttons">
         <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
@@ -216,6 +243,22 @@ export function SignupUserCreated(): React.JSX.Element {
           )}
         </EduIDButton>
       </div>
+
+      <p className="hint">
+        Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update
+        name and verify your identity. Read more about eduID in the help content accessible in the footer.
+      </p>
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="completed">1</div>
+        <div className="completed">2</div>
+        <div className="completed">3</div>
+        <div className="completed">4</div>
+        <div className="completed">5</div>
+        <div className="completed">6</div>
+      </section>
     </div>
   );
 }

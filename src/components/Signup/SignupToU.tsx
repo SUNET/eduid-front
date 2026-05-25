@@ -26,21 +26,37 @@ export function SignupToU(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
-      <h1>
-        <FormattedMessage defaultMessage="Create eduID: Accept Terms of Use" description="Terms of use (heading)" />
-      </h1>
-      <div className="lead">
-        <p>
-          <FormattedMessage
-            defaultMessage="To create your eduID you need to accept the eduID terms of use."
-            description="Terms of use (lead text)"
-          />
+    <div className="step-container">
+      <section className="intro">
+        <h1>
+          <FormattedMessage defaultMessage="Create eduID: Accept Terms of Use" description="Terms of use (heading)" />
+        </h1>
+        <p className="destination-info">
+          In order to access <strong>the thing</strong>
         </p>
-      </div>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="To create your eduID account you need to accept the eduID terms of use."
+              description="Terms of use (lead text)"
+            />
+          </p>
+        </div>
+      </section>
 
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
-    </React.Fragment>
+
+      <hr className="border-line border-line-lesser" />
+
+      <section className="step-indicator">
+        <div className="completed">1</div>
+        <div className="completed">2</div>
+        <div className="active">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+      </section>
+    </div>
   );
 }
 
