@@ -16,6 +16,8 @@ import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
@@ -89,9 +91,7 @@ export function SignupConfirmPassword() {
                       description="Registration confirm password"
                     />
                   </h1>
-                  <p className="destination-info">
-                    In order to access <strong>the thing</strong>
-                  </p>
+                  <ServiceInfo />
                   <div className="lead">
                     <p>
                       <FormattedMessage
@@ -109,9 +109,7 @@ export function SignupConfirmPassword() {
                       defaultMessage="Create eduID: Register your own password"
                     />
                   </h1>
-                  <p className="destination-info">
-                    In order to access <strong>the thing</strong>
-                  </p>
+                  <ServiceInfo />
                   <div className="lead">
                     <p>
                       <FormattedMessage
@@ -153,17 +151,7 @@ export function SignupConfirmPassword() {
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
                 />
               </div>
-
-              <hr className="border-line border-line-lesser" />
-
-              <section className="step-indicator">
-                <div className="completed">1</div>
-                <div className="completed">2</div>
-                <div className="completed">3</div>
-                <div className="completed">4</div>
-                <div className="active">5</div>
-                <div>6</div>
-              </section>
+              <SignupStepIndicator currentStep={6} />
             </div>
           </Splash>
         );
@@ -200,9 +188,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           {webauthnRegistered &&
           !signupState?.credentials.custom_password &&
@@ -257,17 +243,7 @@ export function SignupUserCreated(): React.JSX.Element {
         Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update
         name and verify your identity. Read more about eduID in the help content accessible in the footer.
       </p>
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="completed">2</div>
-        <div className="completed">3</div>
-        <div className="completed">4</div>
-        <div className="completed">5</div>
-        <div className="active">6</div>
-      </section>
+      <SignupStepIndicator currentStep={7} totalSteps={6} />
     </div>
   );
 }

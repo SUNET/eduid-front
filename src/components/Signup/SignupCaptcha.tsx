@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupCaptcha(): React.JSX.Element | null {
   const captchaCompleted = useAppSelector((state) => state.signup.state?.captcha.completed);
@@ -48,9 +50,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -62,17 +62,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
       </section>
 
       <InternalCaptcha {...args} getCaptcha={getCaptcha} />
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="active">2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={2} />
     </div>
   );
 }

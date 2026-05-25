@@ -9,6 +9,8 @@ import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-f
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupEmailForm(): React.JSX.Element {
   return (
@@ -17,9 +19,7 @@ export function SignupEmailForm(): React.JSX.Element {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -30,17 +30,7 @@ export function SignupEmailForm(): React.JSX.Element {
         </div>
       </section>
       <EmailForm />
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="active">1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={1} />
     </div>
   );
 }

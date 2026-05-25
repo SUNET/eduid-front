@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -84,9 +86,7 @@ export function SignupEnterCode(): React.JSX.Element {
           <h1>
             <FormattedMessage defaultMessage="Create eduID: Request new code" description="Signup" />
           </h1>
-          <p className="destination-info">
-            In order to access <strong>the thing</strong>
-          </p>
+          <ServiceInfo />
           <div className="lead">
             <p>
               <FormattedMessage
@@ -110,21 +110,10 @@ export function SignupEnterCode(): React.JSX.Element {
             </p>
           </div>
         </section>
-
         <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
-
-        <hr className="border-line border-line-lesser" />
-
-        <section className="step-indicator">
-          <div className="completed">1</div>
-          <div className="completed">2</div>
-          <div className="completed">3</div>
-          <div className="active">4</div>
-          <div>5</div>
-          <div>6</div>
-        </section>
+        <SignupStepIndicator currentStep={4} />
       </div>
     );
   }
@@ -138,9 +127,7 @@ export function SignupEnterCode(): React.JSX.Element {
           <h1>
             <FormattedMessage defaultMessage="Create eduID: Verify email address" description="Signup" />
           </h1>
-          <p className="destination-info">
-            In order to access <strong>the thing</strong>
-          </p>
+          <ServiceInfo />
           <div className="lead">
             <p>
               <FormattedMessage
@@ -178,17 +165,7 @@ export function SignupEnterCode(): React.JSX.Element {
             <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
           </ResponseCodeForm>
         </div>
-
-        <hr className="border-line border-line-lesser" />
-
-        <section className="step-indicator">
-          <div className="completed">1</div>
-          <div className="completed">2</div>
-          <div className="completed">3</div>
-          <div className="active">4</div>
-          <div>5</div>
-          <div>6</div>
-        </section>
+        <SignupStepIndicator currentStep={4} />
       </div>
     </Splash>
   );

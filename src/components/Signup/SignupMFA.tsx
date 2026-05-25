@@ -14,6 +14,8 @@ import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -104,9 +106,7 @@ export function SignupMFA(): React.ReactElement | null {
             description="Signup register credentials"
           />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -260,17 +260,7 @@ export function SignupMFA(): React.ReactElement | null {
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
       />
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="completed">2</div>
-        <div className="completed">3</div>
-        <div className="completed">4</div>
-        <div className="active">5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={5} />
     </div>
   );
 }

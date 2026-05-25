@@ -16,6 +16,25 @@ import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import { EmailForm } from "./SignupEmailForm";
+import { SignupStepIndicator } from "./SignupStepIndicator";
+
+export const ServiceInfo = () => {
+  const signupState = useAppSelector((state) => state.signup.state);
+  const idp_service_info = signupState?.idp_service_info;
+  const locale = useAppSelector((state) => state.intl.locale);
+  const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
+
+  if (!service_name) return null;
+  return (
+    <p className="destination-info">
+      <FormattedMessage
+        defaultMessage="In order to access {name}"
+        description="Signup first page lead text"
+        values={{ name: <strong>{service_name}</strong> }}
+      />
+    </p>
+  );
+};
 
 export function SignupEntry(): React.JSX.Element {
   const intl = useIntl();
@@ -58,6 +77,7 @@ export function SignupEntry(): React.JSX.Element {
             description="Signup first page title"
           />
         </h1>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -186,17 +206,7 @@ export function SignupEntry(): React.JSX.Element {
           </Fragment>
         )}
       </Splash>
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="active">1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={external_mfa ? 2 : 1} />
 
       {/* <Accordion>
         <AccordionItemTemplate
