@@ -30,6 +30,12 @@ export function SignupEntry(): React.JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
 
+  const appNameDisplay: Record<string, string> = {
+    freja_eid: "Freja eID",
+    bankid: "BankID",
+    eidas: "eIDAS",
+  };
+
   const handleExternalMfa = async (method: "bankid" | "freja_eid" | "eidas") => {
     const authenticateMap = {
       bankid: bankIDMfaRegister,
@@ -84,7 +90,10 @@ export function SignupEntry(): React.JSX.Element {
               </div>
               <div className="profile-grid-cell">
                 <strong>
-                  <FormattedMessage defaultMessage="Freja eID identity" description="Verified identity" />
+                  <strong>
+                    {appNameDisplay[external_mfa.app_name] ?? external_mfa.app_name.replaceAll("_", " ")}&nbsp;
+                    <FormattedMessage defaultMessage="identity" description="Verified identity" />
+                  </strong>
                 </strong>
               </div>
               {regionNames.of(external_mfa.country_code)}&nbsp;{external_mfa.date_of_birth}
