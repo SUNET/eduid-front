@@ -33,7 +33,7 @@ export function SignupConfirmPassword() {
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const intl = useIntl();
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-  console.log("000");
+
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
     if (!newPassword) {
@@ -48,15 +48,15 @@ export function SignupConfirmPassword() {
 
     if (response.isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-    } else if (response.error && typeof response.error === "object" && "data" in response.error) {
-      const errorData = response.error.data as { payload?: { message?: string } };
-      if (
-        errorData?.payload?.message === "signup.external-mfa-too-old" ||
-        errorData?.payload?.message === "signup.captcha-not-completed"
-      ) {
-        console.log("signup.captcha-not-completed");
+    } else if (response.error) {
+      const error = response.error as { data?: { payload?: { message?: string } } };
+      const message =
+        error.data?.payload?.message ?? (error as unknown as { payload?: { message?: string } }).payload?.message;
+      if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
         fetchLogout({});
         dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+      } else {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
       }
     }
   }

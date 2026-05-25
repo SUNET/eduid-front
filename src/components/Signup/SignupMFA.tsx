@@ -72,11 +72,15 @@ export function SignupMFA(): React.ReactElement | null {
           });
           if (response.isSuccess) {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-          } else if (response.error && typeof response.error === "object" && "data" in response.error) {
-            const errorData = response.error.data as { payload?: { message?: string } };
-            if (errorData?.payload?.message === "signup.external-mfa-too-old") {
+          } else if (response.error) {
+            const error = response.error as { data?: { payload?: { message?: string } } };
+            const message =
+              error.data?.payload?.message ?? (error as unknown as { payload?: { message?: string } }).payload?.message;
+            if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
               fetchLogout({});
               dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+            } else {
+              dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
             }
           }
         }
