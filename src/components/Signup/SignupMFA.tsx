@@ -1,3 +1,4 @@
+import { loginApi } from "apis/eduidLogin";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
@@ -26,6 +27,7 @@ export function SignupMFA(): React.ReactElement | null {
   const webauthnRegistered = credentials?.webauthn_registered ?? false;
   const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
   const webauthnDescription = credentials?.webauthn_description;
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   const intl = useIntl();
   const { theme } = useTheme();
@@ -68,6 +70,12 @@ export function SignupMFA(): React.ReactElement | null {
           });
           if (response.isSuccess) {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+          } else if (response.error && typeof response.error === "object" && "data" in response.error) {
+            const errorData = response.error.data as { payload?: { message?: string } };
+            if (errorData?.payload?.message === "signup.external-mfa-too-old") {
+              fetchLogout({});
+              dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+            }
           }
         }
       } catch (error) {
