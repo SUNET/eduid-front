@@ -1,8 +1,6 @@
 /* Plate to highlight content, with numbered steps at bottom.  */
 
 .step-container {
-  /* background-color: #daede1;
-  border-radius: 1.5rem; */
   background-color: white;
   padding: 1rem 1.5rem;
   box-shadow: var(--shadow-sm);
