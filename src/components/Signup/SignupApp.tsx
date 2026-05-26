@@ -28,7 +28,6 @@ export function SignupApp(): React.JSX.Element {
     <React.Fragment>
       {next_page === "SIGNUP_START" && <SignupStart />}
       {next_page === "SIGNUP_ENTRY" && <SignupEntry />}
-      {/* {next_page === "SIGNUP_EMAIL_FORM" && <SignupEmailForm />} */}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
       {next_page === "SIGNUP_CAPTCHA" && <SignupCaptcha />}
       {next_page === "SIGNUP_TOU" && <SignupToU />}

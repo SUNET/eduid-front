@@ -206,28 +206,6 @@ export function SignupEntry(): React.JSX.Element {
         )}
       </Splash>
       <SignupStepIndicator currentStep={external_mfa ? 2 : 1} />
-
-      {/* <Accordion>
-        <AccordionItemTemplate
-          title={
-            <FormattedMessage
-              description="Continue with email and name button"
-              defaultMessage="Continue with email and name"
-            />
-          }
-          additionalInfo={""}
-          uuid="continue-email-form"
-        >
-          <EmailForm />
-        </AccordionItemTemplate>
-      </Accordion> */}
-      {/* <WizardLink
-        nextText={intl.formatMessage({
-          id: "wizard link Continue with email and name",
-          defaultMessage: "Continue with email and name",
-        })}
-        nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
-      /> */}
     </div>
   );
 }
