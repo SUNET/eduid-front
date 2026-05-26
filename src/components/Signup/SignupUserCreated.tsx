@@ -11,6 +11,7 @@ import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRa
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { EduIDAppDispatch } from "eduid-init-app";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -23,6 +24,22 @@ import { SignupStepIndicator } from "./SignupStepIndicator";
 export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
+
+export function handleCreateUserError(
+  error: unknown,
+  fetchLogout: (arg: Record<string, never>) => void,
+  dispatch: EduIDAppDispatch,
+) {
+  const err = error as { data?: { payload?: { message?: string } } };
+  const message = err.data?.payload?.message ?? (err as unknown as { payload?: { message?: string } }).payload?.message;
+
+  if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
+    fetchLogout({});
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+  } else {
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
+  }
+}
 
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
@@ -49,15 +66,7 @@ export function SignupConfirmPassword() {
     if (response.isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
     } else if (response.error) {
-      const error = response.error as { data?: { payload?: { message?: string } } };
-      const message =
-        error.data?.payload?.message ?? (error as unknown as { payload?: { message?: string } }).payload?.message;
-      if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
-        fetchLogout({});
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
-      } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
-      }
+      handleCreateUserError(response.error, fetchLogout, dispatch);
     }
   }
 

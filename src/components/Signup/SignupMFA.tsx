@@ -16,6 +16,7 @@ import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
+import { handleCreateUserError } from "./SignupUserCreated";
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -73,15 +74,7 @@ export function SignupMFA(): React.ReactElement | null {
           if (response.isSuccess) {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
           } else if (response.error) {
-            const error = response.error as { data?: { payload?: { message?: string } } };
-            const message =
-              error.data?.payload?.message ?? (error as unknown as { payload?: { message?: string } }).payload?.message;
-            if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
-              fetchLogout({});
-              dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
-            } else {
-              dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
-            }
+            handleCreateUserError(response.error, fetchLogout, dispatch);
           }
         }
       } catch (error) {
