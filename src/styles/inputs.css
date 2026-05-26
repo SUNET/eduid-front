@@ -69,6 +69,7 @@ input[readonly] {
   background-color: var(--bg-gray);
   pointer-events: none;
   cursor: not-allowed;
+
   :focus,
   :hover {
     outline: none;
