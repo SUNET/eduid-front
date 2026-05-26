@@ -73,7 +73,7 @@ export function SignupEntry(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Create eduID: Choose how to register"
+            defaultMessage="Create eduID: Choose registration method"
             description="Signup first page title"
           />
         </h1>
@@ -91,7 +91,10 @@ export function SignupEntry(): React.JSX.Element {
         {external_mfa ? (
           <section className="external-mfa-registered">
             <h2>
-              <FormattedMessage defaultMessage="You're almost done!" description="external mfa registered heading" />
+              <FormattedMessage
+                defaultMessage="Your identity has been verified"
+                description="external mfa registered heading"
+              />
             </h2>
             <p className="text-medium">
               <FormattedMessage
@@ -127,7 +130,7 @@ export function SignupEntry(): React.JSX.Element {
               <FormattedMessage defaultMessage="With a digital ID" description="passkey heading" />
             </h2>
             <p className="text-medium">
-              <FormattedMessage defaultMessage="Use BankID, Freja eID, or eIDAS to register. Your name and identity will be verified automatically." />
+              <FormattedMessage defaultMessage="Use BankID, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
             </p>
             <p className="help-text">
               <FormattedMessage
