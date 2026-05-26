@@ -132,7 +132,7 @@ export function EmailForm() {
               name="email"
               required={true}
               autoComplete="username"
-              autoFocus={state?.external_mfa?.given_name ? true : false}
+              autoFocus={!!state?.external_mfa?.given_name}
             />
             <div className="buttons">
               <EduIDButton
