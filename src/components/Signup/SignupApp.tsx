@@ -69,7 +69,7 @@ function SignupStart() {
     if (ref && service_info) {
       signupReturnToAuthn({ ref: ref, service_info: service_info });
     }
-  }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn]);
+  }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn, service_info]);
 
   useEffect(() => {
     if (data !== undefined) {

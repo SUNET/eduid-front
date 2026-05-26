@@ -6,11 +6,10 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import signupApi from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
-import { useTheme } from "components/Common/ThemeContext";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
@@ -37,12 +36,9 @@ export const ServiceInfo = () => {
 };
 
 export function SignupEntry(): React.JSX.Element {
-  const intl = useIntl();
-  const dispatch = useAppDispatch();
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
-  const { theme } = useTheme();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
   const [isEditMode, setEditMode] = useState<boolean>(false);
   const currentLocale = useAppSelector((state) => state.intl.locale);
