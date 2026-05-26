@@ -44,6 +44,7 @@ export function SignupEntry(): React.JSX.Element {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
+  const [isLoading, setIsLoading] = useState(false);
 
   const appNameDisplay: Record<string, string> = {
     freja_eid: "Freja eID",
@@ -52,6 +53,7 @@ export function SignupEntry(): React.JSX.Element {
   };
 
   const handleExternalMfa = async (method: "bankid" | "freja_eid" | "eidas") => {
+    setIsLoading(true);
     const authenticateMap = {
       bankid: bankIDMfaRegister,
       freja_eid: frejaMfaRegister,
@@ -61,6 +63,8 @@ export function SignupEntry(): React.JSX.Element {
     const response = await authenticateMap[method]();
     if (response.isSuccess && response.data.payload.location) {
       globalThis.location.assign(response.data.payload.location);
+    } else {
+      setIsLoading(false);
     }
   };
 
@@ -142,15 +146,30 @@ export function SignupEntry(): React.JSX.Element {
               />
             </p>
             <div className="buttons">
-              <EduIDButton buttonstyle="primary" id="signup-bankid" onClick={() => handleExternalMfa("bankid")}>
+              <EduIDButton
+                buttonstyle="primary"
+                id="signup-bankid"
+                disabled={isLoading}
+                onClick={() => handleExternalMfa("bankid")}
+              >
                 <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
                 <span>BankID</span>
               </EduIDButton>
-              <EduIDButton buttonstyle="primary" id="signup-freja" onClick={() => handleExternalMfa("freja_eid")}>
+              <EduIDButton
+                buttonstyle="primary"
+                id="signup-freja"
+                disabled={isLoading}
+                onClick={() => handleExternalMfa("freja_eid")}
+              >
                 <img className="circle-icon freja" height="24" alt="Freja eID" src={FrejaFlag} />
                 <span>Freja eID</span>
               </EduIDButton>
-              <EduIDButton buttonstyle="primary" id="signup-eidas" onClick={() => handleExternalMfa("eidas")}>
+              <EduIDButton
+                buttonstyle="primary"
+                id="signup-eidas"
+                disabled={isLoading}
+                onClick={() => handleExternalMfa("eidas")}
+              >
                 <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                 <span>eIDAS</span>
               </EduIDButton>
