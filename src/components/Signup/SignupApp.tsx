@@ -1,11 +1,11 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { loginApi } from "apis/eduidLogin";
-import { signupApi } from "apis/eduidSignup";
+import { signupApi, SignupState } from "apis/eduidSignup";
 import { RegisterEmail } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { signupSlice } from "slices/Signup";
+import { NextPageTypes, signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
@@ -44,6 +44,27 @@ export function SignupApp(): React.JSX.Element {
   );
 }
 
+function getExternalMfaNextPage(state: SignupState): NextPageTypes {
+  if (state.tou?.completed && state.email?.address) return "SIGNUP_ENTER_CODE";
+  if (state.tou?.completed) return "REGISTER_EMAIL";
+  if (!state.email?.address) return "SIGNUP_ENTRY";
+  return "SIGNUP_TOU";
+}
+
+function getEmailNextPage(state: SignupState): NextPageTypes {
+  if (!state.captcha.completed) return "SIGNUP_CAPTCHA";
+  if (!state.tou?.completed) return "SIGNUP_TOU";
+  return "SIGNUP_ENTER_CODE";
+}
+
+function getNextPage(state: SignupState): NextPageTypes | null {
+  if (state.already_signed_up) return null;
+  if (state.email?.completed) return "SIGNUP_MFA";
+  if (state.external_mfa?.completed) return getExternalMfaNextPage(state);
+  if (state.email?.address) return getEmailNextPage(state);
+  return "SIGNUP_ENTRY";
+}
+
 /**
  * Startup state to determine what kind of signup this is, and what to do next.
  */
@@ -72,31 +93,11 @@ function SignupStart() {
 
   useEffect(() => {
     if (data !== undefined) {
-      if (data.payload.state.already_signed_up) {
+      const nextPage = getNextPage(data.payload.state);
+      if (nextPage === null) {
         fetchLogout({});
-      } else if (data.payload.state.user_created) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
-      } else if (data.payload.state.email?.completed) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
-      } else if (data.payload.state.external_mfa?.completed) {
-        // External MFA done, skip captcha
-        if (data.payload.state.tou?.completed && data.payload.state.email?.address) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
-        } else if (data.payload.state.tou?.completed) {
-          dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
-        } else if (!data.payload.state.tou?.completed && !data.payload.state.email?.address) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
-        } else {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
-        }
-      } else if (data.payload.state.email?.address) {
-        if (!data.payload.state.captcha.completed) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
-        } else if (data.payload.state.email?.completed) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
-        }
       } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+        dispatch(signupSlice.actions.setNextPage(nextPage));
       }
     }
   }, [data, fetchLogout, dispatch]);
