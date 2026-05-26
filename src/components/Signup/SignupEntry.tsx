@@ -171,7 +171,7 @@ export function SignupEntry(): React.JSX.Element {
             <section className="personal-data" id="register-with-name">
               <div className="heading">
                 <h2>
-                  <FormattedMessage description="With email and name" defaultMessage="With email and name" />
+                  <FormattedMessage description="With name and email" defaultMessage="With name and email" />
                 </h2>
                 <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
