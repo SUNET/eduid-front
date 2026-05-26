@@ -240,7 +240,7 @@ test("handles wrong email code", async () => {
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() =>
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Create eduID: Choose how to register/),
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Choose registration method/),
   );
 
   // Expand the email form
