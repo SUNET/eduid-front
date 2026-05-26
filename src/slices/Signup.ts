@@ -2,7 +2,7 @@ import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import signupApi, { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
 import { isFSA } from "apis/helpers/typeGuards";
 
-type NextPageTypes =
+export type NextPageTypes =
   | "SIGNUP_START"
   | "SIGNUP_ENTRY"
   | "PROCESS_CAPTCHA"
