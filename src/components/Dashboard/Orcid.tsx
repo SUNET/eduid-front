@@ -22,9 +22,9 @@ export function urlJoin(base_url: string, endpoint?: string) {
 
 export function Orcid(): React.JSX.Element {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
-  const orcid_service_url = useAppSelector((state) => state.config.orcid_service_url);
   const intl = useIntl();
   const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery();
+  const [connectOrcid] = orcidApi.useLazyConnectOrcidQuery();
 
   async function handleOrcidDelete() {
     const result = await removeOrcid();
@@ -33,14 +33,12 @@ export function Orcid(): React.JSX.Element {
     }
   }
 
-  function handleOrcidConnect() {
-    try {
-      if (orcid_service_url) {
-        const auth_url = urlJoin(orcid_service_url, "authorize");
-        globalThis.location.assign(auth_url);
+  async function handleOrcidConnect() {
+    const response = await connectOrcid();
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        globalThis.location.assign(response.data.payload.location);
       }
-    } catch (error) {
-      console.error("Error connecting to orcid", error);
     }
   }
 

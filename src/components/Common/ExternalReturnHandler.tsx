@@ -43,6 +43,7 @@ export function ExternalReturnHandler() {
           removeSecurityKeyAuthn: SECURITY_PATH,
           changeSecurityPreferencesAuthn: SECURITY_PATH,
           removeIdentity: IDENTITY_PATH,
+          connectOrcid: IDENTITY_PATH,
         };
         const _path = actionToRoute[status.frontend_action];
 
@@ -98,17 +99,19 @@ export function ExternalReturnHandler() {
   );
 
   useEffect(() => {
-    if (params.authn_id && params.app_name === "eidas" && app_loaded) {
-      fetchEidasStatus(params.authn_id).catch(console.error);
-    }
-    if (params.authn_id && params.app_name === "freja_eid") {
-      fetchFrejaeIDStatus(params.authn_id).catch(console.error);
-    }
-    if (params.authn_id && params.app_name === "bankid" && app_loaded) {
-      fetchBankIDStatus(params.authn_id).catch(console.error);
-    }
-    if (params.authn_id && params.app_name === "authn" && app_loaded) {
-      fetchAuthStatus(params.authn_id);
+    if (app_loaded && params.authn_id) {
+      if (params.app_name === "eidas") {
+        fetchEidasStatus(params.authn_id).catch(console.error);
+      }
+      if (params.app_name === "freja_eid") {
+        fetchFrejaeIDStatus(params.authn_id).catch(console.error);
+      }
+      if (params.app_name === "bankid") {
+        fetchBankIDStatus(params.authn_id).catch(console.error);
+      }
+      if (params.app_name === "authn" || params.app_name === "connectOrcid") {
+        fetchAuthStatus(params.authn_id);
+      }
     }
   }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus]);
 
