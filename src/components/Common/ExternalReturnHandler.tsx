@@ -2,7 +2,8 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
+import { orcidApi } from "apis/eduidOrcid";
+import { ACCOUNT_PATH, CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -23,6 +24,7 @@ export function ExternalReturnHandler() {
   const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
+  const [orcidGetStatus] = orcidApi.useLazyOrcidGetStatusQuery();
 
   const processStatus = useCallback(
     (response: GetStatusResponse) => {
@@ -43,7 +45,7 @@ export function ExternalReturnHandler() {
           removeSecurityKeyAuthn: SECURITY_PATH,
           changeSecurityPreferencesAuthn: SECURITY_PATH,
           removeIdentity: IDENTITY_PATH,
-          connectOrcid: IDENTITY_PATH,
+          connectOrcid: ACCOUNT_PATH,
         };
         const _path = actionToRoute[status.frontend_action];
 
@@ -98,6 +100,16 @@ export function ExternalReturnHandler() {
     [authnGetStatus, processStatus],
   );
 
+  const fetchOrcidStatus = useCallback(
+    async (authn_id: string) => {
+      const response = await orcidGetStatus({ authn_id: authn_id });
+      if (response.isSuccess) {
+        processStatus(response.data.payload);
+      }
+    },
+    [orcidGetStatus, processStatus],
+  );
+
   useEffect(() => {
     if (app_loaded && params.authn_id) {
       if (params.app_name === "eidas") {
@@ -109,8 +121,11 @@ export function ExternalReturnHandler() {
       if (params.app_name === "bankid") {
         fetchBankIDStatus(params.authn_id).catch(console.error);
       }
-      if (params.app_name === "authn" || params.app_name === "connectOrcid") {
+      if (params.app_name === "authn") {
         fetchAuthStatus(params.authn_id);
+      }
+      if (params.app_name === "orcid") {
+        fetchOrcidStatus(params.authn_id);
       }
     }
   }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus]);

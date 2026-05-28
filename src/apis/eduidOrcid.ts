@@ -1,4 +1,5 @@
 import { eduIDApi } from "./common";
+import { GetStatusRequest, GetStatusResponse } from "./eduidEidas";
 import type { ApiResponse, AuthCommonResponse } from "./helpers/types";
 
 export interface OrcidInfo {
@@ -34,6 +35,13 @@ export const orcidApi = eduIDApi.injectEndpoints({
           frontend_action: "connectOrcid",
           frontend_state: "optional-opaque-string",
         },
+      }),
+      extraOptions: { service: "orcid" },
+    }),
+    orcidGetStatus: builder.query<ApiResponse<GetStatusResponse>, GetStatusRequest>({
+      query: (body) => ({
+        url: "get-status",
+        body,
       }),
       extraOptions: { service: "orcid" },
     }),
