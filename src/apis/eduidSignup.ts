@@ -47,6 +47,17 @@ export interface SignupState {
   idp_request_ref?: string;
   idp_service_info?: ServiceInfo;
   user_created: boolean;
+  external_mfa?: ExternalMFAResponse;
+}
+
+interface ExternalMFAResponse {
+  app_name: string;
+  completed: boolean;
+  country_code: string;
+  date_of_birth: string;
+  given_name: string;
+  masked_nin: null;
+  surname: string;
 }
 
 export interface SignupStatusResponse {
@@ -86,6 +97,11 @@ export interface CreateUserRequest {
 export interface SignupReturnToAuthnRequest {
   ref: string;
   service_info: ServiceInfo;
+}
+
+export interface ExternalMfaRegisterRequest {
+  app_name: string;
+  authn_id: string;
 }
 
 export const signupApi = eduIDApi.injectEndpoints({
@@ -177,6 +193,13 @@ export const signupApi = eduIDApi.injectEndpoints({
           ref: body.ref,
           service_info: body.service_info,
         },
+      }),
+      extraOptions: { service: "signup" },
+    }),
+    externalMfaRegister: builder.query<ApiResponse<SignupStatusResponse>, ExternalMfaRegisterRequest>({
+      query: (body) => ({
+        url: "external-mfa-register",
+        body,
       }),
       extraOptions: { service: "signup" },
     }),

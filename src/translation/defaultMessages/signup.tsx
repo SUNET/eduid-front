@@ -134,4 +134,40 @@ export const apiResponses = {
       defaultMessage={`The service request could not be found. Please try signing up again.`}
     />
   ),
+  "signup.external-mfa-not-found": (
+    <FormattedMessage
+      id="signup.external-mfa-not-found"
+      defaultMessage={`Your digital ID verification could not be found. Please try again.`}
+    />
+  ),
+  "signup.external-mfa-not-verified": (
+    <FormattedMessage
+      id="signup.external-mfa-not-verified"
+      defaultMessage={`Your digital ID could not be verified. Please try again.`}
+    />
+  ),
+  "signup.external-mfa-too-old": (
+    <FormattedMessage
+      id="signup.external-mfa-too-old"
+      defaultMessage={`Your verification session timed out. Please try again.`}
+    />
+  ),
+  "signup.external-mfa-already-consumed": (
+    <FormattedMessage
+      id="signup.external-mfa-already-consumed"
+      defaultMessage={`Your verification has already been processed. Please try again.`}
+    />
+  ),
+  "signup.external-mfa-wrong-action": (
+    <FormattedMessage
+      id="signup.external-mfa-wrong-action"
+      defaultMessage={`An unexpected error occurred. Please try again.`}
+    />
+  ),
+  "signup.identity-already-registered": (
+    <FormattedMessage
+      id="signup.identity-already-registered"
+      defaultMessage={`An account with this identity already exists. Please log in instead.`}
+    />
+  ),
 };

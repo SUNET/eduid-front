@@ -11,16 +11,35 @@ import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRa
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { EduIDAppDispatch } from "eduid-init-app";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 // element ids used in tests
 export const idUserEmail = "user-email";
 export const idUserPassword = "user-password";
 export const idFinishedButton = "finished-button";
+
+export function handleCreateUserError(
+  error: unknown,
+  fetchLogout: (arg: Record<string, never>) => void,
+  dispatch: EduIDAppDispatch,
+) {
+  const err = error as { data?: { payload?: { message?: string } } };
+  const message = err.data?.payload?.message ?? (err as unknown as { payload?: { message?: string } }).payload?.message;
+
+  if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
+    fetchLogout({});
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
+  } else {
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
+  }
+}
 
 export function SignupConfirmPassword() {
   const dispatch = useAppDispatch();
@@ -30,6 +49,7 @@ export function SignupConfirmPassword() {
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
   const intl = useIntl();
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
     const newPassword = renderSuggested ? values.suggested : values.custom;
@@ -45,8 +65,8 @@ export function SignupConfirmPassword() {
 
     if (response.isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-    } else {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
+    } else if (response.error) {
+      handleCreateUserError(response.error, fetchLogout, dispatch);
     }
   }
 
@@ -56,7 +76,7 @@ export function SignupConfirmPassword() {
 
   function handleCancel(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     navigate(SIGNUP_BASE_PATH);
   }
 
@@ -80,9 +100,7 @@ export function SignupConfirmPassword() {
                       description="Registration confirm password"
                     />
                   </h1>
-                  <p className="destination-info">
-                    In order to access <strong>the thing</strong>
-                  </p>
+                  <ServiceInfo />
                   <div className="lead">
                     <p>
                       <FormattedMessage
@@ -100,9 +118,7 @@ export function SignupConfirmPassword() {
                       defaultMessage="Create eduID: Register your own password"
                     />
                   </h1>
-                  <p className="destination-info">
-                    In order to access <strong>the thing</strong>
-                  </p>
+                  <ServiceInfo />
                   <div className="lead">
                     <p>
                       <FormattedMessage
@@ -144,17 +160,7 @@ export function SignupConfirmPassword() {
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
                 />
               </div>
-
-              <hr className="border-line border-line-lesser" />
-
-              <section className="step-indicator">
-                <div className="completed">1</div>
-                <div className="completed">2</div>
-                <div className="completed">3</div>
-                <div className="completed">4</div>
-                <div className="active">5</div>
-                <div>6</div>
-              </section>
+              <SignupStepIndicator currentStep={6} />
             </div>
           </Splash>
         );
@@ -191,9 +197,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           {webauthnRegistered &&
           !signupState?.credentials.custom_password &&
@@ -248,17 +252,7 @@ export function SignupUserCreated(): React.JSX.Element {
         Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update
         name and verify your identity. Read more about eduID in the help content accessible in the footer.
       </p>
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="completed">2</div>
-        <div className="completed">3</div>
-        <div className="completed">4</div>
-        <div className="completed">5</div>
-        <div className="active">6</div>
-      </section>
+      <SignupStepIndicator currentStep={7} totalSteps={6} />
     </div>
   );
 }

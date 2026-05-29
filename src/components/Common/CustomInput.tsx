@@ -14,6 +14,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   passwordStrengthMeter?: string;
   children?: React.ReactNode;
   onFocus?: () => void;
+  readOnly?: boolean;
 }
 
 export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
@@ -47,6 +48,7 @@ const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
       autoFocus={props.autoFocus}
       autoComplete={props.autoComplete}
       onFocus={props.onFocus}
+      readOnly={props.readOnly}
     />
   );
 };

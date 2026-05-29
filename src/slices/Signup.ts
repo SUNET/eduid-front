@@ -1,10 +1,10 @@
 import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
+import signupApi, { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
 import { isFSA } from "apis/helpers/typeGuards";
 
-type NextPageTypes =
+export type NextPageTypes =
   | "SIGNUP_START"
-  | "SIGNUP_EMAIL_FORM"
+  | "SIGNUP_ENTRY"
   | "PROCESS_CAPTCHA"
   | "SIGNUP_CAPTCHA"
   | "SIGNUP_TOU"
@@ -75,6 +75,13 @@ export const signupSlice = createSlice({
   extraReducers: (builder) => {
     builder.addMatcher(hasSignupStateResponse, (state, action) => {
       state.state = action.payload.payload.state;
+    });
+    builder.addMatcher(signupApi.endpoints.fetchState.matchFulfilled, (state, action) => {
+      const externalMfa = action.payload.payload.state.external_mfa;
+      if (state.state?.name && externalMfa) {
+        state.state.name.given_name = externalMfa.given_name;
+        state.state.name.surname = externalMfa.surname;
+      }
     });
   },
 });

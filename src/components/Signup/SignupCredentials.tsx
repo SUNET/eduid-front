@@ -26,7 +26,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
         <EduIDButton
           type="submit"
           buttonstyle="secondary"
-          onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"))}
+          onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"))}
           id="abort-button"
         >
           <FormattedMessage defaultMessage="Cancel" description="button cancel" />

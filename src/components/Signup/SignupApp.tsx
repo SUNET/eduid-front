@@ -1,14 +1,15 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { loginApi } from "apis/eduidLogin";
-import { signupApi } from "apis/eduidSignup";
-import { RegisterEmail, SignupEmailForm } from "components/Signup/SignupEmailForm";
+import { signupApi, SignupState } from "apis/eduidSignup";
+import { RegisterEmail } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import { signupSlice } from "slices/Signup";
+import { NextPageTypes, signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
 import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
+import { SignupEntry } from "./SignupEntry";
 import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
@@ -26,7 +27,7 @@ export function SignupApp(): React.JSX.Element {
   return (
     <React.Fragment>
       {next_page === "SIGNUP_START" && <SignupStart />}
-      {next_page === "SIGNUP_EMAIL_FORM" && <SignupEmailForm />}
+      {next_page === "SIGNUP_ENTRY" && <SignupEntry />}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
       {next_page === "SIGNUP_CAPTCHA" && <SignupCaptcha />}
       {next_page === "SIGNUP_TOU" && <SignupToU />}
@@ -41,6 +42,27 @@ export function SignupApp(): React.JSX.Element {
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
     </React.Fragment>
   );
+}
+
+function getExternalMfaNextPage(state: SignupState): NextPageTypes {
+  if (state.tou?.completed && state.email?.address) return "SIGNUP_ENTER_CODE";
+  if (state.tou?.completed) return "REGISTER_EMAIL";
+  if (!state.email?.address) return "SIGNUP_ENTRY";
+  return "SIGNUP_TOU";
+}
+
+function getEmailNextPage(state: SignupState): NextPageTypes {
+  if (!state.captcha.completed) return "SIGNUP_CAPTCHA";
+  if (!state.tou?.completed) return "SIGNUP_TOU";
+  return "SIGNUP_ENTER_CODE";
+}
+
+function getNextPage(state: SignupState): NextPageTypes | null {
+  if (state.already_signed_up) return null;
+  if (state.email?.completed) return "SIGNUP_MFA";
+  if (state.external_mfa?.completed) return getExternalMfaNextPage(state);
+  if (state.email?.address) return getEmailNextPage(state);
+  return "SIGNUP_ENTRY";
 }
 
 /**
@@ -67,22 +89,15 @@ function SignupStart() {
     if (ref && service_info) {
       signupReturnToAuthn({ ref: ref, service_info: service_info });
     }
-  }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn]);
+  }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn, service_info]);
 
   useEffect(() => {
     if (data !== undefined) {
-      if (data.payload.state.already_signed_up) {
+      const nextPage = getNextPage(data.payload.state);
+      if (nextPage === null) {
         fetchLogout({});
-      }
-      if (data.payload.state.user_created) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
-      } else if (data.payload.state.email?.address) {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
-        if (data.payload.state.email?.completed) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
-        }
       } else {
-        dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+        dispatch(signupSlice.actions.setNextPage(nextPage));
       }
     }
   }, [data, fetchLogout, dispatch]);

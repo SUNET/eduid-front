@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupToU(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -22,7 +24,7 @@ export function SignupToU(): React.JSX.Element {
   }
 
   function handleCancel() {
-    dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+    dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 
   return (
@@ -31,9 +33,7 @@ export function SignupToU(): React.JSX.Element {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Accept Terms of Use" description="Terms of use (heading)" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -45,17 +45,7 @@ export function SignupToU(): React.JSX.Element {
       </section>
 
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="completed">2</div>
-        <div className="active">3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={3} />
     </div>
   );
 }
@@ -70,7 +60,7 @@ export function ProcessToU(): React.JSX.Element | null {
     if (isSuccess) {
       dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [isSuccess, isError, dispatch]);
 

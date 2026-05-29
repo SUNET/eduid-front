@@ -1,3 +1,4 @@
+import { loginApi } from "apis/eduidLogin";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
@@ -13,6 +14,9 @@ import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
+import { handleCreateUserError } from "./SignupUserCreated";
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -26,6 +30,7 @@ export function SignupMFA(): React.ReactElement | null {
   const webauthnRegistered = credentials?.webauthn_registered ?? false;
   const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
   const webauthnDescription = credentials?.webauthn_description;
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   const intl = useIntl();
   const { theme } = useTheme();
@@ -68,13 +73,15 @@ export function SignupMFA(): React.ReactElement | null {
           });
           if (response.isSuccess) {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+          } else if (response.error) {
+            handleCreateUserError(response.error, fetchLogout, dispatch);
           }
         }
       } catch (error) {
         console.error("Error finishing signup:", error);
       }
     })();
-  }, [createUser, dispatch, webauthnRegistered]);
+  }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
 
   const handleWebauthnButtonClick = useCallback(
     async (authenticator: "platform" | "cross-platform") => {
@@ -96,9 +103,7 @@ export function SignupMFA(): React.ReactElement | null {
             description="Signup register credentials"
           />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -252,17 +257,7 @@ export function SignupMFA(): React.ReactElement | null {
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
       />
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="completed">1</div>
-        <div className="completed">2</div>
-        <div className="completed">3</div>
-        <div className="completed">4</div>
-        <div className="active">5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={5} />
     </div>
   );
 }

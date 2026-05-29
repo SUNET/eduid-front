@@ -240,8 +240,12 @@ test("handles wrong email code", async () => {
 
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() =>
-    expect(screen.getByRole("heading")).toHaveTextContent(/^Create eduID: Enter your personal information/),
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Choose registration method/),
   );
+
+  // Expand the email form
+  const showEmailFormButton = await screen.findByRole("button", { name: /Show form/i });
+  await user.click(showEmailFormButton);
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 
@@ -274,6 +278,7 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   if (email) {
     await user.type(firstNameInput, "test");
     await user.type(lastNameInput, "test");
+    await user.clear(emailInput);
     await user.type(emailInput, email);
     expect(button).toBeEnabled();
 

@@ -58,5 +58,15 @@ export const eidasApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "eidas" },
     }),
+    eidasMfaRegister: builder.query<ApiResponse<AuthCommonResponse>, void>({
+      query: () => ({
+        url: "mfa-register",
+        body: {
+          method: "eidas",
+          frontend_action: "signupExternalMfa",
+        },
+      }),
+      extraOptions: { service: "eidas" },
+    }),
   }),
 });

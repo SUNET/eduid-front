@@ -9,6 +9,8 @@ import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-f
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupEmailForm(): React.JSX.Element {
   return (
@@ -17,9 +19,7 @@ export function SignupEmailForm(): React.JSX.Element {
         <h1>
           <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
         </h1>
-        <p className="destination-info">
-          In order to access <strong>the thing</strong>
-        </p>
+        <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
@@ -30,17 +30,7 @@ export function SignupEmailForm(): React.JSX.Element {
         </div>
       </section>
       <EmailForm />
-
-      <hr className="border-line border-line-lesser" />
-
-      <section className="step-indicator">
-        <div className="active">1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-      </section>
+      <SignupStepIndicator currentStep={1} />
     </div>
   );
 }
@@ -52,7 +42,7 @@ export interface SignupEmailFormData extends Record<string, string | undefined> 
 }
 
 /* FORM */
-function EmailForm() {
+export function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
   const intl = useIntl();
@@ -82,9 +72,16 @@ function EmailForm() {
 
       // We ask for the e-mail address first, but we don't pass it to the backend until the user has accepted the ToU
       // terms of use, and solved a captcha. So we store it in the redux state here.
-      if (state?.captcha.completed && state?.tou.completed) {
+      if (
+        (state?.captcha.completed && state?.tou.completed) ||
+        (state?.external_mfa?.completed && state?.tou.completed)
+      ) {
         // Go to RegisterEmail
         dispatch(signupSlice.actions.setNextPage("REGISTER_EMAIL"));
+      } else if (state?.external_mfa?.completed) {
+        // External MFA already done, skip captcha and go to ToU
+        dispatch(clearNotifications());
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_TOU"));
       } else {
         dispatch(clearNotifications());
         dispatch(signupSlice.actions.setNextPage("SIGNUP_CAPTCHA"));
@@ -101,8 +98,8 @@ function EmailForm() {
       validate={validateSignupUserInForm}
       initialValues={{
         email: "",
-        given_name: "",
-        surname: "",
+        given_name: state?.name?.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+        surname: state?.name?.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
       }}
       render={(formProps: FormRenderProps<SignupEmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
@@ -115,10 +112,11 @@ function EmailForm() {
                 component={CustomInput}
                 type="text"
                 name="given_name"
-                autoFocus={true}
+                autoFocus={!state?.external_mfa?.given_name}
                 required={true}
                 placeholder={firstNamePlaceholder}
                 label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
+                readOnly={!!state?.external_mfa?.given_name}
               />
               <FinalField
                 component={CustomInput}
@@ -127,9 +125,15 @@ function EmailForm() {
                 required={true}
                 placeholder={lastNamePlaceholder}
                 label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
+                readOnly={!!state?.external_mfa?.surname}
               />
             </div>
-            <EmailInput name="email" required={true} autoComplete="username" />
+            <EmailInput
+              name="email"
+              required={true}
+              autoComplete="username"
+              autoFocus={!!state?.external_mfa?.given_name}
+            />
             <div className="buttons">
               <EduIDButton
                 buttonstyle="primary"
@@ -163,14 +167,14 @@ export function RegisterEmail() {
     if (isSuccess) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
     } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [isSuccess, isError, dispatch]);
 
   useEffect(() => {
     // If we don't have the email or name in the state, go back to the email form
     if (!email || !given_name || !surname) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_EMAIL_FORM"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
     }
   }, [email, given_name, surname, dispatch]);
 

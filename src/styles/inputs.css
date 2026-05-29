@@ -67,10 +67,12 @@ input:disabled,
 input[readonly] {
   color: var(--txt-txt);
   background-color: var(--bg-gray);
+  pointer-events: none;
+  cursor: not-allowed;
 
   :focus,
   :hover {
-    pointer-events: none;
+    outline: none;
   }
 }
 

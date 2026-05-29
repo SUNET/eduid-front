@@ -41,5 +41,15 @@ export const frejaeIDApi = eduIDApi.injectEndpoints({
       }),
       extraOptions: { service: "frejaeID" },
     }),
+    frejaeIDMfaRegister: builder.query<ApiResponse<AuthCommonResponse>, void>({
+      query: () => ({
+        url: "mfa-register",
+        body: {
+          method: "freja_eid",
+          frontend_action: "signupExternalMfa",
+        },
+      }),
+      extraOptions: { service: "frejaeID" },
+    }),
   }),
 });
