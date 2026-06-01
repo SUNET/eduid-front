@@ -81,7 +81,7 @@ export function SignupEntry(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="The fastest way to register is with a digital ID. your name and identity will be verified automatically."
+              defaultMessage="The fastest way to register is with a digital ID. If you don't have a digital ID, you can register with your name and email address instead."
               description="Signup first page lead text"
             />
           </p>

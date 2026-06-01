@@ -87,12 +87,12 @@
       font-family: monospace;
 
       &.completed {
-        background-color: var(--bg-orange);
+        background-color: #cde7d7;
         color: #161616;
       }
 
       &.active {
-        background-color: var(--bright-orange);
+        background-color: var(--success-green);
         color: #f4f4f4;
       }
     }
