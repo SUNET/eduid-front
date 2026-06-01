@@ -238,6 +238,99 @@ test("handles wrong email code", async () => {
   });
 });
 
+test("show service info if user is from external services", async () => {
+  const stateWithServiceInfo: SignupState = {
+    ...emptyState,
+    idp_service_info: {
+      display_name: {
+        en: "eduID Sweden (Developer)",
+        sv: "eduID Sverige (Utveckling)",
+      },
+    },
+  };
+
+  happyCaseBackend(stateWithServiceInfo);
+
+  render(<IndexMain />, {
+    state: {
+      config: { ...signupTestState.config },
+    },
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
+
+  await waitFor(() => {
+    expect(screen.getByText(/In order to access/)).toBeInTheDocument();
+  });
+});
+
+test("show external MFA option, email and name", async () => {
+  render(<IndexMain />, {
+    state: {
+      config: { ...signupTestState.config },
+    },
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
+  await waitFor(() => {
+    expect(screen.getByRole("heading", { level: 2, name: /With a digital ID/ })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: /With name and email/ })).toBeInTheDocument();
+    expect(screen.getByText("BankID")).toBeInTheDocument();
+    expect(screen.getByText("Freja eID")).toBeInTheDocument();
+    expect(screen.getByText("eIDAS")).toBeInTheDocument();
+  });
+  const showFormButton = screen.getByText("show form");
+  await waitFor(() => {
+    userEvent.click(showFormButton);
+    expect(screen.getByRole("textbox", { name: /First name/ })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: /Last name/ })).toBeInTheDocument();
+    expect(screen.getByRole("textbox", { name: /Email address/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Continue" })).toBeInTheDocument();
+  });
+});
+
+test("continue with external MFA option", async () => {
+  const stateWithServiceInfo: SignupState = {
+    ...emptyState,
+    external_mfa: {
+      app_name: "freja_eid",
+      completed: true,
+      country_code: "DE",
+      date_of_birth: "1990-01-01",
+      given_name: "Test",
+      surname: "User",
+      masked_nin: null,
+    },
+  };
+
+  happyCaseBackend(stateWithServiceInfo);
+  render(<IndexMain />, {
+    state: {
+      config: { ...signupTestState.config },
+    },
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
+
+  await waitFor(() => {
+    const firstNameInput = screen.getByRole("textbox", { name: /First name/ });
+    const lastNameInput = screen.getByRole("textbox", { name: /Last name/ });
+    const emailInput = screen.getByRole("textbox", { name: /Email address/ });
+    expect(firstNameInput).toHaveValue("Test");
+    expect(lastNameInput).toHaveValue("User");
+    expect(emailInput).toHaveFocus();
+    expect(screen.getByRole("button", { name: "Continue" })).toBeDisabled();
+  });
+  const emailInput = screen.getByRole("textbox", { name: /Email address/ });
+  await user.type(emailInput, "test@test.se");
+  const continueButton = screen.getByRole("button", { name: "Continue" });
+  await waitFor(() => {
+    expect(continueButton).toBeEnabled();
+  });
+
+  await user.click(continueButton);
+  await waitFor(() => {
+    expect(screen.getByText(/Accept Terms of Use/)).toBeInTheDocument();
+  });
+});
+
 async function testEnterEmail({ email, expectErrorShown = false }: { email?: string; expectErrorShown?: boolean }) {
   await waitFor(() =>
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Choose registration method/),
