@@ -46,7 +46,7 @@ export function SignupApp(): React.JSX.Element {
 
 function getExternalMfaNextPage(state: SignupState): NextPageTypes {
   if (state.tou?.completed && state.email?.address) return "SIGNUP_ENTER_CODE";
-  if (state.tou?.completed) return "REGISTER_EMAIL";
+  if (state.tou?.completed) return "SIGNUP_ENTRY";
   if (!state.email?.address) return "SIGNUP_ENTRY";
   return "SIGNUP_TOU";
 }
