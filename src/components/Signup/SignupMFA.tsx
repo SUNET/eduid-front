@@ -6,7 +6,7 @@ import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
@@ -16,7 +16,7 @@ import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
-import { handleCreateUserError } from "./SignupUserCreated";
+import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -31,10 +31,16 @@ export function SignupMFA(): React.ReactElement | null {
   const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
   const webauthnDescription = credentials?.webauthn_description;
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-
   const intl = useIntl();
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
+  const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
+  console.log("2344");
+  useEffect(() => {
+    if (!signupState?.credentials.generated_password) {
+      getPassword();
+    }
+  }, [getPassword, signupState?.credentials.generated_password]);
 
   const passwordLinkText = webauthnRegistered
     ? intl.formatMessage({
@@ -117,12 +123,21 @@ export function SignupMFA(): React.ReactElement | null {
         </h1>
         <ServiceInfo />
         <div className="lead">
-          <p>
-            <FormattedMessage
-              defaultMessage="Choose between a passkey/security key, password or both."
-              description="Signup register credentials lead text"
-            />
-          </p>
+          {webauthnRegistered ? (
+            <p>
+              <FormattedMessage
+                defaultMessage="A password is required to sign in with this key."
+                description="non-discoverable key needs password"
+              />
+            </p>
+          ) : (
+            <p>
+              <FormattedMessage
+                defaultMessage="Choose between a passkey/security key, password or both."
+                description="Signup register credentials lead text"
+              />
+            </p>
+          )}
         </div>
       </section>
 
@@ -155,23 +170,7 @@ export function SignupMFA(): React.ReactElement | null {
                 </EduIDButton>
               </div>
             ) : (
-              <>
-                <div className="buttons">
-                  <EduIDButton
-                    buttonstyle="primary"
-                    id="continue-to-password"
-                    onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-                  >
-                    <FormattedMessage defaultMessage="set a password" description="continue to password button" />
-                  </EduIDButton>
-                </div>
-                <p className="help-text">
-                  <FormattedMessage
-                    defaultMessage="A password is required to sign in with this key."
-                    description="non-discoverable key needs password"
-                  />
-                </p>
-              </>
+              <SignupConfirmPassword />
             )}
           </Fragment>
         ) : (
@@ -248,11 +247,16 @@ export function SignupMFA(): React.ReactElement | null {
               </div>
             </div>
 
-            {!webauthnIsDiscoverable && (
-              <div className="mfa-alternative">
-                <WizardLink nextText={passwordLinkText} nextOnClick={goToPassword} />
-              </div>
-            )}
+            <div className="or-container">
+              <div className="line"></div>
+              <span>
+                <FormattedMessage defaultMessage="or register a password" description="Alternative signup option" />
+              </span>
+              <div className="line"></div>
+            </div>
+            <section className="register-password" id="register-password">
+              <SignupConfirmPassword />
+            </section>
           </Fragment>
         )}
       </section>

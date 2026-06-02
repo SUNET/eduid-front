@@ -12,7 +12,7 @@ import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
 import { SignupEntry } from "./SignupEntry";
 import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
-import { SignupConfirmPassword, SignupUserCreated } from "./SignupUserCreated";
+import { SignupUserCreated } from "./SignupUserCreated";
 
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
@@ -38,7 +38,7 @@ export function SignupApp(): React.JSX.Element {
       {next_page === "SIGNUP_CREDENTIALS_ERROR" && <SignupCredentialsError />}
       {next_page === "SIGNUP_CREDENTIAL_PASSWORD" && <SignupCredentialPassword />}
       {next_page === "SIGNUP_MFA" && <SignupMFA />}
-      {next_page === "SIGNUP_CONFIRM_PASSWORD" && <SignupConfirmPassword />}
+      {/* {next_page === "SIGNUP_CONFIRM_PASSWORD" && <SignupConfirmPassword />} */}
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
     </React.Fragment>
   );
