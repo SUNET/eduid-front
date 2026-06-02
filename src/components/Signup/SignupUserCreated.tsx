@@ -160,7 +160,7 @@ export function SignupConfirmPassword() {
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
                 />
               </div>
-              <SignupStepIndicator currentStep={6} />
+              <SignupStepIndicator currentStep={5} />
             </div>
           </Splash>
         );
@@ -255,7 +255,7 @@ export function SignupUserCreated(): React.JSX.Element {
           description="signup hint"
         />
       </p>
-      <SignupStepIndicator currentStep={7} totalSteps={6} />
+      <SignupStepIndicator currentStep={5} />
     </div>
   );
 }

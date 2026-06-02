@@ -165,7 +165,7 @@ export function SignupEnterCode(): React.JSX.Element {
             <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
           </ResponseCodeForm>
         </div>
-        <SignupStepIndicator currentStep={4} />
+        <SignupStepIndicator currentStep={3} />
       </div>
     </Splash>
   );

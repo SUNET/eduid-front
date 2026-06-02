@@ -45,7 +45,7 @@ export function SignupToU(): React.JSX.Element {
       </section>
 
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
-      <SignupStepIndicator currentStep={3} />
+      <SignupStepIndicator currentStep={2} />
     </div>
   );
 }
