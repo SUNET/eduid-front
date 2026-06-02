@@ -249,8 +249,11 @@ export function SignupUserCreated(): React.JSX.Element {
       </div>
 
       <p className="hint">
-        Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update
-        name and verify your identity. Read more about eduID in the help content accessible in the footer.
+        <FormattedMessage
+          defaultMessage={`Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, 
+            change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
+          description="signup hint"
+        />
       </p>
       <SignupStepIndicator currentStep={7} totalSteps={6} />
     </div>
