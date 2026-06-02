@@ -1571,7 +1571,7 @@
   },
   "UKNEuN": {
     "developer_comment": "Signup with email explanation",
-    "string": "Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and verify your identity."
+    "string": "Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and verify your identity afterwards."
   },
   "URSU0W": {
     "developer_comment": "security lead title",
