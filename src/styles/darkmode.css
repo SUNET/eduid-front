@@ -82,6 +82,10 @@ html.dark {
     }
   }
 
+  .step-container {
+    background-color: var(--bg-gray);
+  }
+
   button.secondary,
   button.secondary:not(:disabled, .disabled):active,
   button.secondary:not(:disabled, .disabled):focus,
