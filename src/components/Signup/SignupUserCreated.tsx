@@ -160,7 +160,7 @@ export function SignupConfirmPassword() {
                   previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
                 />
               </div>
-              <SignupStepIndicator currentStep={5} />
+              <SignupStepIndicator currentStep={webauthnRegistered ? 5 : 4} totalSteps={webauthnRegistered ? 5 : 4} />
             </div>
           </Splash>
         );
