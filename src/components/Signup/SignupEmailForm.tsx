@@ -47,6 +47,8 @@ export function EmailForm() {
   const state = useAppSelector((state) => state.signup.state);
   const intl = useIntl();
 
+  if (!state) return null;
+
   const firstNamePlaceholder = intl.formatMessage({
     id: "placeholder.firstName",
     defaultMessage: "first name",
