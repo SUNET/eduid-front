@@ -369,10 +369,6 @@
     "developer_comment": "use freja protected id - link text",
     "string": "freja-for-swedes-with-protected-identities"
   },
-  "4svtTn": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Create eduID: Accept Terms of Use"
-  },
   "54jpQ0": {
     "developer_comment": "security zone modal",
     "string": "Note: Your security key {securityKeyDescription} will be removed after you log in."
@@ -2403,10 +2399,6 @@
     "developer_comment": "Title for email code input",
     "string": "Enter the code sent to {email}"
   },
-  "g2ia31": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Confirm that you are a human."
-  },
   "g6PqMv": {
     "developer_comment": "how add security key - must be used",
     "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under \"Manage your security keys\" in the Security section. You might still need to use your security key if other connecting services require MFA."
@@ -2505,6 +2497,10 @@
   "hg+a52": {
     "developer_comment": "Use other device 2",
     "string": "You should close this browser window."
+  },
+  "hhAVQl": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Create eduID: Confirm/Accept"
   },
   "hhjCPa": {
     "developer_comment": "Dashboard AccountLinking",
@@ -3568,6 +3564,10 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
+  },
+  "tPpKqv": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Confirm/Accept"
   },
   "tUj9S2": {
     "developer_comment": "create eduid - heading",

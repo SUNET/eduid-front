@@ -31,7 +31,7 @@ export function SignupToU(): React.JSX.Element {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Create eduID: Accept Terms of Use" description="Terms of use (heading)" />
+          <FormattedMessage defaultMessage="Create eduID: Confirm/Accept" description="Terms of use (heading)" />
         </h1>
         <ServiceInfo />
         <div className="lead">
