@@ -36,6 +36,18 @@ export function SignupMFA(): React.ReactElement | null {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
 
+  const passwordLinkText = webauthnRegistered
+    ? intl.formatMessage({
+        id: "wizard link also register password",
+        defaultMessage: "Also register a password?",
+      })
+    : intl.formatMessage({
+        id: "wizard link register with password",
+        defaultMessage: "Register a password",
+      });
+
+  const goToPassword = () => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
+
   const handleStopAskingWebauthnDescription = useCallback(() => {
     setShowSecurityKeyNameModal(false);
   }, []);
@@ -132,20 +144,7 @@ export function SignupMFA(): React.ReactElement | null {
 
             {!(webauthnRegistered && !webauthnIsDiscoverable) && (
               <div className="mfa-alternative">
-                <WizardLink
-                  nextText={
-                    webauthnRegistered
-                      ? intl.formatMessage({
-                          id: "wizard link also register password",
-                          defaultMessage: "Also register a password?",
-                        })
-                      : intl.formatMessage({
-                          id: "wizard link register with password",
-                          defaultMessage: "Register a password",
-                        })
-                  }
-                  nextOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"))}
-                />
+                <WizardLink nextText={passwordLinkText} nextOnClick={goToPassword} />
               </div>
             )}
 
@@ -248,6 +247,12 @@ export function SignupMFA(): React.ReactElement | null {
                 </div>
               </div>
             </div>
+
+            {!webauthnIsDiscoverable && (
+              <div className="mfa-alternative">
+                <WizardLink nextText={passwordLinkText} nextOnClick={goToPassword} />
+              </div>
+            )}
           </Fragment>
         )}
       </section>
@@ -257,7 +262,7 @@ export function SignupMFA(): React.ReactElement | null {
         closeModal={handleStopAskingWebauthnDescription}
         handleConfirm={handleStartWebauthnRegistration}
       />
-      <SignupStepIndicator currentStep={5} />
+      <SignupStepIndicator currentStep={4} />
     </div>
   );
 }
