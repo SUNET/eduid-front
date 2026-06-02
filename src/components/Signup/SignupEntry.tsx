@@ -224,7 +224,7 @@ export function SignupEntry(): React.JSX.Element {
           </Fragment>
         )}
       </Splash>
-      <SignupStepIndicator currentStep={external_mfa ? 2 : 1} />
+      <SignupStepIndicator currentStep={1} />
     </div>
   );
 }
