@@ -81,7 +81,7 @@ export function SignupEntry(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="The fastest way to register is with a digital ID. your name and identity will be verified automatically."
+              defaultMessage="The fastest way to register is with a digital ID, or you can register with your name and email address instead."
               description="Signup first page lead text"
             />
           </p>
@@ -211,8 +211,8 @@ export function SignupEntry(): React.JSX.Element {
               <p className="text-medium">
                 <FormattedMessage
                   description="Signup with email explanation"
-                  defaultMessage={`Once you have created an eduID you will be able to log in and
-                             connect it to your identity. Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
+                  defaultMessage={`Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and
+                             verify your identity. `}
                 />
               </p>
               {isEditMode && (

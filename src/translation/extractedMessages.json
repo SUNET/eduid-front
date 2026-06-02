@@ -43,6 +43,10 @@
     "developer_comment": "Registration finished with webauthn only",
     "string": "Your eduID account has been created and you can continue using it with the details you have provided and your added security key."
   },
+  "/+wjin": {
+    "developer_comment": "Verified identity",
+    "string": "identity"
+  },
   "/2bfBs": {
     "string": "We recommend setting up a passkey for fast and secure access to your eduID account."
   },
@@ -222,6 +226,10 @@
     "developer_comment": "orcid connect button",
     "string": "Add ORCID account"
   },
+  "2JpR3y": {
+    "developer_comment": "With name and email",
+    "string": "With name and email"
+  },
   "2QWlvD": {
     "developer_comment": "what is sunet - paragraph 1",
     "string": "eduID is a service provided by SUNET - the Swedish University Computer Network, which is governed by the Swedish Research Council (Vetenskapsrådet). SUNET delivers data communication networks and many other related services to public organisations and higher education and research institutions."
@@ -241,6 +249,10 @@
   "2hrJd2": {
     "developer_comment": "Reset password link",
     "string": "Forgot your password?"
+  },
+  "2nRvOe": {
+    "developer_comment": "Signup first page title",
+    "string": "Create eduID: Choose registration method"
   },
   "2t+kHd": {
     "developer_comment": "why have eduID - heading",
@@ -277,6 +289,10 @@
   "3Y8gXc": {
     "developer_comment": "Account recovery front page",
     "string": "Click the button below to send an e-mail to {email}"
+  },
+  "3YHfSo": {
+    "developer_comment": "hide form button",
+    "string": "hide form"
   },
   "3iy3CU": {
     "developer_comment": "ErrorURL authentication failure",
@@ -352,10 +368,6 @@
   "4o5/lu": {
     "developer_comment": "use freja protected id - link text",
     "string": "freja-for-swedes-with-protected-identities"
-  },
-  "4svtTn": {
-    "developer_comment": "Terms of use (heading)",
-    "string": "Create eduID: Accept Terms of Use"
   },
   "54jpQ0": {
     "developer_comment": "security zone modal",
@@ -486,6 +498,10 @@
   "7yS+J6": {
     "developer_comment": "edit button",
     "string": "edit"
+  },
+  "7ywgO8": {
+    "developer_comment": "digital ID help text",
+    "string": "Read more about how to register with a digital ID in {howDigitalIDWork}."
   },
   "859E+h": {
     "developer_comment": "about orcid ladok - handle",
@@ -1002,6 +1018,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph5em",
     "string": "AL3 (verified user) / RAF High / LoA2"
   },
+  "JoS+06": {
+    "developer_comment": "show form button",
+    "string": "show form"
+  },
   "JvvCFU": {
     "developer_comment": "login eduid - passkey list item 3",
     "string": "Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or credential manager.)"
@@ -1337,6 +1357,10 @@
     "developer_comment": "go to eduID link text",
     "string": "Go to eduID to login"
   },
+  "Q4J1Rh": {
+    "developer_comment": "signup hint",
+    "string": "Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer."
+  },
   "Q5YIVS": {
     "developer_comment": "delete.remove_identity_verification_modal_text",
     "string": "Are you sure you want to disconnect your identity from your eduID account?"
@@ -1545,6 +1569,10 @@
     "developer_comment": "why have eduID - paragraph 1",
     "string": "From the user's perspective, in the long-term eduID means fewer accounts to keep track of. For many organisations, identity management is a complex issue and it is necessary to work with confirmed users."
   },
+  "UKNEuN": {
+    "developer_comment": "Signup with email explanation",
+    "string": "Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and verify your identity."
+  },
   "URSU0W": {
     "developer_comment": "security lead title",
     "string": "Enhance and manage the security of your eduID."
@@ -1553,9 +1581,17 @@
     "developer_comment": "SAML login finished",
     "string": "It seems you pressed 'back' in your browser."
   },
+  "UZau5A": {
+    "developer_comment": "Signup first page lead text",
+    "string": "In order to access {name}"
+  },
   "UfFm3k": {
     "developer_comment": "about eduid settings - info",
     "string": "editing, enhancing and blocking/deleting your account"
+  },
+  "UkobQr": {
+    "developer_comment": "external mfa registered description",
+    "string": "Your identity has been verified and your name has been saved. To complete your registration, please enter your email address below."
   },
   "Uq6Cvr": {
     "developer_comment": "opening hours - list definition",
@@ -1919,6 +1955,10 @@
     "developer_comment": "security zone modal",
     "string": "Note: continuing will disconnect your real identity from your eduID after you log in."
   },
+  "b8RknJ": {
+    "developer_comment": "external mfa registered heading",
+    "string": "Your identity has been verified"
+  },
   "bB1SMk": {
     "developer_comment": "platform authn help text",
     "string": "E.g. USB Security Key or passkey with the device you are currently using."
@@ -2122,6 +2162,9 @@
   },
   "delete account action": {
     "string": "delete account"
+  },
+  "dkx9H0": {
+    "string": "Use BankID, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
   },
   "document title Account": {
     "string": "Account | eduID"
@@ -2356,10 +2399,6 @@
     "developer_comment": "Title for email code input",
     "string": "Enter the code sent to {email}"
   },
-  "g2ia31": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Confirm that you are a human."
-  },
   "g6PqMv": {
     "developer_comment": "how add security key - must be used",
     "string": "Note: if you have added a security key to your eduID it must be used to log in to eduID, unless you turn off this feature under \"Manage your security keys\" in the Security section. You might still need to use your security key if other connecting services require MFA."
@@ -2367,6 +2406,10 @@
   "g9BiU8": {
     "developer_comment": "ErrorURL other error",
     "string": "An error occurred when accessing the service."
+  },
+  "gBnZev": {
+    "developer_comment": "Signup first page lead text",
+    "string": "The fastest way to register is with a digital ID, or you can register with your name and email address instead."
   },
   "gDUzRq": {
     "developer_comment": "how add security key",
@@ -2454,6 +2497,10 @@
   "hg+a52": {
     "developer_comment": "Use other device 2",
     "string": "You should close this browser window."
+  },
+  "hhAVQl": {
+    "developer_comment": "Terms of use (heading)",
+    "string": "Create eduID: Confirm/Accept"
   },
   "hhjCPa": {
     "developer_comment": "Dashboard AccountLinking",
@@ -3218,6 +3265,10 @@
     "developer_comment": "delete.modal_info",
     "string": "Deleting your eduID will permanently remove all your saved information. If it has been a long time since you last logged in, you may need to log in again."
   },
+  "rKGfib": {
+    "developer_comment": "digital ID help text link",
+    "string": "eduID Help"
+  },
   "rN3KF1": {
     "developer_comment": "security zone modal",
     "string": "You need to log in again to perform the requested action."
@@ -3436,6 +3487,24 @@
   "signup.email-verification-to-many-tries": {
     "string": "Too many invalid verification attempts. Please try again."
   },
+  "signup.external-mfa-already-consumed": {
+    "string": "Your verification has already been processed. Please try again."
+  },
+  "signup.external-mfa-not-found": {
+    "string": "Your digital ID verification could not be found. Please try again."
+  },
+  "signup.external-mfa-not-verified": {
+    "string": "Your digital ID could not be verified. Please try again."
+  },
+  "signup.external-mfa-too-old": {
+    "string": "Your verification session timed out. Please try again."
+  },
+  "signup.external-mfa-wrong-action": {
+    "string": "An unexpected error occurred. Please try again."
+  },
+  "signup.identity-already-registered": {
+    "string": "An account with this identity already exists. Please log in instead."
+  },
   "signup.idp-request-ref-not-found": {
     "string": "The service request could not be found. Please try signing up again."
   },
@@ -3495,6 +3564,10 @@
   "tGneUF": {
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
+  },
+  "tPpKqv": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Confirm/Accept"
   },
   "tUj9S2": {
     "developer_comment": "create eduid - heading",
@@ -3728,6 +3801,10 @@
     "developer_comment": "verification methods - list item 1",
     "string": "the user receives a letter with a code sent to their home address as registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the verification on eduid.se,"
   },
+  "xrnl8e": {
+    "developer_comment": "Alternative signup option",
+    "string": "or register another way"
+  },
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "What are the methods of verification for eduID?"
@@ -3782,6 +3859,10 @@
   "yzw0Bl": {
     "developer_comment": "Temp info - lead",
     "string": "The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
+  },
+  "z3hfMv": {
+    "developer_comment": "passkey heading",
+    "string": "With a digital ID"
   },
   "zTHT2m": {
     "developer_comment": "verify identity vetting BankID tagline",

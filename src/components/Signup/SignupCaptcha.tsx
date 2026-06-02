@@ -48,7 +48,7 @@ export function SignupCaptcha(): React.JSX.Element | null {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Create eduID: Confirm that you are a human." description="Signup" />
+          <FormattedMessage defaultMessage="Create eduID: Confirm/Accept" description="Signup" />
         </h1>
         <ServiceInfo />
         <div className="lead">

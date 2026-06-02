@@ -318,7 +318,7 @@ async function testTermsOfUse({
   registerEmailCalled = false;
 
   // Wait for the ToU to be displayed
-  await screen.findByText(/^Create eduID: Accept Terms of Use/);
+  await screen.findByText(/^Create eduID: Confirm\/Accept/);
 
   // specifically verify that the test-version ("1999-v1") of the ToU is displayed
   if (state.tou.version === "2016-v1") {
