@@ -14,6 +14,7 @@ import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import { EmailForm } from "./SignupEmailForm";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
@@ -185,7 +186,7 @@ export function SignupEntry(): React.JSX.Element {
                 disabled={isLoading}
                 onClick={() => handleExternalMfa("freja_eid")}
               >
-                <img className="circle-icon freja" height="24" alt="Freja eID" src={FrejaFlag} />
+                <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
                 <span>Freja eID</span>
               </EduIDButton>
             </div>
