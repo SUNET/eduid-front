@@ -7,7 +7,7 @@ interface SignupStepIndicatorProps {
 
 export function SignupStepIndicator({
   currentStep,
-  totalSteps = 5,
+  totalSteps = 4,
 }: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
   return (
     <Fragment>
