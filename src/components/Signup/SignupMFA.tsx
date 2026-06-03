@@ -4,10 +4,9 @@ import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
-import { WizardLink } from "components/Common/WizardLink";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
@@ -31,28 +30,15 @@ export function SignupMFA(): React.ReactElement | null {
   const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
   const webauthnDescription = credentials?.webauthn_description;
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
-  const intl = useIntl();
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
-  console.log("2344");
+
   useEffect(() => {
     if (!signupState?.credentials.generated_password) {
       getPassword();
     }
   }, [getPassword, signupState?.credentials.generated_password]);
-
-  const passwordLinkText = webauthnRegistered
-    ? intl.formatMessage({
-        id: "wizard link also register password",
-        defaultMessage: "Also register a password?",
-      })
-    : intl.formatMessage({
-        id: "wizard link register with password",
-        defaultMessage: "Register a password",
-      });
-
-  const goToPassword = () => dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
 
   const handleStopAskingWebauthnDescription = useCallback(() => {
     setShowSecurityKeyNameModal(false);
@@ -123,7 +109,7 @@ export function SignupMFA(): React.ReactElement | null {
         </h1>
         <ServiceInfo />
         <div className="lead">
-          {webauthnRegistered ? (
+          {webauthnRegistered && !webauthnIsDiscoverable ? (
             <p>
               <FormattedMessage
                 defaultMessage="A password is required to sign in with this key."
@@ -156,22 +142,26 @@ export function SignupMFA(): React.ReactElement | null {
                 />
               </span>
             </figure>
-
-            {!(webauthnRegistered && !webauthnIsDiscoverable) && (
-              <div className="mfa-alternative">
-                <WizardLink nextText={passwordLinkText} nextOnClick={goToPassword} />
-              </div>
-            )}
-
-            {webauthnIsDiscoverable ? (
+            {webauthnIsDiscoverable && (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
                   <FormattedMessage defaultMessage="Complete creating eduID" description="signup finish button" />
                 </EduIDButton>
               </div>
-            ) : (
-              <SignupConfirmPassword />
             )}
+            <div className="or-container">
+              <div className="line"></div>
+              <span>
+                <FormattedMessage
+                  defaultMessage="You can also add a password"
+                  description="Alternative signup option"
+                />
+              </span>
+              <div className="line"></div>
+            </div>
+            <section className="register-password" id="register-password">
+              <SignupConfirmPassword />
+            </section>
           </Fragment>
         ) : (
           <Fragment>
