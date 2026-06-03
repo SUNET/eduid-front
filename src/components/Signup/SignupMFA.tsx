@@ -16,6 +16,28 @@ import securityKey from "../../../img/security-key.svg";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
+console.log("jjjjj");
+
+const PasswordSection = (props: { optional: boolean }) => {
+  return (
+    <Fragment>
+      <div className="or-container">
+        <div className="line"></div>
+        <span>
+          {props.optional ? (
+            <FormattedMessage defaultMessage="You can also add a password" description="Alternative signup option" />
+          ) : (
+            <FormattedMessage defaultMessage="or register a password" description="Alternative signup option" />
+          )}
+        </span>
+        <div className="line"></div>
+      </div>
+      <section className="register-password" id="register-password">
+        <SignupConfirmPassword />
+      </section>
+    </Fragment>
+  );
+};
 
 export function SignupMFA(): React.ReactElement | null {
   const signupState = useAppSelector((state) => state.signup.state);
@@ -149,19 +171,6 @@ export function SignupMFA(): React.ReactElement | null {
                 </EduIDButton>
               </div>
             )}
-            <div className="or-container">
-              <div className="line"></div>
-              <span>
-                <FormattedMessage
-                  defaultMessage="You can also add a password"
-                  description="Alternative signup option"
-                />
-              </span>
-              <div className="line"></div>
-            </div>
-            <section className="register-password" id="register-password">
-              <SignupConfirmPassword />
-            </section>
           </Fragment>
         ) : (
           <Fragment>
@@ -236,21 +245,10 @@ export function SignupMFA(): React.ReactElement | null {
                 </div>
               </div>
             </div>
-
-            <div className="or-container">
-              <div className="line"></div>
-              <span>
-                <FormattedMessage defaultMessage="or register a password" description="Alternative signup option" />
-              </span>
-              <div className="line"></div>
-            </div>
-            <section className="register-password" id="register-password">
-              <SignupConfirmPassword />
-            </section>
           </Fragment>
         )}
       </section>
-
+      <PasswordSection optional={webauthnIsDiscoverable && webauthnRegistered} />
       <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
