@@ -8,7 +8,6 @@ import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
-import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -109,24 +108,25 @@ export function SignupEntry(): React.JSX.Element {
 
             <figure className="grid-container identity-summary">
               <div>
-                {external_mfa.country_code && (
+                {/* bank id and freja shoul show swedish flag */}
+                {/* {external_mfa.country_code && (
                   <ReactCountryFlag
                     className="flag-icon"
                     aria-label={regionNames.of(external_mfa.country_code)}
                     countryCode={external_mfa.country_code}
                   />
-                )}
+                )} */}
               </div>
               <div className="profile-grid-cell">
                 <strong>
                   <strong>
-                    {appNameDisplay[external_mfa.app_name] ?? external_mfa.app_name.replaceAll("_", " ")}&nbsp;
+                    {/* {appNameDisplay[external_mfa.method] ?? external_mfa.method.replaceAll("_", " ")}&nbsp; */}
                     <FormattedMessage defaultMessage="identity" description="Verified identity" />
                   </strong>
                 </strong>
               </div>
-              {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
-              {external_mfa.date_of_birth || external_mfa.masked_nin}
+              {/* {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
+              {external_mfa.date_of_birth || external_mfa.masked_nin} */}
             </figure>
 
             <EmailForm />
