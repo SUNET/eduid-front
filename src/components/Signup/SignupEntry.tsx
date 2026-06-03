@@ -8,6 +8,7 @@ import EduIDButton from "components/Common/EduIDButton";
 import Splash from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
+import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -42,17 +43,17 @@ export function SignupEntry(): React.JSX.Element {
   const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
   const [isEditMode, setEditMode] = useState<boolean>(false);
-  // const currentLocale = useAppSelector((state) => state.intl.locale);
-  // const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  const currentLocale = useAppSelector((state) => state.intl.locale);
+  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
 
-  // const appNameDisplay: Record<string, string> = {
-  //   freja_eid: "Freja eID",
-  //   freja: "Freja",
-  //   bankid: "BankID",
-  //   eidas: "eIDAS",
-  // };
+  const appNameDisplay: Record<string, string> = {
+    freja_eid: "Freja eID",
+    freja: "Freja",
+    bankid: "BankID",
+    eidas: "eIDAS",
+  };
 
   const handleExternalMfa = async (method: "bankid" | "freja" | "freja_eid" | "eidas") => {
     setIsLoading(true);
@@ -108,25 +109,28 @@ export function SignupEntry(): React.JSX.Element {
 
             <figure className="grid-container identity-summary">
               <div>
-                {/* bank id and freja shoul show swedish flag */}
-                {/* {external_mfa.country_code && (
+                {external_mfa.country_code ? (
                   <ReactCountryFlag
                     className="flag-icon"
                     aria-label={regionNames.of(external_mfa.country_code)}
                     countryCode={external_mfa.country_code}
                   />
-                )} */}
+                ) : (
+                  <ReactCountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />
+                )}
               </div>
               <div className="profile-grid-cell">
                 <strong>
                   <strong>
-                    {/* {appNameDisplay[external_mfa.method] ?? external_mfa.method.replaceAll("_", " ")}&nbsp; */}
+                    {(external_mfa.method && appNameDisplay[external_mfa.method]) ??
+                      external_mfa.method?.replaceAll("_", " ")}
+                    &nbsp;
                     <FormattedMessage defaultMessage="identity" description="Verified identity" />
                   </strong>
                 </strong>
               </div>
-              {/* {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
-              {external_mfa.date_of_birth || external_mfa.masked_nin} */}
+              {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
+              {external_mfa.date_of_birth ?? external_mfa.masked_nin}
             </figure>
 
             <EmailForm />
