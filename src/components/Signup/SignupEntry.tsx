@@ -42,17 +42,17 @@ export function SignupEntry(): React.JSX.Element {
   const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
   const [isEditMode, setEditMode] = useState<boolean>(false);
-  const currentLocale = useAppSelector((state) => state.intl.locale);
-  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  // const currentLocale = useAppSelector((state) => state.intl.locale);
+  // const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
 
-  const appNameDisplay: Record<string, string> = {
-    freja_eid: "Freja eID",
-    freja: "Freja",
-    bankid: "BankID",
-    eidas: "eIDAS",
-  };
+  // const appNameDisplay: Record<string, string> = {
+  //   freja_eid: "Freja eID",
+  //   freja: "Freja",
+  //   bankid: "BankID",
+  //   eidas: "eIDAS",
+  // };
 
   const handleExternalMfa = async (method: "bankid" | "freja" | "freja_eid" | "eidas") => {
     setIsLoading(true);
@@ -137,7 +137,7 @@ export function SignupEntry(): React.JSX.Element {
               <FormattedMessage defaultMessage="With a digital ID" description="passkey heading" />
             </h2>
             <p className="text-medium">
-              <FormattedMessage defaultMessage="Use BankID, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
+              <FormattedMessage defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
             </p>
             <p className="help-text">
               <FormattedMessage
