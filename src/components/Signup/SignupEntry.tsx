@@ -14,6 +14,7 @@ import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
+import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import { EmailForm } from "./SignupEmailForm";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
@@ -37,8 +38,9 @@ export const ServiceInfo = () => {
 
 export function SignupEntry(): React.JSX.Element {
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
+  const [frejaMfaRegister] = eidasApi.useLazyFrejaMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
-  const [frejaMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
+  const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
   const [isEditMode, setEditMode] = useState<boolean>(false);
   const currentLocale = useAppSelector((state) => state.intl.locale);
@@ -48,15 +50,17 @@ export function SignupEntry(): React.JSX.Element {
 
   const appNameDisplay: Record<string, string> = {
     freja_eid: "Freja eID",
+    freja: "Freja",
     bankid: "BankID",
     eidas: "eIDAS",
   };
 
-  const handleExternalMfa = async (method: "bankid" | "freja_eid" | "eidas") => {
+  const handleExternalMfa = async (method: "bankid" | "freja" | "freja_eid" | "eidas") => {
     setIsLoading(true);
     const authenticateMap = {
       bankid: bankIDMfaRegister,
-      freja_eid: frejaMfaRegister,
+      freja: frejaMfaRegister,
+      freja_eid: frejaeIDMfaRegister,
       eidas: eidasMfaRegister,
     };
 
@@ -105,21 +109,28 @@ export function SignupEntry(): React.JSX.Element {
 
             <figure className="grid-container identity-summary">
               <div>
-                <ReactCountryFlag
-                  className="flag-icon"
-                  aria-label={regionNames.of(external_mfa.country_code)}
-                  countryCode={external_mfa.country_code}
-                />
+                {external_mfa.country_code ? (
+                  <ReactCountryFlag
+                    className="flag-icon"
+                    aria-label={regionNames.of(external_mfa.country_code)}
+                    countryCode={external_mfa.country_code}
+                  />
+                ) : (
+                  <ReactCountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />
+                )}
               </div>
               <div className="profile-grid-cell">
                 <strong>
                   <strong>
-                    {appNameDisplay[external_mfa.app_name] ?? external_mfa.app_name.replaceAll("_", " ")}&nbsp;
+                    {(external_mfa.method && appNameDisplay[external_mfa.method]) ??
+                      external_mfa.method?.replaceAll("_", " ")}
+                    &nbsp;
                     <FormattedMessage defaultMessage="identity" description="Verified identity" />
                   </strong>
                 </strong>
               </div>
-              {regionNames.of(external_mfa.country_code)}&nbsp;{external_mfa.date_of_birth}
+              {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
+              {external_mfa.date_of_birth ?? external_mfa.masked_nin}
             </figure>
 
             <EmailForm />
@@ -130,7 +141,7 @@ export function SignupEntry(): React.JSX.Element {
               <FormattedMessage defaultMessage="With a digital ID" description="passkey heading" />
             </h2>
             <p className="text-medium">
-              <FormattedMessage defaultMessage="Use BankID, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
+              <FormattedMessage defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
             </p>
             <p className="help-text">
               <FormattedMessage
@@ -159,10 +170,10 @@ export function SignupEntry(): React.JSX.Element {
                 buttonstyle="primary"
                 id="signup-freja"
                 disabled={isLoading}
-                onClick={() => handleExternalMfa("freja_eid")}
+                onClick={() => handleExternalMfa("freja")}
               >
-                <img className="circle-icon freja" height="24" alt="Freja eID" src={FrejaFlag} />
-                <span>Freja eID</span>
+                <img className="circle-icon freja" height="24" alt="Freja" src={FrejaFlag} />
+                <span>Freja</span>
               </EduIDButton>
               <EduIDButton
                 buttonstyle="primary"
@@ -172,6 +183,15 @@ export function SignupEntry(): React.JSX.Element {
               >
                 <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                 <span>eIDAS</span>
+              </EduIDButton>
+              <EduIDButton
+                buttonstyle="primary"
+                id="signup-freja-eid"
+                disabled={isLoading}
+                onClick={() => handleExternalMfa("freja_eid")}
+              >
+                <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
+                <span>Freja eID</span>
               </EduIDButton>
             </div>
           </section>
