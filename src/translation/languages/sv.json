@@ -719,6 +719,9 @@
     "developer_comment": "Login MFA",
     "string": "Tillgängliga alternativ i eduID inställningar:"
   },
+  "Dj23mq": {
+    "string": "Använd BankID, Freja, eIDAS eller Freja eID för att registrera dig. Ditt namn och din identitet verifieras automatiskt."
+  },
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
     "string": "Lägg till genom att klicka på länken \"+ lägg till fler\" och ta bort genom att klicka på papperskorgs-ikonen."
@@ -2162,9 +2165,6 @@
   },
   "delete account action": {
     "string": "radera konto"
-  },
-  "dkx9H0": {
-    "string": "Använd BankID, Freja eID eller eIDAS för att registrera dig. Ditt namn och din identitet verifieras automatiskt."
   },
   "document title Account": {
     "string": "Konto | eduID"
