@@ -158,16 +158,19 @@ export function SignupEntry(): React.JSX.Element {
                 }}
               />
             </p>
-            {/* Swedish options for digital ID include: */}
             <section className="digital-id-option">
               <div>
-                <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
-                <span>
-                  <strong>
-                    <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish ID" />
-                  </strong>
-                </span>
-                <p className="help-text">Requires a Swedish personal identity number or coordination number.</p>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish ID" />
+                      </strong>
+                    </span>
+                    <p className="help-text">Requires a Swedish personal identity number or coordination number.</p>
+                  </div>
+                </div>
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="primary"
@@ -190,13 +193,17 @@ export function SignupEntry(): React.JSX.Element {
                 </div>
               </div>
               <div>
-                <img height="35" className="circle-icon" alt="EU" src={EuFlag} />
-                <span>
-                  <strong>
-                    <FormattedMessage description="accordion item EU title" defaultMessage="EU citizen" />
-                  </strong>
-                </span>
-                <p className="help-text">Verify with your country's electronic ID via eIDAS.</p>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="EU" src={EuFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="accordion item EU title" defaultMessage="EU citizen" />
+                      </strong>
+                    </span>
+                    <p className="help-text">Verify with your country's electronic ID via eIDAS.</p>
+                  </div>
+                </div>
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="primary"
@@ -210,13 +217,18 @@ export function SignupEntry(): React.JSX.Element {
                 </div>
               </div>
               <div>
-                <img height="35" className="circle-icon" alt="World" src={GlobalFlag} />
-                <span>
-                  <strong>
-                    <FormattedMessage description="accordion item EU title" defaultMessage="Most countries" />
-                  </strong>
-                </span>
-                <p className="help-text">Verify with a passport or national ID card via Freja eID+.</p>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="World" src={GlobalFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="accordion item EU title" defaultMessage="Most countries" />
+                      </strong>
+                    </span>
+                    <p className="help-text">Verify with a passport or national ID card via Freja eID+.</p>
+                  </div>
+                </div>
+
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="primary"
@@ -224,7 +236,7 @@ export function SignupEntry(): React.JSX.Element {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja_eid")}
                   >
-                    <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
+                    <img className="circle-icon" height="24" alt="Freja eID" src={FrejaFlag} />
                     <span>Freja eID</span>
                   </EduIDButton>
                 </div>

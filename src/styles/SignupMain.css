@@ -111,9 +111,6 @@ section#register-with-name {
 }
 
 .digital-id-option {
-  .buttons {
-    margin-top: 0;
-  }
   > div {
     padding: 0.5rem 1rem;
     border: 1px var(--success-green) solid;
@@ -124,6 +121,15 @@ section#register-with-name {
       background: white;
       padding: 5px;
       object-fit: contain;
+    }
+  }
+  .flex-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+      margin: 0;
     }
   }
 }
