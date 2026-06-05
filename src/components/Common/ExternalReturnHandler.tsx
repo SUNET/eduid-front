@@ -128,7 +128,7 @@ export function ExternalReturnHandler() {
         fetchOrcidStatus(params.authn_id);
       }
     }
-  }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus]);
+  }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus, fetchOrcidStatus]);
 
   return null;
 }
