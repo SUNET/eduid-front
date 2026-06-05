@@ -165,10 +165,16 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="accordion item swedish title" defaultMessage="Swedish ID" />
+                        <FormattedMessage description="swedish id title" defaultMessage="Swedish ID" />
                       </strong>
                     </span>
-                    <p className="help-text">Requires a Swedish personal identity number or coordination number.</p>
+                    <p className="help-text">
+                      {" "}
+                      <FormattedMessage
+                        description="swedish id help text"
+                        defaultMessage="Requires a Swedish personal identity number or coordination number."
+                      />{" "}
+                    </p>
                   </div>
                 </div>
                 <div className="buttons">
@@ -198,10 +204,15 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="accordion item EU title" defaultMessage="EU citizen" />
+                        <FormattedMessage description="EU title" defaultMessage="EU citizen" />
                       </strong>
                     </span>
-                    <p className="help-text">Verify with your country's electronic ID via eIDAS.</p>
+                    <p className="help-text">
+                      <FormattedMessage
+                        description="item EU help text"
+                        defaultMessage=" Verify with your country's electronic ID via eIDAS."
+                      />
+                    </p>
                   </div>
                 </div>
                 <div className="buttons">
@@ -222,10 +233,15 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="accordion item EU title" defaultMessage="Most countries" />
+                        <FormattedMessage description="global title" defaultMessage="Most countries" />
                       </strong>
                     </span>
-                    <p className="help-text">Verify with a passport or national ID card via Freja eID+.</p>
+                    <p className="help-text">
+                      <FormattedMessage
+                        description="global help text"
+                        defaultMessage="Verify with a passport or national ID card via Freja eID+."
+                      />
+                    </p>
                   </div>
                 </div>
 
