@@ -169,11 +169,10 @@ export function SignupEntry(): React.JSX.Element {
                       </strong>
                     </span>
                     <p className="help-text">
-                      {" "}
                       <FormattedMessage
                         description="swedish id help text"
                         defaultMessage="Requires a Swedish personal identity number or coordination number."
-                      />{" "}
+                      />
                     </p>
                   </div>
                 </div>
