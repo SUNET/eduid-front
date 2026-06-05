@@ -109,3 +109,21 @@ section#register-with-name {
 .with-digital-id .buttons {
   margin-top: 1rem;
 }
+
+.digital-id-option {
+  .buttons {
+    margin-top: 0;
+  }
+  > div {
+    padding: 0.5rem 1rem;
+    border: 1px var(--success-green) solid;
+    border-radius: 6px;
+    margin-top: 1rem;
+
+    button#signup-eidas img {
+      background: white;
+      padding: 5px;
+      object-fit: contain;
+    }
+  }
+}
