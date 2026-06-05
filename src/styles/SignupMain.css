@@ -123,6 +123,7 @@ section#register-with-name {
       object-fit: contain;
     }
   }
+
   .flex-column {
     display: flex;
     flex-direction: row;
