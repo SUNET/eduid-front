@@ -719,6 +719,9 @@
     "developer_comment": "Login MFA",
     "string": "Options available in the eduID settings:"
   },
+  "Dj23mq": {
+    "string": "Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
+  },
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
     "string": "Add by clicking on the '+ add more' link and remove by clicking on the bin icon."
@@ -2162,9 +2165,6 @@
   },
   "delete account action": {
     "string": "delete account"
-  },
-  "dkx9H0": {
-    "string": "Use BankID, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
   },
   "document title Account": {
     "string": "Account | eduID"

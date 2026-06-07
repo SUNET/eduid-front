@@ -86,8 +86,13 @@ html.dark {
     background-color: var(--bg-gray);
     box-shadow: 0 -6px 17px rgb(89 89 89 / 30%);
 
-    figure {
+    figure,
+    #copy-new-password {
       background-color: #273e30;
+    }
+
+    .step-indicator div:not(.active, .completed) {
+      background-color: var(--contrast-color);
     }
   }
 
