@@ -1,3 +1,5 @@
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
@@ -19,6 +21,7 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 console.log("jjjjj");
 
 const PasswordSection = (props: { optional: boolean }) => {
+  const [isEditMode, setEditMode] = useState<boolean>(false);
   return (
     <Fragment>
       <div className="or-container">
@@ -33,7 +36,27 @@ const PasswordSection = (props: { optional: boolean }) => {
         <div className="line"></div>
       </div>
       <section className="register-password" id="register-password">
-        <SignupConfirmPassword />
+        <div className="heading">
+          <h2>
+            <FormattedMessage description="With name and email" defaultMessage="With name and email" />
+          </h2>
+          <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+            {isEditMode ? (
+              <Fragment>
+                <FormattedMessage description="hide form button" defaultMessage="hide form" />
+                &nbsp;
+                <FontAwesomeIcon icon={faChevronUp} />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <FormattedMessage description="show form button" defaultMessage="show form" />
+                &nbsp;
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Fragment>
+            )}
+          </EduIDButton>
+        </div>
+        {isEditMode && <SignupConfirmPassword />}
       </section>
     </Fragment>
   );
