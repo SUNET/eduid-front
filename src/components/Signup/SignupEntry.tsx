@@ -109,7 +109,9 @@ export function SignupEntry(): React.JSX.Element {
 
             <figure className="grid-container identity-summary">
               <div>
-                {external_mfa.country_code ? (
+                {external_mfa.method === "eidas" ? (
+                  <img className="flag-icon" height="24" alt="EU" src={EuFlag} />
+                ) : external_mfa.country_code ? (
                   <ReactCountryFlag
                     className="flag-icon"
                     aria-label={regionNames.of(external_mfa.country_code)}
