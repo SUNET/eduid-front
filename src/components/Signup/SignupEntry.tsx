@@ -12,9 +12,11 @@ import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
+import Eidas from "../../../img/flags/EU_trust_mark_logo_eIDAS.png";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import SvFlag from "../../../img/flags/SvFlag.svg";
 import { EmailForm } from "./SignupEmailForm";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
@@ -156,44 +158,105 @@ export function SignupEntry(): React.JSX.Element {
                 }}
               />
             </p>
-            <div className="buttons">
-              <EduIDButton
-                buttonstyle="primary"
-                id="signup-bankid"
-                disabled={isLoading}
-                onClick={() => handleExternalMfa("bankid")}
-              >
-                <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
-                <span>BankID</span>
-              </EduIDButton>
-              <EduIDButton
-                buttonstyle="primary"
-                id="signup-freja"
-                disabled={isLoading}
-                onClick={() => handleExternalMfa("freja")}
-              >
-                <img className="circle-icon freja" height="24" alt="Freja" src={FrejaFlag} />
-                <span>Freja</span>
-              </EduIDButton>
-              <EduIDButton
-                buttonstyle="primary"
-                id="signup-eidas"
-                disabled={isLoading}
-                onClick={() => handleExternalMfa("eidas")}
-              >
-                <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
-                <span>eIDAS</span>
-              </EduIDButton>
-              <EduIDButton
-                buttonstyle="primary"
-                id="signup-freja-eid"
-                disabled={isLoading}
-                onClick={() => handleExternalMfa("freja_eid")}
-              >
-                <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
-                <span>Freja eID</span>
-              </EduIDButton>
-            </div>
+            <section className="digital-id-option">
+              <div>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="swedish id title" defaultMessage="Swedish ID" />
+                      </strong>
+                    </span>
+                    <p className="help-text">
+                      <FormattedMessage
+                        description="swedish id help text"
+                        defaultMessage="Requires a Swedish personal identity number or coordination number."
+                      />
+                    </p>
+                  </div>
+                </div>
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="signup-bankid"
+                    disabled={isLoading}
+                    onClick={() => handleExternalMfa("bankid")}
+                  >
+                    <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
+                    <span>BankID</span>
+                  </EduIDButton>
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="signup-freja"
+                    disabled={isLoading}
+                    onClick={() => handleExternalMfa("freja")}
+                  >
+                    <img className="circle-icon freja" height="24" alt="Freja" src={FrejaFlag} />
+                    <span>Freja+</span>
+                  </EduIDButton>
+                </div>
+              </div>
+              <div>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="EU" src={EuFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="EU title" defaultMessage="EU citizen" />
+                      </strong>
+                    </span>
+                    <p className="help-text">
+                      <FormattedMessage
+                        description="item EU help text"
+                        defaultMessage=" Verify with your country's electronic ID via eIDAS."
+                      />
+                    </p>
+                  </div>
+                </div>
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="signup-eidas"
+                    disabled={isLoading}
+                    onClick={() => handleExternalMfa("eidas")}
+                  >
+                    <img className="circle-icon" height="24" alt="eIDAS" src={Eidas} />
+                    <span>eIDAS</span>
+                  </EduIDButton>
+                </div>
+              </div>
+              <div>
+                <div className="flex-column">
+                  <img height="35" className="circle-icon" alt="World" src={GlobalFlag} />
+                  <div>
+                    <span>
+                      <strong>
+                        <FormattedMessage description="global title" defaultMessage="Most countries" />
+                      </strong>
+                    </span>
+                    <p className="help-text">
+                      <FormattedMessage
+                        description="global help text"
+                        defaultMessage="Verify with a passport or national ID card via Freja eID+."
+                      />
+                    </p>
+                  </div>
+                </div>
+
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="primary"
+                    id="signup-freja-eid"
+                    disabled={isLoading}
+                    onClick={() => handleExternalMfa("freja_eid")}
+                  >
+                    <img className="circle-icon" height="24" alt="Freja eID" src={FrejaFlag} />
+                    <span>Freja eID</span>
+                  </EduIDButton>
+                </div>
+              </div>
+            </section>
           </section>
         )}
 
