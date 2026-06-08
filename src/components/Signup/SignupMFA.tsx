@@ -18,7 +18,6 @@ import securityKey from "../../../img/security-key.svg";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
-console.log("jjjjj");
 
 const PasswordSection = (props: { optional: boolean }) => {
   const [isEditMode, setEditMode] = useState<boolean>(false);
