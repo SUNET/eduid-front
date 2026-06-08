@@ -27,6 +27,20 @@
     }
   }
 
+  .digital-id-option button.primary.sm {
+    align-self: center;
+    height: 33px !important;
+
+    img.circle-icon {
+      width: 18px !important;
+      height: 18px !important;
+    }
+
+    span {
+      display: inline-block;
+    }
+  }
+
   img.passkey-image {
     width: 5rem !important;
   }
