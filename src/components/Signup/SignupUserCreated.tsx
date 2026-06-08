@@ -13,7 +13,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
@@ -47,7 +47,6 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
-  const intl = useIntl();
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
