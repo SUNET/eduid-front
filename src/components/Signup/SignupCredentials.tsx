@@ -1,63 +1,282 @@
-import { signupApi } from "apis/eduidSignup";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { loginApi } from "apis/eduidLogin";
+import signupApi from "apis/eduidSignup";
+import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import EduIDButton from "components/Common/EduIDButton";
+import { useTheme } from "components/Common/ThemeContext";
+import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
+import "spin.js/spin.css"; // without this import, the spinner is frozen
+import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
+import passkeyImage from "../../../img/multiple-passkey.svg";
+import passKey from "../../../img/pass-key.svg";
+import securityKey from "../../../img/security-key.svg";
+import { ServiceInfo } from "./SignupEntry";
+import { SignupStepIndicator } from "./SignupStepIndicator";
+import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
 
-export function SignupCredentialsError(): React.JSX.Element | null {
-  const dispatch = useAppDispatch();
-  const error = useAppSelector((state) => state.notifications.error);
-
-  if (!error) {
-    return null;
-  }
-
+const PasswordSection = (props: { optional: boolean }) => {
+  const [isEditMode, setEditMode] = useState<boolean>(false);
   return (
-    <React.Fragment>
-      <p>
-        <FormattedMessage
-          defaultMessage="There was a problem creating your account."
-          description="Signup credentials"
-        />
-      </p>
-      <div className="buttons">
-        <EduIDButton
-          type="submit"
-          buttonstyle="secondary"
-          onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"))}
-          id="abort-button"
-        >
-          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-        </EduIDButton>
-        <EduIDButton
-          type="submit"
-          buttonstyle="primary"
-          onClick={() => {
-            dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIAL_PASSWORD"));
-          }}
-          id="retry-button"
-        >
-          <FormattedMessage defaultMessage="Retry" description="Signup credentials button" />
-        </EduIDButton>
+    <Fragment>
+      <div className="or-container">
+        <div className="line"></div>
+        <span>
+          {props.optional ? (
+            <FormattedMessage defaultMessage="You can also add a password" description="Alternative signup option" />
+          ) : (
+            <FormattedMessage defaultMessage="or register a password" description="Alternative signup option" />
+          )}
+        </span>
+        <div className="line"></div>
       </div>
-    </React.Fragment>
+      <section className="register-password" id="register-password">
+        <div className="heading">
+          <h2>
+            <FormattedMessage description="With name and email" defaultMessage="With name and email" />
+          </h2>
+          <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+            {isEditMode ? (
+              <Fragment>
+                <FormattedMessage description="hide form button" defaultMessage="hide form" />
+                &nbsp;
+                <FontAwesomeIcon icon={faChevronUp} />
+              </Fragment>
+            ) : (
+              <Fragment>
+                <FormattedMessage description="show form button" defaultMessage="show form" />
+                &nbsp;
+                <FontAwesomeIcon icon={faChevronDown} />
+              </Fragment>
+            )}
+          </EduIDButton>
+        </div>
+        {isEditMode && <SignupConfirmPassword />}
+      </section>
+    </Fragment>
   );
-}
+};
 
-export function SignupCredentialPassword(): React.JSX.Element | null {
+export function SignupCredentials(): React.ReactElement | null {
+  const signupState = useAppSelector((state) => state.signup.state);
+  const [startRegisterWebauthn] = signupApi.useLazyStartRegisterWebauthnQuery();
+  const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
+  const [registrationData, setRegistrationData] = useState<PublicKeyCredentialCreationOptionsJSON | null>(null);
+  const [signupRegisterWebauthn] = signupApi.useLazySignupRegisterWebauthnQuery();
+  const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  const [createUser] = signupApi.useLazyCreateUserRequestQuery();
+  const credentials = signupState?.credentials;
+  const webauthnRegistered = credentials?.webauthn_registered ?? false;
+  const webauthnIsDiscoverable = credentials?.webauthn_is_discoverable ?? false;
+  const webauthnDescription = credentials?.webauthn_description;
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
+  const { theme } = useTheme();
   const dispatch = useAppDispatch();
-  const { isSuccess, isError } = signupApi.useGetPasswordRequestQuery();
+  const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
 
   useEffect(() => {
-    if (isSuccess) {
-      dispatch(clearNotifications());
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CONFIRM_PASSWORD"));
-    } else if (isError) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
+    if (!signupState?.credentials.generated_password) {
+      getPassword();
     }
-  }, [isSuccess, isError, dispatch]);
+  }, [getPassword, signupState?.credentials.generated_password]);
 
-  return null;
+  const handleStopAskingWebauthnDescription = useCallback(() => {
+    setShowSecurityKeyNameModal(false);
+  }, []);
+
+  const handleStartWebauthnRegistration = useCallback(
+    (values: { [key: string]: string }) => {
+      (async () => {
+        try {
+          const description_value = values["describe-webauthn-token-modal"];
+          const description = description_value?.trim();
+          setShowSecurityKeyNameModal(false);
+          if (!registrationData) return;
+          const createResponse = await createCredential(registrationData);
+          if (createResponse.isSuccess) {
+            signupRegisterWebauthn({
+              webauthn_attestation: createResponse.data,
+              description,
+              clientExtensionResults: createResponse.data?.clientExtensionResults,
+            });
+          }
+        } catch (error) {
+          console.error("Error creating credentials:", error);
+        }
+      })();
+    },
+    [createCredential, signupRegisterWebauthn, registrationData],
+  );
+
+  const finishSignup = useCallback(() => {
+    (async () => {
+      try {
+        if (webauthnRegistered) {
+          const response = await createUser({
+            use_webauthn: webauthnRegistered,
+          });
+          if (response.isSuccess) {
+            dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+          } else if (response.error) {
+            handleCreateUserError(response.error, fetchLogout, dispatch);
+          }
+        }
+      } catch (error) {
+        console.error("Error finishing signup:", error);
+      }
+    })();
+  }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
+
+  const handleWebauthnButtonClick = useCallback(
+    async (authenticator: "platform" | "cross-platform") => {
+      const result = await startRegisterWebauthn({ authenticator });
+      if (result.isSuccess) {
+        setRegistrationData(result.data.payload.registration_data.publicKey);
+        setShowSecurityKeyNameModal(true);
+      }
+    },
+    [startRegisterWebauthn],
+  );
+
+  return (
+    <div className="step-container">
+      <section className="intro">
+        <h1>
+          <FormattedMessage
+            defaultMessage="Create eduID: Register your sign-in method"
+            description="Signup register credentials"
+          />
+        </h1>
+        <ServiceInfo />
+        <div className="lead">
+          {webauthnRegistered && !webauthnIsDiscoverable ? (
+            <p>
+              <FormattedMessage
+                defaultMessage="A password is required to sign in with this key."
+                description="non-discoverable key needs password"
+              />
+            </p>
+          ) : (
+            <p>
+              <FormattedMessage
+                defaultMessage="Choose between a passkey/security key, password or both."
+                description="Signup register credentials lead text"
+              />
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* status box for passkey option */}
+      <section className="passkey-option">
+        {webauthnRegistered ? (
+          <Fragment>
+            <figure className="signin-details">
+              <span>
+                <FormattedMessage
+                  defaultMessage="Your registered security key: {keyName}"
+                  description="Signup added credentials label"
+                  values={{
+                    keyName: <strong> {webauthnDescription}</strong>,
+                  }}
+                />
+              </span>
+            </figure>
+            {webauthnIsDiscoverable && (
+              <div className="buttons">
+                <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
+                  <FormattedMessage defaultMessage="Complete creating eduID" description="signup finish button" />
+                </EduIDButton>
+              </div>
+            )}
+          </Fragment>
+        ) : (
+          <Fragment>
+            <div className="status-box">
+              <div className="text-wrapper">
+                <div className="flex-between">
+                  <div>
+                    <p className="text-medium">
+                      <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
+                    </p>
+                    <p className="help-text">
+                      <FormattedMessage
+                        defaultMessage='Read more about passkeys and sign-in methods in the "Using eduID" section in  {helpLink}.'
+                        description="signup passkey help link"
+                        values={{
+                          helpLink: (
+                            <a href="/help" target="_blank" rel="noopener noreferrer">
+                              <FormattedMessage description="eduID help link" defaultMessage={`eduID Help`} />
+                            </a>
+                          ),
+                        }}
+                      />
+                    </p>
+                  </div>
+                  <img
+                    src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+                    alt="Passkey images"
+                    className="passkey-image"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="mfa-alternative">
+              <span aria-label="select extra webauthn">
+                <strong>
+                  <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
+                </strong>
+              </span>
+              <div className="buttons">
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-platform-button"
+                    buttonstyle="primary icon"
+                    onClick={() => handleWebauthnButtonClick("platform")}
+                  >
+                    <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
+                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn device help text"
+                      defaultMessage="Internal passkey on your phone or laptop."
+                    />
+                  </p>
+                </div>
+                <div>
+                  <EduIDButton
+                    id="security-webauthn-button"
+                    buttonstyle="primary icon"
+                    onClick={() => handleWebauthnButtonClick("cross-platform")}
+                  >
+                    <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                    <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                  </EduIDButton>
+                  <p className="help-text">
+                    <FormattedMessage
+                      description="platform authn key help text"
+                      defaultMessage="Your external USB security key."
+                    />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Fragment>
+        )}
+      </section>
+      <PasswordSection optional={webauthnIsDiscoverable && webauthnRegistered} />
+      <WebauthnDescriptionModal
+        showModal={showSecurityKeyNameModal}
+        closeModal={handleStopAskingWebauthnDescription}
+        handleConfirm={handleStartWebauthnRegistration}
+      />
+      <SignupStepIndicator currentStep={4} />
+    </div>
+  );
 }

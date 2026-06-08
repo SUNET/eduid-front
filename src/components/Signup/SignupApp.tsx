@@ -7,10 +7,10 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { NextPageTypes, signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
-import { SignupCredentialPassword, SignupCredentialsError } from "./SignupCredentials";
+import { SignupCredentials } from "./SignupCredentials";
+import { SignupCredentialsError } from "./SignupCredentialsError";
 import { ProcessEmailCode, SignupEnterCode } from "./SignupEnterCode";
 import { SignupEntry } from "./SignupEntry";
-import { SignupMFA } from "./SignupMFA";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupUserCreated } from "./SignupUserCreated";
 
@@ -36,9 +36,7 @@ export function SignupApp(): React.JSX.Element {
       {next_page === "SIGNUP_ENTER_CODE" && <SignupEnterCode />}
       {next_page === "PROCESS_EMAIL_CODE" && <ProcessEmailCode />}
       {next_page === "SIGNUP_CREDENTIALS_ERROR" && <SignupCredentialsError />}
-      {next_page === "SIGNUP_CREDENTIAL_PASSWORD" && <SignupCredentialPassword />}
-      {next_page === "SIGNUP_MFA" && <SignupMFA />}
-      {/* {next_page === "SIGNUP_CONFIRM_PASSWORD" && <SignupConfirmPassword />} */}
+      {next_page === "SIGNUP_CREDENTIALS" && <SignupCredentials />}
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
     </React.Fragment>
   );
@@ -59,7 +57,7 @@ function getEmailNextPage(state: SignupState): NextPageTypes {
 
 function getNextPage(state: SignupState): NextPageTypes | null {
   if (state.already_signed_up) return null;
-  if (state.email?.completed) return "SIGNUP_MFA";
+  if (state.email?.completed) return "SIGNUP_CREDENTIALS";
   if (state.external_mfa?.completed) return getExternalMfaNextPage(state);
   if (state.email?.address) return getEmailNextPage(state);
   return "SIGNUP_ENTRY";

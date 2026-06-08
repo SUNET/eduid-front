@@ -30,7 +30,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   useEffect(() => {
     if (signupState?.credentials.completed) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
     }
   }, [signupState, dispatch]);
 
@@ -180,7 +180,7 @@ export function ProcessEmailCode() {
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"));
+      dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
       dispatch(clearNotifications());
     } else if (isError) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTER_CODE"));
