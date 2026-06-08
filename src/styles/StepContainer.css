@@ -55,6 +55,12 @@
     }
   }
 
+  .register-password .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
   #copy-new-password {
     background-color: #daede1;
   }

@@ -102,7 +102,8 @@ h3 {
   }
 }
 
-section#register-with-name {
+section#register-with-name,
+.register-password {
   margin-top: 2rem;
 }
 

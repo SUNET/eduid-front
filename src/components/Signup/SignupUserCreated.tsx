@@ -4,7 +4,6 @@ import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInf
 import EduIDButton from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
 import Splash from "components/Common/Splash";
-import { WizardLink } from "components/Common/WizardLink";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
 import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
@@ -14,7 +13,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
@@ -48,7 +47,6 @@ export function SignupConfirmPassword() {
   const navigate = useNavigate();
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
-  const intl = useIntl();
   const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   async function submitNewPasswordForm(values: NewPasswordFormData) {
@@ -91,77 +89,36 @@ export function SignupConfirmPassword() {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
           <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
-            <div className="step-container">
-              {renderSuggested ? (
-                <section className="intro">
-                  <h1>
-                    <FormattedMessage
-                      defaultMessage="Create eduID: Register a suggested password"
-                      description="Registration confirm password"
-                    />
-                  </h1>
-                  <ServiceInfo />
-                  <div className="lead">
-                    <p>
-                      <FormattedMessage
-                        defaultMessage={`A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password.`}
-                        description="Generated password - lead"
-                      />
-                    </p>
-                  </div>
-                </section>
-              ) : (
-                <section className="intro">
-                  <h1>
-                    <FormattedMessage
-                      description="Register - headline"
-                      defaultMessage="Create eduID: Register your own password"
-                    />
-                  </h1>
-                  <ServiceInfo />
-                  <div className="lead">
-                    <p>
-                      <FormattedMessage
-                        description="Strong password - lead"
-                        defaultMessage={`Create a strong enough password to keep your 
+            {renderSuggested ? (
+              <p className="text-medium">
+                <FormattedMessage
+                  defaultMessage={`A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password.`}
+                  description="Generated password - lead"
+                />
+              </p>
+            ) : (
+              <p className="text-medium">
+                <FormattedMessage
+                  description="Strong password - lead"
+                  defaultMessage={`Create a strong enough password to keep your 
                         account safe.`}
-                      />
-                    </p>
-                  </div>
-                </section>
-              )}
-              <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
-              {renderSuggested ? (
-                <ChangePasswordSuggestedForm
-                  {...child_props}
-                  handleCancel={handleCancel}
-                  suggestedPassword={formatPassword(suggested)}
                 />
-              ) : (
-                <ChangePasswordCustomForm
-                  {...child_props}
-                  handleCancel={handleCancel}
-                  handleSubmit={submitNewPasswordForm}
-                />
-              )}
-              <div className="mfa-alternative">
-                <WizardLink
-                  previousText={
-                    webauthnRegistered
-                      ? intl.formatMessage({
-                          id: "wizard link back to your security key",
-                          defaultMessage: "Back to your added security key",
-                        })
-                      : intl.formatMessage({
-                          id: "wizard link back to add a security key",
-                          defaultMessage: "Also add a security key?",
-                        })
-                  }
-                  previousOnClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_MFA"))}
-                />
-              </div>
-              <SignupStepIndicator currentStep={5} />
-            </div>
+              </p>
+            )}
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+            {renderSuggested ? (
+              <ChangePasswordSuggestedForm
+                {...child_props}
+                handleCancel={handleCancel}
+                suggestedPassword={formatPassword(suggested)}
+              />
+            ) : (
+              <ChangePasswordCustomForm
+                {...child_props}
+                handleCancel={handleCancel}
+                handleSubmit={submitNewPasswordForm}
+              />
+            )}
           </Splash>
         );
       }}
