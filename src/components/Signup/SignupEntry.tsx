@@ -207,7 +207,7 @@ export function SignupEntry(): React.JSX.Element {
                 </div>
                 <div className="buttons">
                   <EduIDButton
-                    buttonstyle="primary"
+                    buttonstyle="primary sm"
                     id="signup-bankid"
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("bankid")}
@@ -216,7 +216,7 @@ export function SignupEntry(): React.JSX.Element {
                     <span>BankID</span>
                   </EduIDButton>
                   <EduIDButton
-                    buttonstyle="primary"
+                    buttonstyle="primary sm"
                     id="signup-freja"
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja")}
@@ -245,7 +245,7 @@ export function SignupEntry(): React.JSX.Element {
                 </div>
                 <div className="buttons">
                   <EduIDButton
-                    buttonstyle="primary"
+                    buttonstyle="primary sm"
                     id="signup-eidas"
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("eidas")}
@@ -275,7 +275,7 @@ export function SignupEntry(): React.JSX.Element {
 
                 <div className="buttons">
                   <EduIDButton
-                    buttonstyle="primary"
+                    buttonstyle="primary sm"
                     id="signup-freja-eid"
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja_eid")}
