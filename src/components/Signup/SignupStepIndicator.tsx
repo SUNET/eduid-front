@@ -39,7 +39,7 @@ export function SignupStepIndicator({
       {labels.length > 0 && (
         <section className="step-labels">
           {labels.map((label, i) => (
-            <span key={i} className={i + 1 === currentStep ? "active" : ""}>
+            <span key={`step-label-${i + 1}`} className={i + 1 === currentStep ? "active" : ""}>
               {label}
             </span>
           ))}
