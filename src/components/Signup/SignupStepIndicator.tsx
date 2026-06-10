@@ -3,11 +3,13 @@ import { Fragment } from "react/jsx-runtime";
 interface SignupStepIndicatorProps {
   currentStep: number;
   totalSteps?: number;
+  labels?: string[];
 }
 
 export function SignupStepIndicator({
   currentStep,
   totalSteps = 4,
+  labels = ["Registration method", "Confirm/Accept", "Verify email address", "Sign-in method"],
 }: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
   return (
     <Fragment>
@@ -26,6 +28,15 @@ export function SignupStepIndicator({
           );
         })}
       </section>
+      {labels.length > 0 && (
+        <section className="step-labels">
+          {labels.map((label, i) => (
+            <span key={i} className={i + 1 === currentStep ? "active" : ""}>
+              {label}
+            </span>
+          ))}
+        </section>
+      )}
     </Fragment>
   );
 }
