@@ -48,6 +48,22 @@ export function SignupEntry(): React.JSX.Element {
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
 
+  const getCountryFlag = () => {
+    if (external_mfa?.method === "eidas") {
+      return <img className="flag-icon" height="24" alt="EU" src={EuFlag} />;
+    }
+    if (external_mfa?.country_code) {
+      return (
+        <ReactCountryFlag
+          className="flag-icon"
+          aria-label={regionNames.of(external_mfa.country_code)}
+          countryCode={external_mfa.country_code}
+        />
+      );
+    }
+    return <ReactCountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />;
+  };
+
   const appNameDisplay: Record<string, string> = {
     freja_eid: "Freja eID",
     freja: "Freja",
@@ -108,19 +124,7 @@ export function SignupEntry(): React.JSX.Element {
             </p>
 
             <figure className="grid-container identity-summary">
-              <div>
-                {external_mfa.method === "eidas" ? (
-                  <img className="flag-icon" height="24" alt="EU" src={EuFlag} />
-                ) : external_mfa.country_code ? (
-                  <ReactCountryFlag
-                    className="flag-icon"
-                    aria-label={regionNames.of(external_mfa.country_code)}
-                    countryCode={external_mfa.country_code}
-                  />
-                ) : (
-                  <ReactCountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />
-                )}
-              </div>
+              <div>{getCountryFlag()}</div>
               <div className="profile-grid-cell">
                 <strong>
                   <strong>
