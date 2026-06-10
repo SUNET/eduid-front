@@ -8,8 +8,8 @@ interface SignupStepIndicatorProps {
 
 export function SignupStepIndicator({
   currentStep,
-  totalSteps = 4,
-  labels = ["Registration method", "Confirm/Accept", "Verify email address", "Sign-in method"],
+  totalSteps = 5,
+  labels = ["Registration method", "Confirm/Accept", "Verify email address", "Sign-in method", "Completed"],
 }: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
   return (
     <Fragment>
