@@ -5,9 +5,10 @@ import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import signupApi from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
+import NotificationModal from "components/Common/NotificationModal";
 import Splash from "components/Common/Splash";
-import { useAppSelector } from "eduid-hooks";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useEffect, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
@@ -49,6 +50,11 @@ export function SignupEntry(): React.JSX.Element {
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
+  const [externalMfaRegister] = signupApi.useLazyExternalMfaRegisterQuery();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const errorMsg = useAppSelector((state) => state.notifications.error?.message);
+  const dispatch = useAppDispatch();
+  const identity_collision = useAppSelector((state) => state.signup.identity_collision);
 
   const appNameDisplay: Record<string, string> = {
     freja_eid: "Freja eID",
@@ -73,6 +79,12 @@ export function SignupEntry(): React.JSX.Element {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (identity_collision) {
+      setShowModal(true);
+    }
+  }, [identity_collision]);
 
   return (
     <div className="step-container">
@@ -307,6 +319,27 @@ export function SignupEntry(): React.JSX.Element {
           </Fragment>
         )}
       </Splash>
+      <NotificationModal
+        id="account-collision-modal"
+        title={
+          <FormattedMessage
+            defaultMessage="An account with this identity already exists"
+            description="Collision dialog heading"
+          />
+        }
+        mainText={
+          <FormattedMessage
+            defaultMessage="This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
+            description="Collision dialog description"
+          />
+        }
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
+        acceptModal={() => console.log("accept")}
+        acceptButtonText={
+          <FormattedMessage defaultMessage="Yes, create a new account" description="Collision dialog confirm button" />
+        }
+      />
       <SignupStepIndicator currentStep={1} />
     </div>
   );

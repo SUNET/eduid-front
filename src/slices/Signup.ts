@@ -25,6 +25,7 @@ interface SignupState {
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
   next_page?: string;
+  identity_collision?: { app_name: string; authn_id: string };
 }
 
 // type predicate to help identify payloads with the signup state.
@@ -69,6 +70,9 @@ export const signupSlice = createSlice({
     },
     setNextPage: (state, action: PayloadAction<NextPageTypes>) => {
       state.next_page = action.payload;
+    },
+    setIdentityCollision(state, action: PayloadAction<{ app_name: string; authn_id: string } | undefined>) {
+      state.identity_collision = action.payload;
     },
   },
   extraReducers: (builder) => {

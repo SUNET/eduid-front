@@ -5,7 +5,8 @@ import signupApi from "apis/eduidSignup";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { showNotification } from "slices/Notifications";
+import { clearNotifications, showNotification } from "slices/Notifications";
+import { signupSlice } from "slices/Signup";
 
 // URL parameters passed to this component
 interface SignupCallbackParams {
@@ -29,10 +30,17 @@ export function SignupExternalReturnHandler() {
         dispatch(showNotification({ message: response.status, level: response.error ? "error" : "info" }));
       }
       if (response.frontend_action) {
-        await externalMfaRegister({
+        const result = await externalMfaRegister({
           app_name,
           authn_id,
         });
+        if (result.error) {
+          const error = result.error as { payload?: { message?: string } };
+          if (error.payload?.message === "signup.identity-already-registered") {
+            dispatch(clearNotifications());
+            dispatch(signupSlice.actions.setIdentityCollision({ app_name, authn_id }));
+          }
+        }
         navigate("/register");
       }
     },
