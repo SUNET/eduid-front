@@ -343,7 +343,7 @@ export function SignupEntry(): React.JSX.Element {
         closeModal={() => handleCancelCollision()}
         acceptModal={() => confirmCollision()}
         acceptButtonText={
-          <FormattedMessage defaultMessage="Yes, create a new account" description="Collision dialog confirm button" />
+          <FormattedMessage defaultMessage="Continue with new account" description="Collision dialog confirm button" />
         }
       />
       <SignupStepIndicator currentStep={1} />
