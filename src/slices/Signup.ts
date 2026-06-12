@@ -1,5 +1,5 @@
 import { Action, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import signupApi, { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
+import { CaptchaRequest, SignupState as SignupBackendState, SignupStatusResponse } from "apis/eduidSignup";
 import { isFSA } from "apis/helpers/typeGuards";
 
 export type NextPageTypes =
@@ -25,6 +25,7 @@ interface SignupState {
   email_code?: string; // pass email code from one state to another
   captcha?: CaptchaRequest; // pass captcha response from one state to another
   next_page?: string;
+  identity_collision?: { app_name: string; authn_id: string };
 }
 
 // type predicate to help identify payloads with the signup state.
@@ -70,17 +71,13 @@ export const signupSlice = createSlice({
     setNextPage: (state, action: PayloadAction<NextPageTypes>) => {
       state.next_page = action.payload;
     },
+    setIdentityCollision(state, action: PayloadAction<{ app_name: string; authn_id: string } | undefined>) {
+      state.identity_collision = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addMatcher(hasSignupStateResponse, (state, action) => {
       state.state = action.payload.payload.state;
-    });
-    builder.addMatcher(signupApi.endpoints.fetchState.matchFulfilled, (state, action) => {
-      const externalMfa = action.payload.payload.state.external_mfa;
-      if (state.state?.name && externalMfa) {
-        state.state.name.given_name = externalMfa.given_name;
-        state.state.name.surname = externalMfa.surname;
-      }
     });
   },
 });
