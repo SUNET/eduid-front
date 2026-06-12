@@ -8,10 +8,11 @@ import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
+import { signupSlice } from "slices/Signup";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import Eidas from "../../../img/flags/EU_trust_mark_logo_eIDAS.png";
 import EuFlag from "../../../img/flags/EuFlag.svg";
@@ -51,10 +52,10 @@ export function SignupEntry(): React.JSX.Element {
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
   const [externalMfaRegister] = signupApi.useLazyExternalMfaRegisterQuery();
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const errorMsg = useAppSelector((state) => state.notifications.error?.message);
+  const [externalMfaClear] = signupApi.useLazyExternalMfaClearQuery();
   const dispatch = useAppDispatch();
   const identity_collision = useAppSelector((state) => state.signup.identity_collision);
+  const showModal = Boolean(identity_collision);
 
   const appNameDisplay: Record<string, string> = {
     freja_eid: "Freja eID",
@@ -80,11 +81,21 @@ export function SignupEntry(): React.JSX.Element {
     }
   };
 
-  useEffect(() => {
+  const confirmCollision = async () => {
     if (identity_collision) {
-      setShowModal(true);
+      await externalMfaRegister({
+        app_name: identity_collision.app_name,
+        authn_id: identity_collision.authn_id,
+        confirm_replace: true,
+      });
+      dispatch(signupSlice.actions.setIdentityCollision(undefined));
     }
-  }, [identity_collision]);
+  };
+
+  const handleCancelCollision = async () => {
+    await externalMfaClear();
+    dispatch(signupSlice.actions.setIdentityCollision(undefined));
+  };
 
   return (
     <div className="step-container">
@@ -321,12 +332,7 @@ export function SignupEntry(): React.JSX.Element {
       </Splash>
       <NotificationModal
         id="account-collision-modal"
-        title={
-          <FormattedMessage
-            defaultMessage="An account with this identity already exists"
-            description="Collision dialog heading"
-          />
-        }
+        title={<FormattedMessage defaultMessage="Identity already registered" description="Collision dialog heading" />}
         mainText={
           <FormattedMessage
             defaultMessage="This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
@@ -334,8 +340,8 @@ export function SignupEntry(): React.JSX.Element {
           />
         }
         showModal={showModal}
-        closeModal={() => setShowModal(false)}
-        acceptModal={() => console.log("accept")}
+        closeModal={() => handleCancelCollision()}
+        acceptModal={() => confirmCollision()}
         acceptButtonText={
           <FormattedMessage defaultMessage="Yes, create a new account" description="Collision dialog confirm button" />
         }
