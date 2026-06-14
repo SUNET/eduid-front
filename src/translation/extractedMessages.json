@@ -15,6 +15,10 @@
     "developer_comment": "Temp info - message1",
     "string": "Soon it will not be possible to use phone numbers to verify identity and resetting password."
   },
+  "+Dkkum": {
+    "developer_comment": "item EU help text",
+    "string": "Verify with your country's electronic ID via eIDAS."
+  },
   "+EKyAl": {
     "developer_comment": "continue reset password",
     "string": "Continue reset password"
@@ -31,13 +35,13 @@
     "developer_comment": "what are assurance levels - heading",
     "string": "What are assurance levels?"
   },
-  "+U1bqz": {
-    "developer_comment": "continue to password button",
-    "string": "set a password"
-  },
   "+Z2aYk": {
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
+  },
+  "+q063y": {
+    "developer_comment": "global title",
+    "string": "Most countries"
   },
   "+xBbuC": {
     "developer_comment": "Registration finished with webauthn only",
@@ -380,6 +384,10 @@
   "58dN25": {
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
+  },
+  "5JZxXb": {
+    "developer_comment": "Alternative signup option",
+    "string": "You can also add a password"
   },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
@@ -834,6 +842,10 @@
     "developer_comment": "about security key - handle",
     "string": "Enhancing the security level of eduID"
   },
+  "FBsap3": {
+    "developer_comment": "swedish id help text",
+    "string": "Requires a Swedish personal identity number or coordination number."
+  },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Access Error"
@@ -1127,6 +1139,10 @@
   "Lppidn": {
     "developer_comment": "read more at Sunet",
     "string": "You can read more about eduID at {Sunet} and in our"
+  },
+  "Lw5FjD": {
+    "developer_comment": "Add password explanation",
+    "string": "Add a password to your account as an alternative sign-in method. Choose between a suggested or user created password."
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1724,10 +1740,6 @@
     "developer_comment": "when use eduID - list item 5",
     "string": "administrate students taking the Digital national exam,"
   },
-  "Wurx42": {
-    "developer_comment": "Register - headline",
-    "string": "Create eduID: Register your own password"
-  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Email addresses:"
@@ -1832,9 +1844,17 @@
     "developer_comment": "Assurance levels with your eduID - paragraph2",
     "string": "services requiring a low level of assurance, often called {emphasis}."
   },
+  "YTVY6j": {
+    "developer_comment": "swedish id title",
+    "string": "Swedish ID"
+  },
   "YTqn7P": {
     "developer_comment": "suggested password radio button",
     "string": "Suggested password"
+  },
+  "YVSxSy": {
+    "developer_comment": "global help text",
+    "string": "Verify with a passport or national ID card via Freja eID+."
   },
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
@@ -2054,10 +2074,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Confirmed account:"
   },
-  "btGR+H": {
-    "developer_comment": "Registration confirm password",
-    "string": "Create eduID: Register a suggested password"
-  },
   "bump4d": {
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Scan the presented QR-code with the other device where you have your login credentials, e.g. security key or saved password."
@@ -2195,6 +2211,10 @@
   },
   "document title Start": {
     "string": "Start | eduID"
+  },
+  "dr5ljV": {
+    "developer_comment": "Alternative signup option",
+    "string": "or register a password"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -2595,6 +2615,10 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "The service that you tried to access did not get all required attributes for identification and/or personalisation."
+  },
+  "jO9ih5": {
+    "developer_comment": "EU title",
+    "string": "EU citizen"
   },
   "jQTOvr": {
     "developer_comment": "create eduid - list item 3",
@@ -3656,6 +3680,10 @@
   "user-out-of-sync": {
     "string": "User data is out of sync. Reload page to re-sync."
   },
+  "ux7UM+": {
+    "developer_comment": "register a password",
+    "string": "Register a password"
+  },
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "The identities below are now connected to your eduID"
@@ -3738,9 +3766,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "At the logged in start page an overview of the status of your eduID is presented. This is what it typically indicates regarding your assurance level and the services you may authenticate against:"
   },
-  "wizard link also register password": {
-    "string": "Also register a password?"
-  },
   "wizard link back identity": {
     "string": "To Identity Settings"
   },
@@ -3750,20 +3775,11 @@
   "wizard link back start": {
     "string": "To Overview on Start"
   },
-  "wizard link back to add a security key": {
-    "string": "Also add a security key?"
-  },
-  "wizard link back to your security key": {
-    "string": "Back to your added security key"
-  },
   "wizard link next account": {
     "string": "To Account Settings"
   },
   "wizard link next security": {
     "string": "To Security Settings"
-  },
-  "wizard link register with password": {
-    "string": "Register a password"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
