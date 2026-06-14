@@ -30,11 +30,11 @@ export const ServiceInfo = () => {
 
   if (!service_name) return null;
   return (
-    <p className="destination-info">
+    <p className="destination-info text-bold">
       <FormattedMessage
         defaultMessage="In order to access {name}"
         description="Signup first page lead text"
-        values={{ name: <strong>{service_name}</strong> }}
+        values={{ name: <span>{service_name}</span> }}
       />
     </p>
   );
