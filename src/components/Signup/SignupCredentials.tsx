@@ -37,7 +37,7 @@ const PasswordSection = (props: { optional: boolean }) => {
       <section className="register-password" id="register-password">
         <div className="heading">
           <h2>
-            <FormattedMessage description="Register a password" defaultMessage="Set up your password" />
+            <FormattedMessage description="register a password" defaultMessage="Register a password" />
           </h2>
           <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
             {isEditMode ? (
@@ -55,6 +55,12 @@ const PasswordSection = (props: { optional: boolean }) => {
             )}
           </EduIDButton>
         </div>
+        <p className="text-medium">
+          <FormattedMessage
+            description="Add password explanation"
+            defaultMessage={`Add a password to your account as an alternative sign-in method. Choose between a suggested or user created password.`}
+          />
+        </p>
         {isEditMode && <SignupConfirmPassword />}
       </section>
     </Fragment>
@@ -225,13 +231,12 @@ export function SignupCredentials(): React.ReactElement | null {
                 </div>
               </div>
             </div>
-
+            <h2 aria-label="select extra webauthn">
+              <strong>
+                <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
+              </strong>
+            </h2>
             <div className="mfa-alternative">
-              <span aria-label="select extra webauthn">
-                <strong>
-                  <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
-                </strong>
-              </span>
               <div className="buttons">
                 <div>
                   <EduIDButton
