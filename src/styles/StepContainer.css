@@ -15,7 +15,11 @@
 
   .destination-info {
     color: var(--txt-green);
-    font-size: var(--txt-sm);
+    font-size: var(--txt-md);
+
+    span {
+      text-transform: uppercase;
+    }
   }
 
   .lead {
@@ -24,6 +28,23 @@
     p {
       font-size: var(--txt-lg);
       color: var(--txt-gray);
+    }
+  }
+
+  .digital-id-option .buttons button.primary.sm {
+    align-self: center;
+    height: 33px;
+    padding: 0 1rem;
+
+    img.circle-icon {
+      width: 18px !important;
+      height: 18px !important;
+    }
+
+    span {
+      display: inline-block;
+      line-height: normal;
+      vertical-align: middle;
     }
   }
 
