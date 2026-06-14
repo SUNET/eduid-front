@@ -15,7 +15,11 @@
 
   .destination-info {
     color: var(--txt-green);
-    font-size: var(--txt-sm);
+    font-size: var(--txt-md);
+
+    span {
+      text-transform: uppercase;
+    }
   }
 
   .lead {
