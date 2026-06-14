@@ -27,9 +27,10 @@
     }
   }
 
-  .digital-id-option button.primary.sm {
+  .digital-id-option .buttons button.primary.sm {
     align-self: center;
-    height: 33px !important;
+    height: 33px;
+    padding: 0 1rem;
 
     img.circle-icon {
       width: 18px !important;
@@ -38,6 +39,8 @@
 
     span {
       display: inline-block;
+      line-height: normal;
+      vertical-align: middle;
     }
   }
 
