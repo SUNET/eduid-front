@@ -147,7 +147,7 @@
       }
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       .step-item .step-label {
         display: none;
       }
