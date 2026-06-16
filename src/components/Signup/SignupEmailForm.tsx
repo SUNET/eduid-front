@@ -51,6 +51,9 @@ export function EmailForm() {
 
   if (!state) return null;
 
+  const givenName = state?.external_mfa?.given_name ?? state?.name?.given_name ?? "";
+  const surname = state?.external_mfa?.surname ?? state?.name?.surname ?? "";
+
   const firstNamePlaceholder = intl.formatMessage({
     id: "placeholder.firstName",
     defaultMessage: "first name",
@@ -107,8 +110,8 @@ export function EmailForm() {
       validate={validateSignupUserInForm}
       initialValues={{
         email: "",
-        given_name: state?.name?.given_name?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
-        surname: state?.name?.surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+        given_name: givenName.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
+        surname: surname?.replace(/^\w/, (c) => c.toUpperCase()) ?? "",
       }}
       render={(formProps: FormRenderProps<SignupEmailFormData>) => {
         const _submitError = Boolean(formProps.submitError && !formProps.dirtySinceLastSubmit);
