@@ -19,7 +19,6 @@ export function SignupStepIndicator({
     <FormattedMessage key="step5" description="signup step5" defaultMessage="Completed" />,
   ],
 }: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
-  console.log("SignupStepIndicator");
   return (
     <Fragment>
       <hr className="border-line border-line-lesser" />
