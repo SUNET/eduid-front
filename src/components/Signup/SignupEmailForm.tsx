@@ -66,11 +66,6 @@ export function EmailForm() {
     description: "placeholder Last name",
   });
 
-  const cancelProcess = async () => {
-    await fetchLogout({});
-    globalThis.location.reload();
-  };
-
   async function submitEmailForm(values: SignupEmailFormData) {
     const errors: SignupEmailFormData = {};
 
