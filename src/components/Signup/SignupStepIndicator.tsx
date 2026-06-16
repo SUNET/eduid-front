@@ -19,32 +19,25 @@ export function SignupStepIndicator({
     <FormattedMessage key="step5" description="signup step5" defaultMessage="Completed" />,
   ],
 }: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
+  console.log("SignupStepIndicator");
   return (
     <Fragment>
       <hr className="border-line border-line-lesser" />
       <section className="step-indicator">
         {Array.from({ length: totalSteps }, (_, i) => {
           const step = i + 1;
-          let className = "";
-          if (step < currentStep) className = "completed";
-          else if (step === currentStep) className = "active";
+          let className = "step-item";
+          if (step < currentStep) className += " completed";
+          else if (step === currentStep) className += " active";
 
           return (
             <div key={step} className={className}>
-              {step}
+              <div className="step-number">{step}</div>
+              {labels[i] && <span className="step-label">{labels[i]}</span>}
             </div>
           );
         })}
       </section>
-      {labels.length > 0 && (
-        <section className="step-labels">
-          {labels.map((label, i) => (
-            <span key={`step-label-${i + 1}`} className={i + 1 === currentStep ? "active" : ""}>
-              {label}
-            </span>
-          ))}
-        </section>
-      )}
     </Fragment>
   );
 }

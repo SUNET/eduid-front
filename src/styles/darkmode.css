@@ -91,7 +91,7 @@ html.dark {
       background-color: #273e30;
     }
 
-    .step-indicator div:not(.active, .completed) {
+    .step-indicator .step-item:not(.active, .completed) .step-number {
       background-color: var(--contrast-color);
     }
   }
