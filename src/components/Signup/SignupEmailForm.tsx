@@ -1,4 +1,3 @@
-import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
@@ -47,7 +46,6 @@ export function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
   const intl = useIntl();
-  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   if (!state) return null;
 
