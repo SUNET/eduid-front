@@ -135,7 +135,7 @@ export function SignupUserCreated(): React.JSX.Element {
   const idp_service_info = signupState?.idp_service_info;
   const locale = useAppSelector((state) => state.intl.locale);
   const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
-  console.log("jhjjj");
+
   async function handleFinish() {
     if (idpRequestRef) {
       const signupResponse = await signupAuthn({ ref: idpRequestRef });
