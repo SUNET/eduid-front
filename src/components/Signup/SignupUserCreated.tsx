@@ -89,6 +89,7 @@ export function SignupConfirmPassword() {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
           <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
+            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
               <p className="text-medium">
                 <FormattedMessage
@@ -105,7 +106,6 @@ export function SignupConfirmPassword() {
                 />
               </p>
             )}
-            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
               <ChangePasswordSuggestedForm
                 {...child_props}
