@@ -1,4 +1,3 @@
-import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import CustomInput from "components/Common/CustomInput";
 import EduIDButton from "components/Common/EduIDButton";
@@ -47,7 +46,6 @@ export function EmailForm() {
   const dispatch = useAppDispatch();
   const state = useAppSelector((state) => state.signup.state);
   const intl = useIntl();
-  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   if (!state) return null;
 
@@ -65,11 +63,6 @@ export function EmailForm() {
     defaultMessage: "last name",
     description: "placeholder Last name",
   });
-
-  const cancelProcess = async () => {
-    await fetchLogout({});
-    globalThis.location.reload();
-  };
 
   async function submitEmailForm(values: SignupEmailFormData) {
     const errors: SignupEmailFormData = {};
@@ -147,9 +140,6 @@ export function EmailForm() {
               autoFocus={!!state?.external_mfa?.given_name}
             />
             <div className="buttons">
-              <EduIDButton buttonstyle="secondary" id="cancel-register" type="button" onClick={cancelProcess}>
-                <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-              </EduIDButton>
               <EduIDButton
                 buttonstyle="primary"
                 id="register-button"
