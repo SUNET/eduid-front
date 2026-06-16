@@ -79,9 +79,10 @@
   }
 
   .step-indicator {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    margin-bottom: 0;
 
     div {
       width: 2.5rem;
@@ -93,17 +94,35 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      margin-right: 1.5rem;
       font-family: monospace;
 
       &.completed {
         background-color: #cde7d7;
-        color: #161616;
+        color: var(--body-txt);
       }
 
       &.active {
         background-color: var(--success-green);
-        color: #f4f4f4;
+        color: var(--body-gray);
+      }
+    }
+  }
+
+  .step-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+
+    span {
+      text-align: center;
+      font-size: var(--txt-xs);
+      color: var(--txt-gray);
+      padding: 0 0.25rem;
+
+      &.active {
+        font-weight: bold;
+        color: var(--body-txt);
       }
     }
   }

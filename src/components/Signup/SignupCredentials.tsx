@@ -37,7 +37,7 @@ const PasswordSection = (props: { optional: boolean }) => {
       <section className="register-password" id="register-password">
         <div className="heading">
           <h2>
-            <FormattedMessage description="With name and email" defaultMessage="With name and email" />
+            <FormattedMessage description="Register a password" defaultMessage="Set up your password" />
           </h2>
           <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
             {isEditMode ? (
