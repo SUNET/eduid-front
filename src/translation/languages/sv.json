@@ -15,6 +15,10 @@
     "developer_comment": "Temp info - message1",
     "string": "Snart kommer det inte vara möjligt att använda telefonnummer för att verifiera identitet och återställa lösenord."
   },
+  "+Dkkum": {
+    "developer_comment": "item EU help text",
+    "string": "Verifiera med ditt lands elektroniska ID m.h.a. eIDAS."
+  },
   "+EKyAl": {
     "developer_comment": "continue reset password",
     "string": "Fortsätt återställa lösenordet"
@@ -31,13 +35,13 @@
     "developer_comment": "what are assurance levels - heading",
     "string": "Vad är tillitsnivåer?"
   },
-  "+U1bqz": {
-    "developer_comment": "continue to password button",
-    "string": "Ange ett lösenord"
-  },
   "+Z2aYk": {
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
+  },
+  "+q063y": {
+    "developer_comment": "global title",
+    "string": "De flesta länder"
   },
   "+xBbuC": {
     "developer_comment": "Registration finished with webauthn only",
@@ -380,6 +384,10 @@
   "58dN25": {
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
+  },
+  "5JZxXb": {
+    "developer_comment": "Alternative signup option",
+    "string": "Du kan även lägga till ett lösenord"
   },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
@@ -834,6 +842,10 @@
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
   },
+  "FBsap3": {
+    "developer_comment": "swedish id help text",
+    "string": "Kräver ett svenskt person- eller samordningsnummer."
+  },
   "FEMdsB": {
     "developer_comment": "ErrorURL other error",
     "string": "Åtkomstfel"
@@ -1127,6 +1139,10 @@
   "Lppidn": {
     "developer_comment": "read more at Sunet",
     "string": "Du kan läsa mer om eduID på {Sunet} och i vårt"
+  },
+  "Lw5FjD": {
+    "developer_comment": "Add password explanation",
+    "string": "Lägg till ett lösenord till ditt konto som alternativ inloggningsmetod, välj mellan ett föreslaget eller skapa ett själv."
   },
   "LxTqDa": {
     "developer_comment": "recommendations identity link",
@@ -1724,10 +1740,6 @@
     "developer_comment": "when use eduID - list item 5",
     "string": "administrera studenter som ska utföra digitala nationella prov,"
   },
-  "Wurx42": {
-    "developer_comment": "Register - headline",
-    "string": "Skapa eduID: Lägg till ditt eget lösenord"
-  },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
     "string": "Epostadresser:"
@@ -1832,9 +1844,17 @@
     "developer_comment": "Assurance levels with your eduID - paragraph2",
     "string": "tjänster som kräver en låg tillitsnivå, ofta kallad {emphasis}."
   },
+  "YTVY6j": {
+    "developer_comment": "swedish id title",
+    "string": "Svenskt eID"
+  },
   "YTqn7P": {
     "developer_comment": "suggested password radio button",
     "string": "Rekommenderat lösenord"
+  },
+  "YVSxSy": {
+    "developer_comment": "global help text",
+    "string": "Verifiera med pass eller nationellt ID-kort m.h.a. Freja eID+."
   },
   "YaxJDC": {
     "developer_comment": "Assurance levels with your eduID - paragraph5",
@@ -2054,10 +2074,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
     "string": "Bekräftat konto:"
   },
-  "btGR+H": {
-    "developer_comment": "Registration confirm password",
-    "string": "Skapa eduID: Lägg till rekommenderat lösenord"
-  },
   "bump4d": {
     "developer_comment": "login eduid - other devices list item 2",
     "string": "Skanna QR-koden som visas med enheten där du har din säkerhetsnyckel eller sparat lösenord."
@@ -2195,6 +2211,10 @@
   },
   "document title Start": {
     "string": "Start | eduID"
+  },
+  "dr5ljV": {
+    "developer_comment": "Alternative signup option",
+    "string": "eller registrera ett lösenord"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -2595,6 +2615,10 @@
   "j9OZka": {
     "developer_comment": "ErrorURL identification failure",
     "string": "Tjänsten du försöker komma åt behöver ytterligare attribut för identifiering och/eller personalisering."
+  },
+  "jO9ih5": {
+    "developer_comment": "EU title",
+    "string": "EU-medborgare"
   },
   "jQTOvr": {
     "developer_comment": "create eduid - list item 3",
@@ -3656,6 +3680,10 @@
   "user-out-of-sync": {
     "string": "Användardata är ur synk. Var god försök igen."
   },
+  "ux7UM+": {
+    "developer_comment": "register a password",
+    "string": "Lägg till ett lösenord"
+  },
   "v+MvgO": {
     "developer_comment": "verify identity verified description",
     "string": "Följande identiteter är nu kopplade till ditt eduID"
@@ -3738,9 +3766,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph1",
     "string": "Under inloggade startsidan presenteras en statusöversikt av ditt eduID. Det här är vad den vanligtvis innebär för din tillitsnivå och tjänsterna som du kan autentisera dig för:"
   },
-  "wizard link also register password": {
-    "string": "Lägg även till ett lösenord?"
-  },
   "wizard link back identity": {
     "string": "Till identitetsinställningar"
   },
@@ -3750,20 +3775,11 @@
   "wizard link back start": {
     "string": "Till översikten på startsidan"
   },
-  "wizard link back to add a security key": {
-    "string": "Lägg även till en nyckel?"
-  },
-  "wizard link back to your security key": {
-    "string": "Tillbaka till din tillagda nyckel"
-  },
   "wizard link next account": {
     "string": "Till kontoinställningar"
   },
   "wizard link next security": {
     "string": "Till säkerhetsinställningar"
-  },
-  "wizard link register with password": {
-    "string": "Lägg till ett lösenord"
   },
   "wlFVRa": {
     "developer_comment": "Assurance levels with your eduID - paragraph3",
