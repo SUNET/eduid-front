@@ -147,9 +147,6 @@ export function EmailForm() {
               autoFocus={!!state?.external_mfa?.given_name}
             />
             <div className="buttons">
-              <EduIDButton buttonstyle="secondary" id="cancel-register" type="button" onClick={cancelProcess}>
-                <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-              </EduIDButton>
               <EduIDButton
                 buttonstyle="primary"
                 id="register-button"
