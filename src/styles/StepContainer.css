@@ -138,7 +138,7 @@
 
       &.active .step-number {
         background-color: var(--success-green);
-        color: var(--body-gray);
+        color: #f4f4f4;
       }
 
       &.active .step-label {
