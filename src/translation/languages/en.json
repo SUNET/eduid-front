@@ -385,6 +385,10 @@
     "developer_comment": "method eidas - heading",
     "string": "If you are an EU citizen and without a Swedish personal identity number"
   },
+  "5EYwc9": {
+    "developer_comment": "Collision dialog description",
+    "string": "This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
+  },
   "5JZxXb": {
     "developer_comment": "Alternative signup option",
     "string": "You can also add a password"
@@ -522,6 +526,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "You have successfully updated your password. Make sure to store your password securely for future use."
+  },
+  "8FHpO3": {
+    "developer_comment": "signup step2",
+    "string": "Confirm/Accept"
   },
   "8FSnax": {
     "developer_comment": "MFA as the first step of login, toggle off",
@@ -1041,6 +1049,10 @@
     "developer_comment": "login eduid - passkey list item 3",
     "string": "Follow the instructions; e.g. scan your face, fingerprint or enter PIN code. (eduID does not retain this information as passkeys are stored locally on your own device or credential manager.)"
   },
+  "K6IaBA": {
+    "developer_comment": "Collision dialog confirm button",
+    "string": "Continue with new account"
+  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Security"
@@ -1276,6 +1288,10 @@
     "developer_comment": "Add emails description",
     "string": "You can connect one or more email addresses to your eduID."
   },
+  "Ol8hg0": {
+    "developer_comment": "signup step4",
+    "string": "Sign-in method"
+  },
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Add a name for your security key"
@@ -1459,6 +1475,14 @@
     "developer_comment": "Security zone username and Password heading",
     "string": "Re-authentication: with Password"
   },
+  "RivelY": {
+    "developer_comment": "signup step1",
+    "string": "Registration method"
+  },
+  "RlUiV4": {
+    "developer_comment": "Collision dialog heading",
+    "string": "Identity already registered"
+  },
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
     "string": "Summary of how eduID treats your information according to the policy:"
@@ -1591,6 +1615,10 @@
   "UKNEuN": {
     "developer_comment": "Signup with email explanation",
     "string": "Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and verify your identity afterwards."
+  },
+  "UNjxGI": {
+    "developer_comment": "signup step5",
+    "string": "Completed"
   },
   "URSU0W": {
     "developer_comment": "security lead title",
@@ -3257,6 +3285,10 @@
   "qWNsqy": {
     "developer_comment": "verify later link",
     "string": "Not now"
+  },
+  "qWdOZk": {
+    "developer_comment": "signup step3",
+    "string": "Verify email address"
   },
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
