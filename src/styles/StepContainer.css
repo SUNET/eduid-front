@@ -133,7 +133,7 @@
 
       &.completed .step-number {
         background-color: #cde7d7;
-        color: var(--body-txt);
+        color: #161616;
       }
 
       &.active .step-number {
