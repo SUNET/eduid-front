@@ -94,6 +94,11 @@ html.dark {
     .step-indicator .step-item:not(.active, .completed) .step-number {
       background-color: var(--contrast-color);
     }
+
+    .step-indicator .step-item.completed .step-number {
+      background-color: #cde7d7;
+      color: var(--body-txt);
+    }
   }
 
   button.secondary,
