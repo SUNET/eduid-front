@@ -385,6 +385,10 @@
     "developer_comment": "method eidas - heading",
     "string": "Om du är EU-medborgare och inte har ett svenskt personnummer"
   },
+  "5EYwc9": {
+    "developer_comment": "Collision dialog description",
+    "string": "Den här identiteten är redan förknippad med ett eduID-konto. Vill du ändå fortsätta skapa ett nytt konto med den? Då flyttas din verifierade identitet till det nya kontot."
+  },
   "5JZxXb": {
     "developer_comment": "Alternative signup option",
     "string": "Du kan även lägga till ett lösenord"
@@ -522,6 +526,10 @@
   "8E0uP1": {
     "developer_comment": "Change password set new password success lead",
     "string": "Du har uppdaterat ditt lösenord. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning."
+  },
+  "8FHpO3": {
+    "developer_comment": "signup step2",
+    "string": "Bekräfta/Godkänn"
   },
   "8FSnax": {
     "developer_comment": "MFA as the first step of login, toggle off",
@@ -1041,6 +1049,10 @@
     "developer_comment": "login eduid - passkey list item 3",
     "string": "Följ instruktionerna; t.ex. för ansiktsigenkänning, fingeravtryck eller ange PIN-kod. (eduID har inte tillgång till dessa uppgifter då passkeys sparas lokalt på din egen enhet eller lösenordshanterare.)"
   },
+  "K6IaBA": {
+    "developer_comment": "Collision dialog confirm button",
+    "string": "Fortsätt med nytt konto"
+  },
   "KBCDxK": {
     "developer_comment": "recommendations security link",
     "string": "Säkerhet"
@@ -1276,6 +1288,10 @@
     "developer_comment": "Add emails description",
     "string": "Du kan koppla en eller flera e-postadresser till ditt eduID."
   },
+  "Ol8hg0": {
+    "developer_comment": "signup step4",
+    "string": "Inloggningsmetod"
+  },
   "OpSCLL": {
     "developer_comment": "security webauthn describe title",
     "string": "Ge ett namn till din säkerhetsnyckel"
@@ -1459,6 +1475,14 @@
     "developer_comment": "Security zone username and Password heading",
     "string": "Återautentisering: med lösenord"
   },
+  "RivelY": {
+    "developer_comment": "signup step1",
+    "string": "Registreringsmetod"
+  },
+  "RlUiV4": {
+    "developer_comment": "Collision dialog heading",
+    "string": "Identitet redan bekräftad"
+  },
   "Rnhn/Y": {
     "developer_comment": "privacy policy - list definition",
     "string": "Sammanfattning av hur eduID behandlar dina personuppgifter enligt policyn:"
@@ -1591,6 +1615,10 @@
   "UKNEuN": {
     "developer_comment": "Signup with email explanation",
     "string": "Ange en epostadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit. När du har skapat ett eduID kan du logga in och verifiera din identitet i efterhand."
+  },
+  "UNjxGI": {
+    "developer_comment": "signup step5",
+    "string": "Slutfört"
   },
   "URSU0W": {
     "developer_comment": "security lead title",
@@ -3257,6 +3285,10 @@
   "qWNsqy": {
     "developer_comment": "verify later link",
     "string": "Inte nu"
+  },
+  "qWdOZk": {
+    "developer_comment": "signup step3",
+    "string": "Verifiera e-post adress"
   },
   "qYvm5T": {
     "developer_comment": "delete.remove_security_key_modal_text",
