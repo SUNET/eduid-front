@@ -17,7 +17,7 @@ import { SignupUserCreated } from "./SignupUserCreated";
 export function SignupApp(): React.JSX.Element {
   const next_page = useAppSelector((state) => state.signup.next_page);
   const dispatch = useAppDispatch();
-  console.log("hhhh");
+
   useEffect(() => {
     if (!next_page) {
       dispatch(signupSlice.actions.setNextPage("SIGNUP_START"));
