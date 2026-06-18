@@ -93,11 +93,11 @@ export function SignupCredentials(): React.ReactElement | null {
   const dispatch = useAppDispatch();
   const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
 
-  const passwordRequirement: PasswordRequirement = !webauthnRegistered
-    ? "default"
-    : webauthnIsDiscoverable
+  const passwordRequirement: PasswordRequirement = webauthnRegistered
+    ? webauthnIsDiscoverable
       ? "optional"
-      : "required";
+      : "required"
+    : "default";
 
   useEffect(() => {
     if (!signupState?.credentials.generated_password) {
