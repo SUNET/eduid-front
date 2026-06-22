@@ -327,7 +327,7 @@ test("continue with external MFA option", async () => {
 
   await user.click(continueButton);
   await waitFor(() => {
-    expect(screen.getByText(/Accept Terms of Use/)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /Confirm\/Accept/ })).toBeInTheDocument();
   });
 });
 
