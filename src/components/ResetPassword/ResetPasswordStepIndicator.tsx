@@ -6,7 +6,7 @@ const RESETPW_LABELS = [
   <FormattedMessage key="step2" description="resetpw step2" defaultMessage="Captcha" />,
   <FormattedMessage key="step3" description="resetpw step3" defaultMessage="Verify email address" />,
   <FormattedMessage key="step4" description="resetpw step4" defaultMessage="Verification method" />,
-  <FormattedMessage key="step5" description="resetpw step5" defaultMessage="Add password" />,
+  <FormattedMessage key="step5" description="resetpw step5" defaultMessage="Set a password" />,
   <FormattedMessage key="step6" description="resetpw step6" defaultMessage="Completed" />,
 ];
 
