@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 /**
  * Render the extra security options, security key, Freja eID and phone verification
@@ -86,6 +87,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
+      <ResetPasswordStepIndicator currentStep={4} />
     </div>
   );
 }

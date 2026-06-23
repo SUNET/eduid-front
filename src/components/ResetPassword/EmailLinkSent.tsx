@@ -6,6 +6,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
@@ -90,6 +91,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
         </ResponseCodeForm>
       </div>
+      <ResetPasswordStepIndicator currentStep={3} />
     </div>
   );
 }

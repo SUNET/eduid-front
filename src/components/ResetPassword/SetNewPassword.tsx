@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 export function SetNewPassword(): React.JSX.Element | null {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
@@ -136,6 +137,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                   handleSubmit={submitNewPassword}
                 />
               )}
+              <ResetPasswordStepIndicator currentStep={5} />
             </div>
           </Splash>
         );
@@ -184,6 +186,7 @@ export function ResetPasswordSuccess(): React.JSX.Element {
           </EduIDButton>
         </div>
       </form>
+      <ResetPasswordStepIndicator currentStep={5} />
     </div>
   );
 }

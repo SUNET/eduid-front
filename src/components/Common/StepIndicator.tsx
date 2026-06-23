@@ -10,7 +10,7 @@ export function StepIndicator({ currentStep, totalSteps, labels }: Readonly<Step
   return (
     <Fragment>
       <hr className="border-line border-line-lesser" />
-      <section className="step-indicator">
+      <section className={`step-indicator steps-${totalSteps}`}>
         {Array.from({ length: totalSteps }, (_, i) => {
           const step = i + 1;
           let className = "step-item";
