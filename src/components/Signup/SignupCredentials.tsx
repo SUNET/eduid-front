@@ -19,17 +19,26 @@ import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
 
-const PasswordSection = (props: { optional: boolean }) => {
+type PasswordRequirement = "default" | "optional" | "required";
+
+const PasswordSection = (props: { requirement: PasswordRequirement }) => {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   return (
     <Fragment>
       <div className="or-container">
         <div className="line"></div>
         <span>
-          {props.optional ? (
-            <FormattedMessage defaultMessage="You can also add a password" description="Alternative signup option" />
-          ) : (
-            <FormattedMessage defaultMessage="or register a password" description="Alternative signup option" />
+          {props.requirement === "default" && (
+            <FormattedMessage defaultMessage="or use a password instead" description="Default signup option" />
+          )}
+          {props.requirement === "optional" && (
+            <FormattedMessage defaultMessage="you can also add a password" description="Alternative signup option" />
+          )}
+          {props.requirement === "required" && (
+            <FormattedMessage
+              defaultMessage="a password is required for this key"
+              description="Required password option"
+            />
           )}
         </span>
         <div className="line"></div>
@@ -83,6 +92,18 @@ export function SignupCredentials(): React.ReactElement | null {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
+
+  const getPasswordRequirement = (): PasswordRequirement => {
+    if (!webauthnRegistered) {
+      return "default";
+    }
+    if (webauthnIsDiscoverable) {
+      return "optional";
+    }
+    return "required";
+  };
+
+  const passwordRequirement = getPasswordRequirement();
 
   useEffect(() => {
     if (!signupState?.credentials.generated_password) {
@@ -162,7 +183,7 @@ export function SignupCredentials(): React.ReactElement | null {
           {webauthnRegistered && !webauthnIsDiscoverable ? (
             <p>
               <FormattedMessage
-                defaultMessage="A password is required to sign in with this key."
+                defaultMessage="A security key has been registered. This type of key also requires a password to sign in."
                 description="non-discoverable key needs password"
               />
             </p>
@@ -275,7 +296,7 @@ export function SignupCredentials(): React.ReactElement | null {
           </Fragment>
         )}
       </section>
-      <PasswordSection optional={webauthnIsDiscoverable && webauthnRegistered} />
+      <PasswordSection requirement={passwordRequirement} />
       <WebauthnDescriptionModal
         showModal={showSecurityKeyNameModal}
         closeModal={handleStopAskingWebauthnDescription}
