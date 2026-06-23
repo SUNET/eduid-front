@@ -186,7 +186,7 @@ export function ResetPasswordSuccess(): React.JSX.Element {
           </EduIDButton>
         </div>
       </form>
-      <ResetPasswordStepIndicator currentStep={5} />
+      <ResetPasswordStepIndicator currentStep={6} />
     </div>
   );
 }
