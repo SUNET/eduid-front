@@ -174,10 +174,6 @@
     "developer_comment": "login button",
     "string": "log in"
   },
-  "1EvpJi": {
-    "developer_comment": "non-discoverable key needs password",
-    "string": "A password is required to sign in with this key."
-  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "attempts to conceal their user identity"
@@ -388,10 +384,6 @@
   "5EYwc9": {
     "developer_comment": "Collision dialog description",
     "string": "This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
-  },
-  "5JZxXb": {
-    "developer_comment": "Alternative signup option",
-    "string": "You can also add a password"
   },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
@@ -946,6 +938,10 @@
     "developer_comment": "use freja - list item 2",
     "string": "if you have a valid Swedish passport you can complete the verification of your account in the app using your device camera, or bring a valid ID (including drivers license or ID card) to the nearest ATG agent authorised to verify your identity,"
   },
+  "H7vr80": {
+    "developer_comment": "Default signup option",
+    "string": "or use a password instead"
+  },
   "HQ+JLY": {
     "developer_comment": "Display name select paragraph",
     "string": "If your identity is verified you can choose which of your first names from the population register to use as your display name for some services."
@@ -1171,6 +1167,10 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Language"
+  },
+  "MP/fFv": {
+    "developer_comment": "non-discoverable key needs password",
+    "string": "A security key has been registered. This type of key also requires a password to sign in."
   },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
@@ -1944,6 +1944,10 @@
     "developer_comment": "Signup credentials button",
     "string": "Retry"
   },
+  "a0z9Rh": {
+    "developer_comment": "Required password option",
+    "string": "a password is required for this key"
+  },
   "aCGvng": {
     "developer_comment": "Signup register credentials",
     "string": "Create eduID: Register your sign-in method"
@@ -2239,10 +2243,6 @@
   },
   "document title Start": {
     "string": "Start | eduID"
-  },
-  "dr5ljV": {
-    "developer_comment": "Alternative signup option",
-    "string": "or register a password"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -3935,5 +3935,9 @@
   "zvu5VP": {
     "developer_comment": "how to contact support - list item 2",
     "string": "Don't include confidential or sensitive information such as your personal identity number in the email!"
+  },
+  "zySiqz": {
+    "developer_comment": "Alternative signup option",
+    "string": "you can also add a password"
   }
 }
