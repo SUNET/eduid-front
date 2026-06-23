@@ -174,10 +174,6 @@
     "developer_comment": "login button",
     "string": "Logga in"
   },
-  "1EvpJi": {
-    "developer_comment": "non-discoverable key needs password",
-    "string": "Ett lösenord krävs för att logga in med denna nyckel."
-  },
   "1IV4F9": {
     "developer_comment": "ToU second paragraph",
     "string": "försöker dölja sin användaridentitet"
@@ -388,10 +384,6 @@
   "5EYwc9": {
     "developer_comment": "Collision dialog description",
     "string": "Den här identiteten är redan förknippad med ett eduID-konto. Vill du ändå fortsätta skapa ett nytt konto med den? Då flyttas din verifierade identitet till det nya kontot."
-  },
-  "5JZxXb": {
-    "developer_comment": "Alternative signup option",
-    "string": "Du kan även lägga till ett lösenord"
   },
   "5YRJfk": {
     "developer_comment": "accordion item eidas additional info",
@@ -946,6 +938,10 @@
     "developer_comment": "use freja - list item 2",
     "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
   },
+  "H7vr80": {
+    "developer_comment": "Default signup option",
+    "string": "eller använd ett lösenord istället"
+  },
   "HQ+JLY": {
     "developer_comment": "Display name select paragraph",
     "string": "Om din identitet är bekräftad kan du välja vilket av dina förnamn från folkbokföringen som ska användas som visningsnamn för vissa tjänster."
@@ -1171,6 +1167,10 @@
   "MGhoaU": {
     "developer_comment": "Language",
     "string": "Språk"
+  },
+  "MP/fFv": {
+    "developer_comment": "non-discoverable key needs password",
+    "string": "En säkerhetsnyckel har registrerats. Den här typen av nyckel kräver även ett lösenord för att logga in."
   },
   "Mazoar": {
     "developer_comment": "account eduid - list item 0",
@@ -1944,6 +1944,10 @@
     "developer_comment": "Signup credentials button",
     "string": "Försök igen"
   },
+  "a0z9Rh": {
+    "developer_comment": "Required password option",
+    "string": "ett lösenord krävs för den här nyckeln"
+  },
   "aCGvng": {
     "developer_comment": "Signup register credentials",
     "string": "Skapa eduID: Lägg till inloggningsmetod"
@@ -2239,10 +2243,6 @@
   },
   "document title Start": {
     "string": "Start | eduID"
-  },
-  "dr5ljV": {
-    "developer_comment": "Alternative signup option",
-    "string": "eller registrera ett lösenord"
   },
   "dwXdVR": {
     "developer_comment": "when use eduID - heading",
@@ -3935,5 +3935,9 @@
   "zvu5VP": {
     "developer_comment": "how to contact support - list item 2",
     "string": "Inkludera inte konfidentiell eller skyddsvärd information som t.ex. ditt personnummer!"
+  },
+  "zySiqz": {
+    "developer_comment": "Alternative signup option",
+    "string": "du kan också lägga till ett lösenord"
   }
 }
