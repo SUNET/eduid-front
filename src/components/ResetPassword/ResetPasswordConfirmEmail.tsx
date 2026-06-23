@@ -24,7 +24,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -62,6 +62,6 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

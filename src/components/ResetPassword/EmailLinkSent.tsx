@@ -48,7 +48,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -90,6 +90,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
         </ResponseCodeForm>
       </div>
-    </React.Fragment>
+    </div>
   );
 }

@@ -20,7 +20,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -43,6 +43,6 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         disabled={email_status === "requested"}
         defaultEmail={email_address}
       />
-    </React.Fragment>
+    </div>
   );
 }

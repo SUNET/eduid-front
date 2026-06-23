@@ -41,7 +41,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -86,6 +86,6 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
-    </React.Fragment>
+    </div>
   );
 }
