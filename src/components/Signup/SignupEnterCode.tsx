@@ -1,4 +1,5 @@
 import { skipToken } from "@reduxjs/toolkit/query";
+import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import EduIDButton from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
@@ -18,6 +19,7 @@ export function SignupEnterCode(): React.JSX.Element {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
+  const [fetchLogout] = loginApi.useLazyFetchLogoutQuery();
 
   const getInitialExpiredState = (): boolean => {
     if (signupState?.email?.expires_time_left && signupState.email.expires_time_left > 0) {
@@ -60,6 +62,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
+    fetchLogout({});
     dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 
