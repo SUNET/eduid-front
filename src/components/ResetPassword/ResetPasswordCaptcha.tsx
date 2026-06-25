@@ -2,10 +2,11 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 export function ResetPasswordCaptcha(): React.JSX.Element | null {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
@@ -48,25 +49,28 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   return (
-    <Fragment>
-      <h1>
-        <FormattedMessage
-          defaultMessage="Reset Password: Confirm that you are a human."
-          description="Reset password captcha"
-        />
-      </h1>
-
-      <div className="lead">
-        <p>
+    <div className="step-container">
+      <section className="intro">
+        <h1>
           <FormattedMessage
-            defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
-            description="Reset password captcha lead text"
+            defaultMessage="Reset Password: Confirm that you are a human."
+            description="Reset password captcha"
           />
-        </p>
-      </div>
+        </h1>
 
-      <InternalCaptcha {...args} getCaptcha={getCaptcha} />
-    </Fragment>
+        <div className="lead">
+          <p>
+            <FormattedMessage
+              defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
+              description="Reset password captcha lead text"
+            />
+          </p>
+        </div>
+
+        <InternalCaptcha {...args} getCaptcha={getCaptcha} />
+      </section>
+      <ResetPasswordStepIndicator currentStep={2} />
+    </div>
   );
 }
 

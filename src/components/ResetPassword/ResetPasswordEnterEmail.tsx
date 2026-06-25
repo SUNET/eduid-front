@@ -5,6 +5,7 @@ import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 export function ResetPasswordEnterEmail(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
@@ -20,7 +21,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -43,6 +44,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         disabled={email_status === "requested"}
         defaultEmail={email_address}
       />
-    </React.Fragment>
+      <ResetPasswordStepIndicator currentStep={1} />
+    </div>
   );
 }

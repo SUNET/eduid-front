@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 export function SetNewPassword(): React.JSX.Element | null {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
@@ -84,49 +85,60 @@ export function SetNewPassword(): React.JSX.Element | null {
         const child_props: ChangePasswordChildFormProps = { formProps };
         return (
           <Splash showChildren={Boolean(suggested)}>
-            {renderSuggested ? (
-              <section className="intro">
-                <h1>
-                  <FormattedMessage
-                    description="Reset Password - headline"
-                    defaultMessage="Reset Password: Suggested password"
-                  />
-                </h1>
-                <div className="lead">
-                  <p>
+            <div className="step-container">
+              {renderSuggested ? (
+                <section className="intro">
+                  <h1>
                     <FormattedMessage
-                      description="Generated password - lead"
-                      defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
+                      description="Reset Password - headline"
+                      defaultMessage="Reset Password: Suggested password"
+                    />
+                  </h1>
+                  <div className="lead">
+                    <p>
+                      <FormattedMessage
+                        description="Generated password - lead"
+                        defaultMessage={`A strong password has been generated for you. To proceed you will need to copy 
                         the password in to the Repeat new password field and click the Save button to store it for future use.`}
-                    />
-                  </p>
-                </div>
-              </section>
-            ) : (
-              <section className="intro">
-                <h1>
-                  <FormattedMessage
-                    description="Reset Password - headline"
-                    defaultMessage="Reset Password: Set your own password"
-                  />
-                </h1>
-                <div className="lead">
-                  <p>
+                      />
+                    </p>
+                  </div>
+                </section>
+              ) : (
+                <section className="intro">
+                  <h1>
                     <FormattedMessage
-                      description="Strong password - lead"
-                      defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
-                        accounts safe.`}
+                      description="Reset Password - headline"
+                      defaultMessage="Reset Password: Set your own password"
                     />
-                  </p>
-                </div>
-              </section>
-            )}
-            <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
-            {renderSuggested ? (
-              <ChangePasswordSuggestedForm {...child_props} handleCancel={handleCancel} suggestedPassword={suggested} />
-            ) : (
-              <ChangePasswordCustomForm {...child_props} handleCancel={handleCancel} handleSubmit={submitNewPassword} />
-            )}
+                  </h1>
+                  <div className="lead">
+                    <p>
+                      <FormattedMessage
+                        description="Strong password - lead"
+                        defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
+                        accounts safe.`}
+                      />
+                    </p>
+                  </div>
+                </section>
+              )}
+              <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
+              {renderSuggested ? (
+                <ChangePasswordSuggestedForm
+                  {...child_props}
+                  handleCancel={handleCancel}
+                  suggestedPassword={suggested}
+                />
+              ) : (
+                <ChangePasswordCustomForm
+                  {...child_props}
+                  handleCancel={handleCancel}
+                  handleSubmit={submitNewPassword}
+                />
+              )}
+              <ResetPasswordStepIndicator currentStep={5} />
+            </div>
           </Splash>
         );
       }}
@@ -141,37 +153,40 @@ export function ResetPasswordSuccess(): React.JSX.Element {
   const suggested = useAppSelector((state) => state.resetPassword.suggested);
 
   return (
-    <form method="GET" action={dashboard_link}>
-      <section className="intro">
-        <h1>
-          <FormattedMessage
-            defaultMessage="Reset Password: Completed"
-            description="Reset Password set new password success heading"
-          />
-        </h1>
-        <div className="lead">
-          <p>
+    <div className="step-container">
+      <form method="GET" action={dashboard_link}>
+        <section className="intro">
+          <h1>
             <FormattedMessage
-              defaultMessage={`You have successfully updated your password. Make sure to store your password securely for future use. 
-                Once you've logged in it is possible to change your password.`}
-              description="Reset Password set new password success lead"
+              defaultMessage="Reset Password: Completed"
+              description="Reset Password set new password success heading"
             />
-          </p>
-        </div>
-      </section>
-      {suggested ? (
-        <ConfirmUserInfo email_address={email_address ?? ""} new_password={new_password ?? ""} />
-      ) : (
-        <div className="email-display">
-          <EmailFieldset email={email_address} />
-        </div>
-      )}
+          </h1>
+          <div className="lead">
+            <p>
+              <FormattedMessage
+                defaultMessage={`You have successfully updated your password. Make sure to store your password securely for future use. 
+                Once you've logged in it is possible to change your password.`}
+                description="Reset Password set new password success lead"
+              />
+            </p>
+          </div>
+        </section>
+        {suggested ? (
+          <ConfirmUserInfo email_address={email_address ?? ""} new_password={new_password ?? ""} />
+        ) : (
+          <div className="email-display">
+            <EmailFieldset email={email_address} />
+          </div>
+        )}
 
-      <div className="buttons">
-        <EduIDButton id="reset-password-finished" buttonstyle="link normal-case" type="submit">
-          <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
-        </EduIDButton>
-      </div>
-    </form>
+        <div className="buttons">
+          <EduIDButton id="reset-password-finished" buttonstyle="link normal-case" type="submit">
+            <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
+          </EduIDButton>
+        </div>
+      </form>
+      <ResetPasswordStepIndicator currentStep={6} />
+    </div>
   );
 }
