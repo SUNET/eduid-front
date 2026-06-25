@@ -10,12 +10,8 @@ import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
 
 function isValidJson(jsonString: string): boolean {
-  try {
-    JSON.parse(jsonString);
-    return true;
-  } catch {
-    return false;
-  }
+  JSON.parse(jsonString);
+  return true;
 }
 
 export function AuthenticateModal() {
