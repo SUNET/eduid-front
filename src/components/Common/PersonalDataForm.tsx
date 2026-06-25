@@ -3,7 +3,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons/faRedo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import personalDataApi, { UserNameRequest } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
-import NameDisplay from "components/Dashboard/NameDisplay";
+import { NameDisplay } from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppSelector } from "eduid-hooks";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
@@ -25,7 +25,7 @@ interface SelectedNameValues {
   value: string;
 }
 
-export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>) {
+export function PersonalDataForm(props: Readonly<PersonalDataFormProps>) {
   const { labels } = props;
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);

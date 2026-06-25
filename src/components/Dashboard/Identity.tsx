@@ -9,7 +9,7 @@ import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
 import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
-import LetterProofing from "components/Dashboard/LetterProofing";
+import { LetterProofing } from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useCallback, useEffect, useState } from "react";

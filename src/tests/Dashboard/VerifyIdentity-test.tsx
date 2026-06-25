@@ -1,5 +1,5 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import { Identity as VerifyIdentity } from "components/Dashboard/Identity";
+import { Identity } from "components/Dashboard/Identity";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
@@ -16,7 +16,7 @@ async function linkToIdentitySettings() {
 }
 
 test("renders verifyIdentity, non verified user", async () => {
-  render(<VerifyIdentity />);
+  render(<Identity />);
   expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();
   // show two options for verification, swedish id and eu id
   const swedishAccordion = screen.getByText("Swedish personal ID or coordination number");
@@ -43,7 +43,7 @@ test("renders verifyIdentity, non verified user", async () => {
 });
 
 test("renders verifyIdentity as expected, verified user with swedish person number", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {
@@ -61,7 +61,7 @@ test("renders verifyIdentity as expected, verified user with swedish person numb
 });
 
 test("renders verifyIdentity as expected, verified with eidas", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {
@@ -90,14 +90,14 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
 });
 
 test("renders the identity page title", async () => {
-  render(<VerifyIdentity />);
+  render(<Identity />);
   await linkToIdentitySettings();
 
   expect(document.title).toContain("Identity");
 });
 
 test("renders the wizard link that can go back to the start and continue to the security page", async () => {
-  render(<VerifyIdentity />);
+  render(<Identity />);
   await linkToIdentitySettings();
 
   const continueSecuritySettings = screen.getByLabelText(/To Security settings/i);
@@ -109,7 +109,7 @@ test("renders the wizard link that can go back to the start and continue to the 
 });
 
 test("renders the edit view, then be able to change names", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       ...defaultDashboardTestState,
       personal_data: {

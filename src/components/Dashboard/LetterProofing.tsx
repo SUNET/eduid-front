@@ -24,7 +24,7 @@ function formatDateFromBackend(dateFromBackend: string) {
   );
 }
 
-export default function LetterProofing(props: Readonly<LetterProofingProps>): React.JSX.Element {
+export function LetterProofing(props: Readonly<LetterProofingProps>): React.JSX.Element {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

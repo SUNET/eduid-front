@@ -1,9 +1,9 @@
 import { EduIDButton } from "components/Common/EduIDButton";
-import PersonalDataForm from "components/Common/PersonalDataForm";
+import { PersonalDataForm } from "components/Common/PersonalDataForm";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import NameDisplay from "./NameDisplay";
+import { NameDisplay } from "./NameDisplay";
 
 export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields

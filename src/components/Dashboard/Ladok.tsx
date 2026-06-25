@@ -10,7 +10,7 @@ interface SelectedUniProps {
   value: string;
 }
 
-const LadokContainer = (): React.JSX.Element => {
+export const LadokContainer = (): React.JSX.Element => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
@@ -209,5 +209,3 @@ const LadokLinkStatus = (): React.JSX.Element => {
     </React.Fragment>
   );
 };
-
-export default LadokContainer;
