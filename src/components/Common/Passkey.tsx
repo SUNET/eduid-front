@@ -42,6 +42,8 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
           await props.onSuccess(response.data);
         }
       }
+    } catch (error) {
+      console.debug("Passkey error:", error);
     } finally {
       setActive(false);
       props.onComplete?.();

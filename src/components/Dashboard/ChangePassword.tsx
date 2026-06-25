@@ -37,15 +37,11 @@ export function ChangePassword() {
   const [changePassword] = securityApi.useLazyChangePasswordQuery();
 
   const handleSuggestedPassword = useCallback(async () => {
-    try {
-      const response = await fetchSuggestedPassword();
-      if (isMounted.current) {
-        if (response.isSuccess) {
-          navigate(CHPASS_BASE_PATH);
-        }
+    const response = await fetchSuggestedPassword();
+    if (isMounted.current) {
+      if (response.isSuccess) {
+        navigate(CHPASS_BASE_PATH);
       }
-    } catch (error) {
-      console.error("Error handleSuggestedPassword:", error);
     }
   }, [fetchSuggestedPassword, navigate]);
 

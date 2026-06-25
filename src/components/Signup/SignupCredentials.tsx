@@ -118,21 +118,17 @@ export function SignupCredentials(): React.ReactElement | null {
   const handleStartWebauthnRegistration = useCallback(
     (values: { [key: string]: string }) => {
       (async () => {
-        try {
-          const description_value = values["describe-webauthn-token-modal"];
-          const description = description_value?.trim();
-          setShowSecurityKeyNameModal(false);
-          if (!registrationData) return;
-          const createResponse = await createCredential(registrationData);
-          if (createResponse.isSuccess) {
-            signupRegisterWebauthn({
-              webauthn_attestation: createResponse.data,
-              description,
-              clientExtensionResults: createResponse.data?.clientExtensionResults,
-            });
-          }
-        } catch (error) {
-          console.error("Error creating credentials:", error);
+        const description_value = values["describe-webauthn-token-modal"];
+        const description = description_value?.trim();
+        setShowSecurityKeyNameModal(false);
+        if (!registrationData) return;
+        const createResponse = await createCredential(registrationData);
+        if (createResponse.isSuccess) {
+          signupRegisterWebauthn({
+            webauthn_attestation: createResponse.data,
+            description,
+            clientExtensionResults: createResponse.data?.clientExtensionResults,
+          });
         }
       })();
     },
@@ -141,19 +137,15 @@ export function SignupCredentials(): React.ReactElement | null {
 
   const finishSignup = useCallback(() => {
     (async () => {
-      try {
-        if (webauthnRegistered) {
-          const response = await createUser({
-            use_webauthn: webauthnRegistered,
-          });
-          if (response.isSuccess) {
-            dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-          } else if (response.error) {
-            handleCreateUserError(response.error, fetchLogout, dispatch);
-          }
+      if (webauthnRegistered) {
+        const response = await createUser({
+          use_webauthn: webauthnRegistered,
+        });
+        if (response.isSuccess) {
+          dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+        } else if (response.error) {
+          handleCreateUserError(response.error, fetchLogout, dispatch);
         }
-      } catch (error) {
-        console.error("Error finishing signup:", error);
       }
     })();
   }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
