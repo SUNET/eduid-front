@@ -1,10 +1,10 @@
 import { eidasApi } from "apis/eduidEidas";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-function Eidas(): React.JSX.Element {
+export function Eidas(): React.JSX.Element {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
@@ -102,5 +102,3 @@ function Eidas(): React.JSX.Element {
     </Fragment>
   );
 }
-
-export default Eidas;

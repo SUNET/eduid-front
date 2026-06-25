@@ -1,6 +1,6 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import NewPasswordInput from "components/Common/NewPasswordInput";
-import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
+import { PasswordStrengthMeter } from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { useCallback, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -33,7 +33,7 @@ function validateNewPassword(values: { custom?: string; repeat?: string }) {
   return errors;
 }
 
-export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordCustomFormProps>) {
+export function ChangePasswordCustomForm(props: Readonly<ChangePasswordCustomFormProps>) {
   const intl = useIntl();
   const [pwScore, setPwScore] = useState(0);
 

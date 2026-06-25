@@ -1,6 +1,6 @@
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
-import EduIDButton from "components/Common/EduIDButton";
-import Splash from "components/Common/Splash";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { Splash } from "components/Common/Splash";
 import { ACCOUNT_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { useMemo } from "react";

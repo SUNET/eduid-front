@@ -2,8 +2,8 @@ import { GetCaptchaResponse } from "apis/eduidSignup";
 import React from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import CustomInput from "./CustomInput";
-import EduIDButton from "./EduIDButton";
+import { CustomInput } from "./CustomInput";
+import { EduIDButton } from "./EduIDButton";
 
 interface ConfirmModalProps {
   id: string;
@@ -22,7 +22,7 @@ interface ConfirmModalProps {
   submitButtonText?: React.ReactNode;
 }
 
-function ConfirmModal(props: Readonly<ConfirmModalProps>): React.JSX.Element {
+export function ConfirmModal(props: Readonly<ConfirmModalProps>): React.JSX.Element {
   function validate(value: string) {
     if (!value?.trim()) {
       return "required";
@@ -112,5 +112,3 @@ function ConfirmModal(props: Readonly<ConfirmModalProps>): React.JSX.Element {
     />
   );
 }
-
-export default ConfirmModal;

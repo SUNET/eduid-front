@@ -1,5 +1,5 @@
 import { bankIDApi } from "apis/eduidBankid";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { Fragment, useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 

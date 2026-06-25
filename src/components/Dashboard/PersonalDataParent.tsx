@@ -1,4 +1,4 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import PersonalDataForm from "components/Common/PersonalDataForm";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
@@ -46,7 +46,7 @@ function RenderPersonalData(props: Readonly<{ labels: NameLabels }>) {
   );
 }
 
-function PersonalDataParent() {
+export function PersonalDataParent() {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
@@ -107,5 +107,3 @@ function PersonalDataParent() {
     </article>
   );
 }
-
-export default PersonalDataParent;

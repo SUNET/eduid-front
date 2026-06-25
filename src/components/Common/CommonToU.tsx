@@ -1,7 +1,7 @@
 import { ToUs } from "helperFunctions/ToUs";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface CommonToUProps {
   version: string;

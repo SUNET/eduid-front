@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { GetCaptchaResponse } from "apis/eduidSignup";
-import CustomInput from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { CustomInput } from "components/Common/CustomInput";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { FormApi } from "final-form";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";

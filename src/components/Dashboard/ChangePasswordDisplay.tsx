@@ -1,12 +1,12 @@
 import securityApi from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { CHPASS_BASE_PATH } from "components/IndexMain";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
-function ChangePasswordDisplay() {
+export function ChangePasswordDisplay() {
   const navigate = useNavigate();
   const [fetchSuggestedPassword] = securityApi.useLazyFetchSuggestedPasswordQuery();
 
@@ -37,5 +37,3 @@ function ChangePasswordDisplay() {
     </article>
   );
 }
-
-export default ChangePasswordDisplay;

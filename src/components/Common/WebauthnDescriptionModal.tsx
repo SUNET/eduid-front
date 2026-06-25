@@ -1,4 +1,4 @@
-import ConfirmModal from "components/Common/ConfirmModal";
+import { ConfirmModal } from "components/Common/ConfirmModal";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";

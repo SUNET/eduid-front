@@ -2,7 +2,7 @@ import React from "react";
 import { FormattedMessage, IntlShape, useIntl } from "react-intl";
 import { useTheme } from "./ThemeContext";
 
-const ThemeToggle: React.FC = () => {
+export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const intl = useIntl();
   const label = getLabel(intl);
@@ -40,5 +40,3 @@ const ThemeToggle: React.FC = () => {
     }
   }
 };
-
-export default ThemeToggle;

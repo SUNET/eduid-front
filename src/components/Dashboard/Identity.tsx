@@ -3,12 +3,12 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { ActionStatus, securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
-import EduIDButton from "components/Common/EduIDButton";
-import NinDisplay from "components/Common/NinDisplay";
-import NotificationModal from "components/Common/NotificationModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NinDisplay } from "components/Common/NinDisplay";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
-import FrejaeID from "components/Dashboard/Eidas";
+import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
 import LetterProofing from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -23,12 +23,12 @@ import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
-import PersonalDataParent from "./PersonalDataParent";
+import { PersonalDataParent } from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
-function Identity(): React.JSX.Element | null {
+export function Identity(): React.JSX.Element | null {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
@@ -495,5 +495,3 @@ function AccordionItemWorld(): React.JSX.Element | null {
     </AccordionItemTemplate>
   );
 }
-
-export default Identity;

@@ -1,4 +1,4 @@
-import Eidas from "components/Dashboard/Eidas";
+import { Eidas } from "components/Dashboard/Eidas";
 import { act } from "react";
 import { render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
 

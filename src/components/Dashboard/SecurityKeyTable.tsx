@@ -1,8 +1,8 @@
 import securityApi, { ActionStatus, CredentialType } from "apis/eduidSecurity";
 import { AuthMethod } from "apis/helpers/types";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthentication";
-import NotificationModal from "components/Common/NotificationModal";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";

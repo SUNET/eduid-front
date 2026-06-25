@@ -1,6 +1,6 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -55,5 +55,3 @@ export function NinDisplay(props: Readonly<NinDisplayProps>) {
     </div>
   );
 }
-
-export default NinDisplay;

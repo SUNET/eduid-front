@@ -11,8 +11,8 @@ import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import CustomInput from "./CustomInput";
-import EduIDButton from "./EduIDButton";
+import { CustomInput } from "./CustomInput";
+import { EduIDButton } from "./EduIDButton";
 
 interface PersonalDataFormProps {
   labels: NameLabels;

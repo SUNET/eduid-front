@@ -1,6 +1,5 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import VerifyIdentity from "components/Dashboard/Identity";
-import { IndexMain } from "components/IndexMain";
+import { Identity as VerifyIdentity } from "components/Dashboard/Identity";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, fireEvent, render, screen, waitFor } from "../helperFunctions/DashboardTestApp-rtl";
@@ -91,14 +90,14 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
 });
 
 test("renders the identity page title", async () => {
-  render(<IndexMain />);
+  render(<VerifyIdentity />);
   await linkToIdentitySettings();
 
   expect(document.title).toContain("Identity");
 });
 
 test("renders the wizard link that can go back to the start and continue to the security page", async () => {
-  render(<IndexMain />);
+  render(<VerifyIdentity />);
   await linkToIdentitySettings();
 
   const continueSecuritySettings = screen.getByLabelText(/To Security settings/i);
@@ -110,7 +109,7 @@ test("renders the wizard link that can go back to the start and continue to the 
 });
 
 test("renders the edit view, then be able to change names", async () => {
-  render(<IndexMain />, {
+  render(<VerifyIdentity />, {
     state: {
       ...defaultDashboardTestState,
       personal_data: {

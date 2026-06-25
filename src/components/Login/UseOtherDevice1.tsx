@@ -1,5 +1,5 @@
 import { loginApi, UseOtherDevice1ResponseWithQR } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -17,7 +17,7 @@ import { ResponseCodeForm, ResponseCodeValues } from "./ResponseCodeForm";
  * for the user to submit a "response code" in a form, to complete the login on this device.
  */
 
-function UseOtherDevice1() {
+export function UseOtherDevice1() {
   const loginRef = useAppSelector((state) => state.login.ref);
   const other_device = useAppSelector((state) => state.login.other_device1);
   const remember_me = useAppSelector((state) => state.login.remember_me);
@@ -261,4 +261,3 @@ function DeveloperInfo(props: Readonly<{ qr_url?: string }>) {
     </div>
   );
 }
-export default UseOtherDevice1;

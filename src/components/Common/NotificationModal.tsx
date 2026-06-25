@@ -1,5 +1,5 @@
 import React from "react";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface NotificationModalProps {
   id: string;
@@ -11,7 +11,7 @@ interface NotificationModalProps {
   acceptButtonText: React.ReactNode;
 }
 
-function NotificationModal(props: Readonly<NotificationModalProps>) {
+export function NotificationModal(props: Readonly<NotificationModalProps>) {
   if (!props.showModal) return null;
 
   return (
@@ -49,5 +49,3 @@ function NotificationModal(props: Readonly<NotificationModalProps>) {
     </dialog>
   );
 }
-
-export default NotificationModal;

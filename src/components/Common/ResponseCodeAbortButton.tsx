@@ -1,7 +1,7 @@
 import { ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;

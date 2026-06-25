@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Accordion } from "../Common/AccordionItemTemplate";
-import ScrollToTopButton from "../ScrollToTopButton";
+import { ScrollToTopButton } from "../ScrollToTopButton";
 import { AboutEduID } from "./AboutEduID";
 import { AboutSunet } from "./AboutSunet";
 import { AboutTermsOfUse } from "./AboutTermsOfUse";

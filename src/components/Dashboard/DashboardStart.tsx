@@ -1,5 +1,5 @@
 import { letterProofingApi } from "apis/eduidLetterProofing";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";

@@ -1,5 +1,5 @@
 import { emailApi, EmailInfo } from "apis/eduidEmail";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
 import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
@@ -85,7 +85,12 @@ function DataTableRows(props: Readonly<DataTableProps>) {
         } else valueStatus = "verified";
 
         return (
-          <tr className={`${valueName} ${valueStatus}`} data-identifier={valueName} data-object={value} key={datum.email ?? datum.number ?? i}>
+          <tr
+            className={`${valueName} ${valueStatus}`}
+            data-identifier={valueName}
+            data-object={value}
+            key={datum.email ?? datum.number ?? i}
+          >
             <td className={valueStatus}>{value}</td>
             <td className="value-status">
               <DataStatus
@@ -109,7 +114,7 @@ function DataTableRows(props: Readonly<DataTableProps>) {
   );
 }
 
-function DataTable(props: Readonly<DataTableProps>) {
+export function DataTable(props: Readonly<DataTableProps>) {
   return (
     <div className="table-responsive">
       <table className="table-form">
@@ -131,5 +136,3 @@ function DataTable(props: Readonly<DataTableProps>) {
     </div>
   );
 }
-
-export default DataTable;
