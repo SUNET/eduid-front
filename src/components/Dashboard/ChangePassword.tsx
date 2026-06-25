@@ -8,7 +8,7 @@ import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { ChangePasswordCustomForm } from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
-import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
+import { ChangePasswordSuggestedForm } from "./ChangePasswordSuggested";
 
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;

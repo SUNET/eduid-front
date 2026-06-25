@@ -6,7 +6,7 @@ import { Splash } from "components/Common/Splash";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "components/Dashboard/ChangePassword";
 import { ChangePasswordCustomForm } from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
-import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
+import { ChangePasswordSuggestedForm } from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";

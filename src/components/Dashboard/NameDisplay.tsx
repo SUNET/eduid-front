@@ -4,7 +4,7 @@ interface NameDisplayProps {
   htmlFor: string;
 }
 
-export default function NameDisplay({ label, name, htmlFor }: Readonly<NameDisplayProps>) {
+export function NameDisplay({ label, name, htmlFor }: Readonly<NameDisplayProps>) {
   return (
     <div className="profile-grid-cell">
       <span aria-label={htmlFor}>

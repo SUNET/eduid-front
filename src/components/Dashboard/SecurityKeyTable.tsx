@@ -14,7 +14,7 @@ import securityKeyGray from "../../../img/security-key-gray.svg";
 import securityKey from "../../../img/security-key.svg";
 
 import { useTheme } from "components/Common/ThemeContext";
-import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
+import { UseSecurityKeyToggle } from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
   wrapperRef: React.RefObject<HTMLElement | null>;
   handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;

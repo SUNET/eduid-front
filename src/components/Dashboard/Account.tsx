@@ -8,7 +8,7 @@ import { SECURITY_PATH } from "components/IndexMain";
 import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountLinking } from "./AccountLinking";
-import LadokContainer from "./Ladok";
+import { LadokContainer } from "./Ladok";
 
 /* The Dashboard "Account settings" tab */
 export function Account(): React.JSX.Element {

@@ -1,7 +1,7 @@
 import { loginApi } from "apis/eduidLogin";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { EduIDButton } from "components/Common/EduIDButton";
-import TextInput from "components/Common/EduIDTextInput";
+import { TextInput } from "components/Common/EduIDTextInput";
 import { PassKey } from "components/Common/Passkey";
 import { PasswordInput } from "components/Common/PasswordInput";
 import { UserNameInput } from "components/Common/UserNameInput";

@@ -1,5 +1,5 @@
 import { EduIDButton } from "components/Common/EduIDButton";
-import NewPasswordInput from "components/Common/NewPasswordInput";
+import { NewPasswordInput } from "components/Common/NewPasswordInput";
 import { PasswordStrengthMeter } from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { useCallback, useState } from "react";

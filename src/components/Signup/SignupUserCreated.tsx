@@ -7,7 +7,7 @@ import { Splash } from "components/Common/Splash";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
 import { ChangePasswordCustomForm } from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
-import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
+import { ChangePasswordSuggestedForm } from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";

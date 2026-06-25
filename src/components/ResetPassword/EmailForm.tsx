@@ -1,5 +1,5 @@
 import { EduIDButton } from "components/Common/EduIDButton";
-import EmailInput from "components/Common/EmailInput";
+import { EmailInput } from "components/Common/EmailInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";

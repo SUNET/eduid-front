@@ -18,7 +18,7 @@ interface EmailInputProps {
   "aria-errormessage"?: string;
 }
 
-export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.Element {
+export function EmailInput(props: Readonly<EmailInputProps>): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
