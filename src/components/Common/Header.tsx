@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { eduidStore } from "eduid-init-app";

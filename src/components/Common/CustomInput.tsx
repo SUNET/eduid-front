@@ -19,7 +19,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   "aria-errormessage"?: string;
 }
 
-export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+export function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>

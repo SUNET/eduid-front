@@ -1,11 +1,13 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(props: Readonly<{
-  setHasReadAnnouncement: (key: boolean) => void;
-}>): React.JSX.Element {
+export function TemporaryInfo(
+  props: Readonly<{
+    setHasReadAnnouncement: (key: boolean) => void;
+  }>,
+): React.JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {

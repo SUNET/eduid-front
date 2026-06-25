@@ -1,9 +1,9 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";

@@ -4,7 +4,7 @@ import { FormattedMessage } from "react-intl";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passkeyIcon from "../../../img/passkey.svg";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 import { useTheme } from "./ThemeContext";
 
 interface SecurityKeyProps {

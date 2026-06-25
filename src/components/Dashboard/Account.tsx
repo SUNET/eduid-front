@@ -1,8 +1,8 @@
 import { WizardLink } from "components/Common/WizardLink";
 import { AccountIdDisplay } from "components/Dashboard/AccountId";
-import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
-import DeleteAccount from "components/Dashboard/DeleteAccount";
-import Emails from "components/Dashboard/Emails";
+import { ChangePasswordDisplay } from "components/Dashboard/ChangePasswordDisplay";
+import { DeleteAccount } from "components/Dashboard/DeleteAccount";
+import { Emails } from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
 import { SECURITY_PATH } from "components/IndexMain";
 import React from "react";

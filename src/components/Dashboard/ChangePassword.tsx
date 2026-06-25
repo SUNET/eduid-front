@@ -1,12 +1,12 @@
 import securityApi from "apis/eduidSecurity";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import ChangePasswordCustomForm from "./ChangePasswordCustom";
+import { ChangePasswordCustomForm } from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
 

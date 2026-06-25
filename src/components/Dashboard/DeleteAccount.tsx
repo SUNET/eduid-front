@@ -1,11 +1,11 @@
 import securityApi from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export default function DeleteAccount(): React.JSX.Element | null {
+export function DeleteAccount(): React.JSX.Element | null {
   const [showModal, setShowModal] = useState(false);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 

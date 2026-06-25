@@ -2,7 +2,7 @@ import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface SecurityKeyProps {
   disabled?: boolean;

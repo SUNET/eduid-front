@@ -2,7 +2,7 @@ import { validateUserNameField } from "helperFunctions/validation/validateUserNa
 import React from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import CustomInput from "./CustomInput";
+import { CustomInput } from "./CustomInput";
 
 // exported for use in tests
 export const userNameInputPlaceHolder = "email or unique ID";
@@ -17,7 +17,7 @@ interface UserNameInputProps {
   onFocus?: () => void;
 }
 
-export default function UserNameInput(props: Readonly<UserNameInputProps>): React.JSX.Element {
+export function UserNameInput(props: Readonly<UserNameInputProps>): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

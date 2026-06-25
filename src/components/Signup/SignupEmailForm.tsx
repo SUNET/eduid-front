@@ -1,6 +1,6 @@
 import { signupApi } from "apis/eduidSignup";
-import CustomInput from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { CustomInput } from "components/Common/CustomInput";
+import { EduIDButton } from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { validateSignupUserInForm } from "helperFunctions/validation/validateEmail";

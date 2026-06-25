@@ -2,7 +2,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -19,7 +19,7 @@ interface UseOtherParams {
 }
 
 // This is the page rendered by the link in the QR code, so this is on device #2
-function UseOtherDevice2() {
+export function UseOtherDevice2() {
   const data = useAppSelector((state) => state.login.other_device2);
   const loginRef = useAppSelector((state) => state.login.ref);
   const base_url = useAppSelector((state) => state.config.login_service_url);
@@ -348,4 +348,3 @@ function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }
     </div>
   );
 }
-export default UseOtherDevice2;

@@ -1,20 +1,20 @@
 import { emailApi } from "apis/eduidEmail";
-import ConfirmModal from "components/Common/ConfirmModal";
-import CustomInput from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { ConfirmModal } from "components/Common/ConfirmModal";
+import { CustomInput } from "components/Common/CustomInput";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React, { useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { validateEmailField } from "../../helperFunctions/validation/validateEmail";
-import DataTable from "./DataTable";
+import { DataTable } from "./DataTable";
 
 interface EmailFormData {
   email?: string;
 }
 
-function Emails() {
+export function Emails() {
   const [showEmailForm, setShowEmailForm] = useState(false);
   const [selectedEmail, setSelectedEmail] = useState<string | undefined>();
   const emails = useAppSelector((state) => state.emails);
@@ -167,5 +167,3 @@ function Emails() {
     </article>
   );
 }
-
-export default Emails;

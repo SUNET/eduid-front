@@ -1,10 +1,10 @@
 import { loginApi } from "apis/eduidLogin";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import TextInput from "components/Common/EduIDTextInput";
 import { PassKey } from "components/Common/Passkey";
-import PasswordInput from "components/Common/PasswordInput";
-import UserNameInput from "components/Common/UserNameInput";
+import { PasswordInput } from "components/Common/PasswordInput";
+import { UserNameInput } from "components/Common/UserNameInput";
 import { RESET_PASSWORD_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
@@ -27,7 +27,7 @@ interface UsernamePwFormData {
   currentPassword?: string;
 }
 
-export default function UsernamePw() {
+export function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);

@@ -1,10 +1,10 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { ChangePasswordChildFormProps, ChangePasswordFormData } from "components/Dashboard/ChangePassword";
-import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
+import { ChangePasswordCustomForm } from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

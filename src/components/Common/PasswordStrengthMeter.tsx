@@ -18,7 +18,7 @@ export interface PasswordStrengthData {
   isTooWeak?: boolean;
 }
 
-function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
+export function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
   const [zxcvbnFn, setZxcvbnFn] = useState<ZxcvbnFn | null>(null);
   const minRequiredEntropy = useAppSelector((state) => state.config.password_entropy);
   const pdata = useAppSelector((state) => state.personal_data);
@@ -85,5 +85,3 @@ function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
     </React.Fragment>
   );
 }
-
-export default PasswordStrengthMeter;

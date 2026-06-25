@@ -1,5 +1,5 @@
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useEffect, useRef } from "react";
@@ -10,11 +10,11 @@ import resetPasswordSlice from "slices/ResetPassword";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, initKnownDevice } from "./NewDevice";
-import SubmitSamlResponse from "./SubmitSamlResponse";
-import TermsOfUse from "./TermsOfUse";
-import UseOtherDevice1 from "./UseOtherDevice1";
-import UseOtherDevice2 from "./UseOtherDevice2";
-import UsernamePw from "./UsernamePw";
+import { SubmitSamlResponse } from "./SubmitSamlResponse";
+import { TermsOfUse } from "./TermsOfUse";
+import { UseOtherDevice1 } from "./UseOtherDevice1";
+import { UseOtherDevice2 } from "./UseOtherDevice2";
+import { UsernamePw } from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {

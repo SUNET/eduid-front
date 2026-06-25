@@ -1,8 +1,8 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
-import Splash from "components/Common/Splash";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import React, { Fragment, useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";

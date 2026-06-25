@@ -1,15 +1,15 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons/faGlobe";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ThemeToggle from "components/Common/ThemeToggle";
+import { ThemeToggle } from "components/Common/ThemeToggle";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { AVAILABLE_LANGUAGES, LOCALIZED_MESSAGES } from "globals";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
-const Footer = (): React.JSX.Element => {
+export const Footer = (): React.JSX.Element => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const dispatch = useAppDispatch();
 
@@ -75,5 +75,3 @@ const Footer = (): React.JSX.Element => {
     </footer>
   );
 };
-
-export default Footer;

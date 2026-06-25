@@ -1,5 +1,5 @@
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 export const ShowAndHideButton = ({ isShown, onClick }: { isShown: boolean; onClick: () => void }) => {
   return (

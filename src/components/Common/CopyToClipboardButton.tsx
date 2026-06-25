@@ -1,4 +1,4 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ForwardedRef, forwardRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 

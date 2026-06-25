@@ -2,7 +2,7 @@ import { validateEmailField } from "helperFunctions/validation/validateEmail";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import CustomInput from "./CustomInput";
+import { CustomInput } from "./CustomInput";
 
 // exported for use in tests
 export const emailPlaceHolder = "name@example.com";

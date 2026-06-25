@@ -1,6 +1,6 @@
 import securityApi from "apis/eduidSecurity";
 import { CustomInputProps } from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { InputWrapper } from "components/Common/InputWrapper";
 import { ShowAndHideButton } from "components/Common/ShowAndHideButton";
 import { useAppSelector } from "eduid-hooks";
@@ -92,7 +92,7 @@ export interface NinFormData {
   nin?: string;
 }
 
-function NinForm(): React.JSX.Element {
+export function NinForm(): React.JSX.Element {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const [addNin] = securityApi.useLazyAddNinQuery();
 
@@ -141,5 +141,3 @@ function NinForm(): React.JSX.Element {
     />
   );
 }
-
-export default NinForm;

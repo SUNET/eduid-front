@@ -1,6 +1,6 @@
 import { ExtraSecurityAlternatives } from "apis/eduidResetPassword";
-import CustomInput from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { CustomInput } from "components/Common/CustomInput";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { GoBackButton } from "components/ResetPassword/GoBackButton";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { FormEventHandler } from "react";

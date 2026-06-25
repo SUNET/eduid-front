@@ -1,6 +1,6 @@
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 // identifiers used in tests
 export const registerHeaderClass = "register-header";

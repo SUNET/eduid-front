@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
