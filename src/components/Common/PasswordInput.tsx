@@ -12,7 +12,7 @@ interface PasswordInputProps {
   helpBlock?: React.ReactNode; // help text shown above input
 }
 
-export function PasswordInput(props: Readonly<PasswordInputProps>): React.JSX.Element {
+export function PasswordInput({ name, autoComplete, helpBlock }: Readonly<PasswordInputProps>): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -24,13 +24,13 @@ export function PasswordInput(props: Readonly<PasswordInputProps>): React.JSX.El
   return (
     <FinalField
       type="password"
-      name={props.name}
+      name={name}
       component={WrappedPasswordInput}
-      autoComplete={props.autoComplete}
+      autoComplete={autoComplete}
       required={true}
       placeholder={placeholder}
       // parameters for InputWrapper
-      helpBlock={props.helpBlock}
+      helpBlock={helpBlock}
       label={<FormattedMessage defaultMessage="Password" description="password input field label" />}
     />
   );
@@ -50,7 +50,14 @@ export function WrappedPasswordInput(props: Readonly<CustomInputProps<string>>):
  * @param props
  * @returns
  */
-export function PasswordInputElement(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+export function PasswordInputElement({
+  meta,
+  disabled,
+  input,
+  placeholder,
+  autoComplete,
+  autoFocus,
+}: Readonly<CustomInputProps<string>>): React.JSX.Element {
   const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const forced_username = useAppSelector((state) => state.login.authn_options.forced_username);
@@ -60,12 +67,12 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
   }, [forced_username]);
 
   let className = "is-valid";
-  if (props.meta.touched || props.meta.submitFailed) {
-    if (props.meta.invalid) {
+  if (meta.touched || meta.submitFailed) {
+    if (meta.invalid) {
       className = "is-invalid";
     }
   }
-  if (props.disabled) {
+  if (disabled) {
     className = "disabled";
   }
 
@@ -73,12 +80,12 @@ export function PasswordInputElement(props: Readonly<CustomInputProps<string>>):
     <div className="password-input">
       <ShowAndHideButton isShown={showPassword} onClick={() => setShowPassword(!showPassword)} />
       <input
-        {...props.input}
-        id={props.input.name}
+        {...input}
+        id={input.name}
         type={showPassword ? "text" : "password"}
-        placeholder={props.placeholder}
-        autoComplete={props.autoComplete}
-        autoFocus={props.autoFocus}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        autoFocus={autoFocus}
         className={className}
         ref={inputRef}
       />

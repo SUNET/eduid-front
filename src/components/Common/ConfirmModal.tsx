@@ -22,82 +22,96 @@ interface ConfirmModalProps {
   submitButtonText?: React.ReactNode;
 }
 
-export function ConfirmModal(props: Readonly<ConfirmModalProps>): React.JSX.Element {
+export function ConfirmModal({
+  validationPattern,
+  validationError,
+  handleConfirm,
+  id,
+  showModal,
+  title,
+  closeModal,
+  mainText,
+  placeholder,
+  modalFormLabel,
+  helpBlock,
+  resendMarkup,
+  captcha,
+  submitButtonText,
+}: Readonly<ConfirmModalProps>): React.JSX.Element {
   function validate(value: string) {
     if (!value?.trim()) {
       return "required";
     }
-    if (!props.validationPattern?.test(value.trim())) {
-      return props.validationError;
+    if (!validationPattern?.test(value.trim())) {
+      return validationError;
     }
   }
 
   return (
     <FinalForm
-      onSubmit={props.handleConfirm}
+      onSubmit={handleConfirm}
       initialValues={{
-        [props.id]: "",
+        [id]: "",
       }}
-      {...props}
       render={({ submitting, invalid, handleSubmit, form }) => (
-        <dialog open={props.showModal}>
-          <div className={props.showModal ? "modal fade show" : "modal"} tabIndex={-1}>
-            <div className={`modal-dialog horizontal-content-margin ${props.id}`}>
-              <div className={`modal-content ${props.id} `}>
+        <dialog open={showModal}>
+          <div className={showModal ? "modal fade show" : "modal"} tabIndex={-1}>
+            <div className={`modal-dialog horizontal-content-margin ${id}`}>
+              <div className={`modal-content ${id} `}>
                 <div className="modal-header">
-                  <h4 className="modal-title">{props.title}</h4>
+                  <h4 className="modal-title">{title}</h4>
                   <EduIDButton
                     buttonstyle="close"
                     onClick={() => {
-                      props.closeModal();
+                      closeModal();
                       form.reset();
                     }}
                   ></EduIDButton>
                 </div>
                 <form
-                  id={props.id + "-form"}
+                  id={id + "-form"}
                   onSubmit={async (event) => {
                     await handleSubmit(event);
                     form.reset();
                   }}
                 >
                   <div className="modal-body">
-                    {props.captcha && (
+                    {captcha && (
                       <React.Fragment>
-                        <img src={props.captcha.captcha_img} alt="captcha" />
+                        <img src={captcha.captcha_img} alt="captcha" />
                         <audio
                           controls
                           aria-label="Audio for captcha"
                           className="captcha-audio"
-                          src={props.captcha.captcha_audio}
+                          src={captcha.captcha_audio}
                         />
                       </React.Fragment>
                     )}
 
-                    {props.mainText ? props.mainText : null}
+                    {mainText ? mainText : null}
                     <FinalField<string>
                       component={CustomInput}
                       componentClass="input"
                       type="text"
-                      label={props.modalFormLabel}
-                      placeholder={props.placeholder}
-                      id={props.id}
-                      name={props.id}
-                      helpBlock={props.helpBlock}
+                      label={modalFormLabel}
+                      placeholder={placeholder}
+                      id={id}
+                      name={id}
+                      helpBlock={helpBlock}
                       validate={validate}
                       autoFocus={true}
                     />
-                    {props.resendMarkup ? props.resendMarkup : null}
+                    {resendMarkup ? resendMarkup : null}
                   </div>
                   <div className="modal-footer">
                     <EduIDButton
                       type="submit"
                       buttonstyle="primary"
                       disabled={submitting || invalid}
-                      onClick={() => props.handleConfirm}
+                      onClick={() => handleConfirm}
                     >
-                      {props.submitButtonText ? (
-                        props.submitButtonText
+                      {submitButtonText ? (
+                        submitButtonText
                       ) : (
                         <FormattedMessage defaultMessage="ok" description="ok button" />
                       )}

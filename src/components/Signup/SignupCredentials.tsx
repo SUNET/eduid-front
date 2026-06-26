@@ -21,20 +21,20 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 
 type PasswordRequirement = "default" | "optional" | "required";
 
-const PasswordSection = (props: { requirement: PasswordRequirement }) => {
+const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequirement }>) => {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   return (
     <Fragment>
       <div className="or-container">
         <div className="line"></div>
         <span>
-          {props.requirement === "default" && (
+          {requirement === "default" && (
             <FormattedMessage defaultMessage="or use a password instead" description="Default signup option" />
           )}
-          {props.requirement === "optional" && (
+          {requirement === "optional" && (
             <FormattedMessage defaultMessage="you can also add a password" description="Alternative signup option" />
           )}
-          {props.requirement === "required" && (
+          {requirement === "required" && (
             <FormattedMessage
               defaultMessage="a password is required for this key"
               description="Required password option"

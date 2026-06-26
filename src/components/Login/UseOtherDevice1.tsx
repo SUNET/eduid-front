@@ -62,7 +62,10 @@ export function UseOtherDevice1() {
 }
 
 // Render a fatal error message with a CANCEL button that will reset the use-other-device
-function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQRCodeOnClick?: () => void }>) {
+function RenderFatalError({
+  error,
+  handleNewQRCodeOnClick,
+}: Readonly<{ error: React.JSX.Element; handleNewQRCodeOnClick?: () => void }>) {
   const dispatch = useAppDispatch();
 
   function handleCancelButtonOnClick() {
@@ -72,7 +75,7 @@ function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQ
 
   return (
     <React.Fragment>
-      <p>{props.error}</p>
+      <p>{error}</p>
       <div className="buttons">
         <EduIDButton
           buttonstyle="secondary"
@@ -82,13 +85,8 @@ function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQ
         >
           <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
-        {props.handleNewQRCodeOnClick && (
-          <EduIDButton
-            buttonstyle="primary"
-            type="submit"
-            id="refresh-get-new-code"
-            onClick={props.handleNewQRCodeOnClick}
-          >
+        {handleNewQRCodeOnClick && (
+          <EduIDButton buttonstyle="primary" type="submit" id="refresh-get-new-code" onClick={handleNewQRCodeOnClick}>
             <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
           </EduIDButton>
         )}
@@ -97,8 +95,7 @@ function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQ
   );
 }
 
-function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQR }>): React.JSX.Element {
-  const { data } = props;
+function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWithQR }>): React.JSX.Element {
   const login_ref = useAppSelector((state) => state.login.ref);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const this_device = useAppSelector((state) => state.login.this_device);
@@ -244,9 +241,9 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
   );
 }
 
-function DeveloperInfo(props: Readonly<{ qr_url?: string }>) {
+function DeveloperInfo({ qr_url }: Readonly<{ qr_url?: string }>) {
   const env = useAppSelector((state) => state.config.environment);
-  if (!props.qr_url || (env != "dev" && env != "staging")) {
+  if (!qr_url || (env != "dev" && env != "staging")) {
     return null;
   }
   return (
@@ -256,7 +253,7 @@ function DeveloperInfo(props: Readonly<{ qr_url?: string }>) {
         <FormattedMessage defaultMessage="Developer info, not shown in production:" />
       </span>
       <span id="qr_url">
-        <a href={props.qr_url}>{props.qr_url}</a>
+        <a href={qr_url}>{qr_url}</a>
       </span>
     </div>
   );

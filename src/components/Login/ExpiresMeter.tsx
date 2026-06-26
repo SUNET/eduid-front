@@ -1,4 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faClock } from "@fortawesome/free-solid-svg-icons/faClock";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { TimeRemaining } from "components/Common/TimeRemaining";
@@ -9,27 +8,31 @@ interface ExpiresMeterProps {
   showMeter: boolean;
 }
 
-export function ExpiresMeter(props: Readonly<ExpiresMeterProps>): React.JSX.Element | null {
+export function ExpiresMeter({
+  expires_max,
+  time_remaining,
+  showMeter,
+}: Readonly<ExpiresMeterProps>): React.JSX.Element | null {
   // convince TypeScript that TimeRemainingWrapper has added the time_remaining prop
-  if (props.time_remaining === undefined) {
+  if (time_remaining === undefined) {
     return null;
   }
   return (
     <div className="expires-meter">
       <span className="expires-symbol">
-        <FontAwesomeIcon icon={faClock as IconProp} />
+        <FontAwesomeIcon icon={faClock} />
       </span>
-      {props.showMeter ? (
+      {showMeter ? (
         <meter
-          low={props.expires_max * 0.2}
-          max={props.expires_max}
-          value={props.time_remaining.total_seconds}
+          low={expires_max * 0.2}
+          max={expires_max}
+          value={time_remaining.total_seconds}
           id="expires-meter"
           key="0"
         />
       ) : null}
       <span className="timer">
-        {props.time_remaining.minutes}:{props.time_remaining.seconds}
+        {time_remaining.minutes}:{time_remaining.seconds}
       </span>
     </div>
   );

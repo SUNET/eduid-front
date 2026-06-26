@@ -321,18 +321,24 @@ function RenderResetPasswordLink(): React.JSX.Element {
   );
 }
 
-export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
+export function UsernamePwSubmitButton({
+  values,
+  handleSubmit,
+  submitError,
+  dirtySinceLastSubmit,
+  hasValidationErrors,
+}: Readonly<FormRenderProps<UsernamePwFormData>>): React.JSX.Element {
   /* Disable the button when:
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _hasUserNameValue = Boolean(props.values?.["username"]);
-  const _hasPasswordValue = Boolean(props.values?.["currentPassword"]);
+  const _hasUserNameValue = Boolean(values?.["username"]);
+  const _hasPasswordValue = Boolean(values?.["currentPassword"]);
   const _inputValues = securityZoneAction
     ? Boolean(_hasPasswordValue)
     : Boolean(_hasUserNameValue && _hasPasswordValue);
-  const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const hasErrors = props.hasValidationErrors ?? true;
+  const _submitError = Boolean(submitError && !dirtySinceLastSubmit);
+  const hasErrors = hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
   const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError);
 
@@ -342,7 +348,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       type="submit"
       aria-disabled={_disabled}
       id="login-form-button"
-      onClick={props.handleSubmit}
+      onClick={handleSubmit}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
       <FormattedMessage defaultMessage="log in" description="Login front page pw" />

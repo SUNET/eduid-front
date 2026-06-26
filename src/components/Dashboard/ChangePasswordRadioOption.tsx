@@ -6,7 +6,10 @@ interface ChangePasswordRadioOptionProps {
   renderSuggested: boolean;
 }
 
-export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOptionProps>) {
+export function ChangePasswordRadioOption({
+  handleSwitchChange,
+  renderSuggested,
+}: Readonly<ChangePasswordRadioOptionProps>) {
   return (
     <fieldset className="toggle-change-password-options">
       <legend className="require">
@@ -21,8 +24,8 @@ export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOpt
             component="input"
             type="radio"
             id="suggested-pw"
-            checked={props.renderSuggested}
-            onChange={props.handleSwitchChange}
+            checked={renderSuggested}
+            onChange={handleSwitchChange}
           />
           <span>
             <FormattedMessage defaultMessage="Suggested password" description="suggested password radio button" />
@@ -34,8 +37,8 @@ export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOpt
             component="input"
             type="radio"
             id="custom-pw"
-            checked={!props.renderSuggested}
-            onChange={props.handleSwitchChange}
+            checked={!renderSuggested}
+            onChange={handleSwitchChange}
           />
           <span>
             <FormattedMessage defaultMessage="Set your own password" description="Set your own password radio button" />

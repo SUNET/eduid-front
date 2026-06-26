@@ -4,7 +4,11 @@ import React, { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
 
-export function ChangePasswordSuggestedForm(props: Readonly<ChangePasswordChildFormProps>) {
+export function ChangePasswordSuggestedForm({
+  suggestedPassword,
+  formProps,
+  handleCancel,
+}: Readonly<ChangePasswordChildFormProps>) {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
@@ -19,16 +23,16 @@ export function ChangePasswordSuggestedForm(props: Readonly<ChangePasswordChildF
             name="copy-new-password"
             id="copy-new-password"
             ref={ref}
-            defaultValue={props.suggestedPassword}
+            defaultValue={suggestedPassword}
             readOnly={true}
           />
         </div>
       </div>
       <NewPasswordForm
-        suggested_password={props.suggestedPassword}
-        submitNewPasswordForm={props.formProps.handleSubmit}
+        suggested_password={suggestedPassword}
+        submitNewPasswordForm={formProps.handleSubmit}
         submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
-        handleCancel={props.handleCancel}
+        handleCancel={handleCancel}
       />
     </React.Fragment>
   );

@@ -18,11 +18,17 @@ interface DataStatusProps {
   handleMakePrimary: (email: string) => void;
 }
 
-function DataStatus(props: Readonly<DataStatusProps>) {
-  if (!props.verified) {
+function DataStatus({
+  name,
+  verified,
+  primary,
+  handleStartConfirmation,
+  handleMakePrimary,
+}: Readonly<DataStatusProps>) {
+  if (!verified) {
     return (
-      <EduIDButton buttonstyle="link sm" onClick={() => props.handleStartConfirmation(props.name)}>
-        {props.name === "number" ? (
+      <EduIDButton buttonstyle="link sm" onClick={() => handleStartConfirmation(name)}>
+        {name === "number" ? (
           <FormattedMessage defaultMessage="unverified" description="unverified" />
         ) : (
           <FormattedMessage defaultMessage="confirm" description="confirm button" />
@@ -30,7 +36,7 @@ function DataStatus(props: Readonly<DataStatusProps>) {
       </EduIDButton>
     );
   }
-  if (props.primary) {
+  if (primary) {
     return (
       <span>
         <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
@@ -38,13 +44,13 @@ function DataStatus(props: Readonly<DataStatusProps>) {
     );
   }
   return (
-    <EduIDButton buttonstyle="link sm" onClick={() => props.handleMakePrimary(props.name)}>
+    <EduIDButton buttonstyle="link sm" onClick={() => handleMakePrimary(name)}>
       <FormattedMessage defaultMessage="make primary" description="Make primary button" />
     </EduIDButton>
   );
 }
 
-function DataTableRows(props: Readonly<DataTableProps>) {
+function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
   const [makePrimaryEmail] = emailApi.useLazyMakePrimaryEmailQuery();
   const [removeEmail] = emailApi.useLazyRemoveEmailQuery();
   const dispatch = useAppDispatch();
@@ -61,16 +67,16 @@ function DataTableRows(props: Readonly<DataTableProps>) {
 
   function handleStartConfirmation(email: string) {
     dispatch(clearNotifications());
-    if (email) props.setSelectedEmail(email);
+    if (email) setSelectedEmail(email);
   }
 
-  if (!props.data) {
+  if (!data) {
     return null;
   }
 
   return (
     <Fragment>
-      {props.data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
+      {data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
         const keysArray = Object.keys(datum);
         const valueArray = Object.values(datum);
         const valueName = keysArray[0];
@@ -103,7 +109,7 @@ function DataTableRows(props: Readonly<DataTableProps>) {
             </td>
             {/* not render the close button when there is only one email */}
             <td className="remove-data">
-              {(props.data && props.data?.length > 1 && valueName === "email") || valueName === "number" ? (
+              {(data && data?.length > 1 && valueName === "email") || valueName === "number" ? (
                 <EduIDButton buttonstyle="remove sm" onClick={() => handleRemove(email)} />
               ) : null}
             </td>
@@ -114,7 +120,7 @@ function DataTableRows(props: Readonly<DataTableProps>) {
   );
 }
 
-export function DataTable(props: Readonly<DataTableProps>) {
+export function DataTable({ data, setSelectedEmail }: Readonly<DataTableProps>) {
   return (
     <div className="table-responsive">
       <table className="table-form">
@@ -130,7 +136,7 @@ export function DataTable(props: Readonly<DataTableProps>) {
               <FormattedMessage description="remove" defaultMessage="remove" />
             </th>
           </tr>
-          <DataTableRows {...props} />
+          <DataTableRows data={data} setSelectedEmail={setSelectedEmail} />
         </tbody>
       </table>
     </div>

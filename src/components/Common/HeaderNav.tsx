@@ -45,7 +45,7 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
   }, [ref, handler]);
 }
 
-export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
+export function HeaderNav({ handleLogout, login_url }: Readonly<HeaderNavProps>): React.JSX.Element {
   const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const allClosed = React.useMemo<Record<ButtonKey, boolean>>(
@@ -272,13 +272,8 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
         <div className="logout-button-wrapper">
           <span className="user-name">{userName}</span>
 
-          <EduIDButton
-            buttonstyle="secondary icon sm"
-            id="logout"
-            onClick={props.handleLogout}
-            disabled={!props.login_url}
-          >
-            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+          <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket} />
             <FormattedMessage defaultMessage="Log out" description="Header logout" />
           </EduIDButton>
         </div>

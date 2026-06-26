@@ -13,7 +13,7 @@ interface CommonToUProps {
  * Show a specified version of the Terms of Use, and two buttons to either accept or reject them.
  *
  */
-export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
+export function CommonToU({ version, handleAccept, handleCancel }: Readonly<CommonToUProps>): React.JSX.Element {
   return (
     <React.Fragment>
       <p>
@@ -22,7 +22,7 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
         />
       </p>
 
-      {ToUs[props.version]}
+      {ToUs[version]}
 
       <p>
         <strong>
@@ -33,12 +33,12 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
           />
         </strong>
       </p>
-      {props.handleAccept ? (
+      {handleAccept ? (
         <div className="buttons">
-          <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
+          <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={handleCancel}>
             <FormattedMessage defaultMessage="Cancel" description="button cancel" />
           </EduIDButton>
-          <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
+          <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="accept-button">
             <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
           </EduIDButton>
         </div>

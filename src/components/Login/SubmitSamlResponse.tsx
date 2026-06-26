@@ -126,7 +126,7 @@ interface SAMLResponseFormProps {
   mode: "noscript" | "retry" | "forward";
 }
 
-function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
+function SAMLResponseForm({ mode }: Readonly<SAMLResponseFormProps>) {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
   const targetUrl = useAppSelector((state) => state.login.post_to);
   const navigate = useNavigate();
@@ -142,17 +142,17 @@ function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
         <input type="hidden" name="SAMLResponse" value={SAMLParameters?.SAMLResponse || ""} />
         <input type="hidden" name="RelayState" value={SAMLParameters?.RelayState || ""} />
         <div className="flex-buttons">
-          {props.mode === "noscript" && (
+          {mode === "noscript" && (
             <noscript>
               <input type="submit" value="Continue" />
             </noscript>
           )}
-          {props.mode === "retry" && (
+          {mode === "retry" && (
             <EduIDButton buttonstyle="primary" type="submit">
               <FormattedMessage defaultMessage="Retry" description="SAML login finished" />
             </EduIDButton>
           )}
-          {props.mode === "forward" && (
+          {mode === "forward" && (
             <EduIDButton buttonstyle="primary" type="submit" onClick={handleGoForward}>
               <FormattedMessage defaultMessage="Forward" description="SAML login finished" />
             </EduIDButton>

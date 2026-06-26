@@ -59,13 +59,13 @@ export function Errors() {
   );
 }
 
-export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>): React.JSX.Element {
+export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLData }>): React.JSX.Element {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
     <div className="figure">
       <table className="error-info">
-        {props.errorURL.code ? (
+        {errorURL.code ? (
           <React.Fragment>
             <caption>
               <h3>
@@ -94,7 +94,7 @@ export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>):
                   <td>{error_info.eppn}</td>
                 </tr>
               )}
-              {Object.entries(props.errorURL).map(([key, value]) => {
+              {Object.entries(errorURL).map(([key, value]) => {
                 if (!value) {
                   return null;
                 }

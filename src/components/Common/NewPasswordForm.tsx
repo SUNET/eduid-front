@@ -24,14 +24,20 @@ interface NewPasswordFormProps {
   handleCancel?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JSX.Element {
+export function NewPasswordForm({
+  suggested_password,
+  submitNewPasswordForm,
+  extra_security,
+  goBack,
+  submitButtonText,
+}: Readonly<NewPasswordFormProps>): React.JSX.Element {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
     const errors: NewPasswordFormData = {};
 
     if (!newPassword || emptyStringPattern.test(newPassword)) {
       errors.newPassword = "required";
-    } else if (newPassword?.replaceAll(/\s/g, "") !== props.suggested_password?.replaceAll(/\s/g, "")) {
+    } else if (newPassword?.replaceAll(/\s/g, "") !== suggested_password?.replaceAll(/\s/g, "")) {
       // Remove whitespace from both passwords before comparing
       errors.newPassword = "chpass.different-repeat";
     }
@@ -44,7 +50,7 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
       validate={validateNewPassword}
       render={(formProps) => {
         return (
-          <form id={newPasswordFormId} onSubmit={props.submitNewPasswordForm}>
+          <form id={newPasswordFormId} onSubmit={submitNewPasswordForm}>
             <FinalField
               id="new-password"
               type="text"
@@ -57,11 +63,9 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
             />
 
             <div className="buttons">
-              {props.extra_security && Object.keys(props.extra_security).length > 0 && (
-                <GoBackButton onClickHandler={props.goBack} />
-              )}
+              {extra_security && Object.keys(extra_security).length > 0 && <GoBackButton onClickHandler={goBack} />}
               <EduIDButton type="submit" buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
-                {props.submitButtonText}
+                {submitButtonText}
               </EduIDButton>
             </div>
           </form>

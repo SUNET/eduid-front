@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
-export function IdentificationFailure(props: Readonly<FailureComponentProps>): React.JSX.Element {
+export function IdentificationFailure({ errorURL }: Readonly<FailureComponentProps>): React.JSX.Element {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 
@@ -20,7 +20,7 @@ export function IdentificationFailure(props: Readonly<FailureComponentProps>): R
       <h1>
         <FormattedMessage defaultMessage="Identification failed" description="ErrorURL identification failure" />
       </h1>
-      {props.errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
+      {errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
     </React.Fragment>
   );
 }

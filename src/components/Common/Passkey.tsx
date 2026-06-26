@@ -21,7 +21,13 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
+export function PassKey({
+  disabled,
+  setup,
+  onSuccess,
+  onComplete,
+  discoverable,
+}: Readonly<SecurityKeyProps>): React.JSX.Element {
   // The PassKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -32,28 +38,32 @@ export function PassKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
   async function useSecurityKey() {
     setActive(true);
     try {
-      const webauth_options = await props.setup();
+      const webauth_options = await setup();
       if (webauth_options) {
         const response = await performAuthentication({ webauth_options });
         if (response.isSuccess) {
           // Wait for credential submission to finish before calling onComplete,
           // so that restartConditionalAuth doesn't fire a new challenge fetch
           // while the backend is still processing this credential.
-          await props.onSuccess(response.data);
+          await onSuccess(response.data);
         }
       }
     } catch (error) {
       console.debug("Passkey error:", error);
     } finally {
       setActive(false);
-      props.onComplete?.();
+      onComplete?.();
     }
   }
 
-  return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={props.discoverable} />;
+  return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={discoverable} />;
 }
 
-function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive({
+  disabled,
+  useSecurityKey,
+  discoverable,
+}: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 
@@ -100,10 +110,10 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           buttonstyle="primary icon"
           type="submit"
           onClick={() => {
-            props.useSecurityKey();
+            useSecurityKey();
           }}
           id="pass-key"
-          disabled={props.disabled}
+          disabled={disabled}
         >
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
           <FormattedMessage description="login passkey primary option button" defaultMessage="log in with passkey" />

@@ -311,7 +311,7 @@ interface AccordionItemSwedishProps {
   open?: boolean;
 }
 
-function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
+function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -338,7 +338,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         />
       }
       uuid="swedish"
-      open={props.open}
+      open={open}
     >
       {/* <h4>
         <FormattedMessage
