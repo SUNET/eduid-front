@@ -11,35 +11,43 @@ interface NotificationModalProps {
   acceptButtonText: React.ReactNode;
 }
 
-export function NotificationModal(props: Readonly<NotificationModalProps>) {
-  if (!props.showModal) return null;
+export function NotificationModal({
+  id,
+  title,
+  mainText,
+  showModal,
+  closeModal,
+  acceptModal,
+  acceptButtonText,
+}: Readonly<NotificationModalProps>) {
+  if (!showModal) return null;
 
   return (
-    <dialog open={props.showModal}>
-      <div className={props.showModal ? "modal fade show" : "modal"} id={props.id} tabIndex={-1}>
-        <div className={`modal-dialog horizontal-content-margin ${props.id}`}>
-          <div className={`modal-content ${props.id} `}>
+    <dialog open={showModal}>
+      <div className={showModal ? "modal fade show" : "modal"} id={id} tabIndex={-1}>
+        <div className={`modal-dialog horizontal-content-margin ${id}`}>
+          <div className={`modal-content ${id} `}>
             <div className="modal-header">
-              <h4 className="modal-title">{props.title}</h4>
+              <h4 className="modal-title">{title}</h4>
               <EduIDButton
                 type="button"
-                id={`${props.id}-close-button`}
+                id={`${id}-close-button`}
                 buttonstyle="close"
-                onClick={props.closeModal}
+                onClick={closeModal}
               ></EduIDButton>
             </div>
-            <div className="modal-body">{props.mainText}</div>
+            <div className="modal-body">{mainText}</div>
             <div className="modal-footer">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (props.acceptModal) {
-                    props.acceptModal();
+                  if (acceptModal) {
+                    acceptModal();
                   }
                 }}
               >
-                <EduIDButton type="submit" id={`${props.id}-accept-button`} buttonstyle="primary">
-                  {props.acceptButtonText}
+                <EduIDButton type="submit" id={`${id}-accept-button`} buttonstyle="primary">
+                  {acceptButtonText}
                 </EduIDButton>
               </form>
             </div>

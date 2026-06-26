@@ -43,7 +43,7 @@ const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
     <input
       {...props.input}
       id={props.input.name}
-      type={props.input.type as InputType}
+      type={props.input.type}
       className={`${className}`}
       placeholder={props.placeholder}
       aria-required={props.required}

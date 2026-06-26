@@ -14,16 +14,21 @@ interface VerifyCredentialModalProps {
   tokenKey: string;
 }
 
-export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
+export function VerifyCredentialModal({
+  showVerifyWebauthnModal,
+  setShowVerifyWebauthnModal,
+  handleVerificationWebauthnToken,
+  tokenKey,
+}: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
   return (
     <dialog
-      open={props.showVerifyWebauthnModal}
+      open={showVerifyWebauthnModal}
       id="verify-webauthn-token-modal"
       data-backdrop="true"
       aria-modal="true"
       aria-labelledby="verify-webauthn-token-modal-title"
     >
-      <div className={props.showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
+      <div className={showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
         <div className="modal-dialog horizontal-content-margin">
           <div className="modal-content">
             <div className="modal-header">
@@ -36,7 +41,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
               <EduIDButton
                 id="verify-webauthn-token-modal-close-button"
                 buttonstyle="close float-right"
-                onClick={() => props.setShowVerifyWebauthnModal(false)}
+                onClick={() => setShowVerifyWebauthnModal(false)}
               ></EduIDButton>
             </div>
             <div className="modal-body">
@@ -57,7 +62,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   id="verify-webauthn-token-modal-continue-bankID-button"
                   buttonstyle="primary icon"
                   aria-label="Proceed with BankID"
-                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "bankid")}
+                  onClick={() => handleVerificationWebauthnToken(tokenKey, "bankid")}
                 >
                   <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
                   <span>BankID</span>
@@ -66,7 +71,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   buttonstyle="primary icon"
                   id="verify-webauthn-token-modal-continue-frejaID-button"
                   aria-label="Proceed with Freja eID"
-                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja")}
+                  onClick={() => handleVerificationWebauthnToken(tokenKey, "freja")}
                 >
                   <img className="freja" height="24" alt="Freja+" src={FrejaFlag} />
                   <span>Freja+</span>
@@ -75,7 +80,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   buttonstyle="primary icon"
                   id="verify-webauthn-token-modal-continue-eidas-button"
                   aria-label="Proceed with eIDAS"
-                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "eidas")}
+                  onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
                 >
                   <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
                   <span>eidas</span>
@@ -84,7 +89,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                   buttonstyle="primary icon"
                   id={`verify-webauthn-token-modal-continue-frejaeid-button`}
                   aria-label="Proceed with Freja eID"
-                  onClick={() => props.handleVerificationWebauthnToken(props.tokenKey, "freja_eid")}
+                  onClick={() => handleVerificationWebauthnToken(tokenKey, "freja_eid")}
                 >
                   <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
                   <span>Freja eID</span>
@@ -93,7 +98,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
               <EduIDButton
                 id="verify-webauthn-token-modal-close-link"
                 buttonstyle="link verbatim"
-                onClick={() => props.setShowVerifyWebauthnModal(false)}
+                onClick={() => setShowVerifyWebauthnModal(false)}
               >
                 <FormattedMessage description="verify later link" defaultMessage={`Not now`} />
               </EduIDButton>

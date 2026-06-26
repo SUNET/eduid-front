@@ -5,11 +5,11 @@ import { CustomInputProps } from "./CustomInput";
 /**
  * Render an input with an optional label and help text, and an error message when validation fails.
  */
-export function InputWrapper(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+export function InputWrapper({ children, ...props }: Readonly<CustomInputProps<string>>): React.JSX.Element {
   return (
     <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
       <RenderLabelAndHelpText {...props} />
-      {props.children}
+      {children}
       <RenderErrorMessage {...props} />
     </div>
   );

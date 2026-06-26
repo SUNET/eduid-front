@@ -233,7 +233,7 @@ interface Device2ButtonsProps {
   extra_className?: string;
 }
 
-function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element {
+function Device2Buttons({ showLogin, extra_className }: Readonly<Device2ButtonsProps>): React.JSX.Element {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -254,7 +254,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
   }
 
   return (
-    <div className={`buttons device2 ${props.extra_className}`}>
+    <div className={`buttons device2 ${extra_className}`}>
       <EduIDButton
         buttonstyle="secondary"
         onClick={handleCancelOnClick}
@@ -264,7 +264,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
         <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
 
-      {props.showLogin && (
+      {showLogin && (
         <EduIDButton
           buttonstyle="primary"
           type="submit"
@@ -284,8 +284,8 @@ function noopSubmit(): undefined {
   return undefined;
 }
 
-function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>): React.JSX.Element {
-  if (props.data.response_code_required === false) {
+function RenderAuthenticated({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>): React.JSX.Element {
+  if (data.response_code_required === false) {
     return (
       <p>
         <FormattedMessage
@@ -311,7 +311,7 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
       </span>
       <div className="x-adjust figure">
         <div className="device2">
-          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={noopSubmit} />
+          <ResponseCodeForm inputsDisabled={true} code={data.response_code} handleSubmitCode={noopSubmit} />
 
           <div className="warning-text">
             <span className="warning-symbol">
@@ -330,7 +330,7 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
   );
 }
 
-function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
+function DeveloperInfo({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
   const env = useAppSelector((state) => state.config.environment);
   if (env != "dev" && env != "staging") {
     return null;
@@ -343,7 +343,7 @@ function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }
       </span>
       <p>
         {"Response code: "}
-        <span id="response_code">{props.data.response_code}</span>
+        <span id="response_code">{data.response_code}</span>
       </p>
     </div>
   );

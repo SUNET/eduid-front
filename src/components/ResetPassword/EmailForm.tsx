@@ -14,15 +14,14 @@ export interface EmailFormData {
   email?: string;
 }
 
-export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
+export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>): React.JSX.Element {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
-
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 
     if (values.email) {
-      props.passEmailUp(values.email);
+      passEmailUp(values.email);
     } else {
       errors.email = "required";
     }
@@ -46,7 +45,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
           formProps.hasValidationErrors ||
           _submitError ||
           formProps.pristine ||
-          props.disabled ||
+          disabled ||
           !formProps.values?.["email"],
         );
 
@@ -57,7 +56,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
               autoFocus={true}
               required={true}
               autoComplete="username"
-              defaultValue={props.defaultEmail}
+              defaultValue={defaultEmail}
             />
 
             <div className="buttons">

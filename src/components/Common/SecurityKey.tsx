@@ -17,7 +17,7 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
+export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>): React.JSX.Element {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -27,11 +27,11 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
 
   async function useSecurityKey() {
     setActive(true);
-    const webauth_options = await props.setup();
+    const webauth_options = await setup();
     if (webauth_options) {
       const response = await performAuthentication({ webauth_options });
       if (response.isSuccess) {
-        props.onSuccess(response.data);
+        onSuccess(response.data);
       }
     }
     setActive(false);
@@ -40,11 +40,7 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   return (
     <div className="option-wrapper">
       <div className="option">
-        {active ? (
-          <SecurityKeyActive />
-        ) : (
-          <SecurityKeyInactive disabled={!!props.disabled} useSecurityKey={useSecurityKey} />
-        )}
+        {active ? <SecurityKeyActive /> : <SecurityKeyInactive disabled={!!disabled} useSecurityKey={useSecurityKey} />}
         {active && (
           <p className="help-text">
             <FormattedMessage
@@ -58,7 +54,11 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   );
 }
 
-function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive({
+  discoverable,
+  useSecurityKey,
+  disabled,
+}: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
-        {props.discoverable ? (
+        {discoverable ? (
           <FormattedMessage
             description="passkey authn help text"
             defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
@@ -88,10 +88,10 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         buttonstyle="primary"
         type="submit"
         onClick={() => {
-          props.useSecurityKey();
+          useSecurityKey();
         }}
         id="mfa-security-key"
-        disabled={props.disabled}
+        disabled={disabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </EduIDButton>

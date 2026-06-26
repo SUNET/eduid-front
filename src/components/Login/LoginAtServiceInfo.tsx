@@ -9,18 +9,18 @@ interface LoginAtServiceInfoProps {
 /**
  * Show information about where the user is about to log in (source: MDUI display name from federation metadata)
  */
-export function LoginAtServiceInfo(props: Readonly<LoginAtServiceInfoProps>): React.JSX.Element | null {
+export function LoginAtServiceInfo({ service_info }: Readonly<LoginAtServiceInfoProps>): React.JSX.Element | null {
   const locale = useAppSelector((state) => state.intl.locale);
   let service_name;
 
-  if (!props.service_info?.display_name) {
+  if (!service_info?.display_name) {
     return null;
   }
 
-  if (props.service_info.display_name[locale]) {
-    service_name = props.service_info.display_name[locale];
+  if (service_info.display_name[locale]) {
+    service_name = service_info.display_name[locale];
   } else {
-    service_name = props.service_info.display_name["en"];
+    service_name = service_info.display_name["en"];
   }
 
   if (!service_name) {

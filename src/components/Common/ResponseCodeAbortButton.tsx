@@ -12,8 +12,15 @@ interface ResponseCodeButtonsProps {
   requireEmail?: boolean;
 }
 
-export function ResponseCodeButtons(props: Readonly<ResponseCodeButtonsProps>) {
-  if (!props.formProps) {
+interface ResponseCodeAbortButtonProps {
+  disabled: boolean;
+  invalid: boolean;
+  submit: () => void;
+  handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+export function ResponseCodeButtons({ formProps, handleAbortButtonOnClick }: Readonly<ResponseCodeButtonsProps>) {
+  if (!formProps) {
     return null;
   }
 
@@ -22,34 +29,33 @@ export function ResponseCodeButtons(props: Readonly<ResponseCodeButtonsProps>) {
   // 'convert' from FormRenderProps to a simple "disabled" boolean
   return (
     <ResponseCodeAbortButton
-      disabled={props.formProps.submitting ?? false}
-      invalid={(props.formProps.invalid ?? false) || emailMissing}
-      submit={props.formProps.form.submit}
-      handleAbortButtonOnClick={props.handleAbortButtonOnClick}
+      disabled={formProps.submitting ?? false}
+      invalid={formProps.invalid ?? false}
+      submit={formProps.form.submit}
+      handleAbortButtonOnClick={handleAbortButtonOnClick}
     />
   );
 }
 
-export function ResponseCodeAbortButton(
-  props: Readonly<{
-    disabled: boolean;
-    invalid: boolean;
-    submit: () => void;
-    handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
-  }>,
-) {
+export function ResponseCodeAbortButton({
+  disabled,
+  invalid,
+  submit,
+  handleAbortButtonOnClick,
+}: Readonly<ResponseCodeAbortButtonProps>) {
   // abort button usable from both ResponseCodeButtons and when isExpired below
   return (
     <div className="buttons">
       <EduIDButton
         type="button"
         buttonstyle="secondary"
-        onClick={props.handleAbortButtonOnClick}
+        onClick={handleAbortButtonOnClick}
         id="response-code-abort-button"
-        disabled={props.disabled}
+        disabled={disabled}
       >
         <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
+<<<<<<< HEAD
       <EduIDButton
         type="submit"
         buttonstyle="primary"
@@ -58,6 +64,10 @@ export function ResponseCodeAbortButton(
         disabled={props.invalid}
       >
         <FormattedMessage defaultMessage="Continue" description="Short code form Continue button" />
+=======
+      <EduIDButton type="submit" buttonstyle="primary" onClick={submit} id="response-code-ok-button" disabled={invalid}>
+        <FormattedMessage defaultMessage="Ok" description="Short code form Ok button" />
+>>>>>>> 4d7dae567 (destructure component props for readability)
       </EduIDButton>
     </div>
   );

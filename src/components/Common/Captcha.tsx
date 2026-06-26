@@ -19,12 +19,16 @@ interface SignupCaptchaFormData {
   value?: string;
 }
 
-function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element {
+function CaptchaForm({
+  handleCaptchaCompleted,
+  disabled,
+  handleCaptchaCancel,
+}: Readonly<SignupCaptchaFormProps>): React.JSX.Element {
   function submitCaptchaForm(values: SignupCaptchaFormData, form: FormApi) {
     const errors: SignupCaptchaFormData = {};
 
     if (values.value) {
-      props.handleCaptchaCompleted(values.value);
+      handleCaptchaCompleted(values.value);
       form.reset();
     } else {
       errors.value = "required";
@@ -42,7 +46,7 @@ function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element
           formProps.hasValidationErrors ||
           _submitError ||
           formProps.pristine ||
-          props.disabled ||
+          disabled ||
           !formProps.values?.["value"],
         );
 
@@ -62,7 +66,7 @@ function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element
               />
 
               <div className="buttons">
-                <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
+                <EduIDButton onClick={handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
                   <FormattedMessage defaultMessage="Cancel" description="button cancel" />
                 </EduIDButton>
 
@@ -90,12 +94,12 @@ export interface CaptchaProps {
   getCaptcha: () => Promise<GetCaptchaResponse | undefined>;
 }
 
-export function InternalCaptcha(props: Readonly<CaptchaProps>) {
+export function InternalCaptcha({ getCaptcha, handleCaptchaCancel, handleCaptchaCompleted }: Readonly<CaptchaProps>) {
   const [captchaResponse, setCaptchaResponse] = useState<GetCaptchaResponse>();
   const is_configured = useAppSelector((state) => state.config.is_configured);
 
   function getNewCaptcha() {
-    props.getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
+    getCaptcha().then((captcha: GetCaptchaResponse | undefined) => {
       setCaptchaResponse({
         captcha_img: captcha?.captcha_img,
         captcha_audio: captcha?.captcha_audio,
@@ -106,7 +110,7 @@ export function InternalCaptcha(props: Readonly<CaptchaProps>) {
   useEffect(() => {
     let aborted = false; // flag to avoid updating unmounted components after this promise resolves
     if (is_configured && !captchaResponse) {
-      props.getCaptcha().then((captchaResponse: GetCaptchaResponse | undefined) => {
+      getCaptcha().then((captchaResponse: GetCaptchaResponse | undefined) => {
         if (!aborted && captchaResponse) {
           setCaptchaResponse({
             captcha_img: captchaResponse.captcha_img,
@@ -121,7 +125,7 @@ export function InternalCaptcha(props: Readonly<CaptchaProps>) {
     return () => {
       aborted = true;
     };
-  }, [captchaResponse, is_configured, props]);
+  }, [captchaResponse, is_configured, getCaptcha]);
 
   return (
     <React.Fragment>
@@ -142,7 +146,11 @@ export function InternalCaptcha(props: Readonly<CaptchaProps>) {
         </EduIDButton>
       </figure>
 
-      <CaptchaForm {...props} />
+      <CaptchaForm
+        handleCaptchaCancel={handleCaptchaCancel}
+        handleCaptchaCompleted={handleCaptchaCompleted}
+        getCaptcha={getCaptcha}
+      />
     </React.Fragment>
   );
 }

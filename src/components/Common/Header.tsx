@@ -1,4 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArrowRightFromBracket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
@@ -15,7 +14,7 @@ interface HeaderProps {
   loginRef?: string;
 }
 
-export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
+export function Header({ loginRef }: Readonly<HeaderProps>): React.JSX.Element {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);
@@ -26,7 +25,7 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
   const navigate = useNavigate();
 
   const handleLogout = useCallback(async () => {
-    const response = await fetchLogout({ ref: props.loginRef });
+    const response = await fetchLogout({ ref: loginRef });
     if (response.isSuccess) {
       // Make sure to reset the store
       eduidStore.dispatch({ type: "RESET_STORE" });
@@ -35,7 +34,7 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
         globalThis.location.assign(eduid_site_link);
       }
     }
-  }, [fetchLogout, props.loginRef, eduid_site_link]);
+  }, [fetchLogout, loginRef, eduid_site_link]);
 
   const handleRegister = useCallback(() => {
     navigate(SIGNUP_BASE_PATH);
@@ -62,7 +61,7 @@ export function Header(props: Readonly<HeaderProps>): React.JSX.Element {
     } else if (authn_options.has_session) {
       return (
         <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
-          <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+          <FontAwesomeIcon icon={faArrowRightFromBracket} />
           <FormattedMessage defaultMessage="Log out" description="Header logout" />
         </EduIDButton>
       );
