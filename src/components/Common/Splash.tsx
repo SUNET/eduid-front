@@ -18,7 +18,7 @@ interface SplashProps {
  * and is rendered as long as showChildren is false. The spinner itself is a pure-CSS animation
  * (see Splash.css) — no JS spinner library involved.
  */
-export function Splash(props: Readonly<SplashProps>): React.JSX.Element {
+export function Splash(props: Readonly<SplashProps>) {
   const { showChildren, children } = props;
 
   return (

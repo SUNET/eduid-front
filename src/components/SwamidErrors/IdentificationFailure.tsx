@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
-export function IdentificationFailure({ errorURL }: Readonly<FailureComponentProps>): React.JSX.Element {
+export function IdentificationFailure({ errorURL }: Readonly<FailureComponentProps>) {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 
@@ -25,7 +25,7 @@ export function IdentificationFailure({ errorURL }: Readonly<FailureComponentPro
   );
 }
 
-function MissingNin(): React.JSX.Element {
+function MissingNin() {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   let SpecificMessage;
@@ -60,7 +60,7 @@ function MissingNin(): React.JSX.Element {
   );
 }
 
-function Default(): React.JSX.Element {
+function Default() {
   return (
     <React.Fragment>
       <p>

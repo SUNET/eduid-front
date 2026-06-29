@@ -5,7 +5,7 @@ import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 /* The Dashboard "Advanced Settings" tab */
-export function Security(): React.JSX.Element {
+export function Security() {
   const intl = useIntl();
 
   return (

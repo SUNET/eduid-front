@@ -6,7 +6,7 @@ import { EduIDButton } from "./EduIDButton";
 export const registerHeaderClass = "register-header";
 export const resetPasswordLinkId = "reset-password";
 
-export function EmailInUse(): React.JSX.Element {
+export function EmailInUse() {
   const email = useAppSelector((state) => state.signup.email);
   const reset_password_link = useAppSelector((state) => state.config.reset_password_link);
 

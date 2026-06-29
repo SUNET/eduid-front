@@ -9,7 +9,7 @@ import { Link } from "react-router";
 import { updateIntl } from "slices/Internationalisation";
 import { EduIDButton } from "./EduIDButton";
 
-export const Footer = (): React.JSX.Element => {
+export const Footer = () => {
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const dispatch = useAppDispatch();
 

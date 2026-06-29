@@ -1,7 +1,7 @@
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function ManageEduIDSettings(): React.JSX.Element {
+export function ManageEduIDSettings() {
   return (
     <AccordionItemTemplate
       uuid="help-using-eduid"

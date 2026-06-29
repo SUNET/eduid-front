@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 
-export function ChangePasswordSuccess(): React.JSX.Element {
+export function ChangePasswordSuccess() {
   const emails = useAppSelector((state) => state.emails.emails);
   const location = useLocation();
   const password = location.state?.password ?? "";

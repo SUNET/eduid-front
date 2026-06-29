@@ -24,7 +24,7 @@ interface LoginParams {
 /* keep all use through functions in this module */
 export const HAS_READ_ANNOUNCEMENT = "hasReadAnnouncement";
 
-export function Login(): React.JSX.Element {
+export function Login() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
@@ -104,7 +104,7 @@ export function Login(): React.JSX.Element {
   );
 }
 
-function RenderFinished(): React.JSX.Element {
+function RenderFinished() {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
 
   let ComponentToRender;
@@ -117,7 +117,7 @@ function RenderFinished(): React.JSX.Element {
   return ComponentToRender;
 }
 
-function UserTerminated(): React.JSX.Element {
+function UserTerminated() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error_state = useAppSelector((state) => state.login.error);

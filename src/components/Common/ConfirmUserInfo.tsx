@@ -10,7 +10,7 @@ interface ConfirmUserInfoProps {
   new_password: string;
 }
 
-export const EmailFieldset = ({ email }: EmailProps): React.JSX.Element => {
+export const EmailFieldset = ({ email }: EmailProps) => {
   return (
     <fieldset>
       <label htmlFor={idUserEmail}>

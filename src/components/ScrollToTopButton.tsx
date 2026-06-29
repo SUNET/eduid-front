@@ -11,7 +11,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-export function ScrollToTopButton(): React.JSX.Element {
+export function ScrollToTopButton() {
   const [showBtn, setShowBtn] = useState("display-none");
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon

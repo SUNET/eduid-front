@@ -17,7 +17,7 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>): React.JSX.Element {
+export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -54,11 +54,7 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   );
 }
 
-function SecurityKeyInactive({
-  discoverable,
-  useSecurityKey,
-  disabled,
-}: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive({ discoverable, useSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -99,7 +95,7 @@ function SecurityKeyInactive({
   );
 }
 
-function SecurityKeyActive(): React.JSX.Element {
+function SecurityKeyActive() {
   return (
     <Fragment>
       <div className="button-pair selected">

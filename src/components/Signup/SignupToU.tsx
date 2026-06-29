@@ -2,13 +2,13 @@ import { skipToken } from "@reduxjs/toolkit/query";
 import { signupApi } from "apis/eduidSignup";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
-export function SignupToU(): React.JSX.Element {
+export function SignupToU() {
   const signupState = useAppSelector((state) => state.signup.state);
   const version = signupState?.tou.version;
   const dispatch = useAppDispatch();
@@ -50,7 +50,7 @@ export function SignupToU(): React.JSX.Element {
   );
 }
 
-export function ProcessToU(): React.JSX.Element | null {
+export function ProcessToU() {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
   const version = signupState?.tou.version;

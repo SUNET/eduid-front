@@ -9,7 +9,7 @@ interface BackToLoginButtonProps {
   onClickHandler?(): void; // optional callback for when the button is clicked
 }
 
-export function GoBackButton({ onClickHandler, primary }: Readonly<BackToLoginButtonProps>): React.JSX.Element | null {
+export function GoBackButton({ onClickHandler, primary }: Readonly<BackToLoginButtonProps>) {
   const loginRef = useAppSelector((state) => state.login.ref);
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

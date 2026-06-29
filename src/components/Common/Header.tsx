@@ -14,7 +14,7 @@ interface HeaderProps {
   loginRef?: string;
 }
 
-export function Header({ loginRef }: Readonly<HeaderProps>): React.JSX.Element {
+export function Header({ loginRef }: Readonly<HeaderProps>) {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
   const login_url = useAppSelector((state) => state.config.login_service_url);

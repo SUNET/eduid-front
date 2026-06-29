@@ -55,7 +55,7 @@ interface StoredData {
   end: string;
 }
 
-export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>): React.JSX.Element {
+export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>) {
   const [secondsLeft, setSecondsLeft] = useState(Math.max(props.value, 0));
 
   // Calculate timeRemaining directly from secondsLeft
@@ -142,7 +142,7 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
   );
 }
 
-function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }): React.JSX.Element {
+function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }) {
   const end2 = loadEndDate(props.name, props.unique_id) || new Date();
   const now2 = new Date();
   const diff2 = Math.floor((end2.getTime() - now2.getTime()) / 1000);

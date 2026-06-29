@@ -2,7 +2,7 @@ import { loginApi } from "apis/eduidLogin";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
@@ -13,7 +13,7 @@ const REMEMBER_ME_KEY = "login.remember_me";
 /**
  * Fetch the "new device" endpoint from the backend, and store it in local storage.
  */
-export function NewDevice(): React.JSX.Element | null {
+export function NewDevice() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const [fetchNewDevice] = loginApi.useLazyFetchNewDeviceQuery();
@@ -45,7 +45,7 @@ export function NewDevice(): React.JSX.Element | null {
 /**
  * Component rendering a checkbox allowing the user to decide if they want to be remembered on this device or not.
  */
-export function RememberMeCheckbox(): React.JSX.Element | null {
+export function RememberMeCheckbox() {
   const remember_me = useAppSelector((state) => state.login.remember_me);
   const previous_this_device = useAppSelector((state) => state.login.previous_this_device);
   const next_page = useAppSelector((state) => state.login.next_page);
@@ -126,7 +126,7 @@ interface KnownDeviceParams {
 export function initKnownDevice(
   this_device: string | undefined,
   remember_me: boolean | undefined,
-  dispatch: EduIDAppDispatch
+  dispatch: EduIDAppDispatch,
 ): KnownDeviceParams {
   if (!globalThis.localStorage) {
     // Can't remember devices if there is no local storage

@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 
-function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>): React.JSX.Element | null {
+function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>) {
   return (
     <div className={`status-box ${email ? "success" : ""}`}>
       <div className="checkbox-wrapper">
@@ -41,7 +41,7 @@ function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>): React.
   );
 }
 
-function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIdentities }>): React.JSX.Element | null {
+function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIdentities }>) {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
@@ -94,7 +94,7 @@ function ImprovedSecurityStatus({
 }: Readonly<{
   tokens?: CredentialType[];
   identities?: UserIdentities;
-}>): React.JSX.Element | null {
+}>) {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -158,7 +158,7 @@ function ImprovedSecurityStatus({
   );
 }
 
-function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[] }>): React.JSX.Element | null {
+function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[] }>) {
   const manageSecurityKeyLink = (
     <Link
       key={`${SECURITY_PATH}#manage-security-keys`}
@@ -210,7 +210,7 @@ function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[]
   );
 }
 
-export function Recommendations(): React.JSX.Element | null {
+export function Recommendations() {
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);

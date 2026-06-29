@@ -1,5 +1,4 @@
 import { AuthMethod } from "apis/helpers/types";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
@@ -19,7 +18,7 @@ export function VerifyCredentialModal({
   setShowVerifyWebauthnModal,
   handleVerificationWebauthnToken,
   tokenKey,
-}: Readonly<VerifyCredentialModalProps>): React.JSX.Element {
+}: Readonly<VerifyCredentialModalProps>) {
   return (
     <dialog
       open={showVerifyWebauthnModal}

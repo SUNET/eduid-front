@@ -1,7 +1,7 @@
 import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function PrivacyPolicyAndWebAccessibility(): React.JSX.Element {
+export function PrivacyPolicyAndWebAccessibility() {
   return (
     <AccordionItemTemplate
       uuid="help-privacy-accessibility"

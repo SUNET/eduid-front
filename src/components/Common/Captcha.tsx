@@ -19,11 +19,7 @@ interface SignupCaptchaFormData {
   value?: string;
 }
 
-function CaptchaForm({
-  handleCaptchaCompleted,
-  disabled,
-  handleCaptchaCancel,
-}: Readonly<SignupCaptchaFormProps>): React.JSX.Element {
+function CaptchaForm({ handleCaptchaCompleted, disabled, handleCaptchaCancel }: Readonly<SignupCaptchaFormProps>) {
   function submitCaptchaForm(values: SignupCaptchaFormData, form: FormApi) {
     const errors: SignupCaptchaFormData = {};
 

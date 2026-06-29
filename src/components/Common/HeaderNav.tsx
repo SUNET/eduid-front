@@ -45,7 +45,7 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
   }, [ref, handler]);
 }
 
-export function HeaderNav({ handleLogout, login_url }: Readonly<HeaderNavProps>): React.JSX.Element {
+export function HeaderNav({ handleLogout, login_url }: Readonly<HeaderNavProps>) {
   const emails = useAppSelector((state) => state.emails.emails);
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const allClosed = React.useMemo<Record<ButtonKey, boolean>>(

@@ -14,7 +14,7 @@ import { FormattedMessage } from "react-intl";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
-export function SetNewPassword(): React.JSX.Element | null {
+export function SetNewPassword() {
   const suggested = useAppSelector((state) => state.resetPassword.suggested_password);
   const dispatch = useAppDispatch();
   const selected_option = useAppSelector((state) => state.resetPassword.selected_option);
@@ -146,7 +146,7 @@ export function SetNewPassword(): React.JSX.Element | null {
   );
 }
 
-export function ResetPasswordSuccess(): React.JSX.Element {
+export function ResetPasswordSuccess() {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const new_password = useAppSelector((state) => state.resetPassword.new_password);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

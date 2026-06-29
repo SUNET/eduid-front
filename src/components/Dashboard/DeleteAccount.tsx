@@ -5,7 +5,7 @@ import { ToolTip } from "components/Common/ToolTip";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function DeleteAccount(): React.JSX.Element | null {
+export function DeleteAccount() {
   const [showModal, setShowModal] = useState(false);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 

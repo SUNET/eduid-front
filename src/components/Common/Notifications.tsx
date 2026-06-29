@@ -5,7 +5,7 @@ import { clearNotifications, EduidNotification, notificationLevel } from "slices
 import { dynamicMessage } from "translation";
 import { EduIDButton } from "./EduIDButton";
 
-export function Notifications(): React.JSX.Element | null {
+export function Notifications() {
   const info = useAppSelector((state) => state.notifications.info);
   const error = useAppSelector((state) => state.notifications.error);
   const dispatch = useAppDispatch();

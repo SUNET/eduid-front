@@ -11,7 +11,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
-export function EmailLinkSent(): React.JSX.Element | null {
+export function EmailLinkSent() {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

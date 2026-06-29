@@ -11,7 +11,7 @@ import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 /**
  * Render the extra security options, security key, Freja eID and phone verification
  */
-export function HandleExtraSecurities(): React.JSX.Element | null {
+export function HandleExtraSecurities() {
   const dispatch = useAppDispatch();
   const extra_security = useAppSelector((state) => state.resetPassword.extra_security);
 

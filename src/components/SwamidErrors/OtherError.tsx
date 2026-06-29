@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function OtherError(): React.JSX.Element {
+export function OtherError() {
   return (
     <React.Fragment>
       <h1>

@@ -15,7 +15,7 @@ import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
-export function SignupEnterCode(): React.JSX.Element {
+export function SignupEnterCode() {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();

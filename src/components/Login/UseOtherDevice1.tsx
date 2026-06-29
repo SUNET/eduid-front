@@ -95,7 +95,7 @@ function RenderFatalError({
   );
 }
 
-function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWithQR }>): React.JSX.Element {
+function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWithQR }>) {
   const login_ref = useAppSelector((state) => state.login.ref);
   const username = useAppSelector((state) => state.login.authn_options.forced_username);
   const this_device = useAppSelector((state) => state.login.this_device);

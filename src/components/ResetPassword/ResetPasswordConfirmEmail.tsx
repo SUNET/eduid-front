@@ -12,7 +12,7 @@ import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-export function ResetPasswordConfirmEmail(): React.JSX.Element {
+export function ResetPasswordConfirmEmail() {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();

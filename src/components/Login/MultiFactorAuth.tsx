@@ -13,7 +13,7 @@ import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
-export function MultiFactorAuth(): React.JSX.Element {
+export function MultiFactorAuth() {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const ref = useAppSelector((state) => state.login.ref);
@@ -152,7 +152,7 @@ export function MultiFactorAuth(): React.JSX.Element {
   );
 }
 
-function ExtraSecurityNotAvailable(): React.JSX.Element {
+function ExtraSecurityNotAvailable() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   const goToDashboard = () => {

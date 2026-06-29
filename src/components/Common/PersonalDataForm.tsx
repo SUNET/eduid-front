@@ -88,7 +88,7 @@ interface SelectDisplayNameProps {
   setChosenGivenName: (name: string) => void;
 }
 
-function SelectDisplayName({ setChosenGivenName }: Readonly<SelectDisplayNameProps>): React.JSX.Element {
+function SelectDisplayName({ setChosenGivenName }: Readonly<SelectDisplayNameProps>) {
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);

@@ -14,7 +14,7 @@ import { PrivacyPolicyAndWebAccessibility } from "./PrivacyPolicyAndWebAccessibi
 import { UsingEduID } from "./UsingEduID";
 import { VerificationOfIdentity } from "./VerificationOfIdentity";
 
-export function Help(): React.JSX.Element {
+export function Help() {
   return (
     <React.Fragment>
       <section className="intro">

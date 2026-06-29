@@ -2,7 +2,7 @@ import { Accordion, AccordionItemTemplate } from "components/Common/AccordionIte
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
-export function VerificationOfIdentity(): React.JSX.Element {
+export function VerificationOfIdentity() {
   const locale = useAppSelector((state) => state.intl.locale);
   const FrejaProtectedIdURL =
     locale === "en"

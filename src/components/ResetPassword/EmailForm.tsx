@@ -14,9 +14,10 @@ export interface EmailFormData {
   email?: string;
 }
 
-export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>): React.JSX.Element {
+export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>) {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 

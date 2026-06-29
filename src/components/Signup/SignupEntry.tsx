@@ -40,7 +40,7 @@ export const ServiceInfo = () => {
   );
 };
 
-export function SignupEntry(): React.JSX.Element {
+export function SignupEntry() {
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
   const [frejaMfaRegister] = eidasApi.useLazyFrejaMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();

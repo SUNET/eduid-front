@@ -37,7 +37,7 @@ export function ConfirmModal({
   resendMarkup,
   captcha,
   submitButtonText,
-}: Readonly<ConfirmModalProps>): React.JSX.Element {
+}: Readonly<ConfirmModalProps>) {
   function validate(value: string) {
     if (!value?.trim()) {
       return "required";
