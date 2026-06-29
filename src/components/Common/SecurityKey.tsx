@@ -13,7 +13,7 @@ interface SecurityKeyProps {
 
 interface InactiveSecurityKeyProps {
   disabled?: boolean;
-  useSecurityKey(): void;
+  handleSecurityKey(): void;
   discoverable?: boolean;
 }
 
@@ -25,7 +25,7 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   const [active, setActive] = useState(false);
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
-  async function useSecurityKey() {
+  async function handleSecurityKey() {
     setActive(true);
     const webauth_options = await setup();
     if (webauth_options) {
@@ -40,7 +40,11 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   return (
     <div className="option-wrapper">
       <div className="option">
-        {active ? <SecurityKeyActive /> : <SecurityKeyInactive disabled={!!disabled} useSecurityKey={useSecurityKey} />}
+        {active ? (
+          <SecurityKeyActive />
+        ) : (
+          <SecurityKeyInactive disabled={!!disabled} handleSecurityKey={handleSecurityKey} />
+        )}
         {active && (
           <p className="help-text">
             <FormattedMessage
@@ -54,7 +58,7 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   );
 }
 
-function SecurityKeyInactive({ discoverable, useSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -84,7 +88,7 @@ function SecurityKeyInactive({ discoverable, useSecurityKey, disabled }: Readonl
         buttonstyle="primary"
         type="submit"
         onClick={() => {
-          useSecurityKey();
+          handleSecurityKey();
         }}
         id="mfa-security-key"
         disabled={disabled}

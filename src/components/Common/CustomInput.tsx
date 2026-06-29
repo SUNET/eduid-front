@@ -1,8 +1,6 @@
 import { FieldRenderProps } from "react-final-form";
 import { InputWrapper } from "./InputWrapper";
 
-type InputType = "text" | "password" | "email";
-
 export interface CustomInputProps<T> extends FieldRenderProps<T> {
   placeholder?: string;
   disabled?: boolean;

@@ -17,7 +17,7 @@ interface SecurityKeyProps {
 
 interface InactiveSecurityKeyProps {
   disabled?: boolean;
-  useSecurityKey(): void;
+  handleSecurityKey(): void;
   discoverable?: boolean;
 }
 
@@ -29,7 +29,7 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
   const [active, setActive] = useState(false);
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
-  async function useSecurityKey() {
+  async function handleSecurityKey() {
     setActive(true);
     try {
       const webauth_options = await setup();
@@ -50,10 +50,10 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
     }
   }
 
-  return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={discoverable} />;
+  return <SecurityKeyInactive disabled={active} handleSecurityKey={handleSecurityKey} discoverable={discoverable} />;
 }
 
-function SecurityKeyInactive({ disabled, useSecurityKey, discoverable }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 
@@ -100,7 +100,7 @@ function SecurityKeyInactive({ disabled, useSecurityKey, discoverable }: Readonl
           buttonstyle="primary icon"
           type="submit"
           onClick={() => {
-            useSecurityKey();
+            handleSecurityKey();
           }}
           id="pass-key"
           disabled={disabled}
