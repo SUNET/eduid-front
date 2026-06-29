@@ -22,7 +22,7 @@ export function SignupCredentialsError() {
       </p>
       <div className="buttons">
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="secondary"
           onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"))}
           id="abort-button"
@@ -30,7 +30,7 @@ export function SignupCredentialsError() {
           <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="primary"
           onClick={() => {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));

@@ -267,7 +267,7 @@ function Device2Buttons({ showLogin, extra_className }: Readonly<Device2ButtonsP
       {showLogin && (
         <EduIDButton
           buttonstyle="primary"
-          type="submit"
+          type="button"
           onClick={handleLoginOnClick}
           id="proceed-other-device-button"
           disabled={!data}

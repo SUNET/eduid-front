@@ -88,7 +88,7 @@ export function ConfirmModal({
                       </React.Fragment>
                     )}
 
-                    {mainText ? mainText : null}
+                    {mainText}
                     <FinalField<string>
                       component={CustomInput}
                       componentClass="input"
@@ -101,7 +101,7 @@ export function ConfirmModal({
                       validate={validate}
                       autoFocus={true}
                     />
-                    {resendMarkup ? resendMarkup : null}
+                    {resendMarkup}
                   </div>
                   <div className="modal-footer">
                     <EduIDButton
@@ -110,11 +110,7 @@ export function ConfirmModal({
                       disabled={submitting || invalid}
                       onClick={() => handleConfirm}
                     >
-                      {submitButtonText ? (
-                        submitButtonText
-                      ) : (
-                        <FormattedMessage defaultMessage="ok" description="ok button" />
-                      )}
+                      {submitButtonText && <FormattedMessage defaultMessage="ok" description="ok button" />}
                     </EduIDButton>
                   </div>
                 </form>

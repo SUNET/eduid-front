@@ -92,7 +92,7 @@ export function TemporaryInfo(
           </span>
         </label>
 
-        <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
+        <EduIDButton type="button" buttonstyle="primary" onClick={handleAccept} id="continue-button">
           <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>

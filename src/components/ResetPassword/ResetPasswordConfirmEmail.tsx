@@ -58,7 +58,7 @@ export function ResetPasswordConfirmEmail() {
 
       <div className="buttons">
         <GoBackButton />
-        <EduIDButton buttonstyle="primary" type="submit" onClick={sendEmailOnClick}>
+        <EduIDButton buttonstyle="primary" type="button" onClick={sendEmailOnClick}>
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>

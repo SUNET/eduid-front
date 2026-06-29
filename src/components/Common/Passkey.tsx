@@ -98,10 +98,8 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
         <EduIDButton
           ref={ref}
           buttonstyle="primary icon"
-          type="submit"
-          onClick={() => {
-            handleSecurityKey();
-          }}
+          type="button"
+          onClick={handleSecurityKey}
           id="pass-key"
           disabled={disabled}
         >
