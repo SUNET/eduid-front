@@ -8,11 +8,7 @@ interface ExpiresMeterProps {
   showMeter: boolean;
 }
 
-export function ExpiresMeter({
-  expires_max,
-  time_remaining,
-  showMeter,
-}: Readonly<ExpiresMeterProps>): React.JSX.Element | null {
+export function ExpiresMeter({ expires_max, time_remaining, showMeter }: Readonly<ExpiresMeterProps>) {
   // convince TypeScript that TimeRemainingWrapper has added the time_remaining prop
   if (time_remaining === undefined) {
     return null;

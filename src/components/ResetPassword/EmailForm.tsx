@@ -13,7 +13,7 @@ export interface EmailFormData {
   email?: string;
 }
 
-export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>): React.JSX.Element {
+export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>) {
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 

@@ -14,7 +14,7 @@ import { SignupEntry } from "./SignupEntry";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupUserCreated } from "./SignupUserCreated";
 
-export function SignupApp(): React.JSX.Element {
+export function SignupApp() {
   const next_page = useAppSelector((state) => state.signup.next_page);
   const dispatch = useAppDispatch();
 

@@ -74,7 +74,7 @@ function useDocumentTitle() {
   }, [pathname, intl]);
 }
 
-export function IndexMain(): React.JSX.Element {
+export function IndexMain() {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();

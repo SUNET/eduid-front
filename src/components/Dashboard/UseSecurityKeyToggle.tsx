@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import authnSlice from "slices/Authn";
 
-export function UseSecurityKeyToggle(): React.JSX.Element | null {
+export function UseSecurityKeyToggle() {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
     (state: EduIDAppRootState) => state.personal_data?.response?.preferences?.always_use_security_key,

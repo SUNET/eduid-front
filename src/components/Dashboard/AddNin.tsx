@@ -2,7 +2,7 @@ import { NinDisplay } from "components/Common/NinDisplay";
 import { useAppSelector } from "eduid-hooks";
 import { NinForm } from "./NinForm";
 
-export function AddNin(): React.JSX.Element {
+export function AddNin() {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
 
   if (nin) {

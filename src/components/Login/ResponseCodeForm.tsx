@@ -22,7 +22,7 @@ export function ResponseCodeForm({
   handleSubmitCode,
   inputsDisabled,
   children,
-}: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
+}: PropsWithChildren<ResponseCodeFormProps>) {
   const valueChars = (code && typeof code === "string" ? code : "").split("");
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],

@@ -28,7 +28,7 @@ import { PersonalDataParent } from "./PersonalDataParent";
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
-export function Identity(): React.JSX.Element | null {
+export function Identity() {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
@@ -62,7 +62,7 @@ export function Identity(): React.JSX.Element | null {
   );
 }
 
-function IdentityContent(): React.JSX.Element {
+function IdentityContent() {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -137,7 +137,7 @@ function IdentityContent(): React.JSX.Element {
   );
 }
 
-function VerifiedIdentitiesTable(): React.JSX.Element {
+function VerifiedIdentitiesTable() {
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
@@ -311,7 +311,7 @@ interface AccordionItemSwedishProps {
   open?: boolean;
 }
 
-function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
+function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -398,7 +398,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>): Re
   );
 }
 
-function AccordionItemEu(): React.JSX.Element | null {
+function AccordionItemEu() {
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   const handleOnClick = useCallback(async () => {
@@ -441,7 +441,7 @@ function AccordionItemEu(): React.JSX.Element | null {
   );
 }
 
-function AccordionItemWorld(): React.JSX.Element | null {
+function AccordionItemWorld() {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 

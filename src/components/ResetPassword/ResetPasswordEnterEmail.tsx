@@ -6,7 +6,7 @@ import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
 
-export function ResetPasswordEnterEmail(): React.JSX.Element {
+export function ResetPasswordEnterEmail() {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();

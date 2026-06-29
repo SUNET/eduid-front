@@ -17,7 +17,7 @@ interface UserNameInputProps {
   onFocus?: () => void;
 }
 
-export function UserNameInput(props: Readonly<UserNameInputProps>): React.JSX.Element {
+export function UserNameInput(props: Readonly<UserNameInputProps>) {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

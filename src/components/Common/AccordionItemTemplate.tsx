@@ -18,7 +18,7 @@ interface AccordionProps {
   className?: string;
 }
 
-export function Accordion({ id, children, className }: Readonly<AccordionProps>): React.JSX.Element {
+export function Accordion({ id, children, className }: Readonly<AccordionProps>) {
   return (
     <div id={id} className={className ?? "accordion"}>
       {children}
@@ -33,7 +33,7 @@ export function AccordionItemTemplate({
   uuid,
   children,
   open,
-}: Readonly<AccordionItemTemplateProps>): React.JSX.Element {
+}: Readonly<AccordionItemTemplateProps>) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
   const [isOpen, setIsOpen] = useState(open ?? false);
 

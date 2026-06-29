@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function UnknownError(): React.JSX.Element {
+export function UnknownError() {
   return (
     <React.Fragment>
       <h1>

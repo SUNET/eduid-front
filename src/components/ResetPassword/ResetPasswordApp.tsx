@@ -15,7 +15,7 @@ export interface UrlParams {
   ref?: string;
 }
 
-export function ResetPasswordApp(): React.JSX.Element {
+export function ResetPasswordApp() {
   const params = useParams() as UrlParams;
   const dispatch = useAppDispatch();
   const loginRef = useAppSelector((state) => state.login.ref);

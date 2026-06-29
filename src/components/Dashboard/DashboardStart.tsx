@@ -9,7 +9,7 @@ import { Recommendations } from "./Recommendations";
 /**
  * Renders the start page
  */
-export function Start(): React.JSX.Element {
+export function Start() {
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);

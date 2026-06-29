@@ -245,7 +245,7 @@ export function UsernamePw() {
   );
 }
 
-function UsernameInputPart(): React.JSX.Element {
+function UsernameInputPart() {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
@@ -297,7 +297,7 @@ function UsernameInputPart(): React.JSX.Element {
   );
 }
 
-function RenderResetPasswordLink(): React.JSX.Element {
+function RenderResetPasswordLink() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const usernameField = useField("username");
@@ -327,7 +327,7 @@ export function UsernamePwSubmitButton({
   submitError,
   dirtySinceLastSubmit,
   hasValidationErrors,
-}: Readonly<FormRenderProps<UsernamePwFormData>>): React.JSX.Element {
+}: Readonly<FormRenderProps<UsernamePwFormData>>) {
   /* Disable the button when:
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
@@ -356,7 +356,7 @@ export function UsernamePwSubmitButton({
   );
 }
 
-function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
+function UsernamePwAnotherDeviceButton() {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
   const usernameField = useField("username");

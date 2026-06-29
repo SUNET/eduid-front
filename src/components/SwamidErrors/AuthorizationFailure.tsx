@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function AuthorizationFailure(): React.JSX.Element {
+export function AuthorizationFailure() {
   return (
     <React.Fragment>
       <h1>

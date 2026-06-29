@@ -12,7 +12,7 @@ import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
-export function SignupEmailForm(): React.JSX.Element {
+export function SignupEmailForm() {
   return (
     <div className="step-container">
       <section className="intro">

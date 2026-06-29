@@ -37,13 +37,7 @@ function validateNin(value: string): string | undefined {
   return undefined;
 }
 
-function NinInput({
-  meta,
-  input,
-  placeholder,
-  label,
-  helpBlock,
-}: Readonly<CustomInputProps<string>>): React.JSX.Element {
+function NinInput({ meta, input, placeholder, label, helpBlock }: Readonly<CustomInputProps<string>>) {
   const [showNin, setShowNin] = useState(false);
 
   let className = "is-valid";
@@ -98,7 +92,7 @@ export interface NinFormData {
   nin?: string;
 }
 
-export function NinForm(): React.JSX.Element {
+export function NinForm() {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const [addNin] = securityApi.useLazyAddNinQuery();
 

@@ -30,7 +30,7 @@ export function NewPasswordForm({
   extra_security,
   goBack,
   submitButtonText,
-}: Readonly<NewPasswordFormProps>): React.JSX.Element {
+}: Readonly<NewPasswordFormProps>) {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
     const errors: NewPasswordFormData = {};

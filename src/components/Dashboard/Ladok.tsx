@@ -10,7 +10,7 @@ interface SelectedUniProps {
   value: string;
 }
 
-export const LadokContainer = (): React.JSX.Element => {
+export const LadokContainer = () => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
@@ -75,7 +75,7 @@ export const LadokContainer = (): React.JSX.Element => {
   );
 };
 
-const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => void }): React.JSX.Element => {
+const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => void }) => {
   const locale = useAppSelector((state) => state.intl.locale);
   const ladokUnis = useAppSelector((state) => state.ladok.unis);
   const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
@@ -173,7 +173,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
   );
 };
 
-const LadokLinkStatus = (): React.JSX.Element => {
+const LadokLinkStatus = () => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const unis = useAppSelector((state) => state.ladok.unis);
   const ladok_name = useAppSelector((state) => state.ladok.ladokName);

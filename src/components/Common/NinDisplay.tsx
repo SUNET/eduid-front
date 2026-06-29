@@ -12,7 +12,7 @@ interface NinDisplayProps {
   allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 
-function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>): React.JSX.Element | null {
+function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>) {
   const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
   const [removeNin] = securityApi.useLazyRemoveNinQuery();
 

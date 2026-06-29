@@ -23,7 +23,7 @@ export function EmailInput({
   autoComplete,
   helpBlock,
   defaultValue,
-}: Readonly<EmailInputProps>): React.JSX.Element {
+}: Readonly<EmailInputProps>) {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({

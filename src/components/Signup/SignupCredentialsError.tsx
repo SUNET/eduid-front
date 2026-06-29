@@ -4,7 +4,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 
-export function SignupCredentialsError(): React.JSX.Element | null {
+export function SignupCredentialsError() {
   const dispatch = useAppDispatch();
   const error = useAppSelector((state) => state.notifications.error);
 

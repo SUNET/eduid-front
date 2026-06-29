@@ -20,7 +20,7 @@ export function urlJoin(base_url: string, endpoint?: string) {
   return base_url;
 }
 
-export function Orcid(): React.JSX.Element {
+export function Orcid() {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const intl = useIntl();
   const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery();

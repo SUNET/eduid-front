@@ -1,7 +1,7 @@
 import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function AboutSunet(): React.JSX.Element {
+export function AboutSunet() {
   return (
     <AccordionItemTemplate
       uuid="help-about-sunet"

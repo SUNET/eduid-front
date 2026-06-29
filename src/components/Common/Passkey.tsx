@@ -21,13 +21,7 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function PassKey({
-  disabled,
-  setup,
-  onSuccess,
-  onComplete,
-  discoverable,
-}: Readonly<SecurityKeyProps>): React.JSX.Element {
+export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly<SecurityKeyProps>) {
   // The PassKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -59,11 +53,7 @@ export function PassKey({
   return <SecurityKeyInactive disabled={active} useSecurityKey={useSecurityKey} discoverable={discoverable} />;
 }
 
-function SecurityKeyInactive({
-  disabled,
-  useSecurityKey,
-  discoverable,
-}: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive({ disabled, useSecurityKey, discoverable }: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 

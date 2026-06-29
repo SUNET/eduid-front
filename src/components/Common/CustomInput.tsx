@@ -17,7 +17,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   readOnly?: boolean;
 }
 
-export function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+export function CustomInput(props: Readonly<CustomInputProps<string>>) {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -26,7 +26,7 @@ export function CustomInput(props: Readonly<CustomInputProps<string>>): React.JS
   );
 }
 
-const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
+const InputElement = (props: CustomInputProps<string>) => {
   let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
     if (props.meta.invalid) {

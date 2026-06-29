@@ -126,7 +126,7 @@ export function SignupConfirmPassword() {
   );
 }
 
-export function SignupUserCreated(): React.JSX.Element {
+export function SignupUserCreated() {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;
