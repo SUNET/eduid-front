@@ -79,14 +79,14 @@ function RenderFatalError({
       <div className="buttons">
         <EduIDButton
           buttonstyle="secondary"
-          type="submit"
+          type="button"
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
         >
           <FormattedMessage defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         {handleNewQRCodeOnClick && (
-          <EduIDButton buttonstyle="primary" type="submit" id="refresh-get-new-code" onClick={handleNewQRCodeOnClick}>
+          <EduIDButton buttonstyle="primary" type="button" id="refresh-get-new-code" onClick={handleNewQRCodeOnClick}>
             <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
           </EduIDButton>
         )}
@@ -194,14 +194,14 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="secondary"
-                    type="submit"
+                    type="button"
                     onClick={handleAbortButtonOnClick}
                     id="response-code-cancel-button"
                   >
                     <FormattedMessage defaultMessage="Cancel" description="button cancel" />
                   </EduIDButton>
                   <EduIDButton
-                    type="submit"
+                    type="button"
                     buttonstyle="primary"
                     onClick={handleContinueWithoutCode}
                     id="response-code-continue-button"

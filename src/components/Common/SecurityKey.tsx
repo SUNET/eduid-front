@@ -86,10 +86,8 @@ function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Read
       <EduIDButton
         ref={ref}
         buttonstyle="primary"
-        type="submit"
-        onClick={() => {
-          handleSecurityKey();
-        }}
+        type="button"
+        onClick={handleSecurityKey}
         id="mfa-security-key"
         disabled={disabled}
       >
