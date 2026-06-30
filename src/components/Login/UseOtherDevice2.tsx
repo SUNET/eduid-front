@@ -79,7 +79,7 @@ function RenderOtherDevice2(
     );
   }
 
-  if (data.state === "DENIED" || data.state == "ABORTED" || data.state == "FINISHED") {
+  if (data.state === "DENIED" || data.state === "ABORTED" || data.state === "FINISHED") {
     // These three states are final, there is no further state transition possible and there is
     // no need to show either timeout information or a Cancel button.
     return (
@@ -126,7 +126,7 @@ function RenderOtherDevice2(
 
       {data.state === "AUTHENTICATED" && <RenderAuthenticated data={data} />}
 
-      {data.state !== "IN_PROGRESS" && data.state != "AUTHENTICATED" && (
+      {data.state !== "IN_PROGRESS" && data.state !== "AUTHENTICATED" && (
         <p>
           <FormattedMessage
             defaultMessage="Request complete, you should close this browser window."
@@ -332,7 +332,7 @@ function RenderAuthenticated({ data }: Readonly<{ data: UseOtherDevice2ResponseL
 
 function DeveloperInfo({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
   const env = useAppSelector((state) => state.config.environment);
-  if (env != "dev" && env != "staging") {
+  if (env !== "dev" && env !== "staging") {
     return null;
   }
   return (

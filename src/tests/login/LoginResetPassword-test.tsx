@@ -40,7 +40,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
       const body = (await request.json()) as LoginNextRequest;
-      if (body.ref != ref) {
+      if (body.ref !== ref) {
         return new Response(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
@@ -55,7 +55,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
-      if (body.email != email) {
+      if (body.email !== email) {
         return new Response(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
@@ -128,7 +128,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
       const body = (await request.json()) as LoginNextRequest;
-      if (body.ref != ref) {
+      if (body.ref !== ref) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
@@ -143,7 +143,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
-      if (body.email != email) {
+      if (body.email !== email) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
@@ -156,7 +156,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/verify-email", async ({ request }) => {
       const body = (await request.json()) as VerifyCodeRequest;
-      if (body.email_code != code) {
+      if (body.email_code !== code) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: VerifyCodeResponse = {
@@ -173,7 +173,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
       "https://idp.eduid.docker/services/reset-password/new-password-extra-security-token",
       async ({ request }) => {
         const body = (await request.json()) as NewPasswordRequest;
-        if (body.email_code != code || body.password != TEST_PASSWORD) {
+        if (body.email_code !== code || body.password !== TEST_PASSWORD) {
           return new HttpResponse(null, { status: 400 });
         }
         const payload: NewPasswordResponse = {};
@@ -182,7 +182,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     ),
     http.post("https://idp.eduid.docker/services/reset-password/new-password", async ({ request }) => {
       const body = (await request.json()) as NewPasswordRequest;
-      if (body.email_code != code || body.password != TEST_PASSWORD) {
+      if (body.email_code !== code || body.password !== TEST_PASSWORD) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: NewPasswordResponse = {};

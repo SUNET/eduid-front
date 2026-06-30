@@ -128,7 +128,7 @@ test("api call webauthn/remove", async () => {
   mswServer.use(
     http.post("webauthn/remove", async ({ request }) => {
       const body = (await request.json()) as RemoveWebauthnTokensRequest;
-      if (body.credential_key != credential_key) {
+      if (body.credential_key !== credential_key) {
         return new HttpResponse(null, { status: 400 });
       }
 
