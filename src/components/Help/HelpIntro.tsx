@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Accordion } from "../Common/AccordionItemTemplate";
 import { ScrollToTopButton } from "../ScrollToTopButton";
@@ -16,7 +15,7 @@ import { VerificationOfIdentity } from "./VerificationOfIdentity";
 
 export function Help() {
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="help - general headline" defaultMessage="Help and contact" />
@@ -55,6 +54,6 @@ export function Help() {
       </div>
 
       <ScrollToTopButton />
-    </React.Fragment>
+    </>
   );
 }

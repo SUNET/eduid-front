@@ -62,10 +62,10 @@ export function PersonalDataForm({ labels, setEditMode, isVerifiedIdentity }: Re
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
               {isVerifiedIdentity ? (
-                <React.Fragment>
+                <>
                   <RenderLockedNames labels={labels} />
                   <SelectDisplayName setChosenGivenName={setChosenGivenName} />
-                </React.Fragment>
+                </>
               ) : (
                 <RenderEditableNames labels={labels} />
               )}

@@ -4,7 +4,7 @@ import { ConfirmModal } from "components/Common/ConfirmModal";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { NotificationModal } from "components/Common/NotificationModal";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
 import { AddNin } from "./AddNin";
@@ -92,7 +92,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
     description = <div />;
   } else if (letter_expired) {
     description = (
-      <Fragment>
+      <>
         <p className="description">
           <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
           <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
@@ -103,11 +103,11 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
             description="explanation text for letter proofing"
           />
         </p>
-      </Fragment>
+      </>
     );
   } else {
     description = (
-      <Fragment>
+      <>
         <p className="description">
           <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
           <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
@@ -125,7 +125,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
             description="explanation text for letter proofing"
           />
         </p>
-      </Fragment>
+      </>
     );
   }
 
@@ -138,7 +138,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
   });
 
   return (
-    <Fragment>
+    <>
       {/* <h4>
         <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
       </h4> */}
@@ -200,6 +200,6 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
         validationError="confirmation.code_invalid_format"
         validationPattern={shortCodePattern}
       />
-    </Fragment>
+    </>
   );
 }

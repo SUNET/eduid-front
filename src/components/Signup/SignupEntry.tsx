@@ -11,7 +11,6 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
-import { Fragment } from "react/jsx-runtime";
 import { signupSlice } from "slices/Signup";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import Eidas from "../../../img/flags/EU_trust_mark_logo_eIDAS.png";
@@ -290,7 +289,7 @@ export function SignupEntry() {
         )}
 
         {!external_mfa && (
-          <Fragment>
+          <>
             <div className="or-container">
               <div className="line"></div>
               <span>
@@ -306,17 +305,17 @@ export function SignupEntry() {
                 </h2>
                 <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
-                    <Fragment>
+                    <>
                       <FormattedMessage description="hide form button" defaultMessage="hide form" />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronUp} />
-                    </Fragment>
+                    </>
                   ) : (
-                    <Fragment>
+                    <>
                       <FormattedMessage description="show form button" defaultMessage="show form" />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronDown} />
-                    </Fragment>
+                    </>
                   )}
                 </EduIDButton>
               </div>
@@ -333,7 +332,7 @@ export function SignupEntry() {
                 </div>
               )}
             </section>
-          </Fragment>
+          </>
         )}
       </Splash>
       <NotificationModal

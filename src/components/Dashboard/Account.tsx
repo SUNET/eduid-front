@@ -5,7 +5,6 @@ import { DeleteAccount } from "components/Dashboard/DeleteAccount";
 import { Emails } from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
 import { SECURITY_PATH } from "components/IndexMain";
-import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountLinking } from "./AccountLinking";
 import { LadokContainer } from "./Ladok";
@@ -15,7 +14,7 @@ export function Account() {
   const intl = useIntl();
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Account" />
@@ -43,6 +42,6 @@ export function Account() {
           defaultMessage: "To Security Settings",
         })}
       />
-    </React.Fragment>
+    </>
   );
 }

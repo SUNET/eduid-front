@@ -1,5 +1,5 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
 import { EduIDButton } from "./EduIDButton";
@@ -66,7 +66,7 @@ function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Read
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h3>
         <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
@@ -93,13 +93,13 @@ function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Read
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </EduIDButton>
-    </Fragment>
+    </>
   );
 }
 
 function SecurityKeyActive() {
   return (
-    <Fragment>
+    <>
       <div className="button-pair selected">
         <h3>
           <FormattedMessage
@@ -111,6 +111,6 @@ function SecurityKeyActive() {
       <div className="button-pair bottom">
         <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
       </div>
-    </Fragment>
+    </>
   );
 }

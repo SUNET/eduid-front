@@ -1,5 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { dynamicMessage } from "translation";
 import type { ZXCVBNResult } from "zxcvbn";
@@ -73,7 +73,7 @@ export function PasswordStrengthMeter({ passStateUp, password }: Readonly<Passwo
   }, [data, passStateUp]);
 
   return (
-    <React.Fragment>
+    <>
       <span className={`code form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
         {password !== undefined && (
           <div className="form-group">{dynamicMessage(intl, pwStrengthMessages[pwScore])}</div>
@@ -82,6 +82,6 @@ export function PasswordStrengthMeter({ passStateUp, password }: Readonly<Passwo
       <div className="meter-wrapper">
         <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       </div>
-    </React.Fragment>
+    </>
   );
 }

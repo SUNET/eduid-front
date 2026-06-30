@@ -1,7 +1,6 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { GoBackButton } from "./GoBackButton";
@@ -24,7 +23,7 @@ export function ResetPasswordConfirmEmail() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -62,6 +61,6 @@ export function ResetPasswordConfirmEmail() {
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </>
   );
 }

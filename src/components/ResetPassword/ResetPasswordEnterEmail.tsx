@@ -1,6 +1,5 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -20,7 +19,7 @@ export function ResetPasswordEnterEmail() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -43,6 +42,6 @@ export function ResetPasswordEnterEmail() {
         disabled={email_status === "requested"}
         defaultEmail={email_address}
       />
-    </React.Fragment>
+    </>
   );
 }

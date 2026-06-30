@@ -1,6 +1,6 @@
 import { ladokApi } from "apis/eduidLadok";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
@@ -135,7 +135,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
   }, [ladokUnis, ladokName, locale]);
 
   return (
-    <React.Fragment>
+    <>
       <FinalForm
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
@@ -169,7 +169,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
           />
         ) : undefined}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -192,7 +192,7 @@ const LadokLinkStatus = () => {
   }
 
   return (
-    <React.Fragment>
+    <>
       {isLinked && (
         <fieldset>
           <div className="ladok-university flex-between">
@@ -206,6 +206,6 @@ const LadokLinkStatus = () => {
           </div>
         </fieldset>
       )}
-    </React.Fragment>
+    </>
   );
 };

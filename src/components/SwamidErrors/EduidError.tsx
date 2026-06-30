@@ -1,4 +1,3 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 import { OtherError } from "./OtherError";
@@ -12,7 +11,7 @@ export function EduidError({ errorURL }: Readonly<FailureComponentProps>) {
 
 function NotLoggedIn() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Not logged in" description="ErrorURL eduid error" />
       </h1>
@@ -22,6 +21,6 @@ function NotLoggedIn() {
           description="ErrorURL eduid error"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

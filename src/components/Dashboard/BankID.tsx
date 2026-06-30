@@ -1,6 +1,6 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { EduIDButton } from "components/Common/EduIDButton";
-import { Fragment, useCallback } from "react";
+import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function BankID() {
@@ -14,7 +14,7 @@ export function BankID() {
   }, [bankIDVerifyIdentity]);
 
   return (
-    <Fragment>
+    <>
       <p>
         <FormattedMessage
           description="bankID proofing help text"
@@ -38,6 +38,6 @@ export function BankID() {
       <EduIDButton buttonstyle="primary sm" onClick={useBankID} aria-label="Proceed with BankID">
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
-    </Fragment>
+    </>
   );
 }

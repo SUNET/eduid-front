@@ -2,7 +2,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { RecoveryOptions } from "components/Common/RecoveryOptions";
 import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -41,7 +41,7 @@ export function HandleExtraSecurities() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -86,6 +86,6 @@ export function HandleExtraSecurities() {
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
-    </React.Fragment>
+    </>
   );
 }

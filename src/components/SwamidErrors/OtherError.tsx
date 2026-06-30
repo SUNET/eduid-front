@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export function OtherError() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Access Error" description="ErrorURL other error" />
       </h1>
@@ -19,6 +18,6 @@ export function OtherError() {
           description="ErrorURL other error"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

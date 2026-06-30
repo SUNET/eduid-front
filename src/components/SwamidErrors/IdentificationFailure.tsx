@@ -1,6 +1,6 @@
 import { loginApi } from "apis/eduidLogin";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
@@ -16,12 +16,12 @@ export function IdentificationFailure({ errorURL }: Readonly<FailureComponentPro
   }, [fetchErrorInfo, is_configured]);
 
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Identification failed" description="ErrorURL identification failure" />
       </h1>
       {errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
-    </React.Fragment>
+    </>
   );
 }
 
@@ -47,7 +47,7 @@ function MissingNin() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           defaultMessage={`The service that you tried to access requires a "confirmed"
@@ -56,13 +56,13 @@ function MissingNin() {
         />
       </p>
       <p>{SpecificMessage}</p>
-    </React.Fragment>
+    </>
   );
 }
 
 function Default() {
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           defaultMessage="The service that you tried to access did not get all required attributes for
@@ -77,6 +77,6 @@ function Default() {
           description="ErrorURL identification failure"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

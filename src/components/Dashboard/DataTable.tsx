@@ -1,7 +1,6 @@
 import { emailApi, EmailInfo } from "apis/eduidEmail";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch } from "eduid-hooks";
-import { Fragment } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 
@@ -75,7 +74,7 @@ function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
   }
 
   return (
-    <Fragment>
+    <>
       {data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
         const keysArray = Object.keys(datum);
         const valueArray = Object.values(datum);
@@ -116,7 +115,7 @@ function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
           </tr>
         );
       })}
-    </Fragment>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import { AuthenticationFailure } from "./AuthenticationFailure";
@@ -66,7 +65,7 @@ export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLDa
     <div className="figure">
       <table className="error-info">
         {errorURL.code ? (
-          <React.Fragment>
+          <>
             <caption>
               <h3>
                 <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
@@ -108,7 +107,7 @@ export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLDa
                 );
               })}
             </tbody>
-          </React.Fragment>
+          </>
         ) : (
           <tbody>
             <tr>

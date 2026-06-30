@@ -1,6 +1,6 @@
 import { CopyToClipboardButton } from "components/Common/CopyToClipboardButton";
 import { NewPasswordForm } from "components/Common/NewPasswordForm";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
 
@@ -12,7 +12,7 @@ export function ChangePasswordSuggestedForm({
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <React.Fragment>
+    <>
       <div className="pw-suggested">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="new password" />
@@ -34,6 +34,6 @@ export function ChangePasswordSuggestedForm({
         submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
         handleCancel={handleCancel}
       />
-    </React.Fragment>
+    </>
   );
 }

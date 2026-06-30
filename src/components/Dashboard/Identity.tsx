@@ -12,7 +12,7 @@ import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
 import { LetterProofing } from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
@@ -44,7 +44,7 @@ export function Identity() {
   }
 
   return (
-    <Fragment>
+    <>
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}
@@ -58,7 +58,7 @@ export function Identity() {
           defaultMessage: "To Security Settings",
         })}
       />
-    </Fragment>
+    </>
   );
 }
 
@@ -78,7 +78,7 @@ function IdentityContent() {
    *   TODO: Support other types of identities than NINs.
    */
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="verify identity unverified main title" defaultMessage={`Identity`} />
@@ -104,7 +104,7 @@ function IdentityContent() {
 
       <article id="verify-identity">
         {identities?.is_verified ? (
-          <React.Fragment>
+          <>
             <div className="flex-between baseline">
               <h2>
                 <FormattedMessage
@@ -115,9 +115,9 @@ function IdentityContent() {
               <ToolTip />
             </div>
             <VerifiedIdentitiesTable />
-          </React.Fragment>
+          </>
         ) : (
-          <React.Fragment>
+          <>
             <h2>
               <FormattedMessage
                 description="verify identity non verified description"
@@ -129,11 +129,11 @@ function IdentityContent() {
               <AccordionItemEu />
               <AccordionItemWorld />
             </Accordion>
-          </React.Fragment>
+          </>
         )}
       </article>
       <PersonalDataParent />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -203,7 +203,7 @@ function VerifiedIdentitiesTable() {
   }, [dispatch, frontend_action, frontend_state, handleRemoveIdentity]);
 
   return (
-    <React.Fragment>
+    <>
       {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
@@ -289,7 +289,7 @@ function VerifiedIdentitiesTable() {
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
-        <React.Fragment>
+        <>
           <p>
             <strong>
               <FormattedMessage
@@ -301,9 +301,9 @@ function VerifiedIdentitiesTable() {
           <Accordion>
             <AccordionItemSwedish />
           </Accordion>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 }
 

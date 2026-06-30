@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import loginSlice from "slices/Login";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -31,7 +31,7 @@ export function ResetPasswordApp() {
   }, [dispatch, loginRef, next_page, params]);
 
   return (
-    <React.Fragment>
+    <>
       {next_page === "ASK_FOR_EMAIL_OR_CONFIRM_EMAIL" && <AskForEmailOrConfirmEmail />}
       {next_page === "RESET_PW_CONFIRM_EMAIL" && <ResetPasswordConfirmEmail />}
       {next_page === "RESET_PW_ENTER_EMAIL" && <ResetPasswordEnterEmail />}
@@ -41,7 +41,7 @@ export function ResetPasswordApp() {
       {next_page === "HANDLE_EXTRA_SECURITIES" && <HandleExtraSecurities />}
       {next_page === "SET_NEW_PASSWORD" && <SetNewPassword />}
       {next_page === "RESET_PW_SUCCESS" && <ResetPasswordSuccess />}
-    </React.Fragment>
+    </>
   );
 }
 

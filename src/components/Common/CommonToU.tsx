@@ -15,7 +15,7 @@ interface CommonToUProps {
  */
 export function CommonToU({ version, handleAccept, handleCancel }: Readonly<CommonToUProps>) {
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           defaultMessage={`You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed.`}
@@ -43,6 +43,6 @@ export function CommonToU({ version, handleAccept, handleCancel }: Readonly<Comm
           </EduIDButton>
         </div>
       ) : null}
-    </React.Fragment>
+    </>
   );
 }

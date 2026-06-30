@@ -9,7 +9,7 @@ import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -263,7 +263,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <Fragment>
+    <>
       <article id="add-two-factor">
         <div className="flex-between baseline">
           <h2>
@@ -388,6 +388,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         handleVerificationWebauthnToken={handleVerificationWebauthnToken}
         tokenKey={tokenKey ?? ""}
       />
-    </Fragment>
+    </>
   );
 }

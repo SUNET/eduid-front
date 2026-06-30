@@ -135,10 +135,10 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
   });
 
   return (
-    <React.Fragment>
+    <>
       {props.debug && <RenderDebugInfo {...props} secondsLeft={secondsLeft} />}
       {childrenWithProps}
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,6 +1,5 @@
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 
@@ -13,7 +12,7 @@ export function SignupCredentialsError() {
   }
 
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           defaultMessage="There was a problem creating your account."
@@ -40,6 +39,6 @@ export function SignupCredentialsError() {
           <FormattedMessage defaultMessage="Retry" description="Signup credentials button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </>
   );
 }
