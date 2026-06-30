@@ -188,7 +188,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
           </li>
 
           <li>
-            {response_code_required === false ? (
+            {!response_code_required ? (
               <React.Fragment>
                 <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
                 <div className="buttons">
