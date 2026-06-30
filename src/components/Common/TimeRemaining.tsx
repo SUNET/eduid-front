@@ -19,7 +19,7 @@ function setLocalStorage(key: string, val: string) {
 
 function loadEndDate(name: string, unique_id?: string): Date | undefined {
   const data = JSON.parse(getLocalStorage(name) || "{}") as StoredData;
-  if (!data.end || data.id != unique_id) {
+  if (!data.end || data.id !== unique_id) {
     // No data, or non-matching unique id
     return undefined;
   }

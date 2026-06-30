@@ -82,7 +82,7 @@ function happyCaseBackend(state: SignupState) {
     }),
     http.post("https://signup.eduid.docker/services/signup/captcha", async ({ request }) => {
       const body = (await request.json()) as CaptchaRequest;
-      if (body.internal_response != captchaTestValue) {
+      if (body.internal_response !== captchaTestValue) {
         return new HttpResponse(null, { status: 400 });
       }
 
@@ -96,7 +96,7 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     http.post("https://signup.eduid.docker/services/signup/accept-tou", async ({ request }) => {
       const body = (await request.json()) as AcceptToURequest;
-      if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
+      if (body.tou_version !== state.tou.version || body.tou_accepted !== true) {
         return new HttpResponse(null, { status: 400 });
       }
 

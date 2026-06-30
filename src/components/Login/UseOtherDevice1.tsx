@@ -243,7 +243,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
 
 function DeveloperInfo({ qr_url }: Readonly<{ qr_url?: string }>) {
   const env = useAppSelector((state) => state.config.environment);
-  if (!qr_url || (env != "dev" && env != "staging")) {
+  if (!qr_url || (env !== "dev" && env !== "staging")) {
     return null;
   }
   return (
