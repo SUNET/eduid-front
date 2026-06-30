@@ -3,7 +3,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 import { ExpiresMeter } from "./ExpiresMeter";
@@ -65,7 +65,7 @@ export function UseOtherDevice1() {
 function RenderFatalError({
   error,
   handleNewQRCodeOnClick,
-}: Readonly<{ error: React.JSX.Element; handleNewQRCodeOnClick?: () => void }>) {
+}: Readonly<{ error: ReactNode; handleNewQRCodeOnClick?: () => void }>) {
   const dispatch = useAppDispatch();
 
   function handleCancelButtonOnClick() {
