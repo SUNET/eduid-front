@@ -285,7 +285,7 @@ function noopSubmit(): undefined {
 }
 
 function RenderAuthenticated({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
-  if (data.response_code_required === false) {
+  if (!data.response_code_required) {
     return (
       <p>
         <FormattedMessage

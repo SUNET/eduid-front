@@ -50,7 +50,7 @@ function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIden
   return (
     <div className={`status-box ${identities?.is_verified ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {identities?.is_verified === true ? (
+        {identities?.is_verified ? (
           <FontAwesomeIcon icon={faCircleCheck} />
         ) : (
           <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
@@ -58,14 +58,14 @@ function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIden
       </div>
       <div className="text-wrapper">
         <h3>
-          {identities?.is_verified === true ? (
+          {identities?.is_verified ? (
             <FormattedMessage description="Verified Identity heading" defaultMessage="Verified identity" />
           ) : (
             <FormattedMessage description="Verify Identity heading" defaultMessage="Verify your identity" />
           )}
         </h3>
         <span>
-          {identities?.is_verified === true ? (
+          {identities?.is_verified ? (
             <FormattedMessage
               description="read more details about your verified identity description"
               defaultMessage="Read more details about your verified identity at {identity}"

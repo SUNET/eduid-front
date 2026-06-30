@@ -193,7 +193,7 @@ const LadokLinkStatus = () => {
 
   return (
     <React.Fragment>
-      {isLinked === true && (
+      {isLinked && (
         <fieldset>
           <div className="ladok-university flex-between">
             <label>

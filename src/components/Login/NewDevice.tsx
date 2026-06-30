@@ -58,12 +58,12 @@ export function RememberMeCheckbox() {
       globalThis.localStorage.setItem(REMEMBER_ME_KEY, JSON.stringify(newValue));
     }
     dispatch(loginSlice.actions.setRememberMe(newValue));
-    if (newValue === true && previous_this_device) {
+    if (newValue && previous_this_device) {
       // if the user toggled 'remember me' to off, and then back to on again, we restore the
       // state.login.this_device from state.login.previous_this_device
       dispatch(loginSlice.actions.addThisDevice(previous_this_device));
     }
-    if (newValue === false) {
+    if (!newValue) {
       forgetThisDevice(dispatch);
     }
     // re-fetch '/next' now that the conditions for logging in has changed

@@ -125,7 +125,7 @@ export function SignupEnterCode() {
   // Not expired, show six input fields, a count down timer and an abort button
 
   return (
-    <Splash showChildren={isExpired === false}>
+    <Splash showChildren={!isExpired}>
       <div className="step-container">
         <section className="intro">
           <h1>
