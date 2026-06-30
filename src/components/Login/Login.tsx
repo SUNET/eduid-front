@@ -153,7 +153,7 @@ function UserTerminated() {
       </p>
 
       <div>
-        <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
+        <EduIDButton onClick={reset_password} buttonstyle="link normal-case">
           <FormattedMessage
             defaultMessage="Go to reset password page"
             description="Account terminated - reset password link"

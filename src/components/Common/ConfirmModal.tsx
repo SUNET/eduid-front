@@ -104,13 +104,8 @@ export function ConfirmModal({
                     {resendMarkup}
                   </div>
                   <div className="modal-footer">
-                    <EduIDButton
-                      type="submit"
-                      buttonstyle="primary"
-                      disabled={submitting || invalid}
-                      onClick={() => handleConfirm}
-                    >
-                      {submitButtonText && <FormattedMessage defaultMessage="ok" description="ok button" />}
+                    <EduIDButton type="submit" buttonstyle="primary" disabled={submitting || invalid}>
+                      {submitButtonText ?? <FormattedMessage defaultMessage="ok" description="ok button" />}
                     </EduIDButton>
                   </div>
                 </form>

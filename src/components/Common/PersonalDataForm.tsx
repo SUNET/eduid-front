@@ -235,11 +235,7 @@ const RenderLockedNames = ({ labels }: Readonly<{ labels: NameLabels }>) => {
 
       {/* Only available for Swedish identities */}
       {nin?.verified && (
-        <EduIDButton
-          buttonstyle="link normal-case sm icon refresh"
-          aria-label="name-check"
-          onClick={() => handleUpdateName()}
-        >
+        <EduIDButton buttonstyle="link normal-case sm icon refresh" aria-label="name-check" onClick={handleUpdateName}>
           <FontAwesomeIcon icon={faRedo as IconProp} />
           <span>
             <FormattedMessage
