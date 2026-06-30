@@ -159,7 +159,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
       <EduIDButton
         disabled={disabled}
         buttonstyle="primary sm"
-        onClick={() => handleModal()}
+        onClick={handleModal}
         aria-label="Proceed with letter proofing"
       >
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
