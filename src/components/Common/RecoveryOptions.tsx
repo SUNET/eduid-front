@@ -31,7 +31,7 @@ export function RecoveryOptions({
   recoveryAvailable,
 }: Readonly<{
   recoveryAvailable: RecoveryOptions;
-}>): React.JSX.Element {
+}>) {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);
@@ -49,7 +49,7 @@ export function RecoveryOptions({
 
   interface SelectOptions {
     value: string;
-    label: React.JSX.Element;
+    label: ReactNode;
     available?: boolean;
   }
 

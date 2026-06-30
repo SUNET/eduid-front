@@ -6,7 +6,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -171,7 +171,7 @@ function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
 }
 
 function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>) {
-  const proximityMessages: { [key: string]: React.JSX.Element } = {
+  const proximityMessages: { [key: string]: ReactNode } = {
     SAME: (
       <FormattedMessage
         defaultMessage="(The same as now)"
@@ -191,7 +191,7 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
       ></FormattedMessage>
     ),
   };
-  const proximity: React.JSX.Element = proximityMessages[props.data.device1_info.proximity];
+  const proximity: ReactNode = proximityMessages[props.data.device1_info.proximity];
   return (
     <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />

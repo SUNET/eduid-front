@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 interface NameDisplayProps {
-  label?: string | React.JSX.Element;
-  name?: string | React.JSX.Element;
+  label?: ReactNode;
+  name?: ReactNode;
   htmlFor: string;
 }
 
