@@ -74,7 +74,7 @@ function RenderFatalError({
   }
 
   return (
-    <React.Fragment>
+    <>
       <p>{error}</p>
       <div className="buttons">
         <EduIDButton
@@ -91,7 +91,7 @@ function RenderFatalError({
           </EduIDButton>
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -169,7 +169,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
   );
 
   return (
-    <React.Fragment>
+    <>
       {isExpired ? (
         <RenderFatalError error={expiredMessage} handleNewQRCodeOnClick={handleNewQRCodeOnClick} />
       ) : (
@@ -189,7 +189,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
 
           <li>
             {!response_code_required ? (
-              <React.Fragment>
+              <>
                 <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
                 <div className="buttons">
                   <EduIDButton
@@ -209,9 +209,9 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                     <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
                   </EduIDButton>
                 </div>
-              </React.Fragment>
+              </>
             ) : (
-              <React.Fragment>
+              <>
                 <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
                 <div className="expiration-info">
                   <ResponseCodeForm
@@ -231,13 +231,13 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                     <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
                   </TimeRemainingWrapper>
                 </div>
-              </React.Fragment>
+              </>
             )}
           </li>
         </ol>
       )}
       <DeveloperInfo {...data} />
-    </React.Fragment>
+    </>
   );
 }
 

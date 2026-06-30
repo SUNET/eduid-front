@@ -3,7 +3,7 @@ import { loginApi } from "apis/eduidLogin";
 import { signupApi, SignupState } from "apis/eduidSignup";
 import { RegisterEmail } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import { NextPageTypes, signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
@@ -25,7 +25,7 @@ export function SignupApp() {
   }, [dispatch, next_page]);
 
   return (
-    <React.Fragment>
+    <>
       {next_page === "SIGNUP_START" && <SignupStart />}
       {next_page === "SIGNUP_ENTRY" && <SignupEntry />}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
@@ -38,7 +38,7 @@ export function SignupApp() {
       {next_page === "SIGNUP_CREDENTIALS_ERROR" && <SignupCredentialsError />}
       {next_page === "SIGNUP_CREDENTIALS" && <SignupCredentials />}
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
-    </React.Fragment>
+    </>
   );
 }
 

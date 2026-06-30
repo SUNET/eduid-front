@@ -4,7 +4,7 @@ import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
@@ -103,7 +103,7 @@ export function MultiFactorAuth() {
   }
 
   return (
-    <Fragment>
+    <>
       <section className="intro">
         <h1>{headingText}</h1>
         <div className="lead">
@@ -114,7 +114,7 @@ export function MultiFactorAuth() {
 
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
-          <React.Fragment>
+          <>
             <p>
               <FormattedMessage
                 defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
@@ -143,12 +143,12 @@ export function MultiFactorAuth() {
               <RecoveryOptions recoveryAvailable={recoveryOptions} />
             </div>
             <RememberMeCheckbox />
-          </React.Fragment>
+          </>
         ) : (
           <ExtraSecurityNotAvailable />
         )}
       </Splash>
-    </Fragment>
+    </>
   );
 }
 

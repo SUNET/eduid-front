@@ -1,7 +1,6 @@
 import { MultiFactorAuthentication } from "components/Common/MultiFactorAuthentication";
 import { WizardLink } from "components/Common/WizardLink";
 import { ACCOUNT_PATH, IDENTITY_PATH } from "components/IndexMain";
-import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 /* The Dashboard "Advanced Settings" tab */
@@ -9,7 +8,7 @@ export function Security() {
   const intl = useIntl();
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="security main title" defaultMessage="Security" />
@@ -36,6 +35,6 @@ export function Security() {
           defaultMessage: "To Account Settings",
         })}
       />
-    </React.Fragment>
+    </>
   );
 }

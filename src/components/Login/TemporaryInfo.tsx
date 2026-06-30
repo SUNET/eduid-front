@@ -1,5 +1,5 @@
 import { EduIDButton } from "components/Common/EduIDButton";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
@@ -19,7 +19,7 @@ export function TemporaryInfo(
   }
 
   return (
-    <Fragment>
+    <>
       {/* Common for all messages */}
       <h1>
         <FormattedMessage defaultMessage="Important information" description="Temp info - title" />
@@ -96,6 +96,6 @@ export function TemporaryInfo(
           <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
-    </Fragment>
+    </>
   );
 }

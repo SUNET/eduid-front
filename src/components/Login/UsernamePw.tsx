@@ -8,7 +8,7 @@ import { UserNameInput } from "components/Common/UserNameInput";
 import { RESET_PASSWORD_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -186,7 +186,7 @@ export function UsernamePw() {
   }, [fetchChallengeOnce, fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>{loginHeading}</h1>
         <div className="lead">
@@ -228,7 +228,7 @@ export function UsernamePw() {
         )}
       </section>
       {webauthn && (
-        <Fragment>
+        <>
           <section className="passkey-option">
             <PassKey
               setup={getChallenge}
@@ -238,10 +238,10 @@ export function UsernamePw() {
             />
           </section>
           <hr className="border-line" />
-        </Fragment>
+        </>
       )}
       <RememberMeCheckbox />
-    </React.Fragment>
+    </>
   );
 }
 
@@ -257,7 +257,7 @@ function UsernameInputPart() {
   }
   if (authn_options.forced_username) {
     return (
-      <React.Fragment>
+      <>
         {!securityZoneAction && (
           <div className="welcome-back-container">
             <legend>
@@ -284,7 +284,7 @@ function UsernameInputPart() {
           defaultValue={authn_options.forced_username}
           label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
         />
-      </React.Fragment>
+      </>
     );
   }
   return (

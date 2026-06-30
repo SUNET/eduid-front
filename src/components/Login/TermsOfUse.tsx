@@ -1,7 +1,7 @@
 import { loginApi } from "apis/eduidLogin";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
@@ -41,7 +41,7 @@ export function TermsOfUse() {
   }
 
   return (
-    <Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
       </h1>
@@ -55,6 +55,6 @@ export function TermsOfUse() {
       </div>
 
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
-    </Fragment>
+    </>
   );
 }

@@ -77,7 +77,7 @@ export function ConfirmModal({
                 >
                   <div className="modal-body">
                     {captcha && (
-                      <React.Fragment>
+                      <>
                         <img src={captcha.captcha_img} alt="captcha" />
                         <audio
                           controls
@@ -85,7 +85,7 @@ export function ConfirmModal({
                           className="captcha-audio"
                           src={captcha.captcha_audio}
                         />
-                      </React.Fragment>
+                      </>
                     )}
 
                     {mainText}

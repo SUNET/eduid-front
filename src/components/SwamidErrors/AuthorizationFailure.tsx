@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
 export function AuthorizationFailure() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Insufficient privileges" description="ErrorURL authorization failure" />
       </h1>
@@ -19,6 +18,6 @@ export function AuthorizationFailure() {
           description="ErrorURL authentication failure"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

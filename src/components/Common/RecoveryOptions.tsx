@@ -2,7 +2,7 @@ import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { useAppSelector } from "eduid-hooks";
-import React, { ReactNode, useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
@@ -20,10 +20,10 @@ interface RecoveryOptions {
 
 const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
   return (
-    <React.Fragment>
+    <>
       {icon}
       <span className="select-option-text">{text}</span>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -138,7 +138,7 @@ export function RecoveryOptions({
   );
 
   return (
-    <React.Fragment>
+    <>
       <div className="or-container">
         <div className="line" />
         <span>
@@ -172,6 +172,6 @@ export function RecoveryOptions({
           </p>
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 }

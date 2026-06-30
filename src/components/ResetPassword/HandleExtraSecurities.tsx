@@ -2,11 +2,10 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { RecoveryOptions } from "components/Common/RecoveryOptions";
 import { SecurityKey as SecurityKeyLogin } from "components/Common/SecurityKey";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
-import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 /**
  * Render the extra security options, security key, Freja eID and phone verification
@@ -42,7 +41,7 @@ export function HandleExtraSecurities() {
   }
 
   return (
-    <div className="step-container">
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -92,7 +91,6 @@ export function HandleExtraSecurities() {
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
-      <ResetPasswordStepIndicator currentStep={4} />
-    </div>
+    </>
   );
 }

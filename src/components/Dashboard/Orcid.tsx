@@ -1,7 +1,6 @@
 import { orcidApi } from "apis/eduidOrcid";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import orcidIcon from "../../../img/vector_iD_icon-w.svg";
@@ -85,7 +84,7 @@ export function Orcid() {
     );
   } else {
     return (
-      <Fragment>
+      <>
         <div className="buttons">
           <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
             <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
@@ -98,7 +97,7 @@ export function Orcid() {
             defaultMessage="ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
           />
         </p>
-      </Fragment>
+      </>
     );
   }
 }

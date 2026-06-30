@@ -6,7 +6,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -107,7 +107,7 @@ function RenderOtherDevice2(
   }
 
   return (
-    <React.Fragment>
+    <>
       {data.state === "IN_PROGRESS" && (
         <ol className="listed-steps">
           {/* <LoginAtServiceInfo service_info={data.device1_info.service_info} />*/}
@@ -148,7 +148,7 @@ function RenderOtherDevice2(
       </div>
 
       {data.state === "AUTHENTICATED" && <DeveloperInfo data={data} />}
-    </React.Fragment>
+    </>
   );
 }
 

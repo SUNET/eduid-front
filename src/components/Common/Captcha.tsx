@@ -1,7 +1,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faRedo } from "@fortawesome/free-solid-svg-icons/faRedo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 import { GetCaptchaResponse } from "apis/eduidSignup";
@@ -124,7 +124,7 @@ export function InternalCaptcha({ getCaptcha, handleCaptchaCancel, handleCaptcha
   }, [captchaResponse, is_configured, getCaptcha]);
 
   return (
-    <React.Fragment>
+    <>
       <figure className="captcha-responsive">
         <img alt="captcha" className="captcha-image" src={captchaResponse?.captcha_img} />
         <audio controls className="captcha-audio" src={captchaResponse?.captcha_audio} />
@@ -147,6 +147,6 @@ export function InternalCaptcha({ getCaptcha, handleCaptchaCancel, handleCaptcha
         handleCaptchaCompleted={handleCaptchaCompleted}
         getCaptcha={getCaptcha}
       />
-    </React.Fragment>
+    </>
   );
 }

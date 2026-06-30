@@ -2,7 +2,7 @@ import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
@@ -90,7 +90,7 @@ export function Login() {
   }, [navigate, next_page, ref]);
 
   return (
-    <React.Fragment>
+    <>
       {next_page === "NEW_DEVICE" && <NewDevice />}
       {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
@@ -100,7 +100,7 @@ export function Login() {
       {next_page === "PASSWORD" && <UsernamePw />}
       {next_page === "FINISHED" && <RenderFinished />}
       {error_state === "login.user_terminated" && <UserTerminated />}
-    </React.Fragment>
+    </>
   );
 }
 

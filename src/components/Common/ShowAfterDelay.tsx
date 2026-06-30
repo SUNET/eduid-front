@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ShowAfterDelayProps extends React.BaseHTMLAttributes<HTMLBaseElement> {
   delay: number;
@@ -23,5 +23,5 @@ export function ShowAfterDelay(props: Readonly<ShowAfterDelayProps>) {
     return null;
   }
 
-  return <Fragment>{props.children}</Fragment>;
+  return <>{props.children}</>;
 }

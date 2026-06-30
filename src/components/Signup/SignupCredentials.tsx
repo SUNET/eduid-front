@@ -7,7 +7,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
@@ -23,7 +23,7 @@ type PasswordRequirement = "default" | "optional" | "required";
 const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequirement }>) => {
   const [isEditMode, setEditMode] = useState<boolean>(false);
   return (
-    <Fragment>
+    <>
       <div className="or-container">
         <div className="line"></div>
         <span>
@@ -49,17 +49,17 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
           </h2>
           <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
-              <Fragment>
+              <>
                 <FormattedMessage description="hide form button" defaultMessage="hide form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronUp} />
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <FormattedMessage description="show form button" defaultMessage="show form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronDown} />
-              </Fragment>
+              </>
             )}
           </EduIDButton>
         </div>
@@ -71,7 +71,7 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
         </p>
         {isEditMode && <SignupConfirmPassword />}
       </section>
-    </Fragment>
+    </>
   );
 };
 
@@ -192,7 +192,7 @@ export function SignupCredentials(): React.ReactElement | null {
       {/* status box for passkey option */}
       <section className="passkey-option">
         {webauthnRegistered ? (
-          <Fragment>
+          <>
             <figure className="signin-details">
               <span>
                 <FormattedMessage
@@ -211,9 +211,9 @@ export function SignupCredentials(): React.ReactElement | null {
                 </EduIDButton>
               </div>
             )}
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
+          <>
             <div className="status-box">
               <div className="text-wrapper">
                 <div className="flex-between">
@@ -284,7 +284,7 @@ export function SignupCredentials(): React.ReactElement | null {
                 </div>
               </div>
             </div>
-          </Fragment>
+          </>
         )}
       </section>
       <PasswordSection requirement={passwordRequirement} />
