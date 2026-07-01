@@ -188,29 +188,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
           </li>
 
           <li>
-            {!response_code_required ? (
-              <>
-                <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
-                <div className="buttons">
-                  <EduIDButton
-                    buttonstyle="secondary"
-                    type="button"
-                    onClick={handleAbortButtonOnClick}
-                    id="response-code-cancel-button"
-                  >
-                    <FormattedMessage defaultMessage="Cancel" description="button cancel" />
-                  </EduIDButton>
-                  <EduIDButton
-                    type="button"
-                    buttonstyle="primary"
-                    onClick={handleContinueWithoutCode}
-                    id="response-code-continue-button"
-                  >
-                    <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
-                  </EduIDButton>
-                </div>
-              </>
-            ) : (
+            {response_code_required ? (
               <>
                 <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
                 <div className="expiration-info">
@@ -230,6 +208,28 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                   >
                     <ExpiresMeter showMeter={false} expires_max={data.expires_max} />
                   </TimeRemainingWrapper>
+                </div>
+              </>
+            ) : (
+              <>
+                <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+                <div className="buttons">
+                  <EduIDButton
+                    buttonstyle="secondary"
+                    type="button"
+                    onClick={handleAbortButtonOnClick}
+                    id="response-code-cancel-button"
+                  >
+                    <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+                  </EduIDButton>
+                  <EduIDButton
+                    type="button"
+                    buttonstyle="primary"
+                    onClick={handleContinueWithoutCode}
+                    id="response-code-continue-button"
+                  >
+                    <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
+                  </EduIDButton>
                 </div>
               </>
             )}
