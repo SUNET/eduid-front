@@ -58,7 +58,7 @@ export function RecoveryOptions({
       value: "Bank ID",
       label: (
         <IconWithText
-          icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
+          icon={<img height="35" className="circle-icon bankid-icon" alt="" src={BankIdFlag} />}
           text={<FormattedMessage defaultMessage={`BankID`} />}
         />
       ),
@@ -68,7 +68,7 @@ export function RecoveryOptions({
       value: "Freja+",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="Freja+" src={FrejaFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={FrejaFlag} />}
           text={<FormattedMessage defaultMessage={`Freja+`} />}
         />
       ),
@@ -78,7 +78,7 @@ export function RecoveryOptions({
       value: "eIDAS",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="eIDAS" src={EuFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={EuFlag} />}
           text={<FormattedMessage defaultMessage={`eIDAS`} />}
         />
       ),
@@ -88,7 +88,7 @@ export function RecoveryOptions({
       value: "Freja eID",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="Freja eID" src={GlobalFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={GlobalFlag} />}
           text={<FormattedMessage defaultMessage={`Freja eID`} />}
         />
       ),

@@ -9,7 +9,7 @@ import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -32,7 +32,7 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
   ),
 );
 
-export function MultiFactorAuthentication(): React.ReactElement | null {
+export function MultiFactorAuthentication() {
   const return_handled = useRef(false);
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);

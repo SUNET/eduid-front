@@ -63,7 +63,7 @@ export function VerifyCredentialModal({
                   aria-label="Proceed with BankID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "bankid")}
                 >
-                  <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
+                  <img className="circle-icon bankid-icon" height="24" alt="" src={BankIdFlag} />
                   <span>BankID</span>
                 </EduIDButton>
                 <EduIDButton
@@ -72,7 +72,7 @@ export function VerifyCredentialModal({
                   aria-label="Proceed with Freja eID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "freja")}
                 >
-                  <img className="freja" height="24" alt="Freja+" src={FrejaFlag} />
+                  <img className="freja" height="24" alt="" src={FrejaFlag} />
                   <span>Freja+</span>
                 </EduIDButton>
                 <EduIDButton
@@ -81,7 +81,7 @@ export function VerifyCredentialModal({
                   aria-label="Proceed with eIDAS"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
                 >
-                  <img className="circle-icon" height="24" alt="eIDAS" src={EuFlag} />
+                  <img className="circle-icon" height="24" alt="" src={EuFlag} />
                   <span>eidas</span>
                 </EduIDButton>
                 <EduIDButton
@@ -90,7 +90,7 @@ export function VerifyCredentialModal({
                   aria-label="Proceed with Freja eID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "freja_eid")}
                 >
-                  <img className="circle-icon" height="24" alt="Freja eID" src={GlobalFlag} />
+                  <img className="circle-icon" height="24" alt="" src={GlobalFlag} />
                   <span>Freja eID</span>
                 </EduIDButton>
               </div>

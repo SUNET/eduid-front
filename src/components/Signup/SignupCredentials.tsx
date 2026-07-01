@@ -7,7 +7,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import "spin.js/spin.css"; // without this import, the spinner is frozen
@@ -76,7 +76,7 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
   );
 };
 
-export function SignupCredentials(): React.ReactElement | null {
+export function SignupCredentials() {
   const signupState = useAppSelector((state) => state.signup.state);
   const [startRegisterWebauthn] = signupApi.useLazyStartRegisterWebauthnQuery();
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);

@@ -1,6 +1,5 @@
 import { ConfirmModal } from "components/Common/ConfirmModal";
 import { securityKeyPattern } from "helperFunctions/validation/regexPatterns";
-import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 interface WebauthnDescriptionModalProps {
@@ -13,7 +12,7 @@ export function WebauthnDescriptionModal({
   showModal,
   closeModal,
   handleConfirm,
-}: Readonly<WebauthnDescriptionModalProps>): React.ReactElement {
+}: Readonly<WebauthnDescriptionModalProps>) {
   const intl = useIntl();
 
   const placeholder = intl.formatMessage({
