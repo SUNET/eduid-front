@@ -1,7 +1,7 @@
 import { eidasApi } from "apis/eduidEidas";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { NotificationModal } from "components/Common/NotificationModal";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function Eidas() {
@@ -63,7 +63,7 @@ export function Eidas() {
   }
 
   return (
-    <Fragment>
+    <>
       <p>
         <FormattedMessage
           description="eidas proofing help text"
@@ -99,6 +99,6 @@ export function Eidas() {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </Fragment>
+    </>
   );
 }
