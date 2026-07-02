@@ -69,16 +69,9 @@ export function SignupEnterCode() {
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
 
-    const match = code.match(/^\d\d\d\d\d\d$/);
-    if (match?.length === 1) {
-      // match[0] is whole matched string
-      const digits = match[0];
-
-      if (digits) {
-        // remember the code in redux store between states
-        dispatch(signupSlice.actions.setEmailCode(digits));
-        dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
-      }
+    if (/^\d{6}$/.test(code)) {
+      dispatch(signupSlice.actions.setEmailCode(code));
+      dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
     }
   }
 

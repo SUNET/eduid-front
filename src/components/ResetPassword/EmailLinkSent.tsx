@@ -16,20 +16,14 @@ export function EmailLinkSent() {
   async function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
 
-    const match = code.match(/^\d\d\d\d\d\d$/);
-    if (match?.length == 1) {
-      // match[0] is whole matched string
-      const digits = match[0];
-
-      if (digits) {
-        const response = await verifyEmailLink({ email_code: digits });
-        if (response.isSuccess) {
-          dispatch(clearNotifications());
-          if (Object.values(response.data.payload.extra_security).length > 0) {
-            dispatch(resetPasswordSlice.actions.setNextPage("HANDLE_EXTRA_SECURITIES"));
-          } else {
-            dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
-          }
+    if (/^\d{6}$/.test(code)) {
+      const response = await verifyEmailLink({ email_code: code });
+      if (response.isSuccess) {
+        dispatch(clearNotifications());
+        if (Object.values(response.data.payload.extra_security).length > 0) {
+          dispatch(resetPasswordSlice.actions.setNextPage("HANDLE_EXTRA_SECURITIES"));
+        } else {
+          dispatch(resetPasswordSlice.actions.setNextPage("SET_NEW_PASSWORD"));
         }
       }
     }
