@@ -35,7 +35,9 @@ function RenderPersonalData({ labels }: Readonly<{ labels: NameLabels }>) {
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const displayName =
-    chosen_given_name && last_name ? `${chosen_given_name} ${last_name}` : `${first_name} ${last_name}`;
+    chosen_given_name && last_name
+      ? `${chosen_given_name} ${last_name}`
+      : [first_name, last_name].filter(Boolean).join(" ");
 
   return (
     <div className="personal-data-info">
