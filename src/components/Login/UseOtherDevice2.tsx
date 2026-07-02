@@ -254,7 +254,7 @@ function Device2Buttons({ showLogin, extra_className }: Readonly<Device2ButtonsP
   }
 
   return (
-    <div className={`buttons device2 ${extra_className}`}>
+    <div className={`buttons device2 ${extra_className ?? ""}`.trim()}>
       <EduIDButton
         buttonstyle="secondary"
         onClick={handleCancelOnClick}
