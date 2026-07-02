@@ -13,7 +13,7 @@ interface NinDisplayProps {
 }
 
 function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>) {
-  const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
+  const [showFullNin, setShowFullNin] = useState(false); // show the last four digits of the NIN or not
   const [removeNin] = securityApi.useLazyRemoveNinQuery();
 
   if (!nin) {

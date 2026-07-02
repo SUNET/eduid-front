@@ -47,7 +47,7 @@ function RenderPersonalData({ labels }: Readonly<{ labels: NameLabels }>) {
 }
 
 export function PersonalDataParent() {
-  const [isEditMode, setEditMode] = useState<boolean>(false);
+  const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
   const isVerifiedIdentity = Boolean(personal_data?.response?.identities?.is_verified);

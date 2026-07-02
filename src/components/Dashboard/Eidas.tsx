@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function Eidas() {
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState(false);
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
