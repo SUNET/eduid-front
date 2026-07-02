@@ -153,31 +153,29 @@ export function MultiFactorAuthentication() {
 
   // function that is called when the user clicks OK in the "security key name" modal
   const handleStartWebauthnRegistration = useCallback(
-    (values: { [key: string]: string }) => {
+    async (values: { [key: string]: string }) => {
       const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
-      (async () => {
-        if (frontend_state) {
-          const description_value = values["describe-webauthn-token-modal"];
-          const description = description_value?.trim();
-          setShowSecurityKeyNameModal(false);
-          const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-          if (registration.isSuccess) {
-            const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
-            if (createResponse.isSuccess) {
-              const registerResponse = await registerWebauthn({
-                webauthn_attestation: createResponse.data,
-                description,
-              });
-              wrapperRef?.current?.focus();
-              if (registerResponse.isSuccess) {
-                setShowVerifyWebauthnModal(true);
-              }
+      if (frontend_state) {
+        const description_value = values["describe-webauthn-token-modal"];
+        const description = description_value?.trim();
+        setShowSecurityKeyNameModal(false);
+        const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
+        if (registration.isSuccess) {
+          const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+          if (createResponse.isSuccess) {
+            const registerResponse = await registerWebauthn({
+              webauthn_attestation: createResponse.data,
+              description,
+            });
+            wrapperRef?.current?.focus();
+            if (registerResponse.isSuccess) {
+              setShowVerifyWebauthnModal(true);
             }
           }
-          dispatch(authnSlice.actions.setAuthnFrontendReset());
-          setIsRegisteringAuthenticator(false);
         }
-      })();
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
+        setIsRegisteringAuthenticator(false);
+      }
     },
     [authn, beginRegisterWebauthn, createCredential, registerWebauthn, wrapperRef, dispatch],
   );
