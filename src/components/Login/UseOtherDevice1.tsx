@@ -128,22 +128,15 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
 
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
-    const match = code.match(/^\d\d\d\d\d\d$/);
-    if (match?.length == 1) {
-      // match[0] is whole matched string
-      const digits = match[0];
-      if (login_ref) {
-        fetchUseOtherDevice1({
-          ref: login_ref,
-          action: "SUBMIT_CODE",
-          response_code: digits,
-          this_device,
-          remember_me,
-        });
-      }
+    if (/^\d{6}$/.test(code) && login_ref) {
+      fetchUseOtherDevice1({
+        ref: login_ref,
+        action: "SUBMIT_CODE",
+        response_code: code,
+        this_device,
+        remember_me,
+      });
     }
-
-    return undefined;
   }
 
   function handleContinueWithoutCode() {
