@@ -28,7 +28,7 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
   credentials.filter(
     (cred: CredentialType) =>
       cred.credential_type === "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type",
+      cred.credential_type === "security.webauthn_credential_type",
   ),
 );
 

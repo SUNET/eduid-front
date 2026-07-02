@@ -29,7 +29,7 @@ export function MultiFactorAuth() {
     if (data.isSuccess) {
       const options = data.data.payload.webauthn_options;
       const keys = options?.allowCredentials || [];
-      return keys.length == 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
+      return keys.length === 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
     }
     return false;
   }, [

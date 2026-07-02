@@ -127,7 +127,7 @@ function ImprovedSecurityStatus({
                   security: securityLink,
                 }}
               />
-              {tokens.length == 1 && !(identities?.nin && identities?.is_verified) && (
+              {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
                 <span className="top-divider suggestion-txt">
                   <FormattedMessage
                     description="multiple key suggestion"
@@ -217,8 +217,8 @@ export function Recommendations() {
   const emails = useAppSelector((state) => state.emails.emails);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type",
+      cred.credential_type === "security.u2f_credential_type" ||
+      cred.credential_type === "security.webauthn_credential_type",
   );
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
 
