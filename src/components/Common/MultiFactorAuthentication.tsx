@@ -27,7 +27,7 @@ const selectCredentials = (state: EduIDAppRootState) => state.security.credentia
 export const filterTokensFromCredentials = createSelector([selectCredentials], (credentials): CredentialType[] =>
   credentials.filter(
     (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
+      cred.credential_type === "security.u2f_credential_type" ||
       cred.credential_type == "security.webauthn_credential_type",
   ),
 );
@@ -54,9 +54,7 @@ export function MultiFactorAuthentication() {
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
-  const tokens = useAppSelector((state) => {
-    return filterTokensFromCredentials(state);
-  });
+  const tokens = useAppSelector(filterTokensFromCredentials);
 
   // Derive tokenKey from the last token in the array
   const tokenKey = tokens.at(-1)?.key ?? "";
@@ -343,7 +341,7 @@ export function MultiFactorAuthentication() {
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
-                <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                <img className="security-key-icon" height="25" alt="" src={securityKey} />
                 <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
               <p className="help-text">
