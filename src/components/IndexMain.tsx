@@ -7,27 +7,27 @@ import { Navigate, Route, Routes, useLocation } from "react-router";
 import { dynamicMessage } from "translation";
 import "../styles/index.css";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
-import Footer from "./Common/Footer";
+import { Footer } from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { PageNotFound } from "./Common/PageNotFound";
-import Splash from "./Common/Splash";
+import { Splash } from "./Common/Splash";
 import { ThemeProvider } from "./Common/ThemeContext";
 import { Account } from "./Dashboard/Account";
 import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
-import Start from "./Dashboard/DashboardStart";
-import Identity from "./Dashboard/Identity";
+import { Start } from "./Dashboard/DashboardStart";
+import { Identity } from "./Dashboard/Identity";
 import { Security } from "./Dashboard/Security";
 import { Help } from "./Help/HelpIntro";
 import { Index } from "./Index";
-import Login from "./Login/Login";
+import { Login } from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
-import UseOtherDevice2 from "./Login/UseOtherDevice2";
+import { UseOtherDevice2 } from "./Login/UseOtherDevice2";
 import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
-import ScrollToHash from "./ScrollToHash";
-import ScrollToTop from "./ScrollToTop";
+import { ScrollToHash } from "./ScrollToHash";
+import { ScrollToTop } from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { SignupExternalReturnHandler } from "./Signup/SignupExternalReturnHandler";
 import { Errors } from "./SwamidErrors/Errors";
@@ -74,7 +74,7 @@ function useDocumentTitle() {
   }, [pathname, intl]);
 }
 
-export function IndexMain(): React.JSX.Element {
+export function IndexMain() {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();

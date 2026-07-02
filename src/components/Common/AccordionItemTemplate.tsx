@@ -1,4 +1,3 @@
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,26 +18,33 @@ interface AccordionProps {
   className?: string;
 }
 
-export function Accordion(props: Readonly<AccordionProps>): React.JSX.Element {
+export function Accordion({ id, children, className }: Readonly<AccordionProps>) {
   return (
-    <div id={props.id} className={props.className ?? "accordion"}>
-      {props.children}
+    <div id={id} className={className ?? "accordion"}>
+      {children}
     </div>
   );
 }
 
-export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps>): React.JSX.Element {
+export function AccordionItemTemplate({
+  icon,
+  title,
+  additionalInfo,
+  uuid,
+  children,
+  open,
+}: Readonly<AccordionItemTemplateProps>) {
   const detailsRef = useRef<HTMLDetailsElement>(null);
-  const [open, setOpen] = useState(props.open ?? false);
+  const [isOpen, setIsOpen] = useState(open ?? false);
 
   useEffect(() => {
     // Check if the URL hash targets this accordion directly, or an element inside it.
     // With <details>, children are always in the DOM even when closed, so getElementById works.
     const hash = globalThis.location.hash;
-    if (!hash || !props.uuid || !detailsRef.current) return;
+    if (!hash || !uuid || !detailsRef.current) return;
     const targetId = hash.slice(1);
 
-    const isDirectMatch = targetId === props.uuid;
+    const isDirectMatch = targetId === uuid;
     const targetElement = document.getElementById(targetId);
     const isChildMatch = targetElement !== null && detailsRef.current.contains(targetElement);
 
@@ -51,33 +57,29 @@ export function AccordionItemTemplate(props: Readonly<AccordionItemTemplateProps
         scrollTarget?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
-  }, [props.uuid]);
+  }, [uuid]);
 
   return (
     <details
       ref={detailsRef}
-      id={props.uuid}
+      id={uuid}
       onToggle={(event) => {
-        setOpen(event.currentTarget.open);
+        setIsOpen(event.currentTarget.open);
       }}
-      open={open}
-      aria-labelledby={props.uuid + "-button"}
+      open={isOpen}
+      aria-labelledby={uuid + "-button"}
     >
       <summary>
-        <div id={props.uuid + "-button"}>
-          {props.icon && <span>{props.icon}</span>}
+        <div id={uuid + "-button"}>
+          {icon && <span>{icon}</span>}
           <div>
-            <h3>{props.title}</h3>
-            <span>{props.additionalInfo}</span>
+            <h3>{title}</h3>
+            <span>{additionalInfo}</span>
           </div>
-          {open ? (
-            <FontAwesomeIcon icon={faChevronUp as IconProp} />
-          ) : (
-            <FontAwesomeIcon icon={faChevronDown as IconProp} />
-          )}
+          {isOpen ? <FontAwesomeIcon icon={faChevronUp} /> : <FontAwesomeIcon icon={faChevronDown} />}
         </div>
       </summary>
-      <div className="accordion-panel">{props.children}</div>
+      <div className="accordion-panel">{children}</div>
     </details>
   );
 }

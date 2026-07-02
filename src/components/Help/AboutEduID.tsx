@@ -2,7 +2,7 @@ import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
-export function AboutEduID(): React.JSX.Element {
+export function AboutEduID() {
   const locale = useAppSelector((state) => state.intl.locale);
   const UniversityAdmissionURL =
     locale === "en" ? "https://www.universityadmissions.se/intl/start" : "https://www.antagning.se";

@@ -2,11 +2,11 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons/faExclamationCircle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi, LoginUseOtherDevice2Response, UseOtherDevice2ResponseLoggedIn } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import loginSlice from "slices/Login";
@@ -19,7 +19,7 @@ interface UseOtherParams {
 }
 
 // This is the page rendered by the link in the QR code, so this is on device #2
-function UseOtherDevice2() {
+export function UseOtherDevice2() {
   const data = useAppSelector((state) => state.login.other_device2);
   const loginRef = useAppSelector((state) => state.login.ref);
   const base_url = useAppSelector((state) => state.config.login_service_url);
@@ -55,7 +55,7 @@ function RenderOtherDevice2(
     data: LoginUseOtherDevice2Response;
     params: UseOtherParams;
   }>,
-): React.JSX.Element | null {
+) {
   const { data } = props;
   const [timerIsZero, setTimerIsZero] = useState(false);
 
@@ -79,7 +79,7 @@ function RenderOtherDevice2(
     );
   }
 
-  if (data.state === "DENIED" || data.state == "ABORTED" || data.state == "FINISHED") {
+  if (data.state === "DENIED" || data.state === "ABORTED" || data.state === "FINISHED") {
     // These three states are final, there is no further state transition possible and there is
     // no need to show either timeout information or a Cancel button.
     return (
@@ -107,7 +107,7 @@ function RenderOtherDevice2(
   }
 
   return (
-    <React.Fragment>
+    <>
       {data.state === "IN_PROGRESS" && (
         <ol className="listed-steps">
           {/* <LoginAtServiceInfo service_info={data.device1_info.service_info} />*/}
@@ -126,7 +126,7 @@ function RenderOtherDevice2(
 
       {data.state === "AUTHENTICATED" && <RenderAuthenticated data={data} />}
 
-      {data.state !== "IN_PROGRESS" && data.state != "AUTHENTICATED" && (
+      {data.state !== "IN_PROGRESS" && data.state !== "AUTHENTICATED" && (
         <p>
           <FormattedMessage
             defaultMessage="Request complete, you should close this browser window."
@@ -148,11 +148,11 @@ function RenderOtherDevice2(
       </div>
 
       {data.state === "AUTHENTICATED" && <DeveloperInfo data={data} />}
-    </React.Fragment>
+    </>
   );
 }
 
-function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>): React.JSX.Element | null {
+function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>) {
   return (
     <li>
       <FormattedMessage
@@ -170,8 +170,8 @@ function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
   );
 }
 
-function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>): React.JSX.Element | null {
-  const proximityMessages: { [key: string]: React.JSX.Element } = {
+function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Response }>) {
+  const proximityMessages: { [key: string]: ReactNode } = {
     SAME: (
       <FormattedMessage
         defaultMessage="(The same as now)"
@@ -191,7 +191,7 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
       ></FormattedMessage>
     ),
   };
-  const proximity: React.JSX.Element = proximityMessages[props.data.device1_info.proximity];
+  const proximity: ReactNode = proximityMessages[props.data.device1_info.proximity];
   return (
     <li>
       <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
@@ -233,7 +233,7 @@ interface Device2ButtonsProps {
   extra_className?: string;
 }
 
-function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element {
+function Device2Buttons({ showLogin, extra_className }: Readonly<Device2ButtonsProps>) {
   const data = useAppSelector((state) => state.login.other_device2);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -254,7 +254,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
   }
 
   return (
-    <div className={`buttons device2 ${props.extra_className}`}>
+    <div className={`buttons device2 ${extra_className ?? ""}`.trim()}>
       <EduIDButton
         buttonstyle="secondary"
         onClick={handleCancelOnClick}
@@ -264,10 +264,10 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
         <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
 
-      {props.showLogin && (
+      {showLogin && (
         <EduIDButton
           buttonstyle="primary"
-          type="submit"
+          type="button"
           onClick={handleLoginOnClick}
           id="proceed-other-device-button"
           disabled={!data}
@@ -284,8 +284,8 @@ function noopSubmit(): undefined {
   return undefined;
 }
 
-function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>): React.JSX.Element {
-  if (props.data.response_code_required === false) {
+function RenderAuthenticated({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
+  if (!data.response_code_required) {
     return (
       <p>
         <FormattedMessage
@@ -311,7 +311,7 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
       </span>
       <div className="x-adjust figure">
         <div className="device2">
-          <ResponseCodeForm inputsDisabled={true} code={props.data.response_code} handleSubmitCode={noopSubmit} />
+          <ResponseCodeForm inputsDisabled={true} code={data.response_code} handleSubmitCode={noopSubmit} />
 
           <div className="warning-text">
             <span className="warning-symbol">
@@ -330,9 +330,9 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
   );
 }
 
-function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
+function DeveloperInfo({ data }: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }>) {
   const env = useAppSelector((state) => state.config.environment);
-  if (env != "dev" && env != "staging") {
+  if (env !== "dev" && env !== "staging") {
     return null;
   }
   return (
@@ -343,9 +343,8 @@ function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }
       </span>
       <p>
         {"Response code: "}
-        <span id="response_code">{props.data.response_code}</span>
+        <span id="response_code">{data.response_code}</span>
       </p>
     </div>
   );
 }
-export default UseOtherDevice2;

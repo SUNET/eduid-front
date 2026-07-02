@@ -1,7 +1,6 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { GoBackButton } from "./GoBackButton";
@@ -11,7 +10,7 @@ import { GoBackButton } from "./GoBackButton";
  * When we get an e-mail address from the login username page, this page asks the user for
  * confirmation before requesting the backend to send an actual e-mail to the user.
  */
-export function ResetPasswordConfirmEmail(): React.JSX.Element {
+export function ResetPasswordConfirmEmail() {
   const dispatch = useAppDispatch();
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
@@ -24,7 +23,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -58,10 +57,10 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
 
       <div className="buttons">
         <GoBackButton />
-        <EduIDButton buttonstyle="primary" type="submit" onClick={sendEmailOnClick}>
+        <EduIDButton buttonstyle="primary" type="button" onClick={sendEmailOnClick}>
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </>
   );
 }

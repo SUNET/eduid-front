@@ -1,5 +1,5 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import VerifyIdentity from "components/Dashboard/Identity";
+import { Identity } from "components/Dashboard/Identity";
 import { IndexMain } from "components/IndexMain";
 import { act } from "react";
 import { initialState as configInitialState } from "slices/IndexConfig";
@@ -17,7 +17,7 @@ async function linkToIdentitySettings() {
 }
 
 test("renders verifyIdentity, non verified user", async () => {
-  render(<VerifyIdentity />);
+  render(<Identity />);
   expect(screen.getByRole("heading", { name: /Identity/i })).toBeInTheDocument();
   // show two options for verification, swedish id and eu id
   const swedishAccordion = screen.getByText("Swedish personal ID or coordination number");
@@ -44,7 +44,7 @@ test("renders verifyIdentity, non verified user", async () => {
 });
 
 test("renders verifyIdentity as expected, verified user with swedish person number", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {
@@ -62,7 +62,7 @@ test("renders verifyIdentity as expected, verified user with swedish person numb
 });
 
 test("renders verifyIdentity as expected, verified with eidas", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {

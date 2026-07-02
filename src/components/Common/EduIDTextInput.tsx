@@ -12,20 +12,19 @@ interface TextInputProps extends FieldRenderProps<string> {
   onFocus?: () => void;
 }
 
-export default function TextInput(props: Readonly<TextInputProps>) {
+export function TextInput({ label, helpBlock, meta, disabled, input, autoComplete, type }: Readonly<TextInputProps>) {
   const intl = useIntl();
-  const { label, helpBlock } = props;
   let className = "is-valid";
-  if (props.meta.touched || props.meta.submitFailed) {
-    if (props.meta.invalid) {
+  if (meta.touched || meta.submitFailed) {
+    if (meta.invalid) {
       className = "is-invalid";
     }
   }
-  if (props.disabled) {
+  if (disabled) {
     className = "disabled";
   }
 
-  const errorMsg = (Boolean(props.meta.invalid) && dynamicMessage(intl, props.meta.error)) || "";
+  const errorMsg = (Boolean(meta.invalid) && dynamicMessage(intl, meta.error)) || "";
   let help = <div>{helpBlock}</div>;
   if (errorMsg !== "") {
     const feedback = <span className="eduid-field-error">{errorMsg}</span>;
@@ -36,19 +35,19 @@ export default function TextInput(props: Readonly<TextInputProps>) {
     );
   }
   return (
-    <div id={`${props.input.name}-wrapper`} className="form-group form-wrapper">
+    <div id={`${input.name}-wrapper`} className="form-group form-wrapper">
       {label && (
-        <label htmlFor={props.input.name} aria-label={props.input.name}>
+        <label htmlFor={input.name} aria-label={input.name}>
           {label}
         </label>
       )}
       <input
-        id={props.input.name}
+        id={input.name}
         className={`${className}`}
-        type={props.type}
-        {...props.input}
-        disabled={props.disabled}
-        autoComplete={props.autoComplete}
+        type={type}
+        {...input}
+        disabled={disabled}
+        autoComplete={autoComplete}
       />
       {help}
     </div>

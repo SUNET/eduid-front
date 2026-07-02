@@ -1,8 +1,8 @@
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
@@ -10,11 +10,11 @@ import resetPasswordSlice from "slices/ResetPassword";
 import loginSlice from "../../slices/Login";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, initKnownDevice } from "./NewDevice";
-import SubmitSamlResponse from "./SubmitSamlResponse";
-import TermsOfUse from "./TermsOfUse";
-import UseOtherDevice1 from "./UseOtherDevice1";
-import UseOtherDevice2 from "./UseOtherDevice2";
-import UsernamePw from "./UsernamePw";
+import { SubmitSamlResponse } from "./SubmitSamlResponse";
+import { TermsOfUse } from "./TermsOfUse";
+import { UseOtherDevice1 } from "./UseOtherDevice1";
+import { UseOtherDevice2 } from "./UseOtherDevice2";
+import { UsernamePw } from "./UsernamePw";
 
 // URL parameters passed to this component
 interface LoginParams {
@@ -24,7 +24,7 @@ interface LoginParams {
 /* keep all use through functions in this module */
 export const HAS_READ_ANNOUNCEMENT = "hasReadAnnouncement";
 
-function Login(): React.JSX.Element {
+export function Login() {
   const navigate = useNavigate();
   const params = useParams() as LoginParams;
   const dispatch = useAppDispatch();
@@ -90,7 +90,7 @@ function Login(): React.JSX.Element {
   }, [navigate, next_page, ref]);
 
   return (
-    <React.Fragment>
+    <>
       {next_page === "NEW_DEVICE" && <NewDevice />}
       {next_page === "OTHER_DEVICE" && <UseOtherDevice1 />}
       {next_page === "USERNAMEPASSWORD" && <UsernamePw />}
@@ -100,11 +100,11 @@ function Login(): React.JSX.Element {
       {next_page === "PASSWORD" && <UsernamePw />}
       {next_page === "FINISHED" && <RenderFinished />}
       {error_state === "login.user_terminated" && <UserTerminated />}
-    </React.Fragment>
+    </>
   );
 }
 
-function RenderFinished(): React.JSX.Element {
+function RenderFinished() {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
 
   let ComponentToRender;
@@ -116,9 +116,8 @@ function RenderFinished(): React.JSX.Element {
 
   return ComponentToRender;
 }
-export default Login;
 
-function UserTerminated(): React.JSX.Element {
+function UserTerminated() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const error_state = useAppSelector((state) => state.login.error);
@@ -154,7 +153,7 @@ function UserTerminated(): React.JSX.Element {
       </p>
 
       <div>
-        <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
+        <EduIDButton onClick={reset_password} buttonstyle="link normal-case">
           <FormattedMessage
             defaultMessage="Go to reset password page"
             description="Account terminated - reset password link"

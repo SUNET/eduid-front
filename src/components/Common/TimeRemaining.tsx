@@ -19,7 +19,7 @@ function setLocalStorage(key: string, val: string) {
 
 function loadEndDate(name: string, unique_id?: string): Date | undefined {
   const data = JSON.parse(getLocalStorage(name) || "{}") as StoredData;
-  if (!data.end || data.id != unique_id) {
+  if (!data.end || data.id !== unique_id) {
     // No data, or non-matching unique id
     return undefined;
   }
@@ -55,7 +55,7 @@ interface StoredData {
   end: string;
 }
 
-export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>): React.JSX.Element {
+export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>) {
   const [secondsLeft, setSecondsLeft] = useState(Math.max(props.value, 0));
 
   // Calculate timeRemaining directly from secondsLeft
@@ -124,7 +124,7 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
       // remove timer on component unmount
       clearInterval(timer);
     };
-  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value, props]);
+  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value]);
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
@@ -135,14 +135,14 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
   });
 
   return (
-    <React.Fragment>
+    <>
       {props.debug && <RenderDebugInfo {...props} secondsLeft={secondsLeft} />}
       {childrenWithProps}
-    </React.Fragment>
+    </>
   );
 }
 
-function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }): React.JSX.Element {
+function RenderDebugInfo(props: TimeRemainingWrapperProps & { secondsLeft: number }) {
   const end2 = loadEndDate(props.name, props.unique_id) || new Date();
   const now2 = new Date();
   const diff2 = Math.floor((end2.getTime() - now2.getTime()) / 1000);

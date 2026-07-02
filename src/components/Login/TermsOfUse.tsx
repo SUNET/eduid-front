@@ -1,11 +1,11 @@
 import { loginApi } from "apis/eduidLogin";
 import { CommonToU } from "components/Common/CommonToU";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import loginSlice from "slices/Login";
 
-export default function TermsOfUse(): React.JSX.Element {
+export function TermsOfUse() {
   const dispatch = useAppDispatch();
   const availableTouVersions = useAppSelector((state) => state.login.tou.available_versions);
   // version is the version of the ToU the backend requests we ask the user to accept
@@ -41,7 +41,7 @@ export default function TermsOfUse(): React.JSX.Element {
   }
 
   return (
-    <Fragment>
+    <>
       <h1>
         <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
       </h1>
@@ -55,6 +55,6 @@ export default function TermsOfUse(): React.JSX.Element {
       </div>
 
       {version && <CommonToU version={version} handleAccept={handleAccept} handleCancel={handleCancel} />}
-    </Fragment>
+    </>
   );
 }

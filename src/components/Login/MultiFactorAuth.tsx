@@ -1,10 +1,10 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
-import Splash from "components/Common/Splash";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
@@ -13,7 +13,7 @@ import { LoginAtServiceInfo } from "./LoginAtServiceInfo";
 import { RememberMeCheckbox } from "./NewDevice";
 import { securityZoneAction, SecurityZoneInfo } from "./SecurityZoneInfo";
 
-export function MultiFactorAuth(): React.JSX.Element {
+export function MultiFactorAuth() {
   const service_info = useAppSelector((state) => state.login.service_info);
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const ref = useAppSelector((state) => state.login.ref);
@@ -29,7 +29,7 @@ export function MultiFactorAuth(): React.JSX.Element {
     if (data.isSuccess) {
       const options = data.data.payload.webauthn_options;
       const keys = options?.allowCredentials || [];
-      return keys.length == 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
+      return keys.length === 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
     }
     return false;
   }, [
@@ -103,7 +103,7 @@ export function MultiFactorAuth(): React.JSX.Element {
   }
 
   return (
-    <Fragment>
+    <>
       <section className="intro">
         <h1>{headingText}</h1>
         <div className="lead">
@@ -114,7 +114,7 @@ export function MultiFactorAuth(): React.JSX.Element {
 
       <Splash showChildren={isLoaded}>
         {hasMfaOptions ? (
-          <React.Fragment>
+          <>
             <p>
               <FormattedMessage
                 defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
@@ -143,16 +143,16 @@ export function MultiFactorAuth(): React.JSX.Element {
               <RecoveryOptions recoveryAvailable={recoveryOptions} />
             </div>
             <RememberMeCheckbox />
-          </React.Fragment>
+          </>
         ) : (
           <ExtraSecurityNotAvailable />
         )}
       </Splash>
-    </Fragment>
+    </>
   );
 }
 
-function ExtraSecurityNotAvailable(): React.JSX.Element {
+function ExtraSecurityNotAvailable() {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
   const goToDashboard = () => {

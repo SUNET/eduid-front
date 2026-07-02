@@ -1,7 +1,7 @@
 import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function ContactSupport(): React.JSX.Element {
+export function ContactSupport() {
   return (
     <AccordionItemTemplate
       uuid="help-contact"

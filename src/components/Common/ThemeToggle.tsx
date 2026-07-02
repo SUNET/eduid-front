@@ -2,7 +2,7 @@ import React from "react";
 import { FormattedMessage, IntlShape, useIntl } from "react-intl";
 import { useTheme } from "./ThemeContext";
 
-const ThemeToggle: React.FC = () => {
+export const ThemeToggle: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const intl = useIntl();
   const label = getLabel(intl);
@@ -25,7 +25,7 @@ const ThemeToggle: React.FC = () => {
   );
 
   function getLabel(intl: IntlShape): string {
-    if (theme == "dark") {
+    if (theme === "dark") {
       return intl.formatMessage({
         defaultMessage: "Change to light mode",
         description: "Color toggle aria label to light",
@@ -40,5 +40,3 @@ const ThemeToggle: React.FC = () => {
     }
   }
 };
-
-export default ThemeToggle;

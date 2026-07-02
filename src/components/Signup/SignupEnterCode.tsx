@@ -1,9 +1,9 @@
 import { skipToken } from "@reduxjs/toolkit/query";
 import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
 import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
@@ -15,7 +15,7 @@ import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
-export function SignupEnterCode(): React.JSX.Element {
+export function SignupEnterCode() {
   const signupState = useAppSelector((state) => state.signup.state);
   const dispatch = useAppDispatch();
   const [resendCode] = signupApi.useLazyRegisterEmailRequestQuery();
@@ -69,16 +69,9 @@ export function SignupEnterCode(): React.JSX.Element {
   function handleSubmitCode(values: ResponseCodeValues) {
     const code = values.v.join("");
 
-    const match = code.match(/^\d\d\d\d\d\d$/);
-    if (match?.length === 1) {
-      // match[0] is whole matched string
-      const digits = match[0];
-
-      if (digits) {
-        // remember the code in redux store between states
-        dispatch(signupSlice.actions.setEmailCode(digits));
-        dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
-      }
+    if (/^\d{6}$/.test(code)) {
+      dispatch(signupSlice.actions.setEmailCode(code));
+      dispatch(signupSlice.actions.setNextPage("PROCESS_EMAIL_CODE"));
     }
   }
 
@@ -124,7 +117,7 @@ export function SignupEnterCode(): React.JSX.Element {
   // Not expired, show six input fields, a count down timer and an abort button
 
   return (
-    <Splash showChildren={isExpired === false}>
+    <Splash showChildren={!isExpired}>
       <div className="step-container">
         <section className="intro">
           <h1>

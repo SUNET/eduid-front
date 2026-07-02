@@ -1,21 +1,20 @@
 import { WizardLink } from "components/Common/WizardLink";
 import { AccountIdDisplay } from "components/Dashboard/AccountId";
-import ChangePasswordDisplay from "components/Dashboard/ChangePasswordDisplay";
-import DeleteAccount from "components/Dashboard/DeleteAccount";
-import Emails from "components/Dashboard/Emails";
+import { ChangePasswordDisplay } from "components/Dashboard/ChangePasswordDisplay";
+import { DeleteAccount } from "components/Dashboard/DeleteAccount";
+import { Emails } from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
 import { SECURITY_PATH } from "components/IndexMain";
-import React from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountLinking } from "./AccountLinking";
-import LadokContainer from "./Ladok";
+import { LadokContainer } from "./Ladok";
 
 /* The Dashboard "Account settings" tab */
-export function Account(): React.JSX.Element {
+export function Account() {
   const intl = useIntl();
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="settings main title" defaultMessage="Account" />
@@ -43,6 +42,6 @@ export function Account(): React.JSX.Element {
           defaultMessage: "To Security Settings",
         })}
       />
-    </React.Fragment>
+    </>
   );
 }

@@ -1,6 +1,6 @@
 import securityApi from "apis/eduidSecurity";
 import { CustomInputProps } from "components/Common/CustomInput";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { InputWrapper } from "components/Common/InputWrapper";
 import { ShowAndHideButton } from "components/Common/ShowAndHideButton";
 import { useAppSelector } from "eduid-hooks";
@@ -37,12 +37,12 @@ function validateNin(value: string): string | undefined {
   return undefined;
 }
 
-function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+function NinInput({ meta, input, placeholder, label, helpBlock }: Readonly<CustomInputProps<string>>) {
   const [showNin, setShowNin] = useState(false);
 
   let className = "is-valid";
-  if (props.meta.touched || props.meta.submitFailed) {
-    if (props.meta.invalid) {
+  if (meta.touched || meta.submitFailed) {
+    if (meta.invalid) {
       className = "is-invalid";
     }
   }
@@ -51,11 +51,11 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
     return "\u2022".repeat(v.length);
   };
 
-  const value = props.input.value || "";
+  const value = input.value || "";
   const displayValue = showNin ? value : maskValue(value);
 
   return (
-    <InputWrapper {...props}>
+    <InputWrapper label={label} helpBlock={helpBlock} meta={meta} input={input}>
       <div className="password-input">
         <ShowAndHideButton isShown={showNin} onClick={() => setShowNin(!showNin)} />
         <input
@@ -65,23 +65,23 @@ function NinInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element 
             const inputVal = e.target.value;
 
             if (showNin) {
-              props.input.onChange(inputVal);
+              input.onChange(inputVal);
             } else {
               if (inputVal.length < displayValue.length) {
-                props.input.onChange(value.slice(0, -1));
+                input.onChange(value.slice(0, -1));
                 return;
               }
               const lastChar = inputVal.slice(-1);
 
               if (inputVal.length > displayValue.length) {
-                props.input.onChange(value + lastChar);
+                input.onChange(value + lastChar);
               }
             }
           }}
-          onBlur={props.input.onBlur}
-          id={props.input.name}
+          onBlur={input.onBlur}
+          id={input.name}
           className={className}
-          placeholder={props.placeholder}
+          placeholder={placeholder}
         />
       </div>
     </InputWrapper>
@@ -92,7 +92,7 @@ export interface NinFormData {
   nin?: string;
 }
 
-function NinForm(): React.JSX.Element {
+export function NinForm() {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   const [addNin] = securityApi.useLazyAddNinQuery();
 
@@ -141,5 +141,3 @@ function NinForm(): React.JSX.Element {
     />
   );
 }
-
-export default NinForm;

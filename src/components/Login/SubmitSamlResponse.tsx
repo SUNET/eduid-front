@@ -1,11 +1,11 @@
-import EduIDButton from "components/Common/EduIDButton";
-import ShowAfterDelay from "components/Common/ShowAfterDelay";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { ShowAfterDelay } from "components/Common/ShowAfterDelay";
 import { useAppSelector } from "eduid-hooks";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 
-function SubmitSamlResponse() {
+export function SubmitSamlResponse() {
   const [error, setError] = useState(false);
   const [backDetected, setBackDetected] = useState(false);
 
@@ -44,7 +44,7 @@ function SubmitSamlResponse() {
 
   if (error) {
     return (
-      <Fragment>
+      <>
         <h1>
           <FormattedMessage defaultMessage="Login failed" description="SAML login finished" />
         </h1>
@@ -54,13 +54,13 @@ function SubmitSamlResponse() {
             description="SAML login finished"
           />
         </p>
-      </Fragment>
+      </>
     );
   }
 
   if (SAMLParameters?.used) {
     return (
-      <Fragment>
+      <>
         <h1>
           <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
         </h1>
@@ -76,13 +76,13 @@ function SubmitSamlResponse() {
           />
         </p>
         <SAMLResponseForm mode="retry" />
-      </Fragment>
+      </>
     );
   }
 
   if (backDetected) {
     return (
-      <Fragment>
+      <>
         <h1>
           <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
         </h1>
@@ -99,12 +99,12 @@ function SubmitSamlResponse() {
           />
         </p>
         <SAMLResponseForm mode="forward" />
-      </Fragment>
+      </>
     );
   }
 
   return (
-    <Fragment>
+    <>
       {/* Avoid the "logging you in" message to flash by too quick to read in normal circumstances */}
       <ShowAfterDelay delay={500}>
         <h1>
@@ -118,7 +118,7 @@ function SubmitSamlResponse() {
         </p>
       </ShowAfterDelay>
       <SAMLResponseForm mode="noscript" />
-    </Fragment>
+    </>
   );
 }
 
@@ -126,7 +126,7 @@ interface SAMLResponseFormProps {
   mode: "noscript" | "retry" | "forward";
 }
 
-function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
+function SAMLResponseForm({ mode }: Readonly<SAMLResponseFormProps>) {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
   const targetUrl = useAppSelector((state) => state.login.post_to);
   const navigate = useNavigate();
@@ -142,17 +142,17 @@ function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
         <input type="hidden" name="SAMLResponse" value={SAMLParameters?.SAMLResponse || ""} />
         <input type="hidden" name="RelayState" value={SAMLParameters?.RelayState || ""} />
         <div className="flex-buttons">
-          {props.mode === "noscript" && (
+          {mode === "noscript" && (
             <noscript>
               <input type="submit" value="Continue" />
             </noscript>
           )}
-          {props.mode === "retry" && (
+          {mode === "retry" && (
             <EduIDButton buttonstyle="primary" type="submit">
               <FormattedMessage defaultMessage="Retry" description="SAML login finished" />
             </EduIDButton>
           )}
-          {props.mode === "forward" && (
+          {mode === "forward" && (
             <EduIDButton buttonstyle="primary" type="submit" onClick={handleGoForward}>
               <FormattedMessage defaultMessage="Forward" description="SAML login finished" />
             </EduIDButton>
@@ -162,5 +162,3 @@ function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
     </div>
   );
 }
-
-export default SubmitSamlResponse;

@@ -1,7 +1,7 @@
 import { ToUs } from "helperFunctions/ToUs";
 import React from "react";
 import { FormattedMessage } from "react-intl";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface CommonToUProps {
   version: string;
@@ -13,16 +13,16 @@ interface CommonToUProps {
  * Show a specified version of the Terms of Use, and two buttons to either accept or reject them.
  *
  */
-export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
+export function CommonToU({ version, handleAccept, handleCancel }: Readonly<CommonToUProps>) {
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           defaultMessage={`You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed.`}
         />
       </p>
 
-      {ToUs[props.version]}
+      {ToUs[version]}
 
       <p>
         <strong>
@@ -33,16 +33,16 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
           />
         </strong>
       </p>
-      {props.handleAccept ? (
+      {handleAccept ? (
         <div className="buttons">
-          <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
+          <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={handleCancel}>
             <FormattedMessage defaultMessage="Cancel" description="button cancel" />
           </EduIDButton>
-          <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
+          <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="accept-button">
             <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
           </EduIDButton>
         </div>
       ) : null}
-    </React.Fragment>
+    </>
   );
 }

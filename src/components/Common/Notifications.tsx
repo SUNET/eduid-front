@@ -3,9 +3,9 @@ import React, { useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
 import { dynamicMessage } from "translation";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
-export function Notifications(): React.JSX.Element | null {
+export function Notifications() {
   const info = useAppSelector((state) => state.notifications.info);
   const error = useAppSelector((state) => state.notifications.error);
   const dispatch = useAppDispatch();

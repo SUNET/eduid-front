@@ -1,14 +1,14 @@
 import securityApi from "apis/eduidSecurity";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
-import ChangePasswordCustomForm from "./ChangePasswordCustom";
+import { ChangePasswordCustomForm } from "./ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "./ChangePasswordRadioOption";
-import ChangePasswordSuggestedForm from "./ChangePasswordSuggested";
+import { ChangePasswordSuggestedForm } from "./ChangePasswordSuggested";
 
 export interface ChangePasswordChildFormProps {
   formProps: FormRenderProps<ChangePasswordFormData>;
@@ -37,15 +37,11 @@ export function ChangePassword() {
   const [changePassword] = securityApi.useLazyChangePasswordQuery();
 
   const handleSuggestedPassword = useCallback(async () => {
-    try {
-      const response = await fetchSuggestedPassword();
-      if (isMounted.current) {
-        if (response.isSuccess) {
-          navigate(CHPASS_BASE_PATH);
-        }
+    const response = await fetchSuggestedPassword();
+    if (isMounted.current) {
+      if (response.isSuccess) {
+        navigate(CHPASS_BASE_PATH);
       }
-    } catch (error) {
-      console.error("Error handleSuggestedPassword:", error);
     }
   }, [fetchSuggestedPassword, navigate]);
 

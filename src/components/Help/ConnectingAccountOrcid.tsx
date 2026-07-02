@@ -1,7 +1,7 @@
 import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function ConnectingAccountOrcid(): React.JSX.Element {
+export function ConnectingAccountOrcid() {
   return (
     <AccordionItemTemplate
       uuid="help-orcid-ladok"

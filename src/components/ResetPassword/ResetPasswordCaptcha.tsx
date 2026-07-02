@@ -2,12 +2,12 @@ import { resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 
-export function ResetPasswordCaptcha(): React.JSX.Element | null {
+export function ResetPasswordCaptcha() {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
@@ -48,7 +48,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
   }
 
   return (
-    <Fragment>
+    <>
       <h1>
         <FormattedMessage
           defaultMessage="Reset Password: Confirm that you are a human."
@@ -66,7 +66,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
       </div>
 
       <InternalCaptcha {...args} getCaptcha={getCaptcha} />
-    </Fragment>
+    </>
   );
 }
 

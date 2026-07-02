@@ -1,12 +1,14 @@
-import EduIDButton from "components/Common/EduIDButton";
-import { Fragment, useState } from "react";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(props: Readonly<{
-  setHasReadAnnouncement: (key: boolean) => void;
-}>): React.JSX.Element {
-  const [activeButton, setActiveButton] = useState<boolean>(false);
+export function TemporaryInfo(
+  props: Readonly<{
+    setHasReadAnnouncement: (key: boolean) => void;
+  }>,
+) {
+  const [activeButton, setActiveButton] = useState(false);
 
   function handleAccept() {
     globalThis.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");
@@ -17,7 +19,7 @@ export default function TemporaryInfo(props: Readonly<{
   }
 
   return (
-    <Fragment>
+    <>
       {/* Common for all messages */}
       <h1>
         <FormattedMessage defaultMessage="Important information" description="Temp info - title" />
@@ -90,10 +92,10 @@ export default function TemporaryInfo(props: Readonly<{
           </span>
         </label>
 
-        <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
+        <EduIDButton type="button" buttonstyle="primary" onClick={handleAccept} id="continue-button">
           <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
-    </Fragment>
+    </>
   );
 }

@@ -2,7 +2,7 @@ import { validateEmailField } from "helperFunctions/validation/validateEmail";
 import React from "react";
 import { Field as FinalField } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import CustomInput from "./CustomInput";
+import { CustomInput } from "./CustomInput";
 
 // exported for use in tests
 export const emailPlaceHolder = "name@example.com";
@@ -16,7 +16,14 @@ interface EmailInputProps {
   defaultValue?: string;
 }
 
-export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.Element {
+export function EmailInput({
+  required,
+  autoFocus,
+  name,
+  autoComplete,
+  helpBlock,
+  defaultValue,
+}: Readonly<EmailInputProps>) {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
@@ -26,7 +33,7 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
   });
 
   function validate(value: string) {
-    if (!value && props.autoComplete !== undefined) {
+    if (!value && autoComplete !== undefined) {
       /* Browsers handle auto-completed fields differently. Current Chrome for example seems to often (but not always)
        * fill in the value on-screen, but not tell Javascript about it so the validator doesn't see that a value has
        * been entered, and might show "required", which will confuse the user. As soon as the user clicks anywhere on
@@ -43,18 +50,18 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
 
   return (
     <FinalField
-      required={props.required}
+      required={required}
       component={CustomInput}
       componentClass="input"
       type="email"
-      name={props.name}
-      autoFocus={props.autoFocus}
-      autoComplete={props.autoComplete}
+      name={name}
+      autoFocus={autoFocus}
+      autoComplete={autoComplete}
       placeholder={placeholder}
       validate={validate}
-      defaultValue={props.defaultValue}
+      defaultValue={defaultValue}
       // parameters for InputWrapper
-      helpBlock={props.helpBlock}
+      helpBlock={helpBlock}
       label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}
     />
   );

@@ -1,14 +1,14 @@
 import { loginApi } from "apis/eduidLogin";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import EduIDButton from "components/Common/EduIDButton";
-import TextInput from "components/Common/EduIDTextInput";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { TextInput } from "components/Common/EduIDTextInput";
 import { PassKey } from "components/Common/Passkey";
-import PasswordInput from "components/Common/PasswordInput";
-import UserNameInput from "components/Common/UserNameInput";
+import { PasswordInput } from "components/Common/PasswordInput";
+import { UserNameInput } from "components/Common/UserNameInput";
 import { RESET_PASSWORD_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
-import React, { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
@@ -27,7 +27,7 @@ interface UsernamePwFormData {
   currentPassword?: string;
 }
 
-export default function UsernamePw() {
+export function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
@@ -186,7 +186,7 @@ export default function UsernamePw() {
   }, [fetchChallengeOnce, fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>{loginHeading}</h1>
         <div className="lead">
@@ -228,7 +228,7 @@ export default function UsernamePw() {
         )}
       </section>
       {webauthn && (
-        <Fragment>
+        <>
           <section className="passkey-option">
             <PassKey
               setup={getChallenge}
@@ -238,14 +238,14 @@ export default function UsernamePw() {
             />
           </section>
           <hr className="border-line" />
-        </Fragment>
+        </>
       )}
       <RememberMeCheckbox />
-    </React.Fragment>
+    </>
   );
 }
 
-function UsernameInputPart(): React.JSX.Element {
+function UsernameInputPart() {
   const authn_options = useAppSelector((state) => state.login.authn_options);
   const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
   const dispatch = useAppDispatch();
@@ -257,7 +257,7 @@ function UsernameInputPart(): React.JSX.Element {
   }
   if (authn_options.forced_username) {
     return (
-      <React.Fragment>
+      <>
         {!securityZoneAction && (
           <div className="welcome-back-container">
             <legend>
@@ -284,7 +284,7 @@ function UsernameInputPart(): React.JSX.Element {
           defaultValue={authn_options.forced_username}
           label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
         />
-      </React.Fragment>
+      </>
     );
   }
   return (
@@ -297,7 +297,7 @@ function UsernameInputPart(): React.JSX.Element {
   );
 }
 
-function RenderResetPasswordLink(): React.JSX.Element {
+function RenderResetPasswordLink() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const usernameField = useField("username");
@@ -321,18 +321,24 @@ function RenderResetPasswordLink(): React.JSX.Element {
   );
 }
 
-export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData>): React.JSX.Element {
+export function UsernamePwSubmitButton({
+  values,
+  handleSubmit,
+  submitError,
+  dirtySinceLastSubmit,
+  hasValidationErrors,
+}: Readonly<FormRenderProps<UsernamePwFormData>>) {
   /* Disable the button when:
    *   - there is a form validation error
    *   - the last submit resulted in a submitError, and no changes have been made since
    */
-  const _hasUserNameValue = Boolean(props.values?.["username"]);
-  const _hasPasswordValue = Boolean(props.values?.["currentPassword"]);
+  const _hasUserNameValue = Boolean(values?.["username"]);
+  const _hasPasswordValue = Boolean(values?.["currentPassword"]);
   const _inputValues = securityZoneAction
     ? Boolean(_hasPasswordValue)
     : Boolean(_hasUserNameValue && _hasPasswordValue);
-  const _submitError = Boolean(props.submitError && !props.dirtySinceLastSubmit);
-  const hasErrors = props.hasValidationErrors ?? true;
+  const _submitError = Boolean(submitError && !dirtySinceLastSubmit);
+  const hasErrors = hasValidationErrors ?? true;
   const hasSubmitError = _submitError ?? true;
   const _disabled = Boolean(hasErrors || !_inputValues || hasSubmitError);
 
@@ -342,7 +348,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       type="submit"
       aria-disabled={_disabled}
       id="login-form-button"
-      onClick={props.handleSubmit}
+      onClick={handleSubmit}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
       <FormattedMessage defaultMessage="log in" description="Login front page pw" />
@@ -350,7 +356,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
   );
 }
 
-function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
+function UsernamePwAnotherDeviceButton() {
   const options = useAppSelector((state) => state.login.authn_options);
   const dispatch = useAppDispatch();
   const usernameField = useField("username");

@@ -2,7 +2,7 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleE
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
-import React, { Fragment, ReactElement } from "react";
+import { ReactElement } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
@@ -21,7 +21,7 @@ interface ActionInfo {
   redirectPath: ReactElement;
 }
 
-export function SecurityZoneInfo(): React.JSX.Element {
+export function SecurityZoneInfo() {
   const intl = useIntl();
 
   const toSecurity = (
@@ -97,7 +97,7 @@ export function SecurityZoneInfo(): React.JSX.Element {
   const current = securityZoneAction ? actionMap[securityZoneAction as SecurityZoneAction] : undefined;
 
   return (
-    <Fragment>
+    <>
       {securityZoneAction && (
         <div className="status-box">
           <div className="checkbox-wrapper">
@@ -133,6 +133,6 @@ export function SecurityZoneInfo(): React.JSX.Element {
           </div>
         </div>
       )}
-    </Fragment>
+    </>
   );
 }

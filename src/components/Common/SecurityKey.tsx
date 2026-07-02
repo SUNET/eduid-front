@@ -1,8 +1,8 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
 interface SecurityKeyProps {
   disabled?: boolean;
@@ -13,11 +13,11 @@ interface SecurityKeyProps {
 
 interface InactiveSecurityKeyProps {
   disabled?: boolean;
-  useSecurityKey(): void;
+  handleSecurityKey(): void;
   discoverable?: boolean;
 }
 
-export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Element {
+export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
@@ -25,13 +25,13 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   const [active, setActive] = useState(false);
   const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
-  async function useSecurityKey() {
+  async function handleSecurityKey() {
     setActive(true);
-    const webauth_options = await props.setup();
+    const webauth_options = await setup();
     if (webauth_options) {
       const response = await performAuthentication({ webauth_options });
       if (response.isSuccess) {
-        props.onSuccess(response.data);
+        onSuccess(response.data);
       }
     }
     setActive(false);
@@ -43,7 +43,7 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
         {active ? (
           <SecurityKeyActive />
         ) : (
-          <SecurityKeyInactive disabled={!!props.disabled} useSecurityKey={useSecurityKey} />
+          <SecurityKeyInactive disabled={!!disabled} handleSecurityKey={handleSecurityKey} />
         )}
         {active && (
           <p className="help-text">
@@ -58,7 +58,7 @@ export function SecurityKey(props: Readonly<SecurityKeyProps>): React.JSX.Elemen
   );
 }
 
-function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.JSX.Element {
+function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -66,12 +66,12 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   }, []);
 
   return (
-    <Fragment>
+    <>
       <h3>
         <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
       </h3>
       <p className="help-text">
-        {props.discoverable ? (
+        {discoverable ? (
           <FormattedMessage
             description="passkey authn help text"
             defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
@@ -86,22 +86,20 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
       <EduIDButton
         ref={ref}
         buttonstyle="primary"
-        type="submit"
-        onClick={() => {
-          props.useSecurityKey();
-        }}
+        type="button"
+        onClick={handleSecurityKey}
         id="mfa-security-key"
-        disabled={props.disabled}
+        disabled={disabled}
       >
         <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
       </EduIDButton>
-    </Fragment>
+    </>
   );
 }
 
-function SecurityKeyActive(): React.JSX.Element {
+function SecurityKeyActive() {
   return (
-    <Fragment>
+    <>
       <div className="button-pair selected">
         <h3>
           <FormattedMessage
@@ -113,6 +111,6 @@ function SecurityKeyActive(): React.JSX.Element {
       <div className="button-pair bottom">
         <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
       </div>
-    </Fragment>
+    </>
   );
 }

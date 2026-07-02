@@ -12,7 +12,7 @@ interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 // depends on props.buttonstyle, button will display as primary, secondary, link or close button
-const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((props, ref) => {
+export const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((props, ref) => {
   const intl = useIntl();
   const extra: ExtraProps = {};
 
@@ -40,4 +40,3 @@ const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((p
 });
 
 EduIDButton.displayName = "EduIDButton";
-export default EduIDButton;

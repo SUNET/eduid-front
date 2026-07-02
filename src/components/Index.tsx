@@ -9,8 +9,8 @@ import { useNavigate } from "react-router";
 import indexSlice from "slices/IndexConfig";
 import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
-import EduIDButton from "./Common/EduIDButton";
-import Splash from "./Common/Splash";
+import { EduIDButton } from "./Common/EduIDButton";
+import { Splash } from "./Common/Splash";
 import { SIGNUP_BASE_PATH } from "./IndexMain";
 
 export function Index() {

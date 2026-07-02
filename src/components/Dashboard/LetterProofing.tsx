@@ -1,13 +1,13 @@
 import { letterProofingApi } from "apis/eduidLetterProofing";
-import personalDataApi from "apis/eduidPersonalData";
-import ConfirmModal from "components/Common/ConfirmModal";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
+import { personalDataApi } from "apis/eduidPersonalData";
+import { ConfirmModal } from "components/Common/ConfirmModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import { shortCodePattern } from "../../helperFunctions/validation/regexPatterns";
-import AddNin from "./AddNin";
+import { AddNin } from "./AddNin";
 
 export interface LetterProofingProps {
   disabled: boolean;
@@ -24,14 +24,13 @@ function formatDateFromBackend(dateFromBackend: string) {
   );
 }
 
-export default function LetterProofing(props: Readonly<LetterProofingProps>): React.JSX.Element {
+export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const letter_expired = useAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useAppSelector((state) => state.letter_proofing.letter_sent);
   const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
-  const disabled: boolean = props.disabled;
   const requestLetterAllowed = identities?.nin?.number || letter_expired;
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
   const [letterProofingState] = letterProofingApi.useLazyLetterProofingStateQuery();
@@ -93,7 +92,7 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
     description = <div />;
   } else if (letter_expired) {
     description = (
-      <Fragment>
+      <>
         <p className="description">
           <FormattedMessage defaultMessage="The code expired" description="explanation text for letter proofing" />
           <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
@@ -104,11 +103,11 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
             description="explanation text for letter proofing"
           />
         </p>
-      </Fragment>
+      </>
     );
   } else {
     description = (
-      <Fragment>
+      <>
         <p className="description">
           <FormattedMessage defaultMessage="The letter was sent" description="explanation text for letter proofing" />
           <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
@@ -126,7 +125,7 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
             description="explanation text for letter proofing"
           />
         </p>
-      </Fragment>
+      </>
     );
   }
 
@@ -139,7 +138,7 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
   });
 
   return (
-    <Fragment>
+    <>
       {/* <h4>
         <FormattedMessage description="verify identity add nin heading" defaultMessage="Add your id number" />
       </h4> */}
@@ -160,7 +159,7 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
       <EduIDButton
         disabled={disabled}
         buttonstyle="primary sm"
-        onClick={() => handleModal()}
+        onClick={handleModal}
         aria-label="Proceed with letter proofing"
       >
         <FormattedMessage defaultMessage="Proceed" description="button proceed" />
@@ -201,6 +200,6 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
         validationError="confirmation.code_invalid_format"
         validationPattern={shortCodePattern}
       />
-    </Fragment>
+    </>
   );
 }

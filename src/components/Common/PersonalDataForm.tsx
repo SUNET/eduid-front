@@ -3,7 +3,7 @@ import { faRedo } from "@fortawesome/free-solid-svg-icons/faRedo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import personalDataApi, { UserNameRequest } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
-import NameDisplay from "components/Dashboard/NameDisplay";
+import { NameDisplay } from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppSelector } from "eduid-hooks";
 import validatePersonalData from "helperFunctions/validation/validatePersonalData";
@@ -11,8 +11,8 @@ import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import Select, { MultiValue, SingleValue } from "react-select";
-import CustomInput from "./CustomInput";
-import EduIDButton from "./EduIDButton";
+import { CustomInput } from "./CustomInput";
+import { EduIDButton } from "./EduIDButton";
 
 interface PersonalDataFormProps {
   labels: NameLabels;
@@ -25,8 +25,7 @@ interface SelectedNameValues {
   value: string;
 }
 
-export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>) {
-  const { labels } = props;
+export function PersonalDataForm({ labels, setEditMode, isVerifiedIdentity }: Readonly<PersonalDataFormProps>) {
   const personal_data = useAppSelector((state) => state.personal_data.response);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const [chosenGivenName, setChosenGivenName] = useState<string | undefined>();
@@ -42,7 +41,7 @@ export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>)
     }
     const response = await postUserName(postData);
     if ("data" in response) {
-      props.setEditMode(false); // tell parent component we're done editing
+      setEditMode(false); // tell parent component we're done editing
     }
   }
 
@@ -62,11 +61,11 @@ export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>)
         return (
           <form id="personaldata-view-form" onSubmit={formProps.handleSubmit}>
             <fieldset className="name-inputs">
-              {props.isVerifiedIdentity ? (
-                <React.Fragment>
+              {isVerifiedIdentity ? (
+                <>
                   <RenderLockedNames labels={labels} />
                   <SelectDisplayName setChosenGivenName={setChosenGivenName} />
-                </React.Fragment>
+                </>
               ) : (
                 <RenderEditableNames labels={labels} />
               )}
@@ -85,7 +84,11 @@ export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>)
   );
 }
 
-function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) => void }>): React.JSX.Element {
+interface SelectDisplayNameProps {
+  setChosenGivenName: (name: string) => void;
+}
+
+function SelectDisplayName({ setChosenGivenName }: Readonly<SelectDisplayNameProps>) {
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
@@ -144,10 +147,10 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
       if (updatedValue.length) {
         const selectedGivenName = updatedValue.map((name: SelectedNameValues) => name.value).join(" ");
         setSelectedOptions(updatedValue);
-        props.setChosenGivenName(selectedGivenName);
+        setChosenGivenName(selectedGivenName);
       } else {
         setSelectedOptions([]);
-        props.setChosenGivenName("");
+        setChosenGivenName("");
       }
     }
   };
@@ -208,7 +211,7 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
  * the legal names from Skatteverket. There is however a button to request renewal of the names
  * from Skatteverket, which the user can use to speed up syncing in case of name change.
  */
-const RenderLockedNames = (props: { labels: NameLabels }) => {
+const RenderLockedNames = ({ labels }: Readonly<{ labels: NameLabels }>) => {
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);
   const nin = useAppSelector((state) => state.personal_data.response?.identities?.nin);
@@ -226,17 +229,13 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
   return (
     <article>
       <div className="external-names">
-        <NameDisplay htmlFor="first name" label={props.labels.first} name={given_name} />
-        <NameDisplay htmlFor="last name" label={props.labels.last} name={surname} />
+        <NameDisplay htmlFor="first name" label={labels.first} name={given_name} />
+        <NameDisplay htmlFor="last name" label={labels.last} name={surname} />
       </div>
 
       {/* Only available for Swedish identities */}
       {nin?.verified && (
-        <EduIDButton
-          buttonstyle="link normal-case sm icon refresh"
-          aria-label="name-check"
-          onClick={() => handleUpdateName()}
-        >
+        <EduIDButton buttonstyle="link normal-case sm icon refresh" aria-label="name-check" onClick={handleUpdateName}>
           <FontAwesomeIcon icon={faRedo as IconProp} />
           <span>
             <FormattedMessage
@@ -259,7 +258,7 @@ function NoOptionsMessage() {
   );
 }
 
-function RenderEditableNames(props: Readonly<{ labels: NameLabels }>) {
+function RenderEditableNames({ labels }: Readonly<{ labels: NameLabels }>) {
   return (
     <article>
       <div className="input-pair">
@@ -269,8 +268,8 @@ function RenderEditableNames(props: Readonly<{ labels: NameLabels }>) {
           componentClass="input"
           type="text"
           name="given_name"
-          label={props.labels.first}
-          placeholder={props.labels.first}
+          label={labels.first}
+          placeholder={labels.first}
         />
         <Field
           component={CustomInput}
@@ -278,8 +277,8 @@ function RenderEditableNames(props: Readonly<{ labels: NameLabels }>) {
           componentClass="input"
           type="text"
           name="surname"
-          label={props.labels.last}
-          placeholder={props.labels.last}
+          label={labels.last}
+          placeholder={labels.last}
         />
       </div>
       <p className="help-text">

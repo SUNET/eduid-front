@@ -2,7 +2,7 @@ import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { useAppSelector } from "eduid-hooks";
-import React, { ReactNode, useCallback } from "react";
+import { ReactNode, useCallback } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
@@ -20,10 +20,10 @@ interface RecoveryOptions {
 
 const IconWithText = ({ icon, text }: { icon: ReactNode; text: ReactNode }) => {
   return (
-    <React.Fragment>
+    <>
       {icon}
       <span className="select-option-text">{text}</span>
-    </React.Fragment>
+    </>
   );
 };
 
@@ -31,7 +31,7 @@ export function RecoveryOptions({
   recoveryAvailable,
 }: Readonly<{
   recoveryAvailable: RecoveryOptions;
-}>): React.JSX.Element {
+}>) {
   const intl = useIntl();
   const email_code = useAppSelector((state) => state.resetPassword.email_code);
   const ref = useAppSelector((state) => state.login.ref);
@@ -49,7 +49,7 @@ export function RecoveryOptions({
 
   interface SelectOptions {
     value: string;
-    label: React.JSX.Element;
+    label: ReactNode;
     available?: boolean;
   }
 
@@ -58,7 +58,7 @@ export function RecoveryOptions({
       value: "Bank ID",
       label: (
         <IconWithText
-          icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
+          icon={<img height="35" className="circle-icon bankid-icon" alt="" src={BankIdFlag} />}
           text={<FormattedMessage defaultMessage={`BankID`} />}
         />
       ),
@@ -68,7 +68,7 @@ export function RecoveryOptions({
       value: "Freja+",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="Freja+" src={FrejaFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={FrejaFlag} />}
           text={<FormattedMessage defaultMessage={`Freja+`} />}
         />
       ),
@@ -78,7 +78,7 @@ export function RecoveryOptions({
       value: "eIDAS",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="eIDAS" src={EuFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={EuFlag} />}
           text={<FormattedMessage defaultMessage={`eIDAS`} />}
         />
       ),
@@ -88,7 +88,7 @@ export function RecoveryOptions({
       value: "Freja eID",
       label: (
         <IconWithText
-          icon={<img className="circle-icon" height="35" alt="Freja eID" src={GlobalFlag} />}
+          icon={<img className="circle-icon" height="35" alt="" src={GlobalFlag} />}
           text={<FormattedMessage defaultMessage={`Freja eID`} />}
         />
       ),
@@ -138,7 +138,7 @@ export function RecoveryOptions({
   );
 
   return (
-    <React.Fragment>
+    <>
       <div className="or-container">
         <div className="line" />
         <span>
@@ -172,6 +172,6 @@ export function RecoveryOptions({
           </p>
         )}
       </div>
-    </React.Fragment>
+    </>
   );
 }

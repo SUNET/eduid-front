@@ -1,14 +1,18 @@
 import { CopyToClipboardButton } from "components/Common/CopyToClipboardButton";
 import { NewPasswordForm } from "components/Common/NewPasswordForm";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { ChangePasswordChildFormProps } from "./ChangePassword";
 
-export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswordChildFormProps>) {
+export function ChangePasswordSuggestedForm({
+  suggestedPassword,
+  formProps,
+  handleCancel,
+}: Readonly<ChangePasswordChildFormProps>) {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <React.Fragment>
+    <>
       <div className="pw-suggested">
         <label htmlFor="copy-new-password">
           <FormattedMessage defaultMessage="New password" description="new password" />
@@ -19,17 +23,17 @@ export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswo
             name="copy-new-password"
             id="copy-new-password"
             ref={ref}
-            defaultValue={props.suggestedPassword}
+            defaultValue={suggestedPassword}
             readOnly={true}
           />
         </div>
       </div>
       <NewPasswordForm
-        suggested_password={props.suggestedPassword}
-        submitNewPasswordForm={props.formProps.handleSubmit}
+        suggested_password={suggestedPassword}
+        submitNewPasswordForm={formProps.handleSubmit}
         submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
-        handleCancel={props.handleCancel}
+        handleCancel={handleCancel}
       />
-    </React.Fragment>
+    </>
   );
 }

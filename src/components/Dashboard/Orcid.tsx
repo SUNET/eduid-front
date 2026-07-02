@@ -1,7 +1,6 @@
 import { orcidApi } from "apis/eduidOrcid";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import { Fragment } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 import orcidIcon from "../../../img/vector_iD_icon-w.svg";
@@ -20,17 +19,14 @@ export function urlJoin(base_url: string, endpoint?: string) {
   return base_url;
 }
 
-export function Orcid(): React.JSX.Element {
+export function Orcid() {
   const orcid = useAppSelector((state) => state.account_linking.orcid);
   const intl = useIntl();
   const [removeOrcid] = orcidApi.useLazyRemoveOrcidQuery();
   const [connectOrcid] = orcidApi.useLazyConnectOrcidQuery();
 
   async function handleOrcidDelete() {
-    const result = await removeOrcid();
-    if (result.isError) {
-      console.error("Error removing orcid", result.error);
-    }
+    await removeOrcid();
   }
 
   async function handleOrcidConnect() {
@@ -85,7 +81,7 @@ export function Orcid(): React.JSX.Element {
     );
   } else {
     return (
-      <Fragment>
+      <>
         <div className="buttons">
           <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
             <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
@@ -98,7 +94,7 @@ export function Orcid(): React.JSX.Element {
             defaultMessage="ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
           />
         </p>
-      </Fragment>
+      </>
     );
   }
 }

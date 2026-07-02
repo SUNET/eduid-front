@@ -1,5 +1,4 @@
 import { FormattedMessage } from "react-intl";
-import { Fragment } from "react/jsx-runtime";
 
 interface SignupStepIndicatorProps {
   currentStep: number;
@@ -18,9 +17,9 @@ export function SignupStepIndicator({
     <FormattedMessage key="step4" description="signup step4" defaultMessage="Sign-in method" />,
     <FormattedMessage key="step5" description="signup step5" defaultMessage="Completed" />,
   ],
-}: Readonly<SignupStepIndicatorProps>): React.JSX.Element {
+}: Readonly<SignupStepIndicatorProps>) {
   return (
-    <Fragment>
+    <>
       <hr className="border-line border-line-lesser" />
       <section className="step-indicator">
         {Array.from({ length: totalSteps }, (_, i) => {
@@ -37,6 +36,6 @@ export function SignupStepIndicator({
           );
         })}
       </section>
-    </Fragment>
+    </>
   );
 }

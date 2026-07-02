@@ -1,11 +1,11 @@
 import { eidasApi } from "apis/eduidEidas";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
-import { Fragment, useState } from "react";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-function Eidas(): React.JSX.Element {
-  const [showModal, setShowModal] = useState<boolean>(false);
+export function Eidas() {
+  const [showModal, setShowModal] = useState(false);
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   // Temporary instructions until Sweden Connect has more alternatives and we have a DS
@@ -63,7 +63,7 @@ function Eidas(): React.JSX.Element {
   }
 
   return (
-    <Fragment>
+    <>
       <p>
         <FormattedMessage
           description="eidas proofing help text"
@@ -99,8 +99,6 @@ function Eidas(): React.JSX.Element {
         acceptModal={useFrejaeID}
         acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
-    </Fragment>
+    </>
   );
 }
-
-export default Eidas;

@@ -9,11 +9,11 @@ import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 
-function ConfirmedAccountStatus(props: Readonly<{ email?: string }>): React.JSX.Element | null {
+function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>) {
   return (
-    <div className={`status-box ${props.email ? "success" : ""}`}>
+    <div className={`status-box ${email ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.email ? (
+        {email ? (
           <FontAwesomeIcon icon={faCircleCheck} />
         ) : (
           <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
@@ -41,16 +41,16 @@ function ConfirmedAccountStatus(props: Readonly<{ email?: string }>): React.JSX.
   );
 }
 
-function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>): React.JSX.Element | null {
+function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIdentities }>) {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
       <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
     </Link>
   );
   return (
-    <div className={`status-box ${props.identities?.is_verified ? "success" : ""}`}>
+    <div className={`status-box ${identities?.is_verified ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.identities?.is_verified === true ? (
+        {identities?.is_verified ? (
           <FontAwesomeIcon icon={faCircleCheck} />
         ) : (
           <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
@@ -58,14 +58,14 @@ function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>
       </div>
       <div className="text-wrapper">
         <h3>
-          {props.identities?.is_verified === true ? (
+          {identities?.is_verified ? (
             <FormattedMessage description="Verified Identity heading" defaultMessage="Verified identity" />
           ) : (
             <FormattedMessage description="Verify Identity heading" defaultMessage="Verify your identity" />
           )}
         </h3>
         <span>
-          {props.identities?.is_verified === true ? (
+          {identities?.is_verified ? (
             <FormattedMessage
               description="read more details about your verified identity description"
               defaultMessage="Read more details about your verified identity at {identity}"
@@ -88,19 +88,22 @@ function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>
   );
 }
 
-function ImprovedSecurityStatus(props: Readonly<{
+function ImprovedSecurityStatus({
+  tokens,
+  identities,
+}: Readonly<{
   tokens?: CredentialType[];
   identities?: UserIdentities;
-}>): React.JSX.Element | null {
+}>) {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
   return (
-    <div className={`status-box ${props.tokens?.length ? "success" : ""}`}>
+    <div className={`status-box ${tokens?.length ? "success" : ""}`}>
       <div className="checkbox-wrapper">
-        {props.tokens?.length ? (
+        {tokens?.length ? (
           <FontAwesomeIcon icon={faCircleCheck} />
         ) : (
           <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
@@ -108,14 +111,14 @@ function ImprovedSecurityStatus(props: Readonly<{
       </div>
       <div className="text-wrapper">
         <h3>
-          {props.tokens?.length ? (
+          {tokens?.length ? (
             <FormattedMessage description="Improved Security heading" defaultMessage="Enhanced security" />
           ) : (
             <FormattedMessage description="Improve Security heading" defaultMessage="Enhance security" />
           )}
         </h3>
         <span>
-          {props.tokens?.length ? (
+          {tokens?.length ? (
             <>
               <FormattedMessage
                 description="read more about your multi-factor authentication description"
@@ -124,7 +127,7 @@ function ImprovedSecurityStatus(props: Readonly<{
                   security: securityLink,
                 }}
               />
-              {props.tokens.length == 1 && !(props.identities?.nin && props.identities?.is_verified) && (
+              {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
                 <span className="top-divider suggestion-txt">
                   <FormattedMessage
                     description="multiple key suggestion"
@@ -155,7 +158,7 @@ function ImprovedSecurityStatus(props: Readonly<{
   );
 }
 
-function VerifiedSecurityStatus(props: Readonly<{ tokens?: CredentialType[] }>): React.JSX.Element | null {
+function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[] }>) {
   const manageSecurityKeyLink = (
     <Link
       key={`${SECURITY_PATH}#manage-security-keys`}
@@ -165,7 +168,7 @@ function VerifiedSecurityStatus(props: Readonly<{ tokens?: CredentialType[] }>):
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
-  const verifiedToken = props.tokens?.find((token) => token.verified);
+  const verifiedToken = tokens?.find((token) => token.verified);
   return (
     <div className={`status-box ${verifiedToken ? "success" : ""}`}>
       <div className="checkbox-wrapper">
@@ -207,15 +210,15 @@ function VerifiedSecurityStatus(props: Readonly<{ tokens?: CredentialType[] }>):
   );
 }
 
-export function Recommendations(): React.JSX.Element | null {
+export function Recommendations() {
   const isLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const credentials = useAppSelector((state) => state.security.credentials);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const emails = useAppSelector((state) => state.emails.emails);
   const tokens = credentials.filter(
     (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type",
+      cred.credential_type === "security.u2f_credential_type" ||
+      cred.credential_type === "security.webauthn_credential_type",
   );
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
 

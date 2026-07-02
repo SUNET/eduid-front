@@ -1,9 +1,9 @@
-import EduIDButton from "components/Common/EduIDButton";
-import PersonalDataForm from "components/Common/PersonalDataForm";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { PersonalDataForm } from "components/Common/PersonalDataForm";
 import { useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import NameDisplay from "./NameDisplay";
+import { NameDisplay } from "./NameDisplay";
 
 export interface NameLabels {
   // These are translated labels for "First" and "Last" name input- or text-fields
@@ -29,25 +29,27 @@ function RenderAddPersonalDataPrompt({ setEditMode }: Readonly<RenderAddPersonal
   );
 }
 
-function RenderPersonalData(props: Readonly<{ labels: NameLabels }>) {
+function RenderPersonalData({ labels }: Readonly<{ labels: NameLabels }>) {
   const first_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const last_name = useAppSelector((state) => state.personal_data.response?.surname);
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const is_verified = useAppSelector((state) => state.personal_data?.response?.identities?.is_verified);
   const displayName =
-    chosen_given_name && last_name ? `${chosen_given_name} ${last_name}` : `${first_name} ${last_name}`;
+    chosen_given_name && last_name
+      ? `${chosen_given_name} ${last_name}`
+      : [first_name, last_name].filter(Boolean).join(" ");
 
   return (
     <div className="personal-data-info">
-      <NameDisplay htmlFor="first name" label={props.labels.first} name={first_name} />
-      <NameDisplay htmlFor="last name" label={props.labels.last} name={last_name} />
-      {is_verified && <NameDisplay htmlFor="display name" label={props.labels.display_name} name={displayName} />}
+      <NameDisplay htmlFor="first name" label={labels.first} name={first_name} />
+      <NameDisplay htmlFor="last name" label={labels.last} name={last_name} />
+      {is_verified && <NameDisplay htmlFor="display name" label={labels.display_name} name={displayName} />}
     </div>
   );
 }
 
-function PersonalDataParent() {
-  const [isEditMode, setEditMode] = useState<boolean>(false);
+export function PersonalDataParent() {
+  const [isEditMode, setEditMode] = useState(false);
   // check if any data
   const personal_data = useAppSelector((state) => state.personal_data);
   const isVerifiedIdentity = Boolean(personal_data?.response?.identities?.is_verified);
@@ -107,5 +109,3 @@ function PersonalDataParent() {
     </article>
   );
 }
-
-export default PersonalDataParent;

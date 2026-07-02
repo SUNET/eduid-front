@@ -1,21 +1,17 @@
 import authnApi from "apis/eduidAuthn";
 import { AuthMethod } from "apis/helpers/types";
-import NotificationModal from "components/Common/NotificationModal";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ACCOUNT_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import authnSlice from "slices/Authn";
 import { clearNotifications } from "slices/Notifications";
 
 function isValidJson(jsonString: string): boolean {
-  try {
-    JSON.parse(jsonString);
-    return true;
-  } catch {
-    return false;
-  }
+  JSON.parse(jsonString);
+  return true;
 }
 
 export function AuthenticateModal() {
@@ -67,7 +63,7 @@ export function AuthenticateModal() {
       id="security-confirm-modal"
       title={<FormattedMessage defaultMessage="Security check" description="Dashboard change password modal title" />}
       mainText={
-        <Fragment>
+        <>
           <FormattedMessage
             description="security zone modal"
             defaultMessage="You need to log in again to perform the requested action."
@@ -120,7 +116,7 @@ export function AuthenticateModal() {
               />
             </p>
           )}
-        </Fragment>
+        </>
       }
       showModal={re_authenticate}
       closeModal={handleCloseModal}

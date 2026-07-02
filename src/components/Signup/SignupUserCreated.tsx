@@ -1,13 +1,13 @@
 import { loginApi } from "apis/eduidLogin";
 import { signupApi } from "apis/eduidSignup";
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { NewPasswordFormData } from "components/Common/NewPasswordForm";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePassword";
-import ChangePasswordCustomForm from "components/Dashboard/ChangePasswordCustom";
+import { ChangePasswordCustomForm } from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
-import ChangePasswordSuggestedForm from "components/Dashboard/ChangePasswordSuggested";
+import { ChangePasswordSuggestedForm } from "components/Dashboard/ChangePasswordSuggested";
 import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
@@ -126,7 +126,7 @@ export function SignupConfirmPassword() {
   );
 }
 
-export function SignupUserCreated(): React.JSX.Element {
+export function SignupUserCreated() {
   const signupState = useAppSelector((state) => state.signup.state);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const webauthnRegistered = signupState?.credentials?.webauthn_registered ?? false;

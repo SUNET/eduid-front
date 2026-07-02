@@ -1,4 +1,4 @@
-import React, { Fragment, PropsWithChildren, useRef } from "react";
+import React, { PropsWithChildren, useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -16,8 +16,14 @@ export interface ResponseCodeValues {
   v: string[];
 }
 
-export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
-  const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
+export function ResponseCodeForm({
+  code,
+  bad_attempts,
+  handleSubmitCode,
+  inputsDisabled,
+  children,
+}: PropsWithChildren<ResponseCodeFormProps>) {
+  const valueChars = (code && typeof code === "string" ? code : "").split("");
   const initialValues: ResponseCodeValues = {
     v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
   };
@@ -25,13 +31,13 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
   return (
     <FinalForm<ResponseCodeValues>
       onSubmit={(values) => {
-        props.handleSubmitCode(values);
+        handleSubmitCode(values);
       }}
       initialValues={initialValues}
       render={(formProps) => {
         // Add the formProps to all the children of this component. The children are typically buttons,
         // and they need to know some of the formProps to know if they should be disabled/readonly or not.
-        const childrenWithProps = React.Children.map(props.children, (child) => {
+        const childrenWithProps = React.Children.map(children, (child) => {
           if (React.isValidElement<{ formProps: FormRenderProps<ResponseCodeValues> }>(child)) {
             return React.cloneElement(child, { formProps });
           }
@@ -39,28 +45,33 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
         });
 
         return (
-          <Fragment>
-            <ShortCodeForm {...formProps} {...props} />
+          <>
+            <ShortCodeForm {...formProps} {...{ code, bad_attempts, handleSubmitCode, inputsDisabled }} />
             {childrenWithProps}
-          </Fragment>
+          </>
         );
       }}
     />
   );
 }
 
-function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
+function ShortCodeForm({
+  bad_attempts,
+  inputsDisabled,
+  handleSubmit,
+  error,
+}: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
 
   return (
-    <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
+    <form onSubmit={handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
       <div className="response-code-inputs">
-        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
-        <CodeField num={1} readonly={props.inputsDisabled} />
-        <CodeField num={2} readonly={props.inputsDisabled} />
-        <CodeField num={3} readonly={props.inputsDisabled} />
-        <CodeField num={4} readonly={props.inputsDisabled} />
-        <CodeField num={5} readonly={props.inputsDisabled} />
+        <CodeField num={0} readonly={inputsDisabled} autoFocus={!inputsDisabled} />
+        <CodeField num={1} readonly={inputsDisabled} />
+        <CodeField num={2} readonly={inputsDisabled} />
+        <CodeField num={3} readonly={inputsDisabled} />
+        <CodeField num={4} readonly={inputsDisabled} />
+        <CodeField num={5} readonly={inputsDisabled} />
       </div>
 
       {showBadAttempts && (
@@ -71,7 +82,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         </div>
       )}
 
-      {props.error && <p>{props.error}</p>}
+      {error && <p>{error}</p>}
     </form>
   );
 }

@@ -1,5 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useIntl } from "react-intl";
 import { dynamicMessage } from "translation";
 import type { ZXCVBNResult } from "zxcvbn";
@@ -18,7 +18,7 @@ export interface PasswordStrengthData {
   isTooWeak?: boolean;
 }
 
-function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
+export function PasswordStrengthMeter({ passStateUp, password }: Readonly<PasswordStrengthMeterProps>) {
   const [zxcvbnFn, setZxcvbnFn] = useState<ZxcvbnFn | null>(null);
   const minRequiredEntropy = useAppSelector((state) => state.config.password_entropy);
   const pdata = useAppSelector((state) => state.personal_data);
@@ -56,7 +56,7 @@ function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
       minEntropy = minRequiredEntropy / 5,
       entropy = 0;
     const stepEntropy = minEntropy;
-    const result = zxcvbnFn(props.password || "", userInput);
+    const result = zxcvbnFn(password || "", userInput);
     entropy = Math.log(result.guesses);
     for (let n = 0; n < 5 && entropy > minEntropy; n++) {
       score = n;
@@ -65,25 +65,23 @@ function PasswordStrengthMeter(props: Readonly<PasswordStrengthMeterProps>) {
 
     const data: PasswordStrengthData = { score: score, isTooWeak: entropy < minRequiredEntropy };
     return { pwScore: score, data };
-  }, [pdata, emails, minRequiredEntropy, props.password, zxcvbnFn]);
+  }, [pdata, emails, minRequiredEntropy, password, zxcvbnFn]);
 
   // Pass score up to parent component when it changes
   useEffect(() => {
-    props.passStateUp(data);
-  }, [data, props]);
+    passStateUp(data);
+  }, [data, passStateUp]);
 
   return (
-    <React.Fragment>
+    <>
       <span className={`code form-field-error-area ${pwScore >= 3 ? "success" : ""}`} key="1">
-        {props.password !== undefined && (
+        {password !== undefined && (
           <div className="form-group">{dynamicMessage(intl, pwStrengthMessages[pwScore])}</div>
         )}
       </span>
       <div className="meter-wrapper">
         <meter max="4" value={pwScore} id="password-strength-meter" key="0" />
       </div>
-    </React.Fragment>
+    </>
   );
 }
-
-export default PasswordStrengthMeter;

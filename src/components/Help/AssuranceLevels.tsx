@@ -1,7 +1,7 @@
 import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { FormattedMessage } from "react-intl";
 
-export function AssuranceLevels(): React.JSX.Element {
+export function AssuranceLevels() {
   return (
     <AccordionItemTemplate
       uuid="help-assurance-levels"

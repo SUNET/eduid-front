@@ -4,12 +4,12 @@ import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
-import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
@@ -27,12 +27,12 @@ const selectCredentials = (state: EduIDAppRootState) => state.security.credentia
 export const filterTokensFromCredentials = createSelector([selectCredentials], (credentials): CredentialType[] =>
   credentials.filter(
     (cred: CredentialType) =>
-      cred.credential_type == "security.u2f_credential_type" ||
-      cred.credential_type == "security.webauthn_credential_type",
+      cred.credential_type === "security.u2f_credential_type" ||
+      cred.credential_type === "security.webauthn_credential_type",
   ),
 );
 
-export function MultiFactorAuthentication(): React.ReactElement | null {
+export function MultiFactorAuthentication() {
   const return_handled = useRef(false);
   const dispatch = useAppDispatch();
   const credentials = useAppSelector((state) => state.security.credentials);
@@ -54,9 +54,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
 
-  const tokens = useAppSelector((state) => {
-    return filterTokensFromCredentials(state);
-  });
+  const tokens = useAppSelector(filterTokensFromCredentials);
 
   // Derive tokenKey from the last token in the array
   const tokenKey = tokens.at(-1)?.key ?? "";
@@ -76,11 +74,10 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   const handleVerificationWebauthnToken = useCallback(
     async (token: string | undefined, method: AuthMethod) => {
-      const verifyAction = tokenTypeMap[method];
       if (!token) {
-        console.error("No token provided");
         return;
       }
+      const verifyAction = tokenTypeMap[method];
       const response = await verifyAction({
         credential_id: token,
         method,
@@ -160,30 +157,26 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
     (values: { [key: string]: string }) => {
       const frontend_state = authn.frontend_state || authn?.response?.frontend_state;
       (async () => {
-        try {
-          if (frontend_state) {
-            const description_value = values["describe-webauthn-token-modal"];
-            const description = description_value?.trim();
-            setShowSecurityKeyNameModal(false);
-            const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-            if (registration.isSuccess) {
-              const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
-              if (createResponse.isSuccess) {
-                const registerResponse = await registerWebauthn({
-                  webauthn_attestation: createResponse.data,
-                  description,
-                });
-                wrapperRef?.current?.focus();
-                if (registerResponse.isSuccess) {
-                  setShowVerifyWebauthnModal(true);
-                }
+        if (frontend_state) {
+          const description_value = values["describe-webauthn-token-modal"];
+          const description = description_value?.trim();
+          setShowSecurityKeyNameModal(false);
+          const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
+          if (registration.isSuccess) {
+            const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+            if (createResponse.isSuccess) {
+              const registerResponse = await registerWebauthn({
+                webauthn_attestation: createResponse.data,
+                description,
+              });
+              wrapperRef?.current?.focus();
+              if (registerResponse.isSuccess) {
+                setShowVerifyWebauthnModal(true);
               }
             }
-            dispatch(authnSlice.actions.setAuthnFrontendReset());
-            setIsRegisteringAuthenticator(false);
           }
-        } catch (error) {
-          console.error("Error creating credentials:", error);
+          dispatch(authnSlice.actions.setAuthnFrontendReset());
+          setIsRegisteringAuthenticator(false);
         }
       })();
     },
@@ -245,9 +238,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         .then((available) => {
           platform = available;
         })
-        .catch((err) => {
-          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
-        })
+        .catch(() => {})
         .finally(() => {
           if (!aborted) {
             setIsPlatformAuthenticatorAvailable(platform);
@@ -267,7 +258,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
 
   if (!isPlatformAuthLoaded) return null;
   return (
-    <Fragment>
+    <>
       <article id="add-two-factor">
         <div className="flex-between baseline">
           <h2>
@@ -347,7 +338,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 onClick={() => handleRegisterWebauthn("cross-platform")}
                 disabled={isRegisteringAuthenticator}
               >
-                <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
+                <img className="security-key-icon" height="25" alt="" src={securityKey} />
                 <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
               <p className="help-text">
@@ -392,6 +383,6 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         handleVerificationWebauthnToken={handleVerificationWebauthnToken}
         tokenKey={tokenKey ?? ""}
       />
-    </Fragment>
+    </>
   );
 }

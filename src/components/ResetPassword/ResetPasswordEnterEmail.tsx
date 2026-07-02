@@ -1,12 +1,11 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { EmailForm } from "./EmailForm";
 
-export function ResetPasswordEnterEmail(): React.JSX.Element {
+export function ResetPasswordEnterEmail() {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const email_status = useAppSelector((state) => state.resetPassword.email_status); // Has an e-mail been sent?
   const dispatch = useAppDispatch();
@@ -20,7 +19,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -43,6 +42,6 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         disabled={email_status === "requested"}
         defaultEmail={email_address}
       />
-    </React.Fragment>
+    </>
   );
 }

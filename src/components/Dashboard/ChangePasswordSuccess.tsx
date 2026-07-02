@@ -1,13 +1,13 @@
 import { ConfirmUserInfo, EmailFieldset } from "components/Common/ConfirmUserInfo";
-import EduIDButton from "components/Common/EduIDButton";
-import Splash from "components/Common/Splash";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { Splash } from "components/Common/Splash";
 import { ACCOUNT_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 
-export function ChangePasswordSuccess(): React.JSX.Element {
+export function ChangePasswordSuccess() {
   const emails = useAppSelector((state) => state.emails.emails);
   const location = useLocation();
   const password = location.state?.password ?? "";

@@ -3,16 +3,16 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { ActionStatus, securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
-import EduIDButton from "components/Common/EduIDButton";
-import NinDisplay from "components/Common/NinDisplay";
-import NotificationModal from "components/Common/NotificationModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NinDisplay } from "components/Common/NinDisplay";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
-import FrejaeID from "components/Dashboard/Eidas";
-import LetterProofing from "components/Dashboard/LetterProofing";
+import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
+import { LetterProofing } from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
@@ -23,12 +23,12 @@ import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
-import PersonalDataParent from "./PersonalDataParent";
+import { PersonalDataParent } from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
-function Identity(): React.JSX.Element | null {
+export function Identity() {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
@@ -44,7 +44,7 @@ function Identity(): React.JSX.Element | null {
   }
 
   return (
-    <Fragment>
+    <>
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}
@@ -58,11 +58,11 @@ function Identity(): React.JSX.Element | null {
           defaultMessage: "To Security Settings",
         })}
       />
-    </Fragment>
+    </>
   );
 }
 
-function IdentityContent(): React.JSX.Element {
+function IdentityContent() {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -78,7 +78,7 @@ function IdentityContent(): React.JSX.Element {
    *   TODO: Support other types of identities than NINs.
    */
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage description="verify identity unverified main title" defaultMessage={`Identity`} />
@@ -104,7 +104,7 @@ function IdentityContent(): React.JSX.Element {
 
       <article id="verify-identity">
         {identities?.is_verified ? (
-          <React.Fragment>
+          <>
             <div className="flex-between baseline">
               <h2>
                 <FormattedMessage
@@ -115,9 +115,9 @@ function IdentityContent(): React.JSX.Element {
               <ToolTip />
             </div>
             <VerifiedIdentitiesTable />
-          </React.Fragment>
+          </>
         ) : (
-          <React.Fragment>
+          <>
             <h2>
               <FormattedMessage
                 description="verify identity non verified description"
@@ -129,15 +129,15 @@ function IdentityContent(): React.JSX.Element {
               <AccordionItemEu />
               <AccordionItemWorld />
             </Accordion>
-          </React.Fragment>
+          </>
         )}
       </article>
       <PersonalDataParent />
-    </React.Fragment>
+    </>
   );
 }
 
-function VerifiedIdentitiesTable(): React.JSX.Element {
+function VerifiedIdentitiesTable() {
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
@@ -203,7 +203,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   }, [dispatch, frontend_action, frontend_state, handleRemoveIdentity]);
 
   return (
-    <React.Fragment>
+    <>
       {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
@@ -289,7 +289,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
-        <React.Fragment>
+        <>
           <p>
             <strong>
               <FormattedMessage
@@ -301,9 +301,9 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           <Accordion>
             <AccordionItemSwedish />
           </Accordion>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 }
 
@@ -311,7 +311,7 @@ interface AccordionItemSwedishProps {
   open?: boolean;
 }
 
-function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
+function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -338,7 +338,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         />
       }
       uuid="swedish"
-      open={props.open}
+      open={open}
     >
       {/* <h4>
         <FormattedMessage
@@ -398,7 +398,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
   );
 }
 
-function AccordionItemEu(): React.JSX.Element | null {
+function AccordionItemEu() {
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   const handleOnClick = useCallback(async () => {
@@ -441,7 +441,7 @@ function AccordionItemEu(): React.JSX.Element | null {
   );
 }
 
-function AccordionItemWorld(): React.JSX.Element | null {
+function AccordionItemWorld() {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
 
@@ -495,5 +495,3 @@ function AccordionItemWorld(): React.JSX.Element | null {
     </AccordionItemTemplate>
   );
 }
-
-export default Identity;

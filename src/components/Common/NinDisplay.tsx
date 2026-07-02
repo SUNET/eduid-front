@@ -1,6 +1,6 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { IDENTITY_PATH } from "components/IndexMain";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -12,28 +12,28 @@ interface NinDisplayProps {
   allowDelete?: boolean; // show delete option, if applicable to this NIN
 }
 
-function RenderShowHideNin(props: Readonly<NinDisplayProps>): React.JSX.Element | null {
-  const [showFullNin, setShowFullNin] = useState<boolean>(false); // show the last four digits of the NIN or not
+function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>) {
+  const [showFullNin, setShowFullNin] = useState(false); // show the last four digits of the NIN or not
   const [removeNin] = securityApi.useLazyRemoveNinQuery();
 
-  if (!props.nin) {
+  if (!nin) {
     // NinDisplay won't render this component if nin is undefined, but we need to tell TypeScript that
     return null;
   }
 
   const handleDelete = function (): void {
-    if (props.allowDelete && props.nin) {
-      removeNin({ nin: props.nin.number });
+    if (allowDelete && nin) {
+      removeNin({ nin: nin.number });
     }
   };
 
   return (
     <div className="display-nin-show-hide">
-      <div className={`display-data ${props.nin.verified ? "verified" : "unverified"}`}>
-        {showFullNin ? props.nin.number : props.nin.number.replace(/.{4}$/, "****")}
+      <div className={`display-data ${nin.verified ? "verified" : "unverified"}`}>
+        {showFullNin ? nin.number : nin.number.replace(/.{4}$/, "****")}
       </div>
       <ShowAndHideButton isShown={showFullNin} onClick={() => setShowFullNin(!showFullNin)} />
-      {props.allowDelete && !props.nin.verified && (
+      {allowDelete && !nin.verified && (
         // if allowDelete is true and NIN is not verified, button for deleting NIN will appear
         <EduIDButton buttonstyle="close sm" onClick={handleDelete}></EduIDButton>
       )}
@@ -41,11 +41,11 @@ function RenderShowHideNin(props: Readonly<NinDisplayProps>): React.JSX.Element 
   );
 }
 
-export function NinDisplay(props: Readonly<NinDisplayProps>) {
+export function NinDisplay({ nin }: Readonly<NinDisplayProps>) {
   return (
     <div className="profile-grid-cell">
-      {props.nin ? (
-        <RenderShowHideNin {...props} />
+      {nin ? (
+        <RenderShowHideNin nin={nin} allowDelete={false} />
       ) : (
         // if there is no NIN, render a link to verify-identity
         <Link to={IDENTITY_PATH} className="display-data unverified">
@@ -55,5 +55,3 @@ export function NinDisplay(props: Readonly<NinDisplayProps>) {
     </div>
   );
 }
-
-export default NinDisplay;
