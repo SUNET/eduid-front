@@ -25,7 +25,7 @@ export const ThemeToggle: React.FC = () => {
   );
 
   function getLabel(intl: IntlShape): string {
-    if (theme == "dark") {
+    if (theme === "dark") {
       return intl.formatMessage({
         defaultMessage: "Change to light mode",
         description: "Color toggle aria label to light",

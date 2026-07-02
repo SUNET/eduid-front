@@ -124,7 +124,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
       const curr: SelectedUniProps = { label: localised, value: item.ladok_name };
 
       // initialise 'selected'
-      if (item.ladok_name == ladokName) {
+      if (item.ladok_name === ladokName) {
         setSelected(curr);
       }
 
