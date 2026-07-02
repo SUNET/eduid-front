@@ -151,12 +151,10 @@ export function SignupEntry() {
               <div>{getCountryFlag()}</div>
               <div className="profile-grid-cell">
                 <strong>
-                  <strong>
-                    {(external_mfa.method && appNameDisplay[external_mfa.method]) ??
-                      external_mfa.method?.replaceAll("_", " ")}
-                    &nbsp;
-                    <FormattedMessage defaultMessage="identity" description="Verified identity" />
-                  </strong>
+                  {(external_mfa.method && appNameDisplay[external_mfa.method]) ??
+                    external_mfa.method?.replaceAll("_", " ")}
+                  &nbsp;
+                  <FormattedMessage defaultMessage="identity" description="Verified identity" />
                 </strong>
               </div>
               {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
