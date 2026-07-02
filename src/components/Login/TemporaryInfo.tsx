@@ -8,7 +8,7 @@ export function TemporaryInfo(
     setHasReadAnnouncement: (key: boolean) => void;
   }>,
 ) {
-  const [activeButton, setActiveButton] = useState<boolean>(false);
+  const [activeButton, setActiveButton] = useState(false);
 
   function handleAccept() {
     globalThis.localStorage.setItem(HAS_READ_ANNOUNCEMENT, "true");

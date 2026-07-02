@@ -45,7 +45,7 @@ export function SignupEntry() {
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
-  const [isEditMode, setEditMode] = useState<boolean>(false);
+  const [isEditMode, setEditMode] = useState(false);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
