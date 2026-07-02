@@ -53,11 +53,7 @@ export function EmailLinkSent() {
   }
 
   return (
-<<<<<<< HEAD
     <div className="step-container">
-=======
-    <>
->>>>>>> a3e2add0a (replace React.Fragment with shorthand syntax (<>))
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -100,11 +96,7 @@ export function EmailLinkSent() {
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
         </ResponseCodeForm>
       </div>
-<<<<<<< HEAD
       <ResetPasswordStepIndicator currentStep={3} />
     </div>
-=======
-    </>
->>>>>>> a3e2add0a (replace React.Fragment with shorthand syntax (<>))
   );
 }
