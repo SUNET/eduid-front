@@ -113,13 +113,13 @@ export function ExternalReturnHandler() {
   useEffect(() => {
     if (app_loaded && params.authn_id) {
       if (params.app_name === "eidas") {
-        fetchEidasStatus(params.authn_id).catch(console.error);
+        fetchEidasStatus(params.authn_id);
       }
       if (params.app_name === "freja_eid") {
-        fetchFrejaeIDStatus(params.authn_id).catch(console.error);
+        fetchFrejaeIDStatus(params.authn_id);
       }
       if (params.app_name === "bankid") {
-        fetchBankIDStatus(params.authn_id).catch(console.error);
+        fetchBankIDStatus(params.authn_id);
       }
       if (params.app_name === "authn") {
         fetchAuthStatus(params.authn_id);

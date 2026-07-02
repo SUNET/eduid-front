@@ -80,13 +80,13 @@ export function SignupExternalReturnHandler() {
   useEffect(() => {
     if (is_configured && params.authn_id && params.app_name) {
       if (params.app_name === "eidas") {
-        fetchEidasStatus(params.authn_id, params.app_name).catch(console.error);
+        fetchEidasStatus(params.authn_id, params.app_name);
       }
       if (params.app_name === "freja_eid") {
-        fetchFrejaeIDStatus(params.authn_id, params.app_name).catch(console.error);
+        fetchFrejaeIDStatus(params.authn_id, params.app_name);
       }
       if (params.app_name === "bankid") {
-        fetchBankIDStatus(params.authn_id, params.app_name).catch(console.error);
+        fetchBankIDStatus(params.authn_id, params.app_name);
       }
     }
   }, [params, is_configured, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus]);

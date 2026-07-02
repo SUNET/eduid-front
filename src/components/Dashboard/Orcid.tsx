@@ -26,10 +26,7 @@ export function Orcid() {
   const [connectOrcid] = orcidApi.useLazyConnectOrcidQuery();
 
   async function handleOrcidDelete() {
-    const result = await removeOrcid();
-    if (result.isError) {
-      console.error("Error removing orcid", result.error);
-    }
+    await removeOrcid();
   }
 
   async function handleOrcidConnect() {
