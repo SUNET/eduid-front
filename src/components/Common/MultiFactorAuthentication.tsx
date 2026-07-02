@@ -74,11 +74,10 @@ export function MultiFactorAuthentication() {
 
   const handleVerificationWebauthnToken = useCallback(
     async (token: string | undefined, method: AuthMethod) => {
-      const verifyAction = tokenTypeMap[method];
       if (!token) {
-        console.error("No token provided");
         return;
       }
+      const verifyAction = tokenTypeMap[method];
       const response = await verifyAction({
         credential_id: token,
         method,
@@ -239,9 +238,7 @@ export function MultiFactorAuthentication() {
         .then((available) => {
           platform = available;
         })
-        .catch((err) => {
-          console.log(err, "Couldn't detect presence of a webauthn platform authenticator.");
-        })
+        .catch(() => {})
         .finally(() => {
           if (!aborted) {
             setIsPlatformAuthenticatorAvailable(platform);

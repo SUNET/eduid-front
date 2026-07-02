@@ -42,8 +42,7 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
           await onSuccess(response.data);
         }
       }
-    } catch (error) {
-      console.debug("Passkey error:", error);
+    } catch {
     } finally {
       setActive(false);
       onComplete?.();
