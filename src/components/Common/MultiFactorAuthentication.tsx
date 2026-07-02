@@ -194,7 +194,7 @@ export function MultiFactorAuthentication() {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
         setShowSecurityKeyNameModal(true);
       } else if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
-        handleRemoveWebauthnToken(authn.response.frontend_state);
+        await handleRemoveWebauthnToken(authn.response.frontend_state);
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
         const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
