@@ -21,7 +21,7 @@ export function Index() {
   const idp_request_ref = useAppSelector((state) => state.signup.state?.idp_request_ref);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
-  const redirectToLogin = useCallback(async () => {
+  const redirectToLogin = useCallback(() => {
     dispatch(indexSlice.actions.appLoaded());
     if (eduid_site_link) {
       document.location.href = eduid_site_link + "start";
