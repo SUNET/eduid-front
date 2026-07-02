@@ -195,8 +195,8 @@ function VerifiedIdentitiesTable() {
 
   useEffect(() => {
     if (frontend_action === "removeIdentity" && frontend_state) {
-      queueMicrotask(() => {
-        handleRemoveIdentity(frontend_state);
+      queueMicrotask(async () => {
+        await handleRemoveIdentity(frontend_state);
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       });
     }
