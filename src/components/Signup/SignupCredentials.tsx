@@ -115,38 +115,34 @@ export function SignupCredentials() {
   }, []);
 
   const handleStartWebauthnRegistration = useCallback(
-    (values: { [key: string]: string }) => {
-      (async () => {
-        const description_value = values["describe-webauthn-token-modal"];
-        const description = description_value?.trim();
-        setShowSecurityKeyNameModal(false);
-        if (!registrationData) return;
-        const createResponse = await createCredential(registrationData);
-        if (createResponse.isSuccess) {
-          signupRegisterWebauthn({
-            webauthn_attestation: createResponse.data,
-            description,
-            clientExtensionResults: createResponse.data?.clientExtensionResults,
-          });
-        }
-      })();
+    async (values: { [key: string]: string }) => {
+      const description_value = values["describe-webauthn-token-modal"];
+      const description = description_value?.trim();
+      setShowSecurityKeyNameModal(false);
+      if (!registrationData) return;
+      const createResponse = await createCredential(registrationData);
+      if (createResponse.isSuccess) {
+        signupRegisterWebauthn({
+          webauthn_attestation: createResponse.data,
+          description,
+          clientExtensionResults: createResponse.data?.clientExtensionResults,
+        });
+      }
     },
     [createCredential, signupRegisterWebauthn, registrationData],
   );
 
-  const finishSignup = useCallback(() => {
-    (async () => {
-      if (webauthnRegistered) {
-        const response = await createUser({
-          use_webauthn: webauthnRegistered,
-        });
-        if (response.isSuccess) {
-          dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-        } else if (response.error) {
-          handleCreateUserError(response.error, fetchLogout, dispatch);
-        }
+  const finishSignup = useCallback(async () => {
+    if (webauthnRegistered) {
+      const response = await createUser({
+        use_webauthn: webauthnRegistered,
+      });
+      if (response.isSuccess) {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+      } else if (response.error) {
+        handleCreateUserError(response.error, fetchLogout, dispatch);
       }
-    })();
+    }
   }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
 
   const handleWebauthnButtonClick = useCallback(
