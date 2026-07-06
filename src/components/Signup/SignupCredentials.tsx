@@ -231,11 +231,7 @@ export function SignupCredentials() {
                       />
                     </p>
                   </div>
-                  <img
-                    src={theme === "dark" ? passkeyDarkImage : passkeyImage}
-                    alt="Passkey images"
-                    className="passkey-image"
-                  />
+                  <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="" className="passkey-image" />
                 </div>
               </div>
             </div>
