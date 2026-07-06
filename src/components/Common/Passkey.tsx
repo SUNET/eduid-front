@@ -86,11 +86,7 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
               />
             </p>
           </div>
-          <img
-            src={theme === "dark" ? passkeyDarkImage : passkeyImage}
-            alt="Passkey images"
-            className="passkey-image"
-          />
+          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="" className="passkey-image" />
         </div>
       </div>
       <div className="buttons">
