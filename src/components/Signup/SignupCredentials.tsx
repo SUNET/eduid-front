@@ -115,7 +115,7 @@ export function SignupCredentials() {
       if (!registrationData) return;
       const createResponse = await createCredential(registrationData);
       if (createResponse.isSuccess) {
-        signupRegisterWebauthn({
+        void signupRegisterWebauthn({
           webauthn_attestation: createResponse.data,
           description,
           clientExtensionResults: createResponse.data?.clientExtensionResults,

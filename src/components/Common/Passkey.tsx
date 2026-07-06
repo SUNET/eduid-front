@@ -43,6 +43,7 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
         }
       }
     } catch {
+      // User cancelled WebAuthn dialog or browser timed out — no action needed
     } finally {
       setActive(false);
       onComplete?.();
