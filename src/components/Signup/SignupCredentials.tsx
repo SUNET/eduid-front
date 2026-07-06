@@ -244,9 +244,7 @@ export function SignupCredentials() {
               </div>
             </div>
             <h2 aria-label="select extra webauthn">
-              <strong>
-                <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
-              </strong>
+              <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
             </h2>
             <div className="mfa-alternative">
               <div className="buttons">
