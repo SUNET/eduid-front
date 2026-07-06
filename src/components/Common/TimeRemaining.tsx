@@ -56,7 +56,8 @@ interface StoredData {
 }
 
 export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>) {
-  const [secondsLeft, setSecondsLeft] = useState(Math.max(props.value, 0));
+  const { name, unique_id, value, interval = 1000, onReachZero } = props;
+  const [secondsLeft, setSecondsLeft] = useState(Math.max(value, 0));
 
   // Calculate timeRemaining directly from secondsLeft
   const timeRemaining = React.useMemo<TimeRemaining>(() => {
@@ -70,49 +71,36 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
   }, [secondsLeft]);
 
   useEffect(() => {
-    // Record the end-time of this timer in local storage.
-    // The backend generally provides a number of seconds until something expires. We calculate
-    // the date-time for that to
-    //   a) not have to have a synchronised clock with the backend and
-    //   b) to handle time-warps, such as when someone suspends their computer and later resumes it
-    //   c) to handle page reloads
     const now = Date.now();
-    const endTime = now + props.value * 1000;
-    const data: StoredData = { id: props.unique_id, end: new Date(endTime).toISOString() };
-    setLocalStorage(props.name, JSON.stringify(data));
+    const endTime = now + value * 1000;
+    const data: StoredData = { id: unique_id, end: new Date(endTime).toISOString() };
+    setLocalStorage(name, JSON.stringify(data));
 
-    // Update the countdown based on the stored end time
     const updateCountdown = () => {
       const currentTime = Date.now();
-      // Load and parse the end time from local storage
-      const storedEndTime = loadEndDate(props.name, props.unique_id);
+      const storedEndTime = loadEndDate(name, unique_id);
       if (!storedEndTime) {
-        // detect if the unique id changes, and cancel this timer if it does
         setSecondsLeft(0);
         return false;
       }
-      // calculate remaining number of secondsLeft
       let remaining = Math.ceil((storedEndTime.getTime() - currentTime) / 1000);
       if (remaining < 0) {
-        // handle time-warp gracefully, never showing a value less than zero
         remaining = 0;
       }
 
       setSecondsLeft(remaining);
 
       if (remaining <= 0) {
-        removeLocalStorage(props.name);
-        if (props.onReachZero) {
-          props.onReachZero();
+        removeLocalStorage(name);
+        if (onReachZero) {
+          onReachZero();
         }
-        return false; // stop the timer
+        return false;
       }
 
-      return true; // continue the timer
+      return true;
     };
 
-    // Set up recurring timer
-    const interval = props.interval || 1000;
     const timer = setInterval(() => {
       const shouldContinue = updateCountdown();
       if (!shouldContinue) {
@@ -121,10 +109,9 @@ export function TimeRemainingWrapper(props: Readonly<TimeRemainingWrapperProps>)
     }, interval);
 
     return () => {
-      // remove timer on component unmount
       clearInterval(timer);
     };
-  }, [props.name, props.unique_id, props.interval, props.onReachZero, props.value]);
+  }, [name, unique_id, interval, onReachZero, value]);
 
   // Add the time_remaining prop to all the children of this component.
   const childrenWithProps = React.Children.map(props.children, (child) => {
