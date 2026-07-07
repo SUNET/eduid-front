@@ -24,7 +24,7 @@ export function Index() {
   const redirectToLogin = useCallback(() => {
     dispatch(indexSlice.actions.appLoaded());
     if (eduid_site_link) {
-      document.location.href = eduid_site_link + "start";
+      globalThis.location.href = eduid_site_link + "start";
     }
   }, [dispatch, eduid_site_link]);
 
