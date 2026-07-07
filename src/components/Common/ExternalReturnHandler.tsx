@@ -62,7 +62,7 @@ export function ExternalReturnHandler() {
 
   const fetchEidasStatus = useCallback(
     async (authn_id: string) => {
-      const response = await eidasGetStatus({ authn_id: authn_id });
+      const response = await eidasGetStatus({ authn_id });
       if (response.isSuccess) {
         processStatus(response.data.payload);
       }
@@ -72,7 +72,7 @@ export function ExternalReturnHandler() {
 
   const fetchFrejaeIDStatus = useCallback(
     async (authn_id: string) => {
-      const response = await frejaeIDGetStatus({ authn_id: authn_id });
+      const response = await frejaeIDGetStatus({ authn_id });
       if (response.isSuccess) {
         processStatus(response.data.payload);
       }
@@ -82,7 +82,7 @@ export function ExternalReturnHandler() {
 
   const fetchBankIDStatus = useCallback(
     async (authn_id: string) => {
-      const response = await bankIDGetStatus({ authn_id: authn_id });
+      const response = await bankIDGetStatus({ authn_id });
       if (response.isSuccess) {
         processStatus(response.data.payload);
       }
@@ -92,7 +92,7 @@ export function ExternalReturnHandler() {
 
   const fetchAuthStatus = useCallback(
     async (authn_id: string) => {
-      const response = await authnGetStatus({ authn_id: authn_id });
+      const response = await authnGetStatus({ authn_id });
       if (response.isSuccess) {
         processStatus(response.data.payload);
       }
@@ -102,7 +102,7 @@ export function ExternalReturnHandler() {
 
   const fetchOrcidStatus = useCallback(
     async (authn_id: string) => {
-      const response = await orcidGetStatus({ authn_id: authn_id });
+      const response = await orcidGetStatus({ authn_id });
       if (response.isSuccess) {
         processStatus(response.data.payload);
       }
@@ -111,22 +111,23 @@ export function ExternalReturnHandler() {
   );
 
   useEffect(() => {
-    if (app_loaded && params.authn_id) {
-      if (params.app_name === "eidas") {
-        fetchEidasStatus(params.authn_id);
-      }
-      if (params.app_name === "freja_eid") {
-        fetchFrejaeIDStatus(params.authn_id);
-      }
-      if (params.app_name === "bankid") {
-        fetchBankIDStatus(params.authn_id);
-      }
-      if (params.app_name === "authn") {
-        fetchAuthStatus(params.authn_id);
-      }
-      if (params.app_name === "orcid") {
-        fetchOrcidStatus(params.authn_id);
-      }
+    if (!app_loaded || !params.authn_id) return;
+    switch (params.app_name) {
+      case "eidas":
+        void fetchEidasStatus(params.authn_id);
+        break;
+      case "freja_eid":
+        void fetchFrejaeIDStatus(params.authn_id);
+        break;
+      case "bankid":
+        void fetchBankIDStatus(params.authn_id);
+        break;
+      case "authn":
+        void fetchAuthStatus(params.authn_id);
+        break;
+      case "orcid":
+        void fetchOrcidStatus(params.authn_id);
+        break;
     }
   }, [
     params.authn_id,
