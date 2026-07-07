@@ -105,7 +105,7 @@ export function MultiFactorAuthentication() {
   const handleRemoveWebauthnToken = useCallback(
     async (credential_string?: string) => {
       const credential_key = credential_string && JSON.parse(credential_string).credential;
-      const response = await removeWebauthnToken({ credential_key: credential_key });
+      const response = await removeWebauthnToken({ credential_key });
       if (response.isError) {
         // prepare authenticate() and AuthenticateModal
         dispatch(
