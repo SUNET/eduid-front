@@ -128,7 +128,16 @@ export function ExternalReturnHandler() {
         fetchOrcidStatus(params.authn_id);
       }
     }
-  }, [params, app_loaded, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus, fetchAuthStatus, fetchOrcidStatus]);
+  }, [
+    params.authn_id,
+    params.app_name,
+    app_loaded,
+    fetchEidasStatus,
+    fetchFrejaeIDStatus,
+    fetchBankIDStatus,
+    fetchAuthStatus,
+    fetchOrcidStatus,
+  ]);
 
   return null;
 }
