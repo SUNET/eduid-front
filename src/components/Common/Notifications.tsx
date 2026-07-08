@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
 import { dynamicMessage } from "translation";
@@ -17,10 +17,13 @@ export function Notifications() {
     }
   }, [dispatch, info]);
 
-  function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    dispatch(clearNotifications());
-  }
+  const handleRMNotification = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+      dispatch(clearNotifications());
+    },
+    [dispatch],
+  );
 
   // show errors first, information second
   const show: EduidNotification | undefined = error || info;
