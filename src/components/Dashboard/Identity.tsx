@@ -157,7 +157,7 @@ function VerifiedIdentitiesTable() {
       if (identityType) {
         const response = await removeIdentity({ identity_type: identityType });
         if (response.isSuccess) {
-          requestAllPersonalData();
+          void requestAllPersonalData();
         } else {
           dispatch(
             authnSlice.actions.setFrontendActionAndState({
@@ -207,7 +207,7 @@ function VerifiedIdentitiesTable() {
       {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
+            <img height="35" className="circle-icon" alt="" src={SvFlag} />
           </div>
           <div className="profile-grid-cell">
             <strong>
@@ -230,7 +230,7 @@ function VerifiedIdentitiesTable() {
       {identities?.eidas?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
+            <img height="35" className="circle-icon" alt="" src={EuFlag} />
           </div>
           <div className="profile-grid-cell">
             <strong>
@@ -324,7 +324,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
      and not in case the NIN is already verified. */
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={SvFlag} />}
       title={
         <FormattedMessage
           description="accordion item swedish title"
@@ -355,7 +355,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
 
       <Accordion className="accordion nested">
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
+          icon={<img height="35" className="circle-icon bankid-icon" alt="" src={BankIdFlag} />}
           title={<FormattedMessage description="BankID vetting button" defaultMessage="with a BankID" />}
           additionalInfo={
             <FormattedMessage
@@ -368,7 +368,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
           <BankID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
+          icon={<img height="35" className="circle-icon" alt="" src={FrejaFlag} />}
           title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
           additionalInfo={
             <FormattedMessage
@@ -381,7 +381,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
           <FrejaeID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon" alt="post icon" src={LetterIcon} />}
+          icon={<img height="35" className="circle-icon" alt="" src={LetterIcon} />}
           title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
           additionalInfo={
             <FormattedMessage
@@ -412,7 +412,7 @@ function AccordionItemEu() {
 
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="European Union" src={EuFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={EuFlag} />}
       title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
       additionalInfo={
         <FormattedMessage
@@ -460,7 +460,7 @@ function AccordionItemWorld() {
 
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="World" src={GlobalFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={GlobalFlag} />}
       title={<FormattedMessage description="accordion item passport title" defaultMessage="Most countries" />}
       additionalInfo={
         <FormattedMessage
