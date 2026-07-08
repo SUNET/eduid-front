@@ -60,7 +60,7 @@ async function linkToSecuritySettings() {
   act(() => {
     nav.click();
   });
-  expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "security key" })).toBeEnabled();
   expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
 }
 
