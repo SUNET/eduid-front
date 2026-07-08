@@ -81,7 +81,7 @@ function IdentityContent() {
     <>
       <section className="intro">
         <h1>
-          <FormattedMessage description="verify identity unverified main title" defaultMessage={`Identity`} />
+          <FormattedMessage description="verify identity unverified main title" defaultMessage="Identity" />
         </h1>
         <div className="lead">
           {identities?.is_verified ? (
@@ -369,7 +369,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="" src={FrejaFlag} />}
-          title={<FormattedMessage description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
+          title={<FormattedMessage description="eidas vetting button freja" defaultMessage="with a Freja+" />}
           additionalInfo={
             <FormattedMessage
               description="verify identity vetting freja tagline"
