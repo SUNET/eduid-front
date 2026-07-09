@@ -13,13 +13,20 @@ import sv from "./languages/sv.json";
  *  "login.general_failure": "An error occurred. Please try again later."
  *
  */
-const format_for_react_intl = (data) => {
-  let result = {};
+
+interface TransifexData {
+  [key: string]: { string: string };
+}
+
+const format_for_react_intl = (data: TransifexData): Record<string, string> => {
+  const result: Record<string, string> = {};
   Object.keys(data).forEach((k) => {
     result[k] = data[k].string;
   });
   return result;
 };
 
-// the proper TypeScript type for messages would be { [key: string]: { [key: string]: string } }
-export const messages = { en: format_for_react_intl(en), sv: format_for_react_intl(sv) };
+export const messages: Record<string, Record<string, string>> = {
+  en: format_for_react_intl(en),
+  sv: format_for_react_intl(sv),
+};

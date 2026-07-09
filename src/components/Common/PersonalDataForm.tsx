@@ -6,7 +6,7 @@ import securityApi from "apis/eduidSecurity";
 import { NameDisplay } from "components/Dashboard/NameDisplay";
 import { NameLabels } from "components/Dashboard/PersonalDataParent";
 import { useAppSelector } from "eduid-hooks";
-import validatePersonalData from "helperFunctions/validation/validatePersonalData";
+import { validatePersonalData } from "helperFunctions/validation/validatePersonalData";
 import React, { useEffect, useState } from "react";
 import { Field, Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
