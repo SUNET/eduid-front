@@ -44,7 +44,12 @@ export function Notifications() {
         <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
-        <EduIDButton buttonstyle="close" id="close-error" onClick={handleRMNotification} />
+        <EduIDButton
+          buttonstyle="close"
+          id="close-error"
+          onClick={handleRMNotification}
+          aria-label="Close notification"
+        />
       </div>
     </div>
   );
