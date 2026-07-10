@@ -105,7 +105,13 @@ export function MultiFactorAuthentication() {
 
   const handleRemoveWebauthnToken = useCallback(
     async (credential_string?: string) => {
-      const credential_key = credential_string && JSON.parse(credential_string).credential;
+      let credential_key: string | undefined;
+      try {
+        credential_key = credential_string ? JSON.parse(credential_string).credential : undefined;
+      } catch {
+        return;
+      }
+      if (!credential_key) return;
       const response = await removeWebauthnToken({ credential_key });
       if (response.isError) {
         // prepare authenticate() and AuthenticateModal
@@ -178,18 +184,26 @@ export function MultiFactorAuthentication() {
     }
 
     return_handled.current = true;
-
-    (async () => {
+    async function handleAuthReturn() {
       if (authn?.response?.frontend_action === "addSecurityKeyAuthn" && authn?.response?.frontend_state) {
         setShowSecurityKeyNameModal(true);
       } else if (authn?.response?.frontend_action === "removeSecurityKeyAuthn" && authn.response.frontend_state) {
         await handleRemoveWebauthnToken(authn.response.frontend_state);
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       } else if (authn?.response?.frontend_action === "verifyCredential" && authn.response.frontend_state) {
-        const parsedFrontendState = authn.response.frontend_state && JSON.parse(authn.response.frontend_state);
-        await handleVerificationWebauthnToken(parsedFrontendState.credential, parsedFrontendState.method as AuthMethod);
+        try {
+          const parsedFrontendState = JSON.parse(authn.response.frontend_state);
+          await handleVerificationWebauthnToken(
+            parsedFrontendState.credential,
+            parsedFrontendState.method as AuthMethod,
+          );
+        } catch {
+          // Invalid JSON — skip
+        }
       }
-    })();
+    }
+
+    void handleAuthReturn();
   }, [
     authn.response?.frontend_action,
     authn.response?.frontend_state,
