@@ -25,7 +25,6 @@ import SvFlag from "../../../img/flags/SvFlag.svg";
 import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
 import { PersonalDataParent } from "./PersonalDataParent";
-const { checkAuthnStatus, resetAuthn } = useReAuthenticate();
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -151,6 +150,7 @@ function VerifiedIdentitiesTable() {
   const intl = useIntl();
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
   const [removeIdentity] = securityApi.useLazyRemoveIdentityQuery();
+  const { checkAuthnStatus } = useReAuthenticate();
 
   const handleRemoveIdentity = useCallback(
     async (identityType: string) => {

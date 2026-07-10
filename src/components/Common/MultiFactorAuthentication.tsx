@@ -7,7 +7,6 @@ import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
-import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -17,6 +16,7 @@ import authnSlice from "slices/Authn";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";
+import { useReAuthenticate } from "../Hooks/useReAuthenticate";
 import { VerifyCredentialModal } from "./VerifyCredentialModal";
 import { WebauthnDescriptionModal } from "./WebauthnDescriptionModal";
 
