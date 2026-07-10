@@ -1,7 +1,7 @@
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
-import { ActionStatus, securityApi } from "apis/eduidSecurity";
+import { securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import CountryFlag from "components/Common/CountryFlag";
 import { EduIDButton } from "components/Common/EduIDButton";
@@ -11,6 +11,7 @@ import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
 import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
 import { LetterProofing } from "components/Dashboard/LetterProofing";
+import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect, useState } from "react";
@@ -24,6 +25,7 @@ import SvFlag from "../../../img/flags/SvFlag.svg";
 import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
 import { PersonalDataParent } from "./PersonalDataParent";
+const { checkAuthnStatus, resetAuthn } = useReAuthenticate();
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
@@ -148,7 +150,6 @@ function VerifiedIdentitiesTable() {
   const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [removeIdentity] = securityApi.useLazyRemoveIdentityQuery();
 
   const handleRemoveIdentity = useCallback(
@@ -174,23 +175,12 @@ function VerifiedIdentitiesTable() {
   const handleConfirmDeleteModal = useCallback(
     async (identityType: string) => {
       setIdentityType(identityType);
-      // Test if the user can directly execute the action or a re-auth security zone will be required
-      // If no re-auth is required, then show the modal to confirm the removal
-      // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
-      const response = await getAuthnStatus({ frontend_action: "removeIdentity" });
-      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+      const isAuthed = await checkAuthnStatus("removeIdentity", identityType);
+      if (isAuthed) {
         setShowConfirmRemoveIdentityVerificationModal(true);
-      } else {
-        dispatch(
-          authnSlice.actions.setFrontendActionAndState({
-            frontend_action: "removeIdentity",
-            frontend_state: identityType,
-          }),
-        );
-        dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
+    [checkAuthnStatus],
   );
 
   useEffect(() => {

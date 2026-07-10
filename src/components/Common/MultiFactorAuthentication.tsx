@@ -2,11 +2,12 @@ import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
-import { ActionStatus, CredentialType, securityApi } from "apis/eduidSecurity";
+import { CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
+import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -46,12 +47,12 @@ export function MultiFactorAuthentication() {
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
   const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
+  const { checkAuthnStatus } = useReAuthenticate();
 
   const tokens = useAppSelector(filterTokensFromCredentials);
 
@@ -131,24 +132,14 @@ export function MultiFactorAuthentication() {
     async (authType: string) => {
       setIsRegisteringAuthenticator(true);
 
-      // prepare for authenticate() / AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "addSecurityKeyAuthn",
-          frontend_state: authType,
-        }),
-      );
-
-      const response = await getAuthnStatus({ frontend_action: "addSecurityKeyAuthn" });
-      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
-        setIsRegisteringAuthenticator(true);
+      const isAuthed = await checkAuthnStatus("addSecurityKeyAuthn", authType);
+      if (isAuthed) {
         setShowSecurityKeyNameModal(true);
       } else {
         setIsRegisteringAuthenticator(false);
-        dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [dispatch, getAuthnStatus],
+    [checkAuthnStatus],
   );
 
   // function that is called when the user clicks OK in the "security key name" modal
