@@ -114,19 +114,19 @@ export function ExternalReturnHandler() {
     if (!app_loaded || !params.authn_id) return;
     switch (params.app_name) {
       case "eidas":
-        void fetchEidasStatus(params.authn_id);
+        fetchEidasStatus(params.authn_id);
         break;
       case "freja_eid":
-        void fetchFrejaeIDStatus(params.authn_id);
+        fetchFrejaeIDStatus(params.authn_id);
         break;
       case "bankid":
-        void fetchBankIDStatus(params.authn_id);
+        fetchBankIDStatus(params.authn_id);
         break;
       case "authn":
-        void fetchAuthStatus(params.authn_id);
+        fetchAuthStatus(params.authn_id);
         break;
       case "orcid":
-        void fetchOrcidStatus(params.authn_id);
+        fetchOrcidStatus(params.authn_id);
         break;
     }
   }, [
