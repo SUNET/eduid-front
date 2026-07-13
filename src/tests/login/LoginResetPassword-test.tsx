@@ -118,6 +118,15 @@ test("can click 'forgot password' with an e-mail address", async () => {
   // the ok button is initially disabled without code
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
+
+  // step indicator should show step 3 (Verify email address) as active
+  const steps = document.querySelectorAll(".step-item");
+  expect(steps).toHaveLength(6);
+  expect(steps[0]).toHaveClass("completed");
+  expect(steps[1]).toHaveClass("completed");
+  expect(steps[2]).toHaveClass("active");
+  expect(steps[3]).not.toHaveClass("active");
+  expect(steps[3]).not.toHaveClass("completed");
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
@@ -237,4 +246,13 @@ test("can click 'forgot password' without an e-mail address", async () => {
   // the ok button is initially disabled without code
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
+
+  // step indicator should show step 3 (Verify email address) as active
+  const steps = document.querySelectorAll(".step-item");
+  expect(steps).toHaveLength(6);
+  expect(steps[0]).toHaveClass("completed");
+  expect(steps[1]).toHaveClass("completed");
+  expect(steps[2]).toHaveClass("active");
+  expect(steps[3]).not.toHaveClass("active");
+  expect(steps[3]).not.toHaveClass("completed");
 });
