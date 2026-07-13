@@ -21,6 +21,22 @@ const user = userEvent.setup();
 const email = "test@example.org";
 const ref = "abc567";
 
+function expectStepIndicator(activeStep: number) {
+  const steps = document.querySelectorAll(".step-item");
+  expect(steps).toHaveLength(6);
+  steps.forEach((step, i) => {
+    const stepNum = i + 1;
+    if (stepNum < activeStep) {
+      expect(step).toHaveClass("completed");
+    } else if (stepNum === activeStep) {
+      expect(step).toHaveClass("active");
+    } else {
+      expect(step).not.toHaveClass("active");
+      expect(step).not.toHaveClass("completed");
+    }
+  });
+}
+
 function makeResetPasswordPayload(): GetResetPasswordStateResponse {
   return {
     state: {
@@ -119,14 +135,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
 
-  // step indicator should show step 3 (Verify email address) as active
-  const steps = document.querySelectorAll(".step-item");
-  expect(steps).toHaveLength(6);
-  expect(steps[0]).toHaveClass("completed");
-  expect(steps[1]).toHaveClass("completed");
-  expect(steps[2]).toHaveClass("active");
-  expect(steps[3]).not.toHaveClass("active");
-  expect(steps[3]).not.toHaveClass("completed");
+  expectStepIndicator(3);
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
@@ -246,13 +255,5 @@ test("can click 'forgot password' without an e-mail address", async () => {
   // the ok button is initially disabled without code
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
-
-  // step indicator should show step 3 (Verify email address) as active
-  const steps = document.querySelectorAll(".step-item");
-  expect(steps).toHaveLength(6);
-  expect(steps[0]).toHaveClass("completed");
-  expect(steps[1]).toHaveClass("completed");
-  expect(steps[2]).toHaveClass("active");
-  expect(steps[3]).not.toHaveClass("active");
-  expect(steps[3]).not.toHaveClass("completed");
+  expectStepIndicator(3);
 });
