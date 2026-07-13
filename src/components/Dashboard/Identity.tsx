@@ -180,7 +180,7 @@ function VerifiedIdentitiesTable() {
         setShowConfirmRemoveIdentityVerificationModal(true);
       }
     },
-    [checkAuthnStatus],
+    [checkAuthnStatus, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   useEffect(() => {
