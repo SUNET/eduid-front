@@ -130,9 +130,9 @@ test("can click 'forgot password' with an e-mail address", async () => {
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
-  const email = "test@example.org";
+  // const email = "test@example.org";
   const code = "123456";
-  const ref = "abc567";
+  // const ref = "abc567";
 
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
