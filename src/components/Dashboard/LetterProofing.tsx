@@ -14,19 +14,13 @@ export interface LetterProofingProps {
 }
 
 function formatDateFromBackend(dateFromBackend: string) {
-  const newDate: Date = new Date(dateFromBackend);
-  return (
-    newDate.getFullYear() +
-    "-" +
-    (newDate.getMonth() + 1).toString().padStart(2, "0") +
-    "-" +
-    newDate.getDate().toString().padStart(2, "0")
-  );
+  return new Intl.DateTimeFormat("sv-SE").format(new Date(dateFromBackend));
 }
 
+type ModalState = "notification" | "confirmation" | null;
+
 export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
-  const [showNotificationModal, setShowNotificationModal] = useState(false);
-  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const [modalState, setModalState] = useState<ModalState>(null);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const letter_expired = useAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useAppSelector((state) => state.letter_proofing.letter_sent);
@@ -42,21 +36,9 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
   }, [letterProofingState]);
 
   function handleModal() {
-    const letterPending = letter_sent_date === undefined && !letter_expired;
-    const letterCodeExpired = letter_expired && letter_sent_date !== undefined;
-    // Not request letter yet
-    const letterNotRequested = letter_sent_date === undefined && requestLetterAllowed;
-
-    // Open Modal to request letter or verify code
-    if (letterPending || letterNotRequested || letterCodeExpired) {
-      setShowNotificationModal(true);
-      setShowConfirmationModal(false);
-    } else {
-      setShowNotificationModal(false);
-      setShowConfirmationModal(true);
-    }
+    const shouldRequestLetter = letter_sent_date === undefined || letter_expired;
+    setModalState(shouldRequestLetter ? "notification" : "confirmation");
   }
-
   async function sendConfirmationCode(values: { [key: string]: string }) {
     const confirmationCode = values["letter-confirm-modal"];
     if (confirmationCode) {
@@ -65,7 +47,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
         requestAllPersonalData();
       }
     }
-    setShowConfirmationModal(false);
+    setModalState(null);
   }
 
   async function confirmLetterProofing() {
@@ -75,7 +57,7 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
         requestAllPersonalData();
       }
     }
-    setShowNotificationModal(false);
+    setModalState(null);
   }
 
   let description = null;
@@ -175,8 +157,8 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
             description="explanation text for letter proofing"
           />
         }
-        showModal={showNotificationModal}
-        closeModal={() => setShowNotificationModal(false)}
+        showModal={modalState === "notification"}
+        closeModal={() => setModalState(null)}
         acceptModal={confirmLetterProofing}
         acceptButtonText={<FormattedMessage defaultMessage="Accept" description="accept button" />}
       />
@@ -189,8 +171,8 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
           />
         }
         placeholder={placeholder}
-        showModal={showConfirmationModal}
-        closeModal={() => setShowConfirmationModal(false)}
+        showModal={modalState === "confirmation"}
+        closeModal={() => setModalState(null)}
         handleConfirm={sendConfirmationCode}
         modalFormLabel={<FormattedMessage defaultMessage="Code" description="letter proofing modal form label" />}
         validationError="confirmation.code_invalid_format"
