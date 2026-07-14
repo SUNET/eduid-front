@@ -3,8 +3,8 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleE
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, securityApi } from "apis/eduidSecurity";
-import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "helperFunctions/paths";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";

@@ -4,7 +4,7 @@ import { ChangePasswordDisplay } from "components/Dashboard/ChangePasswordDispla
 import { DeleteAccount } from "components/Dashboard/DeleteAccount";
 import { Emails } from "components/Dashboard/Emails";
 import { LanguagePreference } from "components/Dashboard/Language";
-import { SECURITY_PATH } from "components/IndexMain";
+import { SECURITY_PATH } from "helperFunctions/paths";
 import { FormattedMessage, useIntl } from "react-intl";
 import { AccountLinking } from "./AccountLinking";
 import { LadokContainer } from "./Ladok";

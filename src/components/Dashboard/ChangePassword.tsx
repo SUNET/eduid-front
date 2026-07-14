@@ -1,7 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import { Splash } from "components/Common/Splash";
-import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
+import { ACCOUNT_PATH, CHPASS_BASE_PATH } from "helperFunctions/paths";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Form as FinalForm, FormRenderProps } from "react-final-form";
 import { FormattedMessage } from "react-intl";

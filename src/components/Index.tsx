@@ -3,6 +3,7 @@ import { faIdCard } from "@fortawesome/free-solid-svg-icons/faIdCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import securityApi from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
@@ -11,7 +12,6 @@ import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
 import { EduIDButton } from "./Common/EduIDButton";
 import { Splash } from "./Common/Splash";
-import { SIGNUP_BASE_PATH } from "./IndexMain";
 
 export function Index() {
   const navigate = useNavigate();

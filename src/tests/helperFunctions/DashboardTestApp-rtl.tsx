@@ -1,7 +1,7 @@
 import { RenderOptions, RenderResult, render as rtlRender } from "@testing-library/react";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
-import { START_PATH } from "components/IndexMain";
 import { EduIDAppRootState, getTestEduIDStore } from "eduid-init-app";
+import { START_PATH } from "helperFunctions/paths";
 import React from "react";
 import { InitialEntry, MemoryRouter } from "react-router";
 import { initialState as configInitialState } from "slices/IndexConfig";

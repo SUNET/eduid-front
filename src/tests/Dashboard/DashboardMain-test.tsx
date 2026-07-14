@@ -1,5 +1,6 @@
 import { activeClassName } from "components/Common/HeaderNav";
-import { IndexMain, START_PATH } from "components/IndexMain";
+import { IndexMain } from "components/IndexMain";
+import { START_PATH } from "helperFunctions/paths";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { defaultDashboardTestState, render, screen } from "../helperFunctions/DashboardTestApp-rtl";
 

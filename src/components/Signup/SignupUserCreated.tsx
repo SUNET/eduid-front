@@ -8,9 +8,9 @@ import { ChangePasswordChildFormProps } from "components/Dashboard/ChangePasswor
 import { ChangePasswordCustomForm } from "components/Dashboard/ChangePasswordCustom";
 import { ChangePasswordRadioOption } from "components/Dashboard/ChangePasswordRadioOption";
 import { ChangePasswordSuggestedForm } from "components/Dashboard/ChangePasswordSuggested";
-import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppDispatch } from "eduid-init-app";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";

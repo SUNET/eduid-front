@@ -1,7 +1,7 @@
 import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
-import { LOGIN_BASE_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { LOGIN_BASE_PATH } from "helperFunctions/paths";
 import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";

@@ -2,9 +2,9 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArr
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
-import { SIGNUP_BASE_PATH } from "components/IndexMain";
 import { useAppSelector } from "eduid-hooks";
 import { eduidStore } from "eduid-init-app";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { useCallback, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation, useNavigate } from "react-router";

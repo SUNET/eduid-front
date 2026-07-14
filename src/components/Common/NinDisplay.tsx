@@ -1,7 +1,7 @@
 import { NinIdentity } from "apis/eduidPersonalData";
 import securityApi from "apis/eduidSecurity";
 import { EduIDButton } from "components/Common/EduIDButton";
-import { IDENTITY_PATH } from "components/IndexMain";
+import { IDENTITY_PATH } from "helperFunctions/paths";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";

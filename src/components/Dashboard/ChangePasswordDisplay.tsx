@@ -1,7 +1,7 @@
 import securityApi from "apis/eduidSecurity";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
-import { CHPASS_BASE_PATH } from "components/IndexMain";
+import { CHPASS_BASE_PATH } from "helperFunctions/paths";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";

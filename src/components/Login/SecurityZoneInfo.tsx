@@ -1,7 +1,8 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
-import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "components/IndexMain";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "helperFunctions/paths";
+
 import { ReactElement } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 

@@ -1,5 +1,15 @@
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
+import {
+  ACCOUNT_PATH,
+  CHPASS_BASE_PATH,
+  IDENTITY_PATH,
+  LOGIN_BASE_PATH,
+  RESET_PASSWORD_PATH,
+  SECURITY_PATH,
+  SIGNUP_BASE_PATH,
+  START_PATH,
+} from "helperFunctions/paths";
 import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useIntl } from "react-intl";
@@ -31,15 +41,6 @@ import { ScrollToTop } from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { SignupExternalReturnHandler } from "./Signup/SignupExternalReturnHandler";
 import { Errors } from "./SwamidErrors/Errors";
-
-export const LOGIN_BASE_PATH = "/login";
-export const RESET_PASSWORD_PATH = "/reset-password";
-export const START_PATH = "/start";
-export const ACCOUNT_PATH = "/account";
-export const SECURITY_PATH = "/security";
-export const IDENTITY_PATH = "/identity";
-export const SIGNUP_BASE_PATH = "/register";
-export const CHPASS_BASE_PATH = "/chpass";
 
 export const SETTINGS_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
 

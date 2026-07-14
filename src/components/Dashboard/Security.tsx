@@ -1,6 +1,6 @@
 import { MultiFactorAuthentication } from "components/Common/MultiFactorAuthentication";
 import { WizardLink } from "components/Common/WizardLink";
-import { ACCOUNT_PATH, IDENTITY_PATH } from "components/IndexMain";
+import { ACCOUNT_PATH, IDENTITY_PATH } from "helperFunctions/paths";
 import { FormattedMessage, useIntl } from "react-intl";
 
 /* The Dashboard "Advanced Settings" tab */

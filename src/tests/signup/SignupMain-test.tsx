@@ -10,8 +10,9 @@ import {
   VerifyEmailRequest,
 } from "apis/eduidSignup";
 import { emailPlaceHolder } from "components/Common/EmailInput";
-import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { IndexMain } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
