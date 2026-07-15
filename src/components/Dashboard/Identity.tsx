@@ -158,7 +158,7 @@ function VerifiedIdentitiesTable() {
       if (identityType) {
         const response = await removeIdentity({ identity_type: identityType });
         if (response.isSuccess) {
-          void requestAllPersonalData();
+          requestAllPersonalData();
         } else {
           dispatch(
             authnSlice.actions.setFrontendActionAndState({
