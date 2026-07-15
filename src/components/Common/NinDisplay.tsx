@@ -41,11 +41,11 @@ function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>) {
   );
 }
 
-export function NinDisplay({ nin }: Readonly<NinDisplayProps>) {
+export function NinDisplay({ nin, allowDelete }: Readonly<NinDisplayProps>) {
   return (
     <div className="profile-grid-cell">
       {nin ? (
-        <RenderShowHideNin nin={nin} allowDelete={false} />
+        <RenderShowHideNin nin={nin} allowDelete={allowDelete} />
       ) : (
         // if there is no NIN, render a link to verify-identity
         <Link to={IDENTITY_PATH} className="display-data unverified">
