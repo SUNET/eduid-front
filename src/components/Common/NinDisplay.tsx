@@ -9,7 +9,7 @@ import { ShowAndHideButton } from "./ShowAndHideButton";
 
 interface NinDisplayProps {
   nin?: NinIdentity; // the NIN to display - passed as a prop to make component more re-usable
-  allowDelete?: boolean; // show delete option, if applicable to this NIN
+  allowDelete: boolean; // show delete option, if applicable to this NIN
 }
 
 function RenderShowHideNin({ nin, allowDelete }: Readonly<NinDisplayProps>) {
