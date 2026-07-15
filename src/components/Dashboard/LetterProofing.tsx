@@ -25,7 +25,6 @@ export function LetterProofing({ disabled }: Readonly<LetterProofingProps>) {
   const letter_expired = useAppSelector((state) => state.letter_proofing.letter_expired);
   const letter_sent_date = useAppSelector((state) => state.letter_proofing.letter_sent);
   const letter_expires_date = useAppSelector((state) => state.letter_proofing.letter_expires);
-  const requestLetterAllowed = identities?.nin?.number || letter_expired;
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
   const [letterProofingState] = letterProofingApi.useLazyLetterProofingStateQuery();
   const [requestLetter] = letterProofingApi.useLazyRequestLetterQuery();
