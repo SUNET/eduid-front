@@ -3,6 +3,7 @@ import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
 import { ActionStatus, securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
+import CountryFlag from "components/Common/CountryFlag";
 import EduIDButton from "components/Common/EduIDButton";
 import NinDisplay from "components/Common/NinDisplay";
 import NotificationModal from "components/Common/NotificationModal";
@@ -13,7 +14,6 @@ import LetterProofing from "components/Dashboard/LetterProofing";
 import { SECURITY_PATH, START_PATH } from "components/IndexMain";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
-import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -249,7 +249,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
       {identities?.freja?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <ReactCountryFlag
+            <CountryFlag
               className="flag-icon"
               aria-label={regionNames.of(identities.freja.country_code)}
               countryCode={identities.freja.country_code}

@@ -80,7 +80,6 @@
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.0",
     "react-compiler-webpack": "^0.2.1",
-    "react-country-flag": "^3.1.0",
     "style-loader": "^4.0.0",
     "stylelint": "^17.6.0",
     "stylelint-config-standard": "^40.0.0",

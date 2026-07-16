@@ -90,6 +90,38 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
   expect(screen.getByText("Swedish personal ID or coordination number")).toBeInTheDocument();
 });
 
+test("renders verifyIdentity as expected, verified with freja passport, showing country flag", async () => {
+  render(<VerifyIdentity />, {
+    state: {
+      config: { ...configInitialState, is_app_loaded: true },
+      personal_data: {
+        response: {
+          eppn: "test",
+          identities: {
+            is_verified: true,
+            freja: {
+              country_code: "NO",
+              verified: true,
+              date_of_birth: "19850101",
+              prid: "prid",
+              prid_persistence: "A",
+            },
+          },
+        },
+      },
+    },
+  });
+  expect(
+    screen.getByRole("heading", { name: /The identities below are now connected to your eduID/i }),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/Freja eID identity/i)).toBeInTheDocument();
+  expect(screen.getByText(/19850101/i)).toBeInTheDocument();
+  // flag rendered as an emoji span with the country name as accessible label
+  const flag = screen.getByRole("img", { name: "Norway" });
+  expect(flag).toHaveClass("flag-icon");
+  expect(flag).toHaveTextContent("🇳🇴");
+});
+
 test("renders the identity page title", async () => {
   render(<IndexMain />);
   await linkToIdentitySettings();
