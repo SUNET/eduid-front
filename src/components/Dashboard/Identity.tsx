@@ -13,6 +13,7 @@ import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
 import { LetterProofing } from "components/Dashboard/LetterProofing";
 import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { FREJA_EID_URL_EN, FREJA_EID_URL_SV } from "helperFunctions/constants";
 import { SECURITY_PATH, START_PATH } from "helperFunctions/paths";
 import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -434,6 +435,8 @@ function AccordionItemEu() {
 function AccordionItemWorld() {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
+  const locale = useAppSelector((state) => state.intl.locale);
+  const frejaUrl = locale === "en" ? FREJA_EID_URL_EN : FREJA_EID_URL_SV;
 
   const handleOnClick = useCallback(async () => {
     const response = await frejaeIDVerifyIdentity({ method: "freja_eid" });
@@ -466,7 +469,7 @@ function AccordionItemWorld() {
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
             Freja_eID: (
-              <a href={FREJA_EID_URL} target="_blank" rel="noreferrer">
+              <a href={frejaUrl} target="_blank" rel="noreferrer">
                 Freja eID
               </a>
             ),
