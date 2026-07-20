@@ -4,12 +4,9 @@ import { NotificationModal } from "components/Common/NotificationModal";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function Eidas() {
-  const [showModal, setShowModal] = useState(false);
-  const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
-
-  // Temporary instructions until Sweden Connect has more alternatives and we have a DS
-  const freja_instructions = (
+// Temporary instructions until Sweden Connect has more alternatives and we have a DS
+function FrejaInstructions() {
+  return (
     <div id="freja-instructions">
       <ol>
         <li>
@@ -52,6 +49,11 @@ export function Eidas() {
       </a>
     </div>
   );
+}
+
+export function Eidas() {
+  const [showModal, setShowModal] = useState(false);
+  const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   async function useFrejaeID() {
     const response = await eidasVerifyIdentity({ method: "freja" });
@@ -91,7 +93,7 @@ export function Eidas() {
             defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
           />
         }
-        mainText={freja_instructions}
+        mainText={<FrejaInstructions />}
         showModal={showModal}
         closeModal={() => {
           setShowModal(false);
