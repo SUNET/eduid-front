@@ -1,4 +1,5 @@
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
+import { FREJA_EID_URL } from "components/Dashboard/Eidas";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
@@ -8,8 +9,7 @@ export function VerificationOfIdentity() {
     locale === "en"
       ? " https://frejaeid.com/en/freja-for-swedes-with-protected-identities/"
       : "https://frejaeid.com/freja-for-svenskar-med-skyddad-identitet/";
-  const FrejaAppURL =
-    locale === "en" ? "https://frejaeid.com/en/get-freja-eid/" : "https://frejaeid.com/skaffa-freja-eid/";
+  const FrejaAppURL = locale === "en" ? "https://frejaeid.com/en/get-freja-eid/" : { FREJA_EID_URL };
   const FrejaeIdURL =
     locale === "en"
       ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"

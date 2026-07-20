@@ -466,7 +466,7 @@ function AccordionItemWorld() {
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
             Freja_eID: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+              <a href={FREJA_EID_URL} target="_blank" rel="noreferrer">
                 Freja eID
               </a>
             ),
