@@ -1,21 +1,23 @@
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { useAppSelector } from "eduid-hooks";
-import { FREJA_EID_URL_EN, FREJA_EID_URL_SV } from "helperFunctions/constants";
+import {
+  BANK_ID_URL_EN,
+  BANK_ID_URL_SV,
+  FREJA_EID_FOREIGN_INSTRUCTION_URL_EN,
+  FREJA_EID_FOREIGN_INSTRUCTION_URL_SV,
+  FREJA_EID_PROTECTED_ID_URL_EN,
+  FREJA_EID_PROTECTED_ID_URL_SV,
+  FREJA_URL_EN,
+  FREJA_URL_SV,
+} from "helperFunctions/constants";
 import { FormattedMessage } from "react-intl";
 
 export function VerificationOfIdentity() {
   const locale = useAppSelector((state) => state.intl.locale);
-  const FrejaProtectedIdURL =
-    locale === "en"
-      ? " https://frejaeid.com/en/freja-for-swedes-with-protected-identities/"
-      : "https://frejaeid.com/freja-for-svenskar-med-skyddad-identitet/";
-  const FrejaAppURL = locale === "en" ? FREJA_EID_URL_EN : FREJA_EID_URL_SV;
-  const FrejaeIdURL =
-    locale === "en"
-      ? "https://org.frejaeid.com/en/an-e-id-for-foreign-citizens/"
-      : "https://org.frejaeid.com/en-e-legitimation-for-utlandska-medborgare/";
-  const BankIdURL =
-    locale === "en" ? "https://www.bankid.com/en/privat/skaffa-bankid" : "https://www.bankid.com/privat/skaffa-bankid";
+  const FrejaProtectedIdURL = locale === "en" ? FREJA_EID_PROTECTED_ID_URL_EN : FREJA_EID_PROTECTED_ID_URL_SV;
+  const FrejaAppURL = locale === "en" ? FREJA_URL_EN : FREJA_URL_SV;
+  const FrejaeIdURL = locale === "en" ? FREJA_EID_FOREIGN_INSTRUCTION_URL_EN : FREJA_EID_FOREIGN_INSTRUCTION_URL_SV;
+  const BankIdURL = locale === "en" ? BANK_ID_URL_EN : BANK_ID_URL_SV;
 
   return (
     <AccordionItemTemplate
