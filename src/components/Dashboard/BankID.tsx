@@ -1,10 +1,14 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { EduIDButton } from "components/Common/EduIDButton";
+import { useAppSelector } from "eduid-hooks";
+import { BANK_ID_URL_EN, BANK_ID_URL_SV } from "helperFunctions/constants";
 import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
 export function BankID() {
+  const locale = useAppSelector((state) => state.intl.locale);
   const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery();
+  const bankIdUrl = locale === "en" ? BANK_ID_URL_EN : BANK_ID_URL_SV;
 
   const useBankID = useCallback(async () => {
     const response = await bankIDVerifyIdentity({ method: "bankid" });
@@ -21,7 +25,7 @@ export function BankID() {
           defaultMessage="To use this option you will need to first create a digital ID in the {bankID_link} app."
           values={{
             bankID_link: (
-              <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank" rel="noreferrer">
+              <a href={bankIdUrl} target="_blank" rel="noreferrer">
                 BankID
               </a>
             ),
