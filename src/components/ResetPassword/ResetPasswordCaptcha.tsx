@@ -61,7 +61,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="As a protection against automated spam, you'll need to confirm that you are a human."
+              defaultMessage="As a protection against automated spam, you need to confirm that you are a human."
               description="Reset password captcha lead text"
             />
           </p>

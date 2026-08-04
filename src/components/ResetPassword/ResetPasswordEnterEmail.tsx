@@ -32,7 +32,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
+              defaultMessage="If the entered address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
               description="ResetPasswordEnterEmail lead text"
             />
           </p>
