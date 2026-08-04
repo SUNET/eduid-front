@@ -57,32 +57,34 @@ export function EmailLinkSent(): React.JSX.Element | null {
             description="Reset Password email link sent heading"
           />
         </h1>
-        <div className="lead" />
+        <div className="lead">
+          {" "}
+          <p>
+            <FormattedMessage
+              defaultMessage="If you have an eduID account, a code has been sent to {email} from no-reply@eduid.se."
+              description="Reset Password email link sent"
+              values={{
+                email: (
+                  <span>
+                    <output data-testid="email-address">
+                      <strong>{response?.email}</strong>
+                    </output>
+                  </span>
+                ),
+              }}
+            />
+          </p>
+          <p>
+            <FormattedMessage
+              defaultMessage="The emailed code is valid for two hours, if you haven't received it, please cancel the process and restart from the beginning."
+              description="Reset Password email link sent"
+            />
+          </p>
+        </div>
         <p>
           <FormattedMessage
-            defaultMessage="If you have an eduID account, the code has been sent to {email} from no-reply@eduid.se."
-            description="Reset Password email link sent"
-            values={{
-              email: (
-                <span>
-                  <output data-testid="email-address">
-                    <strong>{response?.email}</strong>
-                  </output>
-                </span>
-              ),
-            }}
-          />
-        </p>
-        <p>
-          <FormattedMessage
-            defaultMessage="The email code is valid for two hours."
-            description="Reset Password email link sent"
-          />
-        </p>
-        <p>
-          <FormattedMessage
-            defaultMessage="If you haven't receive the code, please cancel the process and restart from the beginning."
-            description="Reset Password email link sent"
+            defaultMessage="Enter the code in the form to verify your email address."
+            description="Reset Password enter code"
           />
         </p>
       </section>
