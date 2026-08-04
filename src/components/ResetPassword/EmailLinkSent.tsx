@@ -66,7 +66,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
               email: (
                 <span>
                   <output data-testid="email-address">
-                    <strong>{response?.email}</strong>.
+                    <strong>{response?.email}</strong>
                   </output>
                 </span>
               ),
