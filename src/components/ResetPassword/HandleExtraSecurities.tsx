@@ -50,18 +50,23 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
             description="HandleExtraSecurities heading"
           />
         </h1>
-        <div className="lead" />
+        <div className="lead">
+          {" "}
+          <p>
+            <FormattedMessage
+              defaultMessage={`Choose a second method to authenticate yourself now to ensure only you can access your eduID, or continue without MFA authentication.`}
+              description="MFA paragraph"
+            />
+          </p>
+        </div>
         <p>
           {Object.keys(extra_security).length > 0 ? (
             <FormattedMessage
-              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+              defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
               description="MFA paragraph with swedish option"
             />
           ) : (
-            <FormattedMessage
-              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
-              description="MFA paragraph"
-            />
+            ""
           )}
         </p>
       </section>
