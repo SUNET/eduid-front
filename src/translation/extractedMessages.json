@@ -43,6 +43,10 @@
     "developer_comment": "global title",
     "string": "Most countries"
   },
+  "+x6gIt": {
+    "developer_comment": "Strong password - lead",
+    "string": "When creating your own password, make sure it is strong enough to keep your accounts safe."
+  },
   "+xBbuC": {
     "developer_comment": "Registration finished with webauthn only",
     "string": "Your eduID account has been created and you can continue using it with the details you have provided and your added security key."
@@ -202,10 +206,6 @@
     "developer_comment": "privacy policy - list item 6",
     "string": "enables removal of eduID and connections directly in the service,"
   },
-  "1hKgwA": {
-    "developer_comment": "MFA paragraph with swedish option",
-    "string": "Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+."
-  },
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "The app will generate a QR-code"
@@ -318,6 +318,10 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
+  "414JcC": {
+    "developer_comment": "Reset Password enter code",
+    "string": "Enter the code into the form to verify your email address."
+  },
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "with a Freja+"
@@ -333,6 +337,10 @@
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
     "string": "install the {Freja} on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
+  },
+  "4ELl7j": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. To proceed copy the password into the Repeat new password field and click the Save button. Or choose to create a custom password."
   },
   "4IJlYf": {
     "developer_comment": "privacy policy - list item 3",
@@ -615,10 +623,6 @@
     "developer_comment": "start eduid - list definition",
     "string": "The Start page contains:"
   },
-  "AEinlE": {
-    "developer_comment": "Reset password captcha lead text",
-    "string": "As a protection against automated spam, you'll need to confirm that you are a human."
-  },
   "ANQaqn": {
     "developer_comment": "identity eduid - list item 1",
     "string": "A table presenting your verified identities if you have any."
@@ -630,6 +634,10 @@
   "AqC6nN": {
     "developer_comment": "Set your own password radio button",
     "string": "Set your own password"
+  },
+  "Axzzme": {
+    "developer_comment": "Reset password captcha lead text",
+    "string": "As a protection against automated spam, you need to confirm that you are a human."
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -655,10 +663,6 @@
     "developer_comment": "Strong password - lead",
     "string": "Create a strong enough password to keep your account safe."
   },
-  "C3lfK7": {
-    "developer_comment": "Reset Password set new password success lead",
-    "string": "You have successfully updated your password. Make sure to store your password securely for future use. Once you've logged in it is possible to change your password."
-  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "To request a new code, proceed by clicking the button below."
@@ -670,6 +674,10 @@
   "CE87Ss": {
     "developer_comment": "help - lead",
     "string": "Listed below is general information about the service, answers to common questions about using eduID and Support contact information."
+  },
+  "CELTZq": {
+    "developer_comment": "resetpw step6",
+    "string": "Completed"
   },
   "CF8nQa": {
     "developer_comment": "passkey heading",
@@ -686,6 +694,10 @@
   "CUid67": {
     "developer_comment": "without extra security heading",
     "string": "Continue without MFA authentication"
+  },
+  "Ca9mgT": {
+    "developer_comment": "resetpw step2",
+    "string": "Confirm Captcha"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -929,10 +941,6 @@
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
     "string": "Federated identities are one of the cornerstones of trust between organisations. Trust is based on all the organisations relying on all the others to carry out their authentication - identification and verification - properly and in a controlled and reliable IT environment."
-  },
-  "GmoJ8i": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "The email code is valid for two hours."
   },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
@@ -1268,6 +1276,10 @@
     "developer_comment": "ErrorURL authorization failure",
     "string": "Insufficient privileges"
   },
+  "OI5CpA": {
+    "developer_comment": "MFA paragraph",
+    "string": "Choose a second method to authenticate yourself now to ensure only you can access your eduID, or continue without MFA authentication."
+  },
   "OKSrwI": {
     "developer_comment": "what are assurance levels - paragraph",
     "string": "Service providers need to rely on organisations to manage their users credentials according to certain assurance levels set by relevant authorities, depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users with additional authentication when logging in to a system."
@@ -1283,6 +1295,10 @@
   "OOZ1Jb": {
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
+  },
+  "OV+zb2": {
+    "developer_comment": "resetpw step3",
+    "string": "Verify email address"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -1728,6 +1744,10 @@
     "developer_comment": "Improved Security heading",
     "string": "Enhanced security"
   },
+  "WHpRdB": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "The emailed code is valid for two hours, if you haven't received it cancel and restart the process."
+  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -1767,6 +1787,10 @@
   "WtfZA3": {
     "developer_comment": "when use eduID - list item 5",
     "string": "administrate students taking the Digital national exam,"
+  },
+  "Wxg9KX": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "If the entered address is registered, a message with instructions for resetting the password will be sent from no-reply@eduid.se."
   },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
@@ -1915,6 +1939,10 @@
   "ZOGtpx": {
     "developer_comment": "popover info heading",
     "string": "For your security"
+  },
+  "ZOyeZU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -2125,6 +2153,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Forward"
+  },
+  "cMbLiA": {
+    "developer_comment": "resetpw step5",
+    "string": "Set password"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2463,6 +2495,10 @@
     "developer_comment": "how add security key",
     "string": "When logged in you can add, verify and remove keys of your choice (provided you have access to any of these methods) in the Security area of eduID and follow the instructions. Under the \"Add a new security key\" label are the options:"
   },
+  "gDw23x": {
+    "developer_comment": "Reset Password set new password success lead",
+    "string": "You have successfully updated your password. Make sure to store your password securely for future use. When logged in it is possible to change your password."
+  },
   "gG7nHO": {
     "developer_comment": "Confirmed account heading",
     "string": "Confirmed account"
@@ -2724,6 +2760,10 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "a bin icon which deletes the key when clicked."
   },
+  "kPaWCf": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "If you are unable to use the security key, please select other options below, such as BankID or Freja+."
+  },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
     "string": "enhanced security (added a method used for multi factor login)"
@@ -2736,10 +2776,6 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Depending on where you work or study you might only use your eduID account a few times, or you might use it every day. Some schools, institutions and services use eduID as their identity provider, this means you will use your eduID to gain access to their IT-systems. Or you may mainly use your eduID account to create and access other accounts, such as your student account or e.g. {link}."
   },
-  "kg94pm": {
-    "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Once entered, if the address is registered, a message with instructions to reset the password will be sent from no-reply@eduid.se."
-  },
   "kh3bkV": {
     "developer_comment": "login eduID - re-login paragraph 2",
     "string": "These settings are also marked with a \"i\" icon, with additional information on hover."
@@ -2751,10 +2787,6 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Improving the security level of eduID"
-  },
-  "krGZEd": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account, the code has been sent to {email} from no-reply@eduid.se."
   },
   "krGqLm": {
     "developer_comment": "login eduid - forgot pw list item 2",
@@ -2926,6 +2958,10 @@
     "developer_comment": "settings eduid - list item 2-2",
     "string": "You can also change the language for the displayed page in the footer of the webpage."
   },
+  "mT0ok+": {
+    "developer_comment": "resetpw step1",
+    "string": "Enter email address"
+  },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
     "string": "Verified identity"
@@ -3041,6 +3077,10 @@
   "nj6a0v": {
     "developer_comment": "eidas freja instructions step1",
     "string": "Install the app"
+  },
+  "noAHzU": {
+    "developer_comment": "resetpw step4",
+    "string": "Verification method"
   },
   "notifications.error-label": {
     "developer_comment": "Notification type",
@@ -3297,10 +3337,6 @@
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Change password"
-  },
-  "qn24rz": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you haven't receive the code, please cancel the process and restart from the beginning."
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",

@@ -83,7 +83,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
         </div>
         <p>
           <FormattedMessage
-            defaultMessage="Enter the code in the form to verify your email address."
+            defaultMessage="Enter the code into the form to verify your email address."
             description="Reset Password enter code"
           />
         </p>
