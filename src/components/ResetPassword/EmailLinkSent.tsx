@@ -61,7 +61,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
           {" "}
           <p>
             <FormattedMessage
-              defaultMessage="If you have an eduID account using this address, a code has been sent to {email} from no-reply@eduid.se."
+              defaultMessage="If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
               description="Reset Password email link sent"
               values={{
                 email: (

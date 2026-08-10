@@ -116,7 +116,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                     <p>
                       <FormattedMessage
                         description="Strong password - lead"
-                        defaultMessage={`When creating your own password, make sure it's strong enough to keep your 
+                        defaultMessage={`When creating your own password, make sure it is strong enough to keep your 
                         accounts safe.`}
                       />
                     </p>
