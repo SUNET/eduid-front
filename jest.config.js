@@ -3,6 +3,7 @@ const config = {
   verbose: true,
   moduleFileExtensions: [
     "js",
+    "mjs",
     "jsx",
     "ts",
     "tsx",
@@ -25,10 +26,10 @@ const config = {
     "<rootDir>/src/"
   ],
   transform: {
-    "^.+\\.[tj]sx?$": "babel-jest",
+    "^.+\\.(mjs|[tj]sx?)$": "babel-jest",
   },
   transformIgnorePatterns: [
-    String.raw`/node_modules/(?!spin.js|react-intl|intl-messageformat|@formatjs).+\.js$`
+    String.raw`/node_modules/(?!spin.js|react-intl|intl-messageformat|@formatjs|react-router|cookie-es).+\.(mjs|js)$`
   ],
   setupFilesAfterEnv: [
     "<rootDir>/src/setupTests.ts"

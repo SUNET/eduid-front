@@ -9,16 +9,7 @@ const { defineReactCompilerLoaderOption, reactCompilerLoader } = require('react-
 
 module.exports = {
   mode: "development",
-  devServer: {
-    contentBase: path.join(__dirname, "public"),
-    compress: true,
-    port: 9000,
-  },
   entry: {
-    // To activate the web server, uncomment below 2 lines and
-    // add a script to package.json pointing to "webpack-dev-server"
-    // WebpackDevServer host and port:
-    // server: 'webpack-dev-server/client?http://localhost:8080',
     index: "./src/entry-points/index",
   },
   output: {
