@@ -3394,6 +3394,15 @@
   "resetpw.captcha-not-requested": {
     "string": "The captcha has not been requested."
   },
+  "resetpw.email-address-required": {
+    "string": "Enter the email address that you started the password reset with."
+  },
+  "resetpw.email-code-too-many-tries": {
+    "string": "Too many incorrect codes have been entered. For security reasons this password reset has been stopped. Please wait until the code expires, then start over."
+  },
+  "resetpw.email-not-validated": {
+    "string": "The emailed code has not been verified. Please enter the code that was sent to your email address."
+  },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
   },

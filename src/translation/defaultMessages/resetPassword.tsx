@@ -17,6 +17,28 @@ export const apiResponses = {
     <FormattedMessage id="resetpw.email-send-failure" defaultMessage={"Error sending mail, please try again"} />
   ),
 
+  "resetpw.email-address-required": (
+    <FormattedMessage
+      id="resetpw.email-address-required"
+      defaultMessage="Enter the email address that you started the password reset with."
+    />
+  ),
+
+  "resetpw.email-code-too-many-tries": (
+    <FormattedMessage
+      id="resetpw.email-code-too-many-tries"
+      defaultMessage={`Too many incorrect codes have been entered. For security reasons this password reset has been
+      stopped. Please wait until the code expires, then start over.`}
+    />
+  ),
+
+  "resetpw.email-not-validated": (
+    <FormattedMessage
+      id="resetpw.email-not-validated"
+      defaultMessage="The emailed code has not been verified. Please enter the code that was sent to your email address."
+    />
+  ),
+
   "resetpw.reset-pw-initialized": (
     <FormattedMessage
       id="resetpw.reset-pw-initialized"

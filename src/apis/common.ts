@@ -49,19 +49,56 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
   const base_args = addCsrfTokenToArgs(args, csrf_token);
 
   // call backend api
-  const result = await rawBaseQuery(base_args, api, extraOptions);
+  let result = await rawBaseQuery(base_args, api, extraOptions);
+
+  if (!isErrorResult(result) && isInvalidSessionError(result.data) && args?.body !== undefined) {
+    // The backend invalidated the session while answering, which also cleared the CSRF token
+    // server side. Retrying with the token from this response would fail with "CSRF failed to
+    // validate", since that token was minted into the now dead session. Fetch a fresh token
+    // from the service root and retry the request once.
+    const fresh_csrf_token = await fetchFreshCsrfToken(baseUrl, csrf_token, api, extraOptions);
+    if (fresh_csrf_token) {
+      csrf_token = fresh_csrf_token;
+      result = await rawBaseQuery(addCsrfTokenToArgs(args, fresh_csrf_token), api, extraOptions);
+    }
+  }
+
   // manage results of api call
   if (isErrorResult(result)) {
     await handleBaseQueryError(result, csrf_token, api, state);
+  } else if (isApiError(result.data)) {
+    // Do not extract the CSRF token from error responses. The backend mints a token into the
+    // session it holds while answering, and for session errors (resetpw.invalid_session) that
+    // session has just been invalidated - storing that token poisons every following request
+    // with "CSRF failed to validate".
+    return await handleApiError(result.data, result.meta, csrf_token, api);
   } else {
     // extract CSRF token from response
     csrf_token = handleCsrfTokenFromResponse(result.data, csrf_token, api);
-    if (isApiError(result.data)) {
-      return await handleApiError(result.data, result.meta, csrf_token, api);
-    }
   }
   return result;
 };
+
+// The backend returns this message when the session held by the browser can not be used for the
+// request. The session is cleared server side before answering, so the correct response is to
+// retry the request - but only after getting a CSRF token that belongs to the new session.
+function isInvalidSessionError(data: unknown): boolean {
+  return isApiError<{ message?: string }>(data) && data.payload.message === "resetpw.invalid_session";
+}
+
+// Issue a GET to the service root to get a CSRF token for the current session.
+async function fetchFreshCsrfToken(
+  baseUrl: string,
+  csrf_token: string | undefined,
+  api: BaseQueryApi,
+  extraOptions: { service?: string },
+): Promise<string | undefined> {
+  const result = await createBaseQuery(baseUrl, "GET")({ url: "" }, api, extraOptions);
+  if (isErrorResult(result) || isApiError(result.data)) {
+    return undefined;
+  }
+  return handleCsrfTokenFromResponse(result.data, csrf_token, api);
+}
 
 function addCsrfTokenToArgs(args: FetchArgs, csrf_token: string | undefined): FetchArgs {
   if (args?.body !== undefined && args.body.csrf_token === undefined) {
@@ -76,10 +113,11 @@ function handleCsrfTokenFromResponse(
   api: BaseQueryApi,
 ): string | undefined {
   if (isApiResponse(data) && hasCsrfToken(data)) {
-    if (data.payload.csrf_token && data.payload.csrf_token !== csrf_token) {
-      api.dispatch(storeCsrfToken(data.payload.csrf_token));
+    const new_csrf_token = data.payload.csrf_token;
+    if (new_csrf_token && new_csrf_token !== csrf_token) {
+      api.dispatch(storeCsrfToken(new_csrf_token));
       delete data.payload.csrf_token;
-      return data.payload.csrf_token;
+      return new_csrf_token;
     }
   }
   return csrf_token;
