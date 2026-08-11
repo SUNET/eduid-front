@@ -2010,6 +2010,10 @@
     "developer_comment": "orcid logo",
     "string": "orcid logo"
   },
+  "ajnNU3": {
+    "developer_comment": "Reset Password locked heading",
+    "string": "Reset Password: Too many attempts"
+  },
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
     "string": "How to use BankID with eduID:"
@@ -3670,6 +3674,10 @@
     "developer_comment": "Signup",
     "string": "Create eduID: Confirm/Accept"
   },
+  "tR6HiX": {
+    "developer_comment": "Reset Password locked lead",
+    "string": "Too many incorrect codes have been entered. For security reasons this password reset has been stopped."
+  },
   "tUj9S2": {
     "developer_comment": "create eduid - heading",
     "string": "How do I get an account?"
@@ -3862,6 +3870,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3",
     "string": "services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
   },
+  "x4npjV": {
+    "developer_comment": "Reset Password locked instruction",
+    "string": "Please wait until the code expires, then start over from the login page."
+  },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
@@ -3901,6 +3913,10 @@
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "What are the methods of verification for eduID?"
+  },
+  "xwe+e5": {
+    "developer_comment": "Reset Password locked exit button",
+    "string": "Go to login"
   },
   "y/qTJ8": {
     "developer_comment": "Verified identity",
