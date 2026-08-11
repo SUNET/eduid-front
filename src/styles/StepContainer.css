@@ -101,9 +101,16 @@
 
   .step-indicator {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
     justify-items: center;
     margin-bottom: 1rem;
+
+    &.steps-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    &.steps-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
 
     .step-item {
       display: flex;

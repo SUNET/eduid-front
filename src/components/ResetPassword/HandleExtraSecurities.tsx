@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 /**
  * Render the extra security options, security key, Freja eID and phone verification
@@ -41,7 +42,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -49,18 +50,23 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
             description="HandleExtraSecurities heading"
           />
         </h1>
-        <div className="lead" />
+        <div className="lead">
+          {" "}
+          <p>
+            <FormattedMessage
+              defaultMessage={`Choose a second method to authenticate yourself now to ensure only you can access your eduID, or continue without MFA authentication.`}
+              description="MFA paragraph"
+            />
+          </p>
+        </div>
         <p>
           {Object.keys(extra_security).length > 0 ? (
             <FormattedMessage
-              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
+              defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
               description="MFA paragraph with swedish option"
             />
           ) : (
-            <FormattedMessage
-              defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
-              description="MFA paragraph"
-            />
+            ""
           )}
         </p>
       </section>
@@ -86,6 +92,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
           <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
-    </React.Fragment>
+      <ResetPasswordStepIndicator currentStep={4} />
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { GoBackButton } from "./GoBackButton";
+import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
 /**
  *
@@ -24,7 +25,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <div className="step-container">
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -62,6 +63,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
           <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+      <ResetPasswordStepIndicator currentStep={3} />
+    </div>
   );
 }

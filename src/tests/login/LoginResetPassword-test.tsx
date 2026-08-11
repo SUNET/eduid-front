@@ -21,6 +21,22 @@ const user = userEvent.setup();
 const email = "test@example.org";
 const ref = "abc567";
 
+function expectStepIndicator(activeStep: number) {
+  const steps = document.querySelectorAll(".step-item");
+  expect(steps).toHaveLength(6);
+  steps.forEach((step, i) => {
+    const stepNum = i + 1;
+    if (stepNum < activeStep) {
+      expect(step).toHaveClass("completed");
+    } else if (stepNum === activeStep) {
+      expect(step).toHaveClass("active");
+    } else {
+      expect(step).not.toHaveClass("active");
+      expect(step).not.toHaveClass("completed");
+    }
+  });
+}
+
 function makeResetPasswordPayload(): GetResetPasswordStateResponse {
   return {
     state: {
@@ -118,12 +134,14 @@ test("can click 'forgot password' with an e-mail address", async () => {
   // the ok button is initially disabled without code
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
+
+  expectStepIndicator(3);
 });
 
 test("can click 'forgot password' without an e-mail address", async () => {
-  const email = "test@example.org";
+  // const email = "test@example.org";
   const code = "123456";
-  const ref = "abc567";
+  // const ref = "abc567";
 
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
@@ -237,4 +255,5 @@ test("can click 'forgot password' without an e-mail address", async () => {
   // the ok button is initially disabled without code
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
+  expectStepIndicator(3);
 });
