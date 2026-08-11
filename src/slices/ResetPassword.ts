@@ -43,6 +43,12 @@ export const initialState: ResetPasswordState = {
   captcha_completed: false,
 };
 
+// Read the backend message key off a rejected RTK Query action, so screens can be selected by it.
+function rejectedApiMessage(action: unknown): string | undefined {
+  const payload = (action as { payload?: ApiResponse<{ message?: string }> }).payload;
+  return payload?.payload?.message;
+}
+
 export const resetPasswordSlice = createSlice({
   name: "resetPassword",
   initialState,
@@ -111,8 +117,18 @@ export const resetPasswordSlice = createSlice({
       .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
         state.next_page = "HANDLE_EXTRA_SECURITIES";
       })
-      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state) => {
+      .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state, action) => {
         state.email_status = "failed";
+        if (rejectedApiMessage(action) === "resetpw.email-code-too-many-tries") {
+          state.next_page = "RESET_PW_LOCKED";
+        }
+      })
+      .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchRejected, (state, action) => {
+        if (rejectedApiMessage(action) === "resetpw.email-code-too-many-tries") {
+          // The reset state is locked until the code expires. Requesting a new code returns the
+          // same message, so there is nothing for the user to retry.
+          state.next_page = "RESET_PW_LOCKED";
+        }
       })
       .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchFulfilled, (state, action) => {
         state.email_address = action.payload.payload.email_address;
