@@ -87,7 +87,7 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage defaultMessage="Create eduID: Request new code" description="Signup" />
+            <FormattedMessage defaultMessage="Create eduID: Request new email code" description="Signup" />
           </h1>
           <ServiceInfo />
           <div className="lead">
@@ -105,18 +105,18 @@ export function SignupEnterCode(): React.JSX.Element {
                 }}
               />
             </p>
-            <p>
-              <FormattedMessage
-                defaultMessage="Click the link below to receive a new code."
-                description="Signup, code expired"
-              />
-            </p>
           </div>
+          <p>
+            <FormattedMessage
+              defaultMessage="Click the link below to receive a new code."
+              description="Signup, code expired"
+            />
+          </p>
         </section>
         <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
-        <SignupStepIndicator currentStep={4} />
+        <SignupStepIndicator currentStep={3} />
       </div>
     );
   }
