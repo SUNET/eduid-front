@@ -39,9 +39,17 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Bekräfta en epostadress genom att klicka på länken \"Bekräfta\" och fylla i koden som skickas till den adressen i formuläret."
   },
+  "+ZBeIF": {
+    "developer_comment": "remember pw prompt",
+    "string": "Kom ihåg eller spara ditt lösenord säkert!"
+  },
   "+q063y": {
     "developer_comment": "global title",
     "string": "De flesta länder"
+  },
+  "+x6gIt": {
+    "developer_comment": "Strong password - lead",
+    "string": "När du skapar ditt eget lösenord bör du se till att det är tillräckligt starkt för att hålla dina konton säkra."
   },
   "+xBbuC": {
     "developer_comment": "Registration finished with webauthn only",
@@ -105,6 +113,10 @@
   "05Bdlm": {
     "developer_comment": "send a new code",
     "string": "Skicka mig en ny kod"
+  },
+  "0BJe1j": {
+    "developer_comment": "Set your own password radio button",
+    "string": "Skapa ditt eget lösenord"
   },
   "0Biez9": {
     "developer_comment": "security zone redirect info",
@@ -202,10 +214,6 @@
     "developer_comment": "privacy policy - list item 6",
     "string": "möjliggör borttagning av ett eduID och dess kopplingar direkt i tjänsten,"
   },
-  "1hKgwA": {
-    "developer_comment": "MFA paragraph with swedish option",
-    "string": "Autentisera dig själv med ytterligare en metod för att vara säker på att bara du har tillgång till ditt eduID. Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
-  },
   "1oQ5gL": {
     "developer_comment": "eidas freja instructions step3",
     "string": "Appen genererar en QR-kod"
@@ -237,6 +245,10 @@
   "2WFt6m": {
     "developer_comment": "freja - error",
     "string": "Obs: alla nationaliteter stöds inte ännu av denna lösning men arbetet med att avsevärt öka omfattningen är pågående."
+  },
+  "2a1Jl+": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Återställ lösenord: Skapa ditt eget lösenord"
   },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
@@ -298,10 +310,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "Tjänsten du försökte använda misslyckades med autentiseringen."
   },
-  "3liNln": {
-    "developer_comment": "Reset Password - headline",
-    "string": "Återställ lösenord: Ange ditt eget lösenord"
-  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID ger en beständig identifierare, ett ORCID iD, som unikt särskiljer dig från andra forskare och en mekanism för att koppla dina forskningsresultat och aktiviteter till ditt ORCID iD oberoende vilken organisation du är verksam vid."
@@ -317,6 +325,10 @@
   "40kUIs": {
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
+  },
+  "414JcC": {
+    "developer_comment": "Reset Password enter code",
+    "string": "Fyll i koden i formuläret för att verifiera din e-postadress."
   },
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
@@ -467,10 +479,6 @@
     "developer_comment": "security eduid - list item 2",
     "string": "Under \"Hantera dina säkerhetsnycklar\" finns en toggle-kontroll märkt \"Använd alltid säkerhetsnyckel för att logga in\" som kan stängas av för att bara använda säkerhetsnyckel för att logga in när det efterfrågas. Standardinställning är påslagen."
   },
-  "75VH86": {
-    "developer_comment": "Generated password - lead",
-    "string": "Ett säkert lösenord har genererats åt dig. Kopiera, repetera och spara ditt lösenord i formuläret nedan, eller välj att skapa ditt eget lösenord."
-  },
   "75yL3y": {
     "developer_comment": "use ladok - list item 1",
     "string": "under Konto i eduID, aktivera ESI-kontrollen,"
@@ -486,6 +494,10 @@
   "7UpsOK": {
     "developer_comment": "settings eduid - account handle",
     "string": "Konto"
+  },
+  "7WJ82G": {
+    "developer_comment": "Generated password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. Fortsätt genom att kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på knappen Spara. Eller välj att skapa ditt eget lösenord."
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -595,10 +607,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "via post"
   },
-  "9oRtvS": {
-    "developer_comment": "Signup",
-    "string": "Skapa eduID: Begär ny e-post kod"
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Byt lösenord"
@@ -615,10 +623,6 @@
     "developer_comment": "start eduid - list definition",
     "string": "Startsidan innehåller:"
   },
-  "AEinlE": {
-    "developer_comment": "Reset password captcha lead text",
-    "string": "Som ett skydd mot automatisk spam måste du bekräfta att du är en människa."
-  },
   "ANQaqn": {
     "developer_comment": "identity eduid - list item 1",
     "string": "En tabell med dina verifierade identiteter om du har någon."
@@ -626,10 +630,6 @@
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
-  },
-  "AqC6nN": {
-    "developer_comment": "Set your own password radio button",
-    "string": "Skapa ditt eget lösenord"
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -655,10 +655,6 @@
     "developer_comment": "Strong password - lead",
     "string": "Skapa ett tillräckligt starkt lösenord för att hålla ditt konto säkert."
   },
-  "C3lfK7": {
-    "developer_comment": "Reset Password set new password success lead",
-    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
-  },
   "CBJ51T": {
     "developer_comment": "explanation text for letter proofing",
     "string": "För att begära en ny kod, fortsätt genom att klicka på knappen nedan."
@@ -670,6 +666,10 @@
   "CE87Ss": {
     "developer_comment": "help - lead",
     "string": "Nedan ser du allmän information om tjänsten, svar på vanliga frågor om användandet av eduID och kontaktinformation till supporten."
+  },
+  "CELTZq": {
+    "developer_comment": "resetpw step6",
+    "string": "Slutfört"
   },
   "CF8nQa": {
     "developer_comment": "passkey heading",
@@ -686,6 +686,10 @@
   "CUid67": {
     "developer_comment": "without extra security heading",
     "string": "Fortsätt utan ytterligare autentisering"
+  },
+  "Ca9mgT": {
+    "developer_comment": "resetpw step2",
+    "string": "Bekräfta CAPTCHA"
   },
   "Cnpo0l": {
     "developer_comment": "profile username display title",
@@ -930,10 +934,6 @@
     "developer_comment": "what is eduID - paragraph 2",
     "string": "För federerade identiteter är en av grundstenarna tillit mellan organisationer. Tilliten ligger i att organisationerna litar på att alla genomför sin autentisering, identifiering och verifiering, på ett korrekt sätt och i en kontrollerad och tillförlitlig IT-miljö. "
   },
-  "GmoJ8i": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "E-postkoden är giltig i två timmar."
-  },
   "H34ZAR": {
     "developer_comment": "use freja - list item 2",
     "string": "om du har ett giltigt svenskt pass kan du verifiera ditt konto direkt i appen med hjälp av mobilens kamera, eller ta med giltig ID-handling (inklusive körkort eller ID-kort) till ett auktoriserat ATG-ombud för att verifiera din identitet,"
@@ -1040,6 +1040,10 @@
   "JoS+06": {
     "developer_comment": "show form button",
     "string": "visa formulär"
+  },
+  "JrmbYt": {
+    "developer_comment": "Reset password captcha",
+    "string": "Återställ lösenord: Bekräfta att du är en människa"
   },
   "JvvCFU": {
     "developer_comment": "login eduid - passkey list item 3",
@@ -1268,6 +1272,10 @@
     "developer_comment": "ErrorURL authorization failure",
     "string": "Otillräcklig behörighet"
   },
+  "OI5CpA": {
+    "developer_comment": "MFA paragraph",
+    "string": "Välj ytterligare en autentiseringsmetod nu för att vara säker på att bara du har tillgång till ditt eduID, eller fortsätt utan MFA autentisering."
+  },
   "OKSrwI": {
     "developer_comment": "what are assurance levels - paragraph",
     "string": "Tjänsteleverantörer behöver förlita sig på att organisationer autentiserar sina användare enligt vissa tillitsnivåer som sätts av relevanta myndigheter, beroende av vilken slags information som tillhandahålls. Nivåerna varierar från obekräftade, till bekräftade till verifierade användare som även använder ytterligare autentisering vid inloggning till systemet."
@@ -1283,6 +1291,10 @@
   "OOZ1Jb": {
     "developer_comment": "Short code form Ok button",
     "string": "Ok"
+  },
+  "OV+zb2": {
+    "developer_comment": "resetpw step3",
+    "string": "Verifiera e-post adress"
   },
   "Ok/e72": {
     "developer_comment": "Add emails description",
@@ -1672,6 +1684,10 @@
     "developer_comment": "Send e-mail button",
     "string": "Skicka e-post"
   },
+  "VcWQk1": {
+    "developer_comment": "Signup",
+    "string": "Skapa eduID: Begär ny e-post kod"
+  },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
     "string": "Det är möjligt att du kan komma tillbaka dit du kom ifrån med 'Framåt'-knappen."
@@ -1728,6 +1744,10 @@
     "developer_comment": "Improved Security heading",
     "string": "Ökad säkerhet"
   },
+  "WHpRdB": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Koden som skickats är giltig i två timmar, om du inte har fått den avbryt processen och börja om."
+  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "Om du har ett elektroniskt ID från ett eIDAS-anslutet land kan du använda det för att bekräfta din identitet i eduID."
@@ -1767,6 +1787,10 @@
   "WtfZA3": {
     "developer_comment": "when use eduID - list item 5",
     "string": "administrera studenter som ska utföra digitala nationella prov,"
+  },
+  "Wxg9KX": {
+    "developer_comment": "ResetPasswordEnterEmail lead text",
+    "string": "Om det finns en användare med den epostadressen skickas ett mail med instruktioner från no-reply@eduid.se."
   },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
@@ -1915,6 +1939,10 @@
   "ZOGtpx": {
     "developer_comment": "popover info heading",
     "string": "Av säkerhetsskäl"
+  },
+  "ZOyeZU": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du har ett eduID-konto med denna adress har koden skickats till {email} från no-reply@eduid.se."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -2125,6 +2153,10 @@
   "cM/njp": {
     "developer_comment": "SAML login finished",
     "string": "Framåt"
+  },
+  "cMbLiA": {
+    "developer_comment": "resetpw step5",
+    "string": "Lägg till lösenord"
   },
   "cRNzAJ": {
     "developer_comment": "orcid remove",
@@ -2463,6 +2495,10 @@
     "developer_comment": "how add security key",
     "string": "När du är inloggad kan du lägga till, verifiera och ta bort säkerhetsnycklar som du har möjlighet att använda, under Säkerhet i eduID och följa instruktionerna. Under \"Lägg till en ny säkerhetsnyckel\" finns alternativen:"
   },
+  "gDw23x": {
+    "developer_comment": "Reset Password set new password success lead",
+    "string": "Ditt lösenord är nu uppdaterat. Se till att förvara ditt lösenord på ett säkert sätt för framtida användning. När du har loggat in är det möjligt att ändra ditt lösenord."
+  },
   "gG7nHO": {
     "developer_comment": "Confirmed account heading",
     "string": "Bekräftat konto"
@@ -2616,10 +2652,6 @@
     "developer_comment": "Assurance levels with your eduID - paragraph4strong",
     "string": "Ökad säkerhet:"
   },
-  "iqhKZR": {
-    "developer_comment": "Reset password captcha",
-    "string": "Återställ lösenord: Bekräfta att du är en människa."
-  },
   "iu/C4Z": {
     "developer_comment": "account eduid - list item 6-heading",
     "string": "Spärra och radera eduID:"
@@ -2724,6 +2756,10 @@
     "developer_comment": "security eduid - list item 3-4",
     "string": "en papperskorgs-ikon som raderar nyckeln vid klick."
   },
+  "kPaWCf": {
+    "developer_comment": "MFA paragraph with swedish option",
+    "string": "Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID eller Freja+."
+  },
   "kTmImP": {
     "developer_comment": "start eduid - list item 3-3",
     "string": "ökad säkerhet (lagt till metod för multifaktor-inloggning)"
@@ -2736,10 +2772,6 @@
     "developer_comment": "when use eduID - paragraph",
     "string": "Hur ofta du kommer att använda ditt eduID är beroende av ditt arbete eller dina studier; vissa skolor, institutioner och tjänster använder eduID som sin tjänsteleverantör, vilket betyder att du behöver använda ditt eduID för att ha tillgång till deras IT-system. Eller så använder du bara ditt eduID konto för att skapa åtkomst till andra konton, t.ex. ditt studentkonto eller {link}."
   },
-  "kg94pm": {
-    "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Om det finns en användare med den epostadressen, skickas ett mail med instruktioner från no-reply@eduid.se."
-  },
   "kh3bkV": {
     "developer_comment": "login eduID - re-login paragraph 2",
     "string": "Dessa inställningar är även markerade med en \"i\"-ikon, med ytterligare information vid hovring."
@@ -2751,10 +2783,6 @@
   "kq3UJV": {
     "developer_comment": "about security key - handle",
     "string": "Utökad säkerhet med ditt eduID"
-  },
-  "krGZEd": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto, har koden skickats till {email} från no-reply@eduid.se."
   },
   "krGqLm": {
     "developer_comment": "login eduid - forgot pw list item 2",
@@ -2926,6 +2954,10 @@
     "developer_comment": "settings eduid - list item 2-2",
     "string": "Du kan även ändra visat språk för laddade sidan i sidfoten."
   },
+  "mT0ok+": {
+    "developer_comment": "resetpw step1",
+    "string": "Ange e-postadress"
+  },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
     "string": "Verifierad identitet"
@@ -3041,6 +3073,10 @@
   "nj6a0v": {
     "developer_comment": "eidas freja instructions step1",
     "string": "Installera appen"
+  },
+  "noAHzU": {
+    "developer_comment": "resetpw step4",
+    "string": "Verifieringsmetod"
   },
   "notifications.error-label": {
     "developer_comment": "Notification type",
@@ -3297,10 +3333,6 @@
   "qlQT0W": {
     "developer_comment": "Dashboard change password",
     "string": "Byt lösenord"
-  },
-  "qn24rz": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du inte har fått koden kan du avbryta processen och börja om från början."
   },
   "qw1OJJ": {
     "developer_comment": "ToU second paragraph",
@@ -3621,6 +3653,10 @@
     "developer_comment": "use eidas - list item 1",
     "string": "kontrollera att du har en elektronisk legitimation från ett anslutet land för att kunna autentisera dig med hjälp av eIDAS,"
   },
+  "tKb6i5": {
+    "developer_comment": "Reset password captcha lead text",
+    "string": "Bekräfta att du inte är en robot m.h.a. CAPTCHA, för att undvika automatiskt spam."
+  },
   "tPpKqv": {
     "developer_comment": "Signup",
     "string": "Skapa eduID: Bekräfta/Godkänn"
@@ -3761,6 +3797,10 @@
   "vh98ct": {
     "developer_comment": "security zone modal",
     "string": "Efter inloggning blir du ombedd att namnge din säkerhetsnyckel."
+  },
+  "vlQR4W": {
+    "developer_comment": "Generated password - lead",
+    "string": "Ett starkt lösenord har genererats åt dig. Fortsätt genom att kopiera lösenordet till fältet Repetera ditt nya lösenord och klicka på knappen Spara."
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",
