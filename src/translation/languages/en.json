@@ -3388,7 +3388,7 @@
     "string": "The CAPTCHA has not been completed."
   },
   "resetpw.captcha-not-requested": {
-    "string": "The captcha has not been requested."
+    "string": "The CAPTCHA has not been requested."
   },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
