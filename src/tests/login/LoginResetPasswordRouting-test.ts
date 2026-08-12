@@ -65,3 +65,35 @@ test.each(["resetpw.email-not-validated", "resetpw.invalid_session"])(
     expect(store.getState().resetPassword.next_page).toEqual("RESET_PW_ENTER_CODE");
   },
 );
+
+test("goes to extra securities when the email is already verified", async () => {
+  mswServer.use(
+    http.get(RESET_PASSWORD_SERVICE_URL, () =>
+      HttpResponse.json({
+        type: "test success",
+        payload: {
+          state: {
+            captcha: { completed: true },
+            email: { address: "test@example.org", completed: true },
+          },
+        },
+      }),
+    ),
+  );
+
+  const store = getTestEduIDStore(loginTestState);
+
+  await store.dispatch(resetPasswordApi.endpoints.getResetPasswordState.initiate());
+
+  expect(store.getState().resetPassword.next_page).toEqual("HANDLE_EXTRA_SECURITIES");
+});
+
+test("goes to code entry when the status request is rejected as an invalid session", async () => {
+  mswServer.use(http.get(RESET_PASSWORD_SERVICE_URL, () => respondWithMessage("resetpw.invalid_session")));
+
+  const store = getTestEduIDStore(loginTestState);
+
+  await store.dispatch(resetPasswordApi.endpoints.getResetPasswordState.initiate());
+
+  expect(store.getState().resetPassword.next_page).toEqual("RESET_PW_ENTER_CODE");
+});

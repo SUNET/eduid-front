@@ -114,17 +114,23 @@ export const resetPasswordSlice = createSlice({
         state.captcha_completed = backendState.captcha?.completed;
         state.reset_pw_status = backendState;
         if (backendState.email?.address || state.email_address) {
-          if (backendState.captcha?.completed) {
-            state.next_page = "PROCESS_CAPTCHA";
-          } else if (!backendState.captcha?.completed) {
-            state.next_page = "RESET_PW_CAPTCHA";
-          } else if (backendState.email?.completed) {
+          if (backendState.email?.completed) {
+            // The emailed code is already verified in this session - don't send another email.
             state.next_page = "HANDLE_EXTRA_SECURITIES";
+          } else if (backendState.captcha?.completed) {
+            state.next_page = "PROCESS_CAPTCHA";
+          } else {
+            state.next_page = "RESET_PW_CAPTCHA";
           }
         }
       })
-      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state) => {
-        state.next_page = "HANDLE_EXTRA_SECURITIES";
+      .addMatcher(resetPasswordApi.endpoints.getResetPasswordState.matchRejected, (state, action) => {
+        if (rejectedApiMessage(action) === "resetpw.invalid_session") {
+          // This browser holds a session that can not be used - the code step has to be redone.
+          state.next_page = "RESET_PW_ENTER_CODE";
+        } else {
+          state.next_page = "HANDLE_EXTRA_SECURITIES";
+        }
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state, action) => {
         state.email_status = "failed";
