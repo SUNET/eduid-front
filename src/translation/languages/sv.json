@@ -1043,7 +1043,7 @@
   },
   "JrmbYt": {
     "developer_comment": "Reset password captcha",
-    "string": "Återställ lösenord: Bekräfta att du är en människa"
+    "string": "Återställ lösenord: Bekräfta att du är människa"
   },
   "JvvCFU": {
     "developer_comment": "login eduid - passkey list item 3",
@@ -3382,7 +3382,7 @@
     "string": "Captcha processen har redan slutförts."
   },
   "resetpw.captcha-failed": {
-    "string": "Det uppstod ett problem med verifieringen av att du är en människa. Var god försök igen."
+    "string": "Det uppstod ett problem med verifieringen av att du är människa. Var god försök igen."
   },
   "resetpw.captcha-not-completed": {
     "string": "Captcha har inte slutförts."
