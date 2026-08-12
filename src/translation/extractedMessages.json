@@ -1752,10 +1752,6 @@
     "developer_comment": "Improved Security heading",
     "string": "Enhanced security"
   },
-  "WHpRdB": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "The emailed code is valid for two hours, if you haven't received it cancel and restart the process."
-  },
   "WI2cKY": {
     "developer_comment": "verify identity",
     "string": "If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
@@ -2653,6 +2649,10 @@
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
   },
+  "iRDQf0": {
+    "developer_comment": "Reset Password code expiry",
+    "string": "Code expires in"
+  },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
@@ -2977,6 +2977,10 @@
   "mT0ok+": {
     "developer_comment": "resetpw step1",
     "string": "Enter email address"
+  },
+  "mT9EER": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you haven't received it, cancel and restart the process."
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",

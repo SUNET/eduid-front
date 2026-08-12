@@ -82,11 +82,14 @@ export function ProcessCaptcha(): null {
   const dispatch = useAppDispatch();
   const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
   const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
+  const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
 
   const sendEmailLink = useCallback(async () => {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
+        // Refresh the status so the expiry countdown belongs to the code that was just sent.
+        await getResetPasswordState();
         dispatch(resetPasswordSlice.actions.setNextPage("EMAIL_LINK_SENT"));
       } else if (
         (response.error as ApiResponse<{ message?: string }>)?.payload?.message !== "resetpw.email-code-too-many-tries"
@@ -96,7 +99,7 @@ export function ProcessCaptcha(): null {
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [dispatch, email, requestEmailLink]);
+  }, [dispatch, email, requestEmailLink, getResetPasswordState]);
 
   const sendCaptcha = useCallback(
     async (captcha: CaptchaRequest) => {

@@ -12,6 +12,7 @@ import {
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
 import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
+import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
@@ -256,4 +257,109 @@ test("can click 'forgot password' without an e-mail address", async () => {
   const okButton = screen.getByRole("button", { name: /^ok/i });
   expect(okButton).toBeDisabled();
   expectStepIndicator(3);
+});
+
+test("shows the code expiry from the status response", async () => {
+  mswServer.use(
+    http.get("https://idp.eduid.docker/services/reset-password/", () =>
+      HttpResponse.json({ type: "test success", payload: makeResetPasswordPayload() }),
+    ),
+  );
+
+  render(<ResetPasswordApp />, {
+    state: {
+      ...loginTestState,
+      resetPassword: {
+        ...loginTestState.resetPassword,
+        next_page: "EMAIL_LINK_SENT",
+        email_response: { email, email_code_timeout: 7200, throttled_max: 300, throttled_seconds: 300 },
+        reset_pw_status: makeResetPasswordPayload().state,
+      },
+    },
+  });
+
+  // 368 seconds left, rendered as mm:ss by ExpiresMeter
+  expect(screen.getByText("06:08")).toBeInTheDocument();
+  expect(screen.queryByText(/valid for two hours/i)).not.toBeInTheDocument();
+});
+
+test("refreshes the status after sending, so the countdown reflects the code that was just sent", async () => {
+  // GET / is hit twice in this flow: once from the confirm-email screen (pre-send status) and
+  // once from ProcessCaptcha.sendEmailLink's refresh (post-send status). Returning a different
+  // expires_time_left on each call makes the two distinguishable, so asserting on the rendered
+  // value proves which fetch's data actually reaches the screen.
+  let getCount = 0;
+  const preSendExpiresLeft = 7000; // renders as 116:40
+  const postSendExpiresLeft = 368; // renders as 06:08
+
+  mswServer.use(
+    http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
+      const body = (await request.json()) as LoginNextRequest;
+      if (body.ref != ref) {
+        return new Response(null, { status: 400 });
+      }
+      const payload: LoginNextResponse = {
+        action: "USERNAMEPASSWORD",
+        target: "/foo",
+      };
+      return HttpResponse.json({ type: "test response", payload: payload });
+    }),
+    http.get("https://idp.eduid.docker/services/reset-password/", () => {
+      getCount += 1;
+      const payload = makeResetPasswordPayload();
+      payload.state.email.expires_time_left = getCount === 1 ? preSendExpiresLeft : postSendExpiresLeft;
+      return HttpResponse.json({ type: "test success", payload: payload });
+    }),
+    http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
+      const body = (await request.json()) as RequestEmailLinkRequest;
+      if (body.email != email) {
+        return new Response(null, { status: 400 });
+      }
+      const payload: RequestEmailLinkResponse = {
+        email_code_timeout: 600,
+        email,
+        throttled_max: 60,
+        throttled_seconds: 60,
+      };
+      return HttpResponse.json({ type: "test response", payload: payload });
+    }),
+  );
+
+  render(<IndexMain />, {
+    routes: [`${LOGIN_BASE_PATH}/${ref}`],
+    state: {
+      ...loginTestState,
+      resetPassword: {
+        ...loginTestState.resetPassword,
+        captcha_completed: true,
+      },
+    },
+  });
+
+  // Wait for the username-password screen to be displayed
+  await waitFor(() => {
+    expect(screen.getByRole("heading")).toHaveTextContent("Log in");
+  });
+
+  const emailInput = screen.getByRole("textbox");
+  await user.type(emailInput, email);
+
+  const forgotButton = screen.getByRole("link", { name: /^forgot/i });
+  await user.click(forgotButton);
+
+  // We should get to a page asking if we want to start the account recovery process
+  await waitFor(() => {
+    expect(screen.getByRole("heading")).toHaveTextContent("Start account recovery process");
+  });
+
+  const confirmButton = screen.getByRole("button", { name: /^send e-mail/i });
+  await user.click(confirmButton);
+
+  // wait for page to change after clicking the confirm button
+  await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
+
+  // The rendered countdown must come from the second (post-send) GET /, not the first.
+  expect(screen.getByText("06:08")).toBeInTheDocument();
+  expect(screen.queryByText("116:40")).not.toBeInTheDocument();
+  expect(getCount).toBeGreaterThanOrEqual(2);
 });
