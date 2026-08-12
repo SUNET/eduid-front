@@ -3546,7 +3546,7 @@
     "string": "Captcha processen har redan slutförts."
   },
   "signup.captcha-failed": {
-    "string": "Det uppstod ett problem med verifieringen av att du är en människa. Var god försök igen."
+    "string": "Det uppstod ett problem med verifieringen av att du är människa. Var god försök igen."
   },
   "signup.captcha-not-completed": {
     "string": "Captcha har inte slutförts."
