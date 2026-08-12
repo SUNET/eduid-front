@@ -1043,7 +1043,7 @@
   },
   "JrmbYt": {
     "developer_comment": "Reset password captcha",
-    "string": "Reset Password: Confirm that you are a human"
+    "string": "Reset Password: Confirm that you are human"
   },
   "JvvCFU": {
     "developer_comment": "login eduid - passkey list item 3",
