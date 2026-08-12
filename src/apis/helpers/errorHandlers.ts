@@ -6,17 +6,25 @@ import type { AuthenticateResponse } from "../eduidAuthn";
 import { isApiResponse } from "./typeGuards";
 import type { ApiError, StateWithCommonConfig } from "./types";
 
-// Module-level guard: when an /authenticate request is already in flight,
-// subsequent callers share the same promise instead of firing concurrent requests.
-// This prevents SessionOutOfSync errors caused by multiple 401 responses
-// (e.g. from parallel dashboard API calls) each independently triggering /authenticate.
+// Module-level guard: at most one /authenticate request is in flight at a time. This prevents
+// SessionOutOfSync errors caused by multiple 401 responses (e.g. from parallel dashboard API
+// calls) each independently triggering /authenticate.
 let inFlightReauth: Promise<void> | null = null;
 
 // Moved from common.ts
-export async function re_authenticate(csrf_token: string | undefined, api: BaseQueryApi) {
+export async function re_authenticate(csrf_token: string | undefined, api: BaseQueryApi): Promise<void> {
   if (inFlightReauth) {
-    // Another re_authenticate call is already in progress — wait for it
-    return inFlightReauth;
+    // An /authenticate request is already in flight, so do not start another one - and do not
+    // await the one that is running either. This function is re-entrant: the /authenticate request
+    // goes through customBaseQuery, so its own response can fail CSRF validation or come back as a
+    // 401, and the error handlers for it call re_authenticate again from inside the call that is
+    // still running. Returning the in-flight promise there would make that promise await itself:
+    // it would never settle, the reset below would never run, and every later caller in this tab
+    // would then await a promise that can not complete.
+    //
+    // Nobody depends on the re-authentication having finished when this returns - it ends in a
+    // redirect - so returning without waiting is enough for callers that are merely concurrent.
+    return;
   }
 
   inFlightReauth = (async () => {

@@ -58,6 +58,16 @@ function codeEntryOrUnchanged(message: string | undefined, next_page: string | u
   return next_page;
 }
 
+// Everything the screens after the code step render from - extra_security, email_code and
+// suggested_password - is only put in this slice by verifyEmailLink. Redux is in-memory only, so
+// after a reload HandleExtraSecurities and SetNewPassword have nothing to render and both return
+// null: a blank page the user can not get out of. Send them back to code entry instead, which
+// repopulates all three by re-verifying. /verify-email/ accepts a code for a state that has
+// already completed verification, so this costs the user one code entry, not a new email.
+function extraSecuritiesOrCodeEntry(state: ResetPasswordState): string {
+  return state.extra_security !== undefined ? "HANDLE_EXTRA_SECURITIES" : "RESET_PW_ENTER_CODE";
+}
+
 export const resetPasswordSlice = createSlice({
   name: "resetPassword",
   initialState,
@@ -116,7 +126,7 @@ export const resetPasswordSlice = createSlice({
         if (backendState.email?.address || state.email_address) {
           if (backendState.email?.completed) {
             // The emailed code is already verified in this session - don't send another email.
-            state.next_page = "HANDLE_EXTRA_SECURITIES";
+            state.next_page = extraSecuritiesOrCodeEntry(state);
           } else if (backendState.captcha?.completed) {
             state.next_page = "PROCESS_CAPTCHA";
           } else {
@@ -129,7 +139,9 @@ export const resetPasswordSlice = createSlice({
           // This browser holds a session that can not be used - the code step has to be redone.
           state.next_page = "RESET_PW_ENTER_CODE";
         } else {
-          state.next_page = "HANDLE_EXTRA_SECURITIES";
+          // Any other failure - HTTP 500, a dropped connection, resetpw.state-not-found - leaves
+          // this browser knowing nothing about the reset, so the same guard applies.
+          state.next_page = extraSecuritiesOrCodeEntry(state);
         }
       })
       .addMatcher(resetPasswordApi.endpoints.requestEmailLink.matchRejected, (state, action) => {

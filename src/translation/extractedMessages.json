@@ -591,6 +591,10 @@
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
   },
+  "9Y1Xsg": {
+    "developer_comment": "Reset Password enter code missing email error",
+    "string": "Enter the email address that the code was sent to."
+  },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
     "string": "What is BankID?"

@@ -104,6 +104,37 @@ test("prefills the email field from the address the reset was started with", asy
   });
 });
 
+test("says what is missing when the code is submitted with an empty email address", async () => {
+  const requests: VerifyCodeRequest[] = [];
+  mockVerifyEmailLink(requests);
+
+  render(<ResetPasswordApp />, {
+    state: {
+      ...loginTestState,
+      resetPassword: { ...loginTestState.resetPassword, next_page: "RESET_PW_ENTER_CODE" },
+    },
+  });
+
+  await typeCode(getCodeForm());
+
+  // The Ok button is disabled, but ResponseCodeForm submits on Enter whether the form is valid or
+  // not, and EmailInput never flags a blank value while autoComplete is set. Enter therefore
+  // reaches the submit handler with no email address, and the user has to be told why nothing
+  // happened.
+  await user.keyboard("{Enter}");
+
+  await waitFor(() => {
+    expect(screen.getByRole("alert")).toHaveTextContent(/email address/i);
+  });
+
+  expect(requests).toEqual([]);
+  // The typed code has to survive, or the user has to enter all six digits again.
+  const digits = getCodeForm()
+    .getAllByRole("spinbutton")
+    .map((input) => (input as HTMLInputElement).value);
+  expect(digits).toEqual(["1", "2", "3", "4", "5", "6"]);
+});
+
 test("keeps the Ok button disabled while the email field is empty", async () => {
   render(<ResetPasswordApp />, {
     state: {

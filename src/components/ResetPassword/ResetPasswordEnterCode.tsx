@@ -3,7 +3,7 @@ import EmailInput from "components/Common/EmailInput";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
@@ -21,14 +21,23 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
   const email_address = useAppSelector((state) => state.resetPassword.email_address);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
+  const [emailMissing, setEmailMissing] = useState(false);
 
   async function handleSubmitCode(values: ResponseCodeValues) {
     const email_code = values.v.join("");
     const email = values.email ?? email_address;
 
     if (!email) {
+      // Reachable, in spite of the Ok button being disabled without an email address:
+      // ResponseCodeForm submits on Enter whether the form is valid or not, and EmailInput
+      // deliberately does not flag a blank value while autoComplete is set (browsers fill in
+      // addresses without telling Javascript). Say what is missing - returning quietly here leaves
+      // the user pressing Enter on a filled in code with nothing happening and nothing explaining
+      // why.
+      setEmailMissing(true);
       return;
     }
+    setEmailMissing(false);
 
     const response = await verifyEmailLink({ email_code, email });
     if (response.isSuccess) {
@@ -72,13 +81,23 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
           inputsDisabled={false}
           autoFocusCode={false}
           extraFields={
-            <EmailInput
-              name="email"
-              required={true}
-              autoFocus={true}
-              autoComplete="username"
-              defaultValue={email_address}
-            />
+            <React.Fragment>
+              <EmailInput
+                name="email"
+                required={true}
+                autoFocus={true}
+                autoComplete="username"
+                defaultValue={email_address}
+              />
+              {emailMissing && (
+                <span role="alert" className="input-validate-error" id="missing-email-error">
+                  <FormattedMessage
+                    defaultMessage="Enter the email address that the code was sent to."
+                    description="Reset Password enter code missing email error"
+                  />
+                </span>
+              )}
+            </React.Fragment>
           }
           handleSubmitCode={handleSubmitCode}
         >

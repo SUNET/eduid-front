@@ -1,4 +1,4 @@
-import React, { Fragment, PropsWithChildren, useRef } from "react";
+import React, { Fragment, PropsWithChildren, useMemo, useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -20,10 +20,14 @@ export interface ResponseCodeValues {
 }
 
 export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
-  const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
-  const initialValues: ResponseCodeValues = {
-    v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
-  };
+  // Kept stable across renders on purpose. react-final-form compares initialValues shallowly, so a
+  // freshly built object here counts as new initial values on every render of this component, and
+  // re-initialising the form throws away the digits the user has entered. Anything that re-renders
+  // the parent - showing a validation message, a countdown tick - would otherwise clear the code.
+  const initialValues: ResponseCodeValues = useMemo(() => {
+    const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
+    return { v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]] };
+  }, [props.code]);
 
   return (
     <FinalForm<ResponseCodeValues>
