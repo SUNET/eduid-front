@@ -3546,7 +3546,7 @@
     "string": "The captcha has already been completed."
   },
   "signup.captcha-failed": {
-    "string": "There was a problem verifying that you are a human. Please try again."
+    "string": "There was a problem verifying that you are human. Please try again."
   },
   "signup.captcha-not-completed": {
     "string": "The captcha has not been completed."
