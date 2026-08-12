@@ -3248,7 +3248,7 @@
   },
   "placeholder.username": {
     "developer_comment": "placeholder text for user name input",
-    "string": "e-post eller unikt ID"
+    "string": "e-postadress eller unikt ID"
   },
   "proofing.attribute_missing": {
     "string": "Nödvändig information för identifiering saknas. Vänligen försök igen."
