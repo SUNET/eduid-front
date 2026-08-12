@@ -10,10 +10,13 @@ interface ResponseCodeFormProps {
   code?: string;
   handleSubmitCode(values: ResponseCodeValues): void;
   inputsDisabled: boolean;
+  extraFields?: React.ReactNode; // rendered inside the form, above the digit inputs
+  autoFocusCode?: boolean; // default true; set false when extraFields should hold focus instead
 }
 
 export interface ResponseCodeValues {
   v: string[];
+  email?: string;
 }
 
 export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
@@ -51,11 +54,14 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
 
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
+  const autoFocusCode = props.autoFocusCode ?? true;
 
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
+      {props.extraFields}
+
       <div className="response-code-inputs">
-        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={!props.inputsDisabled} />
+        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={autoFocusCode && !props.inputsDisabled} />
         <CodeField num={1} readonly={props.inputsDisabled} />
         <CodeField num={2} readonly={props.inputsDisabled} />
         <CodeField num={3} readonly={props.inputsDisabled} />
