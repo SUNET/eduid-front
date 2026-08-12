@@ -3552,7 +3552,7 @@
     "string": "CAPTCHA har inte slutförts."
   },
   "signup.captcha-not-requested": {
-    "string": "Captcha har inte begärts."
+    "string": "CAPTCHA har inte begärts."
   },
   "signup.credential-not-added": {
     "string": "Inga inloggningsuppgifter har lagts till."
