@@ -1,4 +1,5 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
+import EduIDButton from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
@@ -44,6 +45,20 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         disabled={email_status === "requested"}
         defaultEmail={email_address}
       />
+      <p>
+        <FormattedMessage
+          defaultMessage="Already have a code from an earlier email?"
+          description="Reset Password enter code link lead"
+        />
+        &nbsp;
+        <EduIDButton
+          buttonstyle="link normal-case"
+          id="reset-password-enter-code"
+          onClick={() => dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_CODE"))}
+        >
+          <FormattedMessage defaultMessage="Enter your code instead" description="Reset Password enter code link" />
+        </EduIDButton>
+      </p>
       <ResetPasswordStepIndicator currentStep={1} />
     </div>
   );

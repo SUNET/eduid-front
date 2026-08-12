@@ -750,6 +750,10 @@
     "developer_comment": "popover info",
     "string": "To edit these settings you might be asked to re-login."
   },
+  "Dr2T0f": {
+    "developer_comment": "Reset Password enter code heading",
+    "string": "Reset Password: Enter your code"
+  },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
@@ -1620,6 +1624,10 @@
     "developer_comment": "Login username input",
     "string": "Different user?"
   },
+  "UB4Jac": {
+    "developer_comment": "Reset Password enter code lead",
+    "string": "Enter the email address that the code was sent to, and the code from the email."
+  },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
     "string": "Log in: Terms of use"
@@ -2211,6 +2219,10 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
+  },
+  "cy5osj": {
+    "developer_comment": "Reset Password enter code link",
+    "string": "Enter your code instead"
   },
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
@@ -3349,6 +3361,10 @@
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
+  },
+  "r41PMP": {
+    "developer_comment": "Reset Password enter code link lead",
+    "string": "Already have a code from an earlier email?"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"

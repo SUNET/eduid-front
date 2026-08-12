@@ -7,6 +7,7 @@ import { EmailLinkSent } from "./EmailLinkSent";
 import { HandleExtraSecurities } from "./HandleExtraSecurities";
 import { ProcessCaptcha, ResetPasswordCaptcha } from "./ResetPasswordCaptcha";
 import { ResetPasswordConfirmEmail } from "./ResetPasswordConfirmEmail";
+import { ResetPasswordEnterCode } from "./ResetPasswordEnterCode";
 import { ResetPasswordEnterEmail } from "./ResetPasswordEnterEmail";
 import { ResetPasswordLocked } from "./ResetPasswordLocked";
 import { ResetPasswordSuccess, SetNewPassword } from "./SetNewPassword";
@@ -36,6 +37,7 @@ export function ResetPasswordApp(): React.JSX.Element {
       {next_page === "ASK_FOR_EMAIL_OR_CONFIRM_EMAIL" && <AskForEmailOrConfirmEmail />}
       {next_page === "RESET_PW_CONFIRM_EMAIL" && <ResetPasswordConfirmEmail />}
       {next_page === "RESET_PW_ENTER_EMAIL" && <ResetPasswordEnterEmail />}
+      {next_page === "RESET_PW_ENTER_CODE" && <ResetPasswordEnterCode />}
       {next_page === "RESET_PW_CAPTCHA" && <ResetPasswordCaptcha />}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
       {next_page === "RESET_PW_LOCKED" && <ResetPasswordLocked />}

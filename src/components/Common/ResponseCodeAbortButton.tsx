@@ -6,6 +6,10 @@ import EduIDButton from "./EduIDButton";
 interface ResponseCodeButtonsProps {
   formProps?: FormRenderProps<ResponseCodeValues>;
   handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
+  // Also keep Ok disabled while the "email" extraField (see ResponseCodeForm) is empty.
+  // EmailInput's validate() never flags a blank value, so formProps.invalid alone won't catch it -
+  // EmailForm.tsx compensates for the same gap by ORing in a "no email yet" check.
+  requireEmail?: boolean;
 }
 
 export function ResponseCodeButtons(props: Readonly<ResponseCodeButtonsProps>) {
@@ -13,11 +17,13 @@ export function ResponseCodeButtons(props: Readonly<ResponseCodeButtonsProps>) {
     return null;
   }
 
+  const emailMissing = Boolean(props.requireEmail) && !props.formProps.values?.email;
+
   // 'convert' from FormRenderProps to a simple "disabled" boolean
   return (
     <ResponseCodeAbortButton
       disabled={props.formProps.submitting ?? false}
-      invalid={props.formProps.invalid ?? false}
+      invalid={(props.formProps.invalid ?? false) || emailMissing}
       submit={props.formProps.form.submit}
       handleAbortButtonOnClick={props.handleAbortButtonOnClick}
     />
