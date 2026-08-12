@@ -2128,7 +2128,7 @@
   },
   "bkleG+": {
     "developer_comment": "how more secure description",
-    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad epost-adress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas multifaktorautentisering (MFA) eller i vissa fall tvåfaktorautentisering (2FA)."
+    "string": "Vissa tjänster kräver att kontot du använder för att logga in har en högre tillitsnivå. När du skapar ett konto i eduID behöver du kännedom om ditt användarnamn (bekräftad e-postadress) och tillhörande lösenord. Lösenordet räknas som den första autentiserings-faktorn. För ett ytterligare lager av autentisering för att kunna logga in kan du lägga till en säkerhetsnyckel. Säkerhetsnyckeln kallas multifaktorautentisering (MFA) eller i vissa fall tvåfaktorautentisering (2FA)."
   },
   "boeOxE": {
     "developer_comment": "Assurance levels with your eduID - paragraph2strong",
