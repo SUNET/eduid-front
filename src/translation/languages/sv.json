@@ -3379,7 +3379,7 @@
     "string": "*Fältet kan inte vara tomt"
   },
   "resetpw.captcha-already-completed": {
-    "string": "Captcha processen har redan slutförts."
+    "string": "CAPTCHA processen har redan slutförts."
   },
   "resetpw.captcha-failed": {
     "string": "Det uppstod ett problem med verifieringen av att du är människa. Var god försök igen."
