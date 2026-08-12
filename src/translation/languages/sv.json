@@ -1626,7 +1626,7 @@
   },
   "UKNEuN": {
     "developer_comment": "Signup with email explanation",
-    "string": "Ange en epostadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit. När du har skapat ett eduID kan du logga in och verifiera din identitet i efterhand."
+    "string": "Ange en e-postadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit. När du har skapat ett eduID kan du logga in och verifiera din identitet i efterhand."
   },
   "UNjxGI": {
     "developer_comment": "signup step5",
