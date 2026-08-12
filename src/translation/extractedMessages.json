@@ -39,6 +39,10 @@
     "developer_comment": "account eduid - list item 1-2",
     "string": "Confirm an address by clicking on the link \"Confirm\" and enter the code that is emailed to that address into the website form."
   },
+  "+ZBeIF": {
+    "developer_comment": "remember pw prompt",
+    "string": "Memorise or keep your password safe!"
+  },
   "+q063y": {
     "developer_comment": "global title",
     "string": "Most countries"
@@ -109,6 +113,10 @@
   "05Bdlm": {
     "developer_comment": "send a new code",
     "string": "Send me a new code"
+  },
+  "0BJe1j": {
+    "developer_comment": "Set your own password radio button",
+    "string": "Create your own password"
   },
   "0Biez9": {
     "developer_comment": "security zone redirect info",
@@ -238,6 +246,10 @@
     "developer_comment": "freja - error",
     "string": "Note: not all nationalities are yet supported by this solution but the work to substantially increase the range is in progress."
   },
+  "2a1Jl+": {
+    "developer_comment": "Reset Password - headline",
+    "string": "Reset Password: Create your own password"
+  },
   "2aFo9b": {
     "developer_comment": "Help text for security key max length",
     "string": "max 50 characters"
@@ -298,10 +310,6 @@
     "developer_comment": "ErrorURL authentication failure",
     "string": "The service you tried to access failed during the authentication stage."
   },
-  "3liNln": {
-    "developer_comment": "Reset Password - headline",
-    "string": "Reset Password: Set your own password"
-  },
   "3q1uE5": {
     "developer_comment": "orcid description",
     "string": "ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
@@ -337,10 +345,6 @@
   "4A8eot": {
     "developer_comment": "use freja - list item 1",
     "string": "install the {Freja} on your mobile device (iOS or Android) and create a Freja+ account according to the instructions,"
-  },
-  "4ELl7j": {
-    "developer_comment": "Generated password - lead",
-    "string": "A strong password has been generated for you. To proceed copy the password into the Repeat new password field and click the Save button. Or choose to create a custom password."
   },
   "4IJlYf": {
     "developer_comment": "privacy policy - list item 3",
@@ -475,10 +479,6 @@
     "developer_comment": "security eduid - list item 2",
     "string": "Under \"Manage your security keys\" is a toggle control marked \"Always use a second factor (MFA) to log in to eduID\" which can let you log in with your eduID account without using your added security key when allowed. Default setting is on."
   },
-  "75VH86": {
-    "developer_comment": "Generated password - lead",
-    "string": "A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password."
-  },
   "75yL3y": {
     "developer_comment": "use ladok - list item 1",
     "string": "in the Account area of eduID, toggle the ESI control,"
@@ -494,6 +494,10 @@
   "7UpsOK": {
     "developer_comment": "settings eduid - account handle",
     "string": "Account"
+  },
+  "7WJ82G": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. To proceed copy the password into the Repeat new password field and click the Save button. Or choose to create your own custom password."
   },
   "7j/9Vn": {
     "developer_comment": "about freja - handle",
@@ -603,10 +607,6 @@
     "developer_comment": "explanation text for letter proofing",
     "string": "by post"
   },
-  "9oRtvS": {
-    "developer_comment": "Signup",
-    "string": "Create eduID: Request new code"
-  },
   "9w+urv": {
     "developer_comment": "Dashboard change password button text",
     "string": "Change password"
@@ -630,14 +630,6 @@
   "AOo5zL": {
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
-  },
-  "AqC6nN": {
-    "developer_comment": "Set your own password radio button",
-    "string": "Set your own password"
-  },
-  "Axzzme": {
-    "developer_comment": "Reset password captcha lead text",
-    "string": "As a protection against automated spam, you need to confirm that you are a human."
   },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
@@ -1048,6 +1040,10 @@
   "JoS+06": {
     "developer_comment": "show form button",
     "string": "show form"
+  },
+  "JrmbYt": {
+    "developer_comment": "Reset password captcha",
+    "string": "Reset Password: Confirm that you are a human"
   },
   "JvvCFU": {
     "developer_comment": "login eduid - passkey list item 3",
@@ -1687,6 +1683,10 @@
   "VSxZ2o": {
     "developer_comment": "Send e-mail button",
     "string": "Send e-mail"
+  },
+  "VcWQk1": {
+    "developer_comment": "Signup",
+    "string": "Create eduID: Request new email code"
   },
   "VdBjyo": {
     "developer_comment": "SAML login finished",
@@ -2651,10 +2651,6 @@
   "iqYb0U": {
     "developer_comment": "Assurance levels with your eduID - paragraph4strong",
     "string": "Enhanced security:"
-  },
-  "iqhKZR": {
-    "developer_comment": "Reset password captcha",
-    "string": "Reset Password: Confirm that you are a human."
   },
   "iu/C4Z": {
     "developer_comment": "account eduid - list item 6-heading",
@@ -3657,6 +3653,10 @@
     "developer_comment": "use eidas - list item 1",
     "string": "make sure you have an electronic ID from a connected country to have the possibility to authenticate yourself via eIDAS,"
   },
+  "tKb6i5": {
+    "developer_comment": "Reset password captcha lead text",
+    "string": "Confirm that you are a human as protection against automated spam."
+  },
   "tPpKqv": {
     "developer_comment": "Signup",
     "string": "Create eduID: Confirm/Accept"
@@ -3797,6 +3797,10 @@
   "vh98ct": {
     "developer_comment": "security zone modal",
     "string": "Note: After logging in, you'll be asked to enter a name for your security key."
+  },
+  "vlQR4W": {
+    "developer_comment": "Generated password - lead",
+    "string": "A strong password has been generated for you. To proceed copy the password into the Repeat new password field and click the Save button."
   },
   "vzVCa4": {
     "developer_comment": "ToU second paragraph",

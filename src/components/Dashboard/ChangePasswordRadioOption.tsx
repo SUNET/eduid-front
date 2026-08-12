@@ -38,7 +38,10 @@ export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOpt
             onChange={props.handleSwitchChange}
           />
           <span>
-            <FormattedMessage defaultMessage="Set your own password" description="Set your own password radio button" />
+            <FormattedMessage
+              defaultMessage="Create your own password"
+              description="Set your own password radio button"
+            />
           </span>
         </label>
       </div>

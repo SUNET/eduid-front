@@ -55,7 +55,12 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
               autoFocus={true}
               placeholder="xxxx xxxx xxxx"
             />
-
+            <span className="suggestion-txt">
+              <FormattedMessage
+                defaultMessage="Memorise or keep your password safe!"
+                description="remember pw prompt"
+              />
+            </span>
             <div className="buttons">
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <GoBackButton onClickHandler={props.goBack} />

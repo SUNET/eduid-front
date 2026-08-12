@@ -134,6 +134,12 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
                 placeHolder={repeat_new_password_placeholder}
               />
             </fieldset>
+            <span className="suggestion-txt">
+              <FormattedMessage
+                defaultMessage="Memorise or keep your password safe!"
+                description="remember pw prompt"
+              />
+            </span>
             <div id="chpass-form" className="buttons">
               <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
                 <FormattedMessage defaultMessage="cancel" description="button cancel" />

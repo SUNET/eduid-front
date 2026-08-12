@@ -88,10 +88,12 @@ function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>
   );
 }
 
-function ImprovedSecurityStatus(props: Readonly<{
-  tokens?: CredentialType[];
-  identities?: UserIdentities;
-}>): React.JSX.Element | null {
+function ImprovedSecurityStatus(
+  props: Readonly<{
+    tokens?: CredentialType[];
+    identities?: UserIdentities;
+  }>,
+): React.JSX.Element | null {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
       <FormattedMessage description="recommendations security link" defaultMessage="Security" />
@@ -125,7 +127,7 @@ function ImprovedSecurityStatus(props: Readonly<{
                 }}
               />
               {props.tokens.length == 1 && !(props.identities?.nin && props.identities?.is_verified) && (
-                <span className="top-divider suggestion-txt">
+                <span className="top-divider suggestion suggestion-txt">
                   <FormattedMessage
                     description="multiple key suggestion"
                     defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
