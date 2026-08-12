@@ -3570,7 +3570,7 @@
     "string": "E-post verifieringen misslyckades. Var god försök igen."
   },
   "signup.email-verification-not-complete": {
-    "string": "E-post verifieringen har inte slutförts."
+    "string": "E-postverifieringen har inte slutförts."
   },
   "signup.email-verification-to-many-tries": {
     "string": "För många ogiltiga verifieringsförsök. Var god försök igen senare."
