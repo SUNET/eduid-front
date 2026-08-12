@@ -13,7 +13,6 @@ import React, { Fragment, useCallback, useEffect, useMemo, useRef, useState } fr
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
 import authnSlice from "slices/Authn";
-import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
 import type { ApiResponse, AuthCommonResponse, AuthMethod } from "../../apis/helpers/types";

@@ -14,8 +14,30 @@
   background-color: var(--body-gray);
   position: absolute;
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  /* Pure-CSS loading spinner: a rotating conic-gradient arc, masked to a ring. */
   .spinner {
-    opacity: 1;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    color: var(--txt-gray);
+    background: conic-gradient(from 0deg, transparent 0 8%, currentcolor);
+    mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 0);
+    animation: splash-spin 1s linear infinite;
+  }
+}
+
+@keyframes splash-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #eduid-splash-spinner .spinner {
+    animation-duration: 5s;
   }
 }

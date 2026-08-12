@@ -38,8 +38,7 @@
     "react-router": "^8.3.0",
     "react-select": "^5.10.2",
     "redux": "^5.0.1",
-    "redux-logger": "^4.0.0",
-    "spin.js": "^4.1.2"
+    "redux-logger": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.29.6",
