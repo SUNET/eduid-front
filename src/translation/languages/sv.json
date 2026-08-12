@@ -3567,7 +3567,7 @@
     "string": "Koden har gått ut. Var god försök igen."
   },
   "signup.email-verification-failed": {
-    "string": "E-post verifieringen misslyckades. Var god försök igen."
+    "string": "E-postverifieringen misslyckades. Var god försök igen."
   },
   "signup.email-verification-not-complete": {
     "string": "E-postverifieringen har inte slutförts."
