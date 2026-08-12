@@ -3543,7 +3543,7 @@
     "string": "You have already verified your account."
   },
   "signup.captcha-already-completed": {
-    "string": "The captcha has already been completed."
+    "string": "The CAPTCHA has already been completed."
   },
   "signup.captcha-failed": {
     "string": "There was a problem verifying that you are human. Please try again."
