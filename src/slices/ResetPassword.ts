@@ -49,6 +49,15 @@ function rejectedApiMessage(action: unknown): string | undefined {
   return payload?.payload?.message;
 }
 
+// The post-verification endpoints now require a session that completed /verify-email/. Both of
+// these messages mean the code step has to be done again in this browser.
+function codeEntryOrUnchanged(message: string | undefined, next_page: string | undefined): string | undefined {
+  if (message === "resetpw.email-not-validated" || message === "resetpw.invalid_session") {
+    return "RESET_PW_ENTER_CODE";
+  }
+  return next_page;
+}
+
 export const resetPasswordSlice = createSlice({
   name: "resetPassword",
   initialState,
@@ -124,10 +133,14 @@ export const resetPasswordSlice = createSlice({
         }
       })
       .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchRejected, (state, action) => {
-        if (rejectedApiMessage(action) === "resetpw.email-code-too-many-tries") {
+        const message = rejectedApiMessage(action);
+        if (message === "resetpw.email-code-too-many-tries") {
           // The reset state is locked until the code expires. Requesting a new code returns the
           // same message, so there is nothing for the user to retry.
           state.next_page = "RESET_PW_LOCKED";
+        } else if (message === "resetpw.email-address-required") {
+          // This browser holds no identity hint, so the code has to be sent with an address.
+          state.next_page = "RESET_PW_ENTER_CODE";
         }
       })
       .addMatcher(resetPasswordApi.endpoints.verifyEmailLink.matchFulfilled, (state, action) => {
@@ -135,6 +148,15 @@ export const resetPasswordSlice = createSlice({
         state.extra_security = action.payload.payload.extra_security;
         state.suggested_password = action.payload.payload.suggested_password;
         state.email_code = action.payload.payload.email_code;
+      })
+      .addMatcher(resetPasswordApi.endpoints.postSetNewPassword.matchRejected, (state, action) => {
+        state.next_page = codeEntryOrUnchanged(rejectedApiMessage(action), state.next_page);
+      })
+      .addMatcher(resetPasswordApi.endpoints.postSetNewPasswordExtraSecurityToken.matchRejected, (state, action) => {
+        state.next_page = codeEntryOrUnchanged(rejectedApiMessage(action), state.next_page);
+      })
+      .addMatcher(resetPasswordApi.endpoints.postSetNewPasswordExternalMfa.matchRejected, (state, action) => {
+        state.next_page = codeEntryOrUnchanged(rejectedApiMessage(action), state.next_page);
       })
       .addMatcher(resetPasswordApi.endpoints.sendResetPasswordCaptchaResponse.matchFulfilled, (state, action) => {
         state.captcha_completed = action?.payload?.payload.captcha_completed;
