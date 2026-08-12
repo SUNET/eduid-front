@@ -1790,7 +1790,7 @@
   },
   "Wxg9KX": {
     "developer_comment": "ResetPasswordEnterEmail lead text",
-    "string": "Om det finns en användare med den epostadressen skickas ett mail med instruktioner från no-reply@eduid.se."
+    "string": "Om det finns en användare med den e-postadressen skickas ett mail med instruktioner från no-reply@eduid.se."
   },
   "Wzwjvn": {
     "developer_comment": "account eduid - list item 1-heading",
