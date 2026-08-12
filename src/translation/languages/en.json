@@ -3655,7 +3655,7 @@
   },
   "tKb6i5": {
     "developer_comment": "Reset password captcha lead text",
-    "string": "Confirm that you are a human as protection against automated spam."
+    "string": "Confirm that you are human as protection against automated spam."
   },
   "tPpKqv": {
     "developer_comment": "Signup",
