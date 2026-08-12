@@ -3549,10 +3549,10 @@
     "string": "There was a problem verifying that you are human. Please try again."
   },
   "signup.captcha-not-completed": {
-    "string": "The captcha has not been completed."
+    "string": "The CAPTCHA has not been completed."
   },
   "signup.captcha-not-requested": {
-    "string": "The captcha has not been requested."
+    "string": "The CAPTCHA has not been requested."
   },
   "signup.credential-not-added": {
     "string": "No credential added."
