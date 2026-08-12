@@ -1126,7 +1126,7 @@
   },
   "LAOjK9": {
     "developer_comment": "account eduid - list item 1",
-    "string": "Du kan lägga till så många du önskar men behöver minst en epostadress som du har bekräftad åtkomst till. Du kan logga in med alla bekräftade adresser men den primära används om vi behöver kommunicera med dig. De listas i en tabell med följande alternativ:"
+    "string": "Du kan lägga till så många du önskar men behöver minst en e-postadress som du har bekräftad åtkomst till. Du kan logga in med alla bekräftade adresser men den primära används om vi behöver kommunicera med dig. De listas i en tabell med följande alternativ:"
   },
   "LBmbm1": {
     "developer_comment": "Signup button",
@@ -1226,7 +1226,7 @@
   },
   "NKnd8e": {
     "developer_comment": "Signup email form text",
-    "string": "Ange en epostadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit."
+    "string": "Ange en e-postadress som du har säker tillgång till eftersom den behöver bekräftas med en kod som skickas dit."
   },
   "NLtimS": {
     "developer_comment": "help text for custom password tips",
