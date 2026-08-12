@@ -3424,7 +3424,7 @@
     "string": "Återställning av lösenordet misslyckades, vänligen försök igen"
   },
   "resetpw.reset-pw-initialized": {
-    "string": "Återställningslänken har skickats till din epost."
+    "string": "Återställningslänken har skickats till din e-postadress."
   },
   "resetpw.send-sms-failed": {
     "string": "Det gick inte att skicka koden"
