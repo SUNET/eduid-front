@@ -3543,13 +3543,13 @@
     "string": "Du har redan verifierat ditt konto."
   },
   "signup.captcha-already-completed": {
-    "string": "Captcha processen har redan slutförts."
+    "string": "CAPTCHA processen har redan slutförts."
   },
   "signup.captcha-failed": {
     "string": "Det uppstod ett problem med verifieringen av att du är människa. Var god försök igen."
   },
   "signup.captcha-not-completed": {
-    "string": "Captcha har inte slutförts."
+    "string": "CAPTCHA har inte slutförts."
   },
   "signup.captcha-not-requested": {
     "string": "Captcha har inte begärts."
