@@ -3609,7 +3609,7 @@
     "string": "Your security key requires a password. Please set a password to complete your registration."
   },
   "signup.recaptcha-not-verified": {
-    "string": "There was a problem verifying that you are a human. Please try again."
+    "string": "There was a problem verifying that you are human. Please try again."
   },
   "signup.registering-address-used": {
     "string": "The email address you entered is already registered."
