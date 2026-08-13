@@ -91,18 +91,20 @@ export function EmailLinkSent(): React.JSX.Element | null {
           />
         </p>
       </section>
-      <div className="signup-timer-wrapper">
-        <p>
-          <FormattedMessage defaultMessage="Code expires in" description="Reset Password code expiry" />
-        </p>
-        <TimeRemainingWrapper
-          name="resetpw-email-expires"
-          unique_id="resetpw.email"
-          value={reset_pw_status?.email.expires_time_left || 0}
-        >
-          <ExpiresMeter showMeter={false} expires_max={reset_pw_status?.email.expires_time_max || 0} />
-        </TimeRemainingWrapper>
-      </div>
+      {reset_pw_status?.email.expires_time_left !== undefined && (
+        <div className="signup-timer-wrapper">
+          <p>
+            <FormattedMessage defaultMessage="Code expires in" description="Reset Password code expiry" />
+          </p>
+          <TimeRemainingWrapper
+            name="resetpw-email-expires"
+            unique_id="resetpw.email"
+            value={reset_pw_status.email.expires_time_left}
+          >
+            <ExpiresMeter showMeter={false} expires_max={reset_pw_status.email.expires_time_max || 0} />
+          </TimeRemainingWrapper>
+        </div>
+      )}
       <div className="enter-code">
         <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />
