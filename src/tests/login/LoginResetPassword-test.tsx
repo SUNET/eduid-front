@@ -283,6 +283,22 @@ test("shows the code expiry from the status response", async () => {
   expect(screen.queryByText(/valid for two hours/i)).not.toBeInTheDocument();
 });
 
+test("does not show an expired countdown before the status response arrives", () => {
+  render(<ResetPasswordApp />, {
+    state: {
+      ...loginTestState,
+      resetPassword: {
+        ...loginTestState.resetPassword,
+        next_page: "EMAIL_LINK_SENT",
+        email_response: { email, email_code_timeout: 7200, throttled_max: 300, throttled_seconds: 300 },
+      },
+    },
+  });
+
+  expect(screen.queryByText("Code expires in")).not.toBeInTheDocument();
+  expect(screen.queryByText("00:00")).not.toBeInTheDocument();
+});
+
 test("refreshes the status after sending, so the countdown reflects the code that was just sent", async () => {
   // GET / is hit twice in this flow: once from the confirm-email screen (pre-send status) and
   // once from ProcessCaptcha.sendEmailLink's refresh (post-send status). Returning a different
