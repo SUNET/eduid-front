@@ -88,6 +88,8 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
                 autoFocus={true}
                 autoComplete="username"
                 defaultValue={email_address}
+                aria-invalid={emailMissing}
+                aria-errormessage={emailMissing ? "missing-email-error" : undefined}
               />
               {emailMissing && (
                 <span role="alert" className="input-validate-error" id="missing-email-error">

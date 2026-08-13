@@ -127,6 +127,9 @@ test("says what is missing when the code is submitted with an empty email addres
     expect(screen.getByRole("alert")).toHaveTextContent(/email address/i);
   });
 
+  expect(getCodeForm().getByRole("textbox")).toHaveAttribute("aria-invalid", "true");
+  expect(getCodeForm().getByRole("textbox")).toHaveAttribute("aria-errormessage", "missing-email-error");
+
   expect(requests).toEqual([]);
   // The typed code has to survive, or the user has to enter all six digits again.
   const digits = getCodeForm()
