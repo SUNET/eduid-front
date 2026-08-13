@@ -1,6 +1,5 @@
 import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
-import { render, screen } from "../helperFunctions/LoginTestApp-rtl";
-import { loginTestState } from "../helperFunctions/LoginTestApp-rtl";
+import { render, screen, loginTestState  } from "../helperFunctions/LoginTestApp-rtl";
 
 test("shows a terminal message when the reset state is locked", () => {
   render(<ResetPasswordApp />, {
