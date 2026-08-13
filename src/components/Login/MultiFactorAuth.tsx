@@ -126,7 +126,7 @@ export function MultiFactorAuth(): React.JSX.Element {
             <div className="options">
               <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
               {show_suggestion && (
-                <span className="suggestion-txt">
+                <span className="suggestion suggestion-txt">
                   <FormattedMessage
                     description="multiple key suggestion"
                     defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."

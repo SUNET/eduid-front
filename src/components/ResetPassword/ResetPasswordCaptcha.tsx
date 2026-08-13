@@ -54,7 +54,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Reset Password: Confirm that you are a human."
+            defaultMessage="Reset Password: Confirm that you are a human"
             description="Reset password captcha"
           />
         </h1>
@@ -62,7 +62,7 @@ export function ResetPasswordCaptcha(): React.JSX.Element | null {
         <div className="lead">
           <p>
             <FormattedMessage
-              defaultMessage="As a protection against automated spam, you need to confirm that you are a human."
+              defaultMessage="Confirm that you are a human as protection against automated spam."
               description="Reset password captcha lead text"
             />
           </p>

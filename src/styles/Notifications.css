@@ -54,7 +54,7 @@
 }
 
 /* Green italic recommendation, see typography */
-.suggestion-txt {
+.suggestion {
   @media (--bp-xl-up) {
     position: absolute;
     right: 0;

@@ -93,7 +93,8 @@ export function SignupConfirmPassword() {
             {renderSuggested ? (
               <p className="text-medium">
                 <FormattedMessage
-                  defaultMessage={`A strong password has been generated for you. Copy, paste and save it in the form below, or choose to create your own password.`}
+                  defaultMessage={`A strong password has been generated for you. To proceed copy 
+                        the password into the Repeat new password field and click the Save button.`}
                   description="Generated password - lead"
                 />
               </p>

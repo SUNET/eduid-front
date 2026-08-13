@@ -359,7 +359,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
             </div>
           </div>
           {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
-            <span className="suggestion-txt">
+            <span className="suggestion suggestion-txt">
               <FormattedMessage
                 description="multiple key suggestion"
                 defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
