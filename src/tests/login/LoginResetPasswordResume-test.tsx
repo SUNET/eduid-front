@@ -3,7 +3,13 @@ import { GetResetPasswordStateResponse } from "apis/eduidResetPassword";
 import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
-import { loginTestState, render, RESET_PASSWORD_SERVICE_URL, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
+import {
+  loginTestState,
+  render,
+  RESET_PASSWORD_SERVICE_URL,
+  screen,
+  waitFor,
+} from "../helperFunctions/LoginTestApp-rtl";
 
 /**
  * Resuming a reset that already passed the code step.
@@ -53,7 +59,7 @@ test("asks for the code again when the reset is resumed with nothing left in red
   // The backend says the email is verified, but this browser has no extra_security, no email_code
   // and no suggested_password - re-verifying the code is what puts them back.
   await waitFor(() => {
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Reset Password: Enter your code");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Reset Password: Enter email code");
   });
 
   // The address just entered is carried over, so only the code has to be typed again.
@@ -98,6 +104,6 @@ test("asks for the code again when the status request fails outright", async () 
   await submitEmailAddress();
 
   await waitFor(() => {
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Reset Password: Enter your code");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Reset Password: Enter email code");
   });
 });

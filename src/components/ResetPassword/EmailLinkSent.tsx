@@ -64,7 +64,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
           {" "}
           <p>
             <FormattedMessage
-              defaultMessage="If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
+              defaultMessage="Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
               description="Reset Password email link sent"
               values={{
                 email: (
@@ -84,12 +84,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
             />
           </p>
         </div>
-        <p>
-          <FormattedMessage
-            defaultMessage="Enter the code into the form to verify your email address."
-            description="Reset Password enter code"
-          />
-        </p>
       </section>
       {reset_pw_status?.email.expires_time_left !== undefined && (
         <div className="signup-timer-wrapper">

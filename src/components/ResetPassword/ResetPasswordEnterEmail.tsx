@@ -26,7 +26,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
-            defaultMessage="Reset Password: Enter the email address"
+            defaultMessage="Reset Password: Enter email address"
             description="ResetPasswordEnterEmail heading"
           />
         </h1>

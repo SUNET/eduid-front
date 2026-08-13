@@ -326,10 +326,6 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
-  "414JcC": {
-    "developer_comment": "Reset Password enter code",
-    "string": "Enter the code into the form to verify your email address."
-  },
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "with a Freja+"
@@ -746,10 +742,6 @@
     "developer_comment": "popover info",
     "string": "To edit these settings you might be asked to re-login."
   },
-  "Dr2T0f": {
-    "developer_comment": "Reset Password enter code heading",
-    "string": "Reset Password: Enter your code"
-  },
   "DuLi7B": {
     "developer_comment": "verify identity unverified description",
     "string": "Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
@@ -962,6 +954,10 @@
     "developer_comment": "Login front page with passkey",
     "string": "Log in: with Password or Passkey"
   },
+  "HZa8Ij": {
+    "developer_comment": "Reset Password enter code heading",
+    "string": "Reset Password: Enter email code"
+  },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Note: this is only for your own use to be able to distinguish between your added keys."
@@ -1076,6 +1072,10 @@
   "KJo0j5": {
     "developer_comment": "Signup captcha lead text",
     "string": "Confirm that you are a human as protection against automated spam."
+  },
+  "KMRUlf": {
+    "developer_comment": "ResetPasswordEnterEmail heading",
+    "string": "Reset Password: Enter email address"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1567,6 +1567,10 @@
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Press the \"Forgot your password?\" link below the login form."
   },
+  "TFgL35": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
+  },
   "TI4Tiu": {
     "developer_comment": "button add more",
     "string": "+ Add more"
@@ -1947,10 +1951,6 @@
   "ZOGtpx": {
     "developer_comment": "popover info heading",
     "string": "For your security"
-  },
-  "ZOyeZU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
   },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
@@ -3489,10 +3489,6 @@
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
-  },
-  "sC4pUE": {
-    "developer_comment": "ResetPasswordEnterEmail heading",
-    "string": "Reset Password: Enter the email address"
   },
   "sCxiby": {
     "developer_comment": "Temp info - message2",
