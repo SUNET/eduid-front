@@ -15,3 +15,15 @@ test("shows a terminal message when the reset state is locked", () => {
   // The flow is terminal - there must be no way to retry from here.
   expect(screen.queryByRole("button", { name: /try again|send|start over/i })).not.toBeInTheDocument();
 });
+
+test("returns to the site root when the dashboard link is unavailable", () => {
+  render(<ResetPasswordApp />, {
+    state: {
+      ...loginTestState,
+      config: { ...loginTestState.config, dashboard_link: undefined },
+      resetPassword: { ...loginTestState.resetPassword, next_page: "RESET_PW_LOCKED" },
+    },
+  });
+
+  expect(screen.getByRole("button", { name: "Go to login" }).closest("form")).toHaveAttribute("action", "/");
+});
