@@ -103,7 +103,7 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
     return await handleApiError(result.data, result.meta, csrf_token, api);
   } else {
     // extract CSRF token from response
-    csrf_token = handleCsrfTokenFromResponse(result.data, csrf_token, api);
+    handleCsrfTokenFromResponse(result.data, csrf_token, api);
   }
   return result;
 };
