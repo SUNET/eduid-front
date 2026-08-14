@@ -1630,7 +1630,7 @@
   },
   "UB4Jac": {
     "developer_comment": "Reset Password enter code lead",
-    "string": "Ange e-postadressen som koden skickats till samt koden i mejlet."
+    "string": "Ange e-postadressen som koden skickats till samt koden från mejlet."
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
