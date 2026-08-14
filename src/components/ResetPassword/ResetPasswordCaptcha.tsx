@@ -1,5 +1,6 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { CaptchaRequest } from "apis/eduidSignup";
+import { ApiResponse } from "apis/helpers/types";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { useCallback, useEffect } from "react";
@@ -81,17 +82,24 @@ export function ProcessCaptcha(): null {
   const dispatch = useAppDispatch();
   const [sendCaptchaResponse] = resetPasswordApi.useLazySendResetPasswordCaptchaResponseQuery();
   const [requestEmailLink] = resetPasswordApi.useLazyRequestEmailLinkQuery();
+  const [getResetPasswordState] = resetPasswordApi.useLazyGetResetPasswordStateQuery();
 
   const sendEmailLink = useCallback(async () => {
     if (email) {
       const response = await requestEmailLink({ email });
       if (response.isSuccess) {
+        // Refresh the status so the expiry countdown belongs to the code that was just sent.
+        await getResetPasswordState();
         dispatch(resetPasswordSlice.actions.setNextPage("EMAIL_LINK_SENT"));
-      } else {
+      } else if (
+        (response.error as ApiResponse<{ message?: string }>)?.payload?.message !== "resetpw.email-code-too-many-tries"
+      ) {
+        // On a lockout the slice has already routed to RESET_PW_LOCKED - don't send the user
+        // back to a form whose only action returns the same error.
         dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_EMAIL"));
       }
     }
-  }, [dispatch, email, requestEmailLink]);
+  }, [dispatch, email, requestEmailLink, getResetPasswordState]);
 
   const sendCaptcha = useCallback(
     async (captcha: CaptchaRequest) => {

@@ -53,6 +53,7 @@ export interface RequestEmailLinkResponse {
 
 export interface VerifyCodeRequest {
   email_code: string;
+  email?: string; // only accepted by /verify-email/, for a browser with no identity hint
 }
 
 export interface VerifyCodeResponse {

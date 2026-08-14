@@ -1,5 +1,7 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
+import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
+import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
@@ -12,6 +14,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const response = useAppSelector((state) => state.resetPassword.email_response);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+  const reset_pw_status = useAppSelector((state) => state.resetPassword.reset_pw_status);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   async function handleSubmitCode(values: ResponseCodeValues) {
@@ -61,7 +64,7 @@ export function EmailLinkSent(): React.JSX.Element | null {
           {" "}
           <p>
             <FormattedMessage
-              defaultMessage="If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
+              defaultMessage="Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
               description="Reset Password email link sent"
               values={{
                 email: (
@@ -76,18 +79,26 @@ export function EmailLinkSent(): React.JSX.Element | null {
           </p>
           <p>
             <FormattedMessage
-              defaultMessage="The emailed code is valid for two hours, if you haven't received it cancel and restart the process."
+              defaultMessage="If you haven't received it, cancel and restart the process."
               description="Reset Password email link sent"
             />
           </p>
         </div>
-        <p>
-          <FormattedMessage
-            defaultMessage="Enter the code into the form to verify your email address."
-            description="Reset Password enter code"
-          />
-        </p>
       </section>
+      {reset_pw_status?.email.expires_time_left !== undefined && (
+        <div className="signup-timer-wrapper">
+          <p>
+            <FormattedMessage defaultMessage="Code expires in" description="Reset Password code expiry" />
+          </p>
+          <TimeRemainingWrapper
+            name="resetpw-email-expires"
+            unique_id="resetpw.email"
+            value={reset_pw_status.email.expires_time_left}
+          >
+            <ExpiresMeter showMeter={false} expires_max={reset_pw_status.email.expires_time_max || 0} />
+          </TimeRemainingWrapper>
+        </div>
+      )}
       <div className="enter-code">
         <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
           <ResponseCodeButtons handleAbortButtonOnClick={handleAbortButtonOnClick} />

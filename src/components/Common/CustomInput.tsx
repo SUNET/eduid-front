@@ -15,6 +15,8 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   children?: React.ReactNode;
   onFocus?: () => void;
   readOnly?: boolean;
+  "aria-invalid"?: boolean;
+  "aria-errormessage"?: string;
 }
 
 export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
@@ -49,6 +51,8 @@ const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
       autoComplete={props.autoComplete}
       onFocus={props.onFocus}
       readOnly={props.readOnly}
+      aria-invalid={props["aria-invalid"]}
+      aria-errormessage={props["aria-errormessage"]}
     />
   );
 };

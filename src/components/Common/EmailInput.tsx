@@ -14,6 +14,8 @@ interface EmailInputProps {
   autoComplete?: "username";
   helpBlock?: React.ReactNode; // help text shown above input
   defaultValue?: string;
+  "aria-invalid"?: boolean;
+  "aria-errormessage"?: string;
 }
 
 export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.Element {
@@ -53,6 +55,8 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
       placeholder={placeholder}
       validate={validate}
       defaultValue={props.defaultValue}
+      aria-invalid={props["aria-invalid"]}
+      aria-errormessage={props["aria-errormessage"]}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
       label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}
