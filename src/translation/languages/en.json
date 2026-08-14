@@ -326,10 +326,6 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "An unknown error occurred when accessing the service."
   },
-  "414JcC": {
-    "developer_comment": "Reset Password enter code",
-    "string": "Enter the code into the form to verify your email address."
-  },
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "with Freja+"
@@ -594,6 +590,10 @@
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
     "string": "Add digits somewhere, but not at the beginning or end"
+  },
+  "9Y1Xsg": {
+    "developer_comment": "Reset Password enter code missing email error",
+    "string": "Enter the email address that the code was sent to."
   },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
@@ -954,6 +954,10 @@
     "developer_comment": "Login front page with passkey",
     "string": "Log in: with Password or Passkey"
   },
+  "HZa8Ij": {
+    "developer_comment": "Reset Password enter code heading",
+    "string": "Reset Password: Enter email code"
+  },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Note: this is only for your own use to be able to distinguish between your added keys."
@@ -1068,6 +1072,10 @@
   "KJo0j5": {
     "developer_comment": "Signup captcha lead text",
     "string": "Confirm that you are human as protection against automated spam."
+  },
+  "KMRUlf": {
+    "developer_comment": "ResetPasswordEnterEmail heading",
+    "string": "Reset Password: Enter email address"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1559,6 +1567,10 @@
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Press the \"Forgot your password?\" link below the login form."
   },
+  "TFgL35": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
+  },
   "TI4Tiu": {
     "developer_comment": "button add more",
     "string": "+ Add more"
@@ -1615,6 +1627,10 @@
   "UALuL9": {
     "developer_comment": "Login username input",
     "string": "Not you?"
+  },
+  "UB4Jac": {
+    "developer_comment": "Reset Password enter code lead",
+    "string": "Enter the email address that the code was sent to, and the code from the email."
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -1743,10 +1759,6 @@
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
     "string": "Enhanced security"
-  },
-  "WHpRdB": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "The code is valid for two hours, if you haven't received it cancel and restart the process."
   },
   "WI2cKY": {
     "developer_comment": "verify identity",
@@ -1940,10 +1952,6 @@
     "developer_comment": "popover info heading",
     "string": "For your security"
   },
-  "ZOyeZU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "If you have an eduID account with this address, a code has been sent to {email} from no-reply@eduid.se."
-  },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "develops using open source code accessible at GitHub,"
@@ -2009,6 +2017,10 @@
   "aisFdT": {
     "developer_comment": "orcid logo",
     "string": "orcid logo"
+  },
+  "ajnNU3": {
+    "developer_comment": "Reset Password locked heading",
+    "string": "Reset Password: Too many attempts"
   },
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
@@ -2207,6 +2219,10 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
+  },
+  "cy5osj": {
+    "developer_comment": "Reset Password enter code link",
+    "string": "Enter your code instead"
   },
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
@@ -2637,6 +2653,10 @@
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
   },
+  "iRDQf0": {
+    "developer_comment": "Reset Password code expiry",
+    "string": "The code expires in"
+  },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Your eduID is ready to use"
@@ -2957,6 +2977,10 @@
   "mT0ok+": {
     "developer_comment": "resetpw step1",
     "string": "Enter email address"
+  },
+  "mT9EER": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "If you haven't received it, cancel and restart the process."
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -3342,6 +3366,10 @@
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
   },
+  "r41PMP": {
+    "developer_comment": "Reset Password enter code link lead",
+    "string": "Already have a code from an earlier email?"
+  },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
   },
@@ -3389,6 +3417,15 @@
   },
   "resetpw.captcha-not-requested": {
     "string": "The CAPTCHA has not been requested."
+  },
+  "resetpw.email-address-required": {
+    "string": "Enter the email address that you started the password reset with."
+  },
+  "resetpw.email-code-too-many-tries": {
+    "string": "Too many incorrect codes have been entered. For security reasons this password reset has been stopped. Please wait until the code expires, then start over."
+  },
+  "resetpw.email-not-validated": {
+    "string": "The emailed code has not been verified. Please enter the code that was sent to your email address."
   },
   "resetpw.email-send-failure": {
     "string": "Error sending mail, please try again"
@@ -3452,10 +3489,6 @@
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", you could use {emphasis} to verify your identity. Read more about eIDAS below."
-  },
-  "sC4pUE": {
-    "developer_comment": "ResetPasswordEnterEmail heading",
-    "string": "Reset password: Enter the email address"
   },
   "sCxiby": {
     "developer_comment": "Temp info - message2",
@@ -3661,6 +3694,10 @@
     "developer_comment": "Signup",
     "string": "Create eduID: Confirm/Accept"
   },
+  "tR6HiX": {
+    "developer_comment": "Reset Password locked lead",
+    "string": "Too many incorrect codes have been entered. For security reasons this password reset has been stopped."
+  },
   "tUj9S2": {
     "developer_comment": "create eduid - heading",
     "string": "How do I get an account?"
@@ -3857,6 +3894,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3",
     "string": "services requiring a medium level of assurance, including many higher education institutions, often called {emphasis}."
   },
+  "x4npjV": {
+    "developer_comment": "Reset Password locked instruction",
+    "string": "Please wait until the code expires, then start over from the login page."
+  },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
@@ -3896,6 +3937,10 @@
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "Which are the methods of verification for eduID?"
+  },
+  "xwe+e5": {
+    "developer_comment": "Reset Password locked exit button",
+    "string": "Go to login"
   },
   "y/qTJ8": {
     "developer_comment": "Verified identity",
