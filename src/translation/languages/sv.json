@@ -326,10 +326,6 @@
     "developer_comment": "ErrorURL unknown error",
     "string": "Ett okänt fel inträffade när du försökte använda tjänsten."
   },
-  "414JcC": {
-    "developer_comment": "Reset Password enter code",
-    "string": "Fyll i koden i formuläret för att verifiera din e-postadress."
-  },
   "41atQw": {
     "developer_comment": "eidas vetting button freja",
     "string": "med Freja+"
@@ -594,6 +590,10 @@
   "9P0HXs": {
     "developer_comment": "help text for custom password tips",
     "string": "Lägg till en eller flera siffror någonstans i mitten av lösenordet"
+  },
+  "9Y1Xsg": {
+    "developer_comment": "Reset Password enter code missing email error",
+    "string": "Ange e-postadressen som koden skickats till."
   },
   "9djX63": {
     "developer_comment": "what is bankid - heading",
@@ -954,6 +954,10 @@
     "developer_comment": "Login front page with passkey",
     "string": "Logga in: med lösenord eller passkey"
   },
+  "HZa8Ij": {
+    "developer_comment": "Reset Password enter code heading",
+    "string": "Återställ lösenord: Ange e-postkod"
+  },
   "HgfPrt": {
     "developer_comment": "security webauthn describe paragraph",
     "string": "Obs: beskrivningen är endast för att hjälpa dig skilja på dina tillagda nycklar."
@@ -1068,6 +1072,10 @@
   "KJo0j5": {
     "developer_comment": "Signup captcha lead text",
     "string": "Bekräfta att du inte är en robot m.h.a. CAPTCHA, för att undvika automatiskt spam."
+  },
+  "KMRUlf": {
+    "developer_comment": "ResetPasswordEnterEmail heading",
+    "string": "Återställ lösenord: Ange e-postadress"
   },
   "KMnlUQ": {
     "developer_comment": "ToU second paragraph",
@@ -1559,6 +1567,10 @@
     "developer_comment": "login eduid - forgot pw list item 1",
     "string": "Klicka på länken \"Glömt ditt lösenord?\" under inloggningsformuläret."
   },
+  "TFgL35": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Ange den sexsiffriga koden som skickades från no-reply@eduid.se till {email} för att bekräfta din e-postadress."
+  },
   "TI4Tiu": {
     "developer_comment": "button add more",
     "string": "+ Lägg till fler"
@@ -1615,6 +1627,10 @@
   "UALuL9": {
     "developer_comment": "Login username input",
     "string": "Inte du?"
+  },
+  "UB4Jac": {
+    "developer_comment": "Reset Password enter code lead",
+    "string": "Ange e-postadressen som koden skickats till samt koden från mejlet."
   },
   "UEl6B1": {
     "developer_comment": "Terms of use (h2 heading)",
@@ -1743,10 +1759,6 @@
   "WHX2Wh": {
     "developer_comment": "Improved Security heading",
     "string": "Ökad säkerhet"
-  },
-  "WHpRdB": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Koden som skickats är giltig i två timmar, om du inte har fått den avbryt processen och börja om."
   },
   "WI2cKY": {
     "developer_comment": "verify identity",
@@ -1940,10 +1952,6 @@
     "developer_comment": "popover info heading",
     "string": "Av säkerhetsskäl"
   },
-  "ZOyeZU": {
-    "developer_comment": "Reset Password email link sent",
-    "string": "Om du har ett eduID-konto med denna adress har koden skickats till {email} från no-reply@eduid.se."
-  },
   "ZQxtaO": {
     "developer_comment": "privacy policy - list item 5",
     "string": "utvecklar med öppen källkod som finns på GitHub,"
@@ -2009,6 +2017,10 @@
   "aisFdT": {
     "developer_comment": "orcid logo",
     "string": "orcid logo"
+  },
+  "ajnNU3": {
+    "developer_comment": "Reset Password locked heading",
+    "string": "Återställ lösenord: För många försök"
   },
   "aqzfAc": {
     "developer_comment": "use bankid - list definition",
@@ -2207,6 +2219,10 @@
   },
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
+  },
+  "cy5osj": {
+    "developer_comment": "Reset Password enter code link",
+    "string": "Fyll i din kod istället"
   },
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
@@ -2637,6 +2653,10 @@
     "developer_comment": "Signup credentials",
     "string": "Det uppstod ett problem som gjorde att det inte gick inte att skapa ditt konto."
   },
+  "iRDQf0": {
+    "developer_comment": "Reset Password code expiry",
+    "string": "Koden går ut om"
+  },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
     "string": "Ditt eduID är redo att användas"
@@ -2957,6 +2977,10 @@
   "mT0ok+": {
     "developer_comment": "resetpw step1",
     "string": "Ange e-postadress"
+  },
+  "mT9EER": {
+    "developer_comment": "Reset Password email link sent",
+    "string": "Om du inte har fått koden kan du avbryta processen och börja om från början."
   },
   "mX+D9a": {
     "developer_comment": "Verified Identity heading",
@@ -3342,6 +3366,10 @@
     "developer_comment": "Login MFA",
     "string": "Tjänsten du försöker logga in på kräver en högre säkerhetsnivå. Ditt eduID-konto har inte konfigurerats med något av de tillgängliga alternativen för detta."
   },
+  "r41PMP": {
+    "developer_comment": "Reset Password enter code link lead",
+    "string": "Har du redan en kod från ett tidigare mejl?"
+  },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
   },
@@ -3389,6 +3417,15 @@
   },
   "resetpw.captcha-not-requested": {
     "string": "CAPTCHA har inte begärts."
+  },
+  "resetpw.email-address-required": {
+    "string": "Ange e-postadressen som du startade lösenordsåterställningen med."
+  },
+  "resetpw.email-code-too-many-tries": {
+    "string": "För många felaktiga koder har angivits. Av säkerhetsskäl har lösenordsåterställningen stoppats. Vänligen vänta tills koden har gått ut och börja om."
+  },
+  "resetpw.email-not-validated": {
+    "string": "E-postkoden har inte verifierats. Vänligen ange koden som skickades till din e-postadress."
   },
   "resetpw.email-send-failure": {
     "string": "Misslyckades att skicka e-post, vänligen försök igen"
@@ -3452,10 +3489,6 @@
   "sBpow1": {
     "developer_comment": "method eidas - paragraph",
     "string": ", kan du använda {emphasis} med hjälp av ett europeiskt eID för att verifiera din identitet. Läs mer om eIDAS nedan."
-  },
-  "sC4pUE": {
-    "developer_comment": "ResetPasswordEnterEmail heading",
-    "string": "Återställ lösenord: Ange e-postadressen"
   },
   "sCxiby": {
     "developer_comment": "Temp info - message2",
@@ -3661,6 +3694,10 @@
     "developer_comment": "Signup",
     "string": "Skapa eduID: Bekräfta/Godkänn"
   },
+  "tR6HiX": {
+    "developer_comment": "Reset Password locked lead",
+    "string": "För många felaktiga koder har angivits. Av säkerhetsskäl har lösenordsåterställningen stoppats."
+  },
   "tUj9S2": {
     "developer_comment": "create eduid - heading",
     "string": "Hur skaffar jag ett konto?"
@@ -3857,6 +3894,10 @@
     "developer_comment": "Assurance levels with your eduID - paragraph3",
     "string": "tjänster som kräver en medelhög tillitsnivå, inklusive många lärosäten, ofta kallad {emphasis}."
   },
+  "x4npjV": {
+    "developer_comment": "Reset Password locked instruction",
+    "string": "Vänligen vänta tills koden har gått ut och börja om från inloggningssidan."
+  },
   "x4rX5I": {
     "developer_comment": "SAML login finished",
     "string": "Du kan försöka logga in igen med knappen nedan, men det är troligt att tjänsten du försöker logga in på inte kommer godta det. I så fall behöver du börja om inloggningen från början."
@@ -3896,6 +3937,10 @@
   "xw6F28": {
     "developer_comment": "which verification methods - heading",
     "string": "Vilka verifieringsmetoder finns för eduID?"
+  },
+  "xwe+e5": {
+    "developer_comment": "Reset Password locked exit button",
+    "string": "Gå till inloggning"
   },
   "y/qTJ8": {
     "developer_comment": "Verified identity",
