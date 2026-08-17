@@ -23,6 +23,13 @@ type PasswordRequirement = "default" | "optional" | "required";
 
 const PasswordSection = (props: { requirement: PasswordRequirement }) => {
   const [isEditMode, setEditMode] = useState<boolean>(props.requirement === "required");
+
+  useEffect(() => {
+    if (props.requirement === "required") {
+      setEditMode(true);
+    }
+  }, [props.requirement]);
+
   return (
     <Fragment>
       <div className="or-container">
