@@ -304,7 +304,7 @@ export function SignupEntry(): React.JSX.Element {
                 <h2>
                   <FormattedMessage description="With name and email" defaultMessage="With name and email" />
                 </h2>
-                <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+                <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
                     <Fragment>
                       <FormattedMessage description="hide form button" defaultMessage="hide form" />
