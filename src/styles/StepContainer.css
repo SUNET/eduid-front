@@ -124,8 +124,8 @@
       gap: 0.5rem;
 
       .step-number {
-        width: 2.5rem;
-        height: 2.5rem;
+        width: 2.25rem;
+        height: 2.25rem;
         border-radius: 50%;
         background-color: var(--bg-gray);
         color: var(--body-txt);
@@ -134,6 +134,7 @@
         justify-content: center;
         font-weight: bold;
         font-family: monospace;
+        font-size: var(--txt-sm);
       }
 
       .step-label {
