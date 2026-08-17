@@ -52,7 +52,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         />
         &nbsp;
         <EduIDButton
-          buttonstyle="link normal-case"
+          buttonstyle="link normal-case text-large"
           id="reset-password-enter-code"
           onClick={() => dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_CODE"))}
         >

@@ -190,7 +190,7 @@ export function SignupUserCreated(): React.JSX.Element {
       </figure>
 
       <div className="buttons">
-        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case" onClick={handleFinish}>
+        <EduIDButton id={idFinishedButton} buttonstyle="link normal-case text-large" onClick={handleFinish}>
           {service_name ? (
             <FormattedMessage
               defaultMessage="Continue to {service_name}"

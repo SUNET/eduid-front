@@ -113,7 +113,7 @@ export function SignupEnterCode(): React.JSX.Element {
             />
           </p>
         </section>
-        <EduIDButton buttonstyle="link normal-case" onClick={registerEmail} id="send-new-code">
+        <EduIDButton buttonstyle="link normal-case text-large" onClick={registerEmail} id="send-new-code">
           <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
         <SignupStepIndicator currentStep={3} />
