@@ -24,6 +24,7 @@
 
   .lead {
     margin-bottom: 1.5rem;
+    margin-top: 1rem;
 
     p {
       font-size: var(--txt-lg);
