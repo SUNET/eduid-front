@@ -91,7 +91,7 @@ export function SignupConfirmPassword() {
           <Splash showChildren={Boolean(signupState?.credentials.generated_password)}>
             <ChangePasswordRadioOption handleSwitchChange={handleSwitchChange} renderSuggested={renderSuggested} />
             {renderSuggested ? (
-              <p className="text-medium">
+              <p>
                 <FormattedMessage
                   defaultMessage={`A strong password has been generated for you. To proceed copy 
                         the password into the Repeat new password field and click the Save button.`}
@@ -99,7 +99,7 @@ export function SignupConfirmPassword() {
                 />
               </p>
             ) : (
-              <p className="text-medium">
+              <p>
                 <FormattedMessage
                   description="Strong password - lead"
                   defaultMessage={`Create a strong enough password to keep your 
