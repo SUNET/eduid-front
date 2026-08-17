@@ -22,7 +22,7 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 type PasswordRequirement = "default" | "optional" | "required";
 
 const PasswordSection = (props: { requirement: PasswordRequirement }) => {
-  const [isEditMode, setEditMode] = useState<boolean>(false);
+  const [isEditMode, setEditMode] = useState<boolean>(props.requirement === "required");
   return (
     <Fragment>
       <div className="or-container">
