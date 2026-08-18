@@ -22,13 +22,8 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 type PasswordRequirement = "default" | "optional" | "required";
 
 const PasswordSection = (props: { requirement: PasswordRequirement }) => {
-  const [isEditMode, setEditMode] = useState<boolean>(props.requirement === "required");
-
-  useEffect(() => {
-    if (props.requirement === "required") {
-      setEditMode(true);
-    }
-  }, [props.requirement]);
+  const [userToggled, setUserToggled] = useState<boolean | null>(null);
+  const isEditMode = userToggled ?? props.requirement === "required";
 
   return (
     <Fragment>
@@ -55,7 +50,7 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
           <h2>
             <FormattedMessage description="register a password" defaultMessage="Register a password" />
           </h2>
-          <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+          <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
               <Fragment>
                 <FormattedMessage description="hide form button" defaultMessage="hide form" />
