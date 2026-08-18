@@ -50,7 +50,7 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
           <h2>
             <FormattedMessage description="register a password" defaultMessage="Register a password" />
           </h2>
-          <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+          <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
               <Fragment>
                 <FormattedMessage description="hide form button" defaultMessage="hide form" />
