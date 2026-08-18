@@ -65,6 +65,11 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
               {props.extra_security && Object.keys(props.extra_security).length > 0 && (
                 <GoBackButton onClickHandler={props.goBack} />
               )}
+              {props.handleCancel && (
+                <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
+                  <FormattedMessage defaultMessage="cancel" description="button cancel" />
+                </EduIDButton>
+              )}
               <EduIDButton type="submit" buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 {props.submitButtonText}
               </EduIDButton>

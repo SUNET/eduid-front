@@ -63,6 +63,7 @@ export function SignupEnterCode(): React.JSX.Element {
   function handleAbortButtonOnClick(event?: React.MouseEvent<HTMLButtonElement>) {
     event?.preventDefault();
     fetchLogout({});
+    dispatch(signupSlice.actions.resetState());
     dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   }
 

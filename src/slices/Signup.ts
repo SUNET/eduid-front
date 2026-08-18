@@ -74,6 +74,7 @@ export const signupSlice = createSlice({
     setIdentityCollision(state, action: PayloadAction<{ app_name: string; authn_id: string } | undefined>) {
       state.identity_collision = action.payload;
     },
+    resetState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addMatcher(hasSignupStateResponse, (state, action) => {
