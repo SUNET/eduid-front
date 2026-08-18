@@ -141,7 +141,7 @@ export function SignupEntry(): React.JSX.Element {
                 description="external mfa registered heading"
               />
             </h2>
-            <p className="text-medium">
+            <p>
               <FormattedMessage
                 defaultMessage="Your identity has been verified and your name has been saved. To complete your registration, please enter your email address below."
                 description="external mfa registered description"
@@ -171,7 +171,7 @@ export function SignupEntry(): React.JSX.Element {
             <h2>
               <FormattedMessage defaultMessage="With a digital ID" description="passkey heading" />
             </h2>
-            <p className="text-medium">
+            <p>
               <FormattedMessage defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
             </p>
             <p className="help-text">
@@ -304,7 +304,7 @@ export function SignupEntry(): React.JSX.Element {
                 <h2>
                   <FormattedMessage description="With name and email" defaultMessage="With name and email" />
                 </h2>
-                <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
+                <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
                     <Fragment>
                       <FormattedMessage description="hide form button" defaultMessage="hide form" />
@@ -320,7 +320,7 @@ export function SignupEntry(): React.JSX.Element {
                   )}
                 </EduIDButton>
               </div>
-              <p className="text-medium">
+              <p>
                 <FormattedMessage
                   description="Signup with email explanation"
                   defaultMessage={`Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and

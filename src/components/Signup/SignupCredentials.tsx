@@ -50,7 +50,7 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
           <h2>
             <FormattedMessage description="register a password" defaultMessage="Register a password" />
           </h2>
-          <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
+          <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
               <Fragment>
                 <FormattedMessage description="hide form button" defaultMessage="hide form" />
@@ -66,7 +66,7 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
             )}
           </EduIDButton>
         </div>
-        <p className="text-medium">
+        <p>
           <FormattedMessage
             description="Add password explanation"
             defaultMessage={`Add a password to your account as an alternative sign-in method. Choose between a suggested or user created password.`}
@@ -229,7 +229,7 @@ export function SignupCredentials(): React.ReactElement | null {
               <div className="text-wrapper">
                 <div className="flex-between">
                   <div>
-                    <p className="text-medium">
+                    <p>
                       <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
                     </p>
                     <p className="help-text">
