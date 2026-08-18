@@ -94,6 +94,8 @@ function SignupStart() {
       const nextPage = getNextPage(data.payload.state);
       if (nextPage === null) {
         fetchLogout({});
+        dispatch(signupSlice.actions.resetState());
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
       } else {
         dispatch(signupSlice.actions.setNextPage(nextPage));
       }

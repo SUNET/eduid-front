@@ -34,6 +34,7 @@ export function handleCreateUserError(
 
   if (message === "signup.captcha-not-completed" || message === "signup.external-mfa-too-old") {
     fetchLogout({});
+    dispatch(signupSlice.actions.resetState());
     dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"));
   } else {
     dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS_ERROR"));
