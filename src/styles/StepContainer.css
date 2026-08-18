@@ -32,7 +32,7 @@
     }
   }
 
-  p:not([class]) {
+  :not(.lead) > p:not([class]) {
     font-size: var(--txt-md);
   }
 
