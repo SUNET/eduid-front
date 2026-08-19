@@ -27,13 +27,8 @@
     margin-top: 1rem;
 
     p {
-      font-size: var(--txt-lg);
       color: var(--txt-gray);
     }
-  }
-
-  :not(.lead) > p:not([class]) {
-    font-size: var(--txt-md);
   }
 
   .digital-id-option .buttons button.primary.sm {
