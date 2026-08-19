@@ -37,6 +37,12 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
               description="ResetPasswordEnterEmail lead text"
             />
           </p>
+          <p>
+            <FormattedMessage
+              defaultMessage="If you have already received a code, click the link below to enter it."
+              description="ResetPasswordEnterEmail already have code text"
+            />
+          </p>
         </div>
       </section>
       <section>
@@ -45,19 +51,16 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
           disabled={email_status === "requested"}
           defaultEmail={email_address}
         />
-        <span>
-          <FormattedMessage
-            defaultMessage="Already have a code from an earlier email?"
-            description="Reset Password enter code link lead"
-          />
-        </span>
-        &nbsp;
+        {/* <span>
+            <FormattedMessage defaultMessage="Already have a code?" description="Reset Password enter code link lead" />
+          </span>
+          &nbsp; */}
         <EduIDButton
           buttonstyle="link normal-case text-large"
           id="reset-password-enter-code"
           onClick={() => dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_CODE"))}
         >
-          <FormattedMessage defaultMessage="Enter your code instead" description="Reset Password enter code link" />
+          <FormattedMessage defaultMessage="Enter your code" description="Reset Password enter code link" />
         </EduIDButton>
       </section>
       <ResetPasswordStepIndicator currentStep={1} />

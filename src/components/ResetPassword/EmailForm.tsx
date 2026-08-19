@@ -42,28 +42,26 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
 
         return (
           <form id="reset-password-form" onSubmit={formProps.handleSubmit}>
-            <fieldset>
-              <EmailInput
-                name="email"
-                autoFocus={true}
-                required={true}
-                autoComplete="username"
-                defaultValue={props.defaultEmail}
-              />
+            <EmailInput
+              name="email"
+              autoFocus={true}
+              required={true}
+              autoComplete="username"
+              defaultValue={props.defaultEmail}
+            />
 
-              <div className="buttons">
-                <GoBackButton />
-                <EduIDButton
-                  buttonstyle="primary"
-                  id="reset-password-button"
-                  disabled={_disabled}
-                  type="submit"
-                  onClick={formProps.handleSubmit}
-                >
-                  <FormattedMessage defaultMessage="send email" description="Reset Password button" />
-                </EduIDButton>
-              </div>
-            </fieldset>
+            <div className="buttons">
+              <GoBackButton />
+              <EduIDButton
+                buttonstyle="primary"
+                id="reset-password-button"
+                disabled={_disabled}
+                type="submit"
+                onClick={formProps.handleSubmit}
+              >
+                <FormattedMessage defaultMessage="send email" description="Reset Password button" />
+              </EduIDButton>
+            </div>
           </form>
         );
       }}
