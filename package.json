@@ -13,7 +13,8 @@
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
     "stylelint": "stylelint '**/*.css'",
-    "stylelint:fix": "stylelint '**/*.css' --fix"
+    "stylelint:fix": "stylelint '**/*.css' --fix",
+    "stylelint:ci": "stylelint 'src/**/*.css'"
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
