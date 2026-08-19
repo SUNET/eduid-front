@@ -7,6 +7,7 @@ label,
   line-height: 1;
   color: var(--body-txt);
   margin: 0 5px 5px 0;
+  width: 100%;
 }
 
 .border-toggle-area {

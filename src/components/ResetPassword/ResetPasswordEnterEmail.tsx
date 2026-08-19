@@ -39,17 +39,18 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
           </p>
         </div>
       </section>
-
-      <EmailForm
-        passEmailUp={onEnteredEmailAddress}
-        disabled={email_status === "requested"}
-        defaultEmail={email_address}
-      />
-      <p>
-        <FormattedMessage
-          defaultMessage="Already have a code from an earlier email?"
-          description="Reset Password enter code link lead"
+      <section>
+        <EmailForm
+          passEmailUp={onEnteredEmailAddress}
+          disabled={email_status === "requested"}
+          defaultEmail={email_address}
         />
+        <span>
+          <FormattedMessage
+            defaultMessage="Already have a code from an earlier email?"
+            description="Reset Password enter code link lead"
+          />
+        </span>
         &nbsp;
         <EduIDButton
           buttonstyle="link normal-case text-large"
@@ -58,7 +59,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         >
           <FormattedMessage defaultMessage="Enter your code instead" description="Reset Password enter code link" />
         </EduIDButton>
-      </p>
+      </section>
       <ResetPasswordStepIndicator currentStep={1} />
     </div>
   );

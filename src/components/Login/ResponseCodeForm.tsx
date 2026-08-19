@@ -59,12 +59,13 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
   const autoFocusCode = props.autoFocusCode ?? true;
-
   return (
     <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
       {props.extraFields}
-
       <div className="response-code-inputs">
+        <label htmlFor="v[0]" className="required">
+          <FormattedMessage defaultMessage="Code" description="email code" />
+        </label>
         <CodeField num={0} readonly={props.inputsDisabled} autoFocus={autoFocusCode && !props.inputsDisabled} />
         <CodeField num={1} readonly={props.inputsDisabled} />
         <CodeField num={2} readonly={props.inputsDisabled} />

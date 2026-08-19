@@ -140,7 +140,8 @@ fieldset {
   margin-top: 5px;
 }
 
-.input-label-help-text-container {
+.input-label-help-text-container,
+.response-code-inputs {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
