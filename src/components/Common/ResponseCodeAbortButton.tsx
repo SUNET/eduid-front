@@ -19,18 +19,22 @@ interface ResponseCodeAbortButtonProps {
   handleAbortButtonOnClick: (event?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export function ResponseCodeButtons({ formProps, handleAbortButtonOnClick }: Readonly<ResponseCodeButtonsProps>) {
+export function ResponseCodeButtons({
+  formProps,
+  handleAbortButtonOnClick,
+  requireEmail,
+}: Readonly<ResponseCodeButtonsProps>) {
   if (!formProps) {
     return null;
   }
 
-  const emailMissing = Boolean(props.requireEmail) && !props.formProps.values?.email;
+  const emailMissing = Boolean(requireEmail) && !formProps.values?.email;
 
   // 'convert' from FormRenderProps to a simple "disabled" boolean
   return (
     <ResponseCodeAbortButton
       disabled={formProps.submitting ?? false}
-      invalid={formProps.invalid ?? false}
+      invalid={(formProps.invalid ?? false) || emailMissing}
       submit={formProps.form.submit}
       handleAbortButtonOnClick={handleAbortButtonOnClick}
     />

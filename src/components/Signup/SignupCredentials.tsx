@@ -21,7 +21,9 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 type PasswordRequirement = "default" | "optional" | "required";
 
 const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequirement }>) => {
-  const [isEditMode, setEditMode] = useState(false);
+  const [userToggled, setUserToggled] = useState<boolean | null>(null);
+  const isEditMode = userToggled ?? requirement === "required";
+
   return (
     <>
       <div className="or-container">

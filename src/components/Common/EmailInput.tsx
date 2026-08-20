@@ -25,6 +25,8 @@ export function EmailInput({
   autoComplete,
   helpBlock,
   defaultValue,
+  "aria-invalid": ariaInvalid,
+  "aria-errormessage": ariaErrorMessage,
 }: Readonly<EmailInputProps>) {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
@@ -62,6 +64,8 @@ export function EmailInput({
       placeholder={placeholder}
       validate={validate}
       defaultValue={defaultValue}
+      aria-invalid={ariaInvalid}
+      aria-errormessage={ariaErrorMessage}
       // parameters for InputWrapper
       helpBlock={helpBlock}
       label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}

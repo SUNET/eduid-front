@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useRef } from "react";
+import React, { Fragment, PropsWithChildren, useMemo, useRef } from "react";
 import { Field as FinalField, Form as FinalForm, FormRenderProps, useForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 
@@ -19,28 +19,26 @@ export interface ResponseCodeValues {
   email?: string;
 }
 
-export function ResponseCodeForm({
-  code,
-  bad_attempts,
-  handleSubmitCode,
-  inputsDisabled,
-  children,
-}: PropsWithChildren<ResponseCodeFormProps>) {
-  const valueChars = (code && typeof code === "string" ? code : "").split("");
-  const initialValues: ResponseCodeValues = {
-    v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]],
-  };
+export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>): React.JSX.Element {
+  // Kept stable across renders on purpose. react-final-form compares initialValues shallowly, so a
+  // freshly built object here counts as new initial values on every render of this component, and
+  // re-initialising the form throws away the digits the user has entered. Anything that re-renders
+  // the parent - showing a validation message, a countdown tick - would otherwise clear the code.
+  const initialValues: ResponseCodeValues = useMemo(() => {
+    const valueChars = (props.code && typeof props.code === "string" ? props.code : "").split("");
+    return { v: [valueChars[0], valueChars[1], valueChars[2], valueChars[3], valueChars[4], valueChars[5]] };
+  }, [props.code]);
 
   return (
     <FinalForm<ResponseCodeValues>
       onSubmit={(values) => {
-        handleSubmitCode(values);
+        props.handleSubmitCode(values);
       }}
       initialValues={initialValues}
       render={(formProps) => {
         // Add the formProps to all the children of this component. The children are typically buttons,
         // and they need to know some of the formProps to know if they should be disabled/readonly or not.
-        const childrenWithProps = React.Children.map(children, (child) => {
+        const childrenWithProps = React.Children.map(props.children, (child) => {
           if (React.isValidElement<{ formProps: FormRenderProps<ResponseCodeValues> }>(child)) {
             return React.cloneElement(child, { formProps });
           }
@@ -48,16 +46,17 @@ export function ResponseCodeForm({
         });
 
         return (
-          <>
-            <ShortCodeForm {...formProps} {...{ code, bad_attempts, handleSubmitCode, inputsDisabled }} />
+          <Fragment>
+            <ShortCodeForm {...formProps} {...props} />
             {childrenWithProps}
-          </>
+          </Fragment>
         );
       }}
     />
   );
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
@@ -83,10 +82,18 @@ function ShortCodeForm({
   error,
 }: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
+=======
+function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
+  const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
+  const autoFocusCode = props.autoFocusCode ?? true;
+>>>>>>> 7ee18c778 (resolve issues introduced during merge conflict resolution)
 
   return (
-    <form onSubmit={handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
+    <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
+      {props.extraFields}
+
       <div className="response-code-inputs">
+<<<<<<< HEAD
         <CodeField num={0} readonly={inputsDisabled} autoFocus={!inputsDisabled} />
         <CodeField num={1} readonly={inputsDisabled} />
         <CodeField num={2} readonly={inputsDisabled} />
@@ -94,6 +101,14 @@ function ShortCodeForm({
         <CodeField num={4} readonly={inputsDisabled} />
         <CodeField num={5} readonly={inputsDisabled} />
 >>>>>>> 4d7dae567 (destructure component props for readability)
+=======
+        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={autoFocusCode && !props.inputsDisabled} />
+        <CodeField num={1} readonly={props.inputsDisabled} />
+        <CodeField num={2} readonly={props.inputsDisabled} />
+        <CodeField num={3} readonly={props.inputsDisabled} />
+        <CodeField num={4} readonly={props.inputsDisabled} />
+        <CodeField num={5} readonly={props.inputsDisabled} />
+>>>>>>> 7ee18c778 (resolve issues introduced during merge conflict resolution)
       </div>
 
       {showBadAttempts && (
@@ -104,7 +119,7 @@ function ShortCodeForm({
         </div>
       )}
 
-      {error && <p>{error}</p>}
+      {props.error && <p>{props.error}</p>}
     </form>
   );
 }

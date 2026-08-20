@@ -1,10 +1,9 @@
 import { eidasApi } from "apis/eduidEidas";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { NotificationModal } from "components/Common/NotificationModal";
+import { FREJA_EID_FOREIGN_INSTRUCTION_URL_SV } from "helperFunctions/constants";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-
-export const FREJA_EID_URL = "https://frejaeid.com/skaffa-freja-eid/";
 
 // Temporary instructions until Sweden Connect has more alternatives and we have a DS
 function FrejaInstructions() {
@@ -46,7 +45,7 @@ function FrejaInstructions() {
           />
         </li>
       </ol>
-      <a href={FREJA_EID_URL} target="_blank" rel="noreferrer">
+      <a href={FREJA_EID_FOREIGN_INSTRUCTION_URL_SV} target="_blank" rel="noreferrer">
         <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
       </a>
     </div>
@@ -75,7 +74,7 @@ export function Eidas() {
             {freja_eid_link} app.`}
           values={{
             freja_eid_link: (
-              <a href={FREJA_EID_URL} target="_blank" rel="noreferrer">
+              <a href={FREJA_EID_FOREIGN_INSTRUCTION_URL_SV} target="_blank" rel="noreferrer">
                 Freja
               </a>
             ),

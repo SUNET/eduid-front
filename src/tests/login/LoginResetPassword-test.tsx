@@ -11,13 +11,9 @@ import {
 } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
-<<<<<<< HEAD
-import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
-import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
-=======
 import { IndexMain } from "components/IndexMain";
+import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
 import { LOGIN_BASE_PATH } from "helperFunctions/paths";
->>>>>>> fd3f1e27f (apply consistent fetchStatus pattern across all ExternalReturnHandler components)
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";
@@ -62,7 +58,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
       const body = (await request.json()) as LoginNextRequest;
-      if (body.ref !== ref) {
+      if (body.ref != ref) {
         return new Response(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
@@ -77,7 +73,7 @@ test("can click 'forgot password' with an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
-      if (body.email !== email) {
+      if (body.email != email) {
         return new Response(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
@@ -152,7 +148,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
   mswServer.use(
     http.post("https://idp.eduid.docker/services/idp/next", async ({ request }) => {
       const body = (await request.json()) as LoginNextRequest;
-      if (body.ref !== ref) {
+      if (body.ref != ref) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: LoginNextResponse = {
@@ -167,7 +163,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/", async ({ request }) => {
       const body = (await request.json()) as RequestEmailLinkRequest;
-      if (body.email !== email) {
+      if (body.email != email) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: RequestEmailLinkResponse = {
@@ -180,7 +176,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     }),
     http.post("https://idp.eduid.docker/services/reset-password/verify-email", async ({ request }) => {
       const body = (await request.json()) as VerifyCodeRequest;
-      if (body.email_code !== code) {
+      if (body.email_code != code) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: VerifyCodeResponse = {
@@ -197,7 +193,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
       "https://idp.eduid.docker/services/reset-password/new-password-extra-security-token",
       async ({ request }) => {
         const body = (await request.json()) as NewPasswordRequest;
-        if (body.email_code !== code || body.password !== TEST_PASSWORD) {
+        if (body.email_code != code || body.password != TEST_PASSWORD) {
           return new HttpResponse(null, { status: 400 });
         }
         const payload: NewPasswordResponse = {};
@@ -206,7 +202,7 @@ test("can click 'forgot password' without an e-mail address", async () => {
     ),
     http.post("https://idp.eduid.docker/services/reset-password/new-password", async ({ request }) => {
       const body = (await request.json()) as NewPasswordRequest;
-      if (body.email_code !== code || body.password !== TEST_PASSWORD) {
+      if (body.email_code != code || body.password != TEST_PASSWORD) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: NewPasswordResponse = {};
