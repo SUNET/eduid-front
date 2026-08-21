@@ -4,7 +4,12 @@ import { FailureComponentProps } from "./Errors";
 import { OtherError } from "./OtherError";
 
 export function EduidError(props: Readonly<FailureComponentProps>): React.JSX.Element {
-  if (props.errorURL.rp === "authn" && props.errorURL.ctx === "saml_response_fail") {
+  // saml_response_unsolicited means the SAML response did not establish a session either, so it
+  // gets the same message as saml_response_fail.
+  if (
+    props.errorURL.rp === "authn" &&
+    (props.errorURL.ctx === "saml_response_fail" || props.errorURL.ctx === "saml_response_unsolicited")
+  ) {
     return <NotLoggedIn />;
   }
   return <OtherError />;
