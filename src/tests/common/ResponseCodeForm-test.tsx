@@ -1,6 +1,6 @@
 import { userEvent } from "@testing-library/user-event";
-import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import EmailInput from "components/Common/EmailInput";
+import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { codeFormTestId, ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { render, screen, within } from "../helperFunctions/LoginTestApp-rtl";
 
@@ -39,7 +39,7 @@ test("renders the extra field inside the code form, focuses it instead of the fi
 
   // The Ok/Cancel buttons are rendered as ResponseCodeForm's children, alongside (not inside)
   // the <form>, mirroring real usage in EmailLinkSent and SignupEnterCode.
-  await user.click(screen.getByRole("button", { name: /ok/i }));
+  await user.click(screen.getByRole("button", { name: /continue/i }));
 
   expect(submitted).toEqual([{ email: "a@b.se", v: code }]);
 });

@@ -62,7 +62,7 @@ test("submits the email address together with the code, and proceeds to the new-
   await user.type(form.getByRole("textbox"), email);
   await typeCode(form);
 
-  await user.click(screen.getByRole("button", { name: /^ok$/i }));
+  await user.click(screen.getByRole("button", { name: /^continue$/i }));
 
   await waitFor(() => {
     expect(requests).toEqual([expect.objectContaining({ email, email_code: "123456" })]);
@@ -97,7 +97,7 @@ test("prefills the email field from the address the reset was started with", asy
   expect(form.getByRole("textbox")).toHaveValue(email);
 
   await typeCode(form);
-  await user.click(screen.getByRole("button", { name: /^ok$/i }));
+  await user.click(screen.getByRole("button", { name: /^continue$/i }));
 
   await waitFor(() => {
     expect(requests).toEqual([expect.objectContaining({ email, email_code: "123456" })]);
@@ -149,7 +149,7 @@ test("keeps the Ok button disabled while the email field is empty", async () => 
   const form = getCodeForm();
   await typeCode(form);
 
-  // All six digits are filled in, but the email field was never touched - Ok must stay disabled
+  // All six digits are filled in, but the email field was never touched - Continue must stay disabled
   // so the user isn't left with a dead click and no explanation.
-  expect(screen.getByRole("button", { name: /^ok$/i })).toBeDisabled();
+  expect(screen.getByRole("button", { name: /^Continue$/i })).toBeDisabled();
 });
