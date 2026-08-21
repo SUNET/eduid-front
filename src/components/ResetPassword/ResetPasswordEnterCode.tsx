@@ -22,7 +22,7 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
   const [emailMissing, setEmailMissing] = useState(false);
-  console.log("hhhhhhhh");
+
   async function handleSubmitCode(values: ResponseCodeValues) {
     const email_code = values.v.join("");
     const email = values.email ?? email_address;
