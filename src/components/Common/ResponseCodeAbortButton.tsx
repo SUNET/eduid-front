@@ -57,7 +57,7 @@ export function ResponseCodeAbortButton(
         id="response-code-ok-button"
         disabled={props.invalid}
       >
-        <FormattedMessage defaultMessage="Ok" description="Short code form Ok button" />
+        <FormattedMessage defaultMessage="Continue" description="Short code form Continue button" />
       </EduIDButton>
     </div>
   );
