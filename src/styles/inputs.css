@@ -98,6 +98,7 @@ input[type="radio"] {
   /* remove standard background appearance */
   appearance: none;
   outline: none;
+  margin: 0;
 
   /* create custom radio button appearance */
   display: inline-block;
