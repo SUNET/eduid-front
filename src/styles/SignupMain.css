@@ -79,6 +79,9 @@ h3 {
         margin-right: 1.5rem;
       }
     }
+    input#v\[0\] {
+      margin-left: 0;
+    }
   }
 
   @media (--bp-md) {
