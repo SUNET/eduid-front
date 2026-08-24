@@ -631,6 +631,10 @@
     "developer_comment": "ErrorURL other error",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
   },
+  "ASK0xq": {
+    "developer_comment": "Reset Password code expiry",
+    "string": "Koden är giltig i 2 timmar."
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Skriv in koden du fått hemskickad"
@@ -733,6 +737,10 @@
   },
   "Dj23mq": {
     "string": "Använd BankID, Freja, eIDAS eller Freja eID för att registrera dig. Ditt namn och din identitet verifieras automatiskt."
+  },
+  "DjPYGu": {
+    "developer_comment": "email code",
+    "string": "Kod"
   },
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
@@ -929,6 +937,10 @@
   "GcpVPo": {
     "developer_comment": "security last used",
     "string": "Använd:"
+  },
+  "GfjCCL": {
+    "developer_comment": "Short code form Continue button",
+    "string": "Fortsätt"
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -1260,6 +1272,10 @@
     "developer_comment": "delete.confirm_button",
     "string": "Bekräfta"
   },
+  "Nrv54G": {
+    "developer_comment": "Reset Password enter code link",
+    "string": "Använd din kod"
+  },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID-identifierare"
@@ -1295,10 +1311,6 @@
   "ONk9/l": {
     "developer_comment": "method international - paragraph",
     "string": ", kan du använda {emphasis} med hjälp av ditt pass för att verifiera din identitet. Läs mer om Freja nedan."
-  },
-  "OOZ1Jb": {
-    "developer_comment": "Short code form Ok button",
-    "string": "Ok"
   },
   "OV+zb2": {
     "developer_comment": "resetpw step3",
@@ -2070,6 +2082,10 @@
     "developer_comment": "Edit Names & Display Name",
     "string": "Ändra namn & visningsnamn"
   },
+  "bKpxM0": {
+    "developer_comment": "ResetPasswordEnterEmail already have code text",
+    "string": "Om du redan har mottagit en kod, klicka på länken nedan för att fylla i den."
+  },
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
     "string": "Hur kan jag göra mitt eduID säkrare?"
@@ -2219,10 +2235,6 @@
   },
   "csrf.try-again": {
     "string": "Ett problem uppstod, var vänlig försök igen"
-  },
-  "cy5osj": {
-    "developer_comment": "Reset Password enter code link",
-    "string": "Fyll i din kod istället"
   },
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
@@ -2652,10 +2664,6 @@
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "Det uppstod ett problem som gjorde att det inte gick inte att skapa ditt konto."
-  },
-  "iRDQf0": {
-    "developer_comment": "Reset Password code expiry",
-    "string": "Koden går ut om"
   },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
@@ -3365,10 +3373,6 @@
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "Tjänsten du försöker logga in på kräver en högre säkerhetsnivå. Ditt eduID-konto har inte konfigurerats med något av de tillgängliga alternativen för detta."
-  },
-  "r41PMP": {
-    "developer_comment": "Reset Password enter code link lead",
-    "string": "Har du redan en kod från ett tidigare mejl?"
   },
   "rB8pRP": {
     "string": "Skanna QR-koden med din andra enhet"
