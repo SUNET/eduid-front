@@ -79,7 +79,8 @@ h3 {
         margin-right: 1.5rem;
       }
     }
-    input#v\[0\] {
+
+    &:first-child {
       margin-left: 0;
     }
   }
