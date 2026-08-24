@@ -135,6 +135,8 @@ fieldset {
   font-family: monospace;
   font-size: var(--txt-xs);
   color: var(--error-red);
+  display: inline-block;
+  margin-top: 5px;
 }
 
 .input-label-help-text-container {
