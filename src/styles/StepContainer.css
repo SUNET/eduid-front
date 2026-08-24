@@ -76,10 +76,15 @@
     }
   }
 
-  .register-password .heading {
+  .heading {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    @media (--bp-sm) {
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
   }
 
   #copy-new-password {
