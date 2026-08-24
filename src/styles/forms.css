@@ -140,7 +140,8 @@ fieldset {
   margin-top: 5px;
 }
 
-.input-label-help-text-container {
+.input-label-help-text-container,
+.response-code-inputs {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
@@ -148,6 +149,7 @@ fieldset {
   & label {
     letter-spacing: 0;
     font-size: var(--txt-md);
+    width: 100%;
   }
 
   /* for orange asterisk after label */

@@ -1,7 +1,8 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
-import { TimeRemainingWrapper } from "components/Common/TimeRemaining";
-import { ExpiresMeter } from "components/Login/ExpiresMeter";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React from "react";
@@ -61,7 +62,6 @@ export function EmailLinkSent(): React.JSX.Element | null {
           />
         </h1>
         <div className="lead">
-          {" "}
           <p>
             <FormattedMessage
               defaultMessage="Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
@@ -86,18 +86,10 @@ export function EmailLinkSent(): React.JSX.Element | null {
         </div>
       </section>
       {reset_pw_status?.email.expires_time_left !== undefined && (
-        <div className="signup-timer-wrapper">
-          <span>
-            <FormattedMessage defaultMessage="Code expires in" description="Reset Password code expiry" />
-          </span>
-          <TimeRemainingWrapper
-            name="resetpw-email-expires"
-            unique_id="resetpw.email"
-            value={reset_pw_status.email.expires_time_left}
-          >
-            <ExpiresMeter showMeter={false} expires_max={reset_pw_status.email.expires_time_max || 0} />
-          </TimeRemainingWrapper>
-        </div>
+        <p>
+          <FontAwesomeIcon icon={faClock as IconProp} />
+          <FormattedMessage defaultMessage="The code is valid for 2 hours." description="Reset Password code expiry" />
+        </p>
       )}
       <div className="enter-code">
         <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>

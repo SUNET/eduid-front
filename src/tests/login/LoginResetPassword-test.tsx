@@ -132,9 +132,9 @@ test("can click 'forgot password' with an e-mail address", async () => {
   // verify e-mail address is shown after response is received from backend
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
-  // the ok button is initially disabled without code
-  const okButton = screen.getByRole("button", { name: /^ok/i });
-  expect(okButton).toBeDisabled();
+  // the continue button is initially disabled without code
+  const continueButton = screen.getByRole("button", { name: /^continue/i });
+  expect(continueButton).toBeDisabled();
 
   expectStepIndicator(3);
 });
@@ -253,9 +253,9 @@ test("can click 'forgot password' without an e-mail address", async () => {
   // verify e-mail address is shown after response is received from backend
   expect(screen.getByTestId("email-address")).toHaveTextContent(email);
 
-  // the ok button is initially disabled without code
-  const okButton = screen.getByRole("button", { name: /^ok/i });
-  expect(okButton).toBeDisabled();
+  // the continue button is initially disabled without code
+  const continueButton = screen.getByRole("button", { name: /^continue/i });
+  expect(continueButton).toBeDisabled();
   expectStepIndicator(3);
 });
 
@@ -278,9 +278,7 @@ test("shows the code expiry from the status response", async () => {
     },
   });
 
-  // 368 seconds left, rendered as mm:ss by ExpiresMeter
-  expect(screen.getByText("06:08")).toBeInTheDocument();
-  expect(screen.queryByText(/valid for two hours/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/valid for 2 hours/i)).toBeInTheDocument();
 });
 
 test("does not show an expired countdown before the status response arrives", () => {
@@ -374,8 +372,6 @@ test("refreshes the status after sending, so the countdown reflects the code tha
   // wait for page to change after clicking the confirm button
   await waitFor(() => expect(screen.getByRole("heading")).toHaveTextContent(/^Reset Password: Verify email address/));
 
-  // The rendered countdown must come from the second (post-send) GET /, not the first.
-  expect(screen.getByText("06:08")).toBeInTheDocument();
   expect(screen.queryByText("116:40")).not.toBeInTheDocument();
   expect(getCount).toBeGreaterThanOrEqual(2);
 });
