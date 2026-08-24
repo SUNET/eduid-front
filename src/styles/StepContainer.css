@@ -27,13 +27,8 @@
     margin-top: 1rem;
 
     p {
-      font-size: var(--txt-lg);
       color: var(--txt-gray);
     }
-  }
-
-  :not(.lead) > p:not([class]) {
-    font-size: var(--txt-md);
   }
 
   .digital-id-option .buttons button.primary.sm {
@@ -81,10 +76,15 @@
     }
   }
 
-  .register-password .heading {
+  .heading {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    @media (--bp-sm) {
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
   }
 
   #copy-new-password {

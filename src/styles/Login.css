@@ -246,23 +246,6 @@
   }
 }
 
-/* MFA or-line */
-.or-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  margin: 2rem auto 0;
-  color: var(--txt-gray);
-
-  .line {
-    flex: 1;
-    height: 1px;
-    background-color: var(--border-gray);
-  }
-}
-
 /* security zone info */
 section.intro .status-box {
   margin-bottom: 2rem;
