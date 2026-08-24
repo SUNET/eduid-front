@@ -155,6 +155,7 @@ button.link {
   margin: 0;
   text-decoration: none;
   padding: 0;
+  line-height: 1.25;
 
   &:hover,
   &:active {
