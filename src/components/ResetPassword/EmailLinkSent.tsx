@@ -1,3 +1,6 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
@@ -83,14 +86,10 @@ export function EmailLinkSent(): React.JSX.Element | null {
         </div>
       </section>
       {reset_pw_status?.email.expires_time_left !== undefined && (
-        <div className="suggestion-txt">
-          <p>
-            <FormattedMessage
-              defaultMessage="The code is valid for 2 hours."
-              description="Reset Password code expiry"
-            />
-          </p>
-        </div>
+        <p>
+          <FontAwesomeIcon icon={faClock as IconProp} />
+          <FormattedMessage defaultMessage="The code is valid for 2 hours." description="Reset Password code expiry" />
+        </p>
       )}
       <div className="enter-code">
         <ResponseCodeForm inputsDisabled={false} handleSubmitCode={handleSubmitCode}>
