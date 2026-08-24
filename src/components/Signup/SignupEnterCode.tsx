@@ -151,9 +151,9 @@ export function SignupEnterCode(): React.JSX.Element {
         </section>
 
         <div className="signup-timer-wrapper">
-          <p>
+          <span>
             <FormattedMessage defaultMessage="Code expires in" description="Short code form" />
-          </p>
+          </span>
           <TimeRemainingWrapper
             name="signup-email-expires"
             unique_id="signup.email"

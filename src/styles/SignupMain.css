@@ -20,9 +20,10 @@ h3 {
 
 .signup-timer-wrapper {
   display: flex;
+  align-items: center;
 
-  p {
-    margin-right: 10px;
+  span {
+    margin-right: 0.5rem;
   }
 }
 

@@ -87,9 +87,9 @@ export function EmailLinkSent(): React.JSX.Element | null {
       </section>
       {reset_pw_status?.email.expires_time_left !== undefined && (
         <div className="signup-timer-wrapper">
-          <p>
+          <span>
             <FormattedMessage defaultMessage="Code expires in" description="Reset Password code expiry" />
-          </p>
+          </span>
           <TimeRemainingWrapper
             name="resetpw-email-expires"
             unique_id="resetpw.email"
