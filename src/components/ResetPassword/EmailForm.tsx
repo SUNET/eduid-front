@@ -3,7 +3,8 @@ import { FormattedMessage } from "react-intl";
 
 import EduIDButton from "components/Common/EduIDButton";
 import EmailInput from "components/Common/EmailInput";
-import { GoBackButton } from "./GoBackButton";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import resetPasswordSlice from "slices/ResetPassword";
 
 export interface EmailFormProps {
   passEmailUp: (email: string) => void;
@@ -15,6 +16,9 @@ export interface EmailFormData {
 }
 
 export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
+  const dispatch = useAppDispatch();
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+
   const submitEmailForm = (values: EmailFormData) => {
     const errors: EmailFormData = {};
 
@@ -25,6 +29,13 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
     }
 
     return errors;
+  };
+
+  const handleCancel = () => {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+    }
+    dispatch(resetPasswordSlice.actions.resetEmailStatus());
   };
 
   return (
@@ -51,7 +62,9 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
             />
 
             <div className="buttons">
-              <GoBackButton />
+              <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={handleCancel}>
+                <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+              </EduIDButton>
               <EduIDButton
                 buttonstyle="primary"
                 id="reset-password-button"
