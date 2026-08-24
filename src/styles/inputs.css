@@ -337,5 +337,9 @@ input:-webkit-autofill {
 @media (--bp-md) {
   .radio-input-container {
     flex-direction: column;
+
+    label {
+      margin-bottom: 10px;
+    }
   }
 }
