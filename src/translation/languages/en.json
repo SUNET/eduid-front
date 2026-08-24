@@ -631,6 +631,10 @@
     "developer_comment": "ErrorURL other error",
     "string": "You may need to confirm your identity in the eduID Dashboard before trying again."
   },
+  "ASK0xq": {
+    "developer_comment": "Reset Password code expiry",
+    "string": "The code is valid for 2 hours."
+  },
   "AzNlzq": {
     "developer_comment": "explanation text for letter proofing",
     "string": "Add the code you have received by post"
@@ -733,6 +737,10 @@
   },
   "Dj23mq": {
     "string": "Use BankID, Freja, eIDAS or Freja eID to register. Your name and identity will be verified automatically."
+  },
+  "DjPYGu": {
+    "developer_comment": "email code",
+    "string": "Code"
   },
   "DjWrG5": {
     "developer_comment": "account eduid - list item 1-1",
@@ -929,6 +937,10 @@
   "GcpVPo": {
     "developer_comment": "security last used",
     "string": "Used:"
+  },
+  "GfjCCL": {
+    "developer_comment": "Short code form Continue button",
+    "string": "Continue"
   },
   "Gjxb1j": {
     "developer_comment": "what is eduID - paragraph 2",
@@ -1260,6 +1272,10 @@
     "developer_comment": "delete.confirm_button",
     "string": "Confirm"
   },
+  "Nrv54G": {
+    "developer_comment": "Reset Password enter code link",
+    "string": "Enter your code"
+  },
   "NuVGSk": {
     "developer_comment": "column eduID identifier label",
     "string": "eduID identifier"
@@ -1295,10 +1311,6 @@
   "ONk9/l": {
     "developer_comment": "method international - paragraph",
     "string": ", you could use {emphasis} to verify your identity using your passport. Read more about Freja below."
-  },
-  "OOZ1Jb": {
-    "developer_comment": "Short code form Ok button",
-    "string": "Ok"
   },
   "OV+zb2": {
     "developer_comment": "resetpw step3",
@@ -2070,6 +2082,10 @@
     "developer_comment": "Edit Names & Display Name",
     "string": "Edit Names & Display Name"
   },
+  "bKpxM0": {
+    "developer_comment": "ResetPasswordEnterEmail already have code text",
+    "string": "If you have already received a code, click the link below to enter it."
+  },
   "bLNNp1": {
     "developer_comment": "how more secure - heading",
     "string": "How can I make my eduID more secure?"
@@ -2219,10 +2235,6 @@
   },
   "csrf.try-again": {
     "string": "There was a problem with your submission, please try again"
-  },
-  "cy5osj": {
-    "developer_comment": "Reset Password enter code link",
-    "string": "Enter your code instead"
   },
   "d+6A8b": {
     "developer_comment": "login eduid - security key list item 3",
@@ -2652,10 +2664,6 @@
   "iPFl3G": {
     "developer_comment": "Signup credentials",
     "string": "There was a problem creating your account."
-  },
-  "iRDQf0": {
-    "developer_comment": "Reset Password code expiry",
-    "string": "The code expires in"
   },
   "iUnunt": {
     "developer_comment": "verify identity verified title",
@@ -3365,10 +3373,6 @@
   "r05joI": {
     "developer_comment": "Login MFA",
     "string": "The service you are trying to log in to requires an extra level of security. Unfortunately, your eduID account isn't set up with any of the options available for that."
-  },
-  "r41PMP": {
-    "developer_comment": "Reset Password enter code link lead",
-    "string": "Already have a code from an earlier email?"
   },
   "rB8pRP": {
     "string": "Scan this QR-code with your other device"
