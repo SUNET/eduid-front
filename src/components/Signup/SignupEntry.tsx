@@ -4,12 +4,12 @@ import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import signupApi from "apis/eduidSignup";
+import CountryFlag from "components/Common/CountryFlag";
 import EduIDButton from "components/Common/EduIDButton";
 import NotificationModal from "components/Common/NotificationModal";
 import Splash from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
-import ReactCountryFlag from "react-country-flag";
 import { FormattedMessage } from "react-intl";
 import { Fragment } from "react/jsx-runtime";
 import { signupSlice } from "slices/Signup";
@@ -63,14 +63,14 @@ export function SignupEntry(): React.JSX.Element {
     }
     if (external_mfa?.country_code) {
       return (
-        <ReactCountryFlag
+        <CountryFlag
           className="flag-icon"
           aria-label={regionNames.of(external_mfa.country_code)}
           countryCode={external_mfa.country_code}
         />
       );
     }
-    return <ReactCountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />;
+    return <CountryFlag className="flag-icon" aria-label="SE" countryCode="SE" />;
   };
 
   const appNameDisplay: Record<string, string> = {
