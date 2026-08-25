@@ -10,7 +10,6 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import React, { Fragment, useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
-import "spin.js/spin.css"; // without this import, the spinner is frozen
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
