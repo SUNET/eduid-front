@@ -91,7 +91,7 @@ test("renders verifyIdentity as expected, verified with eidas", async () => {
 });
 
 test("renders verifyIdentity as expected, verified with freja passport, showing country flag", async () => {
-  render(<VerifyIdentity />, {
+  render(<Identity />, {
     state: {
       config: { ...configInitialState, is_app_loaded: true },
       personal_data: {
