@@ -56,8 +56,6 @@ export function ResponseCodeForm(props: PropsWithChildren<ResponseCodeFormProps>
   );
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
   const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
   const autoFocusCode = props.autoFocusCode ?? true;
@@ -74,41 +72,6 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
         <CodeField num={3} readonly={props.inputsDisabled} />
         <CodeField num={4} readonly={props.inputsDisabled} />
         <CodeField num={5} readonly={props.inputsDisabled} />
-=======
-function ShortCodeForm({
-  bad_attempts,
-  inputsDisabled,
-  handleSubmit,
-  error,
-}: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  const showBadAttempts = Boolean(bad_attempts && bad_attempts > 0);
-=======
-function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCodeFormProps) {
-  const showBadAttempts = Boolean(props.bad_attempts && props.bad_attempts > 0);
-  const autoFocusCode = props.autoFocusCode ?? true;
->>>>>>> 7ee18c778 (resolve issues introduced during merge conflict resolution)
-
-  return (
-    <form onSubmit={props.handleSubmit} className="response-code-form" data-testid={codeFormTestId}>
-      {props.extraFields}
-
-      <div className="response-code-inputs">
-<<<<<<< HEAD
-        <CodeField num={0} readonly={inputsDisabled} autoFocus={!inputsDisabled} />
-        <CodeField num={1} readonly={inputsDisabled} />
-        <CodeField num={2} readonly={inputsDisabled} />
-        <CodeField num={3} readonly={inputsDisabled} />
-        <CodeField num={4} readonly={inputsDisabled} />
-        <CodeField num={5} readonly={inputsDisabled} />
->>>>>>> 4d7dae567 (destructure component props for readability)
-=======
-        <CodeField num={0} readonly={props.inputsDisabled} autoFocus={autoFocusCode && !props.inputsDisabled} />
-        <CodeField num={1} readonly={props.inputsDisabled} />
-        <CodeField num={2} readonly={props.inputsDisabled} />
-        <CodeField num={3} readonly={props.inputsDisabled} />
-        <CodeField num={4} readonly={props.inputsDisabled} />
-        <CodeField num={5} readonly={props.inputsDisabled} />
->>>>>>> 7ee18c778 (resolve issues introduced during merge conflict resolution)
       </div>
 
       {showBadAttempts && (

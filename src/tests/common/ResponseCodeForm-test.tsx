@@ -1,9 +1,5 @@
 import { userEvent } from "@testing-library/user-event";
-<<<<<<< HEAD
-import EmailInput from "components/Common/EmailInput";
-=======
 import { EmailInput } from "components/Common/EmailInput";
->>>>>>> 7ee18c778 (resolve issues introduced during merge conflict resolution)
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { codeFormTestId, ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { render, screen, within } from "../helperFunctions/LoginTestApp-rtl";

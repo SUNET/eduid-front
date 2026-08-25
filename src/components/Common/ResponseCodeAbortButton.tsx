@@ -59,19 +59,8 @@ export function ResponseCodeAbortButton({
       >
         <FormattedMessage defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
-<<<<<<< HEAD
-      <EduIDButton
-        type="submit"
-        buttonstyle="primary"
-        onClick={props.submit}
-        id="response-code-ok-button"
-        disabled={props.invalid}
-      >
-        <FormattedMessage defaultMessage="Continue" description="Short code form Continue button" />
-=======
       <EduIDButton type="submit" buttonstyle="primary" onClick={submit} id="response-code-ok-button" disabled={invalid}>
-        <FormattedMessage defaultMessage="Ok" description="Short code form Ok button" />
->>>>>>> 4d7dae567 (destructure component props for readability)
+        <FormattedMessage defaultMessage="Continue" description="Short code form Continue button" />
       </EduIDButton>
     </div>
   );
