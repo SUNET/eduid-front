@@ -13,8 +13,8 @@ interface CountryFlagProps {
  * dependency, whose default (emoji) mode did the exact same transform.
  */
 export default function CountryFlag(props: Readonly<CountryFlagProps>): React.JSX.Element {
-  const emoji = props.countryCode.toUpperCase().replace(/./g, (c) => String.fromCodePoint(c.charCodeAt(0) + 127397));
-
+  const emoji = props.countryCode.toUpperCase().replace(/./g, (c) => String.fromCodePoint(c.codePointAt(0)! + 127397));
+  console.log("7777");
   return (
     <span role="img" className={props.className} aria-label={props["aria-label"]}>
       {emoji}
