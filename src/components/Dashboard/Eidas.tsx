@@ -13,7 +13,11 @@ function Eidas(): React.JSX.Element {
     <div id="freja-instructions">
       <ol>
         <li>
-          <FormattedMessage id="eidas.frejaInstructionsStep1" description="eidas freja instructions step1" defaultMessage={`Install the app`} />
+          <FormattedMessage
+            id="eidas.frejaInstructionsStep1"
+            description="eidas freja instructions step1"
+            defaultMessage={`Install the app`}
+          />
         </li>
         <li>
           <FormattedMessage
@@ -53,7 +57,11 @@ function Eidas(): React.JSX.Element {
         </li>
       </ol>
       <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
-        <FormattedMessage id="common.whatIsFreja" description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
+        <FormattedMessage
+          id="common.whatIsFreja"
+          description="eidas freja instructions install link"
+          defaultMessage={`What is Freja eID?`}
+        />
       </a>
     </div>
   );
@@ -104,7 +112,13 @@ function Eidas(): React.JSX.Element {
           setShowModal(false);
         }}
         acceptModal={useFrejaeID}
-        acceptButtonText={<FormattedMessage id="eidas.frejaEid" description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
+        acceptButtonText={
+          <FormattedMessage
+            id="eidas.frejaEid"
+            description="eidas freja eid ready"
+            defaultMessage={`Use my Freja eID`}
+          />
+        }
       />
     </Fragment>
   );

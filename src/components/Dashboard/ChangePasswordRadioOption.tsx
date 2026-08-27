@@ -11,7 +11,11 @@ export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOpt
     <fieldset className="toggle-change-password-options">
       <legend className="require">
         <strong>
-          <FormattedMessage id="passwordRadio.change" defaultMessage="Choose an option" description="Change password radio group legend" />
+          <FormattedMessage
+            id="passwordRadio.change"
+            defaultMessage="Choose an option"
+            description="Change password radio group legend"
+          />
         </strong>
       </legend>
       <div className="radio-input-container">
@@ -25,7 +29,11 @@ export function ChangePasswordRadioOption(props: Readonly<ChangePasswordRadioOpt
             onChange={props.handleSwitchChange}
           />
           <span>
-            <FormattedMessage id="passwordRadio.suggestedButton" defaultMessage="Suggested password" description="suggested password radio button" />
+            <FormattedMessage
+              id="passwordRadio.suggestedButton"
+              defaultMessage="Suggested password"
+              description="suggested password radio button"
+            />
           </span>
         </label>
         <label htmlFor="custom-pw">

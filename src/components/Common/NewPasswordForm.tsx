@@ -51,7 +51,13 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
               name="newPassword"
               component={CustomInput}
               required={true}
-              label={<FormattedMessage id="common.repeatNewPassword" defaultMessage="Repeat new password" description="Set new password" />}
+              label={
+                <FormattedMessage
+                  id="common.repeatNewPassword"
+                  defaultMessage="Repeat new password"
+                  description="Set new password"
+                />
+              }
               autoFocus={true}
               placeholder="xxxx xxxx xxxx"
             />

@@ -5,7 +5,11 @@ export const ToUs: { [key: string]: ReactElement } = {
   "1999-v1": (
     <React.Fragment>
       <p>
-        <FormattedMessage id="tou.heading1" defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        <FormattedMessage
+          id="tou.heading1"
+          defaultMessage="The following generally applies:"
+          description="ToU paragraph 1 heading"
+        />
       </p>
       <ul>
         <li>
@@ -24,7 +28,11 @@ export const ToUs: { [key: string]: ReactElement } = {
   "2016-v1": (
     <dl className="terms">
       <dt>
-        <FormattedMessage id="tou.heading1" defaultMessage="The following generally applies:" description="ToU paragraph 1 heading" />
+        <FormattedMessage
+          id="tou.heading1"
+          defaultMessage="The following generally applies:"
+          description="ToU paragraph 1 heading"
+        />
       </dt>
       <dd key="law-compliance">
         <FormattedMessage
@@ -72,7 +80,11 @@ export const ToUs: { [key: string]: ReactElement } = {
         />
       </dd>
       <dd key="conceal-identity">
-        <FormattedMessage id="tou.concealIdentity" defaultMessage="attempts to conceal their user identity" description="ToU second paragraph" />
+        <FormattedMessage
+          id="tou.concealIdentity"
+          defaultMessage="attempts to conceal their user identity"
+          description="ToU second paragraph"
+        />
       </dd>
       <dd key="disrupt-usage">
         <FormattedMessage
@@ -96,10 +108,18 @@ export const ToUs: { [key: string]: ReactElement } = {
         />
       </dd>
       <dd key="infringe-privacy">
-        <FormattedMessage id="tou.privacy" defaultMessage="infringes on the privacy of others" description="ToU second paragraph" />
+        <FormattedMessage
+          id="tou.privacy"
+          defaultMessage="infringes on the privacy of others"
+          description="ToU second paragraph"
+        />
       </dd>
       <dd key="insult-others">
-        <FormattedMessage id="tou.offend" defaultMessage="attempts to insult or offend others" description="ToU second paragraph" />
+        <FormattedMessage
+          id="tou.offend"
+          defaultMessage="attempts to insult or offend others"
+          description="ToU second paragraph"
+        />
       </dd>
     </dl>
   ),

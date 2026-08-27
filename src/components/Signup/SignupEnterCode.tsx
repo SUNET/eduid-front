@@ -88,7 +88,11 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage id="enterCode.create" defaultMessage="Create eduID: Request new email code" description="Signup" />
+            <FormattedMessage
+              id="enterCode.create"
+              defaultMessage="Create eduID: Request new email code"
+              description="Signup"
+            />
           </h1>
           <ServiceInfo />
           <div className="lead">
@@ -131,7 +135,11 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage id="enterCode.createEdu" defaultMessage="Create eduID: Verify email address" description="Signup" />
+            <FormattedMessage
+              id="enterCode.createEdu"
+              defaultMessage="Create eduID: Verify email address"
+              description="Signup"
+            />
           </h1>
           <ServiceInfo />
           <div className="lead">

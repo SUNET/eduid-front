@@ -18,7 +18,11 @@ export function IdentificationFailure(props: Readonly<FailureComponentProps>): R
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage id="identFailure.heading" defaultMessage="Identification failed" description="ErrorURL identification failure" />
+        <FormattedMessage
+          id="identFailure.heading"
+          defaultMessage="Identification failed"
+          description="ErrorURL identification failure"
+        />
       </h1>
       {props.errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
     </React.Fragment>

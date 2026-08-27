@@ -94,7 +94,11 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
         />
         &nbsp;
         <EduIDButton buttonstyle="link normal-case" id="continue-without-security" onClick={continueSetPassword}>
-          <FormattedMessage id="extraSecurities.continue" description="continue reset password" defaultMessage="Continue reset password" />
+          <FormattedMessage
+            id="extraSecurities.continue"
+            description="continue reset password"
+            defaultMessage="Continue reset password"
+          />
         </EduIDButton>
       </p>
       <ResetPasswordStepIndicator currentStep={4} />

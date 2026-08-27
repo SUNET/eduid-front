@@ -91,7 +91,11 @@ export function EmailLinkSent(): React.JSX.Element | null {
       {reset_pw_status?.email.expires_time_left !== undefined && (
         <p>
           <FontAwesomeIcon icon={faClock as IconProp} />
-          <FormattedMessage id="emailLinkSent.code" defaultMessage="The code is valid for 2 hours." description="Reset Password code expiry" />
+          <FormattedMessage
+            id="emailLinkSent.code"
+            defaultMessage="The code is valid for 2 hours."
+            description="Reset Password code expiry"
+          />
         </p>
       )}
       <div className="enter-code">

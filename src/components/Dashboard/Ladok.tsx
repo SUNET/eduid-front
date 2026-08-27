@@ -36,7 +36,11 @@ const LadokContainer = (): React.JSX.Element => {
   return (
     <article className="ladok" id="ladok">
       <h2>
-        <FormattedMessage id="ladok.esiInfoLabel" defaultMessage="ESI information" description="Ladok account linking" />
+        <FormattedMessage
+          id="ladok.esiInfoLabel"
+          defaultMessage="ESI information"
+          description="Ladok account linking"
+        />
       </h2>
 
       <p>
@@ -51,7 +55,11 @@ const LadokContainer = (): React.JSX.Element => {
         <fieldset>
           <label className="toggle flex-between" htmlFor="ladok-connection">
             <legend>
-              <FormattedMessage id="ladok.linkHeading" defaultMessage="Link your account to Ladok" description="Ladok account linking" />
+              <FormattedMessage
+                id="ladok.linkHeading"
+                defaultMessage="Link your account to Ladok"
+                description="Ladok account linking"
+              />
             </legend>
             <input
               onChange={handleSwitchChange}

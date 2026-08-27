@@ -143,7 +143,11 @@ function UserTerminated(): React.JSX.Element {
   return (
     <section>
       <h1>
-        <FormattedMessage id="login.heading" defaultMessage="Account terminated" description="Account terminated - heading" />
+        <FormattedMessage
+          id="login.heading"
+          defaultMessage="Account terminated"
+          description="Account terminated - heading"
+        />
       </h1>
 
       <p>

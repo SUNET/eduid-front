@@ -6,7 +6,11 @@ export function ContactSupport(): React.JSX.Element {
     <AccordionItemTemplate
       uuid="help-contact"
       title={
-        <FormattedMessage id="contactSupport.handle" description="about contact support - handle" defaultMessage="Contacting eduID support" />
+        <FormattedMessage
+          id="contactSupport.handle"
+          description="about contact support - handle"
+          defaultMessage="Contacting eduID support"
+        />
       }
       additionalInfo={null}
     >
@@ -72,7 +76,11 @@ export function ContactSupport(): React.JSX.Element {
           <a href="tel:+468-55521362">08-555 213 62</a>
         </p>
         <p>
-          <FormattedMessage id="contactSupport.opening" description="opening hours - list definition" defaultMessage="Opening hours:" />
+          <FormattedMessage
+            id="contactSupport.opening"
+            description="opening hours - list definition"
+            defaultMessage="Opening hours:"
+          />
         </p>
         <ul className="bullets">
           <li>

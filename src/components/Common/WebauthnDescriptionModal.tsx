@@ -46,12 +46,20 @@ export function WebauthnDescriptionModal({
       closeModal={closeModal}
       handleConfirm={handleConfirm}
       modalFormLabel={
-        <FormattedMessage id="common.securityKey" description="security webauthn credential type" defaultMessage="Security key" />
+        <FormattedMessage
+          id="common.securityKey"
+          description="security webauthn credential type"
+          defaultMessage="Security key"
+        />
       }
       validationPattern={securityKeyPattern}
       validationError="security.description_invalid_format"
       helpBlock={
-        <FormattedMessage id="webauthnModal.help" defaultMessage="max 50 characters" description="Help text for security key max length" />
+        <FormattedMessage
+          id="webauthnModal.help"
+          defaultMessage="max 50 characters"
+          description="Help text for security key max length"
+        />
       }
     />
   );

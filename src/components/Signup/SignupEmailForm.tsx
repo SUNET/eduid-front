@@ -17,7 +17,11 @@ export function SignupEmailForm(): React.JSX.Element {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage id="emailForm.create" defaultMessage="Create eduID: Enter your personal information" description="Signup" />
+          <FormattedMessage
+            id="emailForm.create"
+            defaultMessage="Create eduID: Enter your personal information"
+            description="Signup"
+          />
         </h1>
         <ServiceInfo />
         <div className="lead">
@@ -121,7 +125,9 @@ export function EmailForm() {
                 autoFocus={!state?.external_mfa?.given_name}
                 required={true}
                 placeholder={firstNamePlaceholder}
-                label={<FormattedMessage id="common.firstName" defaultMessage="First name" description="signup first name" />}
+                label={
+                  <FormattedMessage id="common.firstName" defaultMessage="First name" description="signup first name" />
+                }
                 readOnly={!!state?.external_mfa?.given_name}
               />
               <FinalField
@@ -130,7 +136,9 @@ export function EmailForm() {
                 name="surname"
                 required={true}
                 placeholder={lastNamePlaceholder}
-                label={<FormattedMessage id="common.lastName" defaultMessage="Last name" description="signup last name" />}
+                label={
+                  <FormattedMessage id="common.lastName" defaultMessage="Last name" description="signup last name" />
+                }
                 readOnly={!!state?.external_mfa?.surname}
               />
             </div>

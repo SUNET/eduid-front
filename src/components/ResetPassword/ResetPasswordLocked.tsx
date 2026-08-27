@@ -44,7 +44,11 @@ export function ResetPasswordLocked(): React.JSX.Element {
       <form action={dashboard_link ?? "/"} method="GET">
         <div className="buttons">
           <EduIDButton buttonstyle="link normal-case text-large" id="reset-password-locked-exit" type="submit">
-            <FormattedMessage id="locked.button" defaultMessage="Go to login" description="Reset Password locked exit button" />
+            <FormattedMessage
+              id="locked.button"
+              defaultMessage="Go to login"
+              description="Reset Password locked exit button"
+            />
           </EduIDButton>
         </div>
       </form>

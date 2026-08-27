@@ -5,7 +5,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-using-eduid"
-      title={<FormattedMessage id="manageEduIDSettings.handle" description="about eduid settings - handle" defaultMessage="Managing eduID settings" />}
+      title={
+        <FormattedMessage
+          id="manageEduIDSettings.handle"
+          description="about eduid settings - handle"
+          defaultMessage="Managing eduID settings"
+        />
+      }
       additionalInfo={
         <FormattedMessage
           id="manageEduIDSettings.info"
@@ -16,7 +22,11 @@ export function ManageEduIDSettings(): React.JSX.Element {
     >
       <article>
         <h4>
-          <FormattedMessage id="manageEduIDSettings.heading" description="settings eduid - heading" defaultMessage="How do I update my account?" />
+          <FormattedMessage
+            id="manageEduIDSettings.heading"
+            description="settings eduid - heading"
+            defaultMessage="How do I update my account?"
+          />
         </h4>
         <p>
           <FormattedMessage
@@ -29,15 +39,25 @@ export function ManageEduIDSettings(): React.JSX.Element {
         <Accordion id="eduid-settings">
           <AccordionItemTemplate
             uuid="help-start"
-            title={<FormattedMessage id="common.start" description="settings eduid - start handle" defaultMessage="Start" />}
+            title={
+              <FormattedMessage id="common.start" description="settings eduid - start handle" defaultMessage="Start" />
+            }
             additionalInfo={null}
           >
             <p>
-              <FormattedMessage id="manageEduIDSettings.start" description="start eduid - list definition" defaultMessage="The Start page contains:" />
+              <FormattedMessage
+                id="manageEduIDSettings.start"
+                description="start eduid - list definition"
+                defaultMessage="The Start page contains:"
+              />
             </p>
             <ul className="bullets">
               <li>
-                <FormattedMessage id="manageEduIDSettings.start1" description="start eduid - list item 1" defaultMessage="your name" />
+                <FormattedMessage
+                  id="manageEduIDSettings.start1"
+                  description="start eduid - list item 1"
+                  defaultMessage="your name"
+                />
               </li>
               <li>
                 <FormattedMessage
@@ -96,7 +116,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-identity"
-            title={<FormattedMessage id="common.identity" description="settings eduid - identity handle" defaultMessage="Identity" />}
+            title={
+              <FormattedMessage
+                id="common.identity"
+                description="settings eduid - identity handle"
+                defaultMessage="Identity"
+              />
+            }
             additionalInfo={null}
           >
             <p>
@@ -163,7 +189,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-security"
-            title={<FormattedMessage id="common.security" description="settings eduid - security handle" defaultMessage="Security" />}
+            title={
+              <FormattedMessage
+                id="common.security"
+                description="settings eduid - security handle"
+                defaultMessage="Security"
+              />
+            }
             additionalInfo={null}
           >
             <p>
@@ -263,7 +295,13 @@ export function ManageEduIDSettings(): React.JSX.Element {
           </AccordionItemTemplate>
           <AccordionItemTemplate
             uuid="help-Account"
-            title={<FormattedMessage id="common.account" description="settings eduid - account handle" defaultMessage="Account" />}
+            title={
+              <FormattedMessage
+                id="common.account"
+                description="settings eduid - account handle"
+                defaultMessage="Account"
+              />
+            }
             additionalInfo={null}
           >
             <p>
@@ -276,7 +314,11 @@ export function ManageEduIDSettings(): React.JSX.Element {
             <ul className="bullets">
               <li>
                 <strong>
-                  <FormattedMessage id="common.uniqueId" description="account eduid - list item 0-heading" defaultMessage="Unique ID: " />
+                  <FormattedMessage
+                    id="common.uniqueId"
+                    description="account eduid - list item 0-heading"
+                    defaultMessage="Unique ID: "
+                  />
                 </strong>
                 &nbsp;
                 <FormattedMessage
@@ -328,7 +370,11 @@ export function ManageEduIDSettings(): React.JSX.Element {
               </li>
               <li>
                 <strong>
-                  <FormattedMessage id="manageEduIDSettings.heading2" description="account eduid - list item 2-heading" defaultMessage="Language:  " />
+                  <FormattedMessage
+                    id="manageEduIDSettings.heading2"
+                    description="account eduid - list item 2-heading"
+                    defaultMessage="Language:  "
+                  />
                 </strong>
                 &nbsp;
                 <FormattedMessage

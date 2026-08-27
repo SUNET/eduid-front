@@ -40,9 +40,21 @@ function UseOtherDevice1() {
   let error = undefined;
   if (!hasQrCode && other_device) {
     if (other_device.state === "ABORTED") {
-      error = <FormattedMessage id="useOtherDevice1.aborted" defaultMessage="The request has been aborted" description="Use other device" />;
+      error = (
+        <FormattedMessage
+          id="useOtherDevice1.aborted"
+          defaultMessage="The request has been aborted"
+          description="Use other device"
+        />
+      );
     } else {
-      error = <FormattedMessage id="useOtherDevice1.invalid" defaultMessage="The request is not valid anymore" description="Use other device" />;
+      error = (
+        <FormattedMessage
+          id="useOtherDevice1.invalid"
+          defaultMessage="The request is not valid anymore"
+          description="Use other device"
+        />
+      );
     }
   }
 
@@ -194,7 +206,10 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
           <li>
             {response_code_required === false ? (
               <React.Fragment>
-                <FormattedMessage id="useOtherDevice1.click" defaultMessage={`Click "continue" once you have logged in on the other device`} />
+                <FormattedMessage
+                  id="useOtherDevice1.click"
+                  defaultMessage={`Click "continue" once you have logged in on the other device`}
+                />
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="secondary"
@@ -216,7 +231,10 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <FormattedMessage id="useOtherDevice1.enter" defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+                <FormattedMessage
+                  id="useOtherDevice1.enter"
+                  defaultMessage="Enter the six digit response code shown on the other device in the form below"
+                />
                 <div className="expiration-info">
                   <ResponseCodeForm
                     bad_attempts={bad_attempts}

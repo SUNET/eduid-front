@@ -10,14 +10,24 @@ export function AboutEduID(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-about-eduid"
-      title={<FormattedMessage id="aboutEduID.handle" description="about eduid - handle" defaultMessage="About eduID" />}
+      title={
+        <FormattedMessage id="aboutEduID.handle" description="about eduid - handle" defaultMessage="About eduID" />
+      }
       additionalInfo={
-        <FormattedMessage id="aboutEduID.info" description="about eduid - info" defaultMessage="What it is and may be used for" />
+        <FormattedMessage
+          id="aboutEduID.info"
+          description="about eduid - info"
+          defaultMessage="What it is and may be used for"
+        />
       }
     >
       <article>
         <h4>
-          <FormattedMessage id="aboutEduID.eduHeading" description="what is eduID - heading" defaultMessage="What is eduID?" />
+          <FormattedMessage
+            id="aboutEduID.eduHeading"
+            description="what is eduID - heading"
+            defaultMessage="What is eduID?"
+          />
         </h4>
         <p>
           <FormattedMessage
@@ -39,7 +49,11 @@ export function AboutEduID(): React.JSX.Element {
           />
         </p>
         <h4>
-          <FormattedMessage id="aboutEduID.heading" description="why have eduID - heading" defaultMessage="Why have eduID?" />
+          <FormattedMessage
+            id="aboutEduID.heading"
+            description="why have eduID - heading"
+            defaultMessage="Why have eduID?"
+          />
         </h4>
 
         <p>
@@ -64,7 +78,11 @@ export function AboutEduID(): React.JSX.Element {
           />
         </p>
         <h4>
-          <FormattedMessage id="aboutEduID.whenHeading" description="when use eduID - heading" defaultMessage="When will I use eduID?" />
+          <FormattedMessage
+            id="aboutEduID.whenHeading"
+            description="when use eduID - heading"
+            defaultMessage="When will I use eduID?"
+          />
         </h4>
         <p>
           <FormattedMessage
@@ -111,7 +129,11 @@ export function AboutEduID(): React.JSX.Element {
             />
           </li>
           <li>
-            <FormattedMessage id="aboutEduID.when3" description="when use eduID - list item 3" defaultMessage="change university," />
+            <FormattedMessage
+              id="aboutEduID.when3"
+              description="when use eduID - list item 3"
+              defaultMessage="change university,"
+            />
           </li>
           <li>
             <FormattedMessage

@@ -8,7 +8,7 @@ import authnSlice from "slices/Authn";
 export default function UseSecurityKeyToggle(): React.JSX.Element | null {
   const dispatch = useAppDispatch();
   const always_use_security_key = useAppSelector(
-    (state: EduIDAppRootState) => state.personal_data?.response?.preferences?.always_use_security_key
+    (state: EduIDAppRootState) => state.personal_data?.response?.preferences?.always_use_security_key,
   );
   const [switchChecked, setSwitchChecked] = useState(always_use_security_key);
   const frontend_action = useAppSelector((state: EduIDAppRootState) => state.authn.response?.frontend_action);

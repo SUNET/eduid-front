@@ -9,18 +9,38 @@ export function UsingEduID(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-using-eduid"
-      title={<FormattedMessage id="usingEduID.usingHandle" description="about using eduid - handle" defaultMessage="Using eduID" />}
+      title={
+        <FormattedMessage
+          id="usingEduID.usingHandle"
+          description="about using eduid - handle"
+          defaultMessage="Using eduID"
+        />
+      }
       additionalInfo={
-        <FormattedMessage id="usingEduID.info" description="about using eduid - info" defaultMessage="Create and login with account" />
+        <FormattedMessage
+          id="usingEduID.info"
+          description="about using eduid - info"
+          defaultMessage="Create and login with account"
+        />
       }
     >
       <h4>
-        <FormattedMessage id="usingEduID.createHeading" description="create eduid - heading" defaultMessage="How do I get an account?" />
+        <FormattedMessage
+          id="usingEduID.createHeading"
+          description="create eduid - heading"
+          defaultMessage="How do I get an account?"
+        />
       </h4>
       <Accordion id="eduid-create">
         <AccordionItemTemplate
           uuid="help-create"
-          title={<FormattedMessage id="usingEduID.createHandle" description="how create eduid - handle" defaultMessage="Create an eduID" />}
+          title={
+            <FormattedMessage
+              id="usingEduID.createHandle"
+              description="how create eduid - handle"
+              defaultMessage="Create an eduID"
+            />
+          }
           additionalInfo={null}
         >
           <p>
@@ -99,12 +119,22 @@ export function UsingEduID(): React.JSX.Element {
       </Accordion>
 
       <h4>
-        <FormattedMessage id="usingEduID.heading" description="login eduid - heading" defaultMessage="How do I log in with my account?" />
+        <FormattedMessage
+          id="usingEduID.heading"
+          description="login eduid - heading"
+          defaultMessage="How do I log in with my account?"
+        />
       </h4>
       <Accordion id="eduid-login">
         <AccordionItemTemplate
           uuid="help-login"
-          title={<FormattedMessage id="usingEduID.loginHandle" description="login eduid - handle" defaultMessage="Log in with eduID" />}
+          title={
+            <FormattedMessage
+              id="usingEduID.loginHandle"
+              description="login eduid - handle"
+              defaultMessage="Log in with eduID"
+            />
+          }
           additionalInfo={null}
         >
           <dl className="link-list">
@@ -144,7 +174,11 @@ export function UsingEduID(): React.JSX.Element {
             </dd>
             <dd>
               <a href="#loginPasskeyHeading">
-                <FormattedMessage id="usingEduID.loginEduidPasskey" description="login eduid - passkey heading" defaultMessage={`With Passkey`} />
+                <FormattedMessage
+                  id="usingEduID.loginEduidPasskey"
+                  description="login eduid - passkey heading"
+                  defaultMessage={`With Passkey`}
+                />
               </a>
             </dd>
             <dd>
@@ -216,7 +250,11 @@ export function UsingEduID(): React.JSX.Element {
           </article>
           <article>
             <h5 id="loginSecurityKeyHeading">
-              <FormattedMessage id="usingEduID.loginEduidHeading" description="login eduid - security key heading" defaultMessage={`With security key`} />
+              <FormattedMessage
+                id="usingEduID.loginEduidHeading"
+                description="login eduid - security key heading"
+                defaultMessage={`With security key`}
+              />
             </h5>
             <p>
               <FormattedMessage
@@ -261,7 +299,11 @@ export function UsingEduID(): React.JSX.Element {
           </article>
           <article>
             <h5 id="loginPasskeyHeading">
-              <FormattedMessage id="usingEduID.loginEduidPasskey" description="login eduid - passkey heading" defaultMessage={`With Passkey`} />
+              <FormattedMessage
+                id="usingEduID.loginEduidPasskey"
+                description="login eduid - passkey heading"
+                defaultMessage={`With Passkey`}
+              />
             </h5>
             <p>
               <FormattedMessage
@@ -352,7 +394,11 @@ export function UsingEduID(): React.JSX.Element {
           </article>
           <article>
             <h5 id="loginOtherDeviceHeading">
-              <FormattedMessage id="usingEduID.login" description="login eduid - other device heading" defaultMessage="With another device" />
+              <FormattedMessage
+                id="usingEduID.login"
+                description="login eduid - other device heading"
+                defaultMessage="With another device"
+              />
             </h5>
             <p>
               <FormattedMessage

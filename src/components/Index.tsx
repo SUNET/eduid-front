@@ -45,7 +45,11 @@ export function Index() {
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
       <div className="landing-content horizontal-content-margin">
         <h1 className="tagline">
-          <FormattedMessage id="index.edu" defaultMessage="Safer and easier login with eduID" description="eduID index" />
+          <FormattedMessage
+            id="index.edu"
+            defaultMessage="Safer and easier login with eduID"
+            description="eduID index"
+          />
         </h1>
         <p>
           <strong>
@@ -103,7 +107,11 @@ export function Index() {
       </div>
       <div className="flex-between landing-how-to">
         <div>
-          <FormattedMessage id="index.how1" defaultMessage="Create a basic account with your email address." description="how-to 1" />
+          <FormattedMessage
+            id="index.how1"
+            defaultMessage="Create a basic account with your email address."
+            description="how-to 1"
+          />
 
           <span className="icon-holder">
             <img height="24" src={registerIcon} alt="Create account" />
@@ -124,7 +132,11 @@ export function Index() {
           </span>
         </div>
         <div>
-          <FormattedMessage id="index.how4" defaultMessage="Level up again - proving that YOU are logging in." description="how-to 4" />
+          <FormattedMessage
+            id="index.how4"
+            defaultMessage="Level up again - proving that YOU are logging in."
+            description="how-to 4"
+          />
 
           <span className="icon-holder">
             <FontAwesomeIcon icon={faIdCard as IconProp} />

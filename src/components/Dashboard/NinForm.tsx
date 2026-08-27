@@ -127,7 +127,9 @@ function NinForm(): React.JSX.Element {
               name="nin"
               label={<FormattedMessage id="ninForm.label" description="nin label" defaultMessage="ID number" />}
               placeholder={placeholder}
-              helpBlock={<FormattedMessage id="ninForm.nins" description="nins input help text" defaultMessage="12 digits" />}
+              helpBlock={
+                <FormattedMessage id="ninForm.nins" description="nins input help text" defaultMessage="12 digits" />
+              }
               validate={validateNin}
             />
             <div className="buttons">

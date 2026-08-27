@@ -55,10 +55,20 @@ export function MultiFactorAuth(): React.JSX.Element {
 
   if (securityZoneAction) {
     headingText = (
-      <FormattedMessage id="multiFactorAuth.heading" defaultMessage="Re-authentication: with MFA" description="Security zone MFA heading" />
+      <FormattedMessage
+        id="multiFactorAuth.heading"
+        defaultMessage="Re-authentication: with MFA"
+        description="Security zone MFA heading"
+      />
     );
   } else if (has_session) {
-    headingText = <FormattedMessage id="multiFactorAuth.mfaHeading" defaultMessage="Log in: with MFA" description="Login MFA heading" />;
+    headingText = (
+      <FormattedMessage
+        id="multiFactorAuth.mfaHeading"
+        defaultMessage="Log in: with MFA"
+        description="Login MFA heading"
+      />
+    );
   } else {
     headingText = (
       <FormattedMessage
@@ -137,7 +147,11 @@ export function MultiFactorAuth(): React.JSX.Element {
                     values={{
                       strong: (
                         <strong>
-                          <FormattedMessage id="multiFactorAuth.multipleKey" description="multiple key - strong" defaultMessage={`add more than one`} />
+                          <FormattedMessage
+                            id="multiFactorAuth.multipleKey"
+                            description="multiple key - strong"
+                            defaultMessage={`add more than one`}
+                          />
                         </strong>
                       ),
                     }}
@@ -186,7 +200,11 @@ function ExtraSecurityNotAvailable(): React.JSX.Element {
       </div>
 
       <h2>
-        <FormattedMessage id="multiFactorAuth.optionsHeading" defaultMessage="Options available in the eduID settings:" description="Login MFA" />
+        <FormattedMessage
+          id="multiFactorAuth.optionsHeading"
+          defaultMessage="Options available in the eduID settings:"
+          description="Login MFA"
+        />
       </h2>
 
       <ul className="bullets">

@@ -3,9 +3,11 @@ import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(props: Readonly<{
-  setHasReadAnnouncement: (key: boolean) => void;
-}>): React.JSX.Element {
+export default function TemporaryInfo(
+  props: Readonly<{
+    setHasReadAnnouncement: (key: boolean) => void;
+  }>,
+): React.JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {
@@ -20,7 +22,11 @@ export default function TemporaryInfo(props: Readonly<{
     <Fragment>
       {/* Common for all messages */}
       <h1>
-        <FormattedMessage id="temporaryInfo.title" defaultMessage="Important information" description="Temp info - title" />
+        <FormattedMessage
+          id="temporaryInfo.title"
+          defaultMessage="Important information"
+          description="Temp info - title"
+        />
       </h1>
       <div className="lead">
         <p>
@@ -92,7 +98,11 @@ export default function TemporaryInfo(props: Readonly<{
             onChange={() => setActiveButton(!activeButton)}
           />
           <span>
-            <FormattedMessage id="temporaryInfo.tempCheckboxInfo" defaultMessage="Don't show this message again" description="Temp info - checkbox" />
+            <FormattedMessage
+              id="temporaryInfo.tempCheckboxInfo"
+              defaultMessage="Don't show this message again"
+              description="Temp info - checkbox"
+            />
           </span>
         </label>
 

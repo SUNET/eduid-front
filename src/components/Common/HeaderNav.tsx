@@ -128,7 +128,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.start ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
-                  <FormattedMessage id="recommendations.title" defaultMessage="eduID status overview" description="status overview title" />
+                  <FormattedMessage
+                    id="recommendations.title"
+                    defaultMessage="eduID status overview"
+                    description="status overview title"
+                  />
                 </Link>
               </li>
             </ul>
@@ -157,7 +161,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.identity ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
-                  <FormattedMessage id="headerNav.identity" defaultMessage="Verify Identity" description="Identity sub menu" />
+                  <FormattedMessage
+                    id="headerNav.identity"
+                    defaultMessage="Verify Identity"
+                    description="Identity sub menu"
+                  />
                 </Link>
               </li>
               <li>
@@ -166,7 +174,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
-                  <FormattedMessage id="personalData.names" description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+                  <FormattedMessage
+                    id="personalData.names"
+                    description="Names & Display Name"
+                    defaultMessage={`Names & Display Name`}
+                  />
                 </Link>
               </li>
             </ul>
@@ -205,7 +217,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
-                  <FormattedMessage id="securityKeyTable.manage" defaultMessage="Manage your security keys" description="manage your tokens" />
+                  <FormattedMessage
+                    id="securityKeyTable.manage"
+                    defaultMessage="Manage your security keys"
+                    description="manage your tokens"
+                  />
                 </Link>
               </li>
             </ul>
@@ -234,12 +250,20 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.account ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
-                  <FormattedMessage id="accountId.heading" defaultMessage="Unique ID" description="Dashboard AccountId" />
+                  <FormattedMessage
+                    id="accountId.heading"
+                    defaultMessage="Unique ID"
+                    description="Dashboard AccountId"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
-                  <FormattedMessage id="emails.title" defaultMessage="Email addresses" description="Emails main title" />
+                  <FormattedMessage
+                    id="emails.title"
+                    defaultMessage="Email addresses"
+                    description="Emails main title"
+                  />
                 </Link>
               </li>
               <li>
@@ -249,22 +273,38 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
-                  <FormattedMessage id="common.changePassword" defaultMessage="Change password" description="Dashboard change password" />
+                  <FormattedMessage
+                    id="common.changePassword"
+                    defaultMessage="Change password"
+                    description="Dashboard change password"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
-                  <FormattedMessage id="accountLinking.orcid" defaultMessage="ORCID account" description="Dashboard AccountLinking" />
+                  <FormattedMessage
+                    id="accountLinking.orcid"
+                    defaultMessage="ORCID account"
+                    description="Dashboard AccountLinking"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
-                  <FormattedMessage id="ladok.esiInfoLabel" defaultMessage="ESI information" description="Ladok account linking" />
+                  <FormattedMessage
+                    id="ladok.esiInfoLabel"
+                    defaultMessage="ESI information"
+                    description="Ladok account linking"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
-                  <FormattedMessage id="deleteAccount.block" defaultMessage="Block and delete eduID" description="DeleteAccount" />
+                  <FormattedMessage
+                    id="deleteAccount.block"
+                    defaultMessage="Block and delete eduID"
+                    description="DeleteAccount"
+                  />
                 </Link>
               </li>
             </ul>

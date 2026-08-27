@@ -270,7 +270,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       <article id="add-two-factor">
         <div className="flex-between baseline">
           <h2>
-            <FormattedMessage id="mfaInfo.title" description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
+            <FormattedMessage
+              id="mfaInfo.title"
+              description="security key title"
+              defaultMessage="Add multi-factor Authentication (MFA)"
+            />
           </h2>
           <ToolTip />
         </div>
@@ -313,7 +317,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         <section className="add-key-section">
           <span aria-label="select extra webauthn">
             <strong>
-              <FormattedMessage id="mfaInfo.select" description="select extra webauthn" defaultMessage="Add a new security key:" />
+              <FormattedMessage
+                id="mfaInfo.select"
+                description="select extra webauthn"
+                defaultMessage="Add a new security key:"
+              />
             </strong>
           </span>
 
@@ -326,7 +334,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
                 <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                <FormattedMessage id="credentials.addWebauthn" description="add webauthn token device" defaultMessage="this device" />
+                <FormattedMessage
+                  id="credentials.addWebauthn"
+                  description="add webauthn token device"
+                  defaultMessage="this device"
+                />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage
@@ -353,7 +365,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 disabled={isRegisteringAuthenticator}
               >
                 <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                <FormattedMessage id="common.securityKeyText" description="add webauthn token key" defaultMessage="security key" />
+                <FormattedMessage
+                  id="common.securityKeyText"
+                  description="add webauthn token key"
+                  defaultMessage="security key"
+                />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage
@@ -373,7 +389,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 values={{
                   strong: (
                     <strong>
-                      <FormattedMessage id="multiFactorAuth.multipleKey" description="multiple key - strong" defaultMessage={`add more than one`} />
+                      <FormattedMessage
+                        id="multiFactorAuth.multipleKey"
+                        description="multiple key - strong"
+                        defaultMessage={`add more than one`}
+                      />
                     </strong>
                   ),
                 }}

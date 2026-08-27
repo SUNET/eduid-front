@@ -16,7 +16,11 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
     >
       <article>
         <h4>
-          <FormattedMessage id="connectingAccountOrcid.orcidHeading" description="what is orcid - heading" defaultMessage="What is ORCID?" />
+          <FormattedMessage
+            id="connectingAccountOrcid.orcidHeading"
+            description="what is orcid - heading"
+            defaultMessage="What is ORCID?"
+          />
         </h4>
         <p>
           <FormattedMessage
@@ -30,7 +34,11 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
         </p>
 
         <p>
-          <FormattedMessage id="connectingAccountOrcid.useOrcid" description="use orcid - list definition" defaultMessage="How to link ORCID with eduID:" />
+          <FormattedMessage
+            id="connectingAccountOrcid.useOrcid"
+            description="use orcid - list definition"
+            defaultMessage="How to link ORCID with eduID:"
+          />
         </p>
         <ul className="bullets">
           <li>
@@ -83,7 +91,11 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
       </article>
       <article>
         <h4>
-          <FormattedMessage id="connectingAccountOrcid.heading" description="what is ladok - heading" defaultMessage="What is Ladok?" />
+          <FormattedMessage
+            id="connectingAccountOrcid.heading"
+            description="what is ladok - heading"
+            defaultMessage="What is Ladok?"
+          />
         </h4>
         <p>
           <FormattedMessage
@@ -96,7 +108,11 @@ export function ConnectingAccountOrcid(): React.JSX.Element {
         </p>
 
         <p>
-          <FormattedMessage id="connectingAccountOrcid.use" description="use ladok - list definition" defaultMessage="How to link Ladok with eduID:" />
+          <FormattedMessage
+            id="connectingAccountOrcid.use"
+            description="use ladok - list definition"
+            defaultMessage="How to link Ladok with eduID:"
+          />
         </p>
 
         <ul className="bullets">

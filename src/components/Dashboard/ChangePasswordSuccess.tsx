@@ -48,7 +48,11 @@ export function ChangePasswordSuccess(): React.JSX.Element {
         )}
         <div className="buttons">
           <EduIDButton id="change-password-finished" buttonstyle="link normal-case" type="submit">
-            <FormattedMessage id="changePasswordSuccess.go" defaultMessage="Go to dashboard" description="Go to dashboard" />
+            <FormattedMessage
+              id="changePasswordSuccess.go"
+              defaultMessage="Go to dashboard"
+              description="Go to dashboard"
+            />
           </EduIDButton>
         </div>
       </form>

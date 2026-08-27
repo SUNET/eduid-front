@@ -43,7 +43,11 @@ export default function TermsOfUse(): React.JSX.Element {
   return (
     <Fragment>
       <h1>
-        <FormattedMessage id="termsOfUse.heading" defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
+        <FormattedMessage
+          id="termsOfUse.heading"
+          defaultMessage="Log in: Terms of use"
+          description="Terms of use (h2 heading)"
+        />
       </h1>
       <div className="lead">
         <p>

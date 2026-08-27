@@ -20,7 +20,11 @@ function RenderAddPersonalDataPrompt({ setEditMode }: Readonly<RenderAddPersonal
   return (
     <div className="button-pair">
       <p>
-        <FormattedMessage id="personalData.pd" defaultMessage="No information has been added." description="pd no data added" />
+        <FormattedMessage
+          id="personalData.pd"
+          defaultMessage="No information has been added."
+          description="pd no data added"
+        />
       </p>
       <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
         <FormattedMessage id="personalData.addButton" defaultMessage="add" description="button add" />
@@ -78,9 +82,17 @@ function PersonalDataParent() {
       <div className="heading">
         <h2>
           {isEditMode ? (
-            <FormattedMessage id="personalData.edit" description="Edit Names & Display Name" defaultMessage={`Edit Names & Display Name`} />
+            <FormattedMessage
+              id="personalData.edit"
+              description="Edit Names & Display Name"
+              defaultMessage={`Edit Names & Display Name`}
+            />
           ) : (
-            <FormattedMessage id="personalData.names" description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+            <FormattedMessage
+              id="personalData.names"
+              description="Names & Display Name"
+              defaultMessage={`Names & Display Name`}
+            />
           )}
         </h2>
         <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>

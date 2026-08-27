@@ -86,16 +86,32 @@ function RenderOtherDevice2(
     return (
       <p>
         {data.state === "DENIED" && (
-          <FormattedMessage id="useOtherDevice2.denied" defaultMessage="Request denied." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.denied"
+            defaultMessage="Request denied."
+            description="Use other device 2"
+          />
         )}
         {data.state === "ABORTED" && (
-          <FormattedMessage id="useOtherDevice2.cancelled" defaultMessage="Request cancelled." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.cancelled"
+            defaultMessage="Request cancelled."
+            description="Use other device 2"
+          />
         )}
         {data.state === "FINISHED" && (
-          <FormattedMessage id="useOtherDevice2.completed" defaultMessage="Request completed." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.completed"
+            defaultMessage="Request completed."
+            description="Use other device 2"
+          />
         )}
         &nbsp;
-        <FormattedMessage id="useOtherDevice2.shouldClose" defaultMessage="You should close this browser window." description="Use other device 2" />
+        <FormattedMessage
+          id="useOtherDevice2.shouldClose"
+          defaultMessage="You should close this browser window."
+          description="Use other device 2"
+        />
       </p>
     );
   }
@@ -120,7 +136,11 @@ function RenderOtherDevice2(
           )}
 
           <li>
-            <FormattedMessage id="useOtherDevice2.loginThisDevice" defaultMessage="Log in this device" description="Login OtherDevice" />
+            <FormattedMessage
+              id="useOtherDevice2.loginThisDevice"
+              defaultMessage="Log in this device"
+              description="Login OtherDevice"
+            />
           </li>
         </ol>
       )}
@@ -200,7 +220,10 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
   const proximity: React.JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
     <li>
-      <FormattedMessage id="useOtherDevice2.note" defaultMessage="Note that you are using this device to log in on the device below" />
+      <FormattedMessage
+        id="useOtherDevice2.note"
+        defaultMessage="Note that you are using this device to log in on the device below"
+      />
 
       <figure className="table-responsive x-adjust">
         <table className="table">
@@ -219,7 +242,11 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
             <tr className="border-row">
               <th scope="row">
                 <strong>
-                  <FormattedMessage id="useOtherDevice2.description" defaultMessage="Description" description="device info" />
+                  <FormattedMessage
+                    id="useOtherDevice2.description"
+                    defaultMessage="Description"
+                    description="device info"
+                  />
                 </strong>
               </th>
 

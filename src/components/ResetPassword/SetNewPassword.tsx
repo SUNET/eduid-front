@@ -188,7 +188,11 @@ export function ResetPasswordSuccess(): React.JSX.Element {
 
         <div className="buttons">
           <EduIDButton id="reset-password-finished" buttonstyle="link normal-case text-large" type="submit">
-            <FormattedMessage id="common.goToEduidLogin" defaultMessage="Go to eduid to login" description="go to eduID link text" />
+            <FormattedMessage
+              id="common.goToEduidLogin"
+              defaultMessage="Go to eduid to login"
+              description="go to eduID link text"
+            />
           </EduIDButton>
         </div>
       </form>

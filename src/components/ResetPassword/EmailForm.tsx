@@ -72,7 +72,11 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
                 type="submit"
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage id="resetPassword.emailForm.button" defaultMessage="send email" description="Reset Password button" />
+                <FormattedMessage
+                  id="resetPassword.emailForm.button"
+                  defaultMessage="send email"
+                  description="Reset Password button"
+                />
               </EduIDButton>
             </div>
           </form>

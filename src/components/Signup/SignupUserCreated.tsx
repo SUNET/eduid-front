@@ -155,7 +155,11 @@ export function SignupUserCreated(): React.JSX.Element {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage id="userCreated.registrationComplete" defaultMessage="Create eduID: Completed" description="Registration complete" />
+          <FormattedMessage
+            id="userCreated.registrationComplete"
+            defaultMessage="Create eduID: Completed"
+            description="Registration complete"
+          />
         </h1>
         <ServiceInfo />
         <div className="lead">
@@ -206,7 +210,11 @@ export function SignupUserCreated(): React.JSX.Element {
               }}
             />
           ) : (
-            <FormattedMessage id="common.goToEduidLogin" defaultMessage="Go to eduID to login" description="go to eduID link text" />
+            <FormattedMessage
+              id="common.goToEduidLogin"
+              defaultMessage="Go to eduID to login"
+              description="go to eduID link text"
+            />
           )}
         </EduIDButton>
       </div>

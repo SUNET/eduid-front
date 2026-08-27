@@ -5,7 +5,11 @@ export function AuthorizationFailure(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage id="authzFailure.heading" defaultMessage="Insufficient privileges" description="ErrorURL authorization failure" />
+        <FormattedMessage
+          id="authzFailure.heading"
+          defaultMessage="Insufficient privileges"
+          description="ErrorURL authorization failure"
+        />
       </h1>
       <p>
         <FormattedMessage

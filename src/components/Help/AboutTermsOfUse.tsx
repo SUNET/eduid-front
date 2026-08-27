@@ -6,7 +6,13 @@ export function AboutTermsOfUse(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-tou"
-      title={<FormattedMessage id="aboutTermsOfUse.handle" description="about terms of use - handle" defaultMessage="Terms of use" />}
+      title={
+        <FormattedMessage
+          id="aboutTermsOfUse.handle"
+          description="about terms of use - handle"
+          defaultMessage="Terms of use"
+        />
+      }
       additionalInfo={null}
     >
       <article>

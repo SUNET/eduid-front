@@ -91,7 +91,11 @@ export function RememberMeCheckbox(): React.JSX.Element | null {
     <fieldset className="border-toggle-area">
       <label className="toggle" htmlFor="remember-me">
         <legend>
-          <FormattedMessage id="newDevice.remember" defaultMessage="Remember me on this device" description="Login remember user device" />
+          <FormattedMessage
+            id="newDevice.remember"
+            defaultMessage="Remember me on this device"
+            description="Login remember user device"
+          />
           {remember_me && (
             <p className="help-text">
               <FormattedMessage
@@ -127,7 +131,7 @@ interface KnownDeviceParams {
 export function initKnownDevice(
   this_device: string | undefined,
   remember_me: boolean | undefined,
-  dispatch: EduIDAppDispatch
+  dispatch: EduIDAppDispatch,
 ): KnownDeviceParams {
   if (!globalThis.localStorage) {
     // Can't remember devices if there is no local storage

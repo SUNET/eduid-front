@@ -63,10 +63,18 @@ function SubmitSamlResponse() {
     return (
       <Fragment>
         <h1>
-          <FormattedMessage id="samlResponse.alreadyLoggedIn" defaultMessage="Already logged in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyLoggedIn"
+            defaultMessage="Already logged in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
-          <FormattedMessage id="samlResponse.alreadyProcessed" defaultMessage="This login has already been processed." description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyProcessed"
+            defaultMessage="This login has already been processed."
+            description="SAML login finished"
+          />
         </p>
         <p>
           <FormattedMessage
@@ -86,7 +94,11 @@ function SubmitSamlResponse() {
     return (
       <Fragment>
         <h1>
-          <FormattedMessage id="samlResponse.alreadyLoggedIn" defaultMessage="Already logged in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyLoggedIn"
+            defaultMessage="Already logged in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
           <FormattedMessage
@@ -112,7 +124,11 @@ function SubmitSamlResponse() {
       {/* Avoid the "logging you in" message to flash by too quick to read in normal circumstances */}
       <ShowAfterDelay delay={500}>
         <h1>
-          <FormattedMessage id="samlResponse.loggingInHeading" defaultMessage="Logging you in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.loggingInHeading"
+            defaultMessage="Logging you in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
           <FormattedMessage
@@ -159,7 +175,11 @@ function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
           )}
           {props.mode === "forward" && (
             <EduIDButton buttonstyle="primary" type="submit" onClick={handleGoForward}>
-              <FormattedMessage id="samlResponse.forwardButton" defaultMessage="Forward" description="SAML login finished" />
+              <FormattedMessage
+                id="samlResponse.forwardButton"
+                defaultMessage="Forward"
+                description="SAML login finished"
+              />
             </EduIDButton>
           )}
         </div>

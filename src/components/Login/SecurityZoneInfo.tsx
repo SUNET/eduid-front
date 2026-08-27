@@ -105,7 +105,11 @@ export function SecurityZoneInfo(): React.JSX.Element {
           </div>
           <div className="text-wrapper">
             <h3>
-              <FormattedMessage id="securityZoneInfo.heading" defaultMessage={`Authenticate to continue`} description="security zone redirect info" />
+              <FormattedMessage
+                id="securityZoneInfo.heading"
+                defaultMessage={`Authenticate to continue`}
+                description="security zone redirect info"
+              />
             </h3>
             <p>
               <FormattedMessage
@@ -126,7 +130,11 @@ export function SecurityZoneInfo(): React.JSX.Element {
                   page: current?.redirectPath,
                   strong: (
                     <strong>
-                      <FormattedMessage id="securityZoneInfo.mfa" description="mfa cancel - strong" defaultMessage={`cancel`} />
+                      <FormattedMessage
+                        id="securityZoneInfo.mfa"
+                        description="mfa cancel - strong"
+                        defaultMessage={`cancel`}
+                      />
                     </strong>
                   ),
                 }}

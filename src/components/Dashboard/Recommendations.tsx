@@ -21,7 +21,11 @@ function ConfirmedAccountStatus(props: Readonly<{ email?: string }>): React.JSX.
       </div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage id="recommendations.confirmedHeading" description="Confirmed account heading" defaultMessage="Confirmed account" />
+          <FormattedMessage
+            id="recommendations.confirmedHeading"
+            description="Confirmed account heading"
+            defaultMessage="Confirmed account"
+          />
         </h3>
         <span>
           <FormattedMessage
@@ -31,7 +35,11 @@ function ConfirmedAccountStatus(props: Readonly<{ email?: string }>): React.JSX.
             values={{
               account: (
                 <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                  <FormattedMessage id="common.account" description="recommendations account link" defaultMessage="Account" />
+                  <FormattedMessage
+                    id="common.account"
+                    description="recommendations account link"
+                    defaultMessage="Account"
+                  />
                 </Link>
               ),
             }}
@@ -60,9 +68,17 @@ function VerifiedIdentityStatus(props: Readonly<{ identities?: UserIdentities }>
       <div className="text-wrapper">
         <h3>
           {props.identities?.is_verified === true ? (
-            <FormattedMessage id="recommendations.verifiedHeading" description="Verified Identity heading" defaultMessage="Verified identity" />
+            <FormattedMessage
+              id="recommendations.verifiedHeading"
+              description="Verified Identity heading"
+              defaultMessage="Verified identity"
+            />
           ) : (
-            <FormattedMessage id="recommendations.verifyHeading" description="Verify Identity heading" defaultMessage="Verify your identity" />
+            <FormattedMessage
+              id="recommendations.verifyHeading"
+              description="Verify Identity heading"
+              defaultMessage="Verify your identity"
+            />
           )}
         </h3>
         <span>
@@ -114,9 +130,17 @@ function ImprovedSecurityStatus(
       <div className="text-wrapper">
         <h3>
           {props.tokens?.length ? (
-            <FormattedMessage id="recommendations.improvedHeading" description="Improved Security heading" defaultMessage="Enhanced security" />
+            <FormattedMessage
+              id="recommendations.improvedHeading"
+              description="Improved Security heading"
+              defaultMessage="Enhanced security"
+            />
           ) : (
-            <FormattedMessage id="recommendations.improveHeading" description="Improve Security heading" defaultMessage="Enhance security" />
+            <FormattedMessage
+              id="recommendations.improveHeading"
+              description="Improve Security heading"
+              defaultMessage="Enhance security"
+            />
           )}
         </h3>
         <span>
@@ -139,7 +163,11 @@ function ImprovedSecurityStatus(
                     values={{
                       strong: (
                         <strong>
-                          <FormattedMessage id="multiFactorAuth.multipleKey" description="multiple key - strong" defaultMessage={`add more than one`} />
+                          <FormattedMessage
+                            id="multiFactorAuth.multipleKey"
+                            description="multiple key - strong"
+                            defaultMessage={`add more than one`}
+                          />
                         </strong>
                       ),
                     }}
@@ -186,9 +214,17 @@ function VerifiedSecurityStatus(props: Readonly<{ tokens?: CredentialType[] }>):
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
-            <FormattedMessage id="recommendations.heading" description="Verified Security key heading" defaultMessage="Verified security key" />
+            <FormattedMessage
+              id="recommendations.heading"
+              description="Verified Security key heading"
+              defaultMessage="Verified security key"
+            />
           ) : (
-            <FormattedMessage id="recommendations.verify" description="Verify your Security key" defaultMessage="Verify your security key" />
+            <FormattedMessage
+              id="recommendations.verify"
+              description="Verify your Security key"
+              defaultMessage="Verify your security key"
+            />
           )}
         </h3>
         <span>
@@ -249,7 +285,11 @@ export function Recommendations(): React.JSX.Element | null {
   return (
     <article id="status-overview">
       <h2>
-        <FormattedMessage id="recommendations.title" description="status overview title" defaultMessage="eduID status overview" />
+        <FormattedMessage
+          id="recommendations.title"
+          description="status overview title"
+          defaultMessage="eduID status overview"
+        />
       </h2>
       <p>
         <FormattedMessage
@@ -295,7 +335,11 @@ export function Recommendations(): React.JSX.Element | null {
           values={{
             account: (
               <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                <FormattedMessage id="common.account" description="recommendations account link" defaultMessage="Account" />
+                <FormattedMessage
+                  id="common.account"
+                  description="recommendations account link"
+                  defaultMessage="Account"
+                />
               </Link>
             ),
           }}

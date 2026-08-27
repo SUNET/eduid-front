@@ -77,7 +77,11 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       {showBadAttempts && (
         <div>
           <span className="input-validate-error" id="wrong-code-error">
-            <FormattedMessage id="responseCodeForm.short" defaultMessage="Incorrect code, try again" description="Short code form" />
+            <FormattedMessage
+              id="responseCodeForm.short"
+              defaultMessage="Incorrect code, try again"
+              description="Short code form"
+            />
           </span>
         </div>
       )}

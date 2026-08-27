@@ -33,7 +33,11 @@ export function GoBackButton(props: Readonly<BackToLoginButtonProps>): React.JSX
 
   return (
     <EduIDButton buttonstyle={`${style} normal-case`} id="go-back-button" onClick={onClick}>
-      <FormattedMessage id="goBackButton.button" defaultMessage="Go back" description="Account recovery Go back button" />
+      <FormattedMessage
+        id="goBackButton.button"
+        defaultMessage="Go back"
+        description="Account recovery Go back button"
+      />
     </EduIDButton>
   );
 }

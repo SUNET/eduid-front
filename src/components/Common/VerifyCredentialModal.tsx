@@ -98,7 +98,11 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 buttonstyle="link verbatim"
                 onClick={() => props.setShowVerifyWebauthnModal(false)}
               >
-                <FormattedMessage id="verifyCredentialModal.link" description="verify later link" defaultMessage={`Not now`} />
+                <FormattedMessage
+                  id="verifyCredentialModal.link"
+                  description="verify later link"
+                  defaultMessage={`Not now`}
+                />
               </EduIDButton>
             </div>
           </div>

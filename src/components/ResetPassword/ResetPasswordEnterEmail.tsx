@@ -64,7 +64,11 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
             id="reset-password-enter-code"
             onClick={() => dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_CODE"))}
           >
-            <FormattedMessage id="enterEmail.link" defaultMessage="Enter your code" description="Reset Password enter code link" />
+            <FormattedMessage
+              id="enterEmail.link"
+              defaultMessage="Enter your code"
+              description="Reset Password enter code link"
+            />
           </EduIDButton>
         </div>
       </section>

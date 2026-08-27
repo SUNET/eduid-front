@@ -65,7 +65,13 @@ export function AuthenticateModal() {
   return (
     <NotificationModal
       id="security-confirm-modal"
-      title={<FormattedMessage id="authenticateModal.title" defaultMessage="Security check" description="Dashboard change password modal title" />}
+      title={
+        <FormattedMessage
+          id="authenticateModal.title"
+          defaultMessage="Security check"
+          description="Dashboard change password modal title"
+        />
+      }
       mainText={
         <Fragment>
           <FormattedMessage
@@ -131,7 +137,9 @@ export function AuthenticateModal() {
       showModal={re_authenticate}
       closeModal={handleCloseModal}
       acceptModal={handleAuthenticate}
-      acceptButtonText={<FormattedMessage id="common.continue" defaultMessage="Continue" description="continue button" />}
+      acceptButtonText={
+        <FormattedMessage id="common.continue" defaultMessage="Continue" description="continue button" />
+      }
     />
   );
 }

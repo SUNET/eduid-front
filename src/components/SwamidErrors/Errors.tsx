@@ -89,7 +89,11 @@ export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>):
                 <tr key="eppn">
                   <td>
                     <strong>
-                      <FormattedMessage id="errors.columnLabel" defaultMessage="eduID identifier" description="column eduID identifier label" />
+                      <FormattedMessage
+                        id="errors.columnLabel"
+                        defaultMessage="eduID identifier"
+                        description="column eduID identifier label"
+                      />
                     </strong>
                   </td>
                   <td>{error_info.eppn}</td>

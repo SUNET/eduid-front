@@ -96,7 +96,11 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
     description = (
       <Fragment>
         <p className="description">
-          <FormattedMessage id="letterProofing.expired" defaultMessage="The code expired" description="explanation text for letter proofing" />
+          <FormattedMessage
+            id="letterProofing.expired"
+            defaultMessage="The code expired"
+            description="explanation text for letter proofing"
+          />
           <span id="letter_expires_date">&nbsp;{formatDateFromBackend(letter_expires_date as string)}</span>
         </p>
         <p className="description">
@@ -112,7 +116,11 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
     description = (
       <Fragment>
         <p className="description">
-          <FormattedMessage id="letterProofing.sent" defaultMessage="The letter was sent" description="explanation text for letter proofing" />
+          <FormattedMessage
+            id="letterProofing.sent"
+            defaultMessage="The letter was sent"
+            description="explanation text for letter proofing"
+          />
           <span id="letter_sent_date">&nbsp;{formatDateFromBackend(letter_sent_date)}</span>
         </p>
         <p className="description">
@@ -190,7 +198,9 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
         showModal={showNotificationModal}
         closeModal={() => setShowNotificationModal(false)}
         acceptModal={confirmLetterProofing}
-        acceptButtonText={<FormattedMessage id="letterProofing.button" defaultMessage="Accept" description="accept button" />}
+        acceptButtonText={
+          <FormattedMessage id="letterProofing.button" defaultMessage="Accept" description="accept button" />
+        }
       />
       <ConfirmModal
         id="letter-confirm-modal"
@@ -205,7 +215,9 @@ export default function LetterProofing(props: Readonly<LetterProofingProps>): Re
         showModal={showConfirmationModal}
         closeModal={() => setShowConfirmationModal(false)}
         handleConfirm={sendConfirmationCode}
-        modalFormLabel={<FormattedMessage id="common.code" defaultMessage="Code" description="letter proofing modal form label" />}
+        modalFormLabel={
+          <FormattedMessage id="common.code" defaultMessage="Code" description="letter proofing modal form label" />
+        }
         validationError="confirmation.code_invalid_format"
         validationPattern={shortCodePattern}
       />

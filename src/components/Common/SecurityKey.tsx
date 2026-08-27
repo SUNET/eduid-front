@@ -69,7 +69,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
   return (
     <Fragment>
       <h3>
-        <FormattedMessage id="common.securityKey" description="login this device, security key button" defaultMessage="Security key" />
+        <FormattedMessage
+          id="common.securityKey"
+          description="login this device, security key button"
+          defaultMessage="Security key"
+        />
       </h3>
       <p className="help-text">
         {props.discoverable ? (
@@ -96,7 +100,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         id="mfa-security-key"
         disabled={props.disabled}
       >
-        <FormattedMessage id="securityKey.button" description="login mfa primary option button" defaultMessage="Use security key" />
+        <FormattedMessage
+          id="securityKey.button"
+          description="login mfa primary option button"
+          defaultMessage="Use security key"
+        />
       </EduIDButton>
     </Fragment>
   );

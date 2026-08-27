@@ -35,7 +35,11 @@ export function PrivacyPolicyAndWebAccessibility(): React.JSX.Element {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FormattedMessage id="privacy.link" description="privacy policy - link" defaultMessage="Privacy policy" />
+                  <FormattedMessage
+                    id="privacy.link"
+                    description="privacy policy - link"
+                    defaultMessage="Privacy policy"
+                  />
                 </a>
               ),
             }}
@@ -133,7 +137,11 @@ export function PrivacyPolicyAndWebAccessibility(): React.JSX.Element {
             values={{
               accessibility: (
                 <a href="https://sunet.se/om-sunet/tillganglighet-for-eduid-se" target="_blank" rel="noreferrer">
-                  <FormattedMessage id="privacy.accessibilityLink" description="accessibility report - link" defaultMessage="Accessibility report" />
+                  <FormattedMessage
+                    id="privacy.accessibilityLink"
+                    description="accessibility report - link"
+                    defaultMessage="Accessibility report"
+                  />
                 </a>
               ),
             }}

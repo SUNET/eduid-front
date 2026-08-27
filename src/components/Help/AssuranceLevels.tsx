@@ -5,8 +5,20 @@ export function AssuranceLevels(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-assurance-levels"
-      title={<FormattedMessage id="assuranceLevels.handle" description="about assurance levels - handle" defaultMessage="Assurance levels" />}
-      additionalInfo={<FormattedMessage id="assuranceLevels.info" description="about assurance levels - info" defaultMessage="AL, LOA etc." />}
+      title={
+        <FormattedMessage
+          id="assuranceLevels.handle"
+          description="about assurance levels - handle"
+          defaultMessage="Assurance levels"
+        />
+      }
+      additionalInfo={
+        <FormattedMessage
+          id="assuranceLevels.info"
+          description="about assurance levels - info"
+          defaultMessage="AL, LOA etc."
+        />
+      }
     >
       <article>
         <h4>

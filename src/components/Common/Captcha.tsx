@@ -57,7 +57,11 @@ function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element
                 name="value"
                 autoComplete="off"
                 label={
-                  <FormattedMessage id="captcha.label" description="captcha input label" defaultMessage="Enter the code from the image" />
+                  <FormattedMessage
+                    id="captcha.label"
+                    description="captcha input label"
+                    defaultMessage="Enter the code from the image"
+                  />
                 }
               />
 
@@ -137,7 +141,11 @@ export function InternalCaptcha(props: Readonly<CaptchaProps>) {
         >
           <FontAwesomeIcon icon={faRedo as IconProp} />
           <span>
-            <FormattedMessage id="captcha.img" defaultMessage="Generate a new captcha image" description="captcha img change" />
+            <FormattedMessage
+              id="captcha.img"
+              defaultMessage="Generate a new captcha image"
+              description="captcha img change"
+            />
           </span>
         </EduIDButton>
       </figure>

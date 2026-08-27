@@ -31,7 +31,9 @@ export default function PasswordInput(props: Readonly<PasswordInputProps>): Reac
       placeholder={placeholder}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={<FormattedMessage id="common.password" defaultMessage="Password" description="password input field label" />}
+      label={
+        <FormattedMessage id="common.password" defaultMessage="Password" description="password input field label" />
+      }
     />
   );
 }

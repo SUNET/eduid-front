@@ -59,7 +59,13 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
       aria-errormessage={props["aria-errormessage"]}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={<FormattedMessage id="common.emailAddress" defaultMessage="Email address" description="profile email display title" />}
+      label={
+        <FormattedMessage
+          id="common.emailAddress"
+          defaultMessage="Email address"
+          description="profile email display title"
+        />
+      }
     />
   );
 }

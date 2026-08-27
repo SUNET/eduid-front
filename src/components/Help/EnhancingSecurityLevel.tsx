@@ -72,7 +72,11 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
             values={{
               securityKey: (
                 <em>
-                  <FormattedMessage id="common.securityKeyText" description="security key term" defaultMessage="security key" />
+                  <FormattedMessage
+                    id="common.securityKeyText"
+                    description="security key term"
+                    defaultMessage="security key"
+                  />
                 </em>
               ),
             }}
@@ -86,7 +90,11 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage id="securityLevel.passkeyTerm" description="passkey term" defaultMessage="passkey" />
+                  <FormattedMessage
+                    id="securityLevel.passkeyTerm"
+                    description="passkey term"
+                    defaultMessage="passkey"
+                  />
                 </em>
               ),
             }}
@@ -101,7 +109,11 @@ The private key is stored in an "authenticator" module, either built into your h
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage id="securityLevel.passkeyTerm" description="passkey term" defaultMessage="passkey" />
+                  <FormattedMessage
+                    id="securityLevel.passkeyTerm"
+                    description="passkey term"
+                    defaultMessage="passkey"
+                  />
                 </em>
               ),
             }}
@@ -125,7 +137,11 @@ The private key is stored in an "authenticator" module, either built into your h
         </p>
         <ul className="bullets">
           <li>
-            <FormattedMessage id="securityLevel.passkey" description="passkey bullet" defaultMessage={`"This device" button for passkeys`} />
+            <FormattedMessage
+              id="securityLevel.passkey"
+              description="passkey bullet"
+              defaultMessage={`"This device" button for passkeys`}
+            />
           </li>
           <li>
             <FormattedMessage
@@ -179,12 +195,22 @@ The private key is stored in an "authenticator" module, either built into your h
         <Accordion id="eduid-security">
           <AccordionItemTemplate
             uuid="help-security-usb"
-            title={<FormattedMessage id="securityLevel.usbHandle" description="about usb key - handle" defaultMessage="About Security Keys" />}
+            title={
+              <FormattedMessage
+                id="securityLevel.usbHandle"
+                description="about usb key - handle"
+                defaultMessage="About Security Keys"
+              />
+            }
             additionalInfo={null}
           >
             <article>
               <h4>
-                <FormattedMessage id="securityLevel.heading" description="choosing usb key - heading" defaultMessage="Choosing a Security Key" />
+                <FormattedMessage
+                  id="securityLevel.heading"
+                  description="choosing usb key - heading"
+                  defaultMessage="Choosing a Security Key"
+                />
               </h4>
               <p>
                 <FormattedMessage
@@ -254,7 +280,8 @@ The private key is stored in an "authenticator" module, either built into your h
                         description="usb key technical section - list item 2 code"
                         defaultMessage='"fido certified"'
                       />
-                    </code>{","}
+                    </code>
+                    {","}
                   </li>
                   <li>
                     <FormattedMessage
@@ -270,7 +297,8 @@ The private key is stored in an "authenticator" module, either built into your h
                         defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
                   "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
                       />
-                    </code>{","}
+                    </code>
+                    {","}
                   </li>
                   <li>
                     <FormattedMessage
@@ -285,7 +313,8 @@ The private key is stored in an "authenticator" module, either built into your h
                         description="usb key technical section - list item 4 code"
                         defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
                       />
-                    </code>{"."}
+                    </code>
+                    {"."}
                   </li>
                 </ul>
               </section>

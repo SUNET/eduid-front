@@ -5,7 +5,11 @@ export function AccountLinking() {
   return (
     <article id="orcid">
       <h2>
-        <FormattedMessage id="accountLinking.orcid" defaultMessage="ORCID account" description="Dashboard AccountLinking" />
+        <FormattedMessage
+          id="accountLinking.orcid"
+          defaultMessage="ORCID account"
+          description="Dashboard AccountLinking"
+        />
       </h2>
       <p>
         <FormattedMessage

@@ -27,7 +27,9 @@ export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswo
       <NewPasswordForm
         suggested_password={props.suggestedPassword}
         submitNewPasswordForm={props.formProps.handleSubmit}
-        submitButtonText={<FormattedMessage id="common.save" defaultMessage="Save" description="Set new password (Save button)" />}
+        submitButtonText={
+          <FormattedMessage id="common.save" defaultMessage="Save" description="Set new password (Save button)" />
+        }
         handleCancel={props.handleCancel}
       />
     </React.Fragment>

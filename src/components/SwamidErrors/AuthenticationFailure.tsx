@@ -5,7 +5,11 @@ export function AuthenticationFailure(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage id="authnFailure.heading" defaultMessage="Authentication error" description="ErrorURL authentication failure" />
+        <FormattedMessage
+          id="authnFailure.heading"
+          defaultMessage="Authentication error"
+          description="ErrorURL authentication failure"
+        />
       </h1>
       <p>
         <FormattedMessage

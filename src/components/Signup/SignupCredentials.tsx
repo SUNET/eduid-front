@@ -30,10 +30,18 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
         <div className="line"></div>
         <span>
           {props.requirement === "default" && (
-            <FormattedMessage id="credentials.default" defaultMessage="or use a password instead" description="Default signup option" />
+            <FormattedMessage
+              id="credentials.default"
+              defaultMessage="or use a password instead"
+              description="Default signup option"
+            />
           )}
           {props.requirement === "optional" && (
-            <FormattedMessage id="credentials.alternative" defaultMessage="you can also add a password" description="Alternative signup option" />
+            <FormattedMessage
+              id="credentials.alternative"
+              defaultMessage="you can also add a password"
+              description="Alternative signup option"
+            />
           )}
           {props.requirement === "required" && (
             <FormattedMessage
@@ -48,7 +56,11 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
       <section className="register-password" id="register-password">
         <div className="heading">
           <h2>
-            <FormattedMessage id="credentials.registerPassword" description="register a password" defaultMessage="Register a password" />
+            <FormattedMessage
+              id="credentials.registerPassword"
+              description="register a password"
+              defaultMessage="Register a password"
+            />
           </h2>
           <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
@@ -223,7 +235,11 @@ export function SignupCredentials(): React.ReactElement | null {
             {webauthnIsDiscoverable && (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                  <FormattedMessage id="credentials.button" defaultMessage="Complete creating eduID" description="signup finish button" />
+                  <FormattedMessage
+                    id="credentials.button"
+                    defaultMessage="Complete creating eduID"
+                    description="signup finish button"
+                  />
                 </EduIDButton>
               </div>
             )}
@@ -235,7 +251,10 @@ export function SignupCredentials(): React.ReactElement | null {
                 <div className="flex-between">
                   <div>
                     <p>
-                      <FormattedMessage id="credentials.we" defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
+                      <FormattedMessage
+                        id="credentials.we"
+                        defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account."
+                      />
                     </p>
                     <p className="help-text">
                       <FormattedMessage
@@ -245,7 +264,11 @@ export function SignupCredentials(): React.ReactElement | null {
                         values={{
                           helpLink: (
                             <a href="/help" target="_blank" rel="noopener noreferrer">
-                              <FormattedMessage id="common.eduidHelp" description="eduID help link" defaultMessage={`eduID Help`} />
+                              <FormattedMessage
+                                id="common.eduidHelp"
+                                description="eduID help link"
+                                defaultMessage={`eduID Help`}
+                              />
                             </a>
                           ),
                         }}
@@ -262,7 +285,11 @@ export function SignupCredentials(): React.ReactElement | null {
             </div>
             <h2 aria-label="select extra webauthn">
               <strong>
-                <FormattedMessage id="credentials.select" description="select extra webauthn" defaultMessage="Register a key:" />
+                <FormattedMessage
+                  id="credentials.select"
+                  description="select extra webauthn"
+                  defaultMessage="Register a key:"
+                />
               </strong>
             </h2>
             <div className="mfa-alternative">
@@ -274,7 +301,11 @@ export function SignupCredentials(): React.ReactElement | null {
                     onClick={() => handleWebauthnButtonClick("platform")}
                   >
                     <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                    <FormattedMessage id="credentials.addWebauthn" description="add webauthn token device" defaultMessage="this device" />
+                    <FormattedMessage
+                      id="credentials.addWebauthn"
+                      description="add webauthn token device"
+                      defaultMessage="this device"
+                    />
                   </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage
@@ -291,7 +322,11 @@ export function SignupCredentials(): React.ReactElement | null {
                     onClick={() => handleWebauthnButtonClick("cross-platform")}
                   >
                     <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                    <FormattedMessage id="common.securityKeyText" description="add webauthn token key" defaultMessage="security key" />
+                    <FormattedMessage
+                      id="common.securityKeyText"
+                      description="add webauthn token key"
+                      defaultMessage="security key"
+                    />
                   </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage

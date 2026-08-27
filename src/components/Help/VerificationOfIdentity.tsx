@@ -229,7 +229,11 @@ export function VerificationOfIdentity(): React.JSX.Element {
         >
           <article>
             <h4>
-              <FormattedMessage id="common.whatIsFreja" description="what is freja - heading" defaultMessage="What is Freja+?" />
+              <FormattedMessage
+                id="common.whatIsFreja"
+                description="what is freja - heading"
+                defaultMessage="What is Freja+?"
+              />
             </h4>
             <p>
               <FormattedMessage
@@ -257,7 +261,11 @@ export function VerificationOfIdentity(): React.JSX.Element {
                   values={{
                     Freja: (
                       <a href={FrejaAppURL} target="_blank" rel="noreferrer">
-                        <FormattedMessage id="verifyIdentity.useLink" description="use freja - link text" defaultMessage={`Freja app`} />
+                        <FormattedMessage
+                          id="verifyIdentity.useLink"
+                          description="use freja - link text"
+                          defaultMessage={`Freja app`}
+                        />
                       </a>
                     ),
                   }}
@@ -333,12 +341,22 @@ export function VerificationOfIdentity(): React.JSX.Element {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           uuid="help-bankid"
-          title={<FormattedMessage id="verifyIdentity.bankidHandle" description="about bankid - handle" defaultMessage="About BankID" />}
+          title={
+            <FormattedMessage
+              id="verifyIdentity.bankidHandle"
+              description="about bankid - handle"
+              defaultMessage="About BankID"
+            />
+          }
           additionalInfo={null}
         >
           <article>
             <h4>
-              <FormattedMessage id="verifyIdentity.bankidHeading" description="what is bankid - heading" defaultMessage="What is BankID?" />
+              <FormattedMessage
+                id="verifyIdentity.bankidHeading"
+                description="what is bankid - heading"
+                defaultMessage="What is BankID?"
+              />
             </h4>
             <p>
               <FormattedMessage
@@ -384,12 +402,22 @@ export function VerificationOfIdentity(): React.JSX.Element {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           uuid="help-eidas"
-          title={<FormattedMessage id="verifyIdentity.eidasHandle" description="about eidas - handle" defaultMessage="About eIDAS" />}
+          title={
+            <FormattedMessage
+              id="verifyIdentity.eidasHandle"
+              description="about eidas - handle"
+              defaultMessage="About eIDAS"
+            />
+          }
           additionalInfo={null}
         >
           <article>
             <h4>
-              <FormattedMessage id="verifyIdentity.eidasHeading" description="what is eidas - heading" defaultMessage="What is eIDAS?" />
+              <FormattedMessage
+                id="verifyIdentity.eidasHeading"
+                description="what is eidas - heading"
+                defaultMessage="What is eIDAS?"
+              />
             </h4>
             <p>
               <FormattedMessage
@@ -449,7 +477,11 @@ export function VerificationOfIdentity(): React.JSX.Element {
         >
           <article id="international">
             <h4>
-              <FormattedMessage id="verifyIdentity.heading" description="what is international - heading" defaultMessage="What is Freja?" />
+              <FormattedMessage
+                id="verifyIdentity.heading"
+                description="what is international - heading"
+                defaultMessage="What is Freja?"
+              />
             </h4>
             <p>
               <FormattedMessage
@@ -493,7 +525,11 @@ export function VerificationOfIdentity(): React.JSX.Element {
                   values={{
                     FrejaApp: (
                       <a href={FrejaAppURL} target="_blank" rel="noreferrer">
-                        <FormattedMessage id="verifyIdentity.useLink" description="use freja - link text" defaultMessage={`Freja app`} />
+                        <FormattedMessage
+                          id="verifyIdentity.useLink"
+                          description="use freja - link text"
+                          defaultMessage={`Freja app`}
+                        />
                       </a>
                     ),
                   }}

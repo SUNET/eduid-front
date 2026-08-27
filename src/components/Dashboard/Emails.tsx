@@ -107,7 +107,11 @@ function Emails() {
                 <form onSubmit={handleSubmit}>
                   <FinalField
                     label={
-                      <FormattedMessage id="common.emailAddress" defaultMessage="Email address" description="profile email display title" />
+                      <FormattedMessage
+                        id="common.emailAddress"
+                        defaultMessage="Email address"
+                        description="profile email display title"
+                      />
                     }
                     component={CustomInput}
                     componentClass="input"

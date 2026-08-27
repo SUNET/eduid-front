@@ -56,7 +56,9 @@ export default function UserNameInput(props: Readonly<UserNameInputProps>): Reac
       defaultValue={props.defaultValue}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={<FormattedMessage id="common.username" defaultMessage="Username" description="profile username display title" />}
+      label={
+        <FormattedMessage id="common.username" defaultMessage="Username" description="profile username display title" />
+      }
       onFocus={props.onFocus}
     />
   );

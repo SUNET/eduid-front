@@ -5,12 +5,18 @@ export function AboutSunet(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-about-sunet"
-      title={<FormattedMessage id="aboutSunet.handle" description="about sunet - handle" defaultMessage="About SUNET" />}
+      title={
+        <FormattedMessage id="aboutSunet.handle" description="about sunet - handle" defaultMessage="About SUNET" />
+      }
       additionalInfo={null}
     >
       <article>
         <h4>
-          <FormattedMessage id="aboutSunet.heading" description="what is sunet - heading" defaultMessage="What is SUNET?" />
+          <FormattedMessage
+            id="aboutSunet.heading"
+            description="what is sunet - heading"
+            defaultMessage="What is SUNET?"
+          />
         </h4>
         <p>
           <FormattedMessage

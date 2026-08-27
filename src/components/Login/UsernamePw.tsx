@@ -53,10 +53,20 @@ export default function UsernamePw() {
     );
   } else if (webauthn) {
     loginHeading = (
-      <FormattedMessage id="usernamePw.front" defaultMessage="Log in: with Password or Passkey" description="Login front page with passkey" />
+      <FormattedMessage
+        id="usernamePw.front"
+        defaultMessage="Log in: with Password or Passkey"
+        description="Login front page with passkey"
+      />
     );
   } else {
-    loginHeading = <FormattedMessage id="usernamePw.frontPage" defaultMessage="Log in: with Password" description="Login front page" />;
+    loginHeading = (
+      <FormattedMessage
+        id="usernamePw.frontPage"
+        defaultMessage="Log in: with Password"
+        description="Login front page"
+      />
+    );
   }
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
@@ -273,7 +283,11 @@ function UsernameInputPart(): React.JSX.Element {
               />
             </legend>
             <EduIDButton buttonstyle="link normal-case" id="wrong-person-button" onClick={handleClickWrongPerson}>
-              <FormattedMessage id="usernamePw.notYou" defaultMessage="Different user?" description="Login username input" />
+              <FormattedMessage
+                id="usernamePw.notYou"
+                defaultMessage="Different user?"
+                description="Login username input"
+              />
             </EduIDButton>
           </div>
         )}
@@ -285,7 +299,9 @@ function UsernameInputPart(): React.JSX.Element {
           name="username"
           autoComplete="username"
           defaultValue={authn_options.forced_username}
-          label={<FormattedMessage id="common.username" defaultMessage="Username" description="username input field label" />}
+          label={
+            <FormattedMessage id="common.username" defaultMessage="Username" description="username input field label" />
+          }
         />
       </React.Fragment>
     );
@@ -371,7 +387,11 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage id="usernamePw.other" defaultMessage="other device" description="Login UsernamePw other device" />
+      <FormattedMessage
+        id="usernamePw.other"
+        defaultMessage="other device"
+        description="Login UsernamePw other device"
+      />
     </EduIDButton>
   );
 }

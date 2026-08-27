@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 
 interface ExtraProps {
   "aria-label"?: string;
-  "title"?: string;
+  title?: string;
 }
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -21,7 +21,11 @@ export default function DeleteAccount(): React.JSX.Element | null {
     <article id="delete-account">
       <div className="flex-between baseline">
         <h2>
-          <FormattedMessage id="deleteAccount.block" defaultMessage="Block and delete eduID" description="DeleteAccount" />
+          <FormattedMessage
+            id="deleteAccount.block"
+            defaultMessage="Block and delete eduID"
+            description="DeleteAccount"
+          />
         </h2>
         <ToolTip />
       </div>
@@ -54,7 +58,13 @@ export default function DeleteAccount(): React.JSX.Element | null {
         showModal={showModal}
         closeModal={() => setShowModal(false)}
         acceptModal={handleConfirmationDeletion}
-        acceptButtonText={<FormattedMessage id="deleteAccount.button" defaultMessage="Delete my eduID" description="delete.confirm_button" />}
+        acceptButtonText={
+          <FormattedMessage
+            id="deleteAccount.button"
+            defaultMessage="Delete my eduID"
+            description="delete.confirm_button"
+          />
+        }
       />
     </article>
   );

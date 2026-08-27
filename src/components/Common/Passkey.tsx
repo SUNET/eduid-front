@@ -65,10 +65,17 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
         <div className="flex-between">
           <div>
             <h2>
-              <FormattedMessage id="passkey.heading" defaultMessage="Faster and safer way to authenticate" description="passkey heading" />
+              <FormattedMessage
+                id="passkey.heading"
+                defaultMessage="Faster and safer way to authenticate"
+                description="passkey heading"
+              />
             </h2>
             <p className="text-medium">
-              <FormattedMessage id="passkey.have" defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods." />
+              <FormattedMessage
+                id="passkey.have"
+                defaultMessage="If you have registered a passkey for eduid.se you can log in securely using your fingerprint, face recognition, PIN code or other screen-lock methods."
+              />
             </p>
             <p className="help-text">
               <FormattedMessage
@@ -79,7 +86,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
                 values={{
                   howPasskeyWork: (
                     <a href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
-                      <FormattedMessage id="common.eduidHelp" description="passkey help text link" defaultMessage="eduID Help" />
+                      <FormattedMessage
+                        id="common.eduidHelp"
+                        description="passkey help text link"
+                        defaultMessage="eduID Help"
+                      />
                     </a>
                   ),
                 }}
@@ -105,7 +116,11 @@ function SecurityKeyInactive(props: Readonly<InactiveSecurityKeyProps>): React.J
           disabled={props.disabled}
         >
           <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
-          <FormattedMessage id="passkey.button" description="login passkey primary option button" defaultMessage="log in with passkey" />
+          <FormattedMessage
+            id="passkey.button"
+            description="login passkey primary option button"
+            defaultMessage="log in with passkey"
+          />
         </EduIDButton>
       </div>
     </div>

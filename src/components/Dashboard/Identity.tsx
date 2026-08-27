@@ -81,7 +81,11 @@ function IdentityContent(): React.JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage id="common.identity" description="verify identity unverified main title" defaultMessage={`Identity`} />
+          <FormattedMessage
+            id="common.identity"
+            description="verify identity unverified main title"
+            defaultMessage={`Identity`}
+          />
         </h1>
         <div className="lead">
           {identities?.is_verified ? (
@@ -215,7 +219,11 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage id="identity.swedish" defaultMessage="Swedish national ID number" description="Verified identity" />
+              <FormattedMessage
+                id="identity.swedish"
+                defaultMessage="Swedish national ID number"
+                description="Verified identity"
+              />
             </strong>
           </div>
           <NinDisplay nin={identities?.nin} allowDelete={true} />
@@ -238,7 +246,11 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage id="identity.eidas" defaultMessage="European EIDAS identity" description="Verified identity" />
+              <FormattedMessage
+                id="identity.eidas"
+                defaultMessage="European EIDAS identity"
+                description="Verified identity"
+              />
             </strong>
           </div>
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
@@ -261,7 +273,11 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage id="identity.freja" defaultMessage="Freja eID identity" description="Verified identity" />
+              <FormattedMessage
+                id="identity.freja"
+                defaultMessage="Freja eID identity"
+                description="Verified identity"
+              />
             </strong>
           </div>
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
@@ -291,7 +307,9 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
         showModal={showConfirmRemoveIdentityVerificationModal}
         closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
         acceptModal={() => handleRemoveIdentity(identityType)}
-        acceptButtonText={<FormattedMessage id="securityKeyTable.button" defaultMessage="Confirm" description="delete.confirm_button" />}
+        acceptButtonText={
+          <FormattedMessage id="securityKeyTable.button" defaultMessage="Confirm" description="delete.confirm_button" />
+        }
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
@@ -366,7 +384,13 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
       <Accordion className="accordion nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
-          title={<FormattedMessage id="identity.bankButton" description="BankID vetting button" defaultMessage="with a BankID" />}
+          title={
+            <FormattedMessage
+              id="identity.bankButton"
+              description="BankID vetting button"
+              defaultMessage="with a BankID"
+            />
+          }
           additionalInfo={
             <FormattedMessage
               id="identity.verifyIdentityVetting"
@@ -380,7 +404,13 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         </AccordionItemTemplate>
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
-          title={<FormattedMessage id="identity.button" description="eidas vetting button freja" defaultMessage={`with a Freja+`} />}
+          title={
+            <FormattedMessage
+              id="identity.button"
+              description="eidas vetting button freja"
+              defaultMessage={`with a Freja+`}
+            />
+          }
           additionalInfo={
             <FormattedMessage
               id="identity.verify"
@@ -394,7 +424,13 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         </AccordionItemTemplate>
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="post icon" src={LetterIcon} />}
-          title={<FormattedMessage id="identity.byPost" defaultMessage="by post" description="explanation text for letter proofing" />}
+          title={
+            <FormattedMessage
+              id="identity.byPost"
+              defaultMessage="by post"
+              description="explanation text for letter proofing"
+            />
+          }
           additionalInfo={
             <FormattedMessage
               id="identity.swedishAddress"
@@ -426,7 +462,9 @@ function AccordionItemEu(): React.JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="European Union" src={EuFlag} />}
-      title={<FormattedMessage id="common.euCitizen" description="accordion item eidas title" defaultMessage="EU citizen" />}
+      title={
+        <FormattedMessage id="common.euCitizen" description="accordion item eidas title" defaultMessage="EU citizen" />
+      }
       additionalInfo={
         <FormattedMessage
           id="identity.info"
@@ -477,7 +515,13 @@ function AccordionItemWorld(): React.JSX.Element | null {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="World" src={GlobalFlag} />}
-      title={<FormattedMessage id="common.mostCountries" description="accordion item passport title" defaultMessage="Most countries" />}
+      title={
+        <FormattedMessage
+          id="common.mostCountries"
+          description="accordion item passport title"
+          defaultMessage="Most countries"
+        />
+      }
       additionalInfo={
         <FormattedMessage
           id="identity.accordionInfo"

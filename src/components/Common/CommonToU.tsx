@@ -41,7 +41,11 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
             <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
           </EduIDButton>
           <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
-            <FormattedMessage id="tou.button" defaultMessage="I accept" description="Terms of use (accept button text)" />
+            <FormattedMessage
+              id="tou.button"
+              defaultMessage="I accept"
+              description="Terms of use (accept button text)"
+            />
           </EduIDButton>
         </div>
       ) : null}

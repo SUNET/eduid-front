@@ -159,7 +159,11 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
   return (
     <article>
       <legend className="require">
-        <FormattedMessage id="common.displayName" defaultMessage="Display name" description="Display name select legend" />
+        <FormattedMessage
+          id="common.displayName"
+          defaultMessage="Display name"
+          description="Display name select legend"
+        />
       </legend>
       <p className="help-text">
         <FormattedMessage
@@ -193,7 +197,11 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
           classNamePrefix="select"
           noOptionsMessage={NoOptionsMessage}
           placeholder={
-            <FormattedMessage id="personalDataForm.placeholder" defaultMessage="select display name..." description="Display name select placeholder" />
+            <FormattedMessage
+              id="personalDataForm.placeholder"
+              defaultMessage="select display name..."
+              description="Display name select placeholder"
+            />
           }
           isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}
