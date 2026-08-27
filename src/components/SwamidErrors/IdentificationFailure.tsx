@@ -18,7 +18,7 @@ export function IdentificationFailure(props: Readonly<FailureComponentProps>): R
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Identification failed" description="ErrorURL identification failure" />
+        <FormattedMessage id="identFailure.heading" defaultMessage="Identification failed" description="ErrorURL identification failure" />
       </h1>
       {props.errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
     </React.Fragment>
@@ -33,6 +33,7 @@ function MissingNin(): React.JSX.Element {
   if (error_info?.logged_in && error_info.has_locked_nin && !error_info.has_verified_nin) {
     SpecificMessage = (
       <FormattedMessage
+        id="identFailure.reconfirm"
         defaultMessage="You need to re-confirm your identity in the eduID Dashboard to access this service."
         description="ErrorURL identification failure"
       />
@@ -40,6 +41,7 @@ function MissingNin(): React.JSX.Element {
   } else {
     SpecificMessage = (
       <FormattedMessage
+        id="identFailure.ninHint"
         defaultMessage="If you have a Swedish National Identity Number, go to the eduID dashboard and confirm it."
         description="ErrorURL identification failure"
       />
@@ -50,6 +52,7 @@ function MissingNin(): React.JSX.Element {
     <React.Fragment>
       <p>
         <FormattedMessage
+          id="identFailure.requiresNin"
           defaultMessage={`The service that you tried to access requires a "confirmed"
                          Swedish National Identity Number (personnummer).`}
           description="ErrorURL identification failure"
@@ -65,6 +68,7 @@ function Default(): React.JSX.Element {
     <React.Fragment>
       <p>
         <FormattedMessage
+          id="identFailure.missingAttributes"
           defaultMessage="The service that you tried to access did not get all required attributes for
                            identification and/or personalisation."
           description="ErrorURL identification failure"
@@ -72,6 +76,7 @@ function Default(): React.JSX.Element {
       </p>
       <p>
         <FormattedMessage
+          id="identFailure.hint"
           defaultMessage="This may be because eduID is missing those attributes or that eduID is not configured
                            to release those attributes to the service you tried to access."
           description="ErrorURL identification failure"

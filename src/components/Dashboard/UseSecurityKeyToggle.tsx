@@ -46,11 +46,13 @@ export default function UseSecurityKeyToggle(): React.JSX.Element | null {
         <label className="toggle" htmlFor="security-key-mfa">
           <legend>
             <FormattedMessage
+              id="useSecurityKeyToggle.always"
               defaultMessage={`Always use a security key to log in`}
               description="Security key toggle"
             />
             <p className="help-text">
               <FormattedMessage
+                id="useSecurityKeyToggle.help"
                 description="help text toggle MFA"
                 defaultMessage="If turned off you only need to use your security key for services that require extra login verification."
               />

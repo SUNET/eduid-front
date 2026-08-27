@@ -5,9 +5,9 @@ export const ShowAndHideButton = ({ isShown, onClick }: { isShown: boolean; onCl
   return (
     <EduIDButton id="show-hide-button" buttonstyle="txt-toggle-btn link sm" onClick={onClick}>
       {isShown ? (
-        <FormattedMessage defaultMessage="HIDE" description="hide button" />
+        <FormattedMessage id="showAndHideButton.hide" defaultMessage="HIDE" description="hide button" />
       ) : (
-        <FormattedMessage defaultMessage="SHOW" description="show button" />
+        <FormattedMessage id="showAndHideButton.show" defaultMessage="SHOW" description="show button" />
       )}
     </EduIDButton>
   );

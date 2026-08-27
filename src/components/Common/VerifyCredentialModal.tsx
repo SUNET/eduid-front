@@ -29,6 +29,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
             <div className="modal-header">
               <h4 className="modal-title" id="verify-webauthn-token-modal-title">
                 <FormattedMessage
+                  id="verifyCredentialModal.title"
                   defaultMessage="Verify your added security key"
                   description="verify webauthn token modal title"
                 />
@@ -41,11 +42,13 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
             </div>
             <div className="modal-body">
               <FormattedMessage
+                id="verifyCredentialModal.body"
                 description="verify webauthn token modal body text"
                 defaultMessage="Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
               />
               <p className="help-text">
                 <FormattedMessage
+                  id="verifyCredentialModal.note"
                   description="verify webauthn token modal body note text"
                   defaultMessage={`Note: your added security keys can also be verified later in the "Manage your security keys" settings.`}
                 />
@@ -95,7 +98,7 @@ export function VerifyCredentialModal(props: Readonly<VerifyCredentialModalProps
                 buttonstyle="link verbatim"
                 onClick={() => props.setShowVerifyWebauthnModal(false)}
               >
-                <FormattedMessage description="verify later link" defaultMessage={`Not now`} />
+                <FormattedMessage id="verifyCredentialModal.link" description="verify later link" defaultMessage={`Not now`} />
               </EduIDButton>
             </div>
           </div>

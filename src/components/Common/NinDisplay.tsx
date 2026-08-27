@@ -49,7 +49,7 @@ export function NinDisplay(props: Readonly<NinDisplayProps>) {
       ) : (
         // if there is no NIN, render a link to verify-identity
         <Link to={IDENTITY_PATH} className="display-data unverified">
-          <FormattedMessage defaultMessage="add id number" description="NIN display link text" />
+          <FormattedMessage id="ninDisplay.link" defaultMessage="add id number" description="NIN display link text" />
         </Link>
       )}
     </div>

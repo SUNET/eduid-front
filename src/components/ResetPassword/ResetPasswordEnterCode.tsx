@@ -62,6 +62,7 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="enterCode.heading"
             defaultMessage="Reset Password: Enter email code"
             description="Reset Password enter code heading"
           />
@@ -69,6 +70,7 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="enterCode.lead"
               defaultMessage="Enter the email address that the code was sent to, and the code from the email."
               description="Reset Password enter code lead"
             />
@@ -94,6 +96,7 @@ export function ResetPasswordEnterCode(): React.JSX.Element {
               {emailMissing && (
                 <span role="alert" className="input-validate-error" id="missing-email-error">
                   <FormattedMessage
+                    id="enterCode.error"
                     defaultMessage="Enter the email address that the code was sent to."
                     description="Reset Password enter code missing email error"
                   />

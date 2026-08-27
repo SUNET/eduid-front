@@ -18,6 +18,7 @@ export function ResetPasswordLocked(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="locked.heading"
             defaultMessage="Reset Password: Too many attempts"
             description="Reset Password locked heading"
           />
@@ -25,12 +26,14 @@ export function ResetPasswordLocked(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="locked.lead"
               defaultMessage="Too many incorrect codes have been entered. For security reasons this password reset has been stopped."
               description="Reset Password locked lead"
             />
           </p>
           <p>
             <FormattedMessage
+              id="locked.instruction"
               defaultMessage="Please wait until the code expires, then start over from the login page."
               description="Reset Password locked instruction"
             />
@@ -41,7 +44,7 @@ export function ResetPasswordLocked(): React.JSX.Element {
       <form action={dashboard_link ?? "/"} method="GET">
         <div className="buttons">
           <EduIDButton buttonstyle="link normal-case text-large" id="reset-password-locked-exit" type="submit">
-            <FormattedMessage defaultMessage="Go to login" description="Reset Password locked exit button" />
+            <FormattedMessage id="locked.button" defaultMessage="Go to login" description="Reset Password locked exit button" />
           </EduIDButton>
         </div>
       </form>

@@ -41,6 +41,7 @@ export default function Start(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="multiFactorAuth.title"
             defaultMessage="Welcome, {username}!"
             description="start main title"
             values={{

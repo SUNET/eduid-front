@@ -18,7 +18,7 @@ const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonProps>>((p
 
   if (props.buttonstyle.includes("close")) {
     const closeLabel = intl.formatMessage({
-      id: "modal.close",
+      id: "eduIDButton.label",
       defaultMessage: "Close",
       description: "Notification modal close label",
     });

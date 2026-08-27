@@ -65,10 +65,11 @@ export function AuthenticateModal() {
   return (
     <NotificationModal
       id="security-confirm-modal"
-      title={<FormattedMessage defaultMessage="Security check" description="Dashboard change password modal title" />}
+      title={<FormattedMessage id="authenticateModal.title" defaultMessage="Security check" description="Dashboard change password modal title" />}
       mainText={
         <Fragment>
           <FormattedMessage
+            id="authenticateModal.reloginNote"
             description="security zone modal"
             defaultMessage="You need to log in again to perform the requested action."
           />
@@ -76,6 +77,7 @@ export function AuthenticateModal() {
           {frontend_action === "verifyCredential" && (
             <p className="help-text">
               <FormattedMessage
+                id="authenticateModal.useKeyNote"
                 description="security zone modal"
                 defaultMessage="Note: please use your security key {securityKeyDescription} during the login process. "
                 values={{
@@ -84,6 +86,7 @@ export function AuthenticateModal() {
               />
               &nbsp;
               <FormattedMessage
+                id="authenticateModal.redirectNote"
                 description="security zone modal"
                 defaultMessage=" After logging in, you will be redirected to {externalPage} page to verify your security key."
                 values={{
@@ -96,6 +99,7 @@ export function AuthenticateModal() {
           {frontend_action === "removeSecurityKeyAuthn" && (
             <p className="help-text">
               <FormattedMessage
+                id="authenticateModal.keyRemovedNote"
                 description="security zone modal"
                 defaultMessage="Note: Your security key {securityKeyDescription} will be removed after you log in."
                 values={{
@@ -107,6 +111,7 @@ export function AuthenticateModal() {
           {frontend_action === "removeIdentity" && (
             <p className="help-text">
               <FormattedMessage
+                id="authenticateModal.disconnectNote"
                 description="security zone modal"
                 defaultMessage="Note: continuing will disconnect your real identity from your eduID after you log in."
               />
@@ -115,6 +120,7 @@ export function AuthenticateModal() {
           {frontend_action === "addSecurityKeyAuthn" && (
             <p className="help-text">
               <FormattedMessage
+                id="authenticateModal.nameKeyNote"
                 description="security zone modal"
                 defaultMessage="Note: After logging in, you'll be asked to enter a name for your security key."
               />
@@ -125,7 +131,7 @@ export function AuthenticateModal() {
       showModal={re_authenticate}
       closeModal={handleCloseModal}
       acceptModal={handleAuthenticate}
-      acceptButtonText={<FormattedMessage defaultMessage="Continue" description="continue button" />}
+      acceptButtonText={<FormattedMessage id="common.continue" defaultMessage="Continue" description="continue button" />}
     />
   );
 }

@@ -10,7 +10,7 @@ const ThemeToggle: React.FC = () => {
   return (
     <label className="toggle flex-between" htmlFor="color-mode">
       <span className="text-small">
-        <FormattedMessage defaultMessage="Color theme" description="color mode toggle" />
+        <FormattedMessage id="themeToggle.color" defaultMessage="Color theme" description="color mode toggle" />
       </span>
       <input
         onChange={toggleTheme}
@@ -29,13 +29,13 @@ const ThemeToggle: React.FC = () => {
       return intl.formatMessage({
         defaultMessage: "Change to light mode",
         description: "Color toggle aria label to light",
-        id: "color-mode-light",
+        id: "themeToggle.colorLabel",
       });
     } else {
       return intl.formatMessage({
         defaultMessage: "Change to dark mode",
         description: "Color toggle aria label to dark",
-        id: "color-mode-dark",
+        id: "themeToggle.label",
       });
     }
   }

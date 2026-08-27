@@ -32,6 +32,7 @@ export const ServiceInfo = () => {
   return (
     <p className="destination-info text-bold">
       <FormattedMessage
+        id="entry.accessIntro"
         defaultMessage="In order to access {name}"
         description="Signup first page lead text"
         values={{ name: <span>{service_name}</span> }}
@@ -118,6 +119,7 @@ export function SignupEntry(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="entry.firstTitle"
             defaultMessage="Create eduID: Choose registration method"
             description="Signup first page title"
           />
@@ -126,6 +128,7 @@ export function SignupEntry(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="entry.fastestWay"
               defaultMessage="The fastest way to register is with a digital ID, or you can register with your name and email address instead."
               description="Signup first page lead text"
             />
@@ -137,12 +140,14 @@ export function SignupEntry(): React.JSX.Element {
           <section className="external-mfa-registered">
             <h2>
               <FormattedMessage
+                id="entry.externalHeading"
                 defaultMessage="Your identity has been verified"
                 description="external mfa registered heading"
               />
             </h2>
             <p>
               <FormattedMessage
+                id="entry.externalDescription"
                 defaultMessage="Your identity has been verified and your name has been saved. To complete your registration, please enter your email address below."
                 description="external mfa registered description"
               />
@@ -156,7 +161,7 @@ export function SignupEntry(): React.JSX.Element {
                     {(external_mfa.method && appNameDisplay[external_mfa.method]) ??
                       external_mfa.method?.replaceAll("_", " ")}
                     &nbsp;
-                    <FormattedMessage defaultMessage="identity" description="Verified identity" />
+                    <FormattedMessage id="entry.verified" defaultMessage="identity" description="Verified identity" />
                   </strong>
                 </strong>
               </div>
@@ -169,19 +174,20 @@ export function SignupEntry(): React.JSX.Element {
         ) : (
           <section className="with-digital-id">
             <h2>
-              <FormattedMessage defaultMessage="With a digital ID" description="passkey heading" />
+              <FormattedMessage id="entry.passkeyHeading" defaultMessage="With a digital ID" description="passkey heading" />
             </h2>
             <p>
-              <FormattedMessage defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
+              <FormattedMessage id="entry.use" defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically." />
             </p>
             <p className="help-text">
               <FormattedMessage
+                id="entry.digital"
                 defaultMessage="Read more about how to register with a digital ID in {howDigitalIDWork}."
                 description="digital ID help text"
                 values={{
                   howDigitalIDWork: (
                     <a href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
-                      <FormattedMessage description="digital ID help text link" defaultMessage="eduID Help" />
+                      <FormattedMessage id="common.eduidHelp" description="digital ID help text link" defaultMessage="eduID Help" />
                     </a>
                   ),
                 }}
@@ -194,11 +200,12 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="swedish id title" defaultMessage="Swedish ID" />
+                        <FormattedMessage id="entry.swedishTitle" description="swedish id title" defaultMessage="Swedish ID" />
                       </strong>
                     </span>
                     <p className="help-text">
                       <FormattedMessage
+                        id="entry.swedish"
                         description="swedish id help text"
                         defaultMessage="Requires a Swedish personal identity number or coordination number."
                       />
@@ -232,11 +239,12 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="EU title" defaultMessage="EU citizen" />
+                        <FormattedMessage id="common.euCitizen" description="EU title" defaultMessage="EU citizen" />
                       </strong>
                     </span>
                     <p className="help-text">
                       <FormattedMessage
+                        id="entry.eu"
                         description="item EU help text"
                         defaultMessage=" Verify with your country's electronic ID via eIDAS."
                       />
@@ -261,11 +269,12 @@ export function SignupEntry(): React.JSX.Element {
                   <div>
                     <span>
                       <strong>
-                        <FormattedMessage description="global title" defaultMessage="Most countries" />
+                        <FormattedMessage id="common.mostCountries" description="global title" defaultMessage="Most countries" />
                       </strong>
                     </span>
                     <p className="help-text">
                       <FormattedMessage
+                        id="entry.global"
                         description="global help text"
                         defaultMessage="Verify with a passport or national ID card via Freja eID+."
                       />
@@ -294,7 +303,7 @@ export function SignupEntry(): React.JSX.Element {
             <div className="or-container">
               <div className="line"></div>
               <span>
-                <FormattedMessage defaultMessage="or register another way" description="Alternative signup option" />
+                <FormattedMessage id="entry.alternative" defaultMessage="or register another way" description="Alternative signup option" />
               </span>
               <div className="line"></div>
             </div>
@@ -302,18 +311,18 @@ export function SignupEntry(): React.JSX.Element {
             <section className="personal-data" id="register-with-name">
               <div className="heading">
                 <h2>
-                  <FormattedMessage description="With name and email" defaultMessage="With name and email" />
+                  <FormattedMessage id="entry.name" description="With name and email" defaultMessage="With name and email" />
                 </h2>
                 <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
                     <Fragment>
-                      <FormattedMessage description="hide form button" defaultMessage="hide form" />
+                      <FormattedMessage id="entry.button" description="hide form button" defaultMessage="hide form" />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronUp} />
                     </Fragment>
                   ) : (
                     <Fragment>
-                      <FormattedMessage description="show form button" defaultMessage="show form" />
+                      <FormattedMessage id="entry.showButton" description="show form button" defaultMessage="show form" />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronDown} />
                     </Fragment>
@@ -322,6 +331,7 @@ export function SignupEntry(): React.JSX.Element {
               </div>
               <p>
                 <FormattedMessage
+                  id="entry.email"
                   description="Signup with email explanation"
                   defaultMessage={`Use an email address you have access to, as it will need to be confirmed by a received code. Once you have created an eduID you will be able to log in and
                              verify your identity. `}
@@ -338,9 +348,10 @@ export function SignupEntry(): React.JSX.Element {
       </Splash>
       <NotificationModal
         id="account-collision-modal"
-        title={<FormattedMessage defaultMessage="Identity already registered" description="Collision dialog heading" />}
+        title={<FormattedMessage id="entry.heading" defaultMessage="Identity already registered" description="Collision dialog heading" />}
         mainText={
           <FormattedMessage
+            id="entry.description"
             defaultMessage="This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
             description="Collision dialog description"
           />
@@ -349,7 +360,7 @@ export function SignupEntry(): React.JSX.Element {
         closeModal={() => handleCancelCollision()}
         acceptModal={() => confirmCollision()}
         acceptButtonText={
-          <FormattedMessage defaultMessage="Continue with new account" description="Collision dialog confirm button" />
+          <FormattedMessage id="entry.collisionButton" defaultMessage="Continue with new account" description="Collision dialog confirm button" />
         }
       />
       <SignupStepIndicator currentStep={1} />

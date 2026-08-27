@@ -64,7 +64,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       {props.extraFields}
       <div className="response-code-inputs">
         <label htmlFor="v[0]" className="required">
-          <FormattedMessage defaultMessage="Code" description="email code" />
+          <FormattedMessage id="common.code" defaultMessage="Code" description="email code" />
         </label>
         <CodeField num={0} readonly={props.inputsDisabled} autoFocus={autoFocusCode && !props.inputsDisabled} />
         <CodeField num={1} readonly={props.inputsDisabled} />
@@ -77,7 +77,7 @@ function ShortCodeForm(props: FormRenderProps<ResponseCodeValues> & ResponseCode
       {showBadAttempts && (
         <div>
           <span className="input-validate-error" id="wrong-code-error">
-            <FormattedMessage defaultMessage="Incorrect code, try again" description="Short code form" />
+            <FormattedMessage id="responseCodeForm.short" defaultMessage="Incorrect code, try again" description="Short code form" />
           </span>
         </div>
       )}

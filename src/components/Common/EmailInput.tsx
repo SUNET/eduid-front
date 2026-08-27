@@ -22,7 +22,7 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "placeholder.email",
+    id: "emails.emailPlaceholder",
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
@@ -59,7 +59,7 @@ export default function EmailInput(props: Readonly<EmailInputProps>): React.JSX.
       aria-errormessage={props["aria-errormessage"]}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}
+      label={<FormattedMessage id="common.emailAddress" defaultMessage="Email address" description="profile email display title" />}
     />
   );
 }

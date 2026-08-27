@@ -18,6 +18,7 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
     <React.Fragment>
       <p>
         <FormattedMessage
+          id="tou.may"
           defaultMessage={`You may be asked to accept the terms again if you haven't used the service for a period of time, or any time the terms have changed.`}
         />
       </p>
@@ -27,6 +28,7 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
       <p>
         <strong>
           <FormattedMessage
+            id="tou.terms"
             defaultMessage={`Any person found violating or suspected of violating these rules can be disabled
           from eduID.se for investigation. Furthermore, legal action can be taken.`}
             description="Terms of use (common footer)"
@@ -36,10 +38,10 @@ export function CommonToU(props: Readonly<CommonToUProps>): React.JSX.Element {
       {props.handleAccept ? (
         <div className="buttons">
           <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={props.handleCancel}>
-            <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+            <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
           </EduIDButton>
           <EduIDButton type="submit" buttonstyle="primary" onClick={props.handleAccept} id="accept-button">
-            <FormattedMessage defaultMessage="I accept" description="Terms of use (accept button text)" />
+            <FormattedMessage id="tou.button" defaultMessage="I accept" description="Terms of use (accept button text)" />
           </EduIDButton>
         </div>
       ) : null}

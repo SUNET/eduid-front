@@ -5,16 +5,18 @@ export function AuthenticationFailure(): React.JSX.Element {
   return (
     <React.Fragment>
       <h1>
-        <FormattedMessage defaultMessage="Authentication error" description="ErrorURL authentication failure" />
+        <FormattedMessage id="authnFailure.heading" defaultMessage="Authentication error" description="ErrorURL authentication failure" />
       </h1>
       <p>
         <FormattedMessage
+          id="authnFailure.body"
           defaultMessage="The service you tried to access failed during the authentication stage."
           description="ErrorURL authentication failure"
         />
       </p>
       <p>
         <FormattedMessage
+          id="authnFailure.hint"
           defaultMessage="This may be because it requires additional steps which did not occur during login
                            (such as using a second factor). Please try again."
           description="ErrorURL authentication failure"

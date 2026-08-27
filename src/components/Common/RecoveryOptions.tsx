@@ -42,7 +42,7 @@ export function RecoveryOptions({
   const [frejaMfaAuthenticate] = frejaeIDApi.useLazyFrejaeIDMfaAuthenticateQuery();
 
   const placeholder = intl.formatMessage({
-    id: "placeholder.recovery_option",
+    id: "recoveryOptions.placeholder",
     defaultMessage: "Show other options",
     description: "placeholder text for recovery option",
   });
@@ -59,7 +59,7 @@ export function RecoveryOptions({
       label: (
         <IconWithText
           icon={<img height="35" className="circle-icon bankid-icon" alt="BankID" src={BankIdFlag} />}
-          text={<FormattedMessage defaultMessage={`BankID`} />}
+          text={<FormattedMessage id="recoveryOptions.bank" defaultMessage={`BankID`} />}
         />
       ),
       available: recoveryAvailable.swedish_eid,
@@ -69,7 +69,7 @@ export function RecoveryOptions({
       label: (
         <IconWithText
           icon={<img className="circle-icon" height="35" alt="Freja+" src={FrejaFlag} />}
-          text={<FormattedMessage defaultMessage={`Freja+`} />}
+          text={<FormattedMessage id="recoveryOptions.frejaSuu" defaultMessage={`Freja+`} />}
         />
       ),
       available: recoveryAvailable.swedish_eid,
@@ -79,7 +79,7 @@ export function RecoveryOptions({
       label: (
         <IconWithText
           icon={<img className="circle-icon" height="35" alt="eIDAS" src={EuFlag} />}
-          text={<FormattedMessage defaultMessage={`eIDAS`} />}
+          text={<FormattedMessage id="recoveryOptions.e" defaultMessage={`eIDAS`} />}
         />
       ),
       available: recoveryAvailable.eidas,
@@ -89,7 +89,7 @@ export function RecoveryOptions({
       label: (
         <IconWithText
           icon={<img className="circle-icon" height="35" alt="Freja eID" src={GlobalFlag} />}
-          text={<FormattedMessage defaultMessage={`Freja eID`} />}
+          text={<FormattedMessage id="recoveryOptions.freja" defaultMessage={`Freja eID`} />}
         />
       ),
       available: recoveryAvailable.freja_eid,
@@ -142,7 +142,7 @@ export function RecoveryOptions({
       <div className="or-container">
         <div className="line" />
         <span>
-          <FormattedMessage defaultMessage="Having issues using a security key?" />
+          <FormattedMessage id="recoveryOptions.having" defaultMessage="Having issues using a security key?" />
         </span>
         <div className="line" />
       </div>
@@ -166,6 +166,7 @@ export function RecoveryOptions({
         {!recoveryAvailable.swedish_eid && !recoveryAvailable.freja_eid && !recoveryAvailable.eidas && (
           <p className="help-text">
             <FormattedMessage
+              id="recoveryOptions.mfa"
               description="MFA recovery help text"
               defaultMessage="Requires that you have verified your identity in eduID with a Swedish personal identity number or coordination number, eIDAS, or Freja eID."
             />

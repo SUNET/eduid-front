@@ -63,7 +63,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
 
             <div className="buttons">
               <EduIDButton id="cancel-button" buttonstyle="secondary" onClick={handleCancel}>
-                <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+                <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
               </EduIDButton>
               <EduIDButton
                 buttonstyle="primary"
@@ -72,7 +72,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
                 type="submit"
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage defaultMessage="send email" description="Reset Password button" />
+                <FormattedMessage id="resetPassword.emailForm.button" defaultMessage="send email" description="Reset Password button" />
               </EduIDButton>
             </div>
           </form>

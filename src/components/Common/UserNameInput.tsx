@@ -21,7 +21,7 @@ export default function UserNameInput(props: Readonly<UserNameInputProps>): Reac
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "placeholder.username",
+    id: "userNameInput.placeholder",
     defaultMessage: "email or unique ID",
     description: "placeholder text for user name input",
   });
@@ -56,7 +56,7 @@ export default function UserNameInput(props: Readonly<UserNameInputProps>): Reac
       defaultValue={props.defaultValue}
       // parameters for InputWrapper
       helpBlock={props.helpBlock}
-      label={<FormattedMessage defaultMessage="Username" description="profile username display title" />}
+      label={<FormattedMessage id="common.username" defaultMessage="Username" description="profile username display title" />}
       onFocus={props.onFocus}
     />
   );

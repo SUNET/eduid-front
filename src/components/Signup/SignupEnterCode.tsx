@@ -88,12 +88,13 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage defaultMessage="Create eduID: Request new email code" description="Signup" />
+            <FormattedMessage id="enterCode.create" defaultMessage="Create eduID: Request new email code" description="Signup" />
           </h1>
           <ServiceInfo />
           <div className="lead">
             <p>
               <FormattedMessage
+                id="enterCode.code"
                 defaultMessage="The code sent to {email} has expired."
                 values={{
                   email: (
@@ -109,13 +110,14 @@ export function SignupEnterCode(): React.JSX.Element {
           </div>
           <p>
             <FormattedMessage
+              id="enterCode.expired"
               defaultMessage="Click the link below to receive a new code."
               description="Signup, code expired"
             />
           </p>
         </section>
         <EduIDButton buttonstyle="link normal-case text-large" onClick={registerEmail} id="send-new-code">
-          <FormattedMessage defaultMessage="Send me a new code" description="send a new code" />
+          <FormattedMessage id="enterCode.send" defaultMessage="Send me a new code" description="send a new code" />
         </EduIDButton>
         <SignupStepIndicator currentStep={3} />
       </div>
@@ -129,12 +131,13 @@ export function SignupEnterCode(): React.JSX.Element {
       <div className="step-container">
         <section className="intro">
           <h1>
-            <FormattedMessage defaultMessage="Create eduID: Verify email address" description="Signup" />
+            <FormattedMessage id="enterCode.createEdu" defaultMessage="Create eduID: Verify email address" description="Signup" />
           </h1>
           <ServiceInfo />
           <div className="lead">
             <p>
               <FormattedMessage
+                id="common.enterSixDigitCode"
                 defaultMessage={`Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address.`}
                 values={{
                   email: (
@@ -152,7 +155,7 @@ export function SignupEnterCode(): React.JSX.Element {
 
         <div className="signup-timer-wrapper">
           <span>
-            <FormattedMessage defaultMessage="Code expires in" description="Short code form" />
+            <FormattedMessage id="enterCode.short" defaultMessage="Code expires in" description="Short code form" />
           </span>
           <TimeRemainingWrapper
             name="signup-email-expires"

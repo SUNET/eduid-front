@@ -270,13 +270,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
       <article id="add-two-factor">
         <div className="flex-between baseline">
           <h2>
-            <FormattedMessage description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
+            <FormattedMessage id="mfaInfo.title" description="security key title" defaultMessage="Add multi-factor Authentication (MFA)" />
           </h2>
           <ToolTip />
         </div>
 
         <p>
           <FormattedMessage
+            id="mfaInfo.securitySecond"
             description="security second factor"
             defaultMessage={`If possible add a security key as a second factor of authentication, beyond username and password, 
               to prove you are the owner of your eduID. Examples are separate physical USB security keys that you can get, or built-in passkey features on your device, such as biometrics or pins.`}
@@ -285,6 +286,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         <p className="text-medium">
           <strong>
             <FormattedMessage
+              id="mfaInfo.security"
               description="security second factor individual"
               defaultMessage={`Note: added security keys are personal and not to be shared with others. This is to ensure that access to your account is limited solely to you, the account holder.`}
             />
@@ -292,12 +294,14 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         </p>
         <p className="help-text">
           <FormattedMessage
+            id="mfaInfo.info"
             description="security second factor help info"
             defaultMessage={`You can read more about supported security keys in the Help section: {HelpSecurityKeys}.`}
             values={{
               HelpSecurityKeys: (
                 <Link className="text-link" to={`../../../help#help-security-key-button`} target="_blank">
                   <FormattedMessage
+                    id="mfaInfo.handle"
                     description="about security key - handle"
                     defaultMessage="Improving the security level of eduID"
                   />
@@ -309,7 +313,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
         <section className="add-key-section">
           <span aria-label="select extra webauthn">
             <strong>
-              <FormattedMessage description="select extra webauthn" defaultMessage="Add a new security key:" />
+              <FormattedMessage id="mfaInfo.select" description="select extra webauthn" defaultMessage="Add a new security key:" />
             </strong>
           </span>
 
@@ -322,10 +326,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 disabled={!isPlatformAuthenticatorAvailable || isRegisteringAuthenticator}
               >
                 <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+                <FormattedMessage id="credentials.addWebauthn" description="add webauthn token device" defaultMessage="this device" />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage
+                  id="credentials.platformAuthn"
                   description="platform authn device help text"
                   defaultMessage="Internal passkey on your phone or laptop."
                 />
@@ -333,6 +338,7 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
               {!isPlatformAuthenticatorAvailable && (
                 <p className="help-text black">
                   <FormattedMessage
+                    id="mfaInfo.error"
                     description="platform authn device error text"
                     defaultMessage="*Your device is not compatible."
                   />
@@ -347,10 +353,11 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
                 disabled={isRegisteringAuthenticator}
               >
                 <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                <FormattedMessage id="common.securityKeyText" description="add webauthn token key" defaultMessage="security key" />
               </EduIDButton>
               <p className="help-text">
                 <FormattedMessage
+                  id="credentials.platform"
                   description="platform authn key help text"
                   defaultMessage="Your external USB security key."
                 />
@@ -360,12 +367,13 @@ export function MultiFactorAuthentication(): React.ReactElement | null {
           {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
             <span className="suggestion suggestion-txt">
               <FormattedMessage
+                id="multiFactorAuth.multiple"
                 description="multiple key suggestion"
                 defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
                 values={{
                   strong: (
                     <strong>
-                      <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                      <FormattedMessage id="multiFactorAuth.multipleKey" description="multiple key - strong" defaultMessage={`add more than one`} />
                     </strong>
                   ),
                 }}

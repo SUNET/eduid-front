@@ -46,6 +46,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="extraSecurities.extraHeading"
             defaultMessage="Reset Password: Verification method"
             description="HandleExtraSecurities heading"
           />
@@ -54,6 +55,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
           {" "}
           <p>
             <FormattedMessage
+              id="extraSecurities.paragraph"
               defaultMessage={`Choose a second method to authenticate yourself now to ensure only you can access your eduID, or continue without MFA authentication.`}
               description="MFA paragraph"
             />
@@ -62,6 +64,7 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
         <p>
           {Object.keys(extra_security).length > 0 ? (
             <FormattedMessage
+              id="extraSecurities.mfaParagraph"
               defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID or Freja+.`}
               description="MFA paragraph with swedish option"
             />
@@ -78,18 +81,20 @@ export function HandleExtraSecurities(): React.JSX.Element | null {
       </div>
       <h3 className="description-without-security">
         <FormattedMessage
+          id="extraSecurities.heading"
           description="without extra security heading"
           defaultMessage="Continue without MFA authentication"
         />
       </h3>
       <p>
         <FormattedMessage
+          id="extraSecurities.description"
           description="without extra security description"
           defaultMessage="Your account will require confirmation after the password has been reset."
         />
         &nbsp;
         <EduIDButton buttonstyle="link normal-case" id="continue-without-security" onClick={continueSetPassword}>
-          <FormattedMessage description="continue reset password" defaultMessage="Continue reset password" />
+          <FormattedMessage id="extraSecurities.continue" description="continue reset password" defaultMessage="Continue reset password" />
         </EduIDButton>
       </p>
       <ResetPasswordStepIndicator currentStep={4} />

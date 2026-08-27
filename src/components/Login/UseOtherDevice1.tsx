@@ -40,16 +40,16 @@ function UseOtherDevice1() {
   let error = undefined;
   if (!hasQrCode && other_device) {
     if (other_device.state === "ABORTED") {
-      error = <FormattedMessage defaultMessage="The request has been aborted" description="Use other device" />;
+      error = <FormattedMessage id="useOtherDevice1.aborted" defaultMessage="The request has been aborted" description="Use other device" />;
     } else {
-      error = <FormattedMessage defaultMessage="The request is not valid anymore" description="Use other device" />;
+      error = <FormattedMessage id="useOtherDevice1.invalid" defaultMessage="The request is not valid anymore" description="Use other device" />;
     }
   }
 
   return (
     <div className="use-another-device device1">
       <h1>
-        <FormattedMessage defaultMessage="Log in using another device" />
+        <FormattedMessage id="useOtherDevice1.logUsing" defaultMessage="Log in using another device" />
       </h1>
       <div className="lead">
         <LoginAtServiceInfo service_info={service_info} />
@@ -80,7 +80,7 @@ function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQ
           onClick={handleCancelButtonOnClick}
           id="response-code-cancel-button"
         >
-          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+          <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         {props.handleNewQRCodeOnClick && (
           <EduIDButton
@@ -89,7 +89,7 @@ function RenderFatalError(props: Readonly<{ error: React.JSX.Element; handleNewQ
             id="refresh-get-new-code"
             onClick={props.handleNewQRCodeOnClick}
           >
-            <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
+            <FormattedMessage id="common.retry" defaultMessage="Retry" description="Login OtherDevice" />
           </EduIDButton>
         )}
       </div>
@@ -166,6 +166,7 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
 
   const expiredMessage = (
     <FormattedMessage
+      id="useOtherDevice1.another1"
       defaultMessage="The login attempt was aborted or exceeded the time limit. Please try again."
       description="Use another device #1"
     />
@@ -178,7 +179,7 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
       ) : (
         <ol className="listed-steps">
           <li>
-            <FormattedMessage defaultMessage="Scan this QR-code with your other device" />
+            <FormattedMessage id="useOtherDevice1.scan" defaultMessage="Scan this QR-code with your other device" />
 
             <figure className="x-adjust">
               <img alt="qr-code" className="qr-code" src={data.qr_img} />
@@ -187,13 +188,13 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
           </li>
 
           <li>
-            <FormattedMessage defaultMessage="Log in on the other device" />
+            <FormattedMessage id="useOtherDevice1.log" defaultMessage="Log in on the other device" />
           </li>
 
           <li>
             {response_code_required === false ? (
               <React.Fragment>
-                <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+                <FormattedMessage id="useOtherDevice1.click" defaultMessage={`Click "continue" once you have logged in on the other device`} />
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="secondary"
@@ -201,7 +202,7 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
                     onClick={handleAbortButtonOnClick}
                     id="response-code-cancel-button"
                   >
-                    <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+                    <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
                   </EduIDButton>
                   <EduIDButton
                     type="submit"
@@ -209,13 +210,13 @@ function RenderOtherDevice1(props: Readonly<{ data: UseOtherDevice1ResponseWithQ
                     onClick={handleContinueWithoutCode}
                     id="response-code-continue-button"
                   >
-                    <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
+                    <FormattedMessage id="common.continue" defaultMessage="Continue" description="Login OtherDevice" />
                   </EduIDButton>
                 </div>
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+                <FormattedMessage id="useOtherDevice1.enter" defaultMessage="Enter the six digit response code shown on the other device in the form below" />
                 <div className="expiration-info">
                   <ResponseCodeForm
                     bad_attempts={bad_attempts}
@@ -253,7 +254,7 @@ function DeveloperInfo(props: Readonly<{ qr_url?: string }>) {
     <div className="developer">
       <p></p>
       <span>
-        <FormattedMessage defaultMessage="Developer info, not shown in production:" />
+        <FormattedMessage id="useOtherDevice2.info" defaultMessage="Developer info, not shown in production:" />
       </span>
       <span id="qr_url">
         <a href={props.qr_url}>{props.qr_url}</a>

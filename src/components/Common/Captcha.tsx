@@ -57,13 +57,13 @@ function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element
                 name="value"
                 autoComplete="off"
                 label={
-                  <FormattedMessage description="captcha input label" defaultMessage="Enter the code from the image" />
+                  <FormattedMessage id="captcha.label" description="captcha input label" defaultMessage="Enter the code from the image" />
                 }
               />
 
               <div className="buttons">
                 <EduIDButton onClick={props.handleCaptchaCancel} buttonstyle="secondary" id="cancel-captcha-button">
-                  <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+                  <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
                 </EduIDButton>
 
                 <EduIDButton
@@ -73,7 +73,7 @@ function CaptchaForm(props: Readonly<SignupCaptchaFormProps>): React.JSX.Element
                   disabled={_disabled}
                   onClick={formProps.handleSubmit}
                 >
-                  <FormattedMessage defaultMessage="Continue" description="Captcha button" />
+                  <FormattedMessage id="common.continue" defaultMessage="Continue" description="Captcha button" />
                 </EduIDButton>
               </div>
             </fieldset>
@@ -137,7 +137,7 @@ export function InternalCaptcha(props: Readonly<CaptchaProps>) {
         >
           <FontAwesomeIcon icon={faRedo as IconProp} />
           <span>
-            <FormattedMessage defaultMessage="Generate a new captcha image" description="captcha img change" />
+            <FormattedMessage id="captcha.img" defaultMessage="Generate a new captcha image" description="captcha img change" />
           </span>
         </EduIDButton>
       </figure>

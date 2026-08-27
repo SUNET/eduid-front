@@ -29,6 +29,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="confirmEmail.heading"
             defaultMessage="Reset Password: Start account recovery process"
             description="Account recovery front page heading"
           />
@@ -36,6 +37,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
         <div className="lead" />
         <p>
           <FormattedMessage
+            id="confirmEmail.account"
             defaultMessage="Click the button below to send an e-mail to {email}"
             description="Account recovery front page"
             values={{
@@ -51,6 +53,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="confirmEmail.accountRecovery"
             defaultMessage="If you decide to cancel, simply click the Go Back button to return to the login page."
             description="Account recovery cancel information"
           />
@@ -60,7 +63,7 @@ export function ResetPasswordConfirmEmail(): React.JSX.Element {
       <div className="buttons">
         <GoBackButton />
         <EduIDButton buttonstyle="primary" type="submit" onClick={sendEmailOnClick}>
-          <FormattedMessage defaultMessage="Send e-mail" description="Send e-mail button" />
+          <FormattedMessage id="confirmEmail.button" defaultMessage="Send e-mail" description="Send e-mail button" />
         </EduIDButton>
       </div>
       <ResetPasswordStepIndicator currentStep={3} />

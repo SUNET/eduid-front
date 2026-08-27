@@ -73,7 +73,7 @@ export default function PersonalDataForm(props: Readonly<PersonalDataFormProps>)
               <article>
                 <div className="buttons">
                   <EduIDButton type="submit" id="personal-data-button" buttonstyle="primary" disabled={_disabled}>
-                    <FormattedMessage defaultMessage="save" description="button save" />
+                    <FormattedMessage id="personalDataForm.button" defaultMessage="save" description="button save" />
                   </EduIDButton>
                 </div>
               </article>
@@ -159,10 +159,11 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
   return (
     <article>
       <legend className="require">
-        <FormattedMessage defaultMessage="Display name" description="Display name select legend" />
+        <FormattedMessage id="common.displayName" defaultMessage="Display name" description="Display name select legend" />
       </legend>
       <p className="help-text">
         <FormattedMessage
+          id="personalDataForm.paragraph"
           defaultMessage={`If your identity is verified you can choose which of your first names from the population 
           register to use as your display name for some services.`}
           description="Display name select paragraph"
@@ -170,11 +171,13 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
         &nbsp;
         {transformedOptions && transformedOptions.length > 1 ? (
           <FormattedMessage
+            id="personalDataForm.displayNameParagraph"
             defaultMessage="Select at least one first name below if you wish to change it."
             description="Display name select abled paragraph"
           />
         ) : (
           <FormattedMessage
+            id="personalDataForm.displayParagraph"
             defaultMessage="If you only have one first name, no selection is possible."
             description="Display name select disabled paragraph"
           />
@@ -190,7 +193,7 @@ function SelectDisplayName(props: Readonly<{ setChosenGivenName: (name: string) 
           classNamePrefix="select"
           noOptionsMessage={NoOptionsMessage}
           placeholder={
-            <FormattedMessage defaultMessage="select display name..." description="Display name select placeholder" />
+            <FormattedMessage id="personalDataForm.placeholder" defaultMessage="select display name..." description="Display name select placeholder" />
           }
           isDisabled={transformedOptions && transformedOptions.length < 2}
           isSearchable={false}
@@ -240,6 +243,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
           <FontAwesomeIcon icon={faRedo as IconProp} />
           <span>
             <FormattedMessage
+              id="personalDataForm.update"
               defaultMessage="Update first and last names from the Swedish Population Register."
               description="Personal data update locked names"
             />
@@ -253,6 +257,7 @@ const RenderLockedNames = (props: { labels: NameLabels }) => {
 function NoOptionsMessage() {
   return (
     <FormattedMessage
+      id="personalDataForm.message"
       defaultMessage="To change the display name, delete and choose again"
       description="Display name noOptionsMessage"
     />
@@ -284,6 +289,7 @@ function RenderEditableNames(props: Readonly<{ labels: NameLabels }>) {
       </div>
       <p className="help-text">
         <FormattedMessage
+          id="personalDataForm.hint"
           defaultMessage="First and last name will be replaced with your legal name if you verify your eduID with your personal id number."
           description="Personal data hint names locked when verified"
         />

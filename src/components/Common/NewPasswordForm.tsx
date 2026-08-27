@@ -51,12 +51,13 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
               name="newPassword"
               component={CustomInput}
               required={true}
-              label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
+              label={<FormattedMessage id="common.repeatNewPassword" defaultMessage="Repeat new password" description="Set new password" />}
               autoFocus={true}
               placeholder="xxxx xxxx xxxx"
             />
             <span className="suggestion-txt">
               <FormattedMessage
+                id="passwordCustom.remember"
                 defaultMessage="Memorise or keep your password safe!"
                 description="remember pw prompt"
               />
@@ -67,7 +68,7 @@ export function NewPasswordForm(props: Readonly<NewPasswordFormProps>): React.JS
               )}
               {props.handleCancel && (
                 <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
-                  <FormattedMessage defaultMessage="cancel" description="button cancel" />
+                  <FormattedMessage id="common.cancel" defaultMessage="cancel" description="button cancel" />
                 </EduIDButton>
               )}
               <EduIDButton type="submit" buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>

@@ -13,28 +13,32 @@ function Eidas(): React.JSX.Element {
     <div id="freja-instructions">
       <ol>
         <li>
-          <FormattedMessage description="eidas freja instructions step1" defaultMessage={`Install the app`} />
+          <FormattedMessage id="eidas.frejaInstructionsStep1" description="eidas freja instructions step1" defaultMessage={`Install the app`} />
         </li>
         <li>
           <FormattedMessage
+            id="eidas.frejaInstructionsStep2"
             description="eidas freja instructions step2"
             defaultMessage={`Create a Freja eID Plus account (awarded the "Svensk e-legitimation" quality mark)`}
           />
         </li>
         <li>
           <FormattedMessage
+            id="eidas.freja"
             description="eidas freja instructions step3"
             defaultMessage={`The app will generate a QR-code`}
           />
         </li>
         <li>
           <FormattedMessage
+            id="eidas.frejaInstructions"
             description="eidas freja instructions step4"
             defaultMessage={`Find a local authorised agent, show them a valid ID together with the QR-code and 
               they will be able to verify your identity`}
           />
           <span>
             <FormattedMessage
+              id="eidas.instruction"
               description="eidas freja instruction tip1"
               defaultMessage={`Tip: Use the app to find your nearest agent`}
             />
@@ -42,13 +46,14 @@ function Eidas(): React.JSX.Element {
         </li>
         <li>
           <FormattedMessage
+            id="eidas.frejaInstructionsStep5"
             description="eidas freja instructions step5"
             defaultMessage={`Freja eID is now ready to be used with your eduID, proceed by clicking the button below `}
           />
         </li>
       </ol>
       <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
-        <FormattedMessage description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
+        <FormattedMessage id="common.whatIsFreja" description="eidas freja instructions install link" defaultMessage={`What is Freja eID?`} />
       </a>
     </div>
   );
@@ -66,6 +71,7 @@ function Eidas(): React.JSX.Element {
     <Fragment>
       <p>
         <FormattedMessage
+          id="eidas.proofing"
           description="eidas proofing help text"
           defaultMessage={`To use this option you will need to first create a digital ID in the 
             {freja_eid_link} app.`}
@@ -80,13 +86,14 @@ function Eidas(): React.JSX.Element {
       </p>
 
       <EduIDButton buttonstyle="primary sm" onClick={() => setShowModal(true)} aria-label="Proceed with Freja eID">
-        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+        <FormattedMessage id="letterProofing.proceedButton" defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
 
       <NotificationModal
         id="eidas-info-modal"
         title={
           <FormattedMessage
+            id="eidas.title"
             description="eidas modal title"
             defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
           />
@@ -97,7 +104,7 @@ function Eidas(): React.JSX.Element {
           setShowModal(false);
         }}
         acceptModal={useFrejaeID}
-        acceptButtonText={<FormattedMessage description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
+        acceptButtonText={<FormattedMessage id="eidas.frejaEid" description="eidas freja eid ready" defaultMessage={`Use my Freja eID`} />}
       />
     </Fragment>
   );
