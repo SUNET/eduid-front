@@ -20,10 +20,14 @@ function RenderAddPersonalDataPrompt({ setEditMode }: Readonly<RenderAddPersonal
   return (
     <div className="button-pair">
       <p>
-        <FormattedMessage defaultMessage="No information has been added." description="pd no data added" />
+        <FormattedMessage
+          id="personalData.pd"
+          defaultMessage="No information has been added."
+          description="pd no data added"
+        />
       </p>
       <EduIDButton buttonstyle="primary" id="add-personal-data" onClick={() => setEditMode(true)}>
-        <FormattedMessage defaultMessage="add" description="button add" />
+        <FormattedMessage id="personalData.addButton" defaultMessage="add" description="button add" />
       </EduIDButton>
     </div>
   );
@@ -57,17 +61,17 @@ function PersonalDataParent() {
   //  to use as placeholder/label throughout these components
   const names: NameLabels = {
     first: intl.formatMessage({
-      id: "pd.given_name",
+      id: "common.firstName",
       defaultMessage: "First name",
       description: "First name label/template (edit personal data)",
     }),
     last: intl.formatMessage({
-      id: "pd.surname",
+      id: "common.lastName",
       defaultMessage: "Last name",
       description: "Last name label/template (edit personal data)",
     }),
     display_name: intl.formatMessage({
-      id: "pd.display_name",
+      id: "common.displayName",
       defaultMessage: "Display name",
       description: "Display name label/template (edit personal data)",
     }),
@@ -78,21 +82,30 @@ function PersonalDataParent() {
       <div className="heading">
         <h2>
           {isEditMode ? (
-            <FormattedMessage description="Edit Names & Display Name" defaultMessage={`Edit Names & Display Name`} />
+            <FormattedMessage
+              id="personalData.edit"
+              description="Edit Names & Display Name"
+              defaultMessage={`Edit Names & Display Name`}
+            />
           ) : (
-            <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+            <FormattedMessage
+              id="personalData.names"
+              description="Names & Display Name"
+              defaultMessage={`Names & Display Name`}
+            />
           )}
         </h2>
         <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
           {isEditMode ? (
-            <FormattedMessage description="close button" defaultMessage="close" />
+            <FormattedMessage id="personalData.closeButton" description="close button" defaultMessage="close" />
           ) : (
-            <FormattedMessage description="edit button" defaultMessage="edit" />
+            <FormattedMessage id="personalData.button" description="edit button" defaultMessage="edit" />
           )}
         </EduIDButton>
       </div>
       <p>
         <FormattedMessage
+          id="personalData.description"
           description="pd long description"
           defaultMessage="This information may be used to personalise services that you access with your eduID."
         />

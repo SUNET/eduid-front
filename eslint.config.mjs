@@ -5,6 +5,7 @@ import jestDom from "eslint-plugin-jest-dom";
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 import reactHooks from "eslint-plugin-react-hooks"
+import formatjs from "eslint-plugin-formatjs";
 
 export default defineConfig([
   js.configs.recommended,
@@ -35,6 +36,7 @@ export default defineConfig([
 
     plugins: {
       react,
+      formatjs,
     },
 
     rules: {
@@ -52,6 +54,9 @@ export default defineConfig([
           "ignoreRestSiblings": true
         }
       ],
+      // Transform removed: every message must carry an explicit semantic id.
+      // No idInterpolationPattern -> no hash autofix; a missing id is a hand-fix.
+      "formatjs/enforce-id": "error",
     },
 
     settings: {

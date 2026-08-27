@@ -16,6 +16,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
     <React.Fragment>
       <p>
         <FormattedMessage
+          id="credentialsError.there"
           defaultMessage="There was a problem creating your account."
           description="Signup credentials"
         />
@@ -27,7 +28,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
           onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"))}
           id="abort-button"
         >
-          <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+          <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         <EduIDButton
           type="submit"
@@ -37,7 +38,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
           }}
           id="retry-button"
         >
-          <FormattedMessage defaultMessage="Retry" description="Signup credentials button" />
+          <FormattedMessage id="common.retry" defaultMessage="Retry" description="Signup credentials button" />
         </EduIDButton>
       </div>
     </React.Fragment>

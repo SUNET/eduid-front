@@ -99,7 +99,7 @@ function NinForm(): React.JSX.Element {
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "nins.input_placeholder",
+    id: "ninForm.swedish",
     defaultMessage: "yyyymmddnnnn",
     description: "Swedish NIN template",
   });
@@ -125,14 +125,16 @@ function NinForm(): React.JSX.Element {
               componentClass="input"
               type="text"
               name="nin"
-              label={<FormattedMessage description="nin label" defaultMessage="ID number" />}
+              label={<FormattedMessage id="ninForm.label" description="nin label" defaultMessage="ID number" />}
               placeholder={placeholder}
-              helpBlock={<FormattedMessage description="nins input help text" defaultMessage="12 digits" />}
+              helpBlock={
+                <FormattedMessage id="ninForm.nins" description="nins input help text" defaultMessage="12 digits" />
+              }
               validate={validateNin}
             />
             <div className="buttons">
               <EduIDButton id="add-nin-button" buttonstyle="primary" disabled={pristine || invalid} type="submit">
-                <FormattedMessage description="button_add" defaultMessage="Add" />
+                <FormattedMessage id="common.add" description="button_add" defaultMessage="Add" />
               </EduIDButton>
             </div>
           </form>

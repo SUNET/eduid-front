@@ -38,13 +38,13 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
   const [pwScore, setPwScore] = useState(0);
 
   const new_password_placeholder = intl.formatMessage({
-    id: "placeholder.new_password_placeholder",
+    id: "passwordCustom.placeholder",
     defaultMessage: "enter new password",
     description: "placeholder text for new password",
   });
 
   const repeat_new_password_placeholder = intl.formatMessage({
-    id: "placeholder.repeat_new_password_placeholder",
+    id: "passwordCustom.repeatPlaceholder",
     defaultMessage: "repeat new password",
     description: "placeholder text for repeat new password",
   });
@@ -68,6 +68,7 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
               <legend>
                 <strong>
                   <FormattedMessage
+                    id="passwordCustom.label"
                     defaultMessage="Tip: Choose a strong password"
                     description="help text for custom password label"
                   />
@@ -76,21 +77,25 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
               <ul className="password-custom-help">
                 {[
                   <FormattedMessage
+                    id="passwordCustom.tipCase"
                     key={1}
                     defaultMessage="Use upper- and lowercase characters, but not at the beginning or end"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
+                    id="passwordCustom.tipDigits"
                     key={2}
                     defaultMessage="Add digits somewhere, but not at the beginning or end"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
+                    id="passwordCustom.tipSpecial"
                     key={3}
                     defaultMessage="Add special characters, such as  @ $ \\ + _ %"
                     description="help text for custom password tips"
                   />,
                   <FormattedMessage
+                    id="passwordCustom.tipSpaces"
                     key={4}
                     defaultMessage="Spaces are ignored"
                     description="help text for custom password tips"
@@ -107,6 +112,7 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
                 type="password"
                 label={
                   <FormattedMessage
+                    id="passwordCustom.chpassLabel"
                     defaultMessage="Enter new password"
                     description="chpass form custom password label"
                   />
@@ -126,6 +132,7 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
                 type="password"
                 label={
                   <FormattedMessage
+                    id="common.repeatNewPassword"
                     defaultMessage="Repeat new password"
                     description="chpass form custom password repeat"
                   />
@@ -136,13 +143,14 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
             </fieldset>
             <span className="suggestion-txt">
               <FormattedMessage
+                id="passwordCustom.remember"
                 defaultMessage="Memorise or keep your password safe!"
                 description="remember pw prompt"
               />
             </span>
             <div id="chpass-form" className="buttons">
               <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
-                <FormattedMessage defaultMessage="cancel" description="button cancel" />
+                <FormattedMessage id="common.cancel" defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
               <EduIDButton
                 type="submit"
@@ -152,7 +160,7 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
                 disabled={formProps.submitting || formProps.invalid || pwScore <= 2}
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage defaultMessage="Save" description="button save" />
+                <FormattedMessage id="common.save" defaultMessage="Save" description="button save" />
               </EduIDButton>
             </div>
           </form>

@@ -111,7 +111,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                 to={START_PATH}
                 end
               >
-                <FormattedMessage defaultMessage="Start" description="Dashboard nav tab name" />
+                <FormattedMessage id="common.start" defaultMessage="Start" description="Dashboard nav tab name" />
               </NavLink>
               <button
                 onClick={() => toggleOpen("start")}
@@ -128,7 +128,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.start ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${START_PATH}#status-overview`}>
-                  <FormattedMessage defaultMessage="eduID status overview" description="status overview title" />
+                  <FormattedMessage
+                    id="recommendations.title"
+                    defaultMessage="eduID status overview"
+                    description="status overview title"
+                  />
                 </Link>
               </li>
             </ul>
@@ -140,7 +144,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                 className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={IDENTITY_PATH}
               >
-                <FormattedMessage defaultMessage="Identity" description="Dashboard nav tab name" />
+                <FormattedMessage id="common.identity" defaultMessage="Identity" description="Dashboard nav tab name" />
               </NavLink>
               <button
                 onClick={() => toggleOpen("identity")}
@@ -157,7 +161,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.identity ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${IDENTITY_PATH}#verify-identity`}>
-                  <FormattedMessage defaultMessage="Verify Identity" description="Identity sub menu" />
+                  <FormattedMessage
+                    id="headerNav.identity"
+                    defaultMessage="Verify Identity"
+                    description="Identity sub menu"
+                  />
                 </Link>
               </li>
               <li>
@@ -166,7 +174,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                   to={`${IDENTITY_PATH}#personal-data`}
                   aria-label="go to manage your security key section"
                 >
-                  <FormattedMessage description="Names & Display Name" defaultMessage={`Names & Display Name`} />
+                  <FormattedMessage
+                    id="personalData.names"
+                    description="Names & Display Name"
+                    defaultMessage={`Names & Display Name`}
+                  />
                 </Link>
               </li>
             </ul>
@@ -178,7 +190,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                 className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={SECURITY_PATH}
               >
-                <FormattedMessage defaultMessage="Security" description="security main title" />
+                <FormattedMessage id="common.security" defaultMessage="Security" description="security main title" />
               </NavLink>
 
               <button
@@ -197,6 +209,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#add-two-factor`}>
                   <FormattedMessage
+                    id="mfaInfo.title"
                     defaultMessage="Add multi-factor Authentication (MFA)"
                     description="security key title"
                   />
@@ -204,7 +217,11 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${SECURITY_PATH}#manage-security-keys`}>
-                  <FormattedMessage defaultMessage="Manage your security keys" description="manage your tokens" />
+                  <FormattedMessage
+                    id="securityKeyTable.manage"
+                    defaultMessage="Manage your security keys"
+                    description="manage your tokens"
+                  />
                 </Link>
               </li>
             </ul>
@@ -216,7 +233,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
                 className={({ isActive }) => (isActive ? `${activeClassName} menu-item` : `menu-item`)}
                 to={ACCOUNT_PATH}
               >
-                <FormattedMessage defaultMessage="Account" description="Dashboard nav tab name" />
+                <FormattedMessage id="common.account" defaultMessage="Account" description="Dashboard nav tab name" />
               </NavLink>
               <button
                 onClick={() => toggleOpen("account")}
@@ -233,37 +250,61 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             <ul className={isOpen.account ? "submenu-open" : "submenu"}>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#unique-id`}>
-                  <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
+                  <FormattedMessage
+                    id="accountId.heading"
+                    defaultMessage="Unique ID"
+                    description="Dashboard AccountId"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#add-email-addresses`}>
-                  <FormattedMessage defaultMessage="Email addresses" description="Emails main title" />
+                  <FormattedMessage
+                    id="emails.title"
+                    defaultMessage="Email addresses"
+                    description="Emails main title"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#language`}>
-                  <FormattedMessage defaultMessage="Language" description="Language" />
+                  <FormattedMessage id="common.language" defaultMessage="Language" description="Language" />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#change-password`}>
-                  <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
+                  <FormattedMessage
+                    id="common.changePassword"
+                    defaultMessage="Change password"
+                    description="Dashboard change password"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#orcid`}>
-                  <FormattedMessage defaultMessage="ORCID account" description="Dashboard AccountLinking" />
+                  <FormattedMessage
+                    id="accountLinking.orcid"
+                    defaultMessage="ORCID account"
+                    description="Dashboard AccountLinking"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#ladok`}>
-                  <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
+                  <FormattedMessage
+                    id="ladok.esiInfoLabel"
+                    defaultMessage="ESI information"
+                    description="Ladok account linking"
+                  />
                 </Link>
               </li>
               <li>
                 <Link onClick={() => setOpenMenu(false)} to={`${ACCOUNT_PATH}#delete-account`}>
-                  <FormattedMessage defaultMessage="Block and delete eduID" description="DeleteAccount" />
+                  <FormattedMessage
+                    id="deleteAccount.block"
+                    defaultMessage="Block and delete eduID"
+                    description="DeleteAccount"
+                  />
                 </Link>
               </li>
             </ul>
@@ -279,7 +320,7 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
             disabled={!props.login_url}
           >
             <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
-            <FormattedMessage defaultMessage="Log out" description="Header logout" />
+            <FormattedMessage id="headerNav.logout" defaultMessage="Log out" description="Header logout" />
           </EduIDButton>
         </div>
       </div>

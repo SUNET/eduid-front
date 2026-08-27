@@ -90,6 +90,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                 <section className="intro">
                   <h1>
                     <FormattedMessage
+                      id="setNewPassword.suggested"
                       description="Reset Password - headline"
                       defaultMessage="Reset Password: Suggested password"
                     />
@@ -97,6 +98,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                   <div className="lead">
                     <p>
                       <FormattedMessage
+                        id="setNewPassword.generatedLead"
                         description="Generated password - lead"
                         defaultMessage={`A strong password has been generated for you. To proceed copy 
                         the password into the Repeat new password field and click the Save button. Or choose to create your own custom password.`}
@@ -108,6 +110,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                 <section className="intro">
                   <h1>
                     <FormattedMessage
+                      id="setNewPassword.custom"
                       description="Reset Password - headline"
                       defaultMessage="Reset Password: Create your own password"
                     />
@@ -115,6 +118,7 @@ export function SetNewPassword(): React.JSX.Element | null {
                   <div className="lead">
                     <p>
                       <FormattedMessage
+                        id="setNewPassword.lead"
                         description="Strong password - lead"
                         defaultMessage={`When creating your own password, make sure it is strong enough to keep your 
                         accounts safe.`}
@@ -158,6 +162,7 @@ export function ResetPasswordSuccess(): React.JSX.Element {
         <section className="intro">
           <h1>
             <FormattedMessage
+              id="setNewPassword.heading"
               defaultMessage="Reset Password: Completed"
               description="Reset Password set new password success heading"
             />
@@ -165,6 +170,7 @@ export function ResetPasswordSuccess(): React.JSX.Element {
           <div className="lead">
             <p>
               <FormattedMessage
+                id="setNewPassword.success"
                 defaultMessage={`You have successfully updated your password. Make sure to store your password securely for future use. 
                 When logged in it is possible to change your password.`}
                 description="Reset Password set new password success lead"
@@ -182,7 +188,11 @@ export function ResetPasswordSuccess(): React.JSX.Element {
 
         <div className="buttons">
           <EduIDButton id="reset-password-finished" buttonstyle="link normal-case text-large" type="submit">
-            <FormattedMessage defaultMessage="Go to eduid to login" description="go to eduID link text" />
+            <FormattedMessage
+              id="common.goToEduidLogin"
+              defaultMessage="Go to eduid to login"
+              description="go to eduID link text"
+            />
           </EduIDButton>
         </div>
       </form>

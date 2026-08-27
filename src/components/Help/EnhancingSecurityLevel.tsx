@@ -25,12 +25,14 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
       uuid="help-security-key"
       title={
         <FormattedMessage
+          id="securityLevel.handle"
           description="about security key - handle"
           defaultMessage="Enhancing the security level of eduID"
         />
       }
       additionalInfo={
         <FormattedMessage
+          id="securityLevel.info"
           description="about security key - info"
           defaultMessage="Adding MFA Security Keys and Passkeys"
         />
@@ -39,12 +41,14 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
       <article>
         <h4>
           <FormattedMessage
+            id="securityLevel.moreHeading"
             description="how more secure - heading"
             defaultMessage="How do I make my eduID more secure?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="securityLevel.description"
             description="how more secure description"
             defaultMessage={`Some services will require a higher security level and to improve the security of 
                   your eduID, in addition to knowledge of your username (e.g. confirmed email address) and password 
@@ -54,19 +58,25 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         </p>
         <h4>
           <FormattedMessage
+            id="securityLevel.keysHeading"
             description="what are keys - heading"
             defaultMessage="What are Security keys and Passkeys?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="securityLevel.description1"
             description="what are keys description 1"
             defaultMessage={`Though the terms are sometimes used interchangeably, an example of a {securityKey} would be a physical device in your possession, 
               such as a specific type of USB hardware token for this purpose, that requires you to be present by the device, providing a high level of security.`}
             values={{
               securityKey: (
                 <em>
-                  <FormattedMessage description="security key term" defaultMessage="security key" />
+                  <FormattedMessage
+                    id="common.securityKeyText"
+                    description="security key term"
+                    defaultMessage="security key"
+                  />
                 </em>
               ),
             }}
@@ -74,12 +84,17 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="securityLevel.description2"
             description="what are keys description 2"
             defaultMessage={`You can also add a {passkey} on your device that you can use to log in. The passkey may be used with biometric information such as fingerprint, face-recognition or a PIN depending on your device. The biometric information or PIN is never shared with us, only the passkey itself. Passkeys are often synced between your devices, providing ease of use.`}
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                  <FormattedMessage
+                    id="securityLevel.passkeyTerm"
+                    description="passkey term"
+                    defaultMessage="passkey"
+                  />
                 </em>
               ),
             }}
@@ -87,13 +102,18 @@ export function EnhancingSecurityLevel(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="securityLevel.description3"
             description="what are keys description 3"
             defaultMessage={`These techniques are a form of cryptography, where a public/private key pair is bound to your specific account on a particular website, in this case eduID.se.
 The private key is stored in an "authenticator" module, either built into your hardware key, your device or a credential manager app. It is considered phishing-resistant and removes the need for remembered passwords.`}
             values={{
               passkey: (
                 <em>
-                  <FormattedMessage description="passkey term" defaultMessage="passkey" />
+                  <FormattedMessage
+                    id="securityLevel.passkeyTerm"
+                    description="passkey term"
+                    defaultMessage="passkey"
+                  />
                 </em>
               ),
             }}
@@ -101,12 +121,14 @@ The private key is stored in an "authenticator" module, either built into your h
         </p>
         <h4>
           <FormattedMessage
+            id="securityLevel.addHeading"
             description="how add security key - heading"
             defaultMessage="How do I implement MFA with eduID?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="securityLevel.addSecurityKey"
             description="how add security key"
             defaultMessage={`When logged in you can add, verify and remove keys of your choice (provided you 
                     have access to any of these methods) in the Security area of eduID and follow the instructions. 
@@ -115,10 +137,15 @@ The private key is stored in an "authenticator" module, either built into your h
         </p>
         <ul className="bullets">
           <li>
-            <FormattedMessage description="passkey bullet" defaultMessage={`"This device" button for passkeys`} />
+            <FormattedMessage
+              id="securityLevel.passkey"
+              description="passkey bullet"
+              defaultMessage={`"This device" button for passkeys`}
+            />
           </li>
           <li>
             <FormattedMessage
+              id="securityLevel.keyBullet"
               description="security key bullet"
               defaultMessage={`"Security key" button for physical USB keys`}
             />
@@ -127,6 +154,7 @@ The private key is stored in an "authenticator" module, either built into your h
         <section className="error-text">
           <p>
             <FormattedMessage
+              id="securityLevel.addParagraph"
               description="add several keys - paragraph"
               defaultMessage={`It is recommended to add more than one key to make sure you always have supported access to your account.`}
             />
@@ -134,12 +162,14 @@ The private key is stored in an "authenticator" module, either built into your h
         </section>
         <p>
           <FormattedMessage
+            id="securityLevel.add"
             description="how add security key - verify"
             defaultMessage={`When adding a key or later in the table listing your added keys, you have the option of verifying your key with any method presented to you. By doing so it is further connected with your identity and generally increasing the assurance level of your eduID (read more in the "Assurance levels" help section).`}
           />
         </p>
         <p>
           <FormattedMessage
+            id="securityLevel.addSecurity"
             description="how add security key - must be used"
             defaultMessage={`Note: if you have added a security key to your eduID it must be used to log in to eduID, 
               unless you turn off this feature under "Manage your security keys" in the Security section. You might still need to use 
@@ -148,12 +178,14 @@ The private key is stored in an "authenticator" module, either built into your h
         </p>
         <h4>
           <FormattedMessage
+            id="securityLevel.whichHeading"
             description="which type of security key - heading"
             defaultMessage="Which type of physical security key can I use with eduID?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="securityLevel.whichParagraph"
             description="which type of security key - paragraph"
             defaultMessage={`We follow a standard as well as our own policy for which security keys are allowed to be 
               used with the service. More information on the standard as well as an updated list of valid keys can 
@@ -163,21 +195,33 @@ The private key is stored in an "authenticator" module, either built into your h
         <Accordion id="eduid-security">
           <AccordionItemTemplate
             uuid="help-security-usb"
-            title={<FormattedMessage description="about usb key - handle" defaultMessage="About Security Keys" />}
+            title={
+              <FormattedMessage
+                id="securityLevel.usbHandle"
+                description="about usb key - handle"
+                defaultMessage="About Security Keys"
+              />
+            }
             additionalInfo={null}
           >
             <article>
               <h4>
-                <FormattedMessage description="choosing usb key - heading" defaultMessage="Choosing a Security Key" />
+                <FormattedMessage
+                  id="securityLevel.heading"
+                  description="choosing usb key - heading"
+                  defaultMessage="Choosing a Security Key"
+                />
               </h4>
               <p>
                 <FormattedMessage
+                  id="securityLevel.paragraph"
                   description="choosing usb key - paragraph"
                   defaultMessage="Not all security keys meet the necessary specifications to be used as a security key for eduID."
                 />
               </p>
               <p>
                 <FormattedMessage
+                  id="securityLevel.choosing"
                   description="choosing usb key - list definition"
                   defaultMessage="Check with the manufacturer or retailer that the product meets the following requirements before it is acquired:"
                 />
@@ -186,6 +230,7 @@ The private key is stored in an "authenticator" module, either built into your h
               <ul className="bullets">
                 <li>
                   <FormattedMessage
+                    id="securityLevel.usbKey1"
                     description="usb key - list item 1"
                     defaultMessage="Certified FIDO 2.0, you can read more at {Fido}."
                     values={{
@@ -199,6 +244,7 @@ The private key is stored in an "authenticator" module, either built into your h
                 </li>
                 <li>
                   <FormattedMessage
+                    id="securityLevel.usbKeyList2"
                     description="usb key - list item 2"
                     defaultMessage={`Releases a certificate issued by the manufacturer providing information about the 
                       device where used, as well as requiring the user physically present for the key to be used.`}
@@ -208,6 +254,7 @@ The private key is stored in an "authenticator" module, either built into your h
               <section>
                 <h5>
                   <FormattedMessage
+                    id="securityLevel.usbHeading"
                     description="usb key technical section - heading"
                     defaultMessage="Further technical information: "
                   />
@@ -215,49 +262,59 @@ The private key is stored in an "authenticator" module, either built into your h
                 <ul className="bullets">
                   <li>
                     <FormattedMessage
+                      id="securityLevel.usb1"
                       description="usb key technical section - list item 1"
                       defaultMessage="The key must perform an attestation and exist in the metadata,"
                     />
                   </li>
                   <li>
                     <FormattedMessage
+                      id="securityLevel.usbKey2"
                       description="usb key technical section - list item 2"
                       defaultMessage="it must not contain any other status in the metadata than a few variants of: "
                     />
                     &nbsp;
                     <code>
                       <FormattedMessage
+                        id="securityLevel.usb2"
                         description="usb key technical section - list item 2 code"
                         defaultMessage='"fido certified"'
                       />
-                    </code>{","}
+                    </code>
+                    {","}
                   </li>
                   <li>
                     <FormattedMessage
+                      id="securityLevel.usb3"
                       description="usb key technical section - list item 3"
                       defaultMessage="it must support any of the following user verification methods: "
                     />
                     &nbsp;
                     <code>
                       <FormattedMessage
+                        id="securityLevel.usbKey3"
                         description="usb key technical section - list item 3 code"
                         defaultMessage='"faceprint_internal", "passcode_external", "passcode_internal", "handprint_internal",
                   "pattern_internal", "voiceprint_internal", "fingerprint_internal", "eyeprint_internal"'
                       />
-                    </code>{","}
+                    </code>
+                    {","}
                   </li>
                   <li>
                     <FormattedMessage
+                      id="securityLevel.usbKey4"
                       description="usb key technical section - list item 4"
                       defaultMessage="and must not support any other key protection than: "
                     />
                     &nbsp;
                     <code>
                       <FormattedMessage
+                        id="securityLevel.usb4"
                         description="usb key technical section - list item 4 code"
                         defaultMessage='"remote_handle", "hardware", "secure_element", "tee"'
                       />
-                    </code>{"."}
+                    </code>
+                    {"."}
                   </li>
                 </ul>
               </section>
@@ -271,6 +328,7 @@ The private key is stored in an "authenticator" module, either built into your h
               uuid="security-key-list"
               title={
                 <FormattedMessage
+                  id="securityLevel.keysListHeading"
                   defaultMessage="Currently valid physical Security Keys"
                   description="Security keys list - heading"
                 />
@@ -280,6 +338,7 @@ The private key is stored in an "authenticator" module, either built into your h
               <article>
                 <p>
                   <FormattedMessage
+                    id="securityLevel.keysParagraph"
                     defaultMessage={`This is a list, derived from Fido Alliance, of names of maker and models of external 
                       security keys that can be used for eduID, though there might be other keys that could work for this 
                       purpose. They are listed in alphabetical order and updated regularly.`}

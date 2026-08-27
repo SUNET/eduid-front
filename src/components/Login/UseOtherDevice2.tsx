@@ -42,7 +42,7 @@ function UseOtherDevice2() {
   return (
     <div className="use-another-device device2">
       <h1>
-        <FormattedMessage defaultMessage="Log in on another device" />
+        <FormattedMessage id="useOtherDevice2.log" defaultMessage="Log in on another device" />
       </h1>
 
       {data ? <RenderOtherDevice2 data={data} params={params} /> : null}
@@ -72,6 +72,7 @@ function RenderOtherDevice2(
     return (
       <p>
         <FormattedMessage
+          id="useOtherDevice2.expired"
           defaultMessage="The code has expired, please close this browser window."
           description="Use another device, finished"
         />
@@ -85,16 +86,32 @@ function RenderOtherDevice2(
     return (
       <p>
         {data.state === "DENIED" && (
-          <FormattedMessage defaultMessage="Request denied." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.denied"
+            defaultMessage="Request denied."
+            description="Use other device 2"
+          />
         )}
         {data.state === "ABORTED" && (
-          <FormattedMessage defaultMessage="Request cancelled." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.cancelled"
+            defaultMessage="Request cancelled."
+            description="Use other device 2"
+          />
         )}
         {data.state === "FINISHED" && (
-          <FormattedMessage defaultMessage="Request completed." description="Use other device 2" />
+          <FormattedMessage
+            id="useOtherDevice2.completed"
+            defaultMessage="Request completed."
+            description="Use other device 2"
+          />
         )}
         &nbsp;
-        <FormattedMessage defaultMessage="You should close this browser window." description="Use other device 2" />
+        <FormattedMessage
+          id="useOtherDevice2.shouldClose"
+          defaultMessage="You should close this browser window."
+          description="Use other device 2"
+        />
       </p>
     );
   }
@@ -119,7 +136,11 @@ function RenderOtherDevice2(
           )}
 
           <li>
-            <FormattedMessage defaultMessage="Log in this device" description="Login OtherDevice" />
+            <FormattedMessage
+              id="useOtherDevice2.loginThisDevice"
+              defaultMessage="Log in this device"
+              description="Login OtherDevice"
+            />
           </li>
         </ol>
       )}
@@ -129,6 +150,7 @@ function RenderOtherDevice2(
       {data.state !== "IN_PROGRESS" && data.state != "AUTHENTICATED" && (
         <p>
           <FormattedMessage
+            id="useOtherDevice2.complete"
             defaultMessage="Request complete, you should close this browser window."
             description="Use another device, finished"
           />
@@ -156,6 +178,7 @@ function InfoAboutKnownDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
   return (
     <li>
       <FormattedMessage
+        id="useOtherDevice2.logging"
         defaultMessage="You are logging in as {display_name} ({username}) on the other device"
         values={{
           display_name: <strong>{props.data.display_name}</strong>,
@@ -174,18 +197,21 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
   const proximityMessages: { [key: string]: React.JSX.Element } = {
     SAME: (
       <FormattedMessage
+        id="useOtherDevice2.same"
         defaultMessage="(The same as now)"
         description="Use another device IP proximity"
       ></FormattedMessage>
     ),
     NEAR: (
       <FormattedMessage
+        id="useOtherDevice2.close"
         defaultMessage="(Close to your address now)"
         description="Use another device IP proximity"
       ></FormattedMessage>
     ),
     FAR: (
       <FormattedMessage
+        id="useOtherDevice2.far"
         defaultMessage="(Far from your address now)"
         description="Use another device IP proximity"
       ></FormattedMessage>
@@ -194,7 +220,10 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
   const proximity: React.JSX.Element = proximityMessages[props.data.device1_info.proximity];
   return (
     <li>
-      <FormattedMessage defaultMessage="Note that you are using this device to log in on the device below" />
+      <FormattedMessage
+        id="useOtherDevice2.note"
+        defaultMessage="Note that you are using this device to log in on the device below"
+      />
 
       <figure className="table-responsive x-adjust">
         <table className="table">
@@ -202,7 +231,7 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
             <tr className="border-row">
               <th scope="row">
                 <strong>
-                  <FormattedMessage defaultMessage="IP address" description="device info" />
+                  <FormattedMessage id="useOtherDevice2.ip" defaultMessage="IP address" description="device info" />
                 </strong>
               </th>
 
@@ -213,7 +242,11 @@ function InfoAboutOtherDevice(props: Readonly<{ data: LoginUseOtherDevice2Respon
             <tr className="border-row">
               <th scope="row">
                 <strong>
-                  <FormattedMessage defaultMessage="Description" description="device info" />
+                  <FormattedMessage
+                    id="useOtherDevice2.description"
+                    defaultMessage="Description"
+                    description="device info"
+                  />
                 </strong>
               </th>
 
@@ -261,7 +294,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
         id="cancel-other-device-button"
         disabled={!data}
       >
-        <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+        <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
 
       {props.showLogin && (
@@ -272,7 +305,7 @@ function Device2Buttons(props: Readonly<Device2ButtonsProps>): React.JSX.Element
           id="proceed-other-device-button"
           disabled={!data}
         >
-          <FormattedMessage defaultMessage="Log in" description="Login OtherDevice" />
+          <FormattedMessage id="common.logIn" defaultMessage="Log in" description="Login OtherDevice" />
         </EduIDButton>
       )}
     </div>
@@ -289,6 +322,7 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
     return (
       <p>
         <FormattedMessage
+          id="useOtherDevice2.closeWindow"
           defaultMessage="You can now close this window and continue on the other device."
           description="Use other device 2"
         />
@@ -299,12 +333,14 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
   return (
     <div className="finished device2">
       <FormattedMessage
+        id="useOtherDevice2.useResponseCode"
         defaultMessage="Use the response code below in the first device to continue logging in"
         description="Use another device, finished"
       />
 
       <span className="text-small">
         <FormattedMessage
+          id="useOtherDevice2.afterUse"
           defaultMessage="After using the code on the other device, please close this browser window."
           description="Use another device, finished"
         />
@@ -319,6 +355,7 @@ function RenderAuthenticated(props: Readonly<{ data: UseOtherDevice2ResponseLogg
             </span>
             <span>
               <FormattedMessage
+                id="useOtherDevice2.dontShare"
                 defaultMessage="Don't share this code with anyone, as it might compromise your credentials."
                 description="Use another device, finished"
               />
@@ -339,7 +376,7 @@ function DeveloperInfo(props: Readonly<{ data: UseOtherDevice2ResponseLoggedIn }
     <div className="developer">
       <p></p>
       <span>
-        <FormattedMessage defaultMessage="Developer info, not shown in production:" />
+        <FormattedMessage id="useOtherDevice2.info" defaultMessage="Developer info, not shown in production:" />
       </span>
       <p>
         {"Response code: "}

@@ -143,11 +143,16 @@ function UserTerminated(): React.JSX.Element {
   return (
     <section>
       <h1>
-        <FormattedMessage defaultMessage="Account terminated" description="Account terminated - heading" />
+        <FormattedMessage
+          id="login.heading"
+          defaultMessage="Account terminated"
+          description="Account terminated - heading"
+        />
       </h1>
 
       <p>
         <FormattedMessage
+          id="login.paragraph"
           defaultMessage="This account has recently been terminated and can not be used to log in. It is possible to re-activate the account shortly afterwards by resetting the password using the link below."
           description="Account terminated - paragraph"
         />
@@ -156,6 +161,7 @@ function UserTerminated(): React.JSX.Element {
       <div>
         <EduIDButton onClick={() => reset_password()} buttonstyle="link normal-case">
           <FormattedMessage
+            id="login.link"
             defaultMessage="Go to reset password page"
             description="Account terminated - reset password link"
           />
@@ -164,6 +170,7 @@ function UserTerminated(): React.JSX.Element {
 
       <p className="text-small">
         <FormattedMessage
+          id="login.account"
           defaultMessage="To log in with another account go to the start page by clicking the eduID logo in the header, or create a new account using the Create eduiD button."
           description="Account terminated - help text"
         />

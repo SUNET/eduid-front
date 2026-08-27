@@ -10,17 +10,28 @@ export function AboutEduID(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-about-eduid"
-      title={<FormattedMessage description="about eduid - handle" defaultMessage="About eduID" />}
+      title={
+        <FormattedMessage id="aboutEduID.handle" description="about eduid - handle" defaultMessage="About eduID" />
+      }
       additionalInfo={
-        <FormattedMessage description="about eduid - info" defaultMessage="What it is and may be used for" />
+        <FormattedMessage
+          id="aboutEduID.info"
+          description="about eduid - info"
+          defaultMessage="What it is and may be used for"
+        />
       }
     >
       <article>
         <h4>
-          <FormattedMessage description="what is eduID - heading" defaultMessage="What is eduID?" />
+          <FormattedMessage
+            id="aboutEduID.eduHeading"
+            description="what is eduID - heading"
+            defaultMessage="What is eduID?"
+          />
         </h4>
         <p>
           <FormattedMessage
+            id="aboutEduID.paragraph1"
             description="what is eduID - paragraph 1"
             defaultMessage={`eduID is a federated identity - a user identity that can be used in several different 
                   organisations that have agreed on how identities will be managed. The basic idea is that a given user, 
@@ -30,6 +41,7 @@ export function AboutEduID(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="aboutEduID.paragraph2"
             description="what is eduID - paragraph 2"
             defaultMessage={`Federated identities are one of the cornerstones of trust between organisations. 
                     Trust is based on all the organisations relying on all the others to carry out their authentication 
@@ -37,11 +49,16 @@ export function AboutEduID(): React.JSX.Element {
           />
         </p>
         <h4>
-          <FormattedMessage description="why have eduID - heading" defaultMessage="Why have eduID?" />
+          <FormattedMessage
+            id="aboutEduID.heading"
+            description="why have eduID - heading"
+            defaultMessage="Why have eduID?"
+          />
         </h4>
 
         <p>
           <FormattedMessage
+            id="aboutEduID.whyParagraph1"
             description="why have eduID - paragraph 1"
             defaultMessage={`From the user's perspective, in the long-term eduID means fewer accounts to keep 
                     track of. For many organisations, identity management is a complex issue and it is
@@ -50,6 +67,7 @@ export function AboutEduID(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="aboutEduID.whyParagraph2"
             description="why have eduID - paragraph 2"
             defaultMessage={`There are many services that require identification of users. This is often done by 
                     the user entering an email address to which the service provider sends a password. Such a user is 
@@ -60,10 +78,15 @@ export function AboutEduID(): React.JSX.Element {
           />
         </p>
         <h4>
-          <FormattedMessage description="when use eduID - heading" defaultMessage="When will I use eduID?" />
+          <FormattedMessage
+            id="aboutEduID.whenHeading"
+            description="when use eduID - heading"
+            defaultMessage="When will I use eduID?"
+          />
         </h4>
         <p>
           <FormattedMessage
+            id="aboutEduID.paragraph"
             description="when use eduID - paragraph"
             defaultMessage={`Depending on where you work or study you might only use your eduID account a few 
                   times, or you might use it every day. Some schools, institutions and services use eduID as their 
@@ -74,6 +97,7 @@ export function AboutEduID(): React.JSX.Element {
               link: (
                 <a href={UniversityAdmissionURL} target="_blank" rel="noreferrer">
                   <FormattedMessage
+                    id="aboutEduID.link"
                     description="universityadmissions - link text"
                     defaultMessage="universityadmissions.se"
                   />
@@ -84,6 +108,7 @@ export function AboutEduID(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="aboutEduID.when"
             description="when use eduID - list definition"
             defaultMessage="Log in at eduid.se when you:"
           />
@@ -91,33 +116,42 @@ export function AboutEduID(): React.JSX.Element {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="aboutEduID.when1"
               description="when use eduID - list item 1"
               defaultMessage="apply to and accept your place at a university,"
             />
           </li>
           <li>
             <FormattedMessage
+              id="aboutEduID.when2"
               description="when use eduID - list item 2"
               defaultMessage="organise your student account for email and intranet,"
             />
           </li>
           <li>
-            <FormattedMessage description="when use eduID - list item 3" defaultMessage="change university," />
+            <FormattedMessage
+              id="aboutEduID.when3"
+              description="when use eduID - list item 3"
+              defaultMessage="change university,"
+            />
           </li>
           <li>
             <FormattedMessage
+              id="aboutEduID.when4"
               description="when use eduID - list item 4"
               defaultMessage="lose a student account password and need to regain access,"
             />
           </li>
           <li>
             <FormattedMessage
+              id="aboutEduID.when5"
               description="when use eduID - list item 5"
               defaultMessage="administrate students taking the Digital national exam,"
             />
           </li>
           <li>
             <FormattedMessage
+              id="aboutEduID.when6"
               description="when use eduID - list item 6"
               defaultMessage="electronically sign documents with eduSign, read more at {edusignLink}."
               values={{

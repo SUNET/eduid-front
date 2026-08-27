@@ -17,12 +17,17 @@ export function SignupEmailForm(): React.JSX.Element {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Create eduID: Enter your personal information" description="Signup" />
+          <FormattedMessage
+            id="emailForm.create"
+            defaultMessage="Create eduID: Enter your personal information"
+            description="Signup"
+          />
         </h1>
         <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
+              id="emailForm.text"
               defaultMessage={`Make sure to use an email address you have access to, as it will need to be confirmed by a received code. `}
               description="Signup email form text"
             />
@@ -53,13 +58,13 @@ export function EmailForm() {
   const surname = state?.external_mfa?.surname ?? state?.name?.surname ?? "";
 
   const firstNamePlaceholder = intl.formatMessage({
-    id: "placeholder.firstName",
+    id: "emailForm.placeholder",
     defaultMessage: "first name",
     description: "placeholder First name",
   });
 
   const lastNamePlaceholder = intl.formatMessage({
-    id: "placeholder.lastName",
+    id: "emailForm.lastPlaceholder",
     defaultMessage: "last name",
     description: "placeholder Last name",
   });
@@ -120,7 +125,9 @@ export function EmailForm() {
                 autoFocus={!state?.external_mfa?.given_name}
                 required={true}
                 placeholder={firstNamePlaceholder}
-                label={<FormattedMessage defaultMessage="First name" description="signup first name" />}
+                label={
+                  <FormattedMessage id="common.firstName" defaultMessage="First name" description="signup first name" />
+                }
                 readOnly={!!state?.external_mfa?.given_name}
               />
               <FinalField
@@ -129,7 +136,9 @@ export function EmailForm() {
                 name="surname"
                 required={true}
                 placeholder={lastNamePlaceholder}
-                label={<FormattedMessage defaultMessage="Last name" description="signup last name" />}
+                label={
+                  <FormattedMessage id="common.lastName" defaultMessage="Last name" description="signup last name" />
+                }
                 readOnly={!!state?.external_mfa?.surname}
               />
             </div>
@@ -147,7 +156,7 @@ export function EmailForm() {
                 type="submit"
                 onClick={formProps.handleSubmit}
               >
-                <FormattedMessage defaultMessage="Continue" description="Signup button" />
+                <FormattedMessage id="common.continue" defaultMessage="Continue" description="Signup button" />
               </EduIDButton>
             </div>
           </form>

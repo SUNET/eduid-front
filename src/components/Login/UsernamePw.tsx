@@ -46,16 +46,27 @@ export default function UsernamePw() {
   if (securityZoneAction) {
     loginHeading = (
       <FormattedMessage
+        id="usernamePw.heading"
         defaultMessage="Re-authentication: with Password"
         description="Security zone username and Password heading"
       />
     );
   } else if (webauthn) {
     loginHeading = (
-      <FormattedMessage defaultMessage="Log in: with Password or Passkey" description="Login front page with passkey" />
+      <FormattedMessage
+        id="usernamePw.front"
+        defaultMessage="Log in: with Password or Passkey"
+        description="Login front page with passkey"
+      />
     );
   } else {
-    loginHeading = <FormattedMessage defaultMessage="Log in: with Password" description="Login front page" />;
+    loginHeading = (
+      <FormattedMessage
+        id="usernamePw.frontPage"
+        defaultMessage="Log in: with Password"
+        description="Login front page"
+      />
+    );
   }
 
   async function handleSubmitUsernamePw(values: UsernamePwFormData) {
@@ -219,6 +230,7 @@ export default function UsernamePw() {
             <div className="line"></div>
             <span>
               <FormattedMessage
+                id="usernamePw.alternative"
                 defaultMessage="or log in with passkey?"
                 description="Alternative login passkey option"
               />
@@ -262,6 +274,7 @@ function UsernameInputPart(): React.JSX.Element {
           <div className="welcome-back-container">
             <legend>
               <FormattedMessage
+                id="usernamePw.welcome"
                 defaultMessage="Welcome back, {username}!"
                 description="Login username input"
                 values={{
@@ -270,7 +283,11 @@ function UsernameInputPart(): React.JSX.Element {
               />
             </legend>
             <EduIDButton buttonstyle="link normal-case" id="wrong-person-button" onClick={handleClickWrongPerson}>
-              <FormattedMessage defaultMessage="Different user?" description="Login username input" />
+              <FormattedMessage
+                id="usernamePw.notYou"
+                defaultMessage="Different user?"
+                description="Login username input"
+              />
             </EduIDButton>
           </div>
         )}
@@ -282,7 +299,9 @@ function UsernameInputPart(): React.JSX.Element {
           name="username"
           autoComplete="username"
           defaultValue={authn_options.forced_username}
-          label={<FormattedMessage defaultMessage="Username" description="username input field label" />}
+          label={
+            <FormattedMessage id="common.username" defaultMessage="Username" description="username input field label" />
+          }
         />
       </React.Fragment>
     );
@@ -316,7 +335,7 @@ function RenderResetPasswordLink(): React.JSX.Element {
 
   return (
     <Link id="link-forgot-password" className="text-small" to={"/"} onClick={sendLink}>
-      <FormattedMessage defaultMessage="Forgot your password?" description="Reset password link" />
+      <FormattedMessage id="usernamePw.link" defaultMessage="Forgot your password?" description="Reset password link" />
     </Link>
   );
 }
@@ -345,7 +364,7 @@ export function UsernamePwSubmitButton(props: FormRenderProps<UsernamePwFormData
       onClick={props.handleSubmit}
     >
       <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
-      <FormattedMessage defaultMessage="log in" description="Login front page pw" />
+      <FormattedMessage id="common.logIn" defaultMessage="log in" description="Login front page pw" />
     </EduIDButton>
   );
 }
@@ -368,7 +387,11 @@ function UsernamePwAnotherDeviceButton(): React.JSX.Element | null {
   return (
     <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
-      <FormattedMessage defaultMessage="other device" description="Login UsernamePw other device" />
+      <FormattedMessage
+        id="usernamePw.other"
+        defaultMessage="other device"
+        description="Login UsernamePw other device"
+      />
     </EduIDButton>
   );
 }

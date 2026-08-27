@@ -23,6 +23,7 @@ export function ChangePasswordSuccess(): React.JSX.Element {
         <section className="intro">
           <h1>
             <FormattedMessage
+              id="changePasswordSuccess.heading"
               defaultMessage="Change Password: Completed"
               description="Change password set new password success heading"
             />
@@ -30,6 +31,7 @@ export function ChangePasswordSuccess(): React.JSX.Element {
           <div className="lead">
             <p>
               <FormattedMessage
+                id="changePasswordSuccess.lead"
                 defaultMessage="You have successfully updated your password. Make sure to store your password securely for future use."
                 description="Change password set new password success lead"
               />
@@ -46,7 +48,11 @@ export function ChangePasswordSuccess(): React.JSX.Element {
         )}
         <div className="buttons">
           <EduIDButton id="change-password-finished" buttonstyle="link normal-case" type="submit">
-            <FormattedMessage defaultMessage="Go to dashboard" description="Go to dashboard" />
+            <FormattedMessage
+              id="changePasswordSuccess.go"
+              defaultMessage="Go to dashboard"
+              description="Go to dashboard"
+            />
           </EduIDButton>
         </div>
       </form>

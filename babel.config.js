@@ -28,15 +28,6 @@ module.exports = function babelConfig(api) {
       },
     ],
     ...(process.env.NODE_ENV === "test" ? [neutralizeImportMeta] : []),
-    [
-      "formatjs",
-      {
-        messagesDir: "./src/translation",
-        enforceDescriptions: false,
-        idInterpolationPattern: "[sha512:contenthash:base64:6]",
-        ast: true,
-      },
-    ],
   ];
 
   return {

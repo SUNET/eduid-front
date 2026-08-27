@@ -26,6 +26,7 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="enterEmail.heading"
             defaultMessage="Reset Password: Enter email address"
             description="ResetPasswordEnterEmail heading"
           />
@@ -33,12 +34,14 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="enterEmail.lead"
               defaultMessage="If the entered address is registered, a message with instructions for resetting the password will be sent from no-reply@eduid.se."
               description="ResetPasswordEnterEmail lead text"
             />
           </p>
           <p>
             <FormattedMessage
+              id="enterEmail.already"
               defaultMessage="If you have already received a code, click the link below to enter it."
               description="ResetPasswordEnterEmail already have code text"
             />
@@ -61,7 +64,11 @@ export function ResetPasswordEnterEmail(): React.JSX.Element {
             id="reset-password-enter-code"
             onClick={() => dispatch(resetPasswordSlice.actions.setNextPage("RESET_PW_ENTER_CODE"))}
           >
-            <FormattedMessage defaultMessage="Enter your code" description="Reset Password enter code link" />
+            <FormattedMessage
+              id="enterEmail.link"
+              defaultMessage="Enter your code"
+              description="Reset Password enter code link"
+            />
           </EduIDButton>
         </div>
       </section>

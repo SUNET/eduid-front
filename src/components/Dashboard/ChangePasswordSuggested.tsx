@@ -11,7 +11,7 @@ export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswo
     <React.Fragment>
       <div className="pw-suggested">
         <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="New password" description="new password" />
+          <FormattedMessage id="changePasswordSuggested.new" defaultMessage="New password" description="new password" />
         </label>
         <div className="password-input">
           <CopyToClipboardButton ref={ref} />
@@ -27,7 +27,9 @@ export default function ChangePasswordSuggestedForm(props: Readonly<ChangePasswo
       <NewPasswordForm
         suggested_password={props.suggestedPassword}
         submitNewPasswordForm={props.formProps.handleSubmit}
-        submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
+        submitButtonText={
+          <FormattedMessage id="common.save" defaultMessage="Save" description="Set new password (Save button)" />
+        }
         handleCancel={props.handleCancel}
       />
     </React.Fragment>

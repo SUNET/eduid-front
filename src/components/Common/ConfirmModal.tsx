@@ -99,7 +99,7 @@ function ConfirmModal(props: Readonly<ConfirmModalProps>): React.JSX.Element {
                       {props.submitButtonText ? (
                         props.submitButtonText
                       ) : (
-                        <FormattedMessage defaultMessage="ok" description="ok button" />
+                        <FormattedMessage id="confirmModal.button" defaultMessage="ok" description="ok button" />
                       )}
                     </EduIDButton>
                   </div>

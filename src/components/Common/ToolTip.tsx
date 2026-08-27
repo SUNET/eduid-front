@@ -35,10 +35,15 @@ export function ToolTip() {
           onMouseLeave={handleMouseLeave}
         >
           <h5 className="custom-tooltip-title">
-            <FormattedMessage description="popover info heading" defaultMessage="For your security" />
+            <FormattedMessage
+              id="toolTip.heading"
+              description="popover info heading"
+              defaultMessage="For your security"
+            />
           </h5>
           <p className="help-text custom-tooltip-help">
             <FormattedMessage
+              id="toolTip.info"
               description="popover info"
               defaultMessage="To edit these settings you might be asked to re-login."
             />

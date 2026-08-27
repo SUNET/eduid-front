@@ -5,18 +5,32 @@ export function AssuranceLevels(): React.JSX.Element {
   return (
     <AccordionItemTemplate
       uuid="help-assurance-levels"
-      title={<FormattedMessage description="about assurance levels - handle" defaultMessage="Assurance levels" />}
-      additionalInfo={<FormattedMessage description="about assurance levels - info" defaultMessage="AL, LOA etc." />}
+      title={
+        <FormattedMessage
+          id="assuranceLevels.handle"
+          description="about assurance levels - handle"
+          defaultMessage="Assurance levels"
+        />
+      }
+      additionalInfo={
+        <FormattedMessage
+          id="assuranceLevels.info"
+          description="about assurance levels - info"
+          defaultMessage="AL, LOA etc."
+        />
+      }
     >
       <article>
         <h4>
           <FormattedMessage
+            id="assuranceLevels.heading"
             description="what are assurance levels - heading"
             defaultMessage="What are assurance levels?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="assuranceLevels.paragraph"
             description="what are assurance levels - paragraph"
             defaultMessage={`Service providers need to rely on organisations to manage their users credentials 
               according to certain assurance levels set by relevant authorities, depending on the type of information accessible. The levels range from unconfirmed, to confirmed, to verified users with additional authentication when logging in to a system.`}
@@ -24,12 +38,14 @@ export function AssuranceLevels(): React.JSX.Element {
         </p>
         <h4>
           <FormattedMessage
+            id="assuranceLevels.levelHeading"
             description="At what level is your eduID - heading"
             defaultMessage="At what level is your eduID?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph1"
             description="Assurance levels with your eduID - paragraph1"
             defaultMessage={`At the logged in start page an overview of the status of your eduID is presented. 
               This is what it typically indicates regarding your assurance level and the services you may 
@@ -39,6 +55,7 @@ export function AssuranceLevels(): React.JSX.Element {
 
         <h5>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph2strong"
             description="Assurance levels with your eduID - paragraph2strong"
             defaultMessage="Confirmed account:"
           />
@@ -46,12 +63,14 @@ export function AssuranceLevels(): React.JSX.Element {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="assuranceLevels.eduIdParagraph2"
               description="Assurance levels with your eduID - paragraph2"
               defaultMessage="services requiring a low level of assurance, often called {emphasis}."
               values={{
                 emphasis: (
                   <em>
                     <FormattedMessage
+                      id="assuranceLevels.eduIdParagraph2em"
                       description="Assurance levels with your eduID - paragraph2em"
                       defaultMessage="AL1 (unconfirmed user) / RAF Low"
                     />
@@ -63,6 +82,7 @@ export function AssuranceLevels(): React.JSX.Element {
         </ul>
         <h5>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph3strong"
             description="Assurance levels with your eduID - paragraph3strong"
             defaultMessage="Verified identity:"
           />
@@ -70,6 +90,7 @@ export function AssuranceLevels(): React.JSX.Element {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="assuranceLevels.eduIdParagraph3"
               description="Assurance levels with your eduID - paragraph3"
               defaultMessage={`services requiring a medium level of assurance, including many higher education institutions, 
                 often called {emphasis}.`}
@@ -77,6 +98,7 @@ export function AssuranceLevels(): React.JSX.Element {
                 emphasis: (
                   <em>
                     <FormattedMessage
+                      id="assuranceLevels.edu"
                       description="Assurance levels with your eduID - paragraph3em"
                       defaultMessage="AL2 (confirmed user) / RAF Medium"
                     />
@@ -89,6 +111,7 @@ export function AssuranceLevels(): React.JSX.Element {
 
         <h5>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph4strong"
             description="Assurance levels with your eduID - paragraph4strong"
             defaultMessage="Enhanced security:"
           />
@@ -96,6 +119,7 @@ export function AssuranceLevels(): React.JSX.Element {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="assuranceLevels.eduIdParagraph4"
               description="Assurance levels with your eduID - paragraph4"
               defaultMessage="services requiring you to log in using multi factor authentication, often called {emphasis}."
               values={{
@@ -107,6 +131,7 @@ export function AssuranceLevels(): React.JSX.Element {
 
         <h5>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph5strong"
             description="Assurance levels with your eduID - paragraph5strong"
             defaultMessage="Verified security key:"
           />
@@ -114,12 +139,14 @@ export function AssuranceLevels(): React.JSX.Element {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="assuranceLevels.eduIdParagraph5"
               description="Assurance levels with your eduID - paragraph5"
               defaultMessage="services requiring a strong binding between your identity and your login, often called {emphasis}."
               values={{
                 emphasis: (
                   <em>
                     <FormattedMessage
+                      id="assuranceLevels.eduId"
                       description="Assurance levels with your eduID - paragraph5em"
                       defaultMessage={`AL3 (verified user) / RAF High / LoA2`}
                     />
@@ -132,6 +159,7 @@ export function AssuranceLevels(): React.JSX.Element {
 
         <p>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph7"
             description="Assurance levels with your eduID - paragraph7"
             defaultMessage={`Note: this is a generalization and could change, complete information as to what is required 
               of your eduID must be provided by the connecting services.`}
@@ -139,6 +167,7 @@ export function AssuranceLevels(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="assuranceLevels.eduIdParagraph6"
             description="Assurance levels with your eduID - paragraph6"
             defaultMessage={`As an example, with a verified Swedish identity and a verified security key the account is 
               at a sufficient level for the purpose of e.g. Digital National Exams (DNP) and Nice.`}

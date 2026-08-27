@@ -3,9 +3,11 @@ import { Fragment, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(props: Readonly<{
-  setHasReadAnnouncement: (key: boolean) => void;
-}>): React.JSX.Element {
+export default function TemporaryInfo(
+  props: Readonly<{
+    setHasReadAnnouncement: (key: boolean) => void;
+  }>,
+): React.JSX.Element {
   const [activeButton, setActiveButton] = useState<boolean>(false);
 
   function handleAccept() {
@@ -20,11 +22,16 @@ export default function TemporaryInfo(props: Readonly<{
     <Fragment>
       {/* Common for all messages */}
       <h1>
-        <FormattedMessage defaultMessage="Important information" description="Temp info - title" />
+        <FormattedMessage
+          id="temporaryInfo.title"
+          defaultMessage="Important information"
+          description="Temp info - title"
+        />
       </h1>
       <div className="lead">
         <p>
           <FormattedMessage
+            id="temporaryInfo.lead"
             defaultMessage="The information below is relevant to you and we need confirmation that you have taken part of it. Please read before you press continue."
             description="Temp info - lead"
           />
@@ -35,18 +42,21 @@ export default function TemporaryInfo(props: Readonly<{
       <div className="notice-box">
         <h2>
           <FormattedMessage
+            id="temporaryInfo.heading"
             defaultMessage="We are discontinuing phone number support"
             description="Temp info - heading"
           />
         </h2>
         <p>
           <FormattedMessage
+            id="temporaryInfo.info"
             defaultMessage="Soon it will not be possible to use phone numbers to verify identity and resetting password."
             description="Temp info - message1"
           />
         </p>
         <p>
           <FormattedMessage
+            id="temporaryInfo.tempMessage2Info"
             defaultMessage="Already verified identities will not be affected by this change."
             description="Temp info - message2"
           />
@@ -54,12 +64,14 @@ export default function TemporaryInfo(props: Readonly<{
 
         <p>
           <FormattedMessage
+            id="temporaryInfo.tempInfo"
             defaultMessage="To ensure continued safe access and use of eduID, we recommend you choose a different method for password reset, such as using a security key."
             description="Temp info - message4"
           />
         </p>
         <span className="help-text">
           <FormattedMessage
+            id="temporaryInfo.tempMessage5Info"
             defaultMessage={`For more information about supported means of verification, please visit {help} and refer to the 'Verification of identity' section and 'Improving your security level of eduID' section.`}
             description="Temp info - message5"
             values={{
@@ -86,12 +98,16 @@ export default function TemporaryInfo(props: Readonly<{
             onChange={() => setActiveButton(!activeButton)}
           />
           <span>
-            <FormattedMessage defaultMessage="Don't show this message again" description="Temp info - checkbox" />
+            <FormattedMessage
+              id="temporaryInfo.tempCheckboxInfo"
+              defaultMessage="Don't show this message again"
+              description="Temp info - checkbox"
+            />
           </span>
         </label>
 
         <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
-          <FormattedMessage defaultMessage="Continue" description="Temp info - continue button" />
+          <FormattedMessage id="common.continue" defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
     </Fragment>

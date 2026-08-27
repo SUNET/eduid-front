@@ -23,9 +23,9 @@ function DataStatus(props: Readonly<DataStatusProps>) {
     return (
       <EduIDButton buttonstyle="link sm" onClick={() => props.handleStartConfirmation(props.name)}>
         {props.name === "number" ? (
-          <FormattedMessage defaultMessage="unverified" description="unverified" />
+          <FormattedMessage id="dataTable.unverified" defaultMessage="unverified" description="unverified" />
         ) : (
-          <FormattedMessage defaultMessage="confirm" description="confirm button" />
+          <FormattedMessage id="dataTable.button" defaultMessage="confirm" description="confirm button" />
         )}
       </EduIDButton>
     );
@@ -33,13 +33,13 @@ function DataStatus(props: Readonly<DataStatusProps>) {
   if (props.primary) {
     return (
       <span>
-        <FormattedMessage defaultMessage="PRIMARY" description="primary label" />
+        <FormattedMessage id="dataTable.label" defaultMessage="PRIMARY" description="primary label" />
       </span>
     );
   }
   return (
     <EduIDButton buttonstyle="link sm" onClick={() => props.handleMakePrimary(props.name)}>
-      <FormattedMessage defaultMessage="make primary" description="Make primary button" />
+      <FormattedMessage id="dataTable.makeButton" defaultMessage="make primary" description="Make primary button" />
     </EduIDButton>
   );
 }
@@ -85,7 +85,12 @@ function DataTableRows(props: Readonly<DataTableProps>) {
         } else valueStatus = "verified";
 
         return (
-          <tr className={`${valueName} ${valueStatus}`} data-identifier={valueName} data-object={value} key={datum.email ?? datum.number ?? i}>
+          <tr
+            className={`${valueName} ${valueStatus}`}
+            data-identifier={valueName}
+            data-object={value}
+            key={datum.email ?? datum.number ?? i}
+          >
             <td className={valueStatus}>{value}</td>
             <td className="value-status">
               <DataStatus
@@ -116,13 +121,13 @@ function DataTable(props: Readonly<DataTableProps>) {
         <tbody>
           <tr className="display-none">
             <th>
-              <FormattedMessage description="name" defaultMessage="name" />
+              <FormattedMessage id="dataTable.name" description="name" defaultMessage="name" />
             </th>
             <th>
-              <FormattedMessage description="status" defaultMessage="status" />
+              <FormattedMessage id="dataTable.status" description="status" defaultMessage="status" />
             </th>
             <th>
-              <FormattedMessage description="remove" defaultMessage="remove" />
+              <FormattedMessage id="common.removeText" description="remove" defaultMessage="remove" />
             </th>
           </tr>
           <DataTableRows {...props} />

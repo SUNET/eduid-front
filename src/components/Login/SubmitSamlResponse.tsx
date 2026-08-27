@@ -46,10 +46,11 @@ function SubmitSamlResponse() {
     return (
       <Fragment>
         <h1>
-          <FormattedMessage defaultMessage="Login failed" description="SAML login finished" />
+          <FormattedMessage id="samlResponse.failed" defaultMessage="Login failed" description="SAML login finished" />
         </h1>
         <p>
           <FormattedMessage
+            id="samlResponse.missingParams"
             defaultMessage="Missing SAML parameters to proceed with login. Please try again."
             description="SAML login finished"
           />
@@ -62,13 +63,22 @@ function SubmitSamlResponse() {
     return (
       <Fragment>
         <h1>
-          <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyLoggedIn"
+            defaultMessage="Already logged in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
-          <FormattedMessage defaultMessage="This login has already been processed." description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyProcessed"
+            defaultMessage="This login has already been processed."
+            description="SAML login finished"
+          />
         </p>
         <p>
           <FormattedMessage
+            id="samlResponse.tryAgainInfo"
             defaultMessage={`You can try to login again using the button below, but it is very likely
           that the service you are logging in to will reject the request and you will have to start over.
           `}
@@ -84,16 +94,22 @@ function SubmitSamlResponse() {
     return (
       <Fragment>
         <h1>
-          <FormattedMessage defaultMessage="Already logged in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.alreadyLoggedIn"
+            defaultMessage="Already logged in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
           <FormattedMessage
+            id="samlResponse.pressedBack"
             defaultMessage="It seems you pressed 'back' in your browser."
             description="SAML login finished"
           />
         </p>
         <p>
           <FormattedMessage
+            id="samlResponse.forwardHint"
             defaultMessage="You might be able to get back to where you came from by using the 'forward' button."
             description="SAML login finished"
           />
@@ -108,10 +124,15 @@ function SubmitSamlResponse() {
       {/* Avoid the "logging you in" message to flash by too quick to read in normal circumstances */}
       <ShowAfterDelay delay={500}>
         <h1>
-          <FormattedMessage defaultMessage="Logging you in" description="SAML login finished" />
+          <FormattedMessage
+            id="samlResponse.loggingInHeading"
+            defaultMessage="Logging you in"
+            description="SAML login finished"
+          />
         </h1>
         <p>
           <FormattedMessage
+            id="samlResponse.loggingIn"
             defaultMessage="Please wait, you are being logged in..."
             description="SAML login finished"
           />
@@ -149,12 +170,16 @@ function SAMLResponseForm(props: Readonly<SAMLResponseFormProps>) {
           )}
           {props.mode === "retry" && (
             <EduIDButton buttonstyle="primary" type="submit">
-              <FormattedMessage defaultMessage="Retry" description="SAML login finished" />
+              <FormattedMessage id="common.retry" defaultMessage="Retry" description="SAML login finished" />
             </EduIDButton>
           )}
           {props.mode === "forward" && (
             <EduIDButton buttonstyle="primary" type="submit" onClick={handleGoForward}>
-              <FormattedMessage defaultMessage="Forward" description="SAML login finished" />
+              <FormattedMessage
+                id="samlResponse.forwardButton"
+                defaultMessage="Forward"
+                description="SAML login finished"
+              />
             </EduIDButton>
           )}
         </div>

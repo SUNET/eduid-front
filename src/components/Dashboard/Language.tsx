@@ -54,10 +54,11 @@ export function LanguagePreference() {
   return (
     <article id="language">
       <h2>
-        <FormattedMessage description="pd main title" defaultMessage="Language" />
+        <FormattedMessage id="common.language" description="pd main title" defaultMessage="Language" />
       </h2>
       <p>
         <FormattedMessage
+          id="language.description"
           description="pd long description"
           defaultMessage="You can choose your preferred language. The effect will be visible in the interface when you are logged in and in any emails sent to you."
         />
@@ -71,7 +72,7 @@ export function LanguagePreference() {
               <fieldset>
                 <article>
                   <legend className="require">
-                    <FormattedMessage defaultMessage="Language" description="Language" />
+                    <FormattedMessage id="common.language" defaultMessage="Language" description="Language" />
                   </legend>
                   <div className="radio-input-container">
                     {language_list.map((option: string[]) => {

@@ -17,7 +17,7 @@ export function WebauthnDescriptionModal({
   const intl = useIntl();
 
   const placeholder = intl.formatMessage({
-    id: "security.placeholder",
+    id: "webauthnModal.placeholder",
     defaultMessage: "describe your security key",
     description: "placeholder text for security key description input",
   });
@@ -27,6 +27,7 @@ export function WebauthnDescriptionModal({
       id="describe-webauthn-token-modal"
       title={
         <FormattedMessage
+          id="webauthnModal.title"
           description="security webauthn describe title"
           defaultMessage="Add a name for your security key"
         />
@@ -34,6 +35,7 @@ export function WebauthnDescriptionModal({
       mainText={
         <p>
           <FormattedMessage
+            id="webauthnModal.paragraph"
             description="security webauthn describe paragraph"
             defaultMessage={`Note: this is only for your own use to be able to distinguish between your added keys.`}
           />
@@ -44,12 +46,20 @@ export function WebauthnDescriptionModal({
       closeModal={closeModal}
       handleConfirm={handleConfirm}
       modalFormLabel={
-        <FormattedMessage description="security webauthn credential type" defaultMessage="Security key" />
+        <FormattedMessage
+          id="common.securityKey"
+          description="security webauthn credential type"
+          defaultMessage="Security key"
+        />
       }
       validationPattern={securityKeyPattern}
       validationError="security.description_invalid_format"
       helpBlock={
-        <FormattedMessage defaultMessage="max 50 characters" description="Help text for security key max length" />
+        <FormattedMessage
+          id="webauthnModal.help"
+          defaultMessage="max 50 characters"
+          description="Help text for security key max length"
+        />
       }
     />
   );

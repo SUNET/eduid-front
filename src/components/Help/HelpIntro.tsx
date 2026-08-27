@@ -19,11 +19,16 @@ export function Help(): React.JSX.Element {
     <React.Fragment>
       <section className="intro">
         <h1>
-          <FormattedMessage description="help - general headline" defaultMessage="Help and contact" />
+          <FormattedMessage
+            id="intro.general"
+            description="help - general headline"
+            defaultMessage="Help and contact"
+          />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
+              id="intro.lead"
               description="help - lead"
               defaultMessage={`Listed below is general information about the service, answers to common questions about 
               using eduID 
@@ -33,10 +38,14 @@ export function Help(): React.JSX.Element {
         </div>
       </section>
       <h2>
-        <FormattedMessage description="help - content headline" defaultMessage="Content areas" />
+        <FormattedMessage id="intro.content" description="help - content headline" defaultMessage="Content areas" />
       </h2>
       <p>
-        <FormattedMessage description="help - content paragraph" defaultMessage="Expand sections to learn more." />
+        <FormattedMessage
+          id="intro.paragraph"
+          description="help - content paragraph"
+          defaultMessage="Expand sections to learn more."
+        />
       </p>
       <div className="help-content">
         <Accordion id="eduid-help">

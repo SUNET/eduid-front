@@ -94,6 +94,7 @@ export function SignupConfirmPassword() {
             {renderSuggested ? (
               <p>
                 <FormattedMessage
+                  id="userCreated.generatedLead"
                   defaultMessage={`A strong password has been generated for you. To proceed copy 
                         the password into the Repeat new password field and click the Save button.`}
                   description="Generated password - lead"
@@ -102,6 +103,7 @@ export function SignupConfirmPassword() {
             ) : (
               <p>
                 <FormattedMessage
+                  id="userCreated.lead"
                   description="Strong password - lead"
                   defaultMessage={`Create a strong enough password to keep your 
                         account safe.`}
@@ -153,7 +155,11 @@ export function SignupUserCreated(): React.JSX.Element {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Create eduID: Completed" description="Registration complete" />
+          <FormattedMessage
+            id="userCreated.registrationComplete"
+            defaultMessage="Create eduID: Completed"
+            description="Registration complete"
+          />
         </h1>
         <ServiceInfo />
         <div className="lead">
@@ -162,6 +168,7 @@ export function SignupUserCreated(): React.JSX.Element {
           !signupState?.credentials.generated_password ? (
             <p>
               <FormattedMessage
+                id="userCreated.registration"
                 defaultMessage="Your eduID account has been created and you can continue using it with the details you have provided and your added security key."
                 description="Registration finished with webauthn only"
               />
@@ -169,6 +176,7 @@ export function SignupUserCreated(): React.JSX.Element {
           ) : (
             <p>
               <FormattedMessage
+                id="userCreated.registrationFinished"
                 defaultMessage={`Your eduID account has been created and you can continue using it with the details you have provided.`}
                 description="Registration finished with pw"
               />
@@ -194,6 +202,7 @@ export function SignupUserCreated(): React.JSX.Element {
         <EduIDButton id={idFinishedButton} buttonstyle="link normal-case text-large" onClick={handleFinish}>
           {service_name ? (
             <FormattedMessage
+              id="userCreated.go"
               defaultMessage="Continue to {service_name}"
               description="go to service after signup"
               values={{
@@ -201,13 +210,18 @@ export function SignupUserCreated(): React.JSX.Element {
               }}
             />
           ) : (
-            <FormattedMessage defaultMessage="Go to eduID to login" description="go to eduID link text" />
+            <FormattedMessage
+              id="common.goToEduidLogin"
+              defaultMessage="Go to eduID to login"
+              description="go to eduID link text"
+            />
           )}
         </EduIDButton>
       </div>
 
       <p className="hint">
         <FormattedMessage
+          id="userCreated.hint"
           defaultMessage={`Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, 
             change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
           description="signup hint"

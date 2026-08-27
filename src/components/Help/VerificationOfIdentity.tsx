@@ -22,12 +22,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
       uuid="help-verification"
       title={
         <FormattedMessage
+          id="verifyIdentity.verificationHandle"
           description="about verification of identity - handle"
           defaultMessage="Verification of Identity"
         />
       }
       additionalInfo={
         <FormattedMessage
+          id="verifyIdentity.info"
           description="about verification of identity - info"
           defaultMessage="Methods of verifying eduID for different user groups"
         />
@@ -36,12 +38,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
       <article>
         <h4>
           <FormattedMessage
+            id="verifyIdentity.whichHeading"
             description="which verification methods - heading"
             defaultMessage="What are the methods of verification for eduID?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="verifyIdentity.whichVerification"
             description="which verification methods - paragraph1"
             defaultMessage={`The service is constantly being developed to better support the needs of our various 
                   users. At present the methods below are available, depending on your situation such as assurance 
@@ -50,6 +54,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
         </p>
         <p>
           <FormattedMessage
+            id="verifyIdentity.which"
             description="which verification methods - paragraph2"
             defaultMessage="Note: you can remove a verified identity connected to your eduID in the Identity area."
           />
@@ -58,11 +63,13 @@ export function VerificationOfIdentity(): React.JSX.Element {
           <p>
             <strong>
               <FormattedMessage
+                id="verifyIdentity.swedish"
                 description="swedish nin - heading"
                 defaultMessage="If you have a Swedish personal identity number or coordination number"
               />
             </strong>
             <FormattedMessage
+              id="verifyIdentity.verification"
               description="verification methods - list definition"
               defaultMessage=", verifying it can be done via:"
             />
@@ -71,12 +78,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <li>
               <em>
                 <FormattedMessage
+                  id="verifyIdentity.swedishNin"
                   description="swedish nin post - heading"
                   defaultMessage="post - for Swedish personal identity number holders:"
                 />
               </em>
               &nbsp;
               <FormattedMessage
+                id="verifyIdentity.verification1"
                 description="verification methods - list item 1"
                 defaultMessage={` the user receives a letter with a code sent to their home address as 
                       registered at Skatteverket (the Swedish Tax Agency), and instructions on how to complete the 
@@ -86,12 +95,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <li>
               <em>
                 <FormattedMessage
+                  id="verifyIdentity.swedishHeading"
                   description="swedish nin freja - heading"
                   defaultMessage="Freja+ (digital ID) - for Swedish personal identity or coordination number holders:"
                 />
               </em>
               &nbsp;
               <FormattedMessage
+                id="verifyIdentity.frejaYgw"
                 description="verification methods - list item 3"
                 defaultMessage={` the user will be directed to the Freja eID website to
                       use their service. If you don't have Freja+ you have to create it separately before you can
@@ -101,12 +112,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <li>
               <em>
                 <FormattedMessage
+                  id="verifyIdentity.swedishNinHeading"
                   description="swedish nin bankid - heading"
                   defaultMessage="BankID (electronic identification system) - for Swedish personal identity number holders:"
                 />
               </em>
               &nbsp;
               <FormattedMessage
+                id="verifyIdentity.bankid"
                 description="verification methods - list item 3"
                 defaultMessage={` the user will be asked to verify themself using their BankID service. If you don't 
                   have BankID you have to create it separately before you can complete verification of your eduID. 
@@ -116,6 +129,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
           </ul>
           <p>
             <FormattedMessage
+              id="verifyIdentity.frejaParagraph1"
               description="freja - protected I paragraph 1"
               defaultMessage={`Note: {strong} you can verify it using {emphasis}, by getting Freja eID and verifying your 
                 Swedish passport visiting an authorised ATG agent.`}
@@ -123,6 +137,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                 strong: (
                   <strong>
                     <FormattedMessage
+                      id="verifyIdentity.freja"
                       description="freja - protected strong"
                       defaultMessage="If you have a protected identity "
                     />
@@ -133,6 +148,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             />
             <br />
             <FormattedMessage
+              id="verifyIdentity.paragraph2"
               description="freja - protected ID paragraph 2"
               defaultMessage={`You can read more about using Freja with your eduID below in the "About Freja 
                 (with Swedish ID/COORD number)" section and on their website at {FrejaProtectedId}.`}
@@ -140,6 +156,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                 FrejaProtectedId: (
                   <a href={FrejaProtectedIdURL} target="_blank" rel="noreferrer">
                     <FormattedMessage
+                      id="verifyIdentity.link"
                       description="use freja protected id - link text"
                       defaultMessage="freja-for-swedes-with-protected-identities"
                     />
@@ -153,11 +170,13 @@ export function VerificationOfIdentity(): React.JSX.Element {
           <p>
             <strong>
               <FormattedMessage
+                id="verifyIdentity.methodHeading"
                 description="method eidas - heading"
                 defaultMessage="If you are an EU citizen and without a Swedish personal identity number"
               />
             </strong>
             <FormattedMessage
+              id="verifyIdentity.methodEidasParagraph"
               description="method eidas - paragraph"
               defaultMessage=", you could use {emphasis} to verify your identity. Read more about eIDAS below."
               values={{
@@ -170,11 +189,13 @@ export function VerificationOfIdentity(): React.JSX.Element {
           <p>
             <strong>
               <FormattedMessage
+                id="verifyIdentity.methodInternationalHeading"
                 description="method international - heading"
                 defaultMessage="If you are not an EU citizen and without a Swedish personal identity number"
               />
             </strong>
             <FormattedMessage
+              id="verifyIdentity.methodParagraph"
               description="method international - paragraph"
               defaultMessage={`, you could use {emphasis} to verify your identity using your passport. 
                     Read more about Freja below.`}
@@ -185,6 +206,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
           </p>
           <p className="error-txt">
             <FormattedMessage
+              id="verifyIdentity.error"
               description="freja - error"
               defaultMessage={`Note: not all nationalities are yet supported by this solution but the work to substantially 
                 increase the range is in progress.`}
@@ -198,6 +220,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
           uuid="help-freja"
           title={
             <FormattedMessage
+              id="verifyIdentity.handle"
               description="about freja - handle"
               defaultMessage="About Freja (with Swedish ID/COORD number)"
             />
@@ -206,10 +229,15 @@ export function VerificationOfIdentity(): React.JSX.Element {
         >
           <article>
             <h4>
-              <FormattedMessage description="what is freja - heading" defaultMessage="What is Freja+?" />
+              <FormattedMessage
+                id="common.whatIsFreja"
+                description="what is freja - heading"
+                defaultMessage="What is Freja+?"
+              />
             </h4>
             <p>
               <FormattedMessage
+                id="verifyIdentity.frejaParagraph"
                 description="what is freja - paragraph"
                 defaultMessage={`Freja+ is a digital ID (a verified Freja eID) free of charge, available to 
                       holders of a Swedish personal identification number or coordination number.`}
@@ -217,6 +245,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             </p>
             <p>
               <FormattedMessage
+                id="verifyIdentity.useFreja"
                 description="use freja - list definition"
                 defaultMessage="How to use Freja+ with eduID:"
               />
@@ -225,13 +254,18 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <ul className="bullets">
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.use1"
                   description="use freja - list item 1"
                   defaultMessage={`install the {Freja}  on your mobile device (iOS or Android) and create a 
                         Freja+ account according to the instructions,`}
                   values={{
                     Freja: (
                       <a href={FrejaAppURL} target="_blank" rel="noreferrer">
-                        <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
+                        <FormattedMessage
+                          id="verifyIdentity.useLink"
+                          description="use freja - link text"
+                          defaultMessage={`Freja app`}
+                        />
                       </a>
                     ),
                   }}
@@ -239,6 +273,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
               </li>
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.use2"
                   description="use freja - list item 2"
                   defaultMessage={`if you have a valid Swedish passport you can complete the verification of your 
                         account in the app using your device camera, or bring a valid ID (including drivers license or 
@@ -247,6 +282,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
               </li>
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.use3"
                   description="use freja - list item 3"
                   defaultMessage={`log in to eduID and choose the 'Freja+ digital ID' option in the Identity area 
                         and follow the instructions.`}
@@ -256,12 +292,14 @@ export function VerificationOfIdentity(): React.JSX.Element {
 
             <h4>
               <FormattedMessage
+                id="verifyIdentity.needHeading"
                 description="need visit atg agent for freja - heading"
                 defaultMessage="Do I need to visit an authorised ATG agent to create Freja+?"
               />
             </h4>
             <p>
               <FormattedMessage
+                id="verifyIdentity.needParagraph"
                 description="need visit atg agent for freja - paragraph"
                 defaultMessage={`Only if you use another means of identification than a Swedish passport, {protectedId}. 
                       On site, the agent can start the verification process by scanning a QR code in your 
@@ -272,6 +310,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
                   protectedId: (
                     <strong>
                       <FormattedMessage
+                        id="verifyIdentity.need"
                         description="need visit atg agent for freja - strong"
                         defaultMessage="or if you have a protected identity"
                       />
@@ -283,6 +322,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
 
             <h4>
               <FormattedMessage
+                id="verifyIdentity.verificationHeading"
                 description="what if verification for freja fails - heading"
                 defaultMessage="What should I do if my identity verification for Freja+ fails?"
               />
@@ -290,6 +330,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
 
             <p>
               <FormattedMessage
+                id="verifyIdentity.paragraph"
                 description="what if verification for freja fails - paragraph"
                 defaultMessage={`Reinstall the app, redo the registration and make sure that you have entered the 
                     correct expiration date as well as the correct reference number of the chosen form of 
@@ -300,15 +341,26 @@ export function VerificationOfIdentity(): React.JSX.Element {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           uuid="help-bankid"
-          title={<FormattedMessage description="about bankid - handle" defaultMessage="About BankID" />}
+          title={
+            <FormattedMessage
+              id="verifyIdentity.bankidHandle"
+              description="about bankid - handle"
+              defaultMessage="About BankID"
+            />
+          }
           additionalInfo={null}
         >
           <article>
             <h4>
-              <FormattedMessage description="what is bankid - heading" defaultMessage="What is BankID?" />
+              <FormattedMessage
+                id="verifyIdentity.bankidHeading"
+                description="what is bankid - heading"
+                defaultMessage="What is BankID?"
+              />
             </h4>
             <p>
               <FormattedMessage
+                id="verifyIdentity.bankidParagraph"
                 description="what is bankid - paragraph"
                 defaultMessage={`BankID is a widely used electronic verification system, available to 
                       holders of a Swedish personal identification number, an approved Swedish ID document (e.g. passport, drivers license or ID card) and connected to a bank in Sweden.`}
@@ -316,6 +368,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             </p>
             <p>
               <FormattedMessage
+                id="verifyIdentity.useBankid"
                 description="use bankid - list definition"
                 defaultMessage="How to use BankID with eduID:"
               />
@@ -324,6 +377,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <ul className="bullets">
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useBankid1"
                   description="use bankid - list item 1"
                   defaultMessage={`the BankID is obtained from your personal bank and installed on your device as an app or file. The process varies, so visit your bank's website and follow the instructions. You can read more about obtaining a BankID on {bankid},`}
                   values={{
@@ -337,6 +391,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
               </li>
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useBankid2"
                   description="use bankid - list item 2"
                   defaultMessage={`log in to eduID and choose the 'Electronic BankID' option in the Identity area 
                         and follow the instructions.`}
@@ -347,15 +402,26 @@ export function VerificationOfIdentity(): React.JSX.Element {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           uuid="help-eidas"
-          title={<FormattedMessage description="about eidas - handle" defaultMessage="About eIDAS" />}
+          title={
+            <FormattedMessage
+              id="verifyIdentity.eidasHandle"
+              description="about eidas - handle"
+              defaultMessage="About eIDAS"
+            />
+          }
           additionalInfo={null}
         >
           <article>
             <h4>
-              <FormattedMessage description="what is eidas - heading" defaultMessage="What is eIDAS?" />
+              <FormattedMessage
+                id="verifyIdentity.eidasHeading"
+                description="what is eidas - heading"
+                defaultMessage="What is eIDAS?"
+              />
             </h4>
             <p>
               <FormattedMessage
+                id="verifyIdentity.eidasParagraph"
                 description="what is eidas - paragraph"
                 defaultMessage={`eIDAS is a federation of EU countries providing electronic identification to allow 
                     access to public authority systems for EU citizens, using their country's electronic ID.`}
@@ -363,6 +429,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             </p>
             <p>
               <FormattedMessage
+                id="verifyIdentity.useEidas"
                 description="use eidas - list definition"
                 defaultMessage="How to use eIDAS with eduID:"
               />
@@ -370,6 +437,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <ul className="bullets">
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useEidas1"
                   description="use eidas - list item 1"
                   defaultMessage={`make sure you have an electronic ID from a connected country to have the possibility to 
                       authenticate yourself via eIDAS,`}
@@ -377,6 +445,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
               </li>
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useEidas2"
                   description="use eidas - list item 2"
                   defaultMessage={`to verify your identity in eduID, log in and choose the verification method for 
                       'EU-citizens' in the Identity area and follow the instructions.`}
@@ -385,6 +454,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             </ul>
             <p>
               <FormattedMessage
+                id="verifyIdentity.eidasPersonalParagraph"
                 description="eidas if personal number - paragraph"
                 defaultMessage={`If you have a Swedish personal identity number, use that method instead e.g. to 
                       simplify communication with Swedish authorities. Note: if you initially verify your identity with 
@@ -398,6 +468,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
           uuid="help-international"
           title={
             <FormattedMessage
+              id="verifyIdentity.internationalHandle"
               description="about international - handle"
               defaultMessage="About Freja (outside EU and without Swedish ID/COORD number)"
             />
@@ -406,10 +477,15 @@ export function VerificationOfIdentity(): React.JSX.Element {
         >
           <article id="international">
             <h4>
-              <FormattedMessage description="what is international - heading" defaultMessage="What is Freja?" />
+              <FormattedMessage
+                id="verifyIdentity.heading"
+                description="what is international - heading"
+                defaultMessage="What is Freja?"
+              />
             </h4>
             <p>
               <FormattedMessage
+                id="verifyIdentity.paragraph1"
                 description="what is international - paragraph 1"
                 defaultMessage={`Freja is an eID based on an identity verification platform using biometric passports, 
                   combined with the users mobile device to create a verified digital identity than can be used remotely.`}
@@ -418,6 +494,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
 
             <p>
               <FormattedMessage
+                id="verifyIdentity.internationalParagraph2"
                 description="what is international - paragraph 2"
                 defaultMessage={`Current information on included nationalities can be found at: {FrejaList}`}
                 values={{
@@ -432,6 +509,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
 
             <p>
               <FormattedMessage
+                id="verifyIdentity.use"
                 description="use international - list definition"
                 defaultMessage="How to use Freja with eduID:"
               />
@@ -439,6 +517,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             <ul className="bullets">
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useInternational1"
                   description="use international - list item 1"
                   defaultMessage={`to verify your eduID using Freja you first need to get a Freja account with a verified
                          profile supported by your passport, by installing the {FrejaApp} on your mobile device (iOS or Android) 
@@ -446,7 +525,11 @@ export function VerificationOfIdentity(): React.JSX.Element {
                   values={{
                     FrejaApp: (
                       <a href={FrejaAppURL} target="_blank" rel="noreferrer">
-                        <FormattedMessage description="use freja - link text" defaultMessage={`Freja app`} />
+                        <FormattedMessage
+                          id="verifyIdentity.useLink"
+                          description="use freja - link text"
+                          defaultMessage={`Freja app`}
+                        />
                       </a>
                     ),
                   }}
@@ -454,6 +537,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
               </li>
               <li>
                 <FormattedMessage
+                  id="verifyIdentity.useInternational2"
                   description="use international - list item 2"
                   defaultMessage={`login to eduID and scan the QR code produced by Freja from the 'Other 
                         countries' section in the Identity area of eduID by following the instructions.`}
@@ -462,6 +546,7 @@ export function VerificationOfIdentity(): React.JSX.Element {
             </ul>
             <p>
               <FormattedMessage
+                id="verifyIdentity.internationalParagraph"
                 description="international if personal number - paragraph"
                 defaultMessage={`Note: holders of Swedish personal identity numbers or EU citizens are advised to use 
                   those supported methods instead.`}
