@@ -112,7 +112,9 @@ export function ExternalReturnHandler() {
 
   useEffect(() => {
     if (app_loaded && params.authn_id) {
-      if (params.app_name === "eidas") {
+      if (params.app_name === "eidas" || params.app_name === "samleid") {
+        // samleid replaces eidas/bankid; eidas_service_url/bankid_service_url in config already
+        // point at the samleid host, so the existing eidasGetStatus hook resolves correctly.
         fetchEidasStatus(params.authn_id).catch(console.error);
       }
       if (params.app_name === "freja_eid") {

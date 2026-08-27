@@ -79,7 +79,10 @@ export function SignupExternalReturnHandler() {
 
   useEffect(() => {
     if (is_configured && params.authn_id && params.app_name) {
-      if (params.app_name === "eidas") {
+      if (params.app_name === "eidas" || params.app_name === "samleid") {
+        // samleid replaces eidas/bankid; eidas_service_url/bankid_service_url in config already
+        // point at the samleid host, so the existing eidasGetStatus hook resolves correctly. The
+        // backend's external-mfa-register already expects app_name "samleid" here (see its docstring).
         fetchEidasStatus(params.authn_id, params.app_name).catch(console.error);
       }
       if (params.app_name === "freja_eid") {
