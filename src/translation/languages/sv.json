@@ -375,11 +375,11 @@
     "string": "Okänd kod"
   },
   "common.accessError": {
-    "developer_comment": "ErrorURL other error",
+    "developer_comment": "ErrorURL unknown error",
     "string": "Åtkomstfel"
   },
   "common.account": {
-    "developer_comment": "Dashboard nav tab name",
+    "developer_comment": "security zone account link",
     "string": "Konto"
   },
   "common.add": {
@@ -399,19 +399,19 @@
     "string": "Byt lösenord"
   },
   "common.code": {
-    "developer_comment": "letter proofing modal form label",
+    "developer_comment": "email code",
     "string": "Kod"
   },
   "common.completed": {
-    "developer_comment": "resetpw step6",
+    "developer_comment": "signup step5",
     "string": "Slutfört"
   },
   "common.confirmIdentityHint": {
-    "developer_comment": "ErrorURL authentication failure",
+    "developer_comment": "ErrorURL other error",
     "string": "Eventuellt behöver du bekräfta din identitet i eduID Dashboard innan du försöker igen."
   },
   "common.continue": {
-    "developer_comment": "Login OtherDevice",
+    "developer_comment": "Signup button",
     "string": "Fortsätt"
   },
   "common.createEduidConfirm": {
@@ -419,27 +419,26 @@
     "string": "Skapa eduID: Bekräfta/Godkänn"
   },
   "common.displayName": {
-    "developer_comment": "Display name select legend",
+    "developer_comment": "Display name label/template (edit personal data)",
     "string": "Visningsnamn"
   },
   "common.eduidHelp": {
-    "developer_comment": "eduID help link",
+    "developer_comment": "digital ID help text link",
     "string": "Hjälp"
   },
   "common.emailAddress": {
-    "developer_comment": "Email label",
+    "developer_comment": "profile email display title",
     "string": "E-postadress"
   },
   "common.enterCodePlaceholder": {
-    "developer_comment": "Placeholder for email code input",
+    "developer_comment": "Placeholder for letter proofing text input",
     "string": "skriv in koden"
   },
   "common.enterSixDigitCode": {
-    "developer_comment": "Reset Password email link sent",
     "string": "Ange den sexsiffriga koden som skickades från no-reply@eduid.se till {email} för att bekräfta din e-postadress."
   },
   "common.euCitizen": {
-    "developer_comment": "accordion item eidas title",
+    "developer_comment": "EU title",
     "string": "EU-medborgare"
   },
   "common.firstName": {
@@ -447,7 +446,7 @@
     "string": "Förnamn"
   },
   "common.goToEduid": {
-    "developer_comment": "not found link",
+    "developer_comment": "Login MFA link",
     "string": "Gå till eduID"
   },
   "common.goToEduidLogin": {
@@ -459,7 +458,7 @@
     "string": "Hjälp"
   },
   "common.identity": {
-    "developer_comment": "verify identity unverified main title",
+    "developer_comment": "security zone identity link",
     "string": "Identitet"
   },
   "common.language": {
@@ -474,7 +473,7 @@
     "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
   },
   "common.logIn": {
-    "developer_comment": "login button",
+    "developer_comment": "Login front page pw",
     "string": "Logga in"
   },
   "common.mostCountries": {
@@ -490,23 +489,23 @@
     "string": "Ta bort"
   },
   "common.removeText": {
-    "developer_comment": "remove",
+    "developer_comment": "orcid remove",
     "string": "ta bort"
   },
   "common.repeatNewPassword": {
-    "developer_comment": "Set new password",
+    "developer_comment": "chpass form custom password repeat",
     "string": "Repetera ditt nya lösenord"
   },
   "common.retry": {
-    "developer_comment": "Login OtherDevice",
+    "developer_comment": "Signup credentials button",
     "string": "Försök igen"
   },
   "common.save": {
-    "developer_comment": "button save",
+    "developer_comment": "Set new password (Save button)",
     "string": "Spara"
   },
   "common.security": {
-    "developer_comment": "recommendations security link",
+    "developer_comment": "security zone security link",
     "string": "Säkerhet"
   },
   "common.securityKey": {
@@ -525,19 +524,19 @@
     "string": "Till säkerhetsinställningar"
   },
   "common.uniqueId": {
-    "developer_comment": "Dashboard AccountId",
+    "developer_comment": "account eduid - list item 0-heading",
     "string": "Unikt ID:"
   },
   "common.username": {
-    "developer_comment": "profile username display title",
+    "developer_comment": "username input field label",
     "string": "Användarnamn"
   },
   "common.verifyEmailAddress": {
-    "developer_comment": "resetpw step3",
+    "developer_comment": "signup step3",
     "string": "Verifiera e-postadress"
   },
   "common.whatIsFreja": {
-    "developer_comment": "eidas freja instructions install link",
+    "developer_comment": "what is freja - heading",
     "string": "Vad är Freja+?"
   },
   "confirmEmail.account": {
