@@ -12,11 +12,15 @@ interface CountryFlagProps {
  * (alpha-2) country code to its Regional Indicator Symbol. Replaces the react-country-flag
  * dependency, whose default (emoji) mode did the exact same transform.
  */
-export default function CountryFlag(props: Readonly<CountryFlagProps>): React.JSX.Element {
-  const emoji = props.countryCode.toUpperCase().replace(/./g, (c) => String.fromCodePoint(c.codePointAt(0)! + 127397));
+export default function CountryFlag({
+  countryCode,
+  className,
+  "aria-label": ariaLabel,
+}: Readonly<CountryFlagProps>): React.JSX.Element {
+  const emoji = countryCode.toUpperCase().replace(/./g, (c) => String.fromCodePoint(c.codePointAt(0)! + 127397));
 
   return (
-    <span role="img" className={props.className} aria-label={props["aria-label"]}>
+    <span role="img" className={className} aria-label={ariaLabel}>
       {emoji}
     </span>
   );
