@@ -1,7 +1,6 @@
 const webpack = require("webpack");
 const path = require("node:path");
 const autoprefixer = require("autoprefixer");
-const transform = require("@formatjs/ts-transformer").transform;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // You can leverage your IDE's Intellisense (autocompletion, type check, etc.) with the helper function `defineReactCompilerLoaderOption`:
 const { defineReactCompilerLoaderOption, reactCompilerLoader } = require('react-compiler-webpack');
@@ -54,17 +53,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: [
-          {
-            loader: "ts-loader",
-            options: {
-              getCustomTransformers() {
-                return { before: [transform({ overrideIdFn: "[sha512:contenthash:base64:6]" })] };
-              },
-            },
-          },
-        ],
-
+        use: [{ loader: "ts-loader" }],
         exclude: /node_modules/,
       },
       {
