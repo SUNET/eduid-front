@@ -435,7 +435,6 @@
     "string": "enter code"
   },
   "common.enterSixDigitCode": {
-    "developer_comment": "Reset Password email link sent",
     "string": "Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
   },
   "common.euCitizen": {
