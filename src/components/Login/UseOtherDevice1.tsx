@@ -99,7 +99,7 @@ function RenderFatalError({
         </EduIDButton>
         {handleNewQRCodeOnClick && (
           <EduIDButton buttonstyle="primary" type="button" id="refresh-get-new-code" onClick={handleNewQRCodeOnClick}>
-            <FormattedMessage defaultMessage="Retry" description="Login OtherDevice" />
+            <FormattedMessage id="common.retry" defaultMessage="Retry" description="Login OtherDevice" />
           </EduIDButton>
         )}
       </div>
@@ -196,7 +196,10 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
           <li>
             {response_code_required ? (
               <>
-                <FormattedMessage defaultMessage="Enter the six digit response code shown on the other device in the form below" />
+                <FormattedMessage
+                  id="useOtherDevice1.enter"
+                  defaultMessage="Enter the six digit response code shown on the other device in the form below"
+                />
                 <div className="expiration-info">
                   <ResponseCodeForm
                     bad_attempts={bad_attempts}
@@ -218,7 +221,10 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
               </>
             ) : (
               <>
-                <FormattedMessage defaultMessage={`Click "continue" once you have logged in on the other device`} />
+                <FormattedMessage
+                  id="useOtherDevice1.click"
+                  defaultMessage={`Click "continue" once you have logged in on the other device`}
+                />
                 <div className="buttons">
                   <EduIDButton
                     buttonstyle="secondary"
@@ -226,7 +232,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                     onClick={handleAbortButtonOnClick}
                     id="response-code-cancel-button"
                   >
-                    <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+                    <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
                   </EduIDButton>
                   <EduIDButton
                     type="button"
@@ -234,7 +240,7 @@ function RenderOtherDevice1({ data }: Readonly<{ data: UseOtherDevice1ResponseWi
                     onClick={handleContinueWithoutCode}
                     id="response-code-continue-button"
                   >
-                    <FormattedMessage defaultMessage="Continue" description="Login OtherDevice" />
+                    <FormattedMessage id="common.continue" defaultMessage="Continue" description="Login OtherDevice" />
                   </EduIDButton>
                 </div>
               </>
