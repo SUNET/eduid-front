@@ -1,9 +1,9 @@
 import authnApi from "apis/eduidAuthn";
 import { AuthMethod } from "apis/helpers/types";
-import NotificationModal from "components/Common/NotificationModal";
-import { ACCOUNT_PATH } from "components/IndexMain";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { Fragment, useEffect, useMemo } from "react";
+import { ACCOUNT_PATH } from "helperFunctions/paths";
+import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import authnSlice from "slices/Authn";
@@ -73,7 +73,7 @@ export function AuthenticateModal() {
         />
       }
       mainText={
-        <Fragment>
+        <>
           <FormattedMessage
             id="authenticateModal.reloginNote"
             description="security zone modal"
@@ -132,7 +132,7 @@ export function AuthenticateModal() {
               />
             </p>
           )}
-        </Fragment>
+        </>
       }
       showModal={re_authenticate}
       closeModal={handleCloseModal}

@@ -1,5 +1,5 @@
 import { userEvent } from "@testing-library/user-event";
-import EmailInput from "components/Common/EmailInput";
+import { EmailInput } from "components/Common/EmailInput";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { codeFormTestId, ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { render, screen, within } from "../helperFunctions/LoginTestApp-rtl";

@@ -1,10 +1,9 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 
-export function SignupCredentialsError(): React.JSX.Element | null {
+export function SignupCredentialsError() {
   const dispatch = useAppDispatch();
   const error = useAppSelector((state) => state.notifications.error);
 
@@ -13,7 +12,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
   }
 
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           id="credentialsError.there"
@@ -23,7 +22,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
       </p>
       <div className="buttons">
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="secondary"
           onClick={() => dispatch(signupSlice.actions.setNextPage("SIGNUP_ENTRY"))}
           id="abort-button"
@@ -31,7 +30,7 @@ export function SignupCredentialsError(): React.JSX.Element | null {
           <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
         </EduIDButton>
         <EduIDButton
-          type="submit"
+          type="button"
           buttonstyle="primary"
           onClick={() => {
             dispatch(signupSlice.actions.setNextPage("SIGNUP_CREDENTIALS"));
@@ -41,6 +40,6 @@ export function SignupCredentialsError(): React.JSX.Element | null {
           <FormattedMessage id="common.retry" defaultMessage="Retry" description="Signup credentials button" />
         </EduIDButton>
       </div>
-    </React.Fragment>
+    </>
   );
 }

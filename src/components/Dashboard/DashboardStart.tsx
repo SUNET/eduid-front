@@ -1,5 +1,5 @@
 import { letterProofingApi } from "apis/eduidLetterProofing";
-import Splash from "components/Common/Splash";
+import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
 import { useEffect, useMemo } from "react";
 import { FormattedMessage } from "react-intl";
@@ -9,7 +9,7 @@ import { Recommendations } from "./Recommendations";
 /**
  * Renders the start page
  */
-export default function Start(): React.JSX.Element {
+export function Start() {
   const chosen_given_name = useAppSelector((state) => state.personal_data.response?.chosen_given_name);
   const given_name = useAppSelector((state) => state.personal_data.response?.given_name);
   const surname = useAppSelector((state) => state.personal_data.response?.surname);

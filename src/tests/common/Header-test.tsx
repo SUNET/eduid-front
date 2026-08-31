@@ -1,6 +1,6 @@
 import userEvent from "@testing-library/user-event";
 import { Header } from "components/Common/Header";
-import { LOGIN_BASE_PATH } from "components/IndexMain";
+import { LOGIN_BASE_PATH } from "helperFunctions/paths";
 import { initialState as configInitialState } from "slices/IndexConfig";
 import { signupTestState } from "tests/helperFunctions/SignupTestApp-rtl";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";

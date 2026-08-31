@@ -1,5 +1,5 @@
 import { resetPasswordApi } from "apis/eduidResetPassword";
-import EmailInput from "components/Common/EmailInput";
+import { EmailInput } from "components/Common/EmailInput";
 import { ResponseCodeButtons } from "components/Common/ResponseCodeAbortButton";
 import { ResponseCodeForm, ResponseCodeValues } from "components/Login/ResponseCodeForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";

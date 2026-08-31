@@ -1,8 +1,6 @@
 import { FieldRenderProps } from "react-final-form";
 import { InputWrapper } from "./InputWrapper";
 
-type InputType = "text" | "password" | "email";
-
 export interface CustomInputProps<T> extends FieldRenderProps<T> {
   placeholder?: string;
   disabled?: boolean;
@@ -19,7 +17,7 @@ export interface CustomInputProps<T> extends FieldRenderProps<T> {
   "aria-errormessage"?: string;
 }
 
-export default function CustomInput(props: Readonly<CustomInputProps<string>>): React.JSX.Element {
+export function CustomInput(props: Readonly<CustomInputProps<string>>) {
   // the InputWrapper renders it's children plus a label, helpBlock and any error message from the field validation
   return (
     <InputWrapper {...props}>
@@ -28,7 +26,7 @@ export default function CustomInput(props: Readonly<CustomInputProps<string>>): 
   );
 }
 
-const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
+const InputElement = (props: CustomInputProps<string>) => {
   let className = "is-valid";
   if (props.meta.touched || props.meta.submitFailed) {
     if (props.meta.invalid) {
@@ -43,7 +41,7 @@ const InputElement = (props: CustomInputProps<string>): React.JSX.Element => {
     <input
       {...props.input}
       id={props.input.name}
-      type={props.input.type as InputType}
+      type={props.input.type}
       className={`${className}`}
       placeholder={props.placeholder}
       aria-required={props.required}

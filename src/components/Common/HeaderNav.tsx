@@ -5,9 +5,9 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 import { faChevronUp } from "@fortawesome/free-solid-svg-icons/faChevronUp";
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import EduIDButton from "components/Common/EduIDButton";
-import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "components/IndexMain";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
+import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "helperFunctions/paths";
 import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link, NavLink } from "react-router";
@@ -45,9 +45,9 @@ function useCloseMenuClickOutside(ref: React.RefObject<HTMLElement | null>, hand
   }, [ref, handler]);
 }
 
-export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
+export function HeaderNav({ handleLogout, login_url }: Readonly<HeaderNavProps>) {
   const emails = useAppSelector((state) => state.emails.emails);
-  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const allClosed = React.useMemo<Record<ButtonKey, boolean>>(
     () => ({ start: false, identity: false, security: false, account: false }),
     [],
@@ -313,13 +313,8 @@ export function HeaderNav(props: Readonly<HeaderNavProps>): React.JSX.Element {
         <div className="logout-button-wrapper">
           <span className="user-name">{userName}</span>
 
-          <EduIDButton
-            buttonstyle="secondary icon sm"
-            id="logout"
-            onClick={props.handleLogout}
-            disabled={!props.login_url}
-          >
-            <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+          <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
+            <FontAwesomeIcon icon={faArrowRightFromBracket} />
             <FormattedMessage id="headerNav.logout" defaultMessage="Log out" description="Header logout" />
           </EduIDButton>
         </div>

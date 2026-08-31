@@ -1,6 +1,6 @@
-import EduIDButton from "components/Common/EduIDButton";
-import NewPasswordInput from "components/Common/NewPasswordInput";
-import PasswordStrengthMeter from "components/Common/PasswordStrengthMeter";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NewPasswordInput } from "components/Common/NewPasswordInput";
+import { PasswordStrengthMeter } from "components/Common/PasswordStrengthMeter";
 import { emptyStringPattern } from "helperFunctions/validation/regexPatterns";
 import { useCallback, useState } from "react";
 import { Field as FinalField, Form as FinalForm } from "react-final-form";
@@ -33,7 +33,11 @@ function validateNewPassword(values: { custom?: string; repeat?: string }) {
   return errors;
 }
 
-export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordCustomFormProps>) {
+export function ChangePasswordCustomForm({
+  handleSubmit,
+  formProps,
+  handleCancel,
+}: Readonly<ChangePasswordCustomFormProps>) {
   const intl = useIntl();
   const [pwScore, setPwScore] = useState(0);
 
@@ -52,14 +56,14 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
   const updatePasswordData = useCallback(
     (data: { score?: number }) => {
       setPwScore(data.score ?? 0);
-      props.formProps.form.change("custom", props.formProps.values?.custom);
+      formProps.form.change("custom", formProps.values?.custom);
     },
-    [props.formProps.form, props.formProps.values?.custom],
+    [formProps.form, formProps.values?.custom],
   );
 
   return (
     <FinalForm<ChangePasswordFormData>
-      onSubmit={props.handleSubmit}
+      onSubmit={handleSubmit}
       validate={validateNewPassword}
       render={(formProps) => {
         return (
@@ -149,7 +153,7 @@ export default function ChangePasswordCustomForm(props: Readonly<ChangePasswordC
               />
             </span>
             <div id="chpass-form" className="buttons">
-              <EduIDButton buttonstyle="secondary" onClick={props.handleCancel}>
+              <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
                 <FormattedMessage id="common.cancel" defaultMessage="cancel" description="button cancel" />
               </EduIDButton>
               <EduIDButton

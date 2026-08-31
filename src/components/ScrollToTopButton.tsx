@@ -3,7 +3,7 @@ import { faArrowUp } from "@fortawesome/free-solid-svg-icons/faArrowUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import EduIDButton from "./Common/EduIDButton";
+import { EduIDButton } from "./Common/EduIDButton";
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
@@ -11,7 +11,7 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-export default function ScrollToTopButton(): React.JSX.Element {
+export function ScrollToTopButton() {
   const [showBtn, setShowBtn] = useState("display-none");
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon

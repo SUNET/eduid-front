@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { IntlShape, useIntl } from "react-intl";
 import { clearNotifications, EduidNotification, notificationLevel } from "slices/Notifications";
 import { dynamicMessage } from "translation";
-import EduIDButton from "./EduIDButton";
+import { EduIDButton } from "./EduIDButton";
 
-export function Notifications(): React.JSX.Element | null {
+export function Notifications() {
   const info = useAppSelector((state) => state.notifications.info);
   const error = useAppSelector((state) => state.notifications.error);
   const dispatch = useAppDispatch();
@@ -17,10 +17,13 @@ export function Notifications(): React.JSX.Element | null {
     }
   }, [dispatch, info]);
 
-  function handleRMNotification(e: React.MouseEvent<HTMLElement>) {
-    e.preventDefault();
-    dispatch(clearNotifications());
-  }
+  const handleRMNotification = useCallback(
+    (e: React.MouseEvent<HTMLElement>) => {
+      e.preventDefault();
+      dispatch(clearNotifications());
+    },
+    [dispatch],
+  );
 
   // show errors first, information second
   const show: EduidNotification | undefined = error || info;
@@ -41,7 +44,12 @@ export function Notifications(): React.JSX.Element | null {
         <span className="horizontal-content-margin">
           <output aria-label={label}>{msg}</output>
         </span>
-        <EduIDButton buttonstyle="close" id="close-error" onClick={handleRMNotification} />
+        <EduIDButton
+          buttonstyle="close"
+          id="close-error"
+          onClick={handleRMNotification}
+          aria-label="Close notification"
+        />
       </div>
     </div>
   );

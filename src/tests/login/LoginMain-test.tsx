@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
-import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
+import { IndexMain } from "components/IndexMain";
+import { LOGIN_BASE_PATH } from "helperFunctions/paths";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { initialState as configInitialState } from "slices/IndexConfig";

@@ -10,8 +10,9 @@ import {
   VerifyEmailRequest,
 } from "apis/eduidSignup";
 import { emailPlaceHolder } from "components/Common/EmailInput";
-import { IndexMain, SIGNUP_BASE_PATH } from "components/IndexMain";
+import { IndexMain } from "components/IndexMain";
 import { codeFormTestId } from "components/Login/ResponseCodeForm";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { fireEvent, render, screen, signupTestState, waitFor } from "../helperFunctions/SignupTestApp-rtl";
@@ -82,7 +83,7 @@ function happyCaseBackend(state: SignupState) {
     }),
     http.post("https://signup.eduid.docker/services/signup/captcha", async ({ request }) => {
       const body = (await request.json()) as CaptchaRequest;
-      if (body.internal_response != captchaTestValue) {
+      if (body.internal_response !== captchaTestValue) {
         return new HttpResponse(null, { status: 400 });
       }
 
@@ -96,7 +97,7 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     http.post("https://signup.eduid.docker/services/signup/accept-tou", async ({ request }) => {
       const body = (await request.json()) as AcceptToURequest;
-      if (body.tou_version != state.tou.version || body.tou_accepted !== true) {
+      if (body.tou_version !== state.tou.version || body.tou_accepted !== true) {
         return new HttpResponse(null, { status: 400 });
       }
 

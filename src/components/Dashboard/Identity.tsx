@@ -1,19 +1,21 @@
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import personalDataApi from "apis/eduidPersonalData";
-import { ActionStatus, securityApi } from "apis/eduidSecurity";
+import { securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import CountryFlag from "components/Common/CountryFlag";
-import EduIDButton from "components/Common/EduIDButton";
-import NinDisplay from "components/Common/NinDisplay";
-import NotificationModal from "components/Common/NotificationModal";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NinDisplay } from "components/Common/NinDisplay";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { WizardLink } from "components/Common/WizardLink";
-import FrejaeID from "components/Dashboard/Eidas";
-import LetterProofing from "components/Dashboard/LetterProofing";
-import { SECURITY_PATH, START_PATH } from "components/IndexMain";
+import { Eidas as FrejaeID } from "components/Dashboard/Eidas";
+import { LetterProofing } from "components/Dashboard/LetterProofing";
+import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { FREJA_URL_EN, FREJA_URL_SV } from "helperFunctions/constants";
+import { SECURITY_PATH, START_PATH } from "helperFunctions/paths";
+import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import authnSlice from "slices/Authn";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
@@ -23,12 +25,12 @@ import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import LetterIcon from "../../../img/LetterIcon-green.svg";
 import { BankID } from "./BankID";
-import PersonalDataParent from "./PersonalDataParent";
+import { PersonalDataParent } from "./PersonalDataParent";
 
 /* UUIDs of accordion elements that we want to selectively pre-expand */
 type accordionUUID = "swedish" | "eu" | "world";
 
-function Identity(): React.JSX.Element | null {
+export function Identity() {
   const isAppLoaded = useAppSelector((state) => state.config.is_app_loaded);
   const intl = useIntl();
 
@@ -44,7 +46,7 @@ function Identity(): React.JSX.Element | null {
   }
 
   return (
-    <Fragment>
+    <>
       <IdentityContent />
       <WizardLink
         previousLink={START_PATH}
@@ -58,11 +60,11 @@ function Identity(): React.JSX.Element | null {
           defaultMessage: "To Security Settings",
         })}
       />
-    </Fragment>
+    </>
   );
 }
 
-function IdentityContent(): React.JSX.Element {
+function IdentityContent() {
   const identities = useAppSelector((state) => state.personal_data?.response?.identities);
 
   const preExpanded: accordionUUID[] = [];
@@ -78,7 +80,7 @@ function IdentityContent(): React.JSX.Element {
    *   TODO: Support other types of identities than NINs.
    */
   return (
-    <React.Fragment>
+    <>
       <section className="intro">
         <h1>
           <FormattedMessage
@@ -110,7 +112,7 @@ function IdentityContent(): React.JSX.Element {
 
       <article id="verify-identity">
         {identities?.is_verified ? (
-          <React.Fragment>
+          <>
             <div className="flex-between baseline">
               <h2>
                 <FormattedMessage
@@ -122,9 +124,9 @@ function IdentityContent(): React.JSX.Element {
               <ToolTip />
             </div>
             <VerifiedIdentitiesTable />
-          </React.Fragment>
+          </>
         ) : (
-          <React.Fragment>
+          <>
             <h2>
               <FormattedMessage
                 id="identity.verifyDescription"
@@ -137,15 +139,15 @@ function IdentityContent(): React.JSX.Element {
               <AccordionItemEu />
               <AccordionItemWorld />
             </Accordion>
-          </React.Fragment>
+          </>
         )}
       </article>
       <PersonalDataParent />
-    </React.Fragment>
+    </>
   );
 }
 
-function VerifiedIdentitiesTable(): React.JSX.Element {
+function VerifiedIdentitiesTable() {
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
@@ -156,8 +158,8 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   const [identityType, setIdentityType] = useState("");
   const intl = useIntl();
   const [requestAllPersonalData] = personalDataApi.useLazyRequestAllPersonalDataQuery();
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const [removeIdentity] = securityApi.useLazyRemoveIdentityQuery();
+  const { checkAuthnStatus } = useReAuthenticate();
 
   const handleRemoveIdentity = useCallback(
     async (identityType: string) => {
@@ -182,40 +184,29 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
   const handleConfirmDeleteModal = useCallback(
     async (identityType: string) => {
       setIdentityType(identityType);
-      // Test if the user can directly execute the action or a re-auth security zone will be required
-      // If no re-auth is required, then show the modal to confirm the removal
-      // else show the re-auth modal and do not show the confirmation modal (show only 1 modal)
-      const response = await getAuthnStatus({ frontend_action: "removeIdentity" });
-      if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+      const isAuthed = await checkAuthnStatus("removeIdentity", identityType);
+      if (isAuthed) {
         setShowConfirmRemoveIdentityVerificationModal(true);
-      } else {
-        dispatch(
-          authnSlice.actions.setFrontendActionAndState({
-            frontend_action: "removeIdentity",
-            frontend_state: identityType,
-          }),
-        );
-        dispatch(authnSlice.actions.setReAuthenticate(true));
       }
     },
-    [getAuthnStatus, dispatch, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
+    [checkAuthnStatus, setIdentityType, setShowConfirmRemoveIdentityVerificationModal],
   );
 
   useEffect(() => {
     if (frontend_action === "removeIdentity" && frontend_state) {
-      queueMicrotask(() => {
-        handleRemoveIdentity(frontend_state);
+      queueMicrotask(async () => {
+        await handleRemoveIdentity(frontend_state);
         dispatch(authnSlice.actions.setAuthnFrontendReset());
       });
     }
   }, [dispatch, frontend_action, frontend_state, handleRemoveIdentity]);
 
   return (
-    <React.Fragment>
+    <>
       {identities?.nin?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />
+            <img height="35" className="circle-icon" alt="" src={SvFlag} />
           </div>
           <div className="profile-grid-cell">
             <strong>
@@ -242,7 +233,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
       {identities?.eidas?.verified && (
         <figure className="grid-container identity-summary">
           <div>
-            <img height="35" className="circle-icon" alt="European Union" src={EuFlag} />
+            <img height="35" className="circle-icon" alt="" src={EuFlag} />
           </div>
           <div className="profile-grid-cell">
             <strong>
@@ -313,7 +304,7 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
-        <React.Fragment>
+        <>
           <p>
             <strong>
               <FormattedMessage
@@ -326,9 +317,9 @@ function VerifiedIdentitiesTable(): React.JSX.Element {
           <Accordion>
             <AccordionItemSwedish />
           </Accordion>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 }
 
@@ -336,7 +327,7 @@ interface AccordionItemSwedishProps {
   open?: boolean;
 }
 
-function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React.JSX.Element | null {
+function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
@@ -349,7 +340,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
      and not in case the NIN is already verified. */
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="Sweden" src={SvFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={SvFlag} />}
       title={
         <FormattedMessage
           id="identity.accordionSwedishTitle"
@@ -365,7 +356,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
         />
       }
       uuid="swedish"
-      open={props.open}
+      open={open}
     >
       {/* <h4>
         <FormattedMessage
@@ -383,7 +374,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
 
       <Accordion className="accordion nested">
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon bankid-icon" alt="Bank Id" src={BankIdFlag} />}
+          icon={<img height="35" className="circle-icon bankid-icon" alt="" src={BankIdFlag} />}
           title={
             <FormattedMessage
               id="identity.bankButton"
@@ -403,7 +394,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
           <BankID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon" alt="Freja+ eID" src={FrejaFlag} />}
+          icon={<img height="35" className="circle-icon" alt="" src={FrejaFlag} />}
           title={
             <FormattedMessage
               id="identity.button"
@@ -423,7 +414,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
           <FrejaeID />
         </AccordionItemTemplate>
         <AccordionItemTemplate
-          icon={<img height="35" className="circle-icon" alt="post icon" src={LetterIcon} />}
+          icon={<img height="35" className="circle-icon" alt="" src={LetterIcon} />}
           title={
             <FormattedMessage
               id="identity.byPost"
@@ -447,7 +438,7 @@ function AccordionItemSwedish(props: Readonly<AccordionItemSwedishProps>): React
   );
 }
 
-function AccordionItemEu(): React.JSX.Element | null {
+function AccordionItemEu() {
   const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   const handleOnClick = useCallback(async () => {
@@ -461,7 +452,7 @@ function AccordionItemEu(): React.JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="European Union" src={EuFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={EuFlag} />}
       title={
         <FormattedMessage id="common.euCitizen" description="accordion item eidas title" defaultMessage="EU citizen" />
       }
@@ -495,9 +486,11 @@ function AccordionItemEu(): React.JSX.Element | null {
   );
 }
 
-function AccordionItemWorld(): React.JSX.Element | null {
+function AccordionItemWorld() {
   const freja_eid_service_url = useAppSelector((state) => state.config.freja_eid_service_url);
   const [frejaeIDVerifyIdentity] = frejaeIDApi.useLazyFrejaeIDVerifyIdentityQuery();
+  const locale = useAppSelector((state) => state.intl.locale);
+  const frejaUrl = locale === "en" ? FREJA_URL_EN : FREJA_URL_SV;
 
   const handleOnClick = useCallback(async () => {
     const response = await frejaeIDVerifyIdentity({ method: "freja_eid" });
@@ -514,7 +507,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
 
   return (
     <AccordionItemTemplate
-      icon={<img height="35" className="circle-icon" alt="World" src={GlobalFlag} />}
+      icon={<img height="35" className="circle-icon" alt="" src={GlobalFlag} />}
       title={
         <FormattedMessage
           id="common.mostCountries"
@@ -538,7 +531,7 @@ function AccordionItemWorld(): React.JSX.Element | null {
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
             Freja_eID: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+              <a href={frejaUrl} target="_blank" rel="noreferrer">
                 Freja eID
               </a>
             ),
@@ -558,5 +551,3 @@ function AccordionItemWorld(): React.JSX.Element | null {
     </AccordionItemTemplate>
   );
 }
-
-export default Identity;

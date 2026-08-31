@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function AuthenticationFailure(): React.JSX.Element {
+export function AuthenticationFailure() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage
           id="authnFailure.heading"
@@ -26,6 +25,6 @@ export function AuthenticationFailure(): React.JSX.Element {
           description="ErrorURL authentication failure"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

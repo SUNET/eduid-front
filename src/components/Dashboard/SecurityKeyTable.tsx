@@ -1,20 +1,20 @@
-import securityApi, { ActionStatus, CredentialType } from "apis/eduidSecurity";
+import { CredentialType } from "apis/eduidSecurity";
 import { AuthMethod } from "apis/helpers/types";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthentication";
-import NotificationModal from "components/Common/NotificationModal";
+import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useAppSelector } from "eduid-hooks";
 import { useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
-import authnSlice from "slices/Authn";
 import passKeyGray from "../../../img/pass-key-gray.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKeyGray from "../../../img/security-key-gray.svg";
 import securityKey from "../../../img/security-key.svg";
 
 import { useTheme } from "components/Common/ThemeContext";
-import UseSecurityKeyToggle from "./UseSecurityKeyToggle";
+import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
+import { UseSecurityKeyToggle } from "./UseSecurityKeyToggle";
 interface SecurityKeyTable {
   wrapperRef: React.RefObject<HTMLElement | null>;
   handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
@@ -29,12 +29,10 @@ export function SecurityKeyTable({
   const credentialKey = useRef<string>("");
   let btnVerify;
   let date_success;
-  const dispatch = useAppDispatch();
   const tokens = useAppSelector((state) => {
     return filterTokensFromCredentials(state);
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
-  const [getAuthnStatus] = securityApi.useLazyGetAuthnStatusQuery();
   const { theme } = useTheme();
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon
@@ -43,25 +41,16 @@ export function SecurityKeyTable({
     defaultMessage: "Remove",
     description: "aria-label and title for table item remove button",
   });
+  const { checkAuthnStatus } = useReAuthenticate();
 
   async function handleConfirmDeleteModal(cred: CredentialType) {
     credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
-    // Test if the user can directly execute the action or a re-auth security zone will be required
-    // If no re-auth is required, then show the modal to confirm the removal
-    // else show the re-auth modal and do now show the confirmation modal (show only 1 modal)
-    const response = await getAuthnStatus({ frontend_action: "removeSecurityKeyAuthn" });
-    if (response.isSuccess && response.data.payload.authn_status === ActionStatus.OK) {
+
+    const isAuthed = await checkAuthnStatus("removeSecurityKeyAuthn", credentialKey.current);
+    if (isAuthed) {
       setShowConfirmRemoveSecurityKeyModal(true);
     } else {
       setShowConfirmRemoveSecurityKeyModal(false);
-      // prepare authenticate() and AuthenticateModal
-      dispatch(
-        authnSlice.actions.setFrontendActionAndState({
-          frontend_action: "removeSecurityKeyAuthn",
-          frontend_state: credentialKey.current,
-        }),
-      );
-      dispatch(authnSlice.actions.setReAuthenticate(true));
     }
   }
 

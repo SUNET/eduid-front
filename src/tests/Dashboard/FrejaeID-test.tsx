@@ -11,7 +11,7 @@ test("renders frejaeID as expected", () => {
   mswServer.use(
     http.post("verify-identity", async ({ request }) => {
       const body = (await request.json()) as AuthCommonRequest;
-      if (body.method != method) {
+      if (body.method !== method) {
         return new HttpResponse(null, { status: 400 });
       }
       const payload: AuthCommonResponse = {

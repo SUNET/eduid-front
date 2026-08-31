@@ -3,15 +3,15 @@ import { faIdCard } from "@fortawesome/free-solid-svg-icons/faIdCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import securityApi from "apis/eduidSecurity";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
 import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import indexSlice from "slices/IndexConfig";
 import registerIcon from "../../img/register-icon.png";
 import securityIcon from "../../img/security-icon.svg";
-import EduIDButton from "./Common/EduIDButton";
-import Splash from "./Common/Splash";
-import { SIGNUP_BASE_PATH } from "./IndexMain";
+import { EduIDButton } from "./Common/EduIDButton";
+import { Splash } from "./Common/Splash";
 
 export function Index() {
   const navigate = useNavigate();
@@ -21,10 +21,10 @@ export function Index() {
   const idp_request_ref = useAppSelector((state) => state.signup.state?.idp_request_ref);
   const [postDeleteAccount] = securityApi.useLazyPostDeleteAccountQuery();
 
-  const redirectToLogin = useCallback(async () => {
+  const redirectToLogin = useCallback(() => {
     dispatch(indexSlice.actions.appLoaded());
     if (eduid_site_link) {
-      document.location.href = eduid_site_link + "start";
+      globalThis.location.href = eduid_site_link + "start";
     }
   }, [dispatch, eduid_site_link]);
 

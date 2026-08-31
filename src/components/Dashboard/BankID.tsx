@@ -1,10 +1,14 @@
 import { bankIDApi } from "apis/eduidBankid";
-import EduIDButton from "components/Common/EduIDButton";
-import { Fragment, useCallback } from "react";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { useAppSelector } from "eduid-hooks";
+import { BANK_ID_URL_EN, BANK_ID_URL_SV } from "helperFunctions/constants";
+import { useCallback } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function BankID(): React.JSX.Element {
+export function BankID() {
+  const locale = useAppSelector((state) => state.intl.locale);
   const [bankIDVerifyIdentity] = bankIDApi.useLazyBankIDVerifyIdentityQuery();
+  const bankIdUrl = locale === "en" ? BANK_ID_URL_EN : BANK_ID_URL_SV;
 
   const useBankID = useCallback(async () => {
     const response = await bankIDVerifyIdentity({ method: "bankid" });
@@ -14,7 +18,7 @@ export function BankID(): React.JSX.Element {
   }, [bankIDVerifyIdentity]);
 
   return (
-    <Fragment>
+    <>
       <p>
         <FormattedMessage
           id="bankID.bank"
@@ -22,7 +26,7 @@ export function BankID(): React.JSX.Element {
           defaultMessage="To use this option you will need to first create a digital ID in the {bankID_link} app."
           values={{
             bankID_link: (
-              <a href="https://www.bankid.com/privat/skaffa-bankid" target="_blank" rel="noreferrer">
+              <a href={bankIdUrl} target="_blank" rel="noreferrer">
                 BankID
               </a>
             ),
@@ -40,6 +44,6 @@ export function BankID(): React.JSX.Element {
       <EduIDButton buttonstyle="primary sm" onClick={useBankID} aria-label="Proceed with BankID">
         <FormattedMessage id="letterProofing.proceedButton" defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
-    </Fragment>
+    </>
   );
 }

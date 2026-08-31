@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function OtherError(): React.JSX.Element {
+export function OtherError() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage id="common.accessError" defaultMessage="Access Error" description="ErrorURL other error" />
       </h1>
@@ -21,6 +20,6 @@ export function OtherError(): React.JSX.Element {
           description="ErrorURL other error"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

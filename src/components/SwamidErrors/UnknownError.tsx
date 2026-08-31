@@ -1,9 +1,8 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function UnknownError(): React.JSX.Element {
+export function UnknownError() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage id="common.accessError" defaultMessage="Access Error" description="ErrorURL unknown error" />
       </h1>
@@ -22,6 +21,6 @@ export function UnknownError(): React.JSX.Element {
           description="ErrorURL other error"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

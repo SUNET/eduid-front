@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
+
 interface NameDisplayProps {
-  label?: string | React.JSX.Element;
-  name?: string | React.JSX.Element;
+  label?: ReactNode;
+  name?: ReactNode;
   htmlFor: string;
 }
 
-export default function NameDisplay({ label, name, htmlFor }: Readonly<NameDisplayProps>) {
+export function NameDisplay({ label, name, htmlFor }: Readonly<NameDisplayProps>) {
   return (
     <div className="profile-grid-cell">
       <span aria-label={htmlFor}>

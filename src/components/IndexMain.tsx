@@ -1,5 +1,15 @@
 import { GenericError } from "components/Common/GenericError";
 import { useAppSelector } from "eduid-hooks";
+import {
+  ACCOUNT_PATH,
+  CHPASS_BASE_PATH,
+  IDENTITY_PATH,
+  LOGIN_BASE_PATH,
+  RESET_PASSWORD_PATH,
+  SECURITY_PATH,
+  SIGNUP_BASE_PATH,
+  START_PATH,
+} from "helperFunctions/paths";
 import React, { useEffect } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useIntl } from "react-intl";
@@ -7,39 +17,30 @@ import { Navigate, Route, Routes, useLocation } from "react-router";
 import { dynamicMessage } from "translation";
 import "../styles/index.css";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
-import Footer from "./Common/Footer";
+import { Footer } from "./Common/Footer";
 import { Header } from "./Common/Header";
 import { Notifications } from "./Common/Notifications";
 import { PageNotFound } from "./Common/PageNotFound";
-import Splash from "./Common/Splash";
+import { Splash } from "./Common/Splash";
 import { ThemeProvider } from "./Common/ThemeContext";
 import { Account } from "./Dashboard/Account";
 import { AuthenticateModal } from "./Dashboard/AuthenticateModal";
 import { ChangePassword } from "./Dashboard/ChangePassword";
 import { ChangePasswordSuccess } from "./Dashboard/ChangePasswordSuccess";
-import Start from "./Dashboard/DashboardStart";
-import Identity from "./Dashboard/Identity";
+import { Start } from "./Dashboard/DashboardStart";
+import { Identity } from "./Dashboard/Identity";
 import { Security } from "./Dashboard/Security";
 import { Help } from "./Help/HelpIntro";
 import { Index } from "./Index";
-import Login from "./Login/Login";
+import { Login } from "./Login/Login";
 import { LoginExternalReturnHandler } from "./Login/LoginExternalReturnHandler";
-import UseOtherDevice2 from "./Login/UseOtherDevice2";
+import { UseOtherDevice2 } from "./Login/UseOtherDevice2";
 import { ResetPasswordApp } from "./ResetPassword/ResetPasswordApp";
-import ScrollToHash from "./ScrollToHash";
-import ScrollToTop from "./ScrollToTop";
+import { ScrollToHash } from "./ScrollToHash";
+import { ScrollToTop } from "./ScrollToTop";
 import { SignupApp } from "./Signup/SignupApp";
 import { SignupExternalReturnHandler } from "./Signup/SignupExternalReturnHandler";
 import { Errors } from "./SwamidErrors/Errors";
-
-export const LOGIN_BASE_PATH = "/login";
-export const RESET_PASSWORD_PATH = "/reset-password";
-export const START_PATH = "/start";
-export const ACCOUNT_PATH = "/account";
-export const SECURITY_PATH = "/security";
-export const IDENTITY_PATH = "/identity";
-export const SIGNUP_BASE_PATH = "/register";
-export const CHPASS_BASE_PATH = "/chpass";
 
 export const SETTINGS_PATHS = [START_PATH, ACCOUNT_PATH, SECURITY_PATH, IDENTITY_PATH, CHPASS_BASE_PATH, "/profile"];
 
@@ -74,7 +75,7 @@ function useDocumentTitle() {
   }, [pathname, intl]);
 }
 
-export function IndexMain(): React.JSX.Element {
+export function IndexMain() {
   const isLoaded = useAppSelector((state) => state.config.is_configured);
   const loginRef = useAppSelector((state) => state.login.ref);
   const location = useLocation();

@@ -1,10 +1,10 @@
 import { loginApi } from "apis/eduidLogin";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 
-export function IdentificationFailure(props: Readonly<FailureComponentProps>): React.JSX.Element {
+export function IdentificationFailure({ errorURL }: Readonly<FailureComponentProps>) {
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const [fetchErrorInfo] = loginApi.useLazyFetchErrorInfoQuery();
 
@@ -16,7 +16,7 @@ export function IdentificationFailure(props: Readonly<FailureComponentProps>): R
   }, [fetchErrorInfo, is_configured]);
 
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage
           id="identFailure.heading"
@@ -24,12 +24,12 @@ export function IdentificationFailure(props: Readonly<FailureComponentProps>): R
           description="ErrorURL identification failure"
         />
       </h1>
-      {props.errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
-    </React.Fragment>
+      {errorURL.ctx?.toLowerCase() === "noredupersonnin" ? <MissingNin /> : <Default />}
+    </>
   );
 }
 
-function MissingNin(): React.JSX.Element {
+function MissingNin() {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   let SpecificMessage;
@@ -53,7 +53,7 @@ function MissingNin(): React.JSX.Element {
   }
 
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           id="identFailure.requiresNin"
@@ -63,13 +63,13 @@ function MissingNin(): React.JSX.Element {
         />
       </p>
       <p>{SpecificMessage}</p>
-    </React.Fragment>
+    </>
   );
 }
 
-function Default(): React.JSX.Element {
+function Default() {
   return (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           id="identFailure.missingAttributes"
@@ -86,6 +86,6 @@ function Default(): React.JSX.Element {
           description="ErrorURL identification failure"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

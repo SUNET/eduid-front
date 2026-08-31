@@ -1,9 +1,8 @@
+import { EduIDButton } from "components/Common/EduIDButton";
+import { EmailInput } from "components/Common/EmailInput";
+import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
-
-import EduIDButton from "components/Common/EduIDButton";
-import EmailInput from "components/Common/EmailInput";
-import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import resetPasswordSlice from "slices/ResetPassword";
 
 export interface EmailFormProps {
@@ -15,7 +14,7 @@ export interface EmailFormData {
   email?: string;
 }
 
-export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
+export function EmailForm({ passEmailUp, disabled, defaultEmail }: Readonly<EmailFormProps>) {
   const dispatch = useAppDispatch();
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 
@@ -23,7 +22,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
     const errors: EmailFormData = {};
 
     if (values.email) {
-      props.passEmailUp(values.email);
+      passEmailUp(values.email);
     } else {
       errors.email = "required";
     }
@@ -47,7 +46,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
           formProps.hasValidationErrors ||
           _submitError ||
           formProps.pristine ||
-          props.disabled ||
+          disabled ||
           !formProps.values?.["email"],
         );
 
@@ -58,7 +57,7 @@ export function EmailForm(props: Readonly<EmailFormProps>): React.JSX.Element {
               autoFocus={true}
               required={true}
               autoComplete="username"
-              defaultValue={props.defaultEmail}
+              defaultValue={defaultEmail}
             />
 
             <div className="buttons">

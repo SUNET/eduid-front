@@ -2,7 +2,7 @@ import { Accordion, AccordionItemTemplate } from "components/Common/AccordionIte
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
-export function UsingEduID(): React.JSX.Element {
+export function UsingEduID() {
   const signup_link = useAppSelector((state) => state.config.signup_link);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
 

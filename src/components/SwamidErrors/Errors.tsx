@@ -1,6 +1,5 @@
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { useLocation } from "react-router";
 import { AuthenticationFailure } from "./AuthenticationFailure";
@@ -60,14 +59,14 @@ export function Errors() {
   );
 }
 
-export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>): React.JSX.Element {
+export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLData }>) {
   const error_info = useAppSelector((state) => state.config.error_info);
 
   return (
     <div className="figure">
       <table className="error-info">
-        {props.errorURL.code ? (
-          <React.Fragment>
+        {errorURL.code ? (
+          <>
             <caption>
               <h3>
                 <FormattedMessage id="errors.urlError" defaultMessage="Technical Information" description="errorURL" />
@@ -99,7 +98,7 @@ export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>):
                   <td>{error_info.eppn}</td>
                 </tr>
               )}
-              {Object.entries(props.errorURL).map(([key, value]) => {
+              {Object.entries(errorURL).map(([key, value]) => {
                 if (!value) {
                   return null;
                 }
@@ -113,7 +112,7 @@ export function ErrorTechnicalInfo(props: Readonly<{ errorURL: ErrorURLData }>):
                 );
               })}
             </tbody>
-          </React.Fragment>
+          </>
         ) : (
           <tbody>
             <tr>

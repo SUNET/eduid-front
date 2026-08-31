@@ -9,7 +9,7 @@ import { signupSlice } from "slices/Signup";
 import { ServiceInfo } from "./SignupEntry";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
-export function SignupCaptcha(): React.JSX.Element | null {
+export function SignupCaptcha() {
   const captchaCompleted = useAppSelector((state) => state.signup.state?.captcha.completed);
   const dispatch = useAppDispatch();
   const [getCaptchaRequest] = signupApi.useLazyGetSignupCaptchaRequestQuery();

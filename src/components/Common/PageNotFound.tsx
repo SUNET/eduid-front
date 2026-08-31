@@ -1,7 +1,7 @@
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
-export function PageNotFound(): React.JSX.Element {
+export function PageNotFound() {
   const eduid_site_link = useAppSelector((state) => state.config.eduid_site_link);
 
   return (

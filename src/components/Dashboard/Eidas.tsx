@@ -1,15 +1,13 @@
 import { eidasApi } from "apis/eduidEidas";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
-import { Fragment, useState } from "react";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
+import { FREJA_EID_FOREIGN_INSTRUCTION_URL_SV } from "helperFunctions/constants";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-function Eidas(): React.JSX.Element {
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
-
-  // Temporary instructions until Sweden Connect has more alternatives and we have a DS
-  const freja_instructions = (
+// Temporary instructions until Sweden Connect has more alternatives and we have a DS
+function FrejaInstructions() {
+  return (
     <div id="freja-instructions">
       <ol>
         <li>
@@ -56,7 +54,7 @@ function Eidas(): React.JSX.Element {
           />
         </li>
       </ol>
-      <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+      <a href={FREJA_EID_FOREIGN_INSTRUCTION_URL_SV} target="_blank" rel="noreferrer">
         <FormattedMessage
           id="common.whatIsFreja"
           description="eidas freja instructions install link"
@@ -65,6 +63,11 @@ function Eidas(): React.JSX.Element {
       </a>
     </div>
   );
+}
+
+export function Eidas() {
+  const [showModal, setShowModal] = useState(false);
+  const [eidasVerifyIdentity] = eidasApi.useLazyEidasVerifyIdentityQuery();
 
   async function useFrejaeID() {
     const response = await eidasVerifyIdentity({ method: "freja" });
@@ -76,7 +79,7 @@ function Eidas(): React.JSX.Element {
   }
 
   return (
-    <Fragment>
+    <>
       <p>
         <FormattedMessage
           id="eidas.proofing"
@@ -85,7 +88,7 @@ function Eidas(): React.JSX.Element {
             {freja_eid_link} app.`}
           values={{
             freja_eid_link: (
-              <a href="https://frejaeid.com/skaffa-freja-eid/" target="_blank" rel="noreferrer">
+              <a href={FREJA_EID_FOREIGN_INSTRUCTION_URL_SV} target="_blank" rel="noreferrer">
                 Freja
               </a>
             ),
@@ -106,7 +109,7 @@ function Eidas(): React.JSX.Element {
             defaultMessage={`Use Freja eID+ and pass a local authorised agent`}
           />
         }
-        mainText={freja_instructions}
+        mainText={<FrejaInstructions />}
         showModal={showModal}
         closeModal={() => {
           setShowModal(false);
@@ -120,8 +123,6 @@ function Eidas(): React.JSX.Element {
           />
         }
       />
-    </Fragment>
+    </>
   );
 }
-
-export default Eidas;

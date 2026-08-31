@@ -1,4 +1,4 @@
-import Emails from "components/Dashboard/Emails";
+import { Emails } from "components/Dashboard/Emails";
 import { act } from "react";
 import { fireEvent, render, screen } from "../helperFunctions/DashboardTestApp-rtl";
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface ShowAfterDelayProps extends React.BaseHTMLAttributes<HTMLBaseElement> {
   delay: number;
@@ -9,7 +9,7 @@ interface ShowAfterDelayProps extends React.BaseHTMLAttributes<HTMLBaseElement> 
  *
  * @param props.delay number of milliseconds before showing the children
  */
-export default function ShowAfterDelay(props: Readonly<ShowAfterDelayProps>): React.JSX.Element | null {
+export function ShowAfterDelay(props: Readonly<ShowAfterDelayProps>) {
   const [showChildren, setShowChildren] = useState(false);
 
   useEffect(() => {
@@ -23,5 +23,5 @@ export default function ShowAfterDelay(props: Readonly<ShowAfterDelayProps>): Re
     return null;
   }
 
-  return <Fragment>{props.children}</Fragment>;
+  return <>{props.children}</>;
 }

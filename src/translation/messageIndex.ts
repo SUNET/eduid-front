@@ -1,4 +1,3 @@
-// import content from other files
 import * as login from "./defaultMessages/login";
 import * as resetPassword from "./defaultMessages/resetPassword";
 import * as ladok from "./defaultMessages/ladok";

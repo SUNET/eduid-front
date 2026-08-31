@@ -1,10 +1,10 @@
 import { loginApi } from "apis/eduidLogin";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-export function LoginAbortButton(): React.JSX.Element {
+export function LoginAbortButton() {
   const loginRef = useAppSelector((state) => state.login.ref);
   const [fetchAbort] = loginApi.useLazyFetchAbortQuery();
 

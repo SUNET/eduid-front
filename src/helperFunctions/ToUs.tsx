@@ -1,9 +1,9 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { FormattedMessage } from "react-intl";
 
 export const ToUs: { [key: string]: ReactElement } = {
   "1999-v1": (
-    <React.Fragment>
+    <>
       <p>
         <FormattedMessage
           id="tou.heading1"
@@ -22,7 +22,7 @@ export const ToUs: { [key: string]: ReactElement } = {
           <p>And still ensure that we serve the correct version a specific users need to accept,</p>
         </li>
       </ul>
-    </React.Fragment>
+    </>
   ),
 
   "2016-v1": (

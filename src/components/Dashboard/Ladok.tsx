@@ -1,6 +1,6 @@
 import { ladokApi } from "apis/eduidLadok";
 import { useAppSelector } from "eduid-hooks";
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
 import Select, { SingleValue } from "react-select";
@@ -10,7 +10,7 @@ interface SelectedUniProps {
   value: string;
 }
 
-const LadokContainer = (): React.JSX.Element => {
+export const LadokContainer = () => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const [switchChecked, setSwitchChecked] = useState(isLinked);
   const [unlinkUser] = ladokApi.useLazyUnlinkUserQuery();
@@ -85,7 +85,7 @@ const LadokContainer = (): React.JSX.Element => {
   );
 };
 
-const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => void }): React.JSX.Element => {
+const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => void }) => {
   const locale = useAppSelector((state) => state.intl.locale);
   const ladokUnis = useAppSelector((state) => state.ladok.unis);
   const fetchFailed = useAppSelector((state) => state.ladok.unisFetchFailed);
@@ -134,7 +134,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
       const curr: SelectedUniProps = { label: localised, value: item.ladok_name };
 
       // initialise 'selected'
-      if (item.ladok_name == ladokName) {
+      if (item.ladok_name === ladokName) {
         setSelected(curr);
       }
 
@@ -145,7 +145,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
   }, [ladokUnis, ladokName, locale]);
 
   return (
-    <React.Fragment>
+    <>
       <FinalForm
         onSubmit={() => {}}
         render={({ handleSubmit }) => (
@@ -181,11 +181,11 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
           />
         ) : undefined}
       </div>
-    </React.Fragment>
+    </>
   );
 };
 
-const LadokLinkStatus = (): React.JSX.Element => {
+const LadokLinkStatus = () => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
   const unis = useAppSelector((state) => state.ladok.unis);
   const ladok_name = useAppSelector((state) => state.ladok.ladokName);
@@ -204,8 +204,8 @@ const LadokLinkStatus = (): React.JSX.Element => {
   }
 
   return (
-    <React.Fragment>
-      {isLinked === true && (
+    <>
+      {isLinked && (
         <fieldset>
           <div className="ladok-university flex-between">
             <label>
@@ -219,8 +219,6 @@ const LadokLinkStatus = (): React.JSX.Element => {
           </div>
         </fieldset>
       )}
-    </React.Fragment>
+    </>
   );
 };
-
-export default LadokContainer;

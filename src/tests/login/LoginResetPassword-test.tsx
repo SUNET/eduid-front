@@ -11,8 +11,9 @@ import {
 } from "apis/eduidResetPassword";
 import { emailPlaceHolder } from "components/Common/EmailInput";
 import { userNameInputPlaceHolder } from "components/Common/UserNameInput";
-import { IndexMain, LOGIN_BASE_PATH } from "components/IndexMain";
+import { IndexMain } from "components/IndexMain";
 import { ResetPasswordApp } from "components/ResetPassword/ResetPasswordApp";
+import { LOGIN_BASE_PATH } from "helperFunctions/paths";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
 import { loginTestState, render, screen, waitFor } from "../helperFunctions/LoginTestApp-rtl";

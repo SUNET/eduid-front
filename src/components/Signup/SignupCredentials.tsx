@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import signupApi from "apis/eduidSignup";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import EduIDButton from "components/Common/EduIDButton";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
@@ -20,30 +20,30 @@ import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreate
 
 type PasswordRequirement = "default" | "optional" | "required";
 
-const PasswordSection = (props: { requirement: PasswordRequirement }) => {
+const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequirement }>) => {
   const [userToggled, setUserToggled] = useState<boolean | null>(null);
-  const isEditMode = userToggled ?? props.requirement === "required";
+  const isEditMode = userToggled ?? requirement === "required";
 
   return (
-    <Fragment>
+    <>
       <div className="or-container">
         <div className="line"></div>
         <span>
-          {props.requirement === "default" && (
+          {requirement === "default" && (
             <FormattedMessage
               id="credentials.default"
               defaultMessage="or use a password instead"
               description="Default signup option"
             />
           )}
-          {props.requirement === "optional" && (
+          {requirement === "optional" && (
             <FormattedMessage
               id="credentials.alternative"
               defaultMessage="you can also add a password"
               description="Alternative signup option"
             />
           )}
-          {props.requirement === "required" && (
+          {requirement === "required" && (
             <FormattedMessage
               id="credentials.required"
               defaultMessage="a password is required for this key"
@@ -64,17 +64,17 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
           </h2>
           <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
-              <Fragment>
+              <>
                 <FormattedMessage id="entry.button" description="hide form button" defaultMessage="hide form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronUp} />
-              </Fragment>
+              </>
             ) : (
-              <Fragment>
+              <>
                 <FormattedMessage id="entry.showButton" description="show form button" defaultMessage="show form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronDown} />
-              </Fragment>
+              </>
             )}
           </EduIDButton>
         </div>
@@ -87,11 +87,11 @@ const PasswordSection = (props: { requirement: PasswordRequirement }) => {
         </p>
         {isEditMode && <SignupConfirmPassword />}
       </section>
-    </Fragment>
+    </>
   );
 };
 
-export function SignupCredentials(): React.ReactElement | null {
+export function SignupCredentials() {
   const signupState = useAppSelector((state) => state.signup.state);
   const [startRegisterWebauthn] = signupApi.useLazyStartRegisterWebauthnQuery();
   const [showSecurityKeyNameModal, setShowSecurityKeyNameModal] = useState(false);
@@ -107,16 +107,11 @@ export function SignupCredentials(): React.ReactElement | null {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const [getPassword] = signupApi.useLazyGetPasswordRequestQuery();
-
-  const getPasswordRequirement = (): PasswordRequirement => {
-    if (!webauthnRegistered) {
-      return "default";
-    }
-    if (webauthnIsDiscoverable) {
-      return "optional";
-    }
+  function getPasswordRequirement(): PasswordRequirement {
+    if (!webauthnRegistered) return "default";
+    if (webauthnIsDiscoverable) return "optional";
     return "required";
-  };
+  }
 
   const passwordRequirement = getPasswordRequirement();
 
@@ -131,46 +126,34 @@ export function SignupCredentials(): React.ReactElement | null {
   }, []);
 
   const handleStartWebauthnRegistration = useCallback(
-    (values: { [key: string]: string }) => {
-      (async () => {
-        try {
-          const description_value = values["describe-webauthn-token-modal"];
-          const description = description_value?.trim();
-          setShowSecurityKeyNameModal(false);
-          if (!registrationData) return;
-          const createResponse = await createCredential(registrationData);
-          if (createResponse.isSuccess) {
-            signupRegisterWebauthn({
-              webauthn_attestation: createResponse.data,
-              description,
-              clientExtensionResults: createResponse.data?.clientExtensionResults,
-            });
-          }
-        } catch (error) {
-          console.error("Error creating credentials:", error);
-        }
-      })();
+    async (values: { [key: string]: string }) => {
+      const description_value = values["describe-webauthn-token-modal"];
+      const description = description_value?.trim();
+      setShowSecurityKeyNameModal(false);
+      if (!registrationData) return;
+      const createResponse = await createCredential(registrationData);
+      if (createResponse.isSuccess) {
+        signupRegisterWebauthn({
+          webauthn_attestation: createResponse.data,
+          description,
+          clientExtensionResults: createResponse.data?.clientExtensionResults,
+        });
+      }
     },
     [createCredential, signupRegisterWebauthn, registrationData],
   );
 
-  const finishSignup = useCallback(() => {
-    (async () => {
-      try {
-        if (webauthnRegistered) {
-          const response = await createUser({
-            use_webauthn: webauthnRegistered,
-          });
-          if (response.isSuccess) {
-            dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
-          } else if (response.error) {
-            handleCreateUserError(response.error, fetchLogout, dispatch);
-          }
-        }
-      } catch (error) {
-        console.error("Error finishing signup:", error);
+  const finishSignup = useCallback(async () => {
+    if (webauthnRegistered) {
+      const response = await createUser({
+        use_webauthn: webauthnRegistered,
+      });
+      if (response.isSuccess) {
+        dispatch(signupSlice.actions.setNextPage("SIGNUP_USER_CREATED"));
+      } else if (response.error) {
+        handleCreateUserError(response.error, fetchLogout, dispatch);
       }
-    })();
+    }
   }, [createUser, dispatch, webauthnRegistered, fetchLogout]);
 
   const handleWebauthnButtonClick = useCallback(
@@ -219,7 +202,7 @@ export function SignupCredentials(): React.ReactElement | null {
       {/* status box for passkey option */}
       <section className="passkey-option">
         {webauthnRegistered ? (
-          <Fragment>
+          <>
             <figure className="signin-details">
               <span>
                 <FormattedMessage
@@ -243,9 +226,9 @@ export function SignupCredentials(): React.ReactElement | null {
                 </EduIDButton>
               </div>
             )}
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
+          <>
             <div className="status-box">
               <div className="text-wrapper">
                 <div className="flex-between">
@@ -275,22 +258,16 @@ export function SignupCredentials(): React.ReactElement | null {
                       />
                     </p>
                   </div>
-                  <img
-                    src={theme === "dark" ? passkeyDarkImage : passkeyImage}
-                    alt="Passkey images"
-                    className="passkey-image"
-                  />
+                  <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="" className="passkey-image" />
                 </div>
               </div>
             </div>
             <h2 aria-label="select extra webauthn">
-              <strong>
-                <FormattedMessage
-                  id="credentials.select"
-                  description="select extra webauthn"
-                  defaultMessage="Register a key:"
-                />
-              </strong>
+              <FormattedMessage
+                id="credentials.select"
+                description="select extra webauthn"
+                defaultMessage="Register a key:"
+              />
             </h2>
             <div className="mfa-alternative">
               <div className="buttons">
@@ -338,7 +315,7 @@ export function SignupCredentials(): React.ReactElement | null {
                 </div>
               </div>
             </div>
-          </Fragment>
+          </>
         )}
       </section>
       <PasswordSection requirement={passwordRequirement} />

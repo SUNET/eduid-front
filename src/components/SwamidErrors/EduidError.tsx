@@ -1,23 +1,22 @@
-import React from "react";
 import { FormattedMessage } from "react-intl";
 import { FailureComponentProps } from "./Errors";
 import { OtherError } from "./OtherError";
 
-export function EduidError(props: Readonly<FailureComponentProps>): React.JSX.Element {
+export function EduidError({ errorURL }: Readonly<FailureComponentProps>): React.JSX.Element {
   // saml_response_unsolicited means the SAML response did not establish a session either, so it
   // gets the same message as saml_response_fail.
   if (
-    props.errorURL.rp === "authn" &&
-    (props.errorURL.ctx === "saml_response_fail" || props.errorURL.ctx === "saml_response_unsolicited")
+    errorURL.rp === "authn" &&
+    (errorURL.ctx === "saml_response_fail" || errorURL.ctx === "saml_response_unsolicited")
   ) {
     return <NotLoggedIn />;
   }
   return <OtherError />;
 }
 
-function NotLoggedIn(): React.JSX.Element {
+function NotLoggedIn() {
   return (
-    <React.Fragment>
+    <>
       <h1>
         <FormattedMessage id="eduidError.heading" defaultMessage="Not logged in" description="ErrorURL eduid error" />
       </h1>
@@ -28,6 +27,6 @@ function NotLoggedIn(): React.JSX.Element {
           description="ErrorURL eduid error"
         />
       </p>
-    </React.Fragment>
+    </>
   );
 }

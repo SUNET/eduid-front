@@ -5,13 +5,12 @@ import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
 import signupApi from "apis/eduidSignup";
 import CountryFlag from "components/Common/CountryFlag";
-import EduIDButton from "components/Common/EduIDButton";
-import NotificationModal from "components/Common/NotificationModal";
-import Splash from "components/Common/Splash";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { NotificationModal } from "components/Common/NotificationModal";
+import { Splash } from "components/Common/Splash";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Fragment } from "react/jsx-runtime";
 import { signupSlice } from "slices/Signup";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import Eidas from "../../../img/flags/EU_trust_mark_logo_eIDAS.png";
@@ -41,13 +40,13 @@ export const ServiceInfo = () => {
   );
 };
 
-export function SignupEntry(): React.JSX.Element {
+export function SignupEntry() {
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();
   const [frejaMfaRegister] = eidasApi.useLazyFrejaMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
-  const [isEditMode, setEditMode] = useState<boolean>(false);
+  const [isEditMode, setEditMode] = useState(false);
   const currentLocale = useAppSelector((state) => state.intl.locale);
   const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
   const { isFetching } = signupApi.useFetchStateQuery();
@@ -234,7 +233,7 @@ export function SignupEntry(): React.JSX.Element {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("bankid")}
                   >
-                    <img className="circle-icon bankid-icon" height="24" alt="BankID" src={BankIdFlag} />
+                    <img className="circle-icon bankid-icon" height="24" alt="" src={BankIdFlag} />
                     <span>BankID</span>
                   </EduIDButton>
                   <EduIDButton
@@ -243,7 +242,7 @@ export function SignupEntry(): React.JSX.Element {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja")}
                   >
-                    <img className="circle-icon freja" height="24" alt="Freja" src={FrejaFlag} />
+                    <img className="circle-icon freja" height="24" alt="" src={FrejaFlag} />
                     <span>Freja+</span>
                   </EduIDButton>
                 </div>
@@ -273,7 +272,7 @@ export function SignupEntry(): React.JSX.Element {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("eidas")}
                   >
-                    <img className="circle-icon" height="24" alt="eIDAS" src={Eidas} />
+                    <img className="circle-icon" height="24" alt="" src={Eidas} />
                     <span>eIDAS</span>
                   </EduIDButton>
                 </div>
@@ -308,7 +307,7 @@ export function SignupEntry(): React.JSX.Element {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja_eid")}
                   >
-                    <img className="circle-icon" height="24" alt="Freja eID" src={FrejaFlag} />
+                    <img className="circle-icon" height="24" alt="" src={FrejaFlag} />
                     <span>Freja eID</span>
                   </EduIDButton>
                 </div>
@@ -318,7 +317,7 @@ export function SignupEntry(): React.JSX.Element {
         )}
 
         {!external_mfa && (
-          <Fragment>
+          <>
             <div className="or-container">
               <div className="line"></div>
               <span>
@@ -342,13 +341,13 @@ export function SignupEntry(): React.JSX.Element {
                 </h2>
                 <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setEditMode(!isEditMode)}>
                   {isEditMode ? (
-                    <Fragment>
+                    <>
                       <FormattedMessage id="entry.button" description="hide form button" defaultMessage="hide form" />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronUp} />
-                    </Fragment>
+                    </>
                   ) : (
-                    <Fragment>
+                    <>
                       <FormattedMessage
                         id="entry.showButton"
                         description="show form button"
@@ -356,7 +355,7 @@ export function SignupEntry(): React.JSX.Element {
                       />
                       &nbsp;
                       <FontAwesomeIcon icon={faChevronDown} />
-                    </Fragment>
+                    </>
                   )}
                 </EduIDButton>
               </div>
@@ -374,7 +373,7 @@ export function SignupEntry(): React.JSX.Element {
                 </div>
               )}
             </section>
-          </Fragment>
+          </>
         )}
       </Splash>
       <NotificationModal

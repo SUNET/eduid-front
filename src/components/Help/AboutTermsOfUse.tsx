@@ -2,7 +2,7 @@ import { AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
 import { CommonToU } from "components/Common/CommonToU";
 import { FormattedMessage } from "react-intl";
 
-export function AboutTermsOfUse(): React.JSX.Element {
+export function AboutTermsOfUse() {
   return (
     <AccordionItemTemplate
       uuid="help-tou"

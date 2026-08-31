@@ -8,10 +8,29 @@ import { useNavigate, useParams } from "react-router";
 import { clearNotifications, showNotification } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
 
-// URL parameters passed to this component
 interface SignupCallbackParams {
   app_name?: string;
   authn_id?: string;
+}
+
+const statusActions: Record<string, "eidas" | "bankid" | "freja_eid"> = {
+  eidas: "eidas",
+  bankid: "bankid",
+  freja_eid: "freja_eid",
+};
+
+function handleIdentityCollision(
+  result: { error?: unknown },
+  dispatch: ReturnType<typeof useAppDispatch>,
+  app_name: string,
+  authn_id: string,
+) {
+  if (!result.error) return;
+  const error = result.error as { payload?: { message?: string } };
+  if (error.payload?.message === "signup.identity-already-registered") {
+    dispatch(clearNotifications());
+    dispatch(signupSlice.actions.setIdentityCollision({ app_name, authn_id }));
+  }
 }
 
 export function SignupExternalReturnHandler() {
@@ -24,75 +43,49 @@ export function SignupExternalReturnHandler() {
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
 
+  const getStatusAction = useCallback(
+    (app_name: string) => {
+      const actions = { eidas: eidasGetStatus, bankid: bankIDGetStatus, freja_eid: frejaeIDGetStatus };
+      return actions[app_name as keyof typeof actions];
+    },
+    [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus],
+  );
+
   const processStatus = useCallback(
-    async (response: GetStatusResponse, app_name: string, authn_id: string) => {
-      if (response.status) {
-        dispatch(showNotification({ message: response.status, level: response.error ? "error" : "info" }));
+    async (status: GetStatusResponse, app_name: string, authn_id: string) => {
+      if (status.status) {
+        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
       }
-      if (response.frontend_action) {
-        const result = await externalMfaRegister({
-          app_name,
-          authn_id,
-        });
-        if (result.error) {
-          const error = result.error as { payload?: { message?: string } };
-          if (error.payload?.message === "signup.identity-already-registered") {
-            dispatch(clearNotifications());
-            dispatch(signupSlice.actions.setIdentityCollision({ app_name, authn_id }));
-          }
-        }
-        navigate("/register");
-      }
+
+      if (!status.frontend_action) return;
+
+      const result = await externalMfaRegister({ app_name, authn_id });
+      handleIdentityCollision(result, dispatch, app_name, authn_id);
+      navigate("/register");
     },
-    [externalMfaRegister, navigate, dispatch],
+    [externalMfaRegister, dispatch, navigate],
   );
 
-  const fetchEidasStatus = useCallback(
-    async (authn_id: string, app_name: string) => {
-      const response = await eidasGetStatus({ authn_id: authn_id });
-      if (response.isSuccess) {
-        processStatus(response.data.payload, app_name, authn_id);
-      }
-    },
-    [eidasGetStatus, processStatus],
-  );
+  const fetchStatus = useCallback(
+    async (authn_id: string) => {
+      if (!params.app_name || !statusActions[params.app_name]) return;
 
-  const fetchFrejaeIDStatus = useCallback(
-    async (authn_id: string, app_name: string) => {
-      const response = await frejaeIDGetStatus({ authn_id: authn_id });
-      if (response.isSuccess) {
-        processStatus(response.data.payload, app_name, authn_id);
-      }
-    },
-    [frejaeIDGetStatus, processStatus],
-  );
+      const action = getStatusAction(params.app_name);
+      if (!action) return;
 
-  const fetchBankIDStatus = useCallback(
-    async (authn_id: string, app_name: string) => {
-      const response = await bankIDGetStatus({ authn_id: authn_id });
+      const response = await action({ authn_id });
       if (response.isSuccess) {
-        processStatus(response.data.payload, app_name, authn_id);
+        await processStatus(response.data.payload as GetStatusResponse, params.app_name, authn_id);
       }
     },
-    [bankIDGetStatus, processStatus],
+    [params.app_name, getStatusAction, processStatus],
   );
 
   useEffect(() => {
-    if (is_configured && params.authn_id && params.app_name) {
-      if (params.app_name === "eidas" || params.app_name === "samleid") {
-        // samleid replaces eidas/bankid; eidas_service_url/bankid_service_url in config already
-        // point at the samleid host, so the existing eidasGetStatus hook resolves correctly. The
-        // backend's external-mfa-register already expects app_name "samleid" here (see its docstring).
-        fetchEidasStatus(params.authn_id, params.app_name).catch(console.error);
-      }
-      if (params.app_name === "freja_eid") {
-        fetchFrejaeIDStatus(params.authn_id, params.app_name).catch(console.error);
-      }
-      if (params.app_name === "bankid") {
-        fetchBankIDStatus(params.authn_id, params.app_name).catch(console.error);
-      }
+    if (is_configured && params.authn_id) {
+      fetchStatus(params.authn_id);
     }
-  }, [params, is_configured, fetchEidasStatus, fetchFrejaeIDStatus, fetchBankIDStatus]);
+  }, [params, is_configured, fetchStatus]);
 
   return null;
 }

@@ -3,7 +3,7 @@ import { loginApi } from "apis/eduidLogin";
 import { signupApi, SignupState } from "apis/eduidSignup";
 import { RegisterEmail } from "components/Signup/SignupEmailForm";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import { NextPageTypes, signupSlice } from "slices/Signup";
 import { ProcessCaptcha, SignupCaptcha } from "./SignupCaptcha";
@@ -14,7 +14,7 @@ import { SignupEntry } from "./SignupEntry";
 import { ProcessToU, SignupToU } from "./SignupToU";
 import { SignupUserCreated } from "./SignupUserCreated";
 
-export function SignupApp(): React.JSX.Element {
+export function SignupApp() {
   const next_page = useAppSelector((state) => state.signup.next_page);
   const dispatch = useAppDispatch();
 
@@ -25,7 +25,7 @@ export function SignupApp(): React.JSX.Element {
   }, [dispatch, next_page]);
 
   return (
-    <React.Fragment>
+    <>
       {next_page === "SIGNUP_START" && <SignupStart />}
       {next_page === "SIGNUP_ENTRY" && <SignupEntry />}
       {next_page === "PROCESS_CAPTCHA" && <ProcessCaptcha />}
@@ -38,7 +38,7 @@ export function SignupApp(): React.JSX.Element {
       {next_page === "SIGNUP_CREDENTIALS_ERROR" && <SignupCredentialsError />}
       {next_page === "SIGNUP_CREDENTIALS" && <SignupCredentials />}
       {next_page === "SIGNUP_USER_CREATED" && <SignupUserCreated />}
-    </React.Fragment>
+    </>
   );
 }
 

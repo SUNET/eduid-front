@@ -4,7 +4,7 @@ import { useAppSelector } from "eduid-hooks";
 import { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 
-export function EnhancingSecurityLevel(): React.JSX.Element {
+export function EnhancingSecurityLevel() {
   const [approvedSecurityKeys, setApprovedSecurityKeys] = useState<SecurityKeysResponse>();
   const is_configured = useAppSelector((state) => state.config.is_configured);
   const [fetchApprovedSecurityKeys] = securityApi.useLazyFetchApprovedSecurityKeysQuery();

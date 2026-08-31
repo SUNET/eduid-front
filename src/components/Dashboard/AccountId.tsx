@@ -5,7 +5,7 @@ import { FormattedMessage } from "react-intl";
 
 const idUserEppn = "user-eppn";
 
-export function AccountId(): React.JSX.Element {
+export function AccountId() {
   const eppn = useAppSelector((state) => state.personal_data.eppn);
   const ref = useRef<HTMLInputElement>(null);
 
@@ -22,7 +22,7 @@ export function AccountId(): React.JSX.Element {
   );
 }
 
-export function AccountIdDisplay(): React.JSX.Element {
+export function AccountIdDisplay() {
   return (
     <article id="unique-id">
       <h2>

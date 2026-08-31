@@ -3,13 +3,13 @@ import { CaptchaRequest } from "apis/eduidSignup";
 import { ApiResponse } from "apis/helpers/types";
 import { InternalCaptcha } from "components/Common/Captcha";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import { ResetPasswordStepIndicator } from "./ResetPasswordStepIndicator";
 
-export function ResetPasswordCaptcha(): React.JSX.Element | null {
+export function ResetPasswordCaptcha() {
   const captcha = useAppSelector((state) => state.resetPassword.captcha);
   const captcha_completed = useAppSelector((state) => state.resetPassword.captcha_completed);
   const dashboard_link = useAppSelector((state) => state.config.dashboard_link);

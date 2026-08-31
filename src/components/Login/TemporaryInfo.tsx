@@ -1,9 +1,9 @@
-import EduIDButton from "components/Common/EduIDButton";
-import { Fragment, useState } from "react";
+import { EduIDButton } from "components/Common/EduIDButton";
+import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { HAS_READ_ANNOUNCEMENT } from "./Login";
 
-export default function TemporaryInfo(
+export function TemporaryInfo(
   props: Readonly<{
     setHasReadAnnouncement: (key: boolean) => void;
   }>,
@@ -19,7 +19,7 @@ export default function TemporaryInfo(
   }
 
   return (
-    <Fragment>
+    <>
       {/* Common for all messages */}
       <h1>
         <FormattedMessage
@@ -106,10 +106,10 @@ export default function TemporaryInfo(
           </span>
         </label>
 
-        <EduIDButton type="submit" buttonstyle="primary" onClick={handleAccept} id="continue-button">
+        <EduIDButton type="button" buttonstyle="primary" onClick={handleAccept} id="continue-button">
           <FormattedMessage id="common.continue" defaultMessage="Continue" description="Temp info - continue button" />
         </EduIDButton>
       </div>
-    </Fragment>
+    </>
   );
 }

@@ -60,7 +60,7 @@ async function linkToSecuritySettings() {
   act(() => {
     nav.click();
   });
-  expect(screen.getByRole("button", { name: "security key icon security key" })).toBeEnabled();
+  expect(screen.getByRole("button", { name: "security key" })).toBeEnabled();
   expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
 }
 
@@ -128,7 +128,7 @@ test("api call webauthn/remove", async () => {
   mswServer.use(
     http.post("webauthn/remove", async ({ request }) => {
       const body = (await request.json()) as RemoveWebauthnTokensRequest;
-      if (body.credential_key != credential_key) {
+      if (body.credential_key !== credential_key) {
         return new HttpResponse(null, { status: 400 });
       }
 
