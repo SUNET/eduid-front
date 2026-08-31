@@ -4,16 +4,18 @@ export function OtherError() {
   return (
     <>
       <h1>
-        <FormattedMessage defaultMessage="Access Error" description="ErrorURL other error" />
+        <FormattedMessage id="common.accessError" defaultMessage="Access Error" description="ErrorURL other error" />
       </h1>
       <p>
         <FormattedMessage
+          id="otherError.body"
           defaultMessage="An error occurred when accessing the service."
           description="ErrorURL other error"
         />
       </p>
       <p>
         <FormattedMessage
+          id="common.confirmIdentityHint"
           defaultMessage="You may need to confirm your identity in the eduID Dashboard before trying again."
           description="ErrorURL other error"
         />

@@ -14,7 +14,7 @@ export const EmailFieldset = ({ email }: EmailProps) => {
   return (
     <fieldset>
       <label htmlFor={idUserEmail}>
-        <FormattedMessage defaultMessage="Email address" description="Email label" />
+        <FormattedMessage id="common.emailAddress" defaultMessage="Email address" description="Email label" />
       </label>
       <div className="display-data">
         <output id={idUserEmail}>{email}</output>
@@ -29,7 +29,7 @@ export function ConfirmUserInfo({ email_address, new_password }: Readonly<Confir
       <EmailFieldset email={email_address} />
       <fieldset>
         <label htmlFor={idUserPassword}>
-          <FormattedMessage defaultMessage="Password" description="Password label" />
+          <FormattedMessage id="common.password" defaultMessage="Password" description="Password label" />
         </label>
         <div className="display-data">
           <mark className="force-select-all">

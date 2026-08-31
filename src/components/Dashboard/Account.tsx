@@ -17,11 +17,12 @@ export function Account() {
     <>
       <section className="intro">
         <h1>
-          <FormattedMessage description="settings main title" defaultMessage="Account" />
+          <FormattedMessage id="common.account" description="settings main title" defaultMessage="Account" />
         </h1>
         <div className="lead">
           <p>
             <FormattedMessage
+              id="account.settingsTitle"
               description="account settings lead title"
               defaultMessage="Update your eduID account settings, change password or delete your eduID."
             />
@@ -38,7 +39,7 @@ export function Account() {
       <WizardLink
         previousLink={SECURITY_PATH}
         previousText={intl.formatMessage({
-          id: "wizard link back security",
+          id: "common.toSecuritySettings",
           defaultMessage: "To Security Settings",
         })}
       />

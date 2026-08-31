@@ -99,7 +99,9 @@ export function LoginExternalReturnHandler() {
     async (authn_id: string) => {
       let getStatusAction;
 
-      if (params.app_name === "eidas") {
+      if (params.app_name === "eidas" || params.app_name === "samleid") {
+        // samleid replaces eidas/bankid; eidas_service_url/bankid_service_url in config already
+        // point at the samleid host, so the existing eidasGetStatus hook resolves correctly.
         getStatusAction = eidasGetStatus;
       } else if (params.app_name === "bankid") {
         getStatusAction = bankIDGetStatus;

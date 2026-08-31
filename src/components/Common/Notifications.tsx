@@ -59,13 +59,13 @@ function getLabel(intl: IntlShape, level: notificationLevel): string {
   // aria-label can't be an Element, we need to get the actual translated string here
   if (level === "error") {
     return intl.formatMessage({
-      id: "notifications.error-label",
+      id: "notifications.error",
       defaultMessage: "Error",
       description: "Notification type",
     });
   }
   return intl.formatMessage({
-    id: "notifications.info-label",
+    id: "notifications.information",
     defaultMessage: "Information",
     description: "Notification type",
   });

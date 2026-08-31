@@ -15,7 +15,7 @@ export function ChangePasswordSuggestedForm({
     <>
       <div className="pw-suggested">
         <label htmlFor="copy-new-password">
-          <FormattedMessage defaultMessage="New password" description="new password" />
+          <FormattedMessage id="changePasswordSuggested.new" defaultMessage="New password" description="new password" />
         </label>
         <div className="password-input">
           <CopyToClipboardButton ref={ref} />
@@ -31,7 +31,9 @@ export function ChangePasswordSuggestedForm({
       <NewPasswordForm
         suggested_password={suggestedPassword}
         submitNewPasswordForm={formProps.handleSubmit}
-        submitButtonText={<FormattedMessage defaultMessage="Save" description="Set new password (Save button)" />}
+        submitButtonText={
+          <FormattedMessage id="common.save" defaultMessage="Save" description="Set new password (Save button)" />
+        }
         handleCancel={handleCancel}
       />
     </>

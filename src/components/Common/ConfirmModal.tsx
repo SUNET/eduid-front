@@ -105,7 +105,9 @@ export function ConfirmModal({
                   </div>
                   <div className="modal-footer">
                     <EduIDButton type="submit" buttonstyle="primary" disabled={submitting || invalid}>
-                      {submitButtonText ?? <FormattedMessage defaultMessage="ok" description="ok button" />}
+                      {submitButtonText || (
+                        <FormattedMessage id="confirmModal.button" defaultMessage="ok" description="ok button" />
+                      )}
                     </EduIDButton>
                   </div>
                 </form>

@@ -51,12 +51,12 @@ export function Identity() {
       <WizardLink
         previousLink={START_PATH}
         previousText={intl.formatMessage({
-          id: "wizard link back start",
+          id: "identity.overview",
           defaultMessage: "To Overview on Start",
         })}
         nextLink={SECURITY_PATH}
         nextText={intl.formatMessage({
-          id: "wizard link next security",
+          id: "common.toSecuritySettings",
           defaultMessage: "To Security Settings",
         })}
       />
@@ -83,12 +83,17 @@ function IdentityContent() {
     <>
       <section className="intro">
         <h1>
-          <FormattedMessage description="verify identity unverified main title" defaultMessage="Identity" />
+          <FormattedMessage
+            id="common.identity"
+            description="verify identity unverified main title"
+            defaultMessage={`Identity`}
+          />
         </h1>
         <div className="lead">
           {identities?.is_verified ? (
             <p>
               <FormattedMessage
+                id="identity.verifyIdentityTitle"
                 description="verify identity verified title"
                 defaultMessage="Your eduID is ready to use"
               />
@@ -96,6 +101,7 @@ function IdentityContent() {
           ) : (
             <p>
               <FormattedMessage
+                id="identity.description"
                 description="verify identity unverified description"
                 defaultMessage="Some services need to know your real life identity. Connect your identity to your eduID to get the most benefit from it."
               />
@@ -110,6 +116,7 @@ function IdentityContent() {
             <div className="flex-between baseline">
               <h2>
                 <FormattedMessage
+                  id="identity.verifyIdentity"
                   description="verify identity verified description"
                   defaultMessage="The identities below are now connected to your eduID"
                 />
@@ -122,6 +129,7 @@ function IdentityContent() {
           <>
             <h2>
               <FormattedMessage
+                id="identity.verifyDescription"
                 description="verify identity non verified description"
                 defaultMessage="Choose your principal identification method"
               />
@@ -202,7 +210,11 @@ function VerifiedIdentitiesTable() {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="Swedish national ID number" description="Verified identity" />
+              <FormattedMessage
+                id="identity.swedish"
+                defaultMessage="Swedish national ID number"
+                description="Verified identity"
+              />
             </strong>
           </div>
           <NinDisplay nin={identities?.nin} allowDelete={true} />
@@ -211,7 +223,7 @@ function VerifiedIdentitiesTable() {
             buttonstyle="remove sm"
             onClick={() => handleConfirmDeleteModal("nin")}
             title={intl.formatMessage({
-              id: "verified identity delete button",
+              id: "identity.deleteVerified",
               defaultMessage: "Delete this verified identity",
             })}
           ></EduIDButton>
@@ -225,7 +237,11 @@ function VerifiedIdentitiesTable() {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="European EIDAS identity" description="Verified identity" />
+              <FormattedMessage
+                id="identity.eidas"
+                defaultMessage="European EIDAS identity"
+                description="Verified identity"
+              />
             </strong>
           </div>
           {identities.eidas.country_code}&nbsp;{identities.eidas.date_of_birth}
@@ -248,7 +264,11 @@ function VerifiedIdentitiesTable() {
           </div>
           <div className="profile-grid-cell">
             <strong>
-              <FormattedMessage defaultMessage="Freja eID identity" description="Verified identity" />
+              <FormattedMessage
+                id="identity.freja"
+                defaultMessage="Freja eID identity"
+                description="Verified identity"
+              />
             </strong>
           </div>
           {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
@@ -263,12 +283,14 @@ function VerifiedIdentitiesTable() {
         id="remove-identity-verification"
         title={
           <FormattedMessage
+            id="identity.settingsTitle"
             defaultMessage="Disconnect your identity"
             description="settings.remove_identity_verification_modal_title"
           />
         }
         mainText={
           <FormattedMessage
+            id="identity.delete"
             defaultMessage="Are you sure you want to disconnect your identity from your eduID account?"
             description="delete.remove_identity_verification_modal_text"
           />
@@ -276,7 +298,9 @@ function VerifiedIdentitiesTable() {
         showModal={showConfirmRemoveIdentityVerificationModal}
         closeModal={() => setShowConfirmRemoveIdentityVerificationModal(false)}
         acceptModal={() => handleRemoveIdentity(identityType)}
-        acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+        acceptButtonText={
+          <FormattedMessage id="securityKeyTable.button" defaultMessage="Confirm" description="delete.confirm_button" />
+        }
       />
       {/* verifying with Swedish national number in accordion only possible for users already verified with Eidas or Svipe */}
       {!identities?.nin?.verified && (
@@ -284,6 +308,7 @@ function VerifiedIdentitiesTable() {
           <p>
             <strong>
               <FormattedMessage
+                id="identity.heading"
                 description="verify identity non swedish verified heading"
                 defaultMessage="If you have a Swedish identity you can verify that as well, to be able to access more services."
               />
@@ -318,12 +343,14 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
       icon={<img height="35" className="circle-icon" alt="" src={SvFlag} />}
       title={
         <FormattedMessage
+          id="identity.accordionSwedishTitle"
           description="accordion item swedish title"
           defaultMessage="Swedish personal ID or coordination number"
         />
       }
       additionalInfo={
         <FormattedMessage
+          id="identity.accordionSwedishInfo"
           description="accordion item swedish additional info"
           defaultMessage="With a digital ID / By post"
         />
@@ -339,6 +366,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
       </h4> */}
       <p>
         <FormattedMessage
+          id="identity.verifyIdentityDescription"
           description="verify-identity.connect-nin_description"
           defaultMessage="Verify that you have access to your ID- or coordination number."
         />
@@ -347,9 +375,16 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
       <Accordion className="accordion nested">
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon bankid-icon" alt="" src={BankIdFlag} />}
-          title={<FormattedMessage description="BankID vetting button" defaultMessage="with a BankID" />}
+          title={
+            <FormattedMessage
+              id="identity.bankButton"
+              description="BankID vetting button"
+              defaultMessage="with a BankID"
+            />
+          }
           additionalInfo={
             <FormattedMessage
+              id="identity.verifyIdentityVetting"
               description="verify identity vetting BankID tagline"
               defaultMessage="If you are able to use BankID"
             />
@@ -360,9 +395,16 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="" src={FrejaFlag} />}
-          title={<FormattedMessage description="eidas vetting button freja" defaultMessage="with a Freja+" />}
+          title={
+            <FormattedMessage
+              id="identity.button"
+              description="eidas vetting button freja"
+              defaultMessage={`with a Freja+`}
+            />
+          }
           additionalInfo={
             <FormattedMessage
+              id="identity.verify"
               description="verify identity vetting freja tagline"
               defaultMessage="If you are able to create a Freja+ by using the app or visiting one of the authorised agents"
             />
@@ -373,9 +415,16 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
         </AccordionItemTemplate>
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="" src={LetterIcon} />}
-          title={<FormattedMessage defaultMessage="by post" description="explanation text for letter proofing" />}
+          title={
+            <FormattedMessage
+              id="identity.byPost"
+              defaultMessage="by post"
+              description="explanation text for letter proofing"
+            />
+          }
           additionalInfo={
             <FormattedMessage
+              id="identity.swedishAddress"
               defaultMessage="If you are registered at your current address"
               description="explanation text for letter proofing"
             />
@@ -404,9 +453,12 @@ function AccordionItemEu() {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="" src={EuFlag} />}
-      title={<FormattedMessage description="accordion item eidas title" defaultMessage="EU citizen" />}
+      title={
+        <FormattedMessage id="common.euCitizen" description="accordion item eidas title" defaultMessage="EU citizen" />
+      }
       additionalInfo={
         <FormattedMessage
+          id="identity.info"
           description="accordion item eidas additional info"
           defaultMessage="With eIDAS electronic identification"
         />
@@ -415,18 +467,20 @@ function AccordionItemEu() {
     >
       <p>
         <FormattedMessage
+          id="identity.eidasConnectHint"
           description="verify identity"
           defaultMessage="If you have an electronic ID from a country connected to eIDAS, you can connect it to your eduID."
         />
       </p>
       <p>
         <FormattedMessage
+          id="identity.externalLoginInfo"
           description="verify identity"
           defaultMessage="The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
         />
       </p>
       <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with eIDAS">
-        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+        <FormattedMessage id="letterProofing.proceedButton" defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
   );
@@ -454,9 +508,16 @@ function AccordionItemWorld() {
   return (
     <AccordionItemTemplate
       icon={<img height="35" className="circle-icon" alt="" src={GlobalFlag} />}
-      title={<FormattedMessage description="accordion item passport title" defaultMessage="Most countries" />}
+      title={
+        <FormattedMessage
+          id="common.mostCountries"
+          description="accordion item passport title"
+          defaultMessage="Most countries"
+        />
+      }
       additionalInfo={
         <FormattedMessage
+          id="identity.accordionInfo"
           description="accordion item passport additional info"
           defaultMessage="With Freja eID identity verification "
         />
@@ -465,6 +526,7 @@ function AccordionItemWorld() {
     >
       <p>
         <FormattedMessage
+          id="identity.frejaConnectHint"
           description="verify identity"
           defaultMessage="If you have a {Freja_eID} you can connect it to your eduID."
           values={{
@@ -478,12 +540,13 @@ function AccordionItemWorld() {
       </p>
       <p>
         <FormattedMessage
+          id="identity.externalIdentificationInfo"
           description="verify identity"
           defaultMessage="The button below will take you to an external identification site, where you by identifying yourself with Freja eID, you will verify your identity towards eduID."
         />
       </p>
       <EduIDButton buttonstyle="primary sm" onClick={handleOnClick} aria-label="Proceed with Freja eID">
-        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+        <FormattedMessage id="letterProofing.proceedButton" defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </AccordionItemTemplate>
   );

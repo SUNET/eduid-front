@@ -16,7 +16,7 @@ export function PasswordInput({ name, autoComplete, helpBlock }: Readonly<Passwo
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "placeholder.password",
+    id: "passwordInput.placeholder",
     defaultMessage: "enter password",
     description: "placeholder text for password input",
   });
@@ -31,7 +31,9 @@ export function PasswordInput({ name, autoComplete, helpBlock }: Readonly<Passwo
       placeholder={placeholder}
       // parameters for InputWrapper
       helpBlock={helpBlock}
-      label={<FormattedMessage defaultMessage="Password" description="password input field label" />}
+      label={
+        <FormattedMessage id="common.password" defaultMessage="Password" description="password input field label" />
+      }
     />
   );
 }

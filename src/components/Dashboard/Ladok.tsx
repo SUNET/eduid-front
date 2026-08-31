@@ -36,11 +36,16 @@ export const LadokContainer = () => {
   return (
     <article className="ladok" id="ladok">
       <h2>
-        <FormattedMessage defaultMessage="ESI information" description="Ladok account linking" />
+        <FormattedMessage
+          id="ladok.esiInfoLabel"
+          defaultMessage="ESI information"
+          description="Ladok account linking"
+        />
       </h2>
 
       <p>
         <FormattedMessage
+          id="ladok.fetchInfo"
           defaultMessage="Data from Ladok might give you access to more services. Some higher education institutions allow eduID to fetch data from Ladok."
           description="Ladok account linking"
         />
@@ -50,7 +55,11 @@ export const LadokContainer = () => {
         <fieldset>
           <label className="toggle flex-between" htmlFor="ladok-connection">
             <legend>
-              <FormattedMessage defaultMessage="Link your account to Ladok" description="Ladok account linking" />
+              <FormattedMessage
+                id="ladok.linkHeading"
+                defaultMessage="Link your account to Ladok"
+                description="Ladok account linking"
+              />
             </legend>
             <input
               onChange={handleSwitchChange}
@@ -67,6 +76,7 @@ export const LadokContainer = () => {
       {switchChecked ? <LadokUniversitiesDropdown onLinkSuccess={() => setSwitchChecked(true)} /> : undefined}
       <p className="help-text">
         <FormattedMessage
+          id="ladok.notInListInfo"
           defaultMessage="Linking your eduID account with data from Ladok is necessary if you want to access a service requiring a European Student Identifier."
           description="Ladok account linking"
         />
@@ -85,7 +95,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
   const [linkUser] = ladokApi.useLazyLinkUserQuery();
 
   const placeholder = intl.formatMessage({
-    id: "ladok.dropdown_placeholder",
+    id: "ladok.dropdownPlaceholder",
     defaultMessage: "Available higher education institutions",
     description: "Ladok account linking",
   });
@@ -143,6 +153,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
             <fieldset>
               <span className="form-label">
                 <FormattedMessage
+                  id="ladok.selectInstitution"
                   defaultMessage="Select higher education institution"
                   description="Ladok account linking"
                 />
@@ -164,6 +175,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
       <div className="ladok-universities-status">
         {fetchFailed ? (
           <FormattedMessage
+            id="ladok.listError"
             defaultMessage="The list of higher education institutions could not be loaded at this time"
             description="Ladok account linking"
           />
@@ -198,6 +210,7 @@ const LadokLinkStatus = () => {
           <div className="ladok-university flex-between">
             <label>
               <FormattedMessage
+                id="ladok.linkedFrom"
                 defaultMessage="Your account is linked with Ladok information from"
                 description="Ladok account linking"
               />

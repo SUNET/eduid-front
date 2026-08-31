@@ -37,6 +37,7 @@ export function SecurityKeyTable({
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon
   const removeLabel = intl.formatMessage({
+    id: "common.remove",
     defaultMessage: "Remove",
     description: "aria-label and title for table item remove button",
   });
@@ -64,6 +65,7 @@ export function SecurityKeyTable({
       <figure>
         <em className="help-text">
           <FormattedMessage
+            id="securityKeyTable.no"
             description="no security key has been added"
             defaultMessage="No security key has been added"
           />
@@ -85,7 +87,13 @@ export function SecurityKeyTable({
         if (cred.success_ts) {
           date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
         } else {
-          date_success = <FormattedMessage description="security last used date" defaultMessage="Never used" />;
+          date_success = (
+            <FormattedMessage
+              id="securityKeyTable.lastUsed"
+              description="security last used date"
+              defaultMessage="Never used"
+            />
+          );
         }
 
         // verify button/ verified badge
@@ -93,10 +101,18 @@ export function SecurityKeyTable({
           btnVerify = (
             <div aria-label="verification status" className="verified">
               <span>
-                <FormattedMessage description="security key status" defaultMessage="Verification status:" />
+                <FormattedMessage
+                  id="securityKeyTable.verificationStatus"
+                  description="security key status"
+                  defaultMessage="Verification status:"
+                />
                 &nbsp;
                 <strong>
-                  <FormattedMessage description="security verified" defaultMessage="verified" />
+                  <FormattedMessage
+                    id="securityKeyTable.verified"
+                    description="security verified"
+                    defaultMessage="verified"
+                  />
                 </strong>
               </span>
             </div>
@@ -105,7 +121,11 @@ export function SecurityKeyTable({
           btnVerify = (
             <div aria-label="verify with freja, bankID, eidas or freja eid">
               <span>
-                <FormattedMessage description="security key status" defaultMessage="Verify with: " />
+                <FormattedMessage
+                  id="securityKeyTable.verifyWith"
+                  description="security key status"
+                  defaultMessage="Verify with: "
+                />
                 &nbsp;
                 <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
                   BankID
@@ -145,7 +165,11 @@ export function SecurityKeyTable({
             <div>
               <div className="flex-between">
                 <span aria-label="key name" className="key-name">
-                  <FormattedMessage description="security description name" defaultMessage="Name:" />
+                  <FormattedMessage
+                    id="securityKeyTable.description"
+                    description="security description name"
+                    defaultMessage="Name:"
+                  />
                   &nbsp;
                   <strong>{cred.description}</strong>
                 </span>
@@ -160,14 +184,22 @@ export function SecurityKeyTable({
 
               <div>
                 <span aria-label="date created">
-                  <FormattedMessage description="security creation date" defaultMessage="Created:" />
+                  <FormattedMessage
+                    id="securityKeyTable.creation"
+                    description="security creation date"
+                    defaultMessage="Created:"
+                  />
                   &nbsp;
                   <wbr />
                   {date_created}
                 </span>
 
                 <span aria-label="date used">
-                  <FormattedMessage description="security last used" defaultMessage="Used:" />
+                  <FormattedMessage
+                    id="securityKeyTable.last"
+                    description="security last used"
+                    defaultMessage="Used:"
+                  />
                   &nbsp;
                   <wbr />
                   {date_success}
@@ -185,13 +217,18 @@ export function SecurityKeyTable({
     <article id="manage-security-keys">
       <div className="flex-between baseline">
         <h2>
-          <FormattedMessage description="manage your tokens" defaultMessage="Manage your security keys" />
+          <FormattedMessage
+            id="securityKeyTable.manage"
+            description="manage your tokens"
+            defaultMessage="Manage your security keys"
+          />
         </h2>
         <ToolTip />
       </div>
 
       <p>
         <FormattedMessage
+          id="securityKeyTable.paragraph"
           description="manage tokens paragraph"
           defaultMessage={`Your added security keys can be verified or deleted from the list below and the toggle controls whether a security key should always be used with your eduID.`}
         />
@@ -203,12 +240,14 @@ export function SecurityKeyTable({
         id="remove-security-key"
         title={
           <FormattedMessage
+            id="securityKeyTable.title"
             defaultMessage="Remove security key"
             description="settings.remove_security_key_modal_title"
           />
         }
         mainText={
           <FormattedMessage
+            id="securityKeyTable.delete"
             defaultMessage={`Are you sure you want to remove your security key?`}
             description="delete.remove_security_key_modal_text"
           />
@@ -216,7 +255,9 @@ export function SecurityKeyTable({
         showModal={showConfirmRemoveSecurityKeyModal}
         closeModal={() => setShowConfirmRemoveSecurityKeyModal(false)}
         acceptModal={handleRemoveSecurityKeyAccept}
-        acceptButtonText={<FormattedMessage defaultMessage="Confirm" description="delete.confirm_button" />}
+        acceptButtonText={
+          <FormattedMessage id="securityKeyTable.button" defaultMessage="Confirm" description="delete.confirm_button" />
+        }
       />
     </article>
   );

@@ -100,6 +100,7 @@ export function ChangePassword() {
               <section className="intro">
                 <h1>
                   <FormattedMessage
+                    id="changePassword.suggested"
                     description="Change password - headline"
                     defaultMessage="Change password: Suggested password"
                   />
@@ -107,6 +108,7 @@ export function ChangePassword() {
                 <div className="lead">
                   <p>
                     <FormattedMessage
+                      id="changePassword.generatedLead"
                       description="Generated password - lead"
                       defaultMessage="A strong password has been generated for you. To proceed you will need to copy the password in to the Repeat new password field and click the Save button to store it for future use."
                     />
@@ -117,6 +119,7 @@ export function ChangePassword() {
               <section className="intro">
                 <h1>
                   <FormattedMessage
+                    id="changePassword.custom"
                     description="Change password - headline"
                     defaultMessage="Change password: Set your own password"
                   />
@@ -124,6 +127,7 @@ export function ChangePassword() {
                 <div className="lead">
                   <p>
                     <FormattedMessage
+                      id="changePassword.lead"
                       description="Strong password - lead"
                       defaultMessage="When creating your own password, make sure it's strong enough to keep your accounts safe."
                     />

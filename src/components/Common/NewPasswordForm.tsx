@@ -30,6 +30,7 @@ export function NewPasswordForm({
   extra_security,
   goBack,
   submitButtonText,
+  handleCancel,
 }: Readonly<NewPasswordFormProps>) {
   function validateNewPassword(values: NewPasswordFormData) {
     const newPassword = values.newPassword;
@@ -57,18 +58,30 @@ export function NewPasswordForm({
               name="newPassword"
               component={CustomInput}
               required={true}
-              label={<FormattedMessage defaultMessage="Repeat new password" description="Set new password" />}
+              label={
+                <FormattedMessage
+                  id="common.repeatNewPassword"
+                  defaultMessage="Repeat new password"
+                  description="Set new password"
+                />
+              }
               autoFocus={true}
               placeholder="xxxx xxxx xxxx"
             />
             <span className="suggestion-txt">
               <FormattedMessage
+                id="passwordCustom.remember"
                 defaultMessage="Memorise or keep your password safe!"
                 description="remember pw prompt"
               />
             </span>
             <div className="buttons">
               {extra_security && Object.keys(extra_security).length > 0 && <GoBackButton onClickHandler={goBack} />}
+              {handleCancel && (
+                <EduIDButton buttonstyle="secondary" onClick={handleCancel}>
+                  <FormattedMessage id="common.cancel" defaultMessage="cancel" description="button cancel" />
+                </EduIDButton>
+              )}
               <EduIDButton type="submit" buttonstyle="primary" id="new-password-button" disabled={formProps.invalid}>
                 {submitButtonText}
               </EduIDButton>

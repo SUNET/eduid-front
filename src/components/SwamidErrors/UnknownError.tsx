@@ -4,16 +4,18 @@ export function UnknownError() {
   return (
     <>
       <h1>
-        <FormattedMessage defaultMessage="Access Error" description="ErrorURL unknown error" />
+        <FormattedMessage id="common.accessError" defaultMessage="Access Error" description="ErrorURL unknown error" />
       </h1>
       <p>
         <FormattedMessage
+          id="unknownError.body"
           defaultMessage="An unknown error occurred when accessing the service."
           description="ErrorURL unknown error"
         />
       </p>
       <p>
         <FormattedMessage
+          id="unknownError.error"
           defaultMessage="Please try again. Contact eduID support if the problem persists, and make sure to
                            include the Technical Information below."
           description="ErrorURL other error"

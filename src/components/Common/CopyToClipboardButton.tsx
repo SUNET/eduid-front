@@ -20,9 +20,9 @@ export const CopyToClipboardButton = forwardRef<HTMLInputElement>((_props, ref: 
   return (
     <EduIDButton buttonstyle="link sm txt-toggle-btn" onClick={copyToClipboard}>
       {tooltipCopied ? (
-        <FormattedMessage defaultMessage="COPIED" description="copied button label" />
+        <FormattedMessage id="copyToClipboardButton.button" defaultMessage="COPIED" description="copied button label" />
       ) : (
-        <FormattedMessage defaultMessage="COPY" description="copy button label" />
+        <FormattedMessage id="copyToClipboardButton.label" defaultMessage="COPY" description="copy button label" />
       )}
     </EduIDButton>
   );

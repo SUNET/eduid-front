@@ -18,10 +18,11 @@ function NotLoggedIn() {
   return (
     <>
       <h1>
-        <FormattedMessage defaultMessage="Not logged in" description="ErrorURL eduid error" />
+        <FormattedMessage id="eduidError.heading" defaultMessage="Not logged in" description="ErrorURL eduid error" />
       </h1>
       <p>
         <FormattedMessage
+          id="eduidError.body"
           defaultMessage="You are not logged in, or the session expired."
           description="ErrorURL eduid error"
         />

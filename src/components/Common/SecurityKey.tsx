@@ -48,6 +48,7 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
         {active && (
           <p className="help-text">
             <FormattedMessage
+              id="securityKey.hint"
               description="login mfa primary option hint"
               defaultMessage="If your Security Key has a button, don't forget to tap it."
             />
@@ -68,16 +69,22 @@ function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Read
   return (
     <>
       <h3>
-        <FormattedMessage description="login this device, security key button" defaultMessage="Security key" />
+        <FormattedMessage
+          id="common.securityKey"
+          description="login this device, security key button"
+          defaultMessage="Security key"
+        />
       </h3>
       <p className="help-text">
         {discoverable ? (
           <FormattedMessage
+            id="securityKey.passkey"
             description="passkey authn help text"
             defaultMessage="E.g. Passkey on your USB Security Key or with the device you are currently using."
           />
         ) : (
           <FormattedMessage
+            id="securityKey.platform"
             description="platform authn help text"
             defaultMessage="E.g. USB Security Key or passkey with the device you are currently using."
           />
@@ -91,7 +98,11 @@ function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Read
         id="mfa-security-key"
         disabled={disabled}
       >
-        <FormattedMessage description="login mfa primary option button" defaultMessage="Use security key" />
+        <FormattedMessage
+          id="securityKey.button"
+          description="login mfa primary option button"
+          defaultMessage="Use security key"
+        />
       </EduIDButton>
     </>
   );
@@ -103,6 +114,7 @@ function SecurityKeyActive() {
       <div className="button-pair selected">
         <h3>
           <FormattedMessage
+            id="securityKey.thisDeviceOrKey"
             description="login this device, security key button"
             defaultMessage="This Device / Security key"
           />

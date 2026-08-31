@@ -30,13 +30,22 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
         <div className="line"></div>
         <span>
           {requirement === "default" && (
-            <FormattedMessage defaultMessage="or use a password instead" description="Default signup option" />
+            <FormattedMessage
+              id="credentials.default"
+              defaultMessage="or use a password instead"
+              description="Default signup option"
+            />
           )}
           {requirement === "optional" && (
-            <FormattedMessage defaultMessage="you can also add a password" description="Alternative signup option" />
+            <FormattedMessage
+              id="credentials.alternative"
+              defaultMessage="you can also add a password"
+              description="Alternative signup option"
+            />
           )}
           {requirement === "required" && (
             <FormattedMessage
+              id="credentials.required"
               defaultMessage="a password is required for this key"
               description="Required password option"
             />
@@ -47,18 +56,22 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
       <section className="register-password" id="register-password">
         <div className="heading">
           <h2>
-            <FormattedMessage description="register a password" defaultMessage="Register a password" />
+            <FormattedMessage
+              id="credentials.registerPassword"
+              description="register a password"
+              defaultMessage="Register a password"
+            />
           </h2>
           <EduIDButton buttonstyle="secondary sm txt-toggle-btn" onClick={() => setUserToggled(!isEditMode)}>
             {isEditMode ? (
               <>
-                <FormattedMessage description="hide form button" defaultMessage="hide form" />
+                <FormattedMessage id="entry.button" description="hide form button" defaultMessage="hide form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronUp} />
               </>
             ) : (
               <>
-                <FormattedMessage description="show form button" defaultMessage="show form" />
+                <FormattedMessage id="entry.showButton" description="show form button" defaultMessage="show form" />
                 &nbsp;
                 <FontAwesomeIcon icon={faChevronDown} />
               </>
@@ -67,6 +80,7 @@ const PasswordSection = ({ requirement }: Readonly<{ requirement: PasswordRequir
         </div>
         <p>
           <FormattedMessage
+            id="credentials.addPassword"
             description="Add password explanation"
             defaultMessage={`Add a password to your account as an alternative sign-in method. Choose between a suggested or user created password.`}
           />
@@ -158,6 +172,7 @@ export function SignupCredentials() {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="credentials.register"
             defaultMessage="Create eduID: Register your sign-in method"
             description="Signup register credentials"
           />
@@ -167,6 +182,7 @@ export function SignupCredentials() {
           {webauthnRegistered && !webauthnIsDiscoverable ? (
             <p>
               <FormattedMessage
+                id="credentials.non"
                 defaultMessage="A security key has been registered. This type of key also requires a password to sign in."
                 description="non-discoverable key needs password"
               />
@@ -174,6 +190,7 @@ export function SignupCredentials() {
           ) : (
             <p>
               <FormattedMessage
+                id="credentials.lead"
                 defaultMessage="Choose between a passkey/security key, password or both."
                 description="Signup register credentials lead text"
               />
@@ -189,6 +206,7 @@ export function SignupCredentials() {
             <figure className="signin-details">
               <span>
                 <FormattedMessage
+                  id="credentials.label"
                   defaultMessage="Your registered security key: {keyName}"
                   description="Signup added credentials label"
                   values={{
@@ -200,7 +218,11 @@ export function SignupCredentials() {
             {webauthnIsDiscoverable && (
               <div className="buttons">
                 <EduIDButton buttonstyle="primary" id="finish-signup" onClick={finishSignup}>
-                  <FormattedMessage defaultMessage="Complete creating eduID" description="signup finish button" />
+                  <FormattedMessage
+                    id="credentials.button"
+                    defaultMessage="Complete creating eduID"
+                    description="signup finish button"
+                  />
                 </EduIDButton>
               </div>
             )}
@@ -212,16 +234,24 @@ export function SignupCredentials() {
                 <div className="flex-between">
                   <div>
                     <p>
-                      <FormattedMessage defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account." />
+                      <FormattedMessage
+                        id="credentials.we"
+                        defaultMessage="We recommend setting up a passkey for fast and secure access to your eduID account."
+                      />
                     </p>
                     <p className="help-text">
                       <FormattedMessage
+                        id="credentials.passkeyLink"
                         defaultMessage='Read more about passkeys and sign-in methods in the "Using eduID" section in  {helpLink}.'
                         description="signup passkey help link"
                         values={{
                           helpLink: (
                             <a href="/help" target="_blank" rel="noopener noreferrer">
-                              <FormattedMessage description="eduID help link" defaultMessage={`eduID Help`} />
+                              <FormattedMessage
+                                id="common.eduidHelp"
+                                description="eduID help link"
+                                defaultMessage={`eduID Help`}
+                              />
                             </a>
                           ),
                         }}
@@ -233,7 +263,11 @@ export function SignupCredentials() {
               </div>
             </div>
             <h2 aria-label="select extra webauthn">
-              <FormattedMessage description="select extra webauthn" defaultMessage="Register a key:" />
+              <FormattedMessage
+                id="credentials.select"
+                description="select extra webauthn"
+                defaultMessage="Register a key:"
+              />
             </h2>
             <div className="mfa-alternative">
               <div className="buttons">
@@ -244,10 +278,15 @@ export function SignupCredentials() {
                     onClick={() => handleWebauthnButtonClick("platform")}
                   >
                     <img className="pass-key-icon" height="25" alt="pass key icon" src={passKey} />
-                    <FormattedMessage description="add webauthn token device" defaultMessage="this device" />
+                    <FormattedMessage
+                      id="credentials.addWebauthn"
+                      description="add webauthn token device"
+                      defaultMessage="this device"
+                    />
                   </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage
+                      id="credentials.platformAuthn"
                       description="platform authn device help text"
                       defaultMessage="Internal passkey on your phone or laptop."
                     />
@@ -260,10 +299,15 @@ export function SignupCredentials() {
                     onClick={() => handleWebauthnButtonClick("cross-platform")}
                   >
                     <img className="security-key-icon" height="25" alt="security key icon" src={securityKey} />
-                    <FormattedMessage description="add webauthn token key" defaultMessage="security key" />
+                    <FormattedMessage
+                      id="common.securityKeyText"
+                      description="add webauthn token key"
+                      defaultMessage="security key"
+                    />
                   </EduIDButton>
                   <p className="help-text">
                     <FormattedMessage
+                      id="credentials.platform"
                       description="platform authn key help text"
                       defaultMessage="Your external USB security key."
                     />

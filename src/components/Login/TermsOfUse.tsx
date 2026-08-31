@@ -43,11 +43,16 @@ export function TermsOfUse() {
   return (
     <>
       <h1>
-        <FormattedMessage defaultMessage="Log in: Terms of use" description="Terms of use (h2 heading)" />
+        <FormattedMessage
+          id="termsOfUse.heading"
+          defaultMessage="Log in: Terms of use"
+          description="Terms of use (h2 heading)"
+        />
       </h1>
       <div className="lead">
         <p>
           <FormattedMessage
+            id="termsOfUse.banner"
             defaultMessage="We need an updated acceptance from you of the eduID terms of use."
             description="Terms of use (banner text)"
           />

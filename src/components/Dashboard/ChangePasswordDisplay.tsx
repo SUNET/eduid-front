@@ -21,18 +21,27 @@ export function ChangePasswordDisplay() {
     <article id="change-password">
       <div className="flex-between baseline">
         <h2>
-          <FormattedMessage defaultMessage="Change password" description="Dashboard change password" />
+          <FormattedMessage
+            id="common.changePassword"
+            defaultMessage="Change password"
+            description="Dashboard change password"
+          />
         </h2>
         <ToolTip />
       </div>
       <p>
         <FormattedMessage
+          id="changePasswordDisplay.link"
           defaultMessage="Click the link to change your eduID password."
           description="Dashboard change password link description text"
         />
       </p>
       <EduIDButton id="security-change-button" buttonstyle="link normal-case" onClick={handleSuggestedPassword}>
-        <FormattedMessage defaultMessage="Change password" description="Dashboard change password button text" />
+        <FormattedMessage
+          id="common.changePassword"
+          defaultMessage="Change password"
+          description="Dashboard change password button text"
+        />
       </EduIDButton>
     </article>
   );

@@ -21,16 +21,25 @@ function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>) {
       </div>
       <div className="text-wrapper">
         <h3>
-          <FormattedMessage description="Confirmed account heading" defaultMessage="Confirmed account" />
+          <FormattedMessage
+            id="recommendations.confirmedHeading"
+            description="Confirmed account heading"
+            defaultMessage="Confirmed account"
+          />
         </h3>
         <span>
           <FormattedMessage
+            id="recommendations.readMore"
             description="confirmed account description"
             defaultMessage="Read more details about your confirmed account at {account}"
             values={{
               account: (
                 <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                  <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+                  <FormattedMessage
+                    id="common.account"
+                    description="recommendations account link"
+                    defaultMessage="Account"
+                  />
                 </Link>
               ),
             }}
@@ -44,7 +53,7 @@ function ConfirmedAccountStatus({ email }: Readonly<{ email?: string }>) {
 function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIdentities }>) {
   const identityLink = (
     <Link key={IDENTITY_PATH} to={IDENTITY_PATH} aria-label="go to identity page">
-      <FormattedMessage description="recommendations identity link" defaultMessage="Identity" />
+      <FormattedMessage id="common.identity" description="recommendations identity link" defaultMessage="Identity" />
     </Link>
   );
   return (
@@ -58,15 +67,24 @@ function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIden
       </div>
       <div className="text-wrapper">
         <h3>
-          {identities?.is_verified ? (
-            <FormattedMessage description="Verified Identity heading" defaultMessage="Verified identity" />
+          {identities?.is_verified === true ? (
+            <FormattedMessage
+              id="recommendations.verifiedHeading"
+              description="Verified Identity heading"
+              defaultMessage="Verified identity"
+            />
           ) : (
-            <FormattedMessage description="Verify Identity heading" defaultMessage="Verify your identity" />
+            <FormattedMessage
+              id="recommendations.verifyHeading"
+              description="Verify Identity heading"
+              defaultMessage="Verify your identity"
+            />
           )}
         </h3>
         <span>
           {identities?.is_verified ? (
             <FormattedMessage
+              id="recommendations.readDescription"
               description="read more details about your verified identity description"
               defaultMessage="Read more details about your verified identity at {identity}"
               values={{
@@ -75,6 +93,7 @@ function VerifiedIdentityStatus({ identities }: Readonly<{ identities?: UserIden
             />
           ) : (
             <FormattedMessage
+              id="recommendations.connectDescription"
               description="connect your identity to eduID description"
               defaultMessage="Connect your identity to eduID at {identity}"
               values={{
@@ -97,7 +116,7 @@ function ImprovedSecurityStatus({
 }>) {
   const securityLink = (
     <Link key={SECURITY_PATH} to={SECURITY_PATH} aria-label="go to security page">
-      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
+      <FormattedMessage id="common.security" description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
   return (
@@ -112,15 +131,24 @@ function ImprovedSecurityStatus({
       <div className="text-wrapper">
         <h3>
           {tokens?.length ? (
-            <FormattedMessage description="Improved Security heading" defaultMessage="Enhanced security" />
+            <FormattedMessage
+              id="recommendations.improvedHeading"
+              description="Improved Security heading"
+              defaultMessage="Enhanced security"
+            />
           ) : (
-            <FormattedMessage description="Improve Security heading" defaultMessage="Enhance security" />
+            <FormattedMessage
+              id="recommendations.improveHeading"
+              description="Improve Security heading"
+              defaultMessage="Enhance security"
+            />
           )}
         </h3>
         <span>
           {tokens?.length ? (
             <>
               <FormattedMessage
+                id="recommendations.readMoreDescription"
                 description="read more about your multi-factor authentication description"
                 defaultMessage="Read more about your multi-factor authentication at {security}"
                 values={{
@@ -130,12 +158,17 @@ function ImprovedSecurityStatus({
               {tokens.length === 1 && !(identities?.nin && identities?.is_verified) && (
                 <span className="top-divider suggestion-txt">
                   <FormattedMessage
+                    id="multiFactorAuth.multiple"
                     description="multiple key suggestion"
                     defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
                     values={{
                       strong: (
                         <strong>
-                          <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                          <FormattedMessage
+                            id="multiFactorAuth.multipleKey"
+                            description="multiple key - strong"
+                            defaultMessage={`add more than one`}
+                          />
                         </strong>
                       ),
                     }}
@@ -145,6 +178,7 @@ function ImprovedSecurityStatus({
             </>
           ) : (
             <FormattedMessage
+              id="recommendations.addDescription"
               description="add multi-factor authentication description"
               defaultMessage="Add multi-factor authentication at {security}"
               values={{
@@ -165,7 +199,7 @@ function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[]
       to={`${SECURITY_PATH}#manage-security-keys`}
       aria-label="go to manage your security key section"
     >
-      <FormattedMessage description="recommendations security link" defaultMessage="Security" />
+      <FormattedMessage id="common.security" description="recommendations security link" defaultMessage="Security" />
     </Link>
   );
   const verifiedToken = tokens?.find((token) => token.verified);
@@ -181,14 +215,23 @@ function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[]
       <div className="text-wrapper">
         <h3>
           {verifiedToken ? (
-            <FormattedMessage description="Verified Security key heading" defaultMessage="Verified security key" />
+            <FormattedMessage
+              id="recommendations.heading"
+              description="Verified Security key heading"
+              defaultMessage="Verified security key"
+            />
           ) : (
-            <FormattedMessage description="Verify your Security key" defaultMessage="Verify your security key" />
+            <FormattedMessage
+              id="recommendations.verify"
+              description="Verify your Security key"
+              defaultMessage="Verify your security key"
+            />
           )}
         </h3>
         <span>
           {verifiedToken ? (
             <FormattedMessage
+              id="recommendations.verifiedDescription"
               description="verified security key description"
               defaultMessage="Read more details about your verified multi-factor authentication at {security}"
               values={{
@@ -197,6 +240,7 @@ function VerifiedSecurityStatus({ tokens }: Readonly<{ tokens?: CredentialType[]
             />
           ) : (
             <FormattedMessage
+              id="recommendations.description"
               description="verify your security key description"
               defaultMessage="Verify your security key at {security}"
               values={{
@@ -242,23 +286,29 @@ export function Recommendations() {
   return (
     <article id="status-overview">
       <h2>
-        <FormattedMessage description="status overview title" defaultMessage="eduID status overview" />
+        <FormattedMessage
+          id="recommendations.title"
+          description="status overview title"
+          defaultMessage="eduID status overview"
+        />
       </h2>
       <p>
         <FormattedMessage
+          id="recommendations.statusOverview"
           description="status overview paragraph1"
           defaultMessage="The strength and usage of your eduID can be improved by following the steps listed below."
         />
       </p>
       <p>
         <FormattedMessage
+          id="recommendations.status"
           description="status overview paragraph2"
           defaultMessage={`Suggestions on what might be required depending on the 
               organisation you are accessing with your eduID, can be found in the Assurance levels section in {help}.`}
           values={{
             help: (
               <Link key="/help" to="/help/#help-assurance-levels-button" aria-label="go to help page" target="_blank">
-                <FormattedMessage description="recommendations help link" defaultMessage="Help" />
+                <FormattedMessage id="common.help" description="recommendations help link" defaultMessage="Help" />
               </Link>
             ),
           }}
@@ -266,6 +316,7 @@ export function Recommendations() {
       </p>
       <p className="help-text">
         <FormattedMessage
+          id="recommendations.statusOverviewParagraph3"
           description="status overview paragraph3"
           defaultMessage="Status of completed steps are indicated with a checkmark."
         />
@@ -278,13 +329,18 @@ export function Recommendations() {
       </section>
       <p className="help-text">
         <FormattedMessage
+          id="recommendations.additionalSettingsNote"
           description="confirmed account description"
           defaultMessage="Note: additional settings such as language, email addresses, password management as well as ORCID and ESI affiliation 
       can be edited at  {account}."
           values={{
             account: (
               <Link key={ACCOUNT_PATH} to={ACCOUNT_PATH} aria-label="go to account page">
-                <FormattedMessage description="recommendations account link" defaultMessage="Account" />
+                <FormattedMessage
+                  id="common.account"
+                  description="recommendations account link"
+                  defaultMessage="Account"
+                />
               </Link>
             ),
           }}

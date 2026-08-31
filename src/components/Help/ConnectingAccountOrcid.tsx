@@ -7,6 +7,7 @@ export function ConnectingAccountOrcid() {
       uuid="help-orcid-ladok"
       title={
         <FormattedMessage
+          id="connectingAccountOrcid.handle"
           description="about orcid ladok - handle"
           defaultMessage="Connecting account with ORCID / Ladok"
         />
@@ -15,10 +16,15 @@ export function ConnectingAccountOrcid() {
     >
       <article>
         <h4>
-          <FormattedMessage description="what is orcid - heading" defaultMessage="What is ORCID?" />
+          <FormattedMessage
+            id="connectingAccountOrcid.orcidHeading"
+            description="what is orcid - heading"
+            defaultMessage="What is ORCID?"
+          />
         </h4>
         <p>
           <FormattedMessage
+            id="connectingAccountOrcid.orcidParagraph"
             description="what is orcid - paragraph"
             defaultMessage={`ORCID is integrated into many research-related services, such as systems used by 
                     publishers, funders and institutions. ORCID is an independent non-profit organisation that provides 
@@ -28,11 +34,16 @@ export function ConnectingAccountOrcid() {
         </p>
 
         <p>
-          <FormattedMessage description="use orcid - list definition" defaultMessage="How to link ORCID with eduID:" />
+          <FormattedMessage
+            id="connectingAccountOrcid.useOrcid"
+            description="use orcid - list definition"
+            defaultMessage="How to link ORCID with eduID:"
+          />
         </p>
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="connectingAccountOrcid.useOrcid1"
               description="use orcid - list item 1"
               defaultMessage="read more and register for an ORCID at {orcid},"
               values={{
@@ -46,12 +57,14 @@ export function ConnectingAccountOrcid() {
           </li>
           <li>
             <FormattedMessage
+              id="connectingAccountOrcid.use2"
               description="use orcid - list item 2"
               defaultMessage="click the 'Add ORCID account' button in the Account area of eduID,"
             />
           </li>
           <li>
             <FormattedMessage
+              id="connectingAccountOrcid.use3"
               description="use orcid - list item 3"
               defaultMessage={`sign in to your ORCID account and grant 
                     eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is 
@@ -62,12 +75,14 @@ export function ConnectingAccountOrcid() {
 
         <h4>
           <FormattedMessage
+            id="connectingAccountOrcid.removeHeading"
             description="how remove linked orcid - heading"
             defaultMessage="How do I remove a linked ORCID from eduID?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="connectingAccountOrcid.removeParagraph"
             description="how remove linked orcid - paragraph"
             defaultMessage={`If you do not longer want eduID to know your ORCID iD you can remove it by 
                     clicking the Remove button in your eduID.`}
@@ -76,10 +91,15 @@ export function ConnectingAccountOrcid() {
       </article>
       <article>
         <h4>
-          <FormattedMessage description="what is ladok - heading" defaultMessage="What is Ladok?" />
+          <FormattedMessage
+            id="connectingAccountOrcid.heading"
+            description="what is ladok - heading"
+            defaultMessage="What is Ladok?"
+          />
         </h4>
         <p>
           <FormattedMessage
+            id="connectingAccountOrcid.paragraph"
             description="what is ladok - paragraph"
             defaultMessage={`Ladok is a student administration system used in all Swedish higher education 
                   institutions for registration and grading. A couple of schools have chosen to let eduID release the        
@@ -88,18 +108,24 @@ export function ConnectingAccountOrcid() {
         </p>
 
         <p>
-          <FormattedMessage description="use ladok - list definition" defaultMessage="How to link Ladok with eduID:" />
+          <FormattedMessage
+            id="connectingAccountOrcid.use"
+            description="use ladok - list definition"
+            defaultMessage="How to link Ladok with eduID:"
+          />
         </p>
 
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="connectingAccountOrcid.use1"
               description="use ladok - list item 1"
               defaultMessage="in the Account area of eduID, toggle the ESI control,"
             />
           </li>
           <li>
             <FormattedMessage
+              id="connectingAccountOrcid.useLadok2"
               description="use ladok - list item 2"
               defaultMessage="choose your institution from the drop down list - if it is available."
             />

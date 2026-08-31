@@ -41,6 +41,7 @@ export function Start() {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="multiFactorAuth.title"
             defaultMessage="Welcome, {username}!"
             description="start main title"
             values={{

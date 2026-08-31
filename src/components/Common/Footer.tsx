@@ -58,7 +58,7 @@ export const Footer = () => {
         <ul>
           <li>
             <Link className="help-link" to="/help" target="_blank">
-              <FormattedMessage defaultMessage="Help" description="Footer help" />
+              <FormattedMessage id="common.help" defaultMessage="Help" description="Footer help" />
             </Link>
           </li>
 

@@ -57,10 +57,14 @@ export function ResponseCodeAbortButton({
         id="response-code-abort-button"
         disabled={disabled}
       >
-        <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+        <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
       </EduIDButton>
       <EduIDButton type="submit" buttonstyle="primary" onClick={submit} id="response-code-ok-button" disabled={invalid}>
-        <FormattedMessage defaultMessage="Continue" description="Short code form Continue button" />
+        <FormattedMessage
+          id="common.continue"
+          defaultMessage="Continue"
+          description="Short code form Continue button"
+        />
       </EduIDButton>
     </div>
   );

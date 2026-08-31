@@ -14,6 +14,7 @@ export function EmailInUse() {
     <div>
       <h3 className={registerHeaderClass}>
         <FormattedMessage
+          id="emailInUse.heading"
           defaultMessage="An eduID is already using {email}"
           description="Signup"
           values={{ email: email }}
@@ -22,6 +23,7 @@ export function EmailInUse() {
       <div className="email-display">
         <p>
           <FormattedMessage
+            id="emailInUse.resetHint"
             defaultMessage="If this is your eduID, you can reset your password to log back in."
             description="Signup"
           />
@@ -30,7 +32,7 @@ export function EmailInUse() {
 
       <a href={reset_password_link}>
         <EduIDButton buttonstyle="primary" id={resetPasswordLinkId}>
-          <FormattedMessage defaultMessage="Reset your password" description="Signup" />
+          <FormattedMessage id="emailInUse.resetButton" defaultMessage="Reset your password" description="Signup" />
         </EduIDButton>
       </a>
     </div>

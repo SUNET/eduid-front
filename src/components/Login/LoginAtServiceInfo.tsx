@@ -30,6 +30,7 @@ export function LoginAtServiceInfo({ service_info }: Readonly<LoginAtServiceInfo
   return (
     <p>
       <FormattedMessage
+        id="atServiceInfo.use"
         defaultMessage="Use eduID to access {service_name}"
         values={{
           service_name: <strong>{service_name}</strong>,

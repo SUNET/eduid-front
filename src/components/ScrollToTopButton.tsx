@@ -16,6 +16,7 @@ export function ScrollToTopButton() {
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon
   const toTopLabel = intl.formatMessage({
+    id: "scrollToTopButton.button",
     defaultMessage: "Go to page top",
     description: "aria-label and title for scroll top button",
   });

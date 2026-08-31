@@ -18,7 +18,7 @@ export function LoginAbortButton() {
 
   return (
     <EduIDButton type="button" buttonstyle="secondary" onClick={handleOnClick} id="login-abort-button">
-      <FormattedMessage defaultMessage="Cancel" description="button cancel" />
+      <FormattedMessage id="common.cancel" defaultMessage="Cancel" description="button cancel" />
     </EduIDButton>
   );
 }

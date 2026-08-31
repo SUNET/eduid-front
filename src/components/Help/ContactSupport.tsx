@@ -6,19 +6,25 @@ export function ContactSupport() {
     <AccordionItemTemplate
       uuid="help-contact"
       title={
-        <FormattedMessage description="about contact support - handle" defaultMessage="Contacting eduID support" />
+        <FormattedMessage
+          id="contactSupport.handle"
+          description="about contact support - handle"
+          defaultMessage="Contacting eduID support"
+        />
       }
       additionalInfo={null}
     >
       <article>
         <h4>
           <FormattedMessage
+            id="contactSupport.heading"
             description="how to contact support - heading"
             defaultMessage="How to contact eduID support?"
           />
         </h4>
         <p>
           <FormattedMessage
+            id="contactSupport.paragraph1"
             description="how to contact support - paragraph 1"
             defaultMessage={`If you can't find the answers to your questions about eduID on this help page, 
                   you can contact the eduID support by mailing {support}.`}
@@ -30,6 +36,7 @@ export function ContactSupport() {
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="contactSupport.contact1"
               description="how to contact support - list item 1"
               defaultMessage={`Always let us know the email address you used when you logged in to eduID, and if you are 
                 logged in include your ‘eppn’ unique ID as presented in the logged in start page.`}
@@ -38,6 +45,7 @@ export function ContactSupport() {
           <li>
             <strong>
               <FormattedMessage
+                id="contactSupport.contact2"
                 description="how to contact support - list item 2"
                 defaultMessage="Don't include confidential or sensitive information such as your personal identity number in the email!"
               />
@@ -45,6 +53,7 @@ export function ContactSupport() {
           </li>
           <li>
             <FormattedMessage
+              id="contactSupport.contact3"
               description="how to contact support - list item 3"
               defaultMessage="If something went wrong, it is always a good idea to include screenshots with error messages to ease troubleshooting."
             />
@@ -53,11 +62,13 @@ export function ContactSupport() {
         <p>
           <strong>
             <FormattedMessage
+              id="contactSupport.contactSupport"
               description="how to contact support email - strong"
               defaultMessage="In order to get best possible support, we recommend that you send e-mail"
             />
           </strong>
           <FormattedMessage
+            id="contactSupport.contact"
             description="how to contact support phone"
             defaultMessage=", but for simple matters you can also reach us on phone number"
           />
@@ -65,11 +76,16 @@ export function ContactSupport() {
           <a href="tel:+468-55521362">08-555 213 62</a>
         </p>
         <p>
-          <FormattedMessage description="opening hours - list definition" defaultMessage="Opening hours:" />
+          <FormattedMessage
+            id="contactSupport.opening"
+            description="opening hours - list definition"
+            defaultMessage="Opening hours:"
+          />
         </p>
         <ul className="bullets">
           <li>
             <FormattedMessage
+              id="contactSupport.opening1"
               description="opening hours - list item 1"
               defaultMessage="Monday - Friday 09:00 - 16:00"
             />

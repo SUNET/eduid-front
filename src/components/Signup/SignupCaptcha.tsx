@@ -48,12 +48,17 @@ export function SignupCaptcha() {
     <div className="step-container">
       <section className="intro">
         <h1>
-          <FormattedMessage defaultMessage="Create eduID: Confirm/Accept" description="Signup" />
+          <FormattedMessage
+            id="common.createEduidConfirm"
+            defaultMessage="Create eduID: Confirm/Accept"
+            description="Signup"
+          />
         </h1>
         <ServiceInfo />
         <div className="lead">
           <p>
             <FormattedMessage
+              id="common.captchaLead"
               defaultMessage="Confirm that you are a human as protection against automated spam."
               description="Signup captcha lead text"
             />

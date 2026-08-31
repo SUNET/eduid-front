@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 
 interface ExtraProps {
   "aria-label"?: string;
-  "title"?: string;
+  title?: string;
 }
 
 interface EduIDButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +18,7 @@ export const EduIDButton = forwardRef<HTMLButtonElement, Readonly<EduIDButtonPro
 
   if (props.buttonstyle.includes("close")) {
     const closeLabel = intl.formatMessage({
-      id: "modal.close",
+      id: "eduIDButton.label",
       defaultMessage: "Close",
       description: "Notification modal close label",
     });

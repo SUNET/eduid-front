@@ -55,20 +55,20 @@ export function Header({ loginRef }: Readonly<HeaderProps>) {
     ) {
       return (
         <EduIDButton buttonstyle="secondary sm" id="login" onClick={handleLogin}>
-          <FormattedMessage defaultMessage="Log in" description="Header login" />
+          <FormattedMessage id="common.logIn" defaultMessage="Log in" description="Header login" />
         </EduIDButton>
       );
     } else if (authn_options.has_session) {
       return (
         <EduIDButton buttonstyle="secondary icon sm" id="logout" onClick={handleLogout} disabled={!login_url}>
           <FontAwesomeIcon icon={faArrowRightFromBracket} />
-          <FormattedMessage defaultMessage="Log out" description="Header logout" />
+          <FormattedMessage id="headerNav.logout" defaultMessage="Log out" description="Header logout" />
         </EduIDButton>
       );
     } else if (location.pathname.includes("login") && Object.keys(authn_options).length > 0) {
       return (
         <EduIDButton buttonstyle="secondary sm" id="register" onClick={handleRegister}>
-          <FormattedMessage defaultMessage="create eduid" description="Header register" />
+          <FormattedMessage id="header.register" defaultMessage="create eduid" description="Header register" />
         </EduIDButton>
       );
     } else if (eppn) {

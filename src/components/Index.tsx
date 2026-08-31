@@ -45,11 +45,16 @@ export function Index() {
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
       <div className="landing-content horizontal-content-margin">
         <h1 className="tagline">
-          <FormattedMessage defaultMessage="Safer and easier login with eduID" description="eduID index" />
+          <FormattedMessage
+            id="index.edu"
+            defaultMessage="Safer and easier login with eduID"
+            description="eduID index"
+          />
         </h1>
         <p>
           <strong>
             <FormattedMessage
+              id="index.create"
               defaultMessage={`Create an eduID and connect it to your identity for access to services and 
                 organisations related to higher education.`}
               description="eduID index lead text"
@@ -58,6 +63,7 @@ export function Index() {
         </p>
         <p>
           <FormattedMessage
+            id="index.benefits"
             defaultMessage={`eduID is easier because you only have one login and safer 
              because it's connected to a real individual - you.`}
             description="eduID index lead text"
@@ -65,21 +71,23 @@ export function Index() {
         </p>
         <p className="med-txt">
           <FormattedMessage
+            id="index.read"
             defaultMessage={`You can read more about eduID at {Sunet} and in our `}
             description="read more at Sunet"
             values={{
               Sunet: (
                 <a href="https://www.sunet.se/services/identifiering/eduid" target="_blank" rel="noreferrer">
-                  <FormattedMessage description="sunet link" defaultMessage="Sunet's website" />
+                  <FormattedMessage id="index.sunetLink" description="sunet link" defaultMessage="Sunet's website" />
                 </a>
               ),
             }}
           />
           &nbsp;
           <a href={`${eduid_site_link}help`} target="_blank" rel="noreferrer">
-            <FormattedMessage description="help link" defaultMessage="help content" />
+            <FormattedMessage id="index.helpLink" description="help link" defaultMessage="help content" />
           </a>
           <FormattedMessage
+            id="index.link"
             defaultMessage=", always accessible from the footer. Register or log in using the buttons below!"
             description="read more in the help link"
           />
@@ -90,37 +98,45 @@ export function Index() {
             buttonstyle="primary"
             id="sign-up-button"
           >
-            <FormattedMessage defaultMessage="Create your eduID" description="Signup button" />
+            <FormattedMessage id="index.signupButton" defaultMessage="Create your eduID" description="Signup button" />
           </EduIDButton>
           <EduIDButton onClick={redirectToLogin} buttonstyle="secondary" id="login-button">
-            <FormattedMessage defaultMessage="log in" description="login button" />
+            <FormattedMessage id="common.logIn" defaultMessage="log in" description="login button" />
           </EduIDButton>
         </div>
       </div>
       <div className="flex-between landing-how-to">
         <div>
-          <FormattedMessage defaultMessage="Create a basic account with your email address." description="how-to 1" />
+          <FormattedMessage
+            id="index.how1"
+            defaultMessage="Create a basic account with your email address."
+            description="how-to 1"
+          />
 
           <span className="icon-holder">
             <img height="24" src={registerIcon} alt="Create account" />
           </span>
         </div>
         <div>
-          <FormattedMessage defaultMessage="Prove that you are YOU." description="how-to 2" />
+          <FormattedMessage id="index.how2" defaultMessage="Prove that you are YOU." description="how-to 2" />
 
           <span className="icon-holder">
             <FontAwesomeIcon icon={faIdCard as IconProp} />
           </span>
         </div>
         <div>
-          <FormattedMessage defaultMessage="Level up your login security." description="how-to 3" />
+          <FormattedMessage id="index.how3" defaultMessage="Level up your login security." description="how-to 3" />
 
           <span className="icon-holder">
             <img height="24" src={securityIcon} alt="Security" />
           </span>
         </div>
         <div>
-          <FormattedMessage defaultMessage="Level up again - proving that YOU are logging in." description="how-to 4" />
+          <FormattedMessage
+            id="index.how4"
+            defaultMessage="Level up again - proving that YOU are logging in."
+            description="how-to 4"
+          />
 
           <span className="icon-holder">
             <FontAwesomeIcon icon={faIdCard as IconProp} />

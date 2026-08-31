@@ -54,6 +54,7 @@ export function ResetPasswordCaptcha() {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="captcha.reset"
             defaultMessage="Reset Password: Confirm that you are a human"
             description="Reset password captcha"
           />
@@ -62,6 +63,7 @@ export function ResetPasswordCaptcha() {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="common.captchaLead"
               defaultMessage="Confirm that you are a human as protection against automated spam."
               description="Reset password captcha lead text"
             />

@@ -14,7 +14,11 @@ export function ChangePasswordRadioOption({
     <fieldset className="toggle-change-password-options">
       <legend className="require">
         <strong>
-          <FormattedMessage defaultMessage="Choose an option" description="Change password radio group legend" />
+          <FormattedMessage
+            id="passwordRadio.change"
+            defaultMessage="Choose an option"
+            description="Change password radio group legend"
+          />
         </strong>
       </legend>
       <div className="radio-input-container">
@@ -28,7 +32,11 @@ export function ChangePasswordRadioOption({
             onChange={handleSwitchChange}
           />
           <span>
-            <FormattedMessage defaultMessage="Suggested password" description="suggested password radio button" />
+            <FormattedMessage
+              id="passwordRadio.suggestedButton"
+              defaultMessage="Suggested password"
+              description="suggested password radio button"
+            />
           </span>
         </label>
         <label htmlFor="custom-pw">
@@ -42,6 +50,7 @@ export function ChangePasswordRadioOption({
           />
           <span>
             <FormattedMessage
+              id="passwordRadio.button"
               defaultMessage="Create your own password"
               description="Set your own password radio button"
             />

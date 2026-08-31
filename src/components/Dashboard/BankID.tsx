@@ -21,6 +21,7 @@ export function BankID() {
     <>
       <p>
         <FormattedMessage
+          id="bankID.bank"
           description="bankID proofing help text"
           defaultMessage="To use this option you will need to first create a digital ID in the {bankID_link} app."
           values={{
@@ -34,13 +35,14 @@ export function BankID() {
       </p>
       <p>
         <FormattedMessage
+          id="bankID.verify"
           description="verify identity"
           defaultMessage="The button below will take you to an external identification site, where you by identifying yourself with BankID will verify your identity towards eduID."
         />
       </p>
 
       <EduIDButton buttonstyle="primary sm" onClick={useBankID} aria-label="Proceed with BankID">
-        <FormattedMessage defaultMessage="Proceed" description="button proceed" />
+        <FormattedMessage id="letterProofing.proceedButton" defaultMessage="Proceed" description="button proceed" />
       </EduIDButton>
     </>
   );

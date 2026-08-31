@@ -45,12 +45,13 @@ export function Errors() {
       {isUnknown && <UnknownError />}
       <p>
         <FormattedMessage
+          id="errors.instruction"
           defaultMessage="You can review your settings at the"
           description="Errors go to dashboard instruction"
         />
         &nbsp;
         <EduIDButton buttonstyle="link" id="dashboard-button" onClick={handleDashboardOnClick}>
-          <FormattedMessage defaultMessage="eduID Dashboard" description="Errors button" />
+          <FormattedMessage id="errors.button" defaultMessage="eduID Dashboard" description="Errors button" />
         </EduIDButton>
       </p>
       <ErrorTechnicalInfo errorURL={errorURL} />
@@ -68,16 +69,16 @@ export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLDa
           <>
             <caption>
               <h3>
-                <FormattedMessage defaultMessage="Technical Information" description="errorURL" />
+                <FormattedMessage id="errors.urlError" defaultMessage="Technical Information" description="errorURL" />
               </h3>
             </caption>
             <thead>
               <tr>
                 <th className="figcaption">
-                  <FormattedMessage defaultMessage="Name" description="column name label" />
+                  <FormattedMessage id="errors.columnNameLabel" defaultMessage="Name" description="column name label" />
                 </th>
                 <th className="figcaption">
-                  <FormattedMessage defaultMessage="Value" description="column value label" />
+                  <FormattedMessage id="errors.label" defaultMessage="Value" description="column value label" />
                 </th>
               </tr>
             </thead>
@@ -87,7 +88,11 @@ export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLDa
                 <tr key="eppn">
                   <td>
                     <strong>
-                      <FormattedMessage defaultMessage="eduID identifier" description="column eduID identifier label" />
+                      <FormattedMessage
+                        id="errors.columnLabel"
+                        defaultMessage="eduID identifier"
+                        description="column eduID identifier label"
+                      />
                     </strong>
                   </td>
                   <td>{error_info.eppn}</td>
@@ -114,6 +119,7 @@ export function ErrorTechnicalInfo({ errorURL }: Readonly<{ errorURL: ErrorURLDa
               <td className="plain-cell">
                 <strong>
                   <FormattedMessage
+                    id="errors.error"
                     defaultMessage="There is no technical information available"
                     description="no error information message"
                   />

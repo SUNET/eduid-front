@@ -51,6 +51,7 @@ export function EmailLinkSent() {
       <section className="intro">
         <h1>
           <FormattedMessage
+            id="emailLinkSent.heading"
             defaultMessage="Reset Password: Verify email address"
             description="Reset Password email link sent heading"
           />
@@ -58,6 +59,7 @@ export function EmailLinkSent() {
         <div className="lead">
           <p>
             <FormattedMessage
+              id="common.enterSixDigitCode"
               defaultMessage="Enter the six digit code sent from no-reply@eduid.se to {email} to verify your email address."
               description="Reset Password email link sent"
               values={{
@@ -73,6 +75,7 @@ export function EmailLinkSent() {
           </p>
           <p>
             <FormattedMessage
+              id="emailLinkSent.haven"
               defaultMessage="If you haven't received it, cancel and restart the process."
               description="Reset Password email link sent"
             />
@@ -82,7 +85,11 @@ export function EmailLinkSent() {
       {reset_pw_status?.email.expires_time_left !== undefined && (
         <p>
           <FontAwesomeIcon icon={faClock as IconProp} />
-          <FormattedMessage defaultMessage="The code is valid for 2 hours." description="Reset Password code expiry" />
+          <FormattedMessage
+            id="emailLinkSent.code"
+            defaultMessage="The code is valid for 2 hours."
+            description="Reset Password code expiry"
+          />
         </p>
       )}
       <div className="enter-code">

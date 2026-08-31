@@ -13,7 +13,7 @@ export function AccountId() {
     <div className="figure tight" id="uniqueId-container">
       <label htmlFor={idUserEppn}>
         <strong>
-          <FormattedMessage defaultMessage="Unique ID:" description="Dashboard AccountId" />
+          <FormattedMessage id="common.uniqueId" defaultMessage="Unique ID:" description="Dashboard AccountId" />
         </strong>
       </label>
       <input readOnly={true} name={eppn} id={idUserEppn} ref={ref} defaultValue={eppn} />
@@ -26,10 +26,11 @@ export function AccountIdDisplay() {
   return (
     <article id="unique-id">
       <h2>
-        <FormattedMessage defaultMessage="Unique ID" description="Dashboard AccountId" />
+        <FormattedMessage id="accountId.heading" defaultMessage="Unique ID" description="Dashboard AccountId" />
       </h2>
       <p>
         <FormattedMessage
+          id="accountId.identifier"
           defaultMessage={`This identifier is a username for your eduID that you may need to provide when accessing other services or requesting  
           support. It is part of what may be referred to as EPPN.`}
           description="Dashboard AccountId"

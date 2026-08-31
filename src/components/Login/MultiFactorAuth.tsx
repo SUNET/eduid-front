@@ -46,6 +46,7 @@ export function MultiFactorAuth() {
   if (authn_options.swedish_eid || authn_options.eidas || authn_options.freja_eid) {
     leadText = (
       <FormattedMessage
+        id="multiFactorAuth.paragraph"
         defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID, Freja+, eIDAS or freja eID.`}
         description="MFA paragraph with swedish option"
       />
@@ -54,13 +55,24 @@ export function MultiFactorAuth() {
 
   if (securityZoneAction) {
     headingText = (
-      <FormattedMessage defaultMessage="Re-authentication: with MFA" description="Security zone MFA heading" />
+      <FormattedMessage
+        id="multiFactorAuth.heading"
+        defaultMessage="Re-authentication: with MFA"
+        description="Security zone MFA heading"
+      />
     );
   } else if (has_session) {
-    headingText = <FormattedMessage defaultMessage="Log in: with MFA" description="Login MFA heading" />;
+    headingText = (
+      <FormattedMessage
+        id="multiFactorAuth.mfaHeading"
+        defaultMessage="Log in: with MFA"
+        description="Login MFA heading"
+      />
+    );
   } else {
     headingText = (
       <FormattedMessage
+        id="multiFactorAuth.title"
         defaultMessage="Welcome, {username}!"
         description="start main title"
         values={{
@@ -117,6 +129,7 @@ export function MultiFactorAuth() {
           <>
             <p>
               <FormattedMessage
+                id="multiFactorAuth.mfaParagraph"
                 defaultMessage={`Choose a second method to authenticate yourself, ensuring only you can access your eduID. `}
                 description="MFA paragraph"
               />
@@ -128,12 +141,17 @@ export function MultiFactorAuth() {
               {show_suggestion && (
                 <span className="suggestion suggestion-txt">
                   <FormattedMessage
+                    id="multiFactorAuth.multiple"
                     description="multiple key suggestion"
                     defaultMessage="It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
                     values={{
                       strong: (
                         <strong>
-                          <FormattedMessage description="multiple key - strong" defaultMessage={`add more than one`} />
+                          <FormattedMessage
+                            id="multiFactorAuth.multipleKey"
+                            description="multiple key - strong"
+                            defaultMessage={`add more than one`}
+                          />
                         </strong>
                       ),
                     }}
@@ -170,6 +188,7 @@ function ExtraSecurityNotAvailable() {
         <div className="text-wrapper">
           <p>
             <FormattedMessage
+              id="multiFactorAuth.serviceRequires"
               defaultMessage={`The service you are trying to log in to requires an extra level of security.
                            Unfortunately, your eduID account isn't set up with any of the options available
                            for that.
@@ -181,12 +200,17 @@ function ExtraSecurityNotAvailable() {
       </div>
 
       <h2>
-        <FormattedMessage defaultMessage="Options available in the eduID settings:" description="Login MFA" />
+        <FormattedMessage
+          id="multiFactorAuth.optionsHeading"
+          defaultMessage="Options available in the eduID settings:"
+          description="Login MFA"
+        />
       </h2>
 
       <ul className="bullets">
         <li>
           <FormattedMessage
+            id="multiFactorAuth.addKeyInfo"
             defaultMessage={`Add a Security Key to your account. This can be a physical USB key or a device such as
                  a smartphone or tablet that supports the WebAuthn standard. Some computers also have built-in
                  fingerprint readers that can be used as a Security Key.`}
@@ -196,6 +220,7 @@ function ExtraSecurityNotAvailable() {
 
         <li>
           <FormattedMessage
+            id="multiFactorAuth.verifyInfo"
             defaultMessage={`Verify your identity using the options applicable to you.`}
             description="Login MFA"
           />
@@ -204,7 +229,7 @@ function ExtraSecurityNotAvailable() {
       <div className="buttons-center">
         {!securityZoneAction && <LoginAbortButton />}
         <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={goToDashboard}>
-          <FormattedMessage defaultMessage="go to eduID" description="Login MFA link" />
+          <FormattedMessage id="common.goToEduid" defaultMessage="go to eduID" description="Login MFA link" />
         </EduIDButton>
       </div>
     </section>

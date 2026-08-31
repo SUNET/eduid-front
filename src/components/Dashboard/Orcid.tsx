@@ -40,7 +40,7 @@ export function Orcid() {
 
   // aria-label can't be an Element, we need to get the actual translated string here
   const removeLabel = intl.formatMessage({
-    id: "orcid.remove",
+    id: "common.remove",
     defaultMessage: "Remove",
     description: "Remove orcid aria label",
   });
@@ -51,13 +51,13 @@ export function Orcid() {
         <tbody>
           <tr className="display-none">
             <th>
-              <FormattedMessage description="orcid logo" defaultMessage="orcid logo" />
+              <FormattedMessage id="orcid.logo" description="orcid logo" defaultMessage="orcid logo" />
             </th>
             <th>
-              <FormattedMessage description="orcid id" defaultMessage="orcid id" />
+              <FormattedMessage id="orcid.id" description="orcid id" defaultMessage="orcid id" />
             </th>
             <th>
-              <FormattedMessage description="orcid remove" defaultMessage="remove" />
+              <FormattedMessage id="common.removeText" description="orcid remove" defaultMessage="remove" />
             </th>
           </tr>
           <tr>
@@ -85,11 +85,12 @@ export function Orcid() {
         <div className="buttons">
           <EduIDButton buttonstyle="primary icon" id="connect-orcid-button" onClick={handleOrcidConnect}>
             <img className="orcid-logo" src={orcidIcon} alt="Orcid logo" />
-            <FormattedMessage description="orcid connect button" defaultMessage="Add ORCID account" />
+            <FormattedMessage id="orcid.button" description="orcid connect button" defaultMessage="Add ORCID account" />
           </EduIDButton>
         </div>
         <p className="help-text">
           <FormattedMessage
+            id="orcid.description"
             description="orcid description"
             defaultMessage="ORCID iD distinguishes you from other researchers and allows linking of your research outputs and activities to your identity, regardless of the organisation you are working with."
           />

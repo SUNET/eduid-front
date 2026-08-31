@@ -31,7 +31,7 @@ export function EmailInput({
   const intl = useIntl();
   // placeholder can't be an Element, we need to get the actual translated string here
   const placeholder = intl.formatMessage({
-    id: "placeholder.email",
+    id: "emails.emailPlaceholder",
     defaultMessage: "name@example.com",
     description: "placeholder text for email input",
   });
@@ -68,7 +68,13 @@ export function EmailInput({
       aria-errormessage={ariaErrorMessage}
       // parameters for InputWrapper
       helpBlock={helpBlock}
-      label={<FormattedMessage defaultMessage="Email address" description="profile email display title" />}
+      label={
+        <FormattedMessage
+          id="common.emailAddress"
+          defaultMessage="Email address"
+          description="profile email display title"
+        />
+      }
     />
   );
 }
