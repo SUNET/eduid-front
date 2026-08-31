@@ -124,37 +124,6 @@
 
 /* use another device */
 .use-another-device {
-  .response-code-inputs {
-    input {
-      display: inline-block;
-      border: 1px solid var(--txt-gray);
-      font-size: 1.75rem;
-      margin: 5px;
-      width: 2.5rem;
-      text-align: center;
-
-      &:focus {
-        box-shadow: none;
-        border: 2px solid var(--body-txt);
-        position: relative;
-      }
-
-      &:nth-child(3) {
-        margin-right: 1.5rem;
-      }
-    }
-
-    @media (--bp-md) {
-      input {
-        margin: 5px -1px 5px 0;
-
-        &:nth-child(3) {
-          margin-right: 1rem;
-        }
-      }
-    }
-  }
-
   &.device1 {
     .response-code-inputs {
       background: var(--contrast-color);
