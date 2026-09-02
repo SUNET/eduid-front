@@ -1,10 +1,10 @@
+import * as Sentry from "@sentry/react";
 import { jsConfigApi } from "apis/eduidJsConfig";
 import personalDataApi from "apis/eduidPersonalData";
 import { ReduxIntlProvider } from "components/Common/ReduxIntl";
 import { IndexMain, SETTINGS_PATHS } from "components/IndexMain";
 import { eduidStore } from "eduid-init-app";
 import { LOCALIZED_MESSAGES } from "globals";
-import Raven from "raven-js";
 import ReactDOMClient from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import indexSlice from "slices/IndexConfig";
@@ -33,7 +33,10 @@ const getConfig = async function () {
   const jsConfig = await jsConfig_promise;
   if (jsConfig.isSuccess) {
     if (jsConfig.data.payload.sentry_dsn) {
-      Raven.config(jsConfig.data.payload.sentry_dsn as string).install();
+      Sentry.init({
+        dsn: jsConfig.data.payload.sentry_dsn as string,
+        sendDefaultPii: false,
+      });
     }
     const isSettings = SETTINGS_PATHS.some((path) => globalThis.location.href.includes(path));
 
