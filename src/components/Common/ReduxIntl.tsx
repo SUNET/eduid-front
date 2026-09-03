@@ -16,7 +16,7 @@ interface Props extends React.PropsWithChildren {
  * active language available in the Redux store (state.intl), and any changes to it there
  * will result in re-rendering of all components using those settings (i.e. changing language).
  */
-export const ReduxIntlProvider: React.FC<Props> = ({ store, children }) => (
+export const ReduxIntlProvider = ({ store, children }: Props) => (
   <ReduxProvider store={store}>
     <IntlProvider>{children}</IntlProvider>
   </ReduxProvider>
