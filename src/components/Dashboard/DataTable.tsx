@@ -73,6 +73,8 @@ function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
     return null;
   }
 
+  const hasUnverifiedEmail = data.some((datum) => datum.email !== undefined && !datum.verified);
+
   return (
     <>
       {data.map((datum: { email?: string; number?: string; verified: boolean; primary: boolean }, i: number) => {
@@ -81,6 +83,7 @@ function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
         const valueName = keysArray[0];
         const value = valueArray[0];
         const email = datum.email ?? "";
+        const disableRemove = datum.primary && hasUnverifiedEmail;
 
         let valueStatus;
         if (!datum.verified) {
@@ -109,7 +112,7 @@ function DataTableRows({ data, setSelectedEmail }: Readonly<DataTableProps>) {
             {/* not render the close button when there is only one email */}
             <td className="remove-data">
               {(data && data?.length > 1 && valueName === "email") || valueName === "number" ? (
-                <EduIDButton buttonstyle="remove sm" onClick={() => handleRemove(email)} />
+                <EduIDButton buttonstyle="remove sm" disabled={disableRemove} onClick={() => handleRemove(email)} />
               ) : null}
             </td>
           </tr>
