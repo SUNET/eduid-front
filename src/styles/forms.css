@@ -149,7 +149,6 @@ fieldset {
   & label {
     letter-spacing: 0;
     font-size: var(--txt-md);
-    width: 100%;
   }
 
   /* for orange asterisk after label */
@@ -162,6 +161,12 @@ fieldset {
   & .help-block {
     font-size: var(--txt-md);
     text-transform: lowercase;
+  }
+}
+
+.response-code-inputs {
+  label {
+    width: 100%;
   }
 }
 
