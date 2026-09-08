@@ -21,13 +21,14 @@ export function ChangePasswordRadioOption({
           />
         </strong>
       </legend>
-      <div className="radio-input-container">
-        <label htmlFor="suggested-pw">
+      <div className="password-option-segmented-control">
+        <label htmlFor="suggested-pw" className="password-option">
           <Field
-            name="suggested-password"
+            name="password-option"
             component="input"
             type="radio"
             id="suggested-pw"
+            value="suggested"
             checked={renderSuggested}
             onChange={handleSwitchChange}
           />
@@ -39,12 +40,13 @@ export function ChangePasswordRadioOption({
             />
           </span>
         </label>
-        <label htmlFor="custom-pw">
+        <label htmlFor="custom-pw" className="password-option">
           <Field
-            name="custom-password"
+            name="password-option"
             component="input"
             type="radio"
             id="custom-pw"
+            value="custom"
             checked={!renderSuggested}
             onChange={handleSwitchChange}
           />
