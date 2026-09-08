@@ -1,14 +1,8 @@
 import { ladokApi } from "apis/eduidLadok";
 import { useAppSelector } from "eduid-hooks";
-import { useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage, useIntl } from "react-intl";
-import Select, { SingleValue } from "react-select";
-
-interface SelectedUniProps {
-  label: string;
-  value: string;
-}
 
 export const LadokContainer = () => {
   const isLinked = useAppSelector((state) => state.ladok.isLinked);
@@ -100,7 +94,7 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
     description: "Ladok account linking",
   });
   // if no university is selected, select box label will be placeholder
-  const [selected, setSelected] = useState<SelectedUniProps>({ label: placeholder, value: "" });
+  const [selected, setSelected] = useState(ladokName ?? "");
 
   useEffect(() => {
     if (ladokUnis === undefined) {
@@ -110,39 +104,20 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
     }
   }, [fetchLadokUniversities, ladokUnis]);
 
-  async function handleOnChange(newValue: SingleValue<SelectedUniProps>): Promise<void> {
-    if (newValue?.value) {
-      setSelected(newValue);
-      const result = await linkUser({ ladok_name: newValue.value });
+  useEffect(() => {
+    setSelected(ladokName ?? "");
+  }, [ladokName]);
+
+  async function handleOnChange(event: ChangeEvent<HTMLSelectElement>): Promise<void> {
+    const ladok_name = event.target.value;
+    if (ladok_name) {
+      setSelected(ladok_name);
+      const result = await linkUser({ ladok_name });
       if (result.isSuccess) {
         onLinkSuccess();
       }
     }
   }
-
-  // Convert ladokUnis to an array of SelectedUniProps that works with the Select component
-  const selectOptions: SelectedUniProps[] = useMemo(() => {
-    if (ladokUnis === undefined) {
-      return [];
-    }
-
-    const res: SelectedUniProps[] = [];
-
-    Object.values(ladokUnis).forEach((item) => {
-      // Get the name of the university in the users locale, fallback to English and then to ladok_name.
-      const localised = item.name[locale] || item.name.en || item.ladok_name;
-      const curr: SelectedUniProps = { label: localised, value: item.ladok_name };
-
-      // initialise 'selected'
-      if (item.ladok_name === ladokName) {
-        setSelected(curr);
-      }
-
-      res.push(curr);
-    });
-
-    return res;
-  }, [ladokUnis, ladokName, locale]);
 
   return (
     <>
@@ -158,15 +133,28 @@ const LadokUniversitiesDropdown = ({ onLinkSuccess }: { onLinkSuccess: () => voi
                   description="Ladok account linking"
                 />
               </span>
-              <Select
-                isDisabled={fetchFailed}
-                options={selectOptions}
+              <select
+                aria-label={intl.formatMessage({
+                  id: "ladok.selectInstitution",
+                  defaultMessage: "Select higher education institution",
+                  description: "Ladok account linking",
+                })}
+                disabled={fetchFailed}
                 onChange={handleOnChange}
                 value={selected}
-                isSearchable={false}
-                className="react-select-container"
-                classNamePrefix="react-select"
-              />
+              >
+                <option value="" disabled>
+                  {placeholder}
+                </option>
+                {Object.values(ladokUnis ?? {}).map((item) => {
+                  const localised = item.name[locale] || item.name.en || item.ladok_name;
+                  return (
+                    <option key={item.ladok_name} value={item.ladok_name}>
+                      {localised}
+                    </option>
+                  );
+                })}
+              </select>
             </fieldset>
           </form>
         )}
