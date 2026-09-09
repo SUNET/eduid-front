@@ -21,8 +21,8 @@ export function ChangePasswordRadioOption({
           />
         </strong>
       </legend>
-      <div className="password-option-segmented-control">
-        <label htmlFor="suggested-pw" className="password-option">
+      <div className="option-segmented-control">
+        <label htmlFor="suggested-pw" className="segmented-option">
           <Field
             name="password-option"
             component="input"
@@ -40,7 +40,7 @@ export function ChangePasswordRadioOption({
             />
           </span>
         </label>
-        <label htmlFor="custom-pw" className="password-option">
+        <label htmlFor="custom-pw" className="segmented-option">
           <Field
             name="password-option"
             component="input"
