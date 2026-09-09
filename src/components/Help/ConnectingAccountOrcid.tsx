@@ -66,7 +66,7 @@ export function ConnectingAccountOrcid() {
             <FormattedMessage
               id="connectingAccountOrcid.use3"
               description="use orcid - list item 3"
-              defaultMessage={`sign in to your ORCID account and grant 
+              defaultMessage={`log in to your ORCID account and grant 
                     eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is 
                     connected to the correct eduID.`}
             />

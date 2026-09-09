@@ -183,7 +183,7 @@ export function SignupCredentials() {
             <p>
               <FormattedMessage
                 id="credentials.non"
-                defaultMessage="A security key has been registered. This type of key also requires a password to sign in."
+                defaultMessage="A security key has been registered. This type of key also requires a password to log in."
                 description="non-discoverable key needs password"
               />
             </p>
