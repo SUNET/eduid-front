@@ -700,7 +700,7 @@
   },
   "credentials.non": {
     "developer_comment": "non-discoverable key needs password",
-    "string": "En säkerhetsnyckel har registrerats. Den här typen av nyckel kräver även ett lösenord för att logga in."
+    "string": "En säkerhetsnyckel har registrerats. Den här typen av nyckel kräver även ett lösenord för inloggning."
   },
   "credentials.passkeyLink": {
     "developer_comment": "signup passkey help link",
