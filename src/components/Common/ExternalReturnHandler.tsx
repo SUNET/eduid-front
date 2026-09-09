@@ -45,6 +45,7 @@ export function ExternalReturnHandler() {
     (app_name: string | undefined) => {
       const actions: Record<string, typeof authnGetStatus> = {
         eidas: eidasGetStatus,
+        samleid: eidasGetStatus,
         bankid: bankIDGetStatus,
         freja_eid: frejaeIDGetStatus,
         orcid: orcidGetStatus,

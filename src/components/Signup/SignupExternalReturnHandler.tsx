@@ -15,6 +15,7 @@ interface SignupCallbackParams {
 
 const statusActions: Record<string, "eidas" | "bankid" | "freja_eid"> = {
   eidas: "eidas",
+  samleid: "eidas",
   bankid: "bankid",
   freja_eid: "freja_eid",
 };
@@ -45,7 +46,12 @@ export function SignupExternalReturnHandler() {
 
   const getStatusAction = useCallback(
     (app_name: string) => {
-      const actions = { eidas: eidasGetStatus, bankid: bankIDGetStatus, freja_eid: frejaeIDGetStatus };
+      const actions = {
+        eidas: eidasGetStatus,
+        samleid: eidasGetStatus,
+        bankid: bankIDGetStatus,
+        freja_eid: frejaeIDGetStatus,
+      };
       return actions[app_name as keyof typeof actions];
     },
     [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus],
