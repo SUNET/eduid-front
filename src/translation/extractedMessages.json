@@ -605,7 +605,7 @@
   },
   "connectingAccountOrcid.use3": {
     "developer_comment": "use orcid - list item 3",
-    "string": "sign in to your ORCID account and grant eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is connected to the correct eduID."
+    "string": "log in to your ORCID account and grant eduID permission to receive your ORCID iD. This process ensures that the correct ORCID iD is connected to the correct eduID."
   },
   "connectingAccountOrcid.useLadok2": {
     "developer_comment": "use ladok - list item 2",
@@ -700,7 +700,7 @@
   },
   "credentials.non": {
     "developer_comment": "non-discoverable key needs password",
-    "string": "A security key has been registered. This type of key also requires a password to sign in."
+    "string": "A security key has been registered. This type of key also requires a password to log in."
   },
   "credentials.passkeyLink": {
     "developer_comment": "signup passkey help link",
@@ -1945,7 +1945,7 @@
   },
   "multiFactorAuth.multiple": {
     "developer_comment": "multiple key suggestion",
-    "string": "It is strongly recommended to {strong} security key or passkey to ensure you can still sign in to your account if one is lost."
+    "string": "It is strongly recommended to {strong} security key or passkey to ensure you can still log in to your account if one is lost."
   },
   "multiFactorAuth.multipleKey": {
     "developer_comment": "multiple key - strong",
@@ -3264,7 +3264,7 @@
   },
   "userCreated.hint": {
     "developer_comment": "signup hint",
-    "string": "Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer."
+    "string": "Note: Log in to eduID.se anytime to manage your account settings, e.g. add more keys, change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer."
   },
   "userCreated.lead": {
     "developer_comment": "Strong password - lead",

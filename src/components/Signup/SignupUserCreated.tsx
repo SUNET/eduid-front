@@ -222,7 +222,7 @@ export function SignupUserCreated() {
       <p className="hint">
         <FormattedMessage
           id="userCreated.hint"
-          defaultMessage={`Note: Sign in to eduID.se anytime to manage your account settings, e.g. add more keys, 
+          defaultMessage={`Note: Log in to eduID.se anytime to manage your account settings, e.g. add more keys, 
             change password, update name and verify your identity. Read more about eduID in the help content accessible in the footer.`}
           description="signup hint"
         />
