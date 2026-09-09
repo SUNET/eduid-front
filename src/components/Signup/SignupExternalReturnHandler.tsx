@@ -15,6 +15,7 @@ interface SignupCallbackParams {
 
 const statusActions: Record<string, "eidas" | "bankid" | "freja_eid"> = {
   eidas: "eidas",
+  samleid: "eidas",
   bankid: "bankid",
   freja_eid: "freja_eid",
 };
