@@ -361,7 +361,7 @@ button.scroll-to-top {
   background-color: transparent;
   filter: brightness(0) saturate(100%);
 
-  &:hover {
+  &:not(:disabled):hover {
     filter: var(--bright-orange-filter);
     transform: scale(0.8);
   }

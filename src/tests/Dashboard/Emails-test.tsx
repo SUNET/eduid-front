@@ -51,3 +51,21 @@ test("renders make primary button when emails state verified is true", () => {
   const makePrimaryButton = screen.getByRole("button", { name: /make primary/i });
   expect(makePrimaryButton).toBeEnabled();
 });
+
+test("disables removal of the primary email while another email is unverified", () => {
+  const { container } = render(<Emails />, {
+    state: {
+      emails: {
+        emails: [
+          { email: "primary@test.se", primary: true, verified: true },
+          { email: "unverified@test.se", primary: false, verified: false },
+        ],
+      },
+    },
+  });
+
+  const removeButtons = container.querySelectorAll<HTMLButtonElement>("button.remove");
+  expect(removeButtons).toHaveLength(2);
+  expect(removeButtons[0]).toBeDisabled();
+  expect(removeButtons[1]).toBeEnabled();
+});
