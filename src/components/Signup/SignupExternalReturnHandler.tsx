@@ -46,7 +46,12 @@ export function SignupExternalReturnHandler() {
 
   const getStatusAction = useCallback(
     (app_name: string) => {
-      const actions = { eidas: eidasGetStatus, bankid: bankIDGetStatus, freja_eid: frejaeIDGetStatus };
+      const actions = {
+        eidas: eidasGetStatus,
+        samleid: eidasGetStatus,
+        bankid: bankIDGetStatus,
+        freja_eid: frejaeIDGetStatus,
+      };
       return actions[app_name as keyof typeof actions];
     },
     [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus],
