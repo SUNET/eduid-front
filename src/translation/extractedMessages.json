@@ -2130,7 +2130,7 @@
   },
   "passwordRadio.button": {
     "developer_comment": "Set your own password radio button",
-    "string": "Create your own password"
+    "string": "Custom password"
   },
   "passwordRadio.change": {
     "developer_comment": "Change password radio group legend",
