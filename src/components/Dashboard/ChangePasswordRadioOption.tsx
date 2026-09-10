@@ -53,7 +53,7 @@ export function ChangePasswordRadioOption({
           <span>
             <FormattedMessage
               id="passwordRadio.button"
-              defaultMessage="Create your own password"
+              defaultMessage="Custom password"
               description="Set your own password radio button"
             />
           </span>
