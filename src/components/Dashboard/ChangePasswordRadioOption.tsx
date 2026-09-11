@@ -11,17 +11,17 @@ export function ChangePasswordRadioOption({
   renderSuggested,
 }: Readonly<ChangePasswordRadioOptionProps>) {
   return (
-    <div className="buttons">
-      <fieldset className="toggle-change-password-options">
-        <legend className="display-none">
-          <strong>
-            <FormattedMessage
-              id="passwordRadio.change"
-              defaultMessage="Choose an option"
-              description="Change password radio group legend"
-            />
-          </strong>
-        </legend>
+    <fieldset className="toggle-change-password-options">
+      <legend>
+        <strong>
+          <FormattedMessage
+            id="passwordRadio.change"
+            defaultMessage="Choose an option"
+            description="Change password radio group legend"
+          />
+        </strong>
+      </legend>
+      <div className="buttons">
         <div className="option-segmented-control">
           <label htmlFor="suggested-pw" className="segmented-option">
             <Field
@@ -60,7 +60,7 @@ export function ChangePasswordRadioOption({
             </span>
           </label>
         </div>
-      </fieldset>
-    </div>
+      </div>
+    </fieldset>
   );
 }
