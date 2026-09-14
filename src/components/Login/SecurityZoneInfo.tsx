@@ -20,6 +20,7 @@ type SecurityZoneAction =
 interface ActionInfo {
   action: string;
   redirectUrl: string;
+  redirectPath?: string;
 }
 
 export function SecurityZoneInfo() {
@@ -32,6 +33,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "change security key preferences",
       }),
       redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     addSecurityKeyAuthn: {
       action: intl.formatMessage({
@@ -39,6 +44,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "add security key",
       }),
       redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     removeSecurityKeyAuthn: {
       action: intl.formatMessage({
@@ -46,6 +55,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "remove security key",
       }),
       redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     verifyCredential: {
       action: intl.formatMessage({
@@ -53,6 +66,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "verify security key",
       }),
       redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     terminateAccountAuthn: {
       action: intl.formatMessage({
@@ -60,6 +77,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "delete account",
       }),
       redirectUrl: ACCOUNT_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.account",
+        defaultMessage: "account",
+      }),
     },
     changepwAuthn: {
       action: intl.formatMessage({
@@ -67,6 +88,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "change password",
       }),
       redirectUrl: ACCOUNT_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.account",
+        defaultMessage: "account",
+      }),
     },
     removeIdentity: {
       action: intl.formatMessage({
@@ -74,6 +99,10 @@ export function SecurityZoneInfo() {
         defaultMessage: "remove identity",
       }),
       redirectUrl: IDENTITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.identity",
+        defaultMessage: "identity",
+      }),
     },
   };
 
@@ -104,16 +133,28 @@ export function SecurityZoneInfo() {
                 }}
               />
             </p>
-            <EduIDButton
-              onClick={() => {
-                sessionStorage.clear();
-                if (current?.redirectUrl) globalThis.location.href = current.redirectUrl;
-              }}
-              buttonstyle="secondary"
-              id="cancel-button"
-            >
-              <FormattedMessage id="common.cancel" defaultMessage="cancel" description="cancel button" />
-            </EduIDButton>
+            <div className="top-divider help-text">
+              <FormattedMessage
+                id="securityZoneInfo.info"
+                defaultMessage={`If you wish to cancel this process without making any changes, click the button below to return to the {page} page.`}
+                description="security zone cancel info"
+                values={{
+                  page: current?.redirectPath,
+                }}
+              />
+            </div>
+            <div className="buttons">
+              <EduIDButton
+                onClick={() => {
+                  sessionStorage.clear();
+                  if (current?.redirectUrl) globalThis.location.href = current.redirectUrl;
+                }}
+                buttonstyle="secondary sm"
+                id="cancel-button"
+              >
+                <FormattedMessage id="common.cancel" defaultMessage="cancel" description="cancel button" />
+              </EduIDButton>
+            </div>
 
             {/* <span className="top-divider help-text">
               <FormattedMessage
