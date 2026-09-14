@@ -155,26 +155,6 @@ export function SecurityZoneInfo() {
                 <FormattedMessage id="common.cancel" defaultMessage="cancel" description="cancel button" />
               </EduIDButton>
             </div>
-
-            {/* <span className="top-divider help-text">
-              <FormattedMessage
-                id="securityZoneInfo.info"
-                defaultMessage={`If you wish to {strong} this process without affecting a change you can return straight to {page} page.`}
-                description="security zone cancel info"
-                values={{
-                  page: current?.redirectPath,
-                  strong: (
-                    <strong>
-                      <FormattedMessage
-                        id="securityZoneInfo.mfa"
-                        description="mfa cancel - strong"
-                        defaultMessage={`cancel`}
-                      />
-                    </strong>
-                  ),
-                }}
-              /> */}
-            {/* </span> */}
           </div>
         </div>
       )}
