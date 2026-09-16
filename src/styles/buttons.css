@@ -28,53 +28,33 @@ button.disabled {
   }
 }
 
-button.primary,
-button.primary:not(:disabled, .disabled):active,
-button.primary:not(:disabled, .disabled):focus,
-button.primary:not(:disabled, .disabled):active:focus,
-button.primary:not(:disabled, .disabled):hover {
-  color: #fff;
+button.primary {
+  color: var(--contrast-color);
   border: solid 2px var(--bright-orange);
   background-color: var(--btn-orange);
   box-shadow: none;
   min-width: 100px;
   padding: 0 1.125rem;
-
-  &.sm {
-    padding: 0.5rem 1rem;
-    font-size: 13px;
-    min-width: fit-content;
-    width: auto;
-    height: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-  }
 }
 
-button.secondary,
-button.secondary:not(:disabled, .disabled):active,
-button.secondary:not(:disabled, .disabled):focus,
-button.secondary:not(:disabled, .disabled):active:focus,
-button.secondary:not(:disabled, .disabled):hover {
+button.secondary {
   color: var(--txt-orange);
   border: solid 2px var(--bright-orange);
   background-color: var(--contrast-color);
   box-shadow: none;
   min-width: 100px;
   padding: 0 1.125rem;
+}
 
-  /* Login, Logout, Register button in Header */
-  &.sm {
-    padding: 0.5rem 1rem;
-    font-size: 13px;
-    min-width: fit-content;
-    width: auto;
-    height: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    letter-spacing: 1px;
-  }
+button.sm {
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  min-width: fit-content;
+  width: auto;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  letter-spacing: 1px;
 }
 
 button.primary,
