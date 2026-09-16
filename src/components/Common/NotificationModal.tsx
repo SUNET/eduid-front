@@ -25,7 +25,7 @@ export function NotificationModal({
   return (
     <dialog open={showModal}>
       <div className={showModal ? "modal fade show" : "modal"} id={id} tabIndex={-1}>
-        <div className={`modal-dialog horizontal-content-margin ${id}`}>
+        <div className={`modal-dialog content-width ${id}`}>
           <div className={`modal-content ${id} `}>
             <div className="modal-header">
               <h4 className="modal-title">{title}</h4>

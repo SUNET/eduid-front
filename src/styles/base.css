@@ -87,9 +87,7 @@ body {
   }
 }
 
-/* this is a horizontal-margin and should be renamed */
-.horizontal-content-margin,
-.vertical-content-margin {
+.content-width {
   padding: 0;
   width: 58%;
   max-width: 870px;
@@ -121,29 +119,25 @@ hr.border-line-lesser {
 }
 
 @media (--bp-lg) {
-  .horizontal-content-margin,
-  .vertical-content-margin {
+  .content-width {
     width: calc(80% - 2rem);
   }
 }
 
 @media (--bp-md) {
-  .horizontal-content-margin,
-  .vertical-content-margin {
+  .content-width {
     width: calc(80% - 1.25rem);
   }
 }
 
 @media (--bp-sm) {
-  .horizontal-content-margin,
-  .vertical-content-margin {
+  .content-width {
     width: calc(100% - 2rem);
   }
 }
 
 @media (--bp-xs) {
-  .horizontal-content-margin,
-  .vertical-content-margin {
+  .content-width {
     width: calc(100% - 2 * var(--margin));
   }
 }

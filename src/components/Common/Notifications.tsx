@@ -41,7 +41,7 @@ export function Notifications() {
   return (
     <div className="notifications-area" aria-live="polite">
       <div className={`alert alert-${color} alert-dismissible fade show`} role="alert">
-        <span className="horizontal-content-margin">
+        <span className="content-width">
           <output aria-label={label}>{msg}</output>
         </span>
         <EduIDButton

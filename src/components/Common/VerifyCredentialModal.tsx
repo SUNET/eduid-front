@@ -28,7 +28,7 @@ export function VerifyCredentialModal({
       aria-labelledby="verify-webauthn-token-modal-title"
     >
       <div className={showVerifyWebauthnModal ? "modal fade show" : "modal"} tabIndex={-1}>
-        <div className="modal-dialog horizontal-content-margin">
+        <div className="modal-dialog content-width">
           <div className="modal-content">
             <div className="modal-header">
               <h4 className="modal-title" id="verify-webauthn-token-modal-title">

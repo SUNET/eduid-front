@@ -43,7 +43,7 @@ export function Index() {
 
   return (
     <Splash showChildren={frontend_action !== "terminateAccountAuthn"}>
-      <div className="landing-content horizontal-content-margin">
+      <div className="landing-content content-width">
         <h1 className="tagline">
           <FormattedMessage
             id="index.edu"

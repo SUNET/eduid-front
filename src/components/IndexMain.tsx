@@ -99,7 +99,7 @@ export function IndexMain() {
             <Notifications />
             <ErrorBoundary FallbackComponent={GenericError}>
               <Splash showChildren={isLoaded}>
-                <section id="content" className={isIndex ? "" : "horizontal-content-margin content"}>
+                <section id="content" className={isIndex ? "" : "content-width content"}>
                   <ScrollToTop />
                   <Routes>
                     {/* Landing */}
