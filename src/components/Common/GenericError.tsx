@@ -3,7 +3,7 @@ import { FormattedMessage } from "react-intl";
 
 export function GenericError() {
   return (
-    <div className="content-width content">
+    <div className="content-width">
       <div className="error-boundary error-page">
         <h1>
           <FormattedMessage

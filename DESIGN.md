@@ -147,7 +147,7 @@ The main content area uses `.content-width` with responsive width scaling:
     <Notifications />         <!-- Sticky notification bar -->
     <ErrorBoundary>
       <Splash>                <!-- Loading spinner overlay -->
-        <section id="content" class="content-width content">
+        <section id="content" class="content-width">
           <Routes />          <!-- Page content -->
         </section>
       </Splash>

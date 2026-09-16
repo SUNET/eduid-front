@@ -35,16 +35,6 @@ body {
   flex-direction: column;
   flex: 1;
   background-color: var(--body-gray);
-
-  .content {
-    padding-top: 2rem;
-    padding-bottom: 4rem;
-
-    @media (--bp-lg) {
-      padding-top: 1.5rem;
-      padding-bottom: 3rem;
-    }
-  }
 }
 
 /* in common for content pages and landing */
@@ -88,6 +78,8 @@ body {
 }
 
 .content-width {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
   width: 58%;
   max-width: 870px;
   margin: 0 auto;
@@ -98,6 +90,8 @@ body {
 
   @media (--bp-lg) {
     width: calc(80% - 2rem);
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
   }
 
   @media (--bp-md) {
