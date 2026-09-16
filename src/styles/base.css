@@ -88,7 +88,6 @@ body {
 }
 
 .content-width {
-  padding: 0;
   width: 58%;
   max-width: 870px;
   margin: 0 auto;
@@ -96,6 +95,22 @@ body {
   /* this is added to prevent margin collapse (look for other solution if causing problems) */
   display: flex;
   flex-direction: column;
+
+  @media (--bp-lg) {
+    width: calc(80% - 2rem);
+  }
+
+  @media (--bp-md) {
+    width: calc(80% - 1.25rem);
+  }
+
+  @media (--bp-sm) {
+    width: calc(100% - 2rem);
+  }
+
+  @media (--bp-xs) {
+    width: calc(100% - 2 * var(--margin));
+  }
 }
 
 /* Mimic lead paragraph border */
@@ -116,30 +131,6 @@ hr.border-line-lesser {
   margin: 0.5rem 0 0;
   padding: 0.5rem 1rem 0.25rem 0;
   display: block;
-}
-
-@media (--bp-lg) {
-  .content-width {
-    width: calc(80% - 2rem);
-  }
-}
-
-@media (--bp-md) {
-  .content-width {
-    width: calc(80% - 1.25rem);
-  }
-}
-
-@media (--bp-sm) {
-  .content-width {
-    width: calc(100% - 2rem);
-  }
-}
-
-@media (--bp-xs) {
-  .content-width {
-    width: calc(100% - 2 * var(--margin));
-  }
 }
 
 /* Utility classes - possibly move to separate file */
