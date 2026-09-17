@@ -1,7 +1,7 @@
 /* Plate to highlight content, with numbered steps at bottom.  */
 
 .step-container {
-  background-color: white;
+  background-color: var(--contrast-color);
   padding: 1rem 1.5rem;
   box-shadow: var(--shadow-sm);
 
@@ -35,11 +35,6 @@
     align-self: center;
     height: 33px;
     padding: 0 1rem;
-
-    img.circle-icon {
-      width: 18px !important;
-      height: 18px !important;
-    }
 
     span {
       display: inline-block;

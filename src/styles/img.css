@@ -33,18 +33,23 @@ svg {
 .circle-icon {
   box-shadow: var(--shadow-sm);
   border-radius: 50%;
-  width: 24px !important;
-  height: 24px !important;
+  width: 24px;
+  height: 24px;
   margin-right: 0.75rem;
   vertical-align: text-top;
 
+  &.sm {
+    width: 18px;
+    height: 18px;
+  }
+
   &.bankid-icon {
-    background: #fff;
+    background: var(--contrast-color);
   }
 
   @media (--bp-md) {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px;
+    height: 20px;
     margin-right: 0.5rem;
   }
 }

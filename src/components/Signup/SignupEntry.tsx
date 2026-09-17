@@ -233,7 +233,7 @@ export function SignupEntry() {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("bankid")}
                   >
-                    <img className="circle-icon bankid-icon" height="24" alt="" src={BankIdFlag} />
+                    <img className="circle-icon sm bankid-icon" height="24" alt="" src={BankIdFlag} />
                     <span>BankID</span>
                   </EduIDButton>
                   <EduIDButton
@@ -242,7 +242,7 @@ export function SignupEntry() {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja")}
                   >
-                    <img className="circle-icon freja" height="24" alt="" src={FrejaFlag} />
+                    <img className="circle-icon sm freja" height="24" alt="" src={FrejaFlag} />
                     <span>Freja+</span>
                   </EduIDButton>
                 </div>
@@ -272,7 +272,7 @@ export function SignupEntry() {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("eidas")}
                   >
-                    <img className="circle-icon" height="24" alt="" src={Eidas} />
+                    <img className="circle-icon sm" height="24" alt="" src={Eidas} />
                     <span>eIDAS</span>
                   </EduIDButton>
                 </div>
@@ -307,7 +307,7 @@ export function SignupEntry() {
                     disabled={isLoading}
                     onClick={() => handleExternalMfa("freja_eid")}
                   >
-                    <img className="circle-icon" height="24" alt="" src={FrejaFlag} />
+                    <img className="circle-icon sm" height="24" alt="" src={FrejaFlag} />
                     <span>Freja eID</span>
                   </EduIDButton>
                 </div>
