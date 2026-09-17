@@ -286,42 +286,6 @@ button.icon {
   }
 }
 
-/* Instance/icon unique styles to be set in targeted css */
-button.icon-only {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-  background: transparent;
-  border-color: transparent;
-  margin: 0;
-  padding: 0;
-}
-
-@media (--bp-xs) {
-  button:not(.sm) {
-    font-size: var(--txt-sm);
-  }
-
-  button.primary,
-  button.secondary {
-    width: 100%;
-  }
-
-  button.link {
-    width: auto;
-    padding: 0;
-  }
-}
-
-/* menu name control */
-button.header-user {
-  &:hover,
-  &:focus-within {
-    background-color: var(--body-gray) !important;
-  }
-}
-
 /* Scroll To top button */
 button.scroll-to-top {
   display: block;
@@ -330,11 +294,11 @@ button.scroll-to-top {
   right: 1rem;
 
   /* round button */
-  border-radius: 50% !important;
-  min-width: fit-content !important;
+  border-radius: 50%;
+  min-width: fit-content;
   width: 50px;
   height: 50px;
-  padding: 0 !important;
+  padding: 0;
 
   @media (--bp-sm) {
     width: 40px;
@@ -359,56 +323,6 @@ button.scroll-to-top {
   &:not(:disabled):hover {
     filter: var(--bright-orange-filter);
     transform: scale(0.8);
-  }
-}
-
-.copybutton {
-  position: absolute;
-  width: auto !important;
-  right: 1rem;
-
-  svg {
-    color: var(--body-txt);
-  }
-
-  #icon-check {
-    display: none;
-  }
-
-  .tool-tip-text {
-    visibility: hidden;
-    width: 100px;
-    background-color: var(--body-txt);
-    color: var(--contrast-color);
-    font-size: var(--txt-sm);
-    font-family: var(--inter-regular);
-    border-radius: 4px;
-    padding: 6px;
-    position: absolute;
-    z-index: 5;
-    bottom: 85%;
-    left: 1rem;
-    margin-left: -75px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    text-transform: none;
-    line-height: 1.2;
-  }
-
-  .tool-tip-text::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 2.6rem;
-    margin-left: 20px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: var(--body-txt) transparent transparent transparent;
-  }
-
-  &:hover .tool-tip-text {
-    visibility: visible;
-    opacity: 1;
   }
 }
 
