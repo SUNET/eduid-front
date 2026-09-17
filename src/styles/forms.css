@@ -10,16 +10,6 @@
   }
 }
 
-/* text under inputs */
-.small,
-small {
-  font-size: 100% !important;
-
-  &.form-text {
-    margin-top: 0 !important;
-  }
-}
-
 .form-group {
   margin-bottom: 0;
 }
@@ -89,22 +79,6 @@ form {
   }
 }
 
-#reset-password-email-form {
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (--bp-sm) {
-    flex-direction: column;
-    align-items: unset;
-
-    button {
-      width: 100%;
-      margin-top: 1rem;
-    }
-  }
-}
-
 /* fieldset used to group, possibly incorrectly */
 fieldset {
   width: 100%;
@@ -157,7 +131,6 @@ fieldset {
     color: var(--txt-orange);
   }
 
-  /* is this used? I think not // */
   & .help-block {
     font-size: var(--txt-md);
     text-transform: lowercase;
