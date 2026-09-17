@@ -139,7 +139,7 @@ code,
 
 .error-txt {
   color: var(--error-red);
-  font-size: var(--txt-sm) !important;
+  font-size: var(--txt-sm);
 }
 
 .suggestion-txt {

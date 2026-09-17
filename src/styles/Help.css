@@ -28,7 +28,7 @@
     margin-top: 1.25em;
   }
 
-  p {
+  p:not(.error-txt) {
     font-size: inherit;
     margin-bottom: 1.25em;
   }
