@@ -15,10 +15,14 @@
 }
 
 /* stylelint-disable-next-line selector-id-pattern */
-#uniqueId-container {
+.unique-id {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+
+  label {
+    white-space: nowrap;
+  }
 
   button.link {
     padding: 0.75rem 0 0.75rem 1rem;

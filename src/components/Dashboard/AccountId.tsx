@@ -10,7 +10,7 @@ export function AccountId() {
   const ref = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="figure tight" id="uniqueId-container">
+    <div className="figure tight unique-id" id="uniqueId-container">
       <label htmlFor={idUserEppn}>
         <strong>
           <FormattedMessage id="common.uniqueId" defaultMessage="Unique ID:" description="Dashboard AccountId" />

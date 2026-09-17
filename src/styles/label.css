@@ -24,8 +24,3 @@ label,
     margin-right: 5px;
   }
 }
-
-/* stylelint-disable-next-line selector-id-pattern */
-#uniqueId-container label {
-  white-space: nowrap;
-}
