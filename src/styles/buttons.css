@@ -286,6 +286,22 @@ button.icon {
   }
 }
 
+@media (--bp-xs) {
+  button:not(.sm) {
+    font-size: var(--txt-sm);
+  }
+
+  button.primary,
+  button.secondary {
+    width: 100%;
+  }
+
+  button.link {
+    width: auto;
+    padding: 0;
+  }
+}
+
 /* Scroll To top button */
 button.scroll-to-top {
   display: block;
