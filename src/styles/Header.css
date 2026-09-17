@@ -36,15 +36,6 @@ header {
       align-items: center;
       justify-content: space-between;
 
-      a {
-        transition: none;
-
-        &.active,
-        &:hover {
-          color: var(--txt-orange) !important;
-        }
-      }
-
       /* top level menu item */
       .menu-item-wrapper {
         display: flex;
@@ -57,6 +48,12 @@ header {
           color: var(--body-txt);
           font-size: var(--txt-sm);
           flex: 1;
+          transition: none;
+
+          &.active,
+          &:hover {
+            color: var(--txt-orange);
+          }
         }
 
         &:has(a.active) {

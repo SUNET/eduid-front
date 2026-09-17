@@ -1,9 +1,3 @@
-button:disabled {
-  cursor: not-allowed;
-  pointer-events: all;
-  opacity: 0.4;
-}
-
 a.button,
 button {
   font-family: var(--akkurat);
@@ -23,9 +17,10 @@ button {
 
 button:disabled,
 button.disabled {
-  cursor: not-allowed !important;
-  pointer-events: all !important;
+  cursor: not-allowed;
+  pointer-events: all;
   border-color: inherit;
+  opacity: 0.4;
   color: var(--contrast-color);
 
   &.primary {
