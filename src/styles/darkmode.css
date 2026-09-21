@@ -23,10 +23,6 @@ html.dark {
     background-image: url("../../img/sunet_logo_white.svg") !important;
   }
 
-  .header-user {
-    color: #fff;
-  }
-
   @media (--bp-xl) {
     header nav .nav-menu.active {
       box-shadow: 0 -6px 17px rgb(89 89 89 / 30%);
