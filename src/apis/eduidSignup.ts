@@ -97,7 +97,6 @@ export interface CreateUserRequest {
 
 export interface SignupReturnToAuthnRequest {
   ref: string;
-  service_info: ServiceInfo;
 }
 
 export interface ExternalMfaRegisterRequest {
@@ -193,7 +192,6 @@ export const signupApi = eduIDApi.injectEndpoints({
         url: "return-to-auth",
         body: {
           ref: body.ref,
-          service_info: body.service_info,
         },
       }),
       extraOptions: { service: "signup" },
