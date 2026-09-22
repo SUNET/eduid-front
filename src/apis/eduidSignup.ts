@@ -8,6 +8,13 @@ import {
 } from "./eduidSecurity";
 import type { ApiResponse } from "./helpers/types";
 
+export interface IdpAuthnRequirements {
+  requested_authn_contexts: string[];
+  comparison: string | null;
+  require_mfa: boolean;
+  minimum_assurance_level: "al2" | "al3" | null;
+}
+
 export interface SignupState {
   already_signed_up: boolean;
   email: {
@@ -46,6 +53,7 @@ export interface SignupState {
   };
   idp_request_ref?: string;
   idp_service_info?: ServiceInfo;
+  idp_authn_requirements?: IdpAuthnRequirements;
   user_created: boolean;
   external_mfa?: ExternalMFAResponse;
 }
