@@ -50,7 +50,7 @@ export const ServiceInfo = () => {
                 <p>
                   <FormattedMessage
                     id="signup.requireMfa.intro"
-                    defaultMessage="Multi-factor authentication is required. You can fulfill this by either:"
+                    defaultMessage="Multi-factor authentication is required. You can do this in one of two ways:"
                   />
                 </p>
                 <ul>
@@ -87,7 +87,7 @@ export const ServiceInfo = () => {
                 <p>
                   <FormattedMessage
                     id="signup.al3.intro"
-                    defaultMessage="To use this service, you need to complete both of the following:"
+                    defaultMessage="You need to complete both of the following:"
                   />
                 </p>
                 <ul>
