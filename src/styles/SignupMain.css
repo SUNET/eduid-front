@@ -142,3 +142,17 @@ section#register-with-name,
     }
   }
 }
+
+/* signup recommendation-box  */
+.recommendation-box {
+  display: flex;
+}
+
+.recommendation-box span {
+  background-color: var(--success-green);
+  height: max-content;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 2px 5px;
+}

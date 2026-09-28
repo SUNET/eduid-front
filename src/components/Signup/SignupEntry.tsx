@@ -1,4 +1,4 @@
-import { faChevronDown, faChevronUp, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
@@ -29,12 +29,59 @@ export const ServiceInfo = () => {
   const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
 
   if (!service_name) return null;
+  const requireMfa = authnReq?.require_mfa;
+  const level = authnReq?.minimum_assurance_level;
+  const hasRequirements = requireMfa || level;
+
+  const renderRecommendation = () => {
+    if (level === "al3") {
+      return (
+        <span className="suggestion-txt">
+          <FormattedMessage
+            id="entry.recommendation.al"
+            defaultMessage="{serviceName} needs both a verified identity and multi-factor authentication. You'll need to complete both steps: register with a digital ID below to verify your identity, then add a security key in Step 4."
+            description="al3 recommendation"
+            values={{
+              serviceName: <strong>{service_name}</strong>,
+              strong: (chunks) => <strong>{chunks}</strong>,
+            }}
+          />
+        </span>
+      );
+    }
+
+    if (level === "al2") {
+      return (
+        <span className="suggestion-txt">
+          <FormattedMessage
+            id="entry.recommendation.al2"
+            defaultMessage="{serviceName} needs a verified identity. Register with a digital ID below to complete it now."
+            description="al2 recommendation"
+            values={{ serviceName: <strong>{service_name}</strong> }}
+          />
+        </span>
+      );
+    }
+
+    if (requireMfa) {
+      return (
+        <span className="suggestion-txt">
+          <FormattedMessage
+            id="entry.recommendation.requireMfa"
+            defaultMessage="{serviceName} needs multi-factor authentication. Register with a digital ID below to set it up now, or add a security key later in Step 4."
+            description="require_mfa recommendation"
+            values={{ serviceName: <strong>{service_name}</strong> }}
+          />
+        </span>
+      );
+    }
+
+    return null;
+  };
+
   return (
-    <div className="status-box">
-      <div className="checkbox-wrapper">
-        <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
-      </div>
-      <div className="text-wrapper">
+    <>
+      <div className="destination-info">
         <p className="text-bold">
           <FormattedMessage
             id="entry.accessIntro"
@@ -43,75 +90,24 @@ export const ServiceInfo = () => {
             values={{ name: <span>{service_name}</span> }}
           />
         </p>
-        {(authnReq?.require_mfa || authnReq?.minimum_assurance_level) && (
-          <div className="access-requirements">
-            {authnReq?.require_mfa && (
-              <>
-                <p>
-                  <FormattedMessage
-                    id="signup.requireMfa.intro"
-                    defaultMessage="Multi-factor authentication is required. You can do this in one of two ways:"
-                  />
-                </p>
-                <ul>
-                  <li>
-                    <FormattedMessage
-                      id="signup.requireMfa.step1"
-                      defaultMessage="<strong>Step 1 (Registration method):</strong> Verify your identity with BankID, Freja or eIDAS."
-                      values={{ strong: (chunks) => <strong>{chunks}</strong> }}
-                    />
-                  </li>
-                  <li>
-                    <FormattedMessage
-                      id="signup.requireMfa.step4"
-                      defaultMessage="<strong>Step 4 (Sign-in method):</strong> Add a security key."
-                      values={{ strong: (chunks) => <strong>{chunks}</strong> }}
-                    />
-                  </li>
-                </ul>
-              </>
-            )}
-
-            {authnReq?.minimum_assurance_level === "al2" && (
-              <p>
-                <FormattedMessage
-                  id="signup.al2"
-                  defaultMessage="We recommend verifying your identity with BankID, Freja or eIDAS in <strong>Step 1 (Registration method)</strong>."
-                  values={{ strong: (chunks) => <strong>{chunks}</strong> }}
-                />
-              </p>
-            )}
-
-            {authnReq?.minimum_assurance_level === "al3" && (
-              <>
-                <p>
-                  <FormattedMessage
-                    id="signup.al3.intro"
-                    defaultMessage="You need to complete both of the following:"
-                  />
-                </p>
-                <ul>
-                  <li>
-                    <FormattedMessage
-                      id="signup.al3.step1"
-                      defaultMessage="<strong>Step 1 (Registration method):</strong> Verify your identity with BankID, Freja or eIDAS."
-                      values={{ strong: (chunks) => <strong>{chunks}</strong> }}
-                    />
-                  </li>
-                  <li>
-                    <FormattedMessage
-                      id="signup.al3.step4"
-                      defaultMessage="<strong>Step 4 (Sign-in method):</strong> Add a security key."
-                      values={{ strong: (chunks) => <strong>{chunks}</strong> }}
-                    />
-                  </li>
-                </ul>
-              </>
-            )}
-          </div>
-        )}
       </div>
-    </div>
+
+      {hasRequirements && (
+        <>
+          <div className="recommendation-box">
+            <span>
+              <FormattedMessage
+                id="entry.recommendation.badge"
+                defaultMessage="RECOMMENDED"
+                description="recommendation badge"
+              />
+            </span>
+          </div>
+
+          <div className="access-requirements">{renderRecommendation()}</div>
+        </>
+      )}
+    </>
   );
 };
 
