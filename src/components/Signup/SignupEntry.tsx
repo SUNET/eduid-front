@@ -39,11 +39,12 @@ export const ServiceInfo = () => {
         <span className="suggestion-txt">
           <FormattedMessage
             id="entry.recommendation.al"
-            defaultMessage="{serviceName} needs both a verified identity and multi-factor authentication. You'll need to complete both steps: register with a digital ID below to verify your identity, then add a security key in Step 4."
+            defaultMessage={`{serviceName} needs both a digital ID registration and multi-factor authentication. 
+              You'll need to complete both steps: register with a digital ID below to verify your identity, 
+              then add a security key in Step 4.`}
             description="al3 recommendation"
             values={{
               serviceName: <strong>{service_name}</strong>,
-              strong: (chunks) => <strong>{chunks}</strong>,
             }}
           />
         </span>
@@ -55,7 +56,7 @@ export const ServiceInfo = () => {
         <span className="suggestion-txt">
           <FormattedMessage
             id="entry.recommendation.al2"
-            defaultMessage="{serviceName} needs a verified identity. Register with a digital ID below to complete it now."
+            defaultMessage="{serviceName} requires you to register with a digital ID below."
             description="al2 recommendation"
             values={{ serviceName: <strong>{service_name}</strong> }}
           />
@@ -68,7 +69,8 @@ export const ServiceInfo = () => {
         <span className="suggestion-txt">
           <FormattedMessage
             id="entry.recommendation.requireMfa"
-            defaultMessage="{serviceName} needs multi-factor authentication. Register with a digital ID below to set it up now, or add a security key later in Step 4."
+            defaultMessage={`{serviceName} needs multi-factor authentication. Register with a digital ID below 
+              to set it up now, then add a security key later in Step 4.`}
             description="require_mfa recommendation"
             values={{ serviceName: <strong>{service_name}</strong> }}
           />
