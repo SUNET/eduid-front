@@ -144,6 +144,11 @@ section#register-with-name,
 }
 
 /* signup recommendation-box  */
+
+.access-requirements {
+  margin: 2rem 0;
+}
+
 .recommendation-box {
   display: flex;
 }
