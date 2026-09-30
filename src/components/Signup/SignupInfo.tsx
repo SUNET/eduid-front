@@ -1,9 +1,25 @@
-import { faLightbulb, faLock, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { faCircleExclamation, faLightbulb, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
 type BadgeType = "complete" | "recommended" | "required";
+
+type Recommendation = {
+  badgeType: BadgeType;
+  success?: boolean;
+  message: { id: string; defaultMessage: string; description: string };
+};
+
+type RecommendationInput = {
+  isVerified: boolean;
+  credentialsCompleted: boolean;
+  requireMfa: boolean;
+  mfaRequired: boolean;
+  verifiedIdentityRequired: boolean;
+  pastPage: boolean;
+  nextPage?: string;
+};
 
 const BADGE_CONFIG: Record<
   BadgeType,
@@ -25,7 +41,7 @@ const BADGE_CONFIG: Record<
     id: "entry.requirement.badge",
     defaultMessage: "REQUIRED",
     description: "required badge",
-    icon: faLock,
+    icon: faCircleExclamation,
   },
 };
 
@@ -34,27 +50,11 @@ const Badge = ({ type }: { type: BadgeType }) => {
   return (
     <div className="recommendation-box">
       <span className="badge">
-        <FormattedMessage id={id} defaultMessage={defaultMessage} description={description} />
         <FontAwesomeIcon icon={icon} />
+        <FormattedMessage id={id} defaultMessage={defaultMessage} description={description} />
       </span>
     </div>
   );
-};
-
-type Recommendation = {
-  badgeType: BadgeType;
-  success?: boolean;
-  message: { id: string; defaultMessage: string; description: string };
-};
-
-type RecommendationInput = {
-  isVerified: boolean;
-  credentialsCompleted: boolean;
-  requireMfa: boolean;
-  mfaRequired: boolean;
-  verifiedIdentityRequired: boolean;
-  pastPage: boolean;
-  next_page?: string;
 };
 
 const MESSAGES = {
@@ -104,23 +104,23 @@ const MESSAGES = {
       "Multi-factor authentication is required to access {serviceName}. Register a security key below to complete this.",
     description: "require security key on credentials step",
   },
-  recommendationAl: {
-    id: "entry.recommendation.al",
+  recommendationAl3: {
+    id: "entry.recommendation.al3",
     defaultMessage:
       "A verified identity is required to access {serviceName}. Register with a digital ID below to complete this now.",
     description: "al3 recommendation",
   },
 };
 
-const getVerified = ({ isVerified, credentialsCompleted, next_page }: RecommendationInput): Recommendation | null => {
+const getVerified = ({ isVerified, credentialsCompleted, nextPage }: RecommendationInput): Recommendation | null => {
   if (!isVerified) return null;
   if (credentialsCompleted) {
     return { badgeType: "complete", success: true, message: MESSAGES.allComplete };
   }
-  if (next_page === "SIGNUP_CREDENTIALS") {
+  if (nextPage === "SIGNUP_CREDENTIALS") {
     return { badgeType: "recommended", message: MESSAGES.verifiedCredentialsStep };
   }
-  if (next_page === "SIGNUP_USER_CREATED") {
+  if (nextPage === "SIGNUP_USER_CREATED") {
     return { badgeType: "recommended", message: MESSAGES.verifiedUserCreated };
   }
   return { badgeType: "recommended", message: MESSAGES.verified };
@@ -132,9 +132,9 @@ const getUnverified = ({
   mfaRequired,
   verifiedIdentityRequired,
   pastPage,
-  next_page,
+  nextPage,
 }: RecommendationInput): Recommendation | null => {
-  if (next_page === "SIGNUP_CREDENTIALS" && credentialsCompleted && requireMfa) {
+  if (nextPage === "SIGNUP_CREDENTIALS" && credentialsCompleted && requireMfa) {
     return { badgeType: "complete", success: true, message: MESSAGES.securityKeyRegistered };
   }
   if (pastPage && verifiedIdentityRequired) {
@@ -143,11 +143,11 @@ const getUnverified = ({
   if (pastPage && requireMfa) {
     return { badgeType: "required", message: MESSAGES.requirementStep4 };
   }
-  if (next_page === "SIGNUP_CREDENTIALS" && mfaRequired) {
+  if (nextPage === "SIGNUP_CREDENTIALS" && mfaRequired) {
     return { badgeType: "required", message: MESSAGES.requirementCredentialsStep };
   }
   if (mfaRequired) {
-    return { badgeType: "required", message: MESSAGES.recommendationAl };
+    return { badgeType: "required", message: MESSAGES.recommendationAl3 };
   }
   return null;
 };
@@ -171,22 +171,22 @@ export const ServiceInfo = () => {
   const level = authnReq?.minimum_assurance_level;
   const hasRequirements = requireMfa || level;
   const isVerified = Boolean(externalMfa);
-  const next_page = signup.next_page;
+  const nextPage = signup.next_page;
 
   const renderRecommendation = () => {
-    const pastPage = next_page === "SIGNUP_CAPTCHA" || next_page === "SIGNUP_TOU" || next_page === "SIGNUP_ENTER_CODE";
+    const pastPage = nextPage === "SIGNUP_CAPTCHA" || nextPage === "SIGNUP_TOU" || nextPage === "SIGNUP_ENTER_CODE";
     const serviceNameValue = { serviceName: <strong>{service_name}</strong> };
-    const mfaRequired = level === "al3" || level === "al2" || requireMfa;
+    const mfaRecommended = level === "al3" || level === "al2" || requireMfa;
     const verifiedIdentityRequired = level === "al3" || level === "al2";
 
     const recommendation = getRecommendation({
       isVerified,
       credentialsCompleted: Boolean(credentialsCompleted),
       requireMfa: Boolean(requireMfa),
-      mfaRequired: Boolean(mfaRequired),
+      mfaRequired: Boolean(mfaRecommended),
       verifiedIdentityRequired,
       pastPage,
-      next_page,
+      nextPage,
     });
 
     if (!recommendation) return null;
