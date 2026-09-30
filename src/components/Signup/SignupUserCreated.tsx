@@ -16,7 +16,7 @@ import { Form as FinalForm } from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { useNavigate } from "react-router";
 import { signupSlice } from "slices/Signup";
-import { ServiceInfo } from "./SignupEntry";
+import { ServiceInfo } from "./SignupInfo";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
 // element ids used in tests
