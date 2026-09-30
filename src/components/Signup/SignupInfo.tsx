@@ -1,7 +1,45 @@
 import { faCheck, faLightbulb, faLock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
+
+type BadgeType = "complete" | "recommended" | "required";
+
+const BADGE_CONFIG: Record<
+  BadgeType,
+  { id: string; defaultMessage: string; description: string; icon: FontAwesomeIconProps["icon"] }
+> = {
+  complete: {
+    id: "entry.complete.badge",
+    defaultMessage: "COMPLETE",
+    description: "complete badge",
+    icon: faCheck,
+  },
+  recommended: {
+    id: "entry.recommendation.badge",
+    defaultMessage: "RECOMMENDED",
+    description: "recommendation badge",
+    icon: faLightbulb,
+  },
+  required: {
+    id: "entry.requirement.badge",
+    defaultMessage: "REQUIRED",
+    description: "required badge",
+    icon: faLock,
+  },
+};
+
+const Badge = ({ type }: { type: BadgeType }) => {
+  const { id, defaultMessage, description, icon } = BADGE_CONFIG[type];
+  return (
+    <div className="recommendation-box">
+      <span className="badge">
+        <FormattedMessage id={id} defaultMessage={defaultMessage} description={description} />
+        <FontAwesomeIcon icon={icon} />
+      </span>
+    </div>
+  );
+};
 
 export const ServiceInfo = () => {
   const signup = useAppSelector((state) => state.signup);
@@ -24,12 +62,7 @@ export const ServiceInfo = () => {
     if (isVerified && credentialsCompleted) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage id="entry.complete.badge" defaultMessage="COMPLETE" description="complete badge" />
-              <FontAwesomeIcon icon={faCheck} />
-            </span>
-          </div>
+          <Badge type="complete" />
           <span className="suggestion-txt success">
             <FormattedMessage
               id="entry.allComplete"
@@ -45,12 +78,7 @@ export const ServiceInfo = () => {
     if (!isVerified && next_page === "SIGNUP_CREDENTIALS" && credentialsCompleted && requireMfa) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage id="entry.complete.badge" defaultMessage="COMPLETE" description="complete badge" />
-              <FontAwesomeIcon icon={faCheck} />
-            </span>
-          </div>
+          <Badge type="complete" />
           <span className="suggestion-txt success">
             <FormattedMessage
               id="entry.securityKeyRegistered"
@@ -66,16 +94,7 @@ export const ServiceInfo = () => {
     if (isVerified && next_page === "SIGNUP_CREDENTIALS") {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage
-                id="entry.recommendation.badge"
-                defaultMessage="RECOMMENDED"
-                description="recommendation badge"
-              />
-              <FontAwesomeIcon icon={faLightbulb} />
-            </span>
-          </div>
+          <Badge type="recommended" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.recommendation.al3.verified.credentialsStep"
@@ -93,16 +112,7 @@ export const ServiceInfo = () => {
     if (isVerified && next_page === "SIGNUP_USER_CREATED") {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage
-                id="entry.recommendation.badge"
-                defaultMessage="RECOMMENDED"
-                description="recommendation badge"
-              />
-              <FontAwesomeIcon icon={faLightbulb} />
-            </span>
-          </div>
+          <Badge type="recommended" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.recommendation.al3.verified.userCreated"
@@ -120,16 +130,7 @@ export const ServiceInfo = () => {
     if (isVerified) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage
-                id="entry.recommendation.badge"
-                defaultMessage="RECOMMENDED"
-                description="recommendation badge"
-              />
-              <FontAwesomeIcon icon={faLightbulb} />
-            </span>
-          </div>
+          <Badge type="recommended" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.recommendation.al3.verified"
@@ -147,12 +148,7 @@ export const ServiceInfo = () => {
     if (!isVerified && pastEntry && (level === "al3" || level === "al2")) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage id="entry.requirement.badge" defaultMessage="REQUIRED" description="required badge" />
-              <FontAwesomeIcon icon={faLock} />
-            </span>
-          </div>
+          <Badge type="required" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.requirement.verifiedIdentity.pastEntry"
@@ -168,12 +164,7 @@ export const ServiceInfo = () => {
     if (!isVerified && pastEntry && requireMfa) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage id="entry.requirement.badge" defaultMessage="REQUIRED" description="required badge" />
-              <FontAwesomeIcon icon={faLock} />
-            </span>
-          </div>
+          <Badge type="required" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.requirement.step4"
@@ -189,12 +180,7 @@ export const ServiceInfo = () => {
     if (!isVerified && next_page === "SIGNUP_CREDENTIALS" && (level === "al3" || level === "al2" || requireMfa)) {
       return (
         <>
-          <div className="recommendation-box">
-            <span className="badge">
-              <FormattedMessage id="entry.requirement.badge" defaultMessage="REQUIRED" description="required badge" />
-              <FontAwesomeIcon icon={faLock} />
-            </span>
-          </div>
+          <Badge type="required" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.requirement.credentialsStep"
@@ -210,12 +196,7 @@ export const ServiceInfo = () => {
     if (level === "al3" || level === "al2" || requireMfa) {
       return (
         <>
-          <div className="recommendation-box">
-            <span>
-              <FormattedMessage id="entry.requirement.badge" defaultMessage="REQUIRED" description="required badge" />
-              <FontAwesomeIcon icon={faLock} />
-            </span>
-          </div>
+          <Badge type="required" />
           <span className="suggestion-txt">
             <FormattedMessage
               id="entry.recommendation.al"
