@@ -148,4 +148,8 @@ code,
   font-size: var(--txt-sm);
   display: block;
   line-height: normal;
+
+  &.md {
+    font-size: var(--txt-md);
+  }
 }
