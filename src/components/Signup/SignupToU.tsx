@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useEffect } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
-import { ServiceInfo } from "./SignupEntry";
+import { ServiceInfo } from "./SignupInfo";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupToU() {

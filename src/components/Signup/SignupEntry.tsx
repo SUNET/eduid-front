@@ -19,26 +19,8 @@ import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
 import SvFlag from "../../../img/flags/SvFlag.svg";
 import { EmailForm } from "./SignupEmailForm";
+import { ServiceInfo } from "./SignupInfo";
 import { SignupStepIndicator } from "./SignupStepIndicator";
-
-export const ServiceInfo = () => {
-  const signupState = useAppSelector((state) => state.signup.state);
-  const idp_service_info = signupState?.idp_service_info;
-  const locale = useAppSelector((state) => state.intl.locale);
-  const service_name = idp_service_info?.display_name?.[locale] || idp_service_info?.display_name?.["en"] || undefined;
-
-  if (!service_name) return null;
-  return (
-    <p className="destination-info text-bold">
-      <FormattedMessage
-        id="entry.accessIntro"
-        defaultMessage="In order to access {name}"
-        description="Signup first page lead text"
-        values={{ name: <span>{service_name}</span> }}
-      />
-    </p>
-  );
-};
 
 export function SignupEntry() {
   const [bankIDMfaRegister] = bankIDApi.useLazyBankIDMfaRegisterQuery();

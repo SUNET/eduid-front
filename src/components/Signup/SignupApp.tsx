@@ -84,8 +84,8 @@ function SignupStart() {
     // Check Redux first, then fall back to URL query parameter (survives refresh)
     const ref = loginRef || urlRef;
 
-    if (ref && service_info) {
-      signupReturnToAuthn({ ref: ref, service_info: service_info });
+    if (ref) {
+      signupReturnToAuthn({ ref: ref });
     }
   }, [is_configured, data, loginRef, urlRef, signupReturnToAuthn, service_info]);
 

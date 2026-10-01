@@ -14,7 +14,7 @@ import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
 import passKey from "../../../img/pass-key.svg";
 import securityKey from "../../../img/security-key.svg";
-import { ServiceInfo } from "./SignupEntry";
+import { ServiceInfo } from "./SignupInfo";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 import { handleCreateUserError, SignupConfirmPassword } from "./SignupUserCreated";
 

@@ -9,7 +9,7 @@ import { Field as FinalField, Form as FinalForm, FormRenderProps } from "react-f
 import { FormattedMessage, useIntl } from "react-intl";
 import { clearNotifications } from "slices/Notifications";
 import { signupSlice } from "slices/Signup";
-import { ServiceInfo } from "./SignupEntry";
+import { ServiceInfo } from "./SignupInfo";
 import { SignupStepIndicator } from "./SignupStepIndicator";
 
 export function SignupEmailForm() {
@@ -69,7 +69,7 @@ export function EmailForm() {
     description: "placeholder Last name",
   });
 
-  async function submitEmailForm(values: SignupEmailFormData) {
+  function submitEmailForm(values: SignupEmailFormData) {
     const errors: SignupEmailFormData = {};
 
     if (values) {
@@ -99,9 +99,9 @@ export function EmailForm() {
     } else {
       errors.email = "required";
     }
-
     return errors;
   }
+
   return (
     <FinalForm<SignupEmailFormData>
       onSubmit={submitEmailForm}
