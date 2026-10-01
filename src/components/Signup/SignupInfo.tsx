@@ -80,7 +80,7 @@ const MESSAGES = {
   verifiedIdentityPastEntry: {
     id: "entry.requirement.verifiedIdentity.pastEntry",
     defaultMessage:
-      "A verified identity is required to access {serviceName}. Go back to Step 1, or verify your identity later on the Identity page in eduID.",
+      "A verified identity is required to access {serviceName}. Press Cancel to go back to Step 1, or verify your identity later on the Identity page in eduID.",
     description: "require verified identity, past entry",
   },
   requirementStep4: {
