@@ -69,7 +69,7 @@ export function EmailForm() {
     description: "placeholder Last name",
   });
 
-  async function submitEmailForm(values: SignupEmailFormData) {
+  function submitEmailForm(values: SignupEmailFormData) {
     const errors: SignupEmailFormData = {};
 
     if (values) {
@@ -99,9 +99,9 @@ export function EmailForm() {
     } else {
       errors.email = "required";
     }
-
     return errors;
   }
+
   return (
     <FinalForm<SignupEmailFormData>
       onSubmit={submitEmailForm}
