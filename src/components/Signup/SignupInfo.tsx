@@ -13,8 +13,7 @@ type RecommendationInput = {
   isVerified: boolean;
   credentialsCompleted: boolean;
   requireMfa: boolean;
-  mfaRequired: boolean;
-  verifiedIdentityRequired: boolean;
+  needsDigitalId: boolean;
   pastPage: boolean;
   nextPage?: string;
 };
@@ -86,13 +85,13 @@ const MESSAGES = {
   requirementStep4: {
     id: "entry.requirement.step4",
     defaultMessage:
-      "Multi-factor authentication is required to access {serviceName}. Register a security key in Step 4 to complete this.",
+      "Multi-factor authentication is required to access {serviceName}. We recommend registering with a digital ID, or register a security key in Step 4.",
     description: "require security key at step 4",
   },
   requirementCredentialsStep: {
     id: "entry.requirement.credentialsStep",
     defaultMessage:
-      "Multi-factor authentication is required to access {serviceName}. Register a security key below to complete this.",
+      "Multi-factor authentication is required to access {serviceName}. Register a security key below, or press Cancel to go back and register with a digital ID (recommended).",
     description: "require security key on credentials step",
   },
   recommendationAl3: {
@@ -100,6 +99,12 @@ const MESSAGES = {
     defaultMessage:
       "A verified identity is required to access {serviceName}. Register with a digital ID below to complete this now.",
     description: "al3 recommendation",
+  },
+  requirementMfaEntry: {
+    id: "entry.requirement.mfaEntry",
+    defaultMessage:
+      "Multi-factor authentication is required to access {serviceName}. We recommend registering with a digital ID below, or you can register a security key in Step 4.",
+    description: "require mfa at entry, prefer digital ID",
   },
 };
 
@@ -120,26 +125,34 @@ const getVerified = ({ isVerified, credentialsCompleted, nextPage }: Recommendat
 const getUnverified = ({
   credentialsCompleted,
   requireMfa,
-  mfaRequired,
-  verifiedIdentityRequired,
+  needsDigitalId,
   pastPage,
   nextPage,
 }: RecommendationInput): Recommendation | null => {
-  if (nextPage === "SIGNUP_CREDENTIALS" && credentialsCompleted && requireMfa) {
+  // Security key registered and only MFA was required (no digital ID requirement) → done
+  if (nextPage === "SIGNUP_CREDENTIALS" && credentialsCompleted && requireMfa && !needsDigitalId) {
     return { badgeType: "complete", success: true, message: MESSAGES.securityKeyRegistered };
   }
-  if (pastPage && verifiedIdentityRequired) {
-    return { badgeType: "required", message: MESSAGES.verifiedIdentityPastEntry };
-  }
-  if (pastPage && requireMfa) {
-    return { badgeType: "required", message: MESSAGES.requirementStep4 };
-  }
-  if (nextPage === "SIGNUP_CREDENTIALS" && mfaRequired) {
-    return { badgeType: "required", message: MESSAGES.requirementCredentialsStep };
-  }
-  if (mfaRequired) {
+
+  // al2 or al3: a verified identity is required — security key alone will not satisfy it
+  if (needsDigitalId) {
+    if (pastPage || nextPage === "SIGNUP_CREDENTIALS") {
+      return { badgeType: "required", message: MESSAGES.verifiedIdentityPastEntry };
+    }
     return { badgeType: "required", message: MESSAGES.recommendationAl3 };
   }
+
+  // Only require_mfa: a security key is sufficient, but digital ID is preferred
+  if (requireMfa) {
+    if (pastPage) {
+      return { badgeType: "required", message: MESSAGES.requirementStep4 };
+    }
+    if (nextPage === "SIGNUP_CREDENTIALS") {
+      return { badgeType: "required", message: MESSAGES.requirementCredentialsStep };
+    }
+    return { badgeType: "required", message: MESSAGES.requirementMfaEntry };
+  }
+
   return null;
 };
 
@@ -167,15 +180,13 @@ export const ServiceInfo = () => {
   const renderRecommendation = () => {
     const pastPage = nextPage === "SIGNUP_CAPTCHA" || nextPage === "SIGNUP_TOU" || nextPage === "SIGNUP_ENTER_CODE";
     const serviceNameValue = { serviceName: <strong>{service_name}</strong> };
-    const mfaRecommended = level === "al3" || level === "al2" || requireMfa;
-    const verifiedIdentityRequired = level === "al3" || level === "al2";
+    const needsDigitalId = level === "al3" || level === "al2";
 
     const recommendation = getRecommendation({
       isVerified,
       credentialsCompleted: Boolean(credentialsCompleted),
       requireMfa: Boolean(requireMfa),
-      mfaRequired: Boolean(mfaRecommended),
-      verifiedIdentityRequired,
+      needsDigitalId,
       pastPage,
       nextPage,
     });
