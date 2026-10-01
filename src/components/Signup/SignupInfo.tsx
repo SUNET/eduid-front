@@ -197,5 +197,22 @@ export const ServiceInfo = () => {
     );
   };
 
-  return <>{hasRequirements && <div className="access-requirements">{renderRecommendation()}</div>}</>;
+  return (
+    <>
+      {hasRequirements ? (
+        <div className="access-requirements">{renderRecommendation()}</div>
+      ) : (
+        <div className="destination-info">
+          <p className="text-bold">
+            <FormattedMessage
+              id="entry.accessIntro"
+              defaultMessage="In order to access {name}"
+              description="Signup first page lead text"
+              values={{ name: <span>{service_name}</span> }}
+            />
+          </p>
+        </div>
+      )}
+    </>
+  );
 };
