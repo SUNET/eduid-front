@@ -1,5 +1,3 @@
-import { faCircleExclamation, faLightbulb, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon, FontAwesomeIconProps } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 
@@ -21,36 +19,29 @@ type RecommendationInput = {
   nextPage?: string;
 };
 
-const BADGE_CONFIG: Record<
-  BadgeType,
-  { id: string; defaultMessage: string; description: string; icon: FontAwesomeIconProps["icon"] }
-> = {
+const BADGE_CONFIG: Record<BadgeType, { id: string; defaultMessage: string; description: string }> = {
   complete: {
     id: "entry.complete.badge",
     defaultMessage: "COMPLETE",
     description: "complete badge",
-    icon: faThumbsUp,
   },
   recommended: {
     id: "entry.recommendation.badge",
     defaultMessage: "RECOMMENDED",
     description: "recommendation badge",
-    icon: faLightbulb,
   },
   required: {
     id: "entry.requirement.badge",
     defaultMessage: "REQUIRED",
     description: "required badge",
-    icon: faCircleExclamation,
   },
 };
 
 const Badge = ({ type }: { type: BadgeType }) => {
-  const { id, defaultMessage, description, icon } = BADGE_CONFIG[type];
+  const { id, defaultMessage, description } = BADGE_CONFIG[type];
   return (
     <div className="recommendation-box">
       <span className="badge">
-        <FontAwesomeIcon icon={icon} />
         <FormattedMessage id={id} defaultMessage={defaultMessage} description={description} />
       </span>
     </div>
