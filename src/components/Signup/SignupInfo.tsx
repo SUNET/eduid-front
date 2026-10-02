@@ -1,5 +1,5 @@
 import { useAppSelector } from "eduid-hooks";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, defineMessages } from "react-intl";
 
 type BadgeType = "complete" | "recommended" | "required";
 
@@ -47,7 +47,7 @@ const Badge = ({ type }: { type: BadgeType }) => {
   );
 };
 
-const MESSAGES = {
+const MESSAGES = defineMessages({
   allComplete: {
     id: "entry.allComplete",
     defaultMessage: "You're all set to access {serviceName}.",
@@ -106,7 +106,7 @@ const MESSAGES = {
       "Multi-factor authentication is required to access {serviceName}. We recommend registering with a digital ID below, or you can register a security key in Step 4.",
     description: "require mfa at entry, prefer digital ID",
   },
-};
+});
 
 const getVerified = ({ isVerified, credentialsCompleted, nextPage }: RecommendationInput): Recommendation | null => {
   if (!isVerified) return null;
