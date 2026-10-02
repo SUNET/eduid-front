@@ -1063,6 +1063,10 @@
     "developer_comment": "Signup first page lead text",
     "string": "In order to access {name}"
   },
+  "entry.allComplete": {
+    "developer_comment": "all requirements complete",
+    "string": "You're all set to access {serviceName}."
+  },
   "entry.alternative": {
     "developer_comment": "Alternative signup option",
     "string": "or register another way"
@@ -1122,6 +1126,42 @@
   "entry.passkeyHeading": {
     "developer_comment": "passkey heading",
     "string": "With a digital ID"
+  },
+  "entry.recommendation.al3": {
+    "developer_comment": "al3 recommendation",
+    "string": "A verified identity is required to access {serviceName}. Register with a digital ID below to complete this now."
+  },
+  "entry.recommendation.al3.verified": {
+    "developer_comment": "al3 recommendation after verification",
+    "string": "Your identity is verified to access {serviceName}. We recommend registering your sign-in method in Step 4 for stronger account protection."
+  },
+  "entry.recommendation.al3.verified.credentialsStep": {
+    "developer_comment": "al3 recommendation after verification, credentials step",
+    "string": "Your identity is verified to access {serviceName}. We recommend registering your sign-in method below for stronger account protection."
+  },
+  "entry.recommendation.al3.verified.userCreated": {
+    "developer_comment": "al3 recommendation after verification, user created",
+    "string": "Your identity is verified to access {serviceName}. We recommend registering a sign-in method on the Security page in eduID for stronger account protection."
+  },
+  "entry.requirement.credentialsStep": {
+    "developer_comment": "require security key on credentials step",
+    "string": "Multi-factor authentication is required to access {serviceName}. Register a security key below, or press Cancel to go back and register with a digital ID (recommended)."
+  },
+  "entry.requirement.mfaEntry": {
+    "developer_comment": "require mfa at entry, prefer digital ID",
+    "string": "Multi-factor authentication is required to access {serviceName}. We recommend registering with a digital ID below, or you can register a security key in Step 4."
+  },
+  "entry.requirement.step4": {
+    "developer_comment": "require security key at step 4",
+    "string": "Multi-factor authentication is required to access {serviceName}. We recommend registering with a digital ID, or register a security key in Step 4."
+  },
+  "entry.requirement.verifiedIdentity.pastEntry": {
+    "developer_comment": "require verified identity, past entry",
+    "string": "A verified identity is required to access {serviceName}. Press Cancel to go back to Step 1, or verify your identity later on the Identity page in eduID."
+  },
+  "entry.securityKeyRegistered": {
+    "developer_comment": "security key registered success",
+    "string": "You're ready to continue to {serviceName}."
   },
   "entry.showButton": {
     "developer_comment": "show form button",
@@ -2543,6 +2583,48 @@
   "samlResponse.tryAgainInfo": {
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
+  },
+  "samleid.attribute_missing": {
+    "string": "SamleID attribute is missing"
+  },
+  "samleid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "samleid.authn_instant_too_old": {
+    "string": "Authentication instant is too old"
+  },
+  "samleid.credential_not_found": {
+    "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
+  },
+  "samleid.credential_verification_not_allowed": {
+    "string": "SamleID credential verification not allowed."
+  },
+  "samleid.credential_verify_success": {
+    "string": "Success"
+  },
+  "samleid.frontend_action_not_supported": {
+    "string": "SamleID frontend action not supported."
+  },
+  "samleid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "samleid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "samleid.identity_verify_success": {
+    "string": "Success"
+  },
+  "samleid.method_not_available": {
+    "string": "SamleID method is not available"
+  },
+  "samleid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "samleid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "samleid.not_found": {
+    "string": "SamleID not found"
   },
   "scrollToTopButton.button": {
     "developer_comment": "aria-label and title for scroll top button",
