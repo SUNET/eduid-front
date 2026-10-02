@@ -2584,6 +2584,48 @@
     "developer_comment": "SAML login finished",
     "string": "You can try to login again using the button below, but it is very likely that the service you are logging in to will reject the request and you will have to start over."
   },
+  "samleid.attribute_missing": {
+    "string": "SamleID attribute is missing"
+  },
+  "samleid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "samleid.authn_instant_too_old": {
+    "string": "Authentication instant is too old"
+  },
+  "samleid.credential_not_found": {
+    "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
+  },
+  "samleid.credential_verification_not_allowed": {
+    "string": "SamleID credential verification not allowed."
+  },
+  "samleid.credential_verify_success": {
+    "string": "Success"
+  },
+  "samleid.frontend_action_not_supported": {
+    "string": "SamleID frontend action not supported."
+  },
+  "samleid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "samleid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "samleid.identity_verify_success": {
+    "string": "Success"
+  },
+  "samleid.method_not_available": {
+    "string": "SamleID method is not available"
+  },
+  "samleid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "samleid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "samleid.not_found": {
+    "string": "SamleID not found"
+  },
   "scrollToTopButton.button": {
     "developer_comment": "aria-label and title for scroll top button",
     "string": "Go to page top"
