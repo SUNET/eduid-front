@@ -2615,7 +2615,7 @@
     "string": "Klart"
   },
   "samleid.method_not_available": {
-    "string": "SamleID metoden är inte tillgänglig"
+    "string": "SamleID metoden är inte tillgänglig."
   },
   "samleid.mfa_authn_success": {
     "string": "Klart"
