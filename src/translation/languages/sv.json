@@ -1063,6 +1063,10 @@
     "developer_comment": "Signup first page lead text",
     "string": "För att komma åt {name}"
   },
+  "entry.allComplete": {
+    "developer_comment": "all requirements complete",
+    "string": "Nu är du redo att använda {serviceName}."
+  },
   "entry.alternative": {
     "developer_comment": "Alternative signup option",
     "string": "eller ange dina uppgifter på annat sätt"
@@ -1122,6 +1126,42 @@
   "entry.passkeyHeading": {
     "developer_comment": "passkey heading",
     "string": "Med digitalt ID"
+  },
+  "entry.recommendation.al3": {
+    "developer_comment": "al3 recommendation",
+    "string": "En verifierad identitet krävs för att använda {serviceName}. Registrera dig med ett digitalt ID nedan."
+  },
+  "entry.recommendation.al3.verified": {
+    "developer_comment": "al3 recommendation after verification",
+    "string": "Din identitet är verifierad för att använda {serviceName}. Vi rekommenderar att du registrerar en inloggningsmetod i Steg 4 för att stärka säkerheten för ditt konto."
+  },
+  "entry.recommendation.al3.verified.credentialsStep": {
+    "developer_comment": "al3 recommendation after verification, credentials step",
+    "string": "Din identitet är verifierad för att använda {serviceName}. Vi rekommenderar att du registrerar en inloggningsmetod nedan för att stärka säkerheten för ditt konto."
+  },
+  "entry.recommendation.al3.verified.userCreated": {
+    "developer_comment": "al3 recommendation after verification, user created",
+    "string": "Din identitet är verifierad för att använda {serviceName}. Vi rekommenderar att du registrerar en inloggningsmetod på sidan Säkerhet i eduID för att stärka säkerheten för ditt konto."
+  },
+  "entry.requirement.credentialsStep": {
+    "developer_comment": "require security key on credentials step",
+    "string": "Multifaktor-autentiseringen krävs för att använda {serviceName}. Registrera en säkerhetsnyckel nedan, eller tryck på Avbryt för att gå tillbaka och registrera dig med ett digitalt ID."
+  },
+  "entry.requirement.mfaEntry": {
+    "developer_comment": "require mfa at entry, prefer digital ID",
+    "string": "Multifaktor-autentiseringen krävs för att använda {serviceName}. Vi rekommenderar att du registrerar dig med ett digitalt ID nedan, eller så kan du registrera en säkerhetsnyckel i Steg 4."
+  },
+  "entry.requirement.step4": {
+    "developer_comment": "require security key at step 4",
+    "string": "Multifaktor-autentiseringen krävs för att använda {serviceName}. Vi rekommenderar att du registrerar dig med ett digitalt ID, eller registrera en säkerhetsnyckel i Steg 4."
+  },
+  "entry.requirement.verifiedIdentity.pastEntry": {
+    "developer_comment": "require verified identity, past entry",
+    "string": "En verifierad identitet krävs för att använda {serviceName}. Tryck på Avbryt för att gå tillbaka till Steg 1, eller verifiera din identitet senare på sidan Identitet i eduID."
+  },
+  "entry.securityKeyRegistered": {
+    "developer_comment": "security key registered success",
+    "string": "Du är redo att fortsätta till {serviceName}."
   },
   "entry.showButton": {
     "developer_comment": "show form button",
@@ -2543,6 +2583,48 @@
   "samlResponse.tryAgainInfo": {
     "developer_comment": "SAML login finished",
     "string": "Du kan försöka logga in igen med knappen nedan, men det är troligt att tjänsten du försöker logga in på inte kommer godta det. I så fall behöver du börja om inloggningen från början."
+  },
+  "samleid.attribute_missing": {
+    "string": "SamleID attribut saknas."
+  },
+  "samleid.authn_context_mismatch": {
+    "string": "Fel autentiseringskontext mottagen."
+  },
+  "samleid.authn_instant_too_old": {
+    "string": "Autentiseringstillfället är för gammalt."
+  },
+  "samleid.credential_not_found": {
+    "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
+  },
+  "samleid.credential_verification_not_allowed": {
+    "string": "SamlID-verifiering av autentiseringsmetod är inte tillåten."
+  },
+  "samleid.credential_verify_success": {
+    "string": "Klart"
+  },
+  "samleid.frontend_action_not_supported": {
+    "string": "SamleID frontend action stöds inte. "
+  },
+  "samleid.identity_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "samleid.identity_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "samleid.identity_verify_success": {
+    "string": "Klart"
+  },
+  "samleid.method_not_available": {
+    "string": "SamleID metoden är inte tillgänglig"
+  },
+  "samleid.mfa_authn_success": {
+    "string": "Klart"
+  },
+  "samleid.no_redirect_url": {
+    "string": "MFA authentisering saknar en omdirigerings URL"
+  },
+  "samleid.not_found": {
+    "string": "SamleID hittades inte."
   },
   "scrollToTopButton.button": {
     "developer_comment": "aria-label and title for scroll top button",
