@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
   IdPAction,
   loginApi,
+  LoginAssurance,
   LoginAuthnOptions,
   LoginUseOtherDevice1Response,
   LoginUseOtherDevice2Response,
@@ -30,6 +31,7 @@ interface LoginState {
   other_device2?: LoginUseOtherDevice2Response; // state on device 2 (scanning QR code)
   service_info?: ServiceInfo;
   error?: string;
+  assurance?: LoginAssurance; // present on FINISHED when the SP has an AL requirement
 }
 
 // Define the initial state using that type. Export for use as a baseline in tests.
@@ -119,6 +121,7 @@ export const loginSlice = createSlice({
         state.fetching_next = true;
       })
       .addMatcher(loginApi.endpoints.fetchNext.matchFulfilled, (state, action) => {
+        console.log("assurance from /next:", action.payload.payload.assurance);
         // Store the result from asking the backend what action to perform next
         const samlParameters =
           action.payload.payload.action === "FINISHED" ? action.payload.payload.parameters : undefined;
@@ -128,6 +131,7 @@ export const loginSlice = createSlice({
         if (action.payload.payload.authn_options) state.authn_options = action.payload.payload.authn_options;
         state.fetching_next = false;
         state.service_info = action.payload.payload.service_info;
+        state.assurance = action.payload.payload.assurance;
         state.error = undefined;
       })
       .addMatcher(loginApi.endpoints.fetchNext.matchRejected, (state, action) => {
