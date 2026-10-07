@@ -7,6 +7,7 @@ import { FormattedMessage } from "react-intl";
  * makes the final decision), but is warned that access will probably be denied.
  */
 export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): React.JSX.Element {
+  const assurance = useAppSelector((state) => state.login.assurance);
   const service_info = useAppSelector((state) => state.login.service_info);
   const locale = useAppSelector((state) => state.intl.locale);
   const serviceName = service_info?.display_name?.[locale] || service_info?.display_name?.en;
@@ -16,20 +17,31 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
       <h1>
         <FormattedMessage
           id="assuranceInfo.title"
-          defaultMessage="Log in: Identity verification needed"
+          defaultMessage="Log in: More secure login method needed"
           description="Assurance info - title"
         />
       </h1>
       <div className="lead">
         <p>
-          <FormattedMessage
-            id="assuranceInfo.lead"
-            defaultMessage="{serviceName} requires you to verify your identity in eduID."
-            description="Assurance info - lead"
-            values={{
-              serviceName: <strong>{serviceName ?? "The service you are logging in to"}</strong>,
-            }}
-          />
+          {assurance?.required_level === "al3" && assurance?.current_level !== "al1" ? (
+            <FormattedMessage
+              id="assuranceInfo.lead.securityKey"
+              defaultMessage="{serviceName} requires you to log in with a security key that is verified with your identity in eduID."
+              description="Assurance info - lead, security key needed"
+              values={{
+                serviceName: <strong>{serviceName ?? "The service you are logging in to"}</strong>,
+              }}
+            />
+          ) : (
+            <FormattedMessage
+              id="assuranceInfo.lead"
+              defaultMessage="{serviceName} requires you to verify your identity in eduID."
+              description="Assurance info - lead"
+              values={{
+                serviceName: <strong>{serviceName ?? "The service you are logging in to"}</strong>,
+              }}
+            />
+          )}
         </p>
       </div>
       <div className="notice-box">
