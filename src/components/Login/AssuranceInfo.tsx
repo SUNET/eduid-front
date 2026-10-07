@@ -7,16 +7,16 @@ import { FormattedMessage } from "react-intl";
  * makes the final decision), but is warned that access will probably be denied.
  */
 export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): React.JSX.Element {
-  const assurance = useAppSelector((state) => state.login.assurance);
   const service_info = useAppSelector((state) => state.login.service_info);
-  const serviceName = service_info?.display_name?.en;
+  const locale = useAppSelector((state) => state.intl.locale);
+  const serviceName = service_info?.display_name?.[locale] || service_info?.display_name?.en;
 
   return (
     <>
       <h1>
         <FormattedMessage
           id="assuranceInfo.title"
-          defaultMessage="Identity assurance level too low"
+          defaultMessage="Log in: Identity verification needed"
           description="Assurance info - title"
         />
       </h1>
@@ -24,29 +24,24 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
         <p>
           <FormattedMessage
             id="assuranceInfo.lead"
-            defaultMessage="The service you are logging in to requires a higher identity assurance level than your eduID account currently has."
+            defaultMessage="{serviceName} requires you to verify your identity in eduID."
             description="Assurance info - lead"
+            values={{
+              serviceName: <strong>{serviceName ?? "The service you are logging in to"}</strong>,
+            }}
           />
         </p>
       </div>
       <div className="notice-box">
+        <AssuranceHelp />
         <p>
           <FormattedMessage
             id="assuranceInfo.info"
-            defaultMessage="{serviceName} requires assurance level {requiredLevel}, but your current level is {currentLevel}. You can continue, but access will probably be denied by the service."
+            defaultMessage="You can continue to {serviceName} without verifying, but access will probably be denied."
             description="Assurance info - message"
             values={{
-              serviceName: <strong>{serviceName ?? "The service"}</strong>,
-              requiredLevel: <strong>{assurance?.required_level}</strong>,
-              currentLevel: <strong>{assurance?.current_level}</strong>,
+              serviceName: <strong>{serviceName ?? "the service"}</strong>,
             }}
-          />
-        </p>
-        <p>
-          <FormattedMessage
-            id="assuranceInfo.help"
-            defaultMessage="To raise your assurance level, verify your identity on the Identity page in eduID."
-            description="Assurance info - help"
           />
         </p>
       </div>
@@ -54,11 +49,119 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
         <EduIDButton buttonstyle="primary" onClick={props.onContinue}>
           <FormattedMessage
             id="assuranceInfo.continue"
-            defaultMessage="Continue"
+            defaultMessage="Continue anyway"
             description="Assurance info - continue button"
           />
         </EduIDButton>
       </div>
+    </>
+  );
+}
+
+/* Tell the user what to do to reach the required assurance level:
+ * - al1 -> al2: verify your identity
+ * - al1 -> al3: verify your identity and add a verified security key
+ * - al2 -> al3: add a verified security key
+ */
+function AssuranceHelp(): React.JSX.Element | null {
+  const assurance = useAppSelector((state) => state.login.assurance);
+
+  if (!assurance) {
+    return null;
+  }
+
+  if (assurance.current_level === "al1" && assurance.required_level === "al3") {
+    return (
+      <>
+        <h5>
+          <FormattedMessage
+            id="assuranceInfo.help.verifyAndKey"
+            defaultMessage="How to get access:"
+            description="Assurance info - help, identity not verified and security key needed"
+          />
+        </h5>
+        <ul className="bullets">
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step1"
+              defaultMessage="Verify your identity on the Identity page, for example with digital ID."
+              description="Assurance info - help, step 1 verify identity"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step2"
+              defaultMessage="Add a security key on the Security page and verify it with your identity."
+              description="Assurance info - help, step 2 add security key"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step3"
+              defaultMessage="Then log in to this service again and you will get access."
+              description="Assurance info - help, step 3 log in again"
+            />
+          </li>
+        </ul>
+      </>
+    );
+  }
+
+  if (assurance.current_level === "al1") {
+    return (
+      <>
+        <h5>
+          <FormattedMessage
+            id="assuranceInfo.help.verify"
+            defaultMessage="How to get access:"
+            description="Assurance info - help, identity not verified"
+          />
+        </h5>
+        <ul className="bullets">
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verify.step1"
+              defaultMessage="Verify your identity on the Identity page, for example with digital ID."
+              description="Assurance info - help, verify identity"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verify.step2"
+              defaultMessage="Then log in to this service again and you will get access."
+              description="Assurance info - help, log in again"
+            />
+          </li>
+        </ul>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h5>
+        <FormattedMessage
+          id="assuranceInfo.help.securityKey"
+          defaultMessage="How to get access:"
+          description="Assurance info - help, verified security key needed"
+        />
+      </h5>
+      <ul className="bullets">
+        <li>
+          <FormattedMessage
+            id="assuranceInfo.help.securityKey.step1"
+            defaultMessage="Add a security key on the Security page and verify it with your identity."
+            description="Assurance info - help, add security key"
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            id="assuranceInfo.help.securityKey.step2"
+            defaultMessage="Then log in to this service again and you will get access."
+            description="Assurance info - help, log in again"
+          />
+        </li>
+      </ul>
     </>
   );
 }
