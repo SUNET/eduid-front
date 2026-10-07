@@ -121,7 +121,6 @@ export const loginSlice = createSlice({
         state.fetching_next = true;
       })
       .addMatcher(loginApi.endpoints.fetchNext.matchFulfilled, (state, action) => {
-        console.log("assurance from /next:", action.payload.payload.assurance);
         // Store the result from asking the backend what action to perform next
         const samlParameters =
           action.payload.payload.action === "FINISHED" ? action.payload.payload.parameters : undefined;
