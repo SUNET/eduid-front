@@ -140,6 +140,62 @@
   "actions.action-completed": {
     "string": "Success"
   },
+  "assuranceInfo.continue": {
+    "developer_comment": "Assurance info - continue button",
+    "string": "Continue anyway"
+  },
+  "assuranceInfo.help.securityKey": {
+    "developer_comment": "Assurance info - help, verified security key needed",
+    "string": "How to get access:"
+  },
+  "assuranceInfo.help.securityKey.step1": {
+    "developer_comment": "Assurance info - help, add security key",
+    "string": "Add a security key on the Security page and verify it with your identity."
+  },
+  "assuranceInfo.help.securityKey.step2": {
+    "developer_comment": "Assurance info - help, log in again",
+    "string": "Then log in to this service again and you will get access."
+  },
+  "assuranceInfo.help.verify": {
+    "developer_comment": "Assurance info - help, identity not verified",
+    "string": "How to get access:"
+  },
+  "assuranceInfo.help.verify.step1": {
+    "developer_comment": "Assurance info - help, verify identity",
+    "string": "Verify your identity on the Identity page, for example with digital ID."
+  },
+  "assuranceInfo.help.verify.step2": {
+    "developer_comment": "Assurance info - help, log in again",
+    "string": "Then log in to this service again and you will get access."
+  },
+  "assuranceInfo.help.verifyAndKey": {
+    "developer_comment": "Assurance info - help, identity not verified and security key needed",
+    "string": "How to get access:"
+  },
+  "assuranceInfo.help.verifyAndKey.step1": {
+    "developer_comment": "Assurance info - help, step 1 verify identity",
+    "string": "Verify your identity on the Identity page, for example with digital ID."
+  },
+  "assuranceInfo.help.verifyAndKey.step2": {
+    "developer_comment": "Assurance info - help, step 2 add security key",
+    "string": "Add a security key on the Security page and verify it with your identity."
+  },
+  "assuranceInfo.help.verifyAndKey.step3": {
+    "developer_comment": "Assurance info - help, step 3 log in again",
+    "string": "Then log in to this service again and you will get access."
+  },
+  "assuranceInfo.info": {
+    "developer_comment": "Assurance info - message",
+    "string": "You can continue to {serviceName} without verifying, but access will probably be denied."
+  },
+  "assuranceInfo.lead": {
+    "developer_comment": "Assurance info - lead",
+    "string": "{serviceName} requires you to verify your identity in eduID."
+  },
+  "assuranceInfo.title": {
+    "developer_comment": "Assurance info - title",
+    "string": "Log in: Identity verification needed"
+  },
   "assuranceLevels.edu": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
     "string": "AL2 (confirmed user) / RAF Medium"
