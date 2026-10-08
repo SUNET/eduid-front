@@ -76,11 +76,17 @@ const MESSAGES = defineMessages({
       "Your identity is verified to access {serviceName}. We recommend registering your sign-in method in Step 4 for stronger account protection.",
     description: "al3 recommendation after verification",
   },
-  verifiedIdentityPastEntry: {
+  unverifiedPastEntry: {
     id: "entry.requirement.verifiedIdentity.pastEntry",
     defaultMessage:
       "A verified identity is required to access {serviceName}. Press Cancel to go back to Step 1, or verify your identity later on the Identity page in eduID.",
     description: "require verified identity, past entry",
+  },
+  unverifiedUserCreated: {
+    id: "entry.requirement.verifiedIdentity.userCreated",
+    defaultMessage:
+      "A verified identity is required to access {serviceName}. Verify your identity on the Identity page in eduID.",
+    description: "require verified identity, user created",
   },
   requirementStep4: {
     id: "entry.requirement.step4",
@@ -136,8 +142,11 @@ const getUnverified = ({
 
   // al2 or al3: a verified identity is required — security key alone will not satisfy it
   if (needsDigitalId) {
+    if (nextPage === "SIGNUP_USER_CREATED") {
+      return { badgeType: "required", message: MESSAGES.unverifiedUserCreated };
+    }
     if (pastPage || nextPage === "SIGNUP_CREDENTIALS") {
-      return { badgeType: "required", message: MESSAGES.verifiedIdentityPastEntry };
+      return { badgeType: "required", message: MESSAGES.unverifiedPastEntry };
     }
     return { badgeType: "required", message: MESSAGES.recommendationAl3 };
   }
