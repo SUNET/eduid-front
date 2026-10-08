@@ -1,3 +1,5 @@
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
@@ -44,19 +46,24 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
           )}
         </p>
       </div>
-      <div className="notice-box">
-        <AssuranceHelp />
-        <p>
-          <FormattedMessage
-            id="assuranceInfo.info"
-            defaultMessage="You can continue to {serviceName} without verifying, but access will probably be denied."
-            description="Assurance info - message"
-            values={{
-              serviceName: <strong>{serviceName ?? "the service"}</strong>,
-            }}
-          />
-        </p>
+      <div className="status-box m-b-md">
+        <div className="checkbox-wrapper">
+          <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
+        </div>
+        <div className="text-wrapper">
+          <AssuranceHelp />
+        </div>
       </div>
+      <p>
+        <FormattedMessage
+          id="assuranceInfo.info"
+          defaultMessage="You can continue to {serviceName} without verifying, but access will probably be denied."
+          description="Assurance info - message"
+          values={{
+            serviceName: <strong>{serviceName ?? "the service"}</strong>,
+          }}
+        />
+      </p>
       <div className="buttons">
         <EduIDButton buttonstyle="primary" onClick={props.onContinue}>
           <FormattedMessage
@@ -92,29 +99,25 @@ function AssuranceHelp(): React.JSX.Element | null {
             description="Assurance info - help, identity not verified and security key needed"
           />
         </h5>
-        <ul className="bullets">
-          <li>
-            <FormattedMessage
-              id="assuranceInfo.help.verifyAndKey.step1"
-              defaultMessage="Verify your identity on the Identity page, for example with digital ID."
-              description="Assurance info - help, step 1 verify identity"
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              id="assuranceInfo.help.verifyAndKey.step2"
-              defaultMessage="Add a security key on the Security page and verify it with your identity."
-              description="Assurance info - help, step 2 add security key"
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              id="assuranceInfo.help.verifyAndKey.step3"
-              defaultMessage="Then log in to this service again and you will get access."
-              description="Assurance info - help, step 3 log in again"
-            />
-          </li>
-        </ul>
+        <p>
+          <FormattedMessage
+            id="assuranceInfo.help.verifyAndKey.step1"
+            defaultMessage="Verify your identity on the Identity page, for example with digital ID."
+            description="Assurance info - help, step 1 verify identity"
+          />{" "}
+          &nbsp;
+          <FormattedMessage
+            id="assuranceInfo.help.verifyAndKey.step2"
+            defaultMessage="Add a security key on the Security page and verify it with your identity."
+            description="Assurance info - help, step 2 add security key"
+          />
+          &nbsp;
+          <FormattedMessage
+            id="assuranceInfo.help.verifyAndKey.step3"
+            defaultMessage="Then log in to this service again and you will get access."
+            description="Assurance info - help, step 3 log in again"
+          />
+        </p>
       </>
     );
   }
@@ -129,22 +132,19 @@ function AssuranceHelp(): React.JSX.Element | null {
             description="Assurance info - help, identity not verified"
           />
         </h5>
-        <ul className="bullets">
-          <li>
-            <FormattedMessage
-              id="assuranceInfo.help.verify.step1"
-              defaultMessage="Verify your identity on the Identity page, for example with digital ID."
-              description="Assurance info - help, verify identity"
-            />
-          </li>
-          <li>
-            <FormattedMessage
-              id="assuranceInfo.help.verify.step2"
-              defaultMessage="Then log in to this service again and you will get access."
-              description="Assurance info - help, log in again"
-            />
-          </li>
-        </ul>
+        <p>
+          <FormattedMessage
+            id="assuranceInfo.help.verify.step1"
+            defaultMessage="Verify your identity on the Identity page, for example with digital ID."
+            description="Assurance info - help, verify identity"
+          />
+          &nbsp;
+          <FormattedMessage
+            id="assuranceInfo.help.verify.step2"
+            defaultMessage="Then log in to this service again and you will get access."
+            description="Assurance info - help, log in again"
+          />
+        </p>
       </>
     );
   }
@@ -158,22 +158,19 @@ function AssuranceHelp(): React.JSX.Element | null {
           description="Assurance info - help, verified security key needed"
         />
       </h5>
-      <ul className="bullets">
-        <li>
-          <FormattedMessage
-            id="assuranceInfo.help.securityKey.step1"
-            defaultMessage="Add a security key on the Security page and verify it with your identity."
-            description="Assurance info - help, add security key"
-          />
-        </li>
-        <li>
-          <FormattedMessage
-            id="assuranceInfo.help.securityKey.step2"
-            defaultMessage="Then log in to this service again and you will get access."
-            description="Assurance info - help, log in again"
-          />
-        </li>
-      </ul>
+      <p>
+        <FormattedMessage
+          id="assuranceInfo.help.securityKey.step1"
+          defaultMessage="Add a security key on the Security page and verify it with your identity."
+          description="Assurance info - help, add security key"
+        />
+        &nbsp;
+        <FormattedMessage
+          id="assuranceInfo.help.securityKey.step2"
+          defaultMessage="Then log in to this service again and you will get access."
+          description="Assurance info - help, log in again"
+        />
+      </p>
     </>
   );
 }
