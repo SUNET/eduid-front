@@ -1159,6 +1159,10 @@
     "developer_comment": "require verified identity, past entry",
     "string": "En verifierad identitet krävs för att använda {serviceName}. Tryck på Avbryt för att gå tillbaka till Steg 1, eller verifiera din identitet senare på sidan Identitet i eduID."
   },
+  "entry.requirement.verifiedIdentity.userCreated": {
+    "developer_comment": "require verified identity, user created",
+    "string": "En verifierad identitet krävs för att få tillgång till {serviceName}. Verifiera din identitet på sidan Identitet i eduID."
+  },
   "entry.securityKeyRegistered": {
     "developer_comment": "security key registered success",
     "string": "Du är redo att fortsätta till {serviceName}."
