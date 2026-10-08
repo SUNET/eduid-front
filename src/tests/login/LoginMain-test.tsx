@@ -92,7 +92,7 @@ test("renders AssuranceInfo when assurance level is not fulfilled", async () => 
 
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/More secure login method needed/);
   expect(screen.getAllByText(/Test Service/).length).toBeGreaterThan(0);
-  expect(screen.getByText(/Verify your identity on the Identity page/)).toBeInTheDocument();
+  expect(screen.getByText(/Choose an identity verification method/)).toBeInTheDocument();
   expect(screen.getByRole("button", { name: /continue/i })).toBeInTheDocument();
 });
 
