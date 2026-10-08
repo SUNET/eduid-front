@@ -144,10 +144,6 @@
     "developer_comment": "Assurance info - continue button",
     "string": "Continue anyway"
   },
-  "assuranceInfo.help.securityKey": {
-    "developer_comment": "Assurance info - help, verified security key needed",
-    "string": "How to get access:"
-  },
   "assuranceInfo.help.securityKey.step1": {
     "developer_comment": "Assurance info - help, add security key",
     "string": "Add a security key on the Security page and verify it with your identity."
@@ -156,25 +152,17 @@
     "developer_comment": "Assurance info - help, log in again",
     "string": "Then log in to this service again and you will get access."
   },
-  "assuranceInfo.help.verify": {
-    "developer_comment": "Assurance info - help, identity not verified",
-    "string": "How to get access:"
-  },
   "assuranceInfo.help.verify.step1": {
     "developer_comment": "Assurance info - help, verify identity",
-    "string": "Verify your identity on the Identity page, for example with digital ID."
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
   },
   "assuranceInfo.help.verify.step2": {
     "developer_comment": "Assurance info - help, log in again",
     "string": "Then log in to this service again and you will get access."
   },
-  "assuranceInfo.help.verifyAndKey": {
-    "developer_comment": "Assurance info - help, identity not verified and security key needed",
-    "string": "How to get access:"
-  },
   "assuranceInfo.help.verifyAndKey.step1": {
     "developer_comment": "Assurance info - help, step 1 verify identity",
-    "string": "Verify your identity on the Identity page, for example with digital ID."
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
   },
   "assuranceInfo.help.verifyAndKey.step2": {
     "developer_comment": "Assurance info - help, step 2 add security key",
