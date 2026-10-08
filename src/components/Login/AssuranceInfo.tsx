@@ -13,6 +13,13 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
   const service_info = useAppSelector((state) => state.login.service_info);
   const locale = useAppSelector((state) => state.intl.locale);
   const serviceName = service_info?.display_name?.[locale] || service_info?.display_name?.en;
+  const dashboard_link = useAppSelector((state) => state.config.dashboard_link);
+
+  const goToDashboard = () => {
+    if (dashboard_link) {
+      document.location.href = dashboard_link;
+    }
+  };
 
   return (
     <>
@@ -51,26 +58,29 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
           <FontAwesomeIcon icon={faCircleExclamation} className="disabled" />
         </div>
         <div className="text-wrapper">
-          <AssuranceHelp />
+          <p>
+            <FormattedMessage
+              id="assuranceInfo.info"
+              defaultMessage="You can continue to {serviceName} without verifying, but access will probably be denied."
+              description="Assurance info - message"
+              values={{
+                serviceName: <strong>{serviceName ?? "the service"}</strong>,
+              }}
+            />
+          </p>
         </div>
       </div>
-      <p>
-        <FormattedMessage
-          id="assuranceInfo.info"
-          defaultMessage="You can continue to {serviceName} without verifying, but access will probably be denied."
-          description="Assurance info - message"
-          values={{
-            serviceName: <strong>{serviceName ?? "the service"}</strong>,
-          }}
-        />
-      </p>
-      <div className="buttons">
+      <AssuranceHelp />
+      <div className="buttons-center">
         <EduIDButton buttonstyle="primary" onClick={props.onContinue}>
           <FormattedMessage
             id="assuranceInfo.continue"
             defaultMessage="Continue anyway"
             description="Assurance info - continue button"
           />
+        </EduIDButton>
+        <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={goToDashboard}>
+          <FormattedMessage id="common.goToEduid" defaultMessage="go to eduID" description="Login MFA link" />
         </EduIDButton>
       </div>
     </>
@@ -84,6 +94,15 @@ export function AssuranceInfo(props: Readonly<{ onContinue: () => void }>): Reac
  */
 function AssuranceHelp(): React.JSX.Element | null {
   const assurance = useAppSelector((state) => state.login.assurance);
+  const heading = (
+    <h2>
+      <FormattedMessage
+        id="multiFactorAuth.optionsHeading"
+        defaultMessage="Options available in the eduID settings:"
+        description="Login MFA"
+      />
+    </h2>
+  );
 
   if (!assurance) {
     return null;
@@ -92,32 +111,30 @@ function AssuranceHelp(): React.JSX.Element | null {
   if (assurance.current_level === "al1" && assurance.required_level === "al3") {
     return (
       <>
-        <h5>
-          <FormattedMessage
-            id="assuranceInfo.help.verifyAndKey"
-            defaultMessage="How to get access:"
-            description="Assurance info - help, identity not verified and security key needed"
-          />
-        </h5>
-        <p>
-          <FormattedMessage
-            id="assuranceInfo.help.verifyAndKey.step1"
-            defaultMessage="Verify your identity on the Identity page, for example with digital ID."
-            description="Assurance info - help, step 1 verify identity"
-          />{" "}
-          &nbsp;
-          <FormattedMessage
-            id="assuranceInfo.help.verifyAndKey.step2"
-            defaultMessage="Add a security key on the Security page and verify it with your identity."
-            description="Assurance info - help, step 2 add security key"
-          />
-          &nbsp;
-          <FormattedMessage
-            id="assuranceInfo.help.verifyAndKey.step3"
-            defaultMessage="Then log in to this service again and you will get access."
-            description="Assurance info - help, step 3 log in again"
-          />
-        </p>
+        {heading}
+        <ul className="bullets">
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step1"
+              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+              description="Assurance info - help, step 1 verify identity"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step2"
+              defaultMessage="Add a security key on the Security page and verify it with your identity."
+              description="Assurance info - help, step 2 add security key"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verifyAndKey.step3"
+              defaultMessage="Then log in to this service again and you will get access."
+              description="Assurance info - help, step 3 log in again"
+            />
+          </li>
+        </ul>
       </>
     );
   }
@@ -125,52 +142,46 @@ function AssuranceHelp(): React.JSX.Element | null {
   if (assurance.current_level === "al1") {
     return (
       <>
-        <h5>
-          <FormattedMessage
-            id="assuranceInfo.help.verify"
-            defaultMessage="How to get access:"
-            description="Assurance info - help, identity not verified"
-          />
-        </h5>
-        <p>
-          <FormattedMessage
-            id="assuranceInfo.help.verify.step1"
-            defaultMessage="Verify your identity on the Identity page, for example with digital ID."
-            description="Assurance info - help, verify identity"
-          />
-          &nbsp;
-          <FormattedMessage
-            id="assuranceInfo.help.verify.step2"
-            defaultMessage="Then log in to this service again and you will get access."
-            description="Assurance info - help, log in again"
-          />
-        </p>
+        {heading}
+        <ul className="bullets">
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verify.step1"
+              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+              description="Assurance info - help, verify identity"
+            />
+          </li>
+          <li>
+            <FormattedMessage
+              id="assuranceInfo.help.verify.step2"
+              defaultMessage="Then log in to this service again and you will get access."
+              description="Assurance info - help, log in again"
+            />
+          </li>
+        </ul>
       </>
     );
   }
 
   return (
     <>
-      <h5>
-        <FormattedMessage
-          id="assuranceInfo.help.securityKey"
-          defaultMessage="How to get access:"
-          description="Assurance info - help, verified security key needed"
-        />
-      </h5>
-      <p>
-        <FormattedMessage
-          id="assuranceInfo.help.securityKey.step1"
-          defaultMessage="Add a security key on the Security page and verify it with your identity."
-          description="Assurance info - help, add security key"
-        />
-        &nbsp;
-        <FormattedMessage
-          id="assuranceInfo.help.securityKey.step2"
-          defaultMessage="Then log in to this service again and you will get access."
-          description="Assurance info - help, log in again"
-        />
-      </p>
+      {heading}
+      <ul className="bullets">
+        <li>
+          <FormattedMessage
+            id="assuranceInfo.help.securityKey.step1"
+            defaultMessage="Add a security key on the Security page and verify it with your identity."
+            description="Assurance info - help, add security key"
+          />
+        </li>
+        <li>
+          <FormattedMessage
+            id="assuranceInfo.help.securityKey.step2"
+            defaultMessage="Then log in to this service again and you will get access."
+            description="Assurance info - help, log in again"
+          />
+        </li>
+      </ul>
     </>
   );
 }
