@@ -1159,6 +1159,10 @@
     "developer_comment": "require verified identity, past entry",
     "string": "A verified identity is required to access {serviceName}. Press Cancel to go back to Step 1, or verify your identity later on the Identity page in eduID."
   },
+  "entry.requirement.verifiedIdentity.userCreated": {
+    "developer_comment": "require verified identity, user created",
+    "string": "A verified identity is required to access {serviceName}. Verify your identity on the Identity page in eduID."
+  },
   "entry.securityKeyRegistered": {
     "developer_comment": "security key registered success",
     "string": "You're ready to continue to {serviceName}."
