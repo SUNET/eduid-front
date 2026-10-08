@@ -153,6 +153,12 @@ export interface LoginNextRequest {
 
 export type IdPAction = "NEW_DEVICE" | "OTHER_DEVICE" | "USERNAMEPASSWORD" | "MFA" | "TOU" | "FINISHED" | "PASSWORD";
 
+export interface LoginAssurance {
+  required_level: "al2" | "al3"; // minimum level the SP requires
+  current_level: "al1" | "al2" | "al3"; // level the IdP is about to assert for this login
+  fulfilled: boolean; // true if current_level is at least required_level
+}
+
 export interface LoginNextResponse {
   // The response from the /next API endpoint consists of (in the happy case):
   //   action: what action the backed requires next, or FINISHED
@@ -163,6 +169,7 @@ export interface LoginNextResponse {
   parameters?: SAMLParameters;
   authn_options?: LoginAuthnOptions;
   service_info?: ServiceInfo;
+  assurance?: LoginAssurance; // only present on FINISHED when the SP has an AL requirement
 }
 
 export type SAMLParameters = { SAMLResponse: string; RelayState?: string; used?: boolean };

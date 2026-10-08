@@ -76,6 +76,63 @@ test("renders FINISHED as expected", async () => {
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
 });
 
+test("renders AssuranceInfo when assurance level is not fulfilled", async () => {
+  mswServer.use(
+    createLoginNextHandler(TEST_REF, {
+      action: "FINISHED",
+      target: "/foo",
+      parameters: { SAMLResponse: "saml-response" },
+      service_info: { display_name: { en: "Test Service", sv: "Testtjänsten" } },
+      assurance: { required_level: "al2", current_level: "al1", fulfilled: false },
+    }),
+  );
+  renderLoginPage(`${LOGIN_BASE_PATH}/${TEST_REF}`);
+
+  await waitFor(() => screen.getByRole("heading", { level: 1 }));
+
+  expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/More secure login method needed/);
+  expect(screen.getAllByText(/Test Service/).length).toBeGreaterThan(0);
+  expect(screen.getByText(/Choose an identity verification method/)).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /continue/i })).toBeInTheDocument();
+});
+
+test("continues to SubmitSamlResponse after clicking Continue in AssuranceInfo", async () => {
+  mswServer.use(
+    createLoginNextHandler(TEST_REF, {
+      action: "FINISHED",
+      target: "/foo",
+      parameters: { SAMLResponse: "saml-response" },
+      assurance: { required_level: "al3", current_level: "al2", fulfilled: false },
+    }),
+  );
+  renderLoginPage(`${LOGIN_BASE_PATH}/${TEST_REF}`);
+
+  await waitFor(() => screen.getByRole("heading", { level: 1 }));
+
+  // al2 -> al3: the user is told to add a security key
+  expect(screen.getByText(/Add a security key on the Security page/)).toBeInTheDocument();
+
+  await userEvent.click(screen.getByRole("button", { name: /continue/i }));
+
+  await waitFor(() => expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/^Logging you in/));
+});
+
+test("renders FINISHED directly when assurance is fulfilled", async () => {
+  mswServer.use(
+    createLoginNextHandler(TEST_REF, {
+      action: "FINISHED",
+      target: "/foo",
+      parameters: { SAMLResponse: "saml-response" },
+      assurance: { required_level: "al2", current_level: "al2", fulfilled: true },
+    }),
+  );
+  renderLoginPage(`${LOGIN_BASE_PATH}/${TEST_REF}`);
+
+  await waitFor(() => screen.getByRole("heading"));
+
+  expect(screen.getByRole("heading")).toHaveTextContent(/^Logging you in/);
+});
+
 test("renders UsernamePw as expected", async () => {
   mswServer.use(
     createLoginNextHandler(TEST_REF, {
