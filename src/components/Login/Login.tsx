@@ -2,12 +2,13 @@ import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { LOGIN_BASE_PATH } from "helperFunctions/paths";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useNavigate, useParams } from "react-router";
 import { clearNotifications } from "slices/Notifications";
 import resetPasswordSlice from "slices/ResetPassword";
 import loginSlice from "../../slices/Login";
+import { AssuranceInfo } from "./AssuranceInfo";
 import { MultiFactorAuth } from "./MultiFactorAuth";
 import { NewDevice, initKnownDevice } from "./NewDevice";
 import { SubmitSamlResponse } from "./SubmitSamlResponse";
@@ -106,15 +107,20 @@ export function Login() {
 
 function RenderFinished() {
   const SAMLParameters = useAppSelector((state) => state.login.saml_parameters);
+  const assurance = useAppSelector((state) => state.login.assurance);
+  const [proceedAnyway, setProceedAnyway] = useState(false);
 
-  let ComponentToRender;
-  if (SAMLParameters) {
-    ComponentToRender = <SubmitSamlResponse />;
-  } else {
-    ComponentToRender = <UseOtherDevice2 />;
+  if (!SAMLParameters) {
+    return <UseOtherDevice2 />;
   }
 
-  return ComponentToRender;
+  // The SP requires a higher assurance level than the IdP is about to assert.
+  // Inform the user before posting the SAML response (the SP makes the final decision).
+  if (assurance && !assurance.fulfilled && !proceedAnyway) {
+    return <AssuranceInfo onContinue={() => setProceedAnyway(true)} />;
+  }
+
+  return <SubmitSamlResponse />;
 }
 
 function UserTerminated() {
