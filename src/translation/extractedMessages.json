@@ -144,21 +144,17 @@
     "developer_comment": "Assurance info - continue button",
     "string": "Continue anyway"
   },
+  "assuranceInfo.help.login.again": {
+    "developer_comment": "Assurance info - log in again",
+    "string": "Log in to this service again and you will get access."
+  },
   "assuranceInfo.help.securityKey.step1": {
     "developer_comment": "Assurance info - help, add security key",
     "string": "Add a security key on the Security page and verify it with your identity."
   },
-  "assuranceInfo.help.securityKey.step2": {
-    "developer_comment": "Assurance info - help, log in again",
-    "string": "Log in to this service again and you will get access."
-  },
   "assuranceInfo.help.verify.step1": {
     "developer_comment": "Assurance info - help, verify identity",
     "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
-  },
-  "assuranceInfo.help.verify.step2": {
-    "developer_comment": "Assurance info - help, log in again",
-    "string": "Log in to this service again and you will get access."
   },
   "assuranceInfo.help.verifyAndKey.step1": {
     "developer_comment": "Assurance info - help, step 1 verify identity",
@@ -167,10 +163,6 @@
   "assuranceInfo.help.verifyAndKey.step2": {
     "developer_comment": "Assurance info - help, step 2 add security key",
     "string": "Add a security key on the Security page and verify it with your identity."
-  },
-  "assuranceInfo.help.verifyAndKey.step3": {
-    "developer_comment": "Assurance info - help, step 3 log in again",
-    "string": "Log in to this service again and you will get access."
   },
   "assuranceInfo.info": {
     "developer_comment": "Assurance info - message",
