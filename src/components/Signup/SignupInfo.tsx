@@ -18,7 +18,7 @@ type RecommendationInput = {
   nextPage?: string;
 };
 
-const BADGE_CONFIG: Record<BadgeType, { id: string; defaultMessage: string; description: string }> = {
+const BADGE_CONFIG = defineMessages({
   complete: {
     id: "entry.complete.badge",
     defaultMessage: "COMPLETE",
@@ -34,7 +34,7 @@ const BADGE_CONFIG: Record<BadgeType, { id: string; defaultMessage: string; desc
     defaultMessage: "REQUIRED",
     description: "required badge",
   },
-};
+});
 
 const Badge = ({ type }: { type: BadgeType }) => {
   const { id, defaultMessage, description } = BADGE_CONFIG[type];

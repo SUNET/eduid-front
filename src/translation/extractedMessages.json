@@ -1079,6 +1079,10 @@
     "developer_comment": "Collision dialog confirm button",
     "string": "Continue with new account"
   },
+  "entry.complete.badge": {
+    "developer_comment": "complete badge",
+    "string": "COMPLETE"
+  },
   "entry.description": {
     "developer_comment": "Collision dialog description",
     "string": "This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
@@ -1142,6 +1146,14 @@
   "entry.recommendation.al3.verified.userCreated": {
     "developer_comment": "al3 recommendation after verification, user created",
     "string": "Your identity is verified to access {serviceName}. We recommend registering a sign-in method on the Security page in eduID for stronger account protection."
+  },
+  "entry.recommendation.badge": {
+    "developer_comment": "recommendation badge",
+    "string": "RECOMMENDED"
+  },
+  "entry.requirement.badge": {
+    "developer_comment": "required badge",
+    "string": "REQUIRED"
   },
   "entry.requirement.credentialsStep": {
     "developer_comment": "require security key on credentials step",
