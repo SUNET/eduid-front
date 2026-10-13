@@ -140,6 +140,46 @@
   "actions.action-completed": {
     "string": "Success"
   },
+  "assuranceInfo.continue": {
+    "developer_comment": "Assurance info - continue button",
+    "string": "Continue anyway"
+  },
+  "assuranceInfo.help.login.again": {
+    "developer_comment": "Assurance info - log in again",
+    "string": "Log in to this service again and you will get access."
+  },
+  "assuranceInfo.help.securityKey.step1": {
+    "developer_comment": "Assurance info - help, add security key",
+    "string": "Add a security key on the Security page and verify it with your identity."
+  },
+  "assuranceInfo.help.verify.step1": {
+    "developer_comment": "Assurance info - help, verify identity",
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+  },
+  "assuranceInfo.help.verifyAndKey.step1": {
+    "developer_comment": "Assurance info - help, step 1 verify identity",
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+  },
+  "assuranceInfo.help.verifyAndKey.step2": {
+    "developer_comment": "Assurance info - help, step 2 add security key",
+    "string": "Add a security key on the Security page and verify it with your identity."
+  },
+  "assuranceInfo.info": {
+    "developer_comment": "Assurance info - message",
+    "string": "You can continue to {serviceName} without verifying, but access will probably be denied."
+  },
+  "assuranceInfo.lead": {
+    "developer_comment": "Assurance info - lead",
+    "string": "{serviceName} requires you to verify your identity in eduID."
+  },
+  "assuranceInfo.lead.securityKey": {
+    "developer_comment": "Assurance info - lead, security key needed",
+    "string": "{serviceName} requires you to log in with a security key that is verified with your identity in eduID."
+  },
+  "assuranceInfo.title": {
+    "developer_comment": "Assurance info - title",
+    "string": "Log in: More secure login method needed"
+  },
   "assuranceLevels.edu": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
     "string": "AL2 (confirmed user) / RAF Medium"
@@ -1079,6 +1119,10 @@
     "developer_comment": "Collision dialog confirm button",
     "string": "Continue with new account"
   },
+  "entry.complete.badge": {
+    "developer_comment": "complete badge",
+    "string": "COMPLETE"
+  },
   "entry.description": {
     "developer_comment": "Collision dialog description",
     "string": "This identity already belongs to an eduID account. Do you want to create a new account with it anyway? Your verified identity will be moved to the new account."
@@ -1142,6 +1186,14 @@
   "entry.recommendation.al3.verified.userCreated": {
     "developer_comment": "al3 recommendation after verification, user created",
     "string": "Your identity is verified to access {serviceName}. We recommend registering a sign-in method on the Security page in eduID for stronger account protection."
+  },
+  "entry.recommendation.badge": {
+    "developer_comment": "recommendation badge",
+    "string": "RECOMMENDED"
+  },
+  "entry.requirement.badge": {
+    "developer_comment": "required badge",
+    "string": "REQUIRED"
   },
   "entry.requirement.credentialsStep": {
     "developer_comment": "require security key on credentials step",
