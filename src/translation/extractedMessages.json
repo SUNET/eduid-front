@@ -150,7 +150,7 @@
   },
   "assuranceInfo.help.securityKey.step2": {
     "developer_comment": "Assurance info - help, log in again",
-    "string": "Then log in to this service again and you will get access."
+    "string": "Log in to this service again and you will get access."
   },
   "assuranceInfo.help.verify.step1": {
     "developer_comment": "Assurance info - help, verify identity",
@@ -158,7 +158,7 @@
   },
   "assuranceInfo.help.verify.step2": {
     "developer_comment": "Assurance info - help, log in again",
-    "string": "Then log in to this service again and you will get access."
+    "string": "Log in to this service again and you will get access."
   },
   "assuranceInfo.help.verifyAndKey.step1": {
     "developer_comment": "Assurance info - help, step 1 verify identity",
@@ -170,7 +170,7 @@
   },
   "assuranceInfo.help.verifyAndKey.step3": {
     "developer_comment": "Assurance info - help, step 3 log in again",
-    "string": "Then log in to this service again and you will get access."
+    "string": "Log in to this service again and you will get access."
   },
   "assuranceInfo.info": {
     "developer_comment": "Assurance info - message",

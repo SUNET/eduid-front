@@ -130,7 +130,7 @@ function AssuranceHelp(): React.JSX.Element | null {
           <li>
             <FormattedMessage
               id="assuranceInfo.help.verifyAndKey.step3"
-              defaultMessage="Then log in to this service again and you will get access."
+              defaultMessage="Log in to this service again and you will get access."
               description="Assurance info - help, step 3 log in again"
             />
           </li>
@@ -154,7 +154,7 @@ function AssuranceHelp(): React.JSX.Element | null {
           <li>
             <FormattedMessage
               id="assuranceInfo.help.verify.step2"
-              defaultMessage="Then log in to this service again and you will get access."
+              defaultMessage="Log in to this service again and you will get access."
               description="Assurance info - help, log in again"
             />
           </li>
@@ -177,7 +177,7 @@ function AssuranceHelp(): React.JSX.Element | null {
         <li>
           <FormattedMessage
             id="assuranceInfo.help.securityKey.step2"
-            defaultMessage="Then log in to this service again and you will get access."
+            defaultMessage="Log in to this service again and you will get access."
             description="Assurance info - help, log in again"
           />
         </li>
