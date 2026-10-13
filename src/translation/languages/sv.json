@@ -140,6 +140,46 @@
   "actions.action-completed": {
     "string": "Klart"
   },
+  "assuranceInfo.continue": {
+    "developer_comment": "Assurance info - continue button",
+    "string": "Fortsätt ändå"
+  },
+  "assuranceInfo.help.login.again": {
+    "developer_comment": "Assurance info - log in again",
+    "string": "Logga in på den här tjänsten igen så får du tillgång."
+  },
+  "assuranceInfo.help.securityKey.step1": {
+    "developer_comment": "Assurance info - help, add security key",
+    "string": "Lägg till en säkerhetsnyckel på säkerhetssidan och verifiera den med din identitet."
+  },
+  "assuranceInfo.help.verify.step1": {
+    "developer_comment": "Assurance info - help, verify identity",
+    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+ eller eIDAS, och följ instruktionerna för att verifiera din identitet."
+  },
+  "assuranceInfo.help.verifyAndKey.step1": {
+    "developer_comment": "Assurance info - help, step 1 verify identity",
+    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+ eller eIDAS, och följ instruktionerna för att verifiera din identitet."
+  },
+  "assuranceInfo.help.verifyAndKey.step2": {
+    "developer_comment": "Assurance info - help, step 2 add security key",
+    "string": "Lägg till en säkerhetsnyckel på säkerhetssidan och verifiera den med din identitet."
+  },
+  "assuranceInfo.info": {
+    "developer_comment": "Assurance info - message",
+    "string": "Du kan fortsätta till {serviceName} utan att verifiera, men åtkomst kommer troligen att nekas."
+  },
+  "assuranceInfo.lead": {
+    "developer_comment": "Assurance info - lead",
+    "string": "{serviceName} kräver att du verifierar din identitet i eduID."
+  },
+  "assuranceInfo.lead.securityKey": {
+    "developer_comment": "Assurance info - lead, security key needed",
+    "string": "{serviceName} kräver att du loggar in med en säkerhetsnyckel som är verifierad med din identitet i eduID."
+  },
+  "assuranceInfo.title": {
+    "developer_comment": "Assurance info - title",
+    "string": "Logga in: Säkrare inloggningsmetod krävs"
+  },
   "assuranceLevels.edu": {
     "developer_comment": "Assurance levels with your eduID - paragraph3em",
     "string": "AL2 (bekräftad användare) / RAF Medium"
@@ -1079,6 +1119,10 @@
     "developer_comment": "Collision dialog confirm button",
     "string": "Fortsätt med nytt konto"
   },
+  "entry.complete.badge": {
+    "developer_comment": "complete badge",
+    "string": "SLUTFÖRT"
+  },
   "entry.description": {
     "developer_comment": "Collision dialog description",
     "string": "Den här identiteten är redan förknippad med ett eduID-konto. Vill du ändå fortsätta skapa ett nytt konto med den? Då flyttas din verifierade identitet till det nya kontot."
@@ -1142,6 +1186,14 @@
   "entry.recommendation.al3.verified.userCreated": {
     "developer_comment": "al3 recommendation after verification, user created",
     "string": "Din identitet är verifierad för att använda {serviceName}. Vi rekommenderar att du registrerar en inloggningsmetod på sidan Säkerhet i eduID för att stärka säkerheten för ditt konto."
+  },
+  "entry.recommendation.badge": {
+    "developer_comment": "recommendation badge",
+    "string": "REKOMMENDERAS "
+  },
+  "entry.requirement.badge": {
+    "developer_comment": "required badge",
+    "string": "KRÄVS"
   },
   "entry.requirement.credentialsStep": {
     "developer_comment": "require security key on credentials step",
