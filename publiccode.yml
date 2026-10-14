@@ -3,8 +3,6 @@ name: eduID Front
 applicationSuite: eduID Sweden
 url: https://github.com/SUNET/eduid-front
 landingURL: https://eduid.se
-softwareVersion: 20250423T124455
-releaseDate: 2025-04-23
 logo: https://eduid.se/static/img/eduid-logo-black.svg
 platforms:
   - web
