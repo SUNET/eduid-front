@@ -10,7 +10,10 @@ import { useTheme } from "./ThemeContext";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: AuthenticationResponseJSON): Promise<void> | void;
+  // Must return true when the login finished, so onComplete is not called
+  onSuccess(
+    publicKeyCredential: AuthenticationResponseJSON,
+  ): Promise<boolean> | boolean;
   onComplete?(): void;
   discoverable?: boolean;
 }
@@ -21,16 +24,23 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly<SecurityKeyProps>) {
+export function PassKey({
+  setup,
+  onSuccess,
+  onComplete,
+  discoverable,
+}: Readonly<SecurityKeyProps>) {
   // The PassKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
   const [active, setActive] = useState(false);
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  const [performAuthentication] =
+    navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
   async function handleSecurityKey() {
     setActive(true);
+    let finished = false;
     try {
       const webauth_options = await setup();
       if (webauth_options) {
@@ -39,21 +49,31 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
           // Wait for credential submission to finish before calling onComplete,
           // so that restartConditionalAuth doesn't fire a new challenge fetch
           // while the backend is still processing this credential.
-          await onSuccess(response.data);
+          finished = (await onSuccess(response.data)) === true;
         }
       }
     } catch {
       // User cancelled WebAuthn dialog or browser timed out — no action needed
     } finally {
       setActive(false);
-      onComplete?.();
+      // Restarting after a completed login would POST a new challenge while /next is in flight
+      if (!finished) onComplete?.();
     }
   }
 
-  return <SecurityKeyInactive disabled={active} handleSecurityKey={handleSecurityKey} discoverable={discoverable} />;
+  return (
+    <SecurityKeyInactive
+      disabled={active}
+      handleSecurityKey={handleSecurityKey}
+      discoverable={discoverable}
+    />
+  );
 }
 
-function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({
+  disabled,
+  handleSecurityKey,
+}: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 
@@ -87,7 +107,11 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
                 description="security zone redirect info"
                 values={{
                   howPasskeyWork: (
-                    <a href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
+                    <a
+                      href="/help#loginPasskeyHeading"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <FormattedMessage
                         id="common.eduidHelp"
                         description="passkey help text link"
@@ -99,7 +123,11 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
               />
             </p>
           </div>
-          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="" className="passkey-image" />
+          <img
+            src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+            alt=""
+            className="passkey-image"
+          />
         </div>
       </div>
       <div className="buttons">
@@ -111,7 +139,12 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
           id="pass-key"
           disabled={disabled}
         >
-          <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
+          <img
+            className="passkey-icon"
+            height="20"
+            alt="passkey icon"
+            src={passkeyIcon}
+          />
           <FormattedMessage
             id="passkey.button"
             description="login passkey primary option button"

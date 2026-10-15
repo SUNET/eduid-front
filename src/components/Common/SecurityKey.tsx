@@ -7,7 +7,10 @@ import { EduIDButton } from "./EduIDButton";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: AuthenticationResponseJSON): void;
+  // Return value is ignored here (widened only so callers returning Promise<boolean> compile)
+  onSuccess(
+    publicKeyCredential: AuthenticationResponseJSON,
+  ): Promise<boolean | void> | boolean | void;
   discoverable?: boolean;
 }
 
@@ -17,24 +20,34 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
+export function SecurityKey({
+  disabled,
+  setup,
+  onSuccess,
+}: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation and invokes the navigator.credentials.get() thunk that will result
   // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
   // can also be cancelled or restarted with buttons in the UI.
   const [active, setActive] = useState(false);
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  const [performAuthentication] =
+    navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
 
   async function handleSecurityKey() {
     setActive(true);
-    const webauth_options = await setup();
-    if (webauth_options) {
-      const response = await performAuthentication({ webauth_options });
-      if (response.isSuccess) {
-        onSuccess(response.data);
+    // Keep button inactive until credential submission finishes so no new challenge
+    // is fetched while the backend processes it.
+    try {
+      const webauth_options = await setup();
+      if (webauth_options) {
+        const response = await performAuthentication({ webauth_options });
+        if (response.isSuccess) {
+          await onSuccess(response.data);
+        }
       }
+    } finally {
+      setActive(false);
     }
-    setActive(false);
   }
 
   return (
@@ -43,7 +56,10 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
         {active ? (
           <SecurityKeyActive />
         ) : (
-          <SecurityKeyInactive disabled={!!disabled} handleSecurityKey={handleSecurityKey} />
+          <SecurityKeyInactive
+            disabled={!!disabled}
+            handleSecurityKey={handleSecurityKey}
+          />
         )}
         {active && (
           <p className="help-text">
@@ -59,7 +75,11 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   );
 }
 
-function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({
+  discoverable,
+  handleSecurityKey,
+  disabled,
+}: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -121,7 +141,10 @@ function SecurityKeyActive() {
         </h3>
       </div>
       <div className="button-pair bottom">
-        <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
+        <img
+          src={SecurityKeyGif}
+          alt="animation of Security Key inserted into computer"
+        />
       </div>
     </>
   );
