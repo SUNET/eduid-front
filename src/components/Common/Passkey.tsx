@@ -11,7 +11,10 @@ import { useTheme } from "./ThemeContext";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: AuthenticationResponseJSON): Promise<void> | void;
+  // Must return true when the login finished, so onComplete is not called
+  onSuccess(
+    publicKeyCredential: AuthenticationResponseJSON,
+  ): Promise<boolean> | boolean;
   onComplete?(): void;
   discoverable?: boolean;
 }
@@ -35,7 +38,10 @@ export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly
   return <SecurityKeyInactive disabled={active} handleSecurityKey={start} discoverable={discoverable} />;
 }
 
-function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({
+  disabled,
+  handleSecurityKey,
+}: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
   const { theme } = useTheme();
 
@@ -69,7 +75,11 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
                 description="security zone redirect info"
                 values={{
                   howPasskeyWork: (
-                    <a href="/help#loginPasskeyHeading" target="_blank" rel="noreferrer">
+                    <a
+                      href="/help#loginPasskeyHeading"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <FormattedMessage
                         id="common.eduidHelp"
                         description="passkey help text link"
@@ -81,7 +91,11 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
               />
             </p>
           </div>
-          <img src={theme === "dark" ? passkeyDarkImage : passkeyImage} alt="" className="passkey-image" />
+          <img
+            src={theme === "dark" ? passkeyDarkImage : passkeyImage}
+            alt=""
+            className="passkey-image"
+          />
         </div>
       </div>
       <div className="buttons">
@@ -93,7 +107,12 @@ function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveS
           id="pass-key"
           disabled={disabled}
         >
-          <img className="passkey-icon" height="20" alt="passkey icon" src={passkeyIcon} />
+          <img
+            className="passkey-icon"
+            height="20"
+            alt="passkey icon"
+            src={passkeyIcon}
+          />
           <FormattedMessage
             id="passkey.button"
             description="login passkey primary option button"

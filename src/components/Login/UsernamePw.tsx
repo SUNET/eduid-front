@@ -10,7 +10,12 @@ import { isConditionalMediationAvailable } from "helperFunctions/browserSupport"
 import { RESET_PASSWORD_PATH } from "helperFunctions/paths";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Field as FinalField, Form as FinalForm, FormRenderProps, useField } from "react-final-form";
+import {
+  Field as FinalField,
+  Form as FinalForm,
+  FormRenderProps,
+  useField,
+} from "react-final-form";
 import { FormattedMessage } from "react-intl";
 import { Link, useNavigate } from "react-router";
 import loginSlice from "slices/Login";
@@ -32,16 +37,29 @@ export function UsernamePw() {
   const dispatch = useAppDispatch();
   const ref = useAppSelector((state) => state.login.ref);
   const service_info = useAppSelector((state) => state.login.service_info);
-  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
+  const webauthn = useAppSelector(
+    (state) => state.login.authn_options.webauthn,
+  );
   const [fetchUsernamePassword] = loginApi.useLazyFetchUsernamePasswordQuery();
   const [fetchMfaAuth] = loginApi.useLazyFetchMfaAuthQuery();
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  const [performAuthentication] =
+    navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
   const [conditionalAuthTrigger, setConditionalAuthTrigger] = useState(0);
-  const conditionalQueryRef = useRef<ReturnType<typeof performAuthentication> | null>(null);
+  const conditionalQueryRef = useRef<ReturnType<
+    typeof performAuthentication
+  > | null>(null);
   // Cached challenge promise: both the conditional auth effect and the passkey button
   // share a single fetchMfaAuth call to avoid concurrent backend requests that race
   // on session.mfa_action and cause SessionOutOfSync.
-  const challengePromiseRef = useRef<Promise<PublicKeyCredentialRequestOptionsJSON | undefined> | null>(null);
+  const challengePromiseRef = useRef<Promise<
+    PublicKeyCredentialRequestOptionsJSON | undefined
+  > | null>(null);
+  // Once the backend says finished, nothing may POST /mfa_auth again from this instance. Deliberately not
+  // session-wide: if /next re-enters this step, a fresh instance must be able to authenticate again.
+  const authenticatedRef = useRef(false);
+  // Track the last credential submission so that restartConditionalAuth
+  // (and the effect) can wait for it before fetching a new challenge.
+  const credentialSubmissionRef = useRef<Promise<unknown> | null>(null);
   let loginHeading;
 
   if (securityZoneAction) {
@@ -103,20 +121,20 @@ export function UsernamePw() {
   // Fetch a challenge once and cache the promise. Both the conditional auth effect
   // and the passkey button reuse the same promise, so only one POST /mfa_auth is
   // in-flight at a time for challenge creation.
-  const fetchChallengeOnce = useCallback((): Promise<PublicKeyCredentialRequestOptionsJSON | undefined> => {
+  const fetchChallengeOnce = useCallback((): Promise<
+    PublicKeyCredentialRequestOptionsJSON | undefined
+  > => {
+    if (authenticatedRef.current) return Promise.resolve(undefined);
     if (!challengePromiseRef.current) {
       if (!ref) return Promise.resolve(undefined);
       challengePromiseRef.current = fetchMfaAuth({ ref })
         .then((response) => {
-          if (response.isSuccess) {
-            return response.data.payload.webauthn_options;
-          }
-          return undefined;
+          if (!response.isSuccess) return undefined;
+          return response.data.payload.webauthn_options;
         })
-        .catch(() => {
-          // Clear the cache on failure so the next attempt can retry
+        .finally(() => {
+          // Cache only while in flight: every new attempt (after cancel/failure) gets a fresh challenge
           challengePromiseRef.current = null;
-          return undefined;
         });
     }
     return challengePromiseRef.current;
@@ -126,27 +144,36 @@ export function UsernamePw() {
     // Abort any in-flight conditional auth before starting staged auth,
     // since the browser only allows one pending navigator.credentials.get() at a time.
     conditionalQueryRef.current?.abort();
+    // Wait for any in-flight conditional-UI credential submission, otherwise the
+    // passkey button would start a second concurrent POST /mfa_auth.
+    if (credentialSubmissionRef.current) {
+      await credentialSubmissionRef.current.catch(() => {});
+      credentialSubmissionRef.current = null;
+    }
+    // Returns undefined if the submission finished the login (authenticatedRef set).
     return fetchChallengeOnce();
   }
 
-  // Track the last credential submission so that restartConditionalAuth
-  // (and the effect) can wait for it before fetching a new challenge.
-  const credentialSubmissionRef = useRef<Promise<unknown> | null>(null);
-
-  async function useCredential(credential: AuthenticationResponseJSON) {
-    if (ref) {
+  const submitCredential = useCallback(
+    async (credential: AuthenticationResponseJSON): Promise<boolean> => {
+      if (!ref) return false;
       const promise = fetchMfaAuth({ ref: ref, webauthn_response: credential });
       credentialSubmissionRef.current = promise;
-      await promise;
-    }
-  }
+      const response = await promise;
+      if (response.isSuccess && response.data.payload.finished) {
+        authenticatedRef.current = true;
+      }
+      return authenticatedRef.current;
+    },
+    [fetchMfaAuth, ref],
+  );
 
   function restartConditionalAuth() {
     setConditionalAuthTrigger((n) => n + 1);
   }
 
   useEffect(() => {
-    if (!webauthn) {
+    if (!webauthn || authenticatedRef.current) {
       return;
     }
     let cancelled = false;
@@ -193,9 +220,8 @@ export function UsernamePw() {
           return;
         }
         if (result.isSuccess) {
-          const promise = fetchMfaAuth({ ref: ref!, webauthn_response: result.data });
-          credentialSubmissionRef.current = promise;
-          await promise;
+          const finished = await submitCredential(result.data);
+          if (finished) return;
         }
       }
     };
@@ -204,7 +230,14 @@ export function UsernamePw() {
       cancelled = true;
       conditionalQueryRef.current?.abort();
     };
-  }, [fetchChallengeOnce, fetchMfaAuth, performAuthentication, ref, webauthn, conditionalAuthTrigger]);
+  }, [
+    fetchChallengeOnce,
+    submitCredential,
+    performAuthentication,
+    ref,
+    webauthn,
+    conditionalAuthTrigger,
+  ]);
 
   return (
     <>
@@ -223,7 +256,10 @@ export function UsernamePw() {
             return (
               <form onSubmit={formProps.handleSubmit}>
                 <UsernameInputPart />
-                <PasswordInput name="currentPassword" autoComplete="current-password" />
+                <PasswordInput
+                  name="currentPassword"
+                  autoComplete="current-password"
+                />
                 {!securityZoneAction && <RenderResetPasswordLink />}
                 <div className="buttons">
                   {!securityZoneAction && <LoginAbortButton />}
@@ -254,7 +290,7 @@ export function UsernamePw() {
           <section className="passkey-option">
             <PassKey
               setup={getChallenge}
-              onSuccess={useCredential}
+              onSuccess={submitCredential}
               onComplete={restartConditionalAuth}
               discoverable={webauthn}
             />
@@ -269,7 +305,9 @@ export function UsernamePw() {
 
 function UsernameInputPart() {
   const authn_options = useAppSelector((state) => state.login.authn_options);
-  const webauthn = useAppSelector((state) => state.login.authn_options.webauthn);
+  const webauthn = useAppSelector(
+    (state) => state.login.authn_options.webauthn,
+  );
   const dispatch = useAppDispatch();
 
   function handleClickWrongPerson() {
@@ -292,7 +330,11 @@ function UsernameInputPart() {
                 }}
               />
             </legend>
-            <EduIDButton buttonstyle="link normal-case" id="wrong-person-button" onClick={handleClickWrongPerson}>
+            <EduIDButton
+              buttonstyle="link normal-case"
+              id="wrong-person-button"
+              onClick={handleClickWrongPerson}
+            >
               <FormattedMessage
                 id="usernamePw.notYou"
                 defaultMessage="Different user?"
@@ -310,7 +352,11 @@ function UsernameInputPart() {
           autoComplete="username"
           defaultValue={authn_options.forced_username}
           label={
-            <FormattedMessage id="common.username" defaultMessage="Username" description="username input field label" />
+            <FormattedMessage
+              id="common.username"
+              defaultMessage="Username"
+              description="username input field label"
+            />
           }
         />
       </>
@@ -336,16 +382,30 @@ function RenderResetPasswordLink() {
     e.preventDefault();
 
     /* Propagate the email address to the reset password slice if valid, or if empty. */
-    if ((isValidEmail && usernameField.meta.valid) || !usernameField.input.value) {
-      dispatch(resetPasswordSlice.actions.setEmailAddress(usernameField.input.value));
+    if (
+      (isValidEmail && usernameField.meta.valid) ||
+      !usernameField.input.value
+    ) {
+      dispatch(
+        resetPasswordSlice.actions.setEmailAddress(usernameField.input.value),
+      );
     }
     dispatch(clearNotifications());
     navigate(RESET_PASSWORD_PATH);
   };
 
   return (
-    <Link id="link-forgot-password" className="text-small" to={"/"} onClick={sendLink}>
-      <FormattedMessage id="usernamePw.link" defaultMessage="Forgot your password?" description="Reset password link" />
+    <Link
+      id="link-forgot-password"
+      className="text-small"
+      to={"/"}
+      onClick={sendLink}
+    >
+      <FormattedMessage
+        id="usernamePw.link"
+        defaultMessage="Forgot your password?"
+        description="Reset password link"
+      />
     </Link>
   );
 }
@@ -379,8 +439,17 @@ export function UsernamePwSubmitButton({
       id="login-form-button"
       onClick={handleSubmit}
     >
-      <img className="password-icon" height="20" alt="password icon" src={passwordIcon} />
-      <FormattedMessage id="common.logIn" defaultMessage="log in" description="Login front page pw" />
+      <img
+        className="password-icon"
+        height="20"
+        alt="password icon"
+        src={passwordIcon}
+      />
+      <FormattedMessage
+        id="common.logIn"
+        defaultMessage="log in"
+        description="Login front page pw"
+      />
     </EduIDButton>
   );
 }
@@ -397,11 +466,19 @@ function UsernamePwAnotherDeviceButton() {
   async function handleOnClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault(); // don't submit the form when this button is clicked
 
-    dispatch(loginSlice.actions.startLoginWithAnotherDevice({ username: usernameField.input.value || undefined }));
+    dispatch(
+      loginSlice.actions.startLoginWithAnotherDevice({
+        username: usernameField.input.value || undefined,
+      }),
+    );
   }
 
   return (
-    <EduIDButton buttonstyle="primary icon" onClick={handleOnClick} id="login-other-device-button">
+    <EduIDButton
+      buttonstyle="primary icon"
+      onClick={handleOnClick}
+      id="login-other-device-button"
+    >
       <img className="qr-icon" height="20" alt="qr icon" src={qrCode} />
       <FormattedMessage
         id="usernamePw.other"
