@@ -291,3 +291,34 @@ test("passkey button waits for an in-flight conditional credential submission", 
   expect(maxInFlight).toBe(1);
   expect(submissions()).toHaveLength(1);
 });
+
+test("passkey button does not POST another challenge after a finished challenge response without options", async () => {
+  mswServer.use(
+    http.post(`${LOGIN_SERVICE_URL}/mfa_auth`, async ({ request }) => {
+      const body = (await request.json()) as { webauthn_response?: unknown };
+      bodies.push(body);
+      return HttpResponse.json({
+        type: "test response",
+        payload: { finished: true },
+      });
+    }),
+  );
+  render(
+    <React.StrictMode>
+      <ThemeProvider>
+        <UsernamePw />
+      </ThemeProvider>
+    </React.StrictMode>,
+    { state },
+  );
+  await waitFor(() => expect(challenges()).toHaveLength(1));
+  await flush();
+
+  const button = screen.getByRole("button", { name: /log in with passkey/i });
+  expect(button).toBeInTheDocument();
+  await userEvent.click(button);
+  await flush();
+
+  expect(bodies).toHaveLength(1);
+  expect(submissions()).toHaveLength(0);
+});

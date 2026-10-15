@@ -129,7 +129,10 @@ export function UsernamePw() {
       challengePromiseRef.current = fetchMfaAuth({ ref })
         .then((response) => {
           if (!response.isSuccess) return undefined;
-          return response.data.payload.webauthn_options;
+          const { finished, webauthn_options } = response.data.payload;
+          // A response that still offers options needs the assertion submitted, so don't latch then
+          if (finished && !webauthn_options) authenticatedRef.current = true;
+          return webauthn_options;
         })
         .finally(() => {
           // Cache only while in flight: every new attempt (after cancel/failure) gets a fresh challenge
