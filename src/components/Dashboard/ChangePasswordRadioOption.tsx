@@ -12,7 +12,7 @@ export function ChangePasswordRadioOption({
 }: Readonly<ChangePasswordRadioOptionProps>) {
   return (
     <fieldset className="toggle-change-password-options">
-      <legend className="require">
+      <legend>
         <strong>
           <FormattedMessage
             id="passwordRadio.change"
@@ -21,41 +21,45 @@ export function ChangePasswordRadioOption({
           />
         </strong>
       </legend>
-      <div className="radio-input-container">
-        <label htmlFor="suggested-pw">
-          <Field
-            name="suggested-password"
-            component="input"
-            type="radio"
-            id="suggested-pw"
-            checked={renderSuggested}
-            onChange={handleSwitchChange}
-          />
-          <span>
-            <FormattedMessage
-              id="passwordRadio.suggestedButton"
-              defaultMessage="Suggested password"
-              description="suggested password radio button"
+      <div className="buttons">
+        <div className="option-segmented-control">
+          <label htmlFor="suggested-pw" className="segmented-option">
+            <Field
+              name="password-option"
+              component="input"
+              type="radio"
+              id="suggested-pw"
+              value="suggested"
+              checked={renderSuggested}
+              onChange={handleSwitchChange}
             />
-          </span>
-        </label>
-        <label htmlFor="custom-pw">
-          <Field
-            name="custom-password"
-            component="input"
-            type="radio"
-            id="custom-pw"
-            checked={!renderSuggested}
-            onChange={handleSwitchChange}
-          />
-          <span>
-            <FormattedMessage
-              id="passwordRadio.button"
-              defaultMessage="Create your own password"
-              description="Set your own password radio button"
+            <span>
+              <FormattedMessage
+                id="passwordRadio.suggestedButton"
+                defaultMessage="Suggested password"
+                description="suggested password radio button"
+              />
+            </span>
+          </label>
+          <label htmlFor="custom-pw" className="segmented-option">
+            <Field
+              name="password-option"
+              component="input"
+              type="radio"
+              id="custom-pw"
+              value="custom"
+              checked={!renderSuggested}
+              onChange={handleSwitchChange}
             />
-          </span>
-        </label>
+            <span>
+              <FormattedMessage
+                id="passwordRadio.button"
+                defaultMessage="Custom password"
+                description="Set your own password radio button"
+              />
+            </span>
+          </label>
+        </div>
       </div>
     </fieldset>
   );

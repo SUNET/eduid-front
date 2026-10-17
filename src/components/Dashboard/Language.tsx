@@ -71,19 +71,21 @@ export function LanguagePreference() {
             <form id="personaldata-view-form" onChange={formProps.handleSubmit}>
               <fieldset>
                 <article>
-                  <legend className="require">
-                    <FormattedMessage id="common.language" defaultMessage="Language" description="Language" />
-                  </legend>
-                  <div className="radio-input-container">
-                    {language_list.map((option: string[]) => {
-                      const [key, value] = option;
-                      return (
-                        <label key={key} htmlFor={value}>
-                          <Field name="language" component="input" type="radio" id={value} value={key} />
-                          <span>{value}</span>
-                        </label>
-                      );
-                    })}
+                  <div className="buttons">
+                    <legend className="display-none">
+                      <FormattedMessage id="common.language" defaultMessage="Language" description="Language" />
+                    </legend>
+                    <div className="option-segmented-control">
+                      {language_list.map((option: string[]) => {
+                        const [key, value] = option;
+                        return (
+                          <label key={key} htmlFor={value} className="segmented-option">
+                            <Field name="language" component="input" type="radio" id={value} value={key} />
+                            <span>{value}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
                   </div>
                 </article>
               </fieldset>
