@@ -1,9 +1,9 @@
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EduIDButton } from "components/Common/EduIDButton";
 import { FRONTEND_ACTION } from "components/Common/MultiFactorAuthentication";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "helperFunctions/paths";
 
-import { ReactElement } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 
 export const securityZoneAction = sessionStorage.getItem(FRONTEND_ACTION);
@@ -19,29 +19,12 @@ type SecurityZoneAction =
 
 interface ActionInfo {
   action: string;
-  redirectPath: ReactElement;
+  redirectUrl: string;
+  redirectPath?: string;
 }
 
 export function SecurityZoneInfo() {
   const intl = useIntl();
-
-  const toSecurity = (
-    <a href={SECURITY_PATH} aria-label="return to security page" onClick={() => sessionStorage.clear()}>
-      <FormattedMessage id="common.security" description="security zone security link" defaultMessage="Security" />
-    </a>
-  );
-
-  const toAccount = (
-    <a href={ACCOUNT_PATH} aria-label="return to account page" onClick={() => sessionStorage.clear()}>
-      <FormattedMessage id="common.account" description="security zone account link" defaultMessage="Account" />
-    </a>
-  );
-
-  const toIdentity = (
-    <a href={IDENTITY_PATH} aria-label="return to identity page" onClick={() => sessionStorage.clear()}>
-      <FormattedMessage id="common.identity" description="security zone identity link" defaultMessage="Identity" />
-    </a>
-  );
 
   const actionMap: Record<SecurityZoneAction, ActionInfo> = {
     changeSecurityPreferencesAuthn: {
@@ -49,49 +32,77 @@ export function SecurityZoneInfo() {
         id: "securityZoneInfo.changeSecurity",
         defaultMessage: "change security key preferences",
       }),
-      redirectPath: toSecurity,
+      redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     addSecurityKeyAuthn: {
       action: intl.formatMessage({
         id: "securityZoneInfo.add",
         defaultMessage: "add security key",
       }),
-      redirectPath: toSecurity,
+      redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     removeSecurityKeyAuthn: {
       action: intl.formatMessage({
         id: "securityZoneInfo.removeSecurity",
         defaultMessage: "remove security key",
       }),
-      redirectPath: toSecurity,
+      redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     verifyCredential: {
       action: intl.formatMessage({
         id: "securityZoneInfo.verify",
         defaultMessage: "verify security key",
       }),
-      redirectPath: toSecurity,
+      redirectUrl: SECURITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.security",
+        defaultMessage: "security",
+      }),
     },
     terminateAccountAuthn: {
       action: intl.formatMessage({
         id: "securityZoneInfo.delete",
         defaultMessage: "delete account",
       }),
-      redirectPath: toAccount,
+      redirectUrl: ACCOUNT_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.account",
+        defaultMessage: "account",
+      }),
     },
     changepwAuthn: {
       action: intl.formatMessage({
         id: "securityZoneInfo.change",
         defaultMessage: "change password",
       }),
-      redirectPath: toAccount,
+      redirectUrl: ACCOUNT_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.account",
+        defaultMessage: "account",
+      }),
     },
     removeIdentity: {
       action: intl.formatMessage({
         id: "securityZoneInfo.remove",
         defaultMessage: "remove identity",
       }),
-      redirectPath: toIdentity,
+      redirectUrl: IDENTITY_PATH,
+      redirectPath: intl.formatMessage({
+        id: "securityZoneInfo.identity",
+        defaultMessage: "identity",
+      }),
     },
   };
 
@@ -122,25 +133,28 @@ export function SecurityZoneInfo() {
                 }}
               />
             </p>
-            <span className="top-divider help-text">
+            <div className="top-divider help-text">
               <FormattedMessage
                 id="securityZoneInfo.info"
-                defaultMessage={`If you wish to {strong} this process without affecting a change you can return straight to {page} page.`}
+                defaultMessage={`If you wish to cancel this process without making any changes, click the button below to return to the {page} page.`}
                 description="security zone cancel info"
                 values={{
                   page: current?.redirectPath,
-                  strong: (
-                    <strong>
-                      <FormattedMessage
-                        id="securityZoneInfo.mfa"
-                        description="mfa cancel - strong"
-                        defaultMessage={`cancel`}
-                      />
-                    </strong>
-                  ),
                 }}
               />
-            </span>
+            </div>
+            <div className="buttons">
+              <EduIDButton
+                onClick={() => {
+                  sessionStorage.clear();
+                  if (current?.redirectUrl) globalThis.location.href = current.redirectUrl;
+                }}
+                buttonstyle="secondary sm"
+                id="cancel-button"
+              >
+                <FormattedMessage id="common.cancel" defaultMessage="cancel" description="cancel button" />
+              </EduIDButton>
+            </div>
           </div>
         </div>
       )}
