@@ -73,21 +73,6 @@ export const apiResponses = {
     />
   ),
 
-  "resetpw.send-sms-failed": <FormattedMessage id="resetpw.send-sms-failed" defaultMessage={`Failed to send code`} />,
-
-  "resetpw.expired-phone-code": (
-    <FormattedMessage
-      id="resetpw.expired-phone-code"
-      defaultMessage={`The code is no longer valid. Please try again`}
-    />
-  ),
-
-  "resetpw.phone-code-unknown": (
-    <FormattedMessage id="resetpw.phone-code-unknown" defaultMessage={`Incorrect code. `} />
-  ),
-
-  "resetpw.phone-invalid": <FormattedMessage id="resetpw.phone-invalid" defaultMessage={`Invalid phone number.`} />,
-
   "resetpw.pw-reset-fail": (
     <FormattedMessage id="resetpw.pw-reset-fail" defaultMessage={`Reset password failed, please try again `} />
   ),
@@ -101,10 +86,6 @@ export const apiResponses = {
 
   "resetpw.external-mfa-fail": (
     <FormattedMessage id="resetpw.external-mfa-fail" defaultMessage={`External MFA failed.`} />
-  ),
-
-  "resetpw.send-sms-success": (
-    <FormattedMessage id="resetpw.send-sms-success" defaultMessage={`A code has been sent to your phone.`} />
   ),
 
   "chpass.different-repeat": (
