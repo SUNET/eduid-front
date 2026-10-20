@@ -1241,9 +1241,6 @@
   "error_in_form": {
     "string": "Please try again. if the issue persists, contact support."
   },
-  "error_lookup_mobile_task": {
-    "string": "Your phone number could not be found in the registry. Please try another method."
-  },
   "error_navet_task": {
     "string": "Communication problem with Navet"
   },
@@ -2100,9 +2097,6 @@
   "nins.invalid_nin": {
     "string": "Invalid national id number"
   },
-  "nins.no-mobile-match": {
-    "string": "No phone number matching the given national id number"
-  },
   "nins.success_removal": {
     "string": "Successfully removed national id number"
   },
@@ -2554,9 +2548,6 @@
   "resetpw.expired-email-code": {
     "string": "Password reset link has expired. Please send link again."
   },
-  "resetpw.expired-phone-code": {
-    "string": "The code is no longer valid. Please try again"
-  },
   "resetpw.external-mfa-fail": {
     "string": "External MFA failed."
   },
@@ -2569,23 +2560,11 @@
   "resetpw.invalid_user": {
     "string": "User has not completed signup"
   },
-  "resetpw.phone-code-unknown": {
-    "string": "Incorrect code."
-  },
-  "resetpw.phone-invalid": {
-    "string": "Invalid phone number."
-  },
   "resetpw.pw-reset-fail": {
     "string": "Reset password failed, please try again"
   },
   "resetpw.reset-pw-initialized": {
     "string": "Reset password link has been sent to your email."
-  },
-  "resetpw.send-sms-failed": {
-    "string": "Failed to send code"
-  },
-  "resetpw.send-sms-success": {
-    "string": "A code has been sent to your phone."
   },
   "resetpw.sms-throttled": {
     "string": "You have recently been sent a code. Please wait at least 5 minutes to request a new one."

@@ -23,23 +23,6 @@ interface ResetPasswordCaptchaResponse {
   captcha_completed: boolean;
 }
 
-/* phone is unused and kept for backwards compatibility */
-export interface NewPasswordExtraSecurityPhoneRequest {
-  email_code: string;
-  password: string;
-  phone_code: string;
-}
-
-export interface RequestPhoneCodeRequest {
-  email_code: string;
-  phone_index?: number;
-}
-
-export interface RequestPhoneCodeResponse {
-  message: string;
-}
-/* phone is unused and kept for backwards compatibility */
-
 export interface RequestEmailLinkRequest {
   email: string;
 }
@@ -127,23 +110,6 @@ export const resetPasswordApi = eduIDApi.injectEndpoints({
     >({
       query: (body) => ({
         url: "new-password-extra-security-token",
-        body,
-      }),
-      extraOptions: { service: "resetPassword" },
-    }),
-    postSetNewPasswordExtraSecurityPhone: builder.query<
-      ApiResponse<NewPasswordResponse>,
-      NewPasswordExtraSecurityPhoneRequest
-    >({
-      query: (body) => ({
-        url: "new-password-extra-security-phone",
-        body,
-      }),
-      extraOptions: { service: "resetPassword" },
-    }),
-    requestPhoneCodeForNewPassword: builder.query<ApiResponse<RequestPhoneCodeResponse>, RequestPhoneCodeRequest>({
-      query: (body) => ({
-        url: "extra-security-phone",
         body,
       }),
       extraOptions: { service: "resetPassword" },

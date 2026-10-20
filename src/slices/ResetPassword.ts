@@ -13,13 +13,10 @@ import { CaptchaRequest } from "apis/eduidSignup";
 import { ApiResponse } from "apis/helpers/types";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 
-export type Phone = { index: string; number: string; phone_code: string };
-
 export type EmailStatus = "requested" | "success" | "failed";
 export interface ResetPasswordState {
   email_address?: string;
   email_code?: string;
-  phone: { index?: number; number?: string; phone_code?: string };
   webauthn_assertion?: AuthenticationResponseJSON;
   selected_option?: string;
   new_password?: string;
@@ -38,7 +35,6 @@ export interface ResetPasswordState {
 
 // Define the initial state using that type
 export const initialState: ResetPasswordState = {
-  phone: { index: undefined, number: undefined, phone_code: undefined },
   suggested: true,
   captcha_completed: false,
 };

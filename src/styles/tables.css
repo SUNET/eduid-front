@@ -103,7 +103,6 @@ table {
     }
   }
 
-  .phone-display &,
   .email-display & {
     tr.display-none {
       display: none;
@@ -126,10 +125,6 @@ table {
       border-bottom: 1px solid var(--body-gray);
     }
   }
-}
-
-div.phone-display {
-  margin-top: 1rem;
 }
 
 caption {
