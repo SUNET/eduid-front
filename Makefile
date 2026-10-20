@@ -1,13 +1,12 @@
 clean:
-	rm -f package-lock.json
 	rm -f build/*
 	rm -rf node_modules
 
 package-lock.json:
-	npm i --package-lock-only
+	test -f package-lock.json
 
 node_modules: package-lock.json
-	npm install
+	npm ci --ignore-scripts --no-audit --no-fund
 	touch node_modules
 
 build-staging:
