@@ -4,7 +4,7 @@ import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
 import { Splash } from "components/Common/Splash";
 import { useAppSelector } from "eduid-hooks";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import { RecoveryOptions } from "../Common/RecoveryOptions";
 import { SecurityKey } from "../Common/SecurityKey";
@@ -20,6 +20,36 @@ export function MultiFactorAuth() {
   const this_device = useAppSelector((state) => state.login.this_device);
   const has_session = authn_options?.has_session;
   const [fetchMfaAuth, data] = loginApi.useLazyFetchMfaAuthQuery();
+  const challengePromiseRef = useRef<Promise<
+    PublicKeyCredentialRequestOptionsJSON | undefined
+  > | null>(null);
+  const credentialSubmissionRef = useRef<Promise<unknown> | null>(null);
+  const authenticatedRef = useRef(false); // once backend reports finished, never POST /mfa_auth again from this instance
+  const initialFetchStartedRef = useRef(false); // survives StrictMode effect double-invoke
+
+  const fetchChallengeOnce = useCallback((): Promise<
+    PublicKeyCredentialRequestOptionsJSON | undefined
+  > => {
+    if (authenticatedRef.current || !ref) return Promise.resolve(undefined);
+    if (!challengePromiseRef.current) {
+      challengePromiseRef.current = fetchMfaAuth({
+        ref: ref,
+        this_device: this_device,
+      })
+        .then((response) => {
+          if (!response.isSuccess) return undefined;
+          const { finished, webauthn_options } = response.data.payload;
+          // A response that still offers options needs the assertion submitted, so don't latch then
+          if (finished && !webauthn_options) authenticatedRef.current = true;
+          return webauthn_options;
+        })
+        .finally(() => {
+          // Cache only while in flight: every new attempt (after cancel/failure) gets a fresh challenge
+          challengePromiseRef.current = null;
+        });
+    }
+    return challengePromiseRef.current;
+  }, [fetchMfaAuth, ref, this_device]);
   const recoveryOptions = {
     swedish_eid: authn_options.swedish_eid,
     freja_eid: authn_options.freja_eid,
@@ -29,7 +59,12 @@ export function MultiFactorAuth() {
     if (data.isSuccess) {
       const options = data.data.payload.webauthn_options;
       const keys = options?.allowCredentials || [];
-      return keys.length === 1 && !authn_options.swedish_eid && !authn_options.eidas && !authn_options.freja_eid;
+      return (
+        keys.length === 1 &&
+        !authn_options.swedish_eid &&
+        !authn_options.eidas &&
+        !authn_options.freja_eid
+      );
     }
     return false;
   }, [
@@ -43,7 +78,11 @@ export function MultiFactorAuth() {
   let leadText;
   let headingText;
 
-  if (authn_options.swedish_eid || authn_options.eidas || authn_options.freja_eid) {
+  if (
+    authn_options.swedish_eid ||
+    authn_options.eidas ||
+    authn_options.freja_eid
+  ) {
     leadText = (
       <FormattedMessage
         id="multiFactorAuth.paragraph"
@@ -84,34 +123,46 @@ export function MultiFactorAuth() {
 
   const isLoaded = data.isSuccess;
   const hasMfaOptions =
-    authn_options.swedish_eid || authn_options.webauthn || authn_options.eidas || authn_options.freja_eid;
+    authn_options.swedish_eid ||
+    authn_options.webauthn ||
+    authn_options.eidas ||
+    authn_options.freja_eid;
 
   useEffect(() => {
-    if (ref && data.isUninitialized) {
-      // Always call the MFA auth endpoint to get the current MFA state:
-      //
-      // If webauthn is an available choice for this user, fetch a challenge
-      // from the backend if we don't have one already.
-      //
-      // If returning from external authentication with Sweden Connect, we need
-      // to call the MFA endpoint for it to complete.
-      fetchMfaAuth({ ref: ref, this_device: this_device });
-    }
-  }, [fetchMfaAuth, data.isUninitialized, ref, this_device]);
+    if (!ref || initialFetchStartedRef.current) return;
+    initialFetchStartedRef.current = true;
+    // Always call the MFA auth endpoint to get the current MFA state:
+    //
+    // If webauthn is an available choice for this user, fetch a challenge
+    // from the backend if we don't have one already.
+    //
+    // If returning from external authentication with Sweden Connect, we need
+    // to call the MFA endpoint for it to complete.
+    fetchChallengeOnce();
+  }, [fetchChallengeOnce, ref]);
 
   async function getChallenge() {
-    if (ref) {
-      const response = await fetchMfaAuth({ ref: ref, this_device: this_device });
-      if (response.isSuccess) {
-        return response.data.payload.webauthn_options;
-      }
+    if (credentialSubmissionRef.current) {
+      await credentialSubmissionRef.current.catch(() => {});
+      credentialSubmissionRef.current = null;
     }
+    return fetchChallengeOnce();
   }
 
-  function useCredential(credential: AuthenticationResponseJSON) {
-    if (ref) {
-      fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: credential });
-    }
+  async function useCredential(
+    credential: AuthenticationResponseJSON,
+  ): Promise<boolean> {
+    if (!ref || authenticatedRef.current) return authenticatedRef.current;
+    const promise = fetchMfaAuth({
+      ref: ref,
+      this_device: this_device,
+      webauthn_response: credential,
+    });
+    credentialSubmissionRef.current = promise;
+    const response = await promise;
+    if (response.isSuccess && response.data.payload.finished)
+      authenticatedRef.current = true;
+    return authenticatedRef.current;
   }
 
   return (
@@ -137,7 +188,11 @@ export function MultiFactorAuth() {
               {leadText}
             </p>
             <div className="options">
-              <SecurityKey disabled={!authn_options?.webauthn} setup={getChallenge} onSuccess={useCredential} />
+              <SecurityKey
+                disabled={!authn_options?.webauthn}
+                setup={getChallenge}
+                onSuccess={useCredential}
+              />
               {show_suggestion && (
                 <span className="suggestion suggestion-txt">
                   <FormattedMessage
@@ -228,8 +283,16 @@ function ExtraSecurityNotAvailable() {
       </ul>
       <div className="buttons-center">
         {!securityZoneAction && <LoginAbortButton />}
-        <EduIDButton id="to-eduid-link" buttonstyle="link normal-case" onClick={goToDashboard}>
-          <FormattedMessage id="common.goToEduid" defaultMessage="go to eduID" description="Login MFA link" />
+        <EduIDButton
+          id="to-eduid-link"
+          buttonstyle="link normal-case"
+          onClick={goToDashboard}
+        >
+          <FormattedMessage
+            id="common.goToEduid"
+            defaultMessage="go to eduID"
+            description="Login MFA link"
+          />
         </EduIDButton>
       </div>
     </section>
