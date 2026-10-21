@@ -1241,9 +1241,6 @@
   "error_in_form": {
     "string": "Vänligen försök igen, om problemet kvarstår kontakta supporten."
   },
-  "error_lookup_mobile_task": {
-    "string": "Ditt telefonnummer kunde inte hittas i registret. Var god prova en annan metod."
-  },
   "error_navet_task": {
     "string": "Problem att nå Navet"
   },
@@ -2100,9 +2097,6 @@
   "nins.invalid_nin": {
     "string": "Ogiltigt personnummer"
   },
-  "nins.no-mobile-match": {
-    "string": "Inga abonnemangsuppgifter som matchar personnumret hittades"
-  },
   "nins.success_removal": {
     "string": "Personnummer har tagits bort"
   },
@@ -2554,9 +2548,6 @@
   "resetpw.expired-email-code": {
     "string": "Länken för lösenordsåterställning är inte längre giltig. Begär en ny länk."
   },
-  "resetpw.expired-phone-code": {
-    "string": "Koden är inte längre giltig. Var vänlig försök igen."
-  },
   "resetpw.external-mfa-fail": {
     "string": "Externt MFA misslyckades"
   },
@@ -2569,23 +2560,11 @@
   "resetpw.invalid_user": {
     "string": "Användaren har inte slutfört registreringen"
   },
-  "resetpw.phone-code-unknown": {
-    "string": "Felaktig kod."
-  },
-  "resetpw.phone-invalid": {
-    "string": "Ogiltigt telefonnummer."
-  },
   "resetpw.pw-reset-fail": {
     "string": "Återställning av lösenordet misslyckades, vänligen försök igen"
   },
   "resetpw.reset-pw-initialized": {
     "string": "Återställningslänken har skickats till din e-postadress."
-  },
-  "resetpw.send-sms-failed": {
-    "string": "Det gick inte att skicka koden"
-  },
-  "resetpw.send-sms-success": {
-    "string": "En kod har skickats till din telefon."
   },
   "resetpw.sms-throttled": {
     "string": "Vi kan bara skicka en kod var 5:e minut, var god vänta innan du ber om en ny kod."
