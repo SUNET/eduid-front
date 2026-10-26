@@ -1,38 +1,37 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Node.js CI
 
 on: [push, pull_request]
 
 jobs:
   unittests:
-    runs-on: ubuntu-22.04
-
-    strategy:
-      matrix:
-        node-version: [24.x]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v6
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Run tests
         run: |
           make test
 
   audit_prod:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [24.x]
     steps:
       - uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
         run: npm ci --ignore-scripts
@@ -45,13 +44,17 @@ jobs:
         run: npm audit --omit=dev --audit-level=moderate
 
   audit_dev:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [24.x]
     steps:
       - uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
         run: npm ci --ignore-scripts
@@ -61,13 +64,17 @@ jobs:
         run: npm audit --audit-level=moderate || true
 
   linter:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [24.x]
     steps:
       - uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Install dependencies
         run: npm ci --ignore-scripts
