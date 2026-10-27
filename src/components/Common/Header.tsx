@@ -2,6 +2,7 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons/faArr
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { loginApi } from "apis/eduidLogin";
 import { EduIDButton } from "components/Common/EduIDButton";
+import { securityZoneAction } from "components/Login/SecurityZoneInfo";
 import { useAppSelector } from "eduid-hooks";
 import { eduidStore } from "eduid-init-app";
 import { SIGNUP_BASE_PATH } from "helperFunctions/paths";
@@ -47,6 +48,9 @@ export function Header({ loginRef }: Readonly<HeaderProps>) {
   }, [dashboard_link]);
 
   const button = useMemo(() => {
+    if (securityZoneAction && location.pathname.includes("login")) {
+      return null;
+    }
     if (
       location.pathname.includes("register") ||
       location.pathname.includes("error") ||
