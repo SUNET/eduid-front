@@ -6,15 +6,16 @@
   "scripts": {
     "start": "rm -rf node_modules/.cache && webpack --watch --progress",
     "test": "jest",
+    "clean-buildtest": "rm -rf build-release/staging build-release/production",
     "build-development": "rm -rf node_modules/.cache && webpack --progress",
     "build-staging": "webpack --config webpack.staging.config.js --mode development",
     "build-production": "webpack --config webpack.prod.config.js --mode production",
     "translations:extract": "formatjs extract 'src/**/*.{js,ts,tsx}' --ignore 'src/**/*.d.ts' --out-file src/translation/extractedMessages.json --format transifex",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "stylelint": "stylelint '**/*.css'",
-    "stylelint:fix": "stylelint '**/*.css' --fix",
-    "stylelint:ci": "stylelint 'src/**/*.css'"
+    "stylelint": "stylelint 'src/**/*.css'",
+    "stylelint:fix": "stylelint 'src/**/*.css' --fix",
+    "prettier": "prettier --write --print-width 120 ."
   },
   "author": "Enrique Pérez Arnaud",
   "license": "BSD-2-Clause",
@@ -77,6 +78,7 @@
     "postcss-custom-media": "^12.0.1",
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.0",
+    "prettier": "3.6.2",
     "react-compiler-webpack": "^0.2.1",
     "style-loader": "^4.0.0",
     "stylelint": "^17.6.0",
