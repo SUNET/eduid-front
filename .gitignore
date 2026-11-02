@@ -5,6 +5,7 @@ sshfs_mount/
 coverage/
 npm-debug.log
 build/
+build-release/
 dist/
 .npm
 .DS_Store

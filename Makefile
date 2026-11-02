@@ -1,32 +1,17 @@
-clean:
-	rm -f build/*
-	rm -rf node_modules
+test:
+	npm test
 
-package-lock.json:
-	test -f package-lock.json
+just_test: test
 
-node_modules: package-lock.json
-	npm ci --ignore-scripts --no-audit --no-fund
-	touch node_modules
-
-build-staging:
-	npm run build-staging
-
-build-production:
-	npm run build-production
-
-build: node_modules build-staging build-production
-	git rev-parse --abbrev-ref HEAD > build/revision.txt
-	git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt
-
-just_test:
-	npm run-script test
-
-test: build just_test
-	# This is the target the CI uses, which is why it includes the build step too
+buildtest:
+	# TODO: Staging and production share build/; investigate output isolation.
+	# Work around shared release output locally by building each variant in its own directory.
+	npm run clean-buildtest
+	LOCAL_BUILDTEST=1 npm run build-staging
+	LOCAL_BUILDTEST=1 npm run build-production
 
 prettier:
-	npx prettier --write --print-width 120 .
+	npm run prettier
 
 sync_dev_files:
 	test -n '$(DEV)' || exit 1
@@ -35,4 +20,4 @@ sync_dev_files:
 translation:
 	npm run translations:extract
 
-.PHONY: clean build build-staging build-production test prettier sync_dev_files translation
+.PHONY: just_test test buildtest prettier sync_dev_files translation

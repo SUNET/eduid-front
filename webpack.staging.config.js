@@ -10,7 +10,9 @@ const webpackStaging = {
 webpackStaging.output = {
   filename: "[name].staging.js",
   publicPath: "https://www.dev.eduid.se/static/front-build/",
-  path: path.join(__dirname, "build"),
+  path: process.env.LOCAL_BUILDTEST === "1"
+    ? path.join(__dirname, "build-release", "staging")
+    : path.join(__dirname, "build"),
 };
 
 webpackStaging.plugins = [
