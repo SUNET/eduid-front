@@ -6,7 +6,6 @@
   "scripts": {
     "start": "rm -rf node_modules/.cache && webpack --watch --progress",
     "test": "jest",
-    "clean-buildtest": "rm -rf build-release/staging build-release/production",
     "build-development": "rm -rf node_modules/.cache && webpack --progress",
     "build-staging": "webpack --config webpack.staging.config.js --mode development",
     "build-production": "webpack --config webpack.prod.config.js --mode production",
