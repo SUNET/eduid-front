@@ -1,4 +1,9 @@
-# Builds and serving
+# Local development
+
+Start with the [developer README](../README.md) for Node/npm setup, dependency
+installation, and tests. This guide covers development assets, serving, remote
+sync, and optional local build checks. For automated checks and actual staging
+and production builds, see [CI and releases](ci-and-releases.md).
 
 ## Development comes first
 
@@ -37,7 +42,7 @@ or browser development. If you need to investigate a release compilation issue
 locally, use isolated outputs:
 
 ```sh
-npm run clean-buildtest
+make clean-buildtest
 LOCAL_BUILDTEST=1 npm run build-staging
 LOCAL_BUILDTEST=1 npm run build-production
 ```
@@ -57,22 +62,9 @@ Use `LOCAL_BUILDTEST=1` inline, not as a persistent shell export. These outputs
 are compilation checks, not browser previews: their public URLs still reference
 the staging/production environments.
 
-## CI and release behavior
-
 Without the local flag, `npm run build-staging` and `npm run build-production`
 both write to `build/`. Do not run these unflagged commands alongside development
 or remote sync: they can overwrite or mix development assets.
-
-Clean CI checkouts and releng source exports build staging followed by production
-into the shared directory. Both variants are packaged; do not clean between
-them. Public URLs, nginx paths, and releng packaging are unchanged by local
-build isolation. HTML uses the original compilation-hash query strings for
-cache invalidation, which need not be identical across build environments.
-
-GitHub Actions separates unit tests, build checks, lint, and audits. Jenkins
-installs, tests, builds, and archives `build/*`. Releng builds committed Git-free
-exports and records revision metadata separately. Image promotion does not
-recompile assets.
 
 ## Other developer shortcuts
 

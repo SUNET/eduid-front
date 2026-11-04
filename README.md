@@ -2,14 +2,6 @@
 
 Frontend for eduID.
 
-## Requirements
-
-- Git and the Node.js version specified in [.nvmrc](.nvmrc), with npm satisfying
-  the [package.json engines](package.json).
-- For local Node installation, we recommend [nvm](https://github.com/nvm-sh/nvm).
-  Alternatively, use another version manager or a compatible direct Node installation.
-- Make only if you use the Make shortcuts.
-
 ## Quickstart
 
 ### 1. Check Node and npm
@@ -24,12 +16,19 @@ Compare Node with `.nvmrc` and npm with the engines in
 [package.json](package.json). A major-only `.nvmrc` value accepts that release
 line.
 
+**Node version scope:** [.nvmrc](.nvmrc) defines the Node version for local
+development and frontend CI. Actual staging and production builds use the Node
+version configured separately in
+[`versions/build-toolchain.mk` in SUNET/eduid-releng](https://github.com/SUNET/eduid-releng/blob/master/versions/build-toolchain.mk),
+not this repository's `.nvmrc`.
+
 If both match, continue to **2. Install dependencies and start development**.
 Otherwise, follow the installation options below first.
 
 #### If Node or npm is missing or incompatible
 
-Choose one method; Node distributions include npm.
+Node distributions include npm. Try the installation instructions below;
+if installing the required version is difficult, use the optional nvm fallback.
 
 **Node and npm installation:** read `.nvmrc`, then choose
 a matching release from [official Node.js downloads](https://nodejs.org/en/download).
@@ -44,11 +43,11 @@ that also satisfies the project engines.
   the system packages and lets you select the version required by each project.
   See the nvm instructions below.
 
-**Node version manager (nvm):**
+**Optional fallback: Node version manager (nvm)**
 
 nvm installs Node versions for your user and lets you switch between them without
 replacing the system installation. It reads `.nvmrc` to select this project's
-version, which is useful when working on projects with different Node requirements.
+version. Use it if you have trouble installing the required Node version directly.
 
 - **macOS:** install nvm with Homebrew:
 
@@ -101,72 +100,25 @@ npm run stylelint # Check application CSS
 Unit tests do not need compiled assets or a running application.
 `make test` and `make just_test` are shortcuts for `npm test`.
 
-CI checks staging and production compilation separately from unit tests.
-See [builds and serving](docs/builds-and-serving.md) for optional local build checks.
 Run `npm run` to discover other scripts, including formatting and translations.
 
-## Add, update, or remove dependencies
+## Dependency management
 
-Use these commands only for intentional dependency changes:
+Use `npm ci` for routine installation and restoring installed dependencies.
+Do not delete the lockfile to fix an installation error.
 
-| Action | Command |
-|---|---|
-| Add a runtime dependency | `npm install <package>` |
-| Add a development dependency | `npm install --save-dev <package>` |
-| Update within the declared range | `npm update <package>` |
-| Select a specific version | `npm install <package>@<version>` (add `--save-dev` for development dependencies) |
-| Remove a dependency | `npm uninstall <package>` |
+For intentional dependency changes, audit feedback, and installation problems,
+see [dependency management](docs/dependency-management.md).
 
-Review changes to `package.json` and `package-lock.json`, then run `npm ci`,
-the tests/lint checks above. CI checks release compilation. Commit both dependency files
-when both change; a reviewed lockfile-only update is also valid.
-Review installation audit warnings and run `npm audit` for a fresh vulnerability check.
+## Further documentation
 
-## Restore dependencies when something goes wrong
-
-Stop active watchers, then run:
-
-```sh
-npm ci # Replace node_modules with dependencies from the lockfile
-```
-
-This replaces `node_modules` using the existing lockfile; it does not undo edits
-to dependency files. Also run it after pulling or switching branches when those
-files change. **Do not delete the lockfile to fix an installation error.**
-Check Node/npm compatibility and resolve manifest/lockfile conflicts instead.
-See [dependency troubleshooting](docs/dependencies.md).
-
-## Reproducible builds: committed inputs
-
-We now use **locked dependency installation** as the foundation for reproducible
-builds. Routine development, CI, and releng install with `npm ci`, not `npm install`.
-
-Keep these files committed:
-
-| File | Purpose |
-|---|---|
-| [package.json](package.json) | Dependencies, allowed ranges, scripts, and engine requirements |
-| [package-lock.json](package-lock.json) | Exact dependency graph and package integrity hashes |
-| [.nvmrc](.nvmrc) | Node selection for nvm and frontend CI |
-| [.npmrc](.npmrc) | Shared installation policy, including engine checks and audit feedback |
-
-Commit relevant configuration changes alongside the source/dependency changes
-that require them. `npm ci` does not rewrite the manifest or lockfile and fails
-if they are inconsistent. These files improve repeatability, but do not alone
-guarantee byte-identical artifacts: toolchain versions, platform, and build
-configuration also matter. See [dependency and toolchain details](docs/dependencies.md).
-
-## Development serving and remote sync
-
-The local eduID static-serving environment serves the development assets in
-`build/`. For a remote developer instance, run this alongside `npm start`:
-
-```sh
-# Replace <instance> with your developer instance name
-make DEV=<instance> sync_dev_files # Watch and sync development assets to that instance
-```
-
-This requires `fswatch`, `rsync`, and SSH access to the instance. It transfers
-files, including destination deletions; it does not compile or start services.
-Unflagged release commands also write to `build/`; avoid them while developing
-or synchronizing. See [serving paths and build isolation](docs/builds-and-serving.md).
+- [Project file reference](docs/project-files.md): a short explanation of each
+  file in the project's main directory.
+- [Local development](docs/local-development.md): serving assets, remote sync,
+  and optional local build checks.
+- [CI and releases](docs/ci-and-releases.md): automated checks, toolchain selection,
+  release builds, and promotion.
+- [Release contract](docs/release-contract.md): source selection, frontend build
+  outputs, and the interface with releng.
+- [Reproducible builds](docs/reproducible-builds.md): why the lockfile matters,
+  how locked installation helps, and what it does not guarantee.
