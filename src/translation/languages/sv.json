@@ -1894,7 +1894,7 @@
   },
   "manageEduIDSettings.list21": {
     "developer_comment": "settings eduid - list item 2-1",
-    "string": "För att byta standardspråk kan du logga in i eduID och välja önskat språk med radioknapparna under Konto."
+    "string": "För att byta standardspråk kan du logga in i eduID och välja önskat språk med toggle-knappen under Konto."
   },
   "manageEduIDSettings.list22": {
     "developer_comment": "settings eduid - list item 2-2",
@@ -2220,7 +2220,7 @@
   },
   "passwordRadio.button": {
     "developer_comment": "Set your own password radio button",
-    "string": "Skapa ditt eget lösenord"
+    "string": "Eget lösenord"
   },
   "passwordRadio.change": {
     "developer_comment": "Change password radio group legend",
