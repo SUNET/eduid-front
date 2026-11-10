@@ -389,7 +389,7 @@ export function ManageEduIDSettings() {
                       id="manageEduIDSettings.list21"
                       description="settings eduid - list item 2-1"
                       defaultMessage={` To change the default language for eduID you can log in to eduID and select your 
-                  preference using the Language radio buttons under Account. `}
+                  preference using the Language toggle control under Account. `}
                     />
                   </li>
                   <li>
