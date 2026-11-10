@@ -31,6 +31,16 @@ describe("parseOptionsFromJSON fallback (no native PublicKeyCredential methods)"
     expect(bytes(prf.evalByCredential.BAUG.second)).toEqual([3]);
   });
 
+  test("largeBlob write is decoded, including an empty (zero-length) write", () => {
+    const decode = (write: string) =>
+      parseRequestOptions({ challenge: "AQID", extensions: { largeBlob: { write } } } as PublicKeyCredentialRequestOptionsJSON)
+        .extensions as unknown as { largeBlob: { write: ArrayBuffer } };
+    expect(bytes(decode("AQID").largeBlob.write)).toEqual([1, 2, 3]);
+    const empty = decode("").largeBlob.write;
+    expect(empty).toBeInstanceOf(ArrayBuffer);
+    expect(empty.byteLength).toBe(0);
+  });
+
   test("creation options: user.id and excludeCredentials are decoded", () => {
     const out = parseCreationOptions({
       challenge: "AQID",

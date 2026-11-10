@@ -45,5 +45,5 @@ export function detectBrowserSupport(): BrowserSupport {
     typeof Array.prototype.at !== "function" ||
     typeof Intl?.DisplayNames !== "function";
 
-  return { unsupported, noWebauthn: typeof globalThis.PublicKeyCredential === "undefined" };
+  return { unsupported, noWebauthn: globalThis.PublicKeyCredential === undefined };
 }

@@ -18,11 +18,8 @@ type Json = Record<string, unknown>;
 export function base64urlToBuffer(value: string): ArrayBuffer {
   const base64 = value.replaceAll("-", "+").replaceAll("_", "/");
   const binary = atob(base64.padEnd(Math.ceil(base64.length / 4) * 4, "="));
-  const bytes = new Uint8Array(binary.length);
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-  return bytes.buffer;
+  // atob() returns a binary string where every character is one byte (0-255)
+  return Uint8Array.from(binary, (char) => char.codePointAt(0) ?? 0).buffer;
 }
 
 function decodeDescriptors(list: unknown): unknown {
@@ -58,7 +55,8 @@ function decodeExtensions(extensions: unknown): unknown {
   }
 
   const largeBlob = out.largeBlob as Json | undefined;
-  if (largeBlob?.write) {
+  // an empty string is a valid zero-length write, so check for presence rather than truthiness
+  if (largeBlob?.write !== undefined) {
     out.largeBlob = { ...largeBlob, write: base64urlToBuffer(largeBlob.write as string) };
   }
   return out;
