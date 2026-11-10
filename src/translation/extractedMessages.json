@@ -351,6 +351,14 @@
   "bankid.token_not_found": {
     "string": "U2F token not found"
   },
+  "browserSupport.noWebauthn": {
+    "developer_comment": "Notification shown when the browser has no WebAuthn support",
+    "string": "Security keys and passkeys are not supported by this browser."
+  },
+  "browserSupport.unsupported": {
+    "developer_comment": "Notification shown when the browser lacks features eduID needs",
+    "string": "Your browser may not work well with eduID. Parts of eduID may look wrong or not work at all. Please update your browser, or try another, up to date browser."
+  },
   "captcha.img": {
     "developer_comment": "captcha img change",
     "string": "Generate a new captcha image"

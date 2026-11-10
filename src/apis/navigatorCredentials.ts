@@ -1,5 +1,6 @@
 import { BaseQueryFn, createApi } from "@reduxjs/toolkit/query/react";
 import { showNotification } from "slices/Notifications";
+import { parseCreationOptions, parseRequestOptions } from "../helperFunctions/parseOptionsFromJSON";
 import { credentialToJSON } from "../helperFunctions/publicKeyCredentialToJSON";
 
 export interface AuthenticationRequest {
@@ -8,7 +9,7 @@ export interface AuthenticationRequest {
 }
 
 async function handlePerformAuthentication(args: AuthenticationRequest, signal?: AbortSignal) {
-  const publicKey = PublicKeyCredential.parseRequestOptionsFromJSON(args.webauth_options);
+  const publicKey = parseRequestOptions(args.webauth_options);
   const credential = await navigator.credentials.get({
     publicKey,
     ...(signal && { signal }),
@@ -22,7 +23,7 @@ async function handlePerformAuthentication(args: AuthenticationRequest, signal?:
 }
 
 async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON) {
-  const publicKey = PublicKeyCredential.parseCreationOptionsFromJSON(args);
+  const publicKey = parseCreationOptions(args);
   const credential = await navigator.credentials.create({ publicKey });
   if (credential) {
     return { data: credentialToJSON(credential as PublicKeyCredential) };

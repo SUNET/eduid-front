@@ -1,8 +1,13 @@
 /**
- * This file contains helper functions for converting PublicKeyCredential objects to JSON.
- * It only exists because some password extensions create PublicKeyCredential objects without
- * a toJSON method and (incomplete internal?) data for serialization.
- * This can be removed when extensions start to behave.
+ * This file contains helper functions for converting PublicKeyCredential objects to the WebAuthn JSON
+ * wire format that the backend parses (python-fido2 RegistrationResponse/AuthenticationResponse.from_dict).
+ * It is the response half of the fallbacks in parseOptionsFromJSON.ts.
+ *
+ * It is needed when credential.toJSON() is missing, which is the case for:
+ *  - browsers older than Chrome/Edge 129, Firefox 119 and Safari 18.4
+ *  - password manager extensions that create PublicKeyCredential objects without a toJSON method
+ *    and with (incomplete internal?) data for serialization.
+ * Can be removed when neither is a concern anymore.
  */
 
 function isArrayBufferView(obj: unknown): obj is ArrayBufferView {
@@ -90,48 +95,63 @@ function hasAttestationResponse(
   );
 }
 
+function safeTransports(response: AuthenticatorAttestationResponse): string[] | undefined {
+  // getTransports() is missing in older browsers and breaks on some extension-injected credentials
+  try {
+    return typeof response.getTransports === "function" ? response.getTransports() : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function manualCredentialToJSON(credential: PublicKeyCredential): AuthenticationResponseJSON | RegistrationResponseJSON {
+  // Include the data expected by backend and only that
+  const common = {
+    id: credential.id,
+    rawId: bufferToBase64url(credential.rawId),
+    type: credential.type,
+    authenticatorAttachment: credential.authenticatorAttachment ?? undefined,
+    clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
+  };
+  if (hasAssertionResponse(credential)) {
+    return {
+      ...common,
+      response: {
+        clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
+        authenticatorData: bufferToBase64url(credential.response.authenticatorData),
+        signature: bufferToBase64url(credential.response.signature),
+        userHandle: bufferToBase64url(credential.response.userHandle),
+      },
+    } as AuthenticationResponseJSON;
+  }
+  if (hasAttestationResponse(credential)) {
+    // Intentionally omits authenticatorData/publicKeyAlgorithm/publicKey — those methods
+    // break on Safari with extension-injected credentials. The backend only needs
+    // clientDataJSON and attestationObject.
+    return {
+      ...common,
+      response: {
+        clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
+        attestationObject: bufferToBase64url(credential.response.attestationObject),
+        transports: safeTransports(credential.response),
+      },
+    } as RegistrationResponseJSON;
+  }
+  throw new TypeError("Unrecognized PublicKeyCredential response type");
+}
+
 export function credentialToJSON(
   credential: PublicKeyCredential
 ): AuthenticationResponseJSON | RegistrationResponseJSON {
-  try {
-    return credential.toJSON();
-  } catch (error) {
-    if (error instanceof TypeError) {
-      // An extension has created an incomplete PublicKeyCredential missing a toJSON method
-      // We need to serialize it manually
-
-      // Let us assume we have a plain object and build from there
-      if (hasAssertionResponse(credential)) {
-        // Include the data expected by backend and only that
-        return {
-          id: credential.id,
-          rawId: bufferToBase64url(credential.rawId),
-          type: credential.type,
-          clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
-          response: {
-            clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
-            authenticatorData: bufferToBase64url(credential.response.authenticatorData),
-            signature: bufferToBase64url(credential.response.signature),
-            userHandle: bufferToBase64url(credential.response.userHandle),
-          },
-        } as AuthenticationResponseJSON;
-      } else if (hasAttestationResponse(credential)) {
-        // Intentionally omits authenticatorData/publicKeyAlgorithm/transports — those methods
-        // break on Safari with extension-injected credentials. The backend only needs
-        // clientDataJSON and attestationObject.
-        return {
-          id: credential.id,
-          rawId: bufferToBase64url(credential.rawId),
-          type: credential.type,
-          clientExtensionResults: encodeBuffersDeep(credential.getClientExtensionResults()),
-          response: {
-            clientDataJSON: bufferToBase64url(credential.response.clientDataJSON),
-            attestationObject: bufferToBase64url(credential.response.attestationObject),
-          },
-        } as RegistrationResponseJSON;
+  if (typeof credential.toJSON === "function") {
+    try {
+      return credential.toJSON();
+    } catch (error) {
+      // An extension has created an incomplete PublicKeyCredential; serialize it manually
+      if (!(error instanceof TypeError)) {
+        throw error;
       }
     }
-    // re-throw unexpected errors, or fall through if credential type is unrecognized
-    throw error;
   }
+  return manualCredentialToJSON(credential);
 }
