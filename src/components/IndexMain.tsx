@@ -16,6 +16,7 @@ import { useIntl } from "react-intl";
 import { Navigate, Route, Routes, useLocation } from "react-router";
 import { dynamicMessage } from "translation";
 import "../styles/index.css";
+import { BrowserSupportCheck } from "./Common/BrowserSupportCheck";
 import { ExternalReturnHandler } from "./Common/ExternalReturnHandler";
 import { Footer } from "./Common/Footer";
 import { Header } from "./Common/Header";
@@ -96,6 +97,7 @@ export function IndexMain() {
           <ScrollToHash />
           <Header loginRef={loginRef} />
           <main id="panel" className="panel">
+            <BrowserSupportCheck />
             <Notifications />
             <ErrorBoundary FallbackComponent={GenericError}>
               <Splash showChildren={isLoaded}>

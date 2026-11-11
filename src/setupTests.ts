@@ -44,3 +44,7 @@ beforeAll(() =>
 );
 afterEach(() => mswServer.resetHandlers());
 afterAll(() => mswServer.close());
+
+// jsdom lacks CSS nesting, so BrowserSupportCheck would show its browser warning in every test that renders
+// the app. Pretend it has already been shown; BrowserSupportCheck-test.tsx clears this to test the component.
+beforeEach(() => sessionStorage.setItem("browserSupportNoticeShown", "1"));
