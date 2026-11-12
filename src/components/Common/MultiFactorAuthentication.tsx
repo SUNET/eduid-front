@@ -56,7 +56,16 @@ export function MultiFactorAuthentication() {
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
   const { checkAuthnStatus } = useReAuthenticate();
 
-  useEffect(() => () => createCredentialRef.current?.abort(), []);
+  // false once the page has been left; a registration that is still waiting for its challenge must then not
+  // start the browser prompt, because the cleanup below has nothing to abort yet
+  const isMountedRef = useRef(true);
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      createCredentialRef.current?.abort();
+    };
+  }, []);
 
   const tokens = useAppSelector(filterTokensFromCredentials);
 
@@ -161,7 +170,7 @@ export function MultiFactorAuthentication() {
         const description = description_value?.trim();
         setShowSecurityKeyNameModal(false);
         const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-        if (registration.isSuccess) {
+        if (registration.isSuccess && isMountedRef.current) {
           const createCredentialPromise = createCredential(registration.data.payload.registration_data.publicKey);
           createCredentialRef.current = createCredentialPromise;
           const createResponse = await createCredentialPromise;

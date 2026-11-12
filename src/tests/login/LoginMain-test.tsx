@@ -190,29 +190,29 @@ test("renders passkey button as expected", async () => {
   expect(loginButton).toBeEnabled();
 });
 
+async function renderAndCountMfaAuthRequests(conditionalSupported: boolean) {
+  jest.spyOn(browserSupport, "isConditionalMediationAvailable").mockResolvedValue(conditionalSupported);
+  const mfaAuthRequests: string[] = [];
+  mswServer.use(
+    createLoginNextHandler(TEST_REF, { action: "USERNAMEPASSWORD", target: "/foo" }),
+    // answer with an error so that no navigator.credentials.get() is attempted
+    http.post(`${LOGIN_SERVICE_URL}/mfa_auth`, () => {
+      mfaAuthRequests.push("mfa_auth");
+      return new HttpResponse(null, { status: 400 });
+    }),
+  );
+  renderLoginPage(`${LOGIN_BASE_PATH}/password/${TEST_REF}`, { webauthn: true });
+  await waitFor(() => screen.getByRole("heading", { level: 1 }));
+  await screen.findByText("log in with passkey");
+  // let the conditional effect run to completion
+  await new Promise((resolve) => setTimeout(resolve, 50));
+  return mfaAuthRequests;
+}
+
 describe("conditional passkey login", () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-
-  async function renderAndCountMfaAuthRequests(conditionalSupported: boolean) {
-    jest.spyOn(browserSupport, "isConditionalMediationAvailable").mockResolvedValue(conditionalSupported);
-    const mfaAuthRequests: string[] = [];
-    mswServer.use(
-      createLoginNextHandler(TEST_REF, { action: "USERNAMEPASSWORD", target: "/foo" }),
-      // answer with an error so that no navigator.credentials.get() is attempted
-      http.post(`${LOGIN_SERVICE_URL}/mfa_auth`, () => {
-        mfaAuthRequests.push("mfa_auth");
-        return new HttpResponse(null, { status: 400 });
-      }),
-    );
-    renderLoginPage(`${LOGIN_BASE_PATH}/password/${TEST_REF}`, { webauthn: true });
-    await waitFor(() => screen.getByRole("heading", { level: 1 }));
-    await screen.findByText("log in with passkey");
-    // let the conditional effect run to completion
-    await new Promise((resolve) => setTimeout(resolve, 50));
-    return mfaAuthRequests;
-  }
 
   test("starts when the browser supports conditional mediation", async () => {
     expect(await renderAndCountMfaAuthRequests(true)).not.toHaveLength(0);
