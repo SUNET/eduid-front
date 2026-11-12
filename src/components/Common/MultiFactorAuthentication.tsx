@@ -50,9 +50,13 @@ export function MultiFactorAuthentication() {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  // the pending navigator.credentials.create() call, so it can be cancelled if the page is left
+  const createCredentialRef = useRef<{ abort(): void } | null>(null);
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
   const { checkAuthnStatus } = useReAuthenticate();
+
+  useEffect(() => () => createCredentialRef.current?.abort(), []);
 
   const tokens = useAppSelector(filterTokensFromCredentials);
 
@@ -158,7 +162,9 @@ export function MultiFactorAuthentication() {
         setShowSecurityKeyNameModal(false);
         const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
         if (registration.isSuccess) {
-          const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+          const createCredentialPromise = createCredential(registration.data.payload.registration_data.publicKey);
+          createCredentialRef.current = createCredentialPromise;
+          const createResponse = await createCredentialPromise;
           if (createResponse.isSuccess) {
             const registerResponse = await registerWebauthn({
               webauthn_attestation: createResponse.data,

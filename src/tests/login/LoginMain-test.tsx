@@ -1,6 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { LoginNextRequest, LoginNextResponse } from "apis/eduidLogin";
 import { IndexMain } from "components/IndexMain";
+import * as browserSupport from "helperFunctions/browserSupport";
 import { LOGIN_BASE_PATH } from "helperFunctions/paths";
 import { http, HttpResponse } from "msw";
 import { mswServer } from "setupTests";
@@ -187,4 +188,38 @@ test("renders passkey button as expected", async () => {
   expect(passwordInput).toHaveValue("password123");
 
   expect(loginButton).toBeEnabled();
+});
+
+describe("conditional passkey login", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  async function renderAndCountMfaAuthRequests(conditionalSupported: boolean) {
+    jest.spyOn(browserSupport, "isConditionalMediationAvailable").mockResolvedValue(conditionalSupported);
+    const mfaAuthRequests: string[] = [];
+    mswServer.use(
+      createLoginNextHandler(TEST_REF, { action: "USERNAMEPASSWORD", target: "/foo" }),
+      // answer with an error so that no navigator.credentials.get() is attempted
+      http.post(`${LOGIN_SERVICE_URL}/mfa_auth`, () => {
+        mfaAuthRequests.push("mfa_auth");
+        return new HttpResponse(null, { status: 400 });
+      }),
+    );
+    renderLoginPage(`${LOGIN_BASE_PATH}/password/${TEST_REF}`, { webauthn: true });
+    await waitFor(() => screen.getByRole("heading", { level: 1 }));
+    await screen.findByText("log in with passkey");
+    // let the conditional effect run to completion
+    await new Promise((resolve) => setTimeout(resolve, 50));
+    return mfaAuthRequests;
+  }
+
+  test("starts when the browser supports conditional mediation", async () => {
+    expect(await renderAndCountMfaAuthRequests(true)).not.toHaveLength(0);
+  });
+
+  test("is skipped when the browser lacks conditional mediation, the passkey button still renders", async () => {
+    expect(await renderAndCountMfaAuthRequests(false)).toHaveLength(0);
+    expect(screen.getByText("log in with passkey").closest("button")).toBeEnabled();
+  });
 });
