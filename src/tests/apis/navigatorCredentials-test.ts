@@ -1,5 +1,11 @@
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
+import {
+  DOM_ERROR_ALREADY_REGISTERED,
+  DOM_ERROR_NOT_SUPPORTED,
+  DOM_ERROR_SECURITY,
+  navigatorCredentialsApi,
+} from "apis/navigatorCredentials";
 import { getTestEduIDStore } from "eduid-init-app";
+import extractedMessages from "translation/extractedMessages.json";
 
 const g = globalThis as unknown as Record<string, unknown>;
 
@@ -64,3 +70,82 @@ describe("navigatorCredentialsApi createCredential", () => {
     expect(store.getState().notifications.error).toBeUndefined();
   });
 });
+
+describe("navigatorCredentialsApi errors", () => {
+  const originalPKC = g.PublicKeyCredential;
+  const originalCredentials = Object.getOwnPropertyDescriptor(navigator, "credentials");
+  let create: jest.Mock;
+  let get: jest.Mock;
+
+  beforeEach(() => {
+    g.PublicKeyCredential = function PublicKeyCredential() {};
+    create = jest.fn();
+    get = jest.fn();
+    Object.defineProperty(navigator, "credentials", { value: { create, get }, configurable: true });
+  });
+
+  afterEach(() => {
+    g.PublicKeyCredential = originalPKC;
+    if (originalCredentials) {
+      Object.defineProperty(navigator, "credentials", originalCredentials);
+    } else {
+      delete (navigator as unknown as Record<string, unknown>).credentials;
+    }
+  });
+
+  async function register(error: unknown) {
+    create.mockRejectedValue(error);
+    const store = getTestEduIDStore({});
+    await store.dispatch(navigatorCredentialsApi.endpoints.createCredential.initiate(creationOptions));
+    return store.getState().notifications.error?.message;
+  }
+
+  async function authenticate(error: unknown) {
+    get.mockRejectedValue(error);
+    const store = getTestEduIDStore({});
+    await store.dispatch(
+      navigatorCredentialsApi.endpoints.performAuthentication.initiate({
+        webauth_options: { challenge: "AAAA", rpId: "eduid.docker" },
+      }),
+    );
+    return store.getState().notifications.error?.message;
+  }
+
+  test("registering a key that is already registered says so, whatever the browser's own wording", async () => {
+    // the browser's text differs between browsers; the name is what is stable
+    const message = await register(new DOMException("Some browser specific text", "InvalidStateError"));
+    expect(message).toBe(DOM_ERROR_ALREADY_REGISTERED);
+  });
+
+  test("a cancelled or timed out registration or authentication stays silent", async () => {
+    expect(await register(new DOMException("denied", "NotAllowedError"))).toBeUndefined();
+    expect(await authenticate(new DOMException("denied", "NotAllowedError"))).toBeUndefined();
+  });
+
+  test("an aborted registration or authentication stays silent", async () => {
+    expect(await register(new DOMException("aborted", "AbortError"))).toBeUndefined();
+    expect(await authenticate(new DOMException("aborted", "AbortError"))).toBeUndefined();
+  });
+
+  test("an unsupported request and a security error get their own messages", async () => {
+    expect(await register(new DOMException("x", "NotSupportedError"))).toBe(DOM_ERROR_NOT_SUPPORTED);
+    expect(await authenticate(new DOMException("x", "NotSupportedError"))).toBe(DOM_ERROR_NOT_SUPPORTED);
+    expect(await register(new DOMException("x", "SecurityError"))).toBe(DOM_ERROR_SECURITY);
+    expect(await authenticate(new DOMException("x", "SecurityError"))).toBe(DOM_ERROR_SECURITY);
+  });
+
+  test("InvalidStateError on authentication and other errors keep the generic message", async () => {
+    expect(await authenticate(new DOMException("odd", "InvalidStateError"))).toBe("InvalidStateError: odd");
+    expect(await register(new Error("boom"))).toBe("Error: boom");
+  });
+});
+
+// A message id without a translation is shown as the raw id (see dynamicMessage()), so every id used here needs
+// an extracted message. This asserts on the extracted messages: languages/*.json are maintained in Transifex.
+test.each([DOM_ERROR_ALREADY_REGISTERED, DOM_ERROR_NOT_SUPPORTED, DOM_ERROR_SECURITY])(
+  "%s has an extracted message",
+  (id) => {
+    const messages = extractedMessages as { [key: string]: { string: string } };
+    expect(messages[id]?.string).toEqual(expect.any(String));
+  },
+);

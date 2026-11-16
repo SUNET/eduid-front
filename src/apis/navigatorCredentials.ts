@@ -31,6 +31,37 @@ async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJS
   throw new Error("dom_error.unable_to_create_credential");
 }
 
+// Message ids, defined in translation/defaultMessages/navigatorCredentials.tsx
+export const DOM_ERROR_ALREADY_REGISTERED = "dom_error.already_registered";
+export const DOM_ERROR_NOT_SUPPORTED = "dom_error.not_supported";
+export const DOM_ERROR_SECURITY = "dom_error.security_error";
+
+/**
+ * What to tell the user about an error from navigator.credentials, from the DOMException name:
+ * - `null`: say nothing. AbortError is an intentional abort (e.g. before starting staged auth), and NotAllowedError is
+ *   the user cancelling the dialog or presenting a credential that does not match.
+ * - `undefined`: no specific message, the caller falls back to the generic error.
+ */
+function domExceptionMessage(action: string, error: DOMException): string | null | undefined {
+  switch (error.name) {
+    case "AbortError":
+      return null;
+    case "NotAllowedError":
+      // the user cancelled the dialog or it timed out, which they know already; or the credential presented does
+      // not match. Expected user interactions, so say nothing.
+      return null;
+    case "InvalidStateError":
+      // on registration: a credential on this authenticator is already registered (from excludeCredentials)
+      return action === "createCredential" ? DOM_ERROR_ALREADY_REGISTERED : undefined;
+    case "NotSupportedError":
+      return DOM_ERROR_NOT_SUPPORTED;
+    case "SecurityError":
+      return DOM_ERROR_SECURITY;
+    default:
+      return undefined;
+  }
+}
+
 const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
   let errorMessage = "";
   try {
@@ -44,11 +75,12 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
         break;
     }
   } catch (error) {
-    if (error instanceof DOMException && (error.name === "AbortError" || error.name === "NotAllowedError")) {
-      // AbortError: conditional auth was intentionally aborted (e.g. before starting staged auth)
-      // NotAllowedError: user cancelled the dialog, or presented a credential that doesn't match
-      // Both are expected user interactions — return a silent error without notification.
-      return { error: { message: error.name } };
+    const domMessage = error instanceof DOMException ? domExceptionMessage(args.action, error) : undefined;
+    if (domMessage === null) {
+      // an expected user interaction: return a silent error without notification
+      return { error: { message: (error as DOMException).name } };
+    } else if (domMessage !== undefined) {
+      errorMessage = domMessage;
     } else if (error instanceof Error) {
       errorMessage = `${error.name}: ${error.message}`;
     } else {
