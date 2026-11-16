@@ -1,4 +1,5 @@
-import { PublicKeyCredentialHint, useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { PASSKEY_HINTS } from "helperFunctions/webauthnHints";
 import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
@@ -20,11 +21,6 @@ interface InactiveSecurityKeyProps {
   handleSecurityKey(): void;
   discoverable?: boolean;
 }
-
-// Prefer this device (its platform authenticator or passkey provider, which includes the browser's and OS's
-// password manager) and then a phone or tablet when the browser shows its dialog. A hint is only a preference: a
-// passkey on a security key can still be used. See PublicKeyCredentialHint.
-const PASSKEY_HINTS: PublicKeyCredentialHint[] = ["client-device", "hybrid"];
 
 export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly<SecurityKeyProps>) {
   // The PassKey button is 'active' after first being pressed, until the user has used the passkey (or

@@ -5,6 +5,7 @@ import {
   navigatorCredentialsApi,
 } from "apis/navigatorCredentials";
 import { getTestEduIDStore } from "eduid-init-app";
+import { withRegistrationHints } from "helperFunctions/webauthnHints";
 import extractedMessages from "translation/extractedMessages.json";
 
 const g = globalThis as unknown as Record<string, unknown>;
@@ -50,6 +51,17 @@ describe("navigatorCredentialsApi createCredential", () => {
     expect(result.isSuccess).toBe(true);
     expect(create).toHaveBeenCalledTimes(1);
     expect(create.mock.calls[0][0].signal).toBeInstanceOf(AbortSignal);
+  });
+
+  test("the registration hints reach navigator.credentials.create()", async () => {
+    create.mockResolvedValue(fakeCredential);
+    const store = getTestEduIDStore({});
+
+    await store.dispatch(
+      navigatorCredentialsApi.endpoints.createCredential.initiate(withRegistrationHints(creationOptions, "platform")),
+    );
+
+    expect(create.mock.calls[0][0].publicKey.hints).toEqual(["client-device", "hybrid"]);
   });
 
   test("aborting the request cancels create() without a notification", async () => {
