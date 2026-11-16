@@ -351,6 +351,14 @@
   "bankid.token_not_found": {
     "string": "Säkerhetsnyckeln hittades inte"
   },
+  "browserSupport.noWebauthn": {
+    "developer_comment": "Notification shown when the browser has no WebAuthn support",
+    "string": "Säkerhetsnycklar och passkeys stöds inte av denna webbläsare."
+  },
+  "browserSupport.unsupported": {
+    "developer_comment": "Notification shown when the browser lacks features eduID needs",
+    "string": "Din nuvarande webbläsare kanske inte fungerar bra med eduID. Delar av eduID kan se felaktiga ut eller inte fungera som de ska. Vänligen uppdatera din webbläsare eller använd en annan som är uppdaterad."
+  },
   "captcha.img": {
     "developer_comment": "captcha img change",
     "string": "Generera en ny bild"
@@ -857,6 +865,15 @@
   },
   "document title Start": {
     "string": "Start | eduID"
+  },
+  "dom_error.already_registered": {
+    "string": "Den här säkerhetsnyckeln eller passkeyn är redan registrerad. Försök med en annan."
+  },
+  "dom_error.not_supported": {
+    "string": "Denna webbläsare eller enhet stödjer inte den här typen av säkerhetsnyckel eller passkey."
+  },
+  "dom_error.security_error": {
+    "string": "Webbläsaren blockerade begäran av säkerhetsskäl."
   },
   "eduIDButton.label": {
     "developer_comment": "Notification modal close label",
