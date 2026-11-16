@@ -22,9 +22,9 @@ async function handlePerformAuthentication(args: AuthenticationRequest, signal?:
   }
 }
 
-async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON) {
+async function handleCreateCredential(args: PublicKeyCredentialCreationOptionsJSON, signal?: AbortSignal) {
   const publicKey = parseCreationOptions(args);
-  const credential = await navigator.credentials.create({ publicKey });
+  const credential = await navigator.credentials.create({ publicKey, ...(signal && { signal }) });
   if (credential) {
     return { data: credentialToJSON(credential as PublicKeyCredential) };
   }
@@ -38,7 +38,7 @@ const navigatorCredentialsBaseQuery: BaseQueryFn = async (args, api) => {
       case "performAuthentication":
         return await handlePerformAuthentication(args.payload, api.signal);
       case "createCredential":
-        return await handleCreateCredential(args.payload);
+        return await handleCreateCredential(args.payload, api.signal);
       default:
         errorMessage = `Unknown action: ${args.action}`;
         break;

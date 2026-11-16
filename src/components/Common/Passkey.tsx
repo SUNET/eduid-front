@@ -1,5 +1,5 @@
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { useEffect, useRef, useState } from "react";
+import { useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
 import passkeyImage from "../../../img/multiple-passkey.svg";
@@ -22,35 +22,11 @@ interface InactiveSecurityKeyProps {
 }
 
 export function PassKey({ setup, onSuccess, onComplete, discoverable }: Readonly<SecurityKeyProps>) {
-  // The PassKey button is 'active' after first being pressed. In that mode, it shows
-  // a small animation and invokes the navigator.credentials.get() thunk that will result
-  // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
-  // can also be cancelled or restarted with buttons in the UI.
-  const [active, setActive] = useState(false);
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
+  // The PassKey button is 'active' after first being pressed, until the user has used the passkey (or
+  // cancelled, or the browser timed out). See useWebauthnAuthentication.
+  const { active, start } = useWebauthnAuthentication({ setup, onSuccess, onComplete });
 
-  async function handleSecurityKey() {
-    setActive(true);
-    try {
-      const webauth_options = await setup();
-      if (webauth_options) {
-        const response = await performAuthentication({ webauth_options });
-        if (response.isSuccess) {
-          // Wait for credential submission to finish before calling onComplete,
-          // so that restartConditionalAuth doesn't fire a new challenge fetch
-          // while the backend is still processing this credential.
-          await onSuccess(response.data);
-        }
-      }
-    } catch {
-      // User cancelled WebAuthn dialog or browser timed out — no action needed
-    } finally {
-      setActive(false);
-      onComplete?.();
-    }
-  }
-
-  return <SecurityKeyInactive disabled={active} handleSecurityKey={handleSecurityKey} discoverable={discoverable} />;
+  return <SecurityKeyInactive disabled={active} handleSecurityKey={start} discoverable={discoverable} />;
 }
 
 function SecurityKeyInactive({ disabled, handleSecurityKey }: Readonly<InactiveSecurityKeyProps>) {

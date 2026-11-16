@@ -50,9 +50,22 @@ export function MultiFactorAuthentication() {
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
   const [eidasVerifyCredential] = eidasApi.useLazyEidasVerifyCredentialQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  // the pending navigator.credentials.create() call, so it can be cancelled if the page is left
+  const createCredentialRef = useRef<{ abort(): void } | null>(null);
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
   const { checkAuthnStatus } = useReAuthenticate();
+
+  // false once the page has been left; a registration that is still waiting for its challenge must then not
+  // start the browser prompt, because the cleanup below has nothing to abort yet
+  const isMountedRef = useRef(true);
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+      createCredentialRef.current?.abort();
+    };
+  }, []);
 
   const tokens = useAppSelector(filterTokensFromCredentials);
 
@@ -157,8 +170,10 @@ export function MultiFactorAuthentication() {
         const description = description_value?.trim();
         setShowSecurityKeyNameModal(false);
         const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
-        if (registration.isSuccess) {
-          const createResponse = await createCredential(registration.data.payload.registration_data.publicKey);
+        if (registration.isSuccess && isMountedRef.current) {
+          const createCredentialPromise = createCredential(registration.data.payload.registration_data.publicKey);
+          createCredentialRef.current = createCredentialPromise;
+          const createResponse = await createCredentialPromise;
           if (createResponse.isSuccess) {
             const registerResponse = await registerWebauthn({
               webauthn_attestation: createResponse.data,

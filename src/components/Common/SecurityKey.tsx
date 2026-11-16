@@ -1,5 +1,5 @@
-import { navigatorCredentialsApi } from "apis/navigatorCredentials";
-import { useEffect, useRef, useState } from "react";
+import { useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
 import { EduIDButton } from "./EduIDButton";
@@ -19,23 +19,9 @@ interface InactiveSecurityKeyProps {
 
 export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
-  // a small animation and invokes the navigator.credentials.get() thunk that will result
-  // in 'fulfilled' after the user uses the security key to authenticate. The 'active' mode
-  // can also be cancelled or restarted with buttons in the UI.
-  const [active, setActive] = useState(false);
-  const [performAuthentication] = navigatorCredentialsApi.useLazyPerformAuthenticationQuery();
-
-  async function handleSecurityKey() {
-    setActive(true);
-    const webauth_options = await setup();
-    if (webauth_options) {
-      const response = await performAuthentication({ webauth_options });
-      if (response.isSuccess) {
-        onSuccess(response.data);
-      }
-    }
-    setActive(false);
-  }
+  // a small animation until the user has used the security key (or cancelled, or the browser
+  // timed out). See useWebauthnAuthentication.
+  const { active, start: handleSecurityKey } = useWebauthnAuthentication({ setup, onSuccess });
 
   return (
     <div className="option-wrapper">

@@ -1,4 +1,4 @@
-import { detectBrowserSupport } from "helperFunctions/browserSupport";
+import { detectBrowserSupport, isConditionalMediationAvailable } from "helperFunctions/browserSupport";
 
 const g = globalThis as unknown as Record<string, unknown>;
 
@@ -75,5 +75,38 @@ describe("detectBrowserSupport", () => {
       throw new Error("blocked");
     });
     expect(detectBrowserSupport().unsupported).toBe(true);
+  });
+});
+
+describe("isConditionalMediationAvailable", () => {
+  const originalPKC = g.PublicKeyCredential;
+
+  afterEach(() => {
+    g.PublicKeyCredential = originalPKC;
+  });
+
+  test("false without WebAuthn", async () => {
+    delete g.PublicKeyCredential;
+    await expect(isConditionalMediationAvailable()).resolves.toBe(false);
+  });
+
+  test("false when the browser lacks the probe method", async () => {
+    g.PublicKeyCredential = function PublicKeyCredential() {};
+    await expect(isConditionalMediationAvailable()).resolves.toBe(false);
+  });
+
+  test("true when the browser reports support", async () => {
+    g.PublicKeyCredential = { isConditionalMediationAvailable: () => Promise.resolve(true) };
+    await expect(isConditionalMediationAvailable()).resolves.toBe(true);
+  });
+
+  test("false when the browser reports no support", async () => {
+    g.PublicKeyCredential = { isConditionalMediationAvailable: () => Promise.resolve(false) };
+    await expect(isConditionalMediationAvailable()).resolves.toBe(false);
+  });
+
+  test("a failing probe counts as not available", async () => {
+    g.PublicKeyCredential = { isConditionalMediationAvailable: () => Promise.reject(new Error("boom")) };
+    await expect(isConditionalMediationAvailable()).resolves.toBe(false);
   });
 });

@@ -6,6 +6,7 @@ import { PassKey } from "components/Common/Passkey";
 import { PasswordInput } from "components/Common/PasswordInput";
 import { UserNameInput } from "components/Common/UserNameInput";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { isConditionalMediationAvailable } from "helperFunctions/browserSupport";
 import { RESET_PASSWORD_PATH } from "helperFunctions/paths";
 import { emailPattern } from "helperFunctions/validation/regexPatterns";
 import React, { useCallback, useEffect, useRef, useState } from "react";
@@ -154,6 +155,15 @@ export function UsernamePw() {
 
     const conditionalAuthentication = async () => {
       if (!ref) {
+        return;
+      }
+      // Browsers without conditional mediation (passkey autofill) reject get({mediation: "conditional"}) with
+      // an error that would be shown as a notification. Skip the whole conditional flow for them; the
+      // explicit passkey button fetches its own challenge and keeps working.
+      if (!(await isConditionalMediationAvailable())) {
+        return;
+      }
+      if (cancelled) {
         return;
       }
       // Wait for any in-flight credential submission to finish before fetching

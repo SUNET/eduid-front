@@ -7,7 +7,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
 import passkeyDarkImage from "../../../img/multiple-passkey-dark-mode.svg";
@@ -98,6 +98,9 @@ export function SignupCredentials() {
   const [registrationData, setRegistrationData] = useState<PublicKeyCredentialCreationOptionsJSON | null>(null);
   const [signupRegisterWebauthn] = signupApi.useLazySignupRegisterWebauthnQuery();
   const [createCredential] = navigatorCredentialsApi.useLazyCreateCredentialQuery();
+  // the pending navigator.credentials.create() call, so it can be cancelled if the page is left
+  const createCredentialRef = useRef<{ abort(): void } | null>(null);
+  useEffect(() => () => createCredentialRef.current?.abort(), []);
   const [createUser] = signupApi.useLazyCreateUserRequestQuery();
   const credentials = signupState?.credentials;
   const webauthnRegistered = credentials?.webauthn_registered ?? false;
@@ -131,7 +134,9 @@ export function SignupCredentials() {
       const description = description_value?.trim();
       setShowSecurityKeyNameModal(false);
       if (!registrationData) return;
-      const createResponse = await createCredential(registrationData);
+      const createCredentialPromise = createCredential(registrationData);
+      createCredentialRef.current = createCredentialPromise;
+      const createResponse = await createCredentialPromise;
       if (createResponse.isSuccess) {
         signupRegisterWebauthn({
           webauthn_attestation: createResponse.data,

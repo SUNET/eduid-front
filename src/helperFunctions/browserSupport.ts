@@ -47,3 +47,22 @@ export function detectBrowserSupport(): BrowserSupport {
 
   return { unsupported, noWebauthn: globalThis.PublicKeyCredential === undefined };
 }
+
+/**
+ * Whether the browser supports conditional mediation (passkey autofill on the username field).
+ *
+ * navigator.credentials.get({mediation: "conditional"}) rejects with a non-DOMException error in browsers
+ * that lack it, which would surface as an error notification on the login page, so callers must check this
+ * first. Any failure of the probe itself counts as "not available".
+ */
+export async function isConditionalMediationAvailable(): Promise<boolean> {
+  try {
+    const PKC = globalThis.PublicKeyCredential;
+    if (typeof PKC?.isConditionalMediationAvailable !== "function") {
+      return false;
+    }
+    return await PKC.isConditionalMediationAvailable();
+  } catch {
+    return false;
+  }
+}
