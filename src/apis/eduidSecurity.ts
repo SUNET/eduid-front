@@ -24,7 +24,20 @@ export interface CredentialType {
   used_for_login: boolean;
   verified: boolean;
   mfa_approved: boolean | null;
+  // Security keys and passkeys only (null for other credentials, absent from older backends). Codes and
+  // identifiers, plus the name MDS publishes for the authenticator.
+  keyhandle?: string | null;
+  authenticator_id?: string | null;
+  authenticator_name?: string | null;
+  attestation_format?: string | null;
+  kind?: CredentialKind | null;
+  discoverable?: CredentialDiscoverable | null;
 }
+
+export type CredentialKind = "security_key" | "passkey" | "unknown";
+// `yes` is only ever per-credential proof. `likely` and `no` are guesses from when the key was registered: a key
+// can still be non-discoverable after the registration flow started asking for discoverable credentials.
+export type CredentialDiscoverable = "yes" | "likely" | "no" | "unknown";
 
 export interface SecurityResponse {
   credentials: CredentialType[];
