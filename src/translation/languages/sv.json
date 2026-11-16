@@ -357,7 +357,7 @@
   },
   "browserSupport.unsupported": {
     "developer_comment": "Notification shown when the browser lacks features eduID needs",
-    "string": "Din nuvarande webbläsare kanske inte fungerar bra med eduID. Delar av eduID kan se felaktiga ut eller inte fungera som de ska. Vänligen uppdatera din webbläsare eller använd en annan som är uppdaterad."
+    "string": "Din nuvarande webbläsare kanske inte fungerar väl med eduID. Delar av eduID kan se felaktiga ut eller inte fungera som de ska. Vänligen uppdatera din webbläsare eller använd en annan som är uppdaterad."
   },
   "captcha.img": {
     "developer_comment": "captcha img change",
