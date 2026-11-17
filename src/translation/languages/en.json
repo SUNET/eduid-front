@@ -2771,6 +2771,14 @@
     "developer_comment": "security description name",
     "string": "Name:"
   },
+  "securityKeyTable.discoverable.likely": {
+    "developer_comment": "a security key that probably holds a passkey, not known for sure",
+    "string": "may work without a username"
+  },
+  "securityKeyTable.discoverable.no": {
+    "developer_comment": "a security key that cannot log in without a username, only as a second step",
+    "string": "second factor only"
+  },
   "securityKeyTable.last": {
     "developer_comment": "security last used",
     "string": "Used:"
@@ -2794,6 +2802,22 @@
   "securityKeyTable.title": {
     "developer_comment": "settings.remove_security_key_modal_title",
     "string": "Remove security key"
+  },
+  "securityKeyTable.type": {
+    "developer_comment": "the type of a security key or passkey",
+    "string": "Type:"
+  },
+  "securityKeyTable.type.passkey": {
+    "developer_comment": "type of a credential that is a passkey",
+    "string": "Passkey"
+  },
+  "securityKeyTable.type.passkeyOnSecurityKey": {
+    "developer_comment": "type of a security key that is known to hold a passkey",
+    "string": "Passkey on a security key"
+  },
+  "securityKeyTable.type.unknown": {
+    "developer_comment": "type of a credential that cannot be told apart",
+    "string": "Security key or passkey"
   },
   "securityKeyTable.verificationStatus": {
     "developer_comment": "security key status",
