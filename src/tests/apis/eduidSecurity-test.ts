@@ -53,33 +53,33 @@ describe("securityApi registerWebauthn", () => {
   });
 });
 
+function passkey(id: string): CredentialType {
+  return {
+    authenticator: "platform",
+    created_ts: "2026-01-01",
+    credential_type: "security.webauthn_credential_type",
+    description: id,
+    key: id,
+    keyhandle: id,
+    success_ts: "2026-01-01",
+    used_for_login: false,
+    verified: false,
+    mfa_approved: false,
+  };
+}
+
+function listPayload(...ids: string[]) {
+  return {
+    type: "test response",
+    payload: { credentials: ids.map(passkey), rp_id: "eduid.docker", webauthn_user_handle: "handle" },
+  };
+}
+
 describe("telling the browser which passkeys are accepted, from the responses", () => {
   const SECURITY_URL = "https://dashboard.eduid.docker/services/security";
   const g = globalThis as unknown as Record<string, unknown>;
   const originalPKC = g.PublicKeyCredential;
   let signal: jest.Mock;
-
-  function passkey(id: string): CredentialType {
-    return {
-      authenticator: "platform",
-      created_ts: "2026-01-01",
-      credential_type: "security.webauthn_credential_type",
-      description: id,
-      key: id,
-      keyhandle: id,
-      success_ts: "2026-01-01",
-      used_for_login: false,
-      verified: false,
-      mfa_approved: false,
-    };
-  }
-
-  function listPayload(...ids: string[]) {
-    return {
-      type: "test response",
-      payload: { credentials: ids.map(passkey), rp_id: "eduid.docker", webauthn_user_handle: "handle" },
-    };
-  }
 
   function store() {
     return getTestEduIDStore({
@@ -144,5 +144,53 @@ describe("telling the browser which passkeys are accepted, from the responses", 
     await read;
     // the older list ("a" and "b") was not signalled, which would have told the browser that b is still valid
     expect(signalledIds()).toEqual([["a"]]);
+  });
+
+  test.each([
+    ["the removal answers first", true],
+    ["the registration answers first", false],
+  ])("two overlapping changes are not signalled, and a read afterwards is: %s", async (_name, removalFirst) => {
+    let releaseRemoval!: () => void;
+    let releaseRegistration!: () => void;
+    const removalGate = new Promise<void>((resolve) => {
+      releaseRemoval = resolve;
+    });
+    const registrationGate = new Promise<void>((resolve) => {
+      releaseRegistration = resolve;
+    });
+    mswServer.use(
+      // the removal leaves [a]; the registration leaves [a, b]; which of them the server applied last is not known
+      http.post(`${SECURITY_URL}/webauthn/remove`, async () => {
+        await removalGate;
+        return HttpResponse.json(listPayload("a"));
+      }),
+      http.post(`${SECURITY_URL}/webauthn/register/complete`, async () => {
+        await registrationGate;
+        return HttpResponse.json(listPayload("a", "b"));
+      }),
+      http.get(`${SECURITY_URL}/credentials`, () => HttpResponse.json(listPayload("a", "b"))),
+    );
+    const s = store();
+    const removal = s.dispatch(securityApi.endpoints.removeWebauthnToken.initiate({ credential_key: "b" }));
+    const registration = s.dispatch(
+      securityApi.endpoints.registerWebauthn.initiate({ webauthn_attestation: attestation, description: "c" }),
+    );
+
+    if (removalFirst) {
+      releaseRemoval();
+      await removal;
+      releaseRegistration();
+      await registration;
+    } else {
+      releaseRegistration();
+      await registration;
+      releaseRemoval();
+      await removal;
+    }
+    expect(signal).not.toHaveBeenCalled();
+
+    // when the page is shown again, the list as it is now is signalled
+    await s.dispatch(securityApi.endpoints.requestCredentials.initiate(undefined, { forceRefetch: true }));
+    expect(signalledIds()).toEqual([["a", "b"]]);
   });
 });

@@ -200,15 +200,59 @@ describe("signalOnResponse", () => {
     expect(signalledIds()).toEqual([["a", "b"]]);
   });
 
-  test("of two changes, the one that was started last wins, in whatever order they answer", async () => {
+  test.each([
+    ["the first answers first", true],
+    ["the second answers first", false],
+  ])(
+    "does not signal two changes that overlapped, whichever order they answer: %s",
+    async (_name, firstAnswersFirst) => {
+      // a removal that leaves [a] and a registration that leaves [a, b]; which of them the server applied last is not known
+      const removal = deferred();
+      const registration = deferred();
+      const pendingRemoval = signalOnResponse(removal.promise, true);
+      const pendingRegistration = signalOnResponse(registration.promise, true);
+
+      if (firstAnswersFirst) {
+        removal.resolve(response("a"));
+        await pendingRemoval;
+        registration.resolve(response("a", "b"));
+        await pendingRegistration;
+      } else {
+        registration.resolve(response("a", "b"));
+        await pendingRegistration;
+        removal.resolve(response("a"));
+        await pendingRemoval;
+      }
+      expect(signal).not.toHaveBeenCalled();
+    },
+  );
+
+  test("the next read signals the list as it is after overlapping changes", async () => {
     const first = deferred();
     const second = deferred();
     const pendingFirst = signalOnResponse(first.promise, true);
     const pendingSecond = signalOnResponse(second.promise, true);
-    second.resolve(response("a"));
-    await pendingSecond;
-    first.resolve(response("a", "b"));
-    await pendingFirst;
+    first.resolve(response("a"));
+    second.resolve(response("a", "b"));
+    await Promise.all([pendingFirst, pendingSecond]);
+    expect(signal).not.toHaveBeenCalled();
+
+    await signalOnResponse(Promise.resolve(response("a", "b")), false);
+    expect(signalledIds()).toEqual([["a", "b"]]);
+  });
+
+  test("changes that follow each other are both signalled", async () => {
+    await signalOnResponse(Promise.resolve(response("a", "b")), true);
+    await signalOnResponse(Promise.resolve(response("a")), true);
+    expect(signalledIds()).toEqual([["a", "b"], ["a"]]);
+  });
+
+  test("a change that failed does not stop a later one from being signalled", async () => {
+    const failing = deferred();
+    const pending = signalOnResponse(failing.promise, true);
+    failing.reject(new Error("re-authentication needed"));
+    await pending;
+    await signalOnResponse(Promise.resolve(response("a")), true);
     expect(signalledIds()).toEqual([["a"]]);
   });
 

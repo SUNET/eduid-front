@@ -36,8 +36,8 @@ let lastSignalled: string | undefined;
 // The order of the responses that carry the list of credentials, see signalOnResponse()
 let issued = 0;
 let changeEpoch = 0;
-let changesInFlight = 0;
-let lastChangeApplied = 0;
+// the changes (a key added or removed) that have been asked for and not yet answered
+const changesInFlight = new Set<{ overlapped: boolean }>();
 let lastReadApplied = 0;
 
 /** Forget what was last signalled and the order of the requests (for tests). */
@@ -45,8 +45,7 @@ export function resetSignalledState() {
   lastSignalled = undefined;
   issued = 0;
   changeEpoch = 0;
-  changesInFlight = 0;
-  lastChangeApplied = 0;
+  changesInFlight.clear();
   lastReadApplied = 0;
 }
 
@@ -87,7 +86,9 @@ export async function signalAllAcceptedCredentials(
  *   started while one was running, or was running when one started or finished, may have seen the list from before
  *   the change, and is not signalled;
  * - of two reads, only the one that was started last is signalled, if both answer;
- * - of two changes, only the one that was started last is signalled.
+ * - a change that overlapped another change is not signalled, since the order in which the server applied them is not
+ *   known (the response that arrives first may be the older one); the next read, when the page is shown again,
+ *   signals the list as it is then.
  * The list is taken from the response itself and never from what is kept in the page, which may be old.
  *
  * `change` is true for a request that changes the credentials. A request that fails is ignored.
@@ -97,10 +98,13 @@ export async function signalOnResponse(
   change: boolean,
 ): Promise<void> {
   const seq = ++issued;
-  const startedDuringChange = changesInFlight > 0;
+  const startedDuringChange = changesInFlight.size > 0;
+  let thisChange: { overlapped: boolean } | undefined;
   if (change) {
     changeEpoch++; // reads that are running now can no longer be trusted
-    changesInFlight++;
+    thisChange = { overlapped: changesInFlight.size > 0 };
+    for (const other of changesInFlight) other.overlapped = true;
+    changesInFlight.add(thisChange);
   }
   const startEpoch = changeEpoch;
 
@@ -110,16 +114,15 @@ export async function signalOnResponse(
   } catch {
     return;
   } finally {
-    if (change) changesInFlight--;
+    if (thisChange) changesInFlight.delete(thisChange);
   }
   if (!payload) return;
 
-  if (change) {
-    if (seq < lastChangeApplied) return;
-    lastChangeApplied = seq;
+  if (thisChange) {
     changeEpoch++; // reads that are running now may have seen the list from before this change
+    if (thisChange.overlapped) return;
   } else {
-    if (startedDuringChange || changesInFlight > 0 || changeEpoch !== startEpoch || seq < lastReadApplied) return;
+    if (startedDuringChange || changesInFlight.size > 0 || changeEpoch !== startEpoch || seq < lastReadApplied) return;
     lastReadApplied = seq;
   }
   await signalAllAcceptedCredentials(payload.rp_id, payload.webauthn_user_handle, payload.credentials);
