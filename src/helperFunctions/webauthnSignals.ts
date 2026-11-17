@@ -127,9 +127,8 @@ export async function signalOnResponse(
   if (thisChange) {
     changeEpoch++; // reads that are running now may have seen the list from before this change
     if (thisChange.overlapped) return;
-  } else {
-    if (startedDuringChange || changesInFlight.size > 0 || changeEpoch !== startEpoch || seq < latestReadStarted)
-      return;
+  } else if (startedDuringChange || changesInFlight.size > 0 || changeEpoch !== startEpoch || seq < latestReadStarted) {
+    return;
   }
   await signalAllAcceptedCredentials(payload.rp_id, payload.webauthn_user_handle, payload.credentials);
 }
