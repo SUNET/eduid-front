@@ -26,7 +26,7 @@ function showSecuritySettings(credentials: CredentialType[]) {
   });
 }
 
-test("shows the type of a security key and what is known about it", async () => {
+test("shows the type of a security key and what is known about it", () => {
   showSecuritySettings([
     credential({
       key: "a",
@@ -46,7 +46,7 @@ test("shows the type of a security key and what is known about it", async () => 
   expect(within(figure).getByRole("img", { hidden: true })).toHaveAttribute("alt", "Security key");
 });
 
-test("shows a passkey with the name of its provider", async () => {
+test("shows a passkey with the name of its provider", () => {
   showSecuritySettings([
     credential({
       key: "b",
@@ -63,11 +63,11 @@ test("shows a passkey with the name of its provider", async () => {
   expect(within(figure).getByRole("img", { hidden: true })).toHaveAttribute("alt", "Passkey");
 });
 
-describe("the icon", () => {
-  function iconSource() {
-    return within(screen.getByRole("figure")).getByRole("img", { hidden: true }).getAttribute("src");
-  }
+function iconSource() {
+  return within(screen.getByRole("figure")).getByRole("img", { hidden: true }).getAttribute("src");
+}
 
+describe("the icon", () => {
   test("a passkey gets the passkey icon, also when a security key was requested", () => {
     showSecuritySettings([
       credential({ key: "c", authenticator: "cross-platform", kind: "passkey", discoverable: "unknown" }),
@@ -91,7 +91,7 @@ describe("the icon", () => {
   });
 });
 
-test("looks as before when the backend sends no type", async () => {
+test("looks as before when the backend sends no type", () => {
   showSecuritySettings([credential({ key: "d", description: "old key", authenticator: "cross-platform" })]);
 
   const figure = screen.getByRole("figure");
