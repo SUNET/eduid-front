@@ -13,6 +13,7 @@ export function useSignalAcceptedCredentials() {
   const userHandle = useAppSelector((state) => state.security.webauthn_user_handle);
 
   useEffect(() => {
-    signalAllAcceptedCredentials(rpId, userHandle, credentials);
+    // best effort: errors are handled inside, and nothing waits for the result
+    void signalAllAcceptedCredentials(rpId, userHandle, credentials);
   }, [rpId, userHandle, credentials]);
 }
