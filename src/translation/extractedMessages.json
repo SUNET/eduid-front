@@ -2815,10 +2815,6 @@
     "developer_comment": "type of a security key that is known to hold a passkey",
     "string": "Passkey on a security key"
   },
-  "securityKeyTable.type.securityKey": {
-    "developer_comment": "type of a credential that is a security key",
-    "string": "Security key"
-  },
   "securityKeyTable.type.unknown": {
     "developer_comment": "type of a credential that cannot be told apart",
     "string": "Security key or passkey"
