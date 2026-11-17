@@ -110,6 +110,25 @@ describe("signalAllAcceptedCredentials", () => {
     signal.mockRejectedValue(new DOMException("not allowed", "NotAllowedError"));
     await expect(signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA])).resolves.toBeUndefined();
   });
+
+  test("a failed attempt is not remembered: the same list is tried again next time", async () => {
+    signal.mockRejectedValueOnce(new DOMException("not allowed", "NotAllowedError"));
+    await signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA]);
+    await signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA]);
+    expect(signal).toHaveBeenCalledTimes(2);
+
+    // and once it has worked, the same list is not sent again
+    await signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA]);
+    expect(signal).toHaveBeenCalledTimes(2);
+  });
+
+  test("the same list is not sent twice at the same time", async () => {
+    await Promise.all([
+      signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA]),
+      signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA]),
+    ]);
+    expect(signal).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe("signalOnResponse", () => {

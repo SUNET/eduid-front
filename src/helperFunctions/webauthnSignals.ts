@@ -73,7 +73,9 @@ export async function signalAllAcceptedCredentials(
       allAcceptedCredentialIds: ids,
     });
   } catch {
-    // best effort: a browser that does not support it, or a user agent that refuses it, must not affect the page
+    // best effort: a browser that does not support it, or a user agent that refuses it, must not affect the page.
+    // A failure is not remembered, so the same list is tried again the next time.
+    if (lastSignalled === key) lastSignalled = undefined;
   }
 }
 
