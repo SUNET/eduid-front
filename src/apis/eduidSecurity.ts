@@ -159,6 +159,7 @@ export const securityApi = eduIDApi.injectEndpoints({
         body: {
           response: body.webauthn_attestation,
           description: body.description,
+          clientExtensionResults: body.clientExtensionResults,
         },
       }),
       extraOptions: { service: "security" },
