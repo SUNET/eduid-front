@@ -18,7 +18,7 @@ function credential(overrides: Partial<CredentialType>): CredentialType {
   };
 }
 
-async function showSecuritySettings(credentials: CredentialType[]) {
+function showSecuritySettings(credentials: CredentialType[]) {
   render(<IndexMain />, { state: { ...defaultDashboardTestState, security: { credentials } } });
   const nav = screen.getByRole("link", { name: "Security" });
   act(() => {
@@ -27,7 +27,7 @@ async function showSecuritySettings(credentials: CredentialType[]) {
 }
 
 test("shows the type of a security key and what is known about it", async () => {
-  await showSecuritySettings([
+  showSecuritySettings([
     credential({
       key: "a",
       description: "work key",
@@ -47,7 +47,7 @@ test("shows the type of a security key and what is known about it", async () => 
 });
 
 test("shows a passkey with the name of its provider", async () => {
-  await showSecuritySettings([
+  showSecuritySettings([
     credential({
       key: "b",
       description: "laptop",
@@ -63,15 +63,36 @@ test("shows a passkey with the name of its provider", async () => {
   expect(within(figure).getByRole("img", { hidden: true })).toHaveAttribute("alt", "Passkey");
 });
 
-test("the icon follows the type, not the attachment that was requested", async () => {
-  await showSecuritySettings([
-    credential({ key: "c", authenticator: "cross-platform", kind: "passkey", discoverable: "unknown" }),
-  ]);
-  expect(within(screen.getByRole("figure")).getByRole("img", { hidden: true })).toHaveAttribute("alt", "Passkey");
+describe("the icon", () => {
+  function iconSource() {
+    return within(screen.getByRole("figure")).getByRole("img", { hidden: true }).getAttribute("src");
+  }
+
+  test("a passkey gets the passkey icon, also when a security key was requested", () => {
+    showSecuritySettings([
+      credential({ key: "c", authenticator: "cross-platform", kind: "passkey", discoverable: "unknown" }),
+    ]);
+    expect(iconSource()).toBe("pass-key-gray.svg");
+  });
+
+  test("a security key gets the security key icon, also when this device was requested", () => {
+    showSecuritySettings([credential({ key: "e", authenticator: "platform", kind: "security_key" })]);
+    expect(iconSource()).toBe("security-key-gray.svg");
+  });
+
+  test("a credential of unknown type gets the icon of the attachment that was requested", () => {
+    showSecuritySettings([credential({ key: "f", authenticator: "platform", kind: "unknown" })]);
+    expect(iconSource()).toBe("pass-key-gray.svg");
+  });
+
+  test("without a type from the backend the icon follows the attachment, as before", () => {
+    showSecuritySettings([credential({ key: "g", authenticator: "cross-platform" })]);
+    expect(iconSource()).toBe("security-key-gray.svg");
+  });
 });
 
 test("looks as before when the backend sends no type", async () => {
-  await showSecuritySettings([credential({ key: "d", description: "old key", authenticator: "cross-platform" })]);
+  showSecuritySettings([credential({ key: "d", description: "old key", authenticator: "cross-platform" })]);
 
   const figure = screen.getByRole("figure");
   expect(within(figure).getByText("old key")).toBeInTheDocument();
