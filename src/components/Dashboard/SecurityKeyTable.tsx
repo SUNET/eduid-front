@@ -5,6 +5,7 @@ import { filterTokensFromCredentials } from "components/Common/MultiFactorAuthen
 import { NotificationModal } from "components/Common/NotificationModal";
 import { ToolTip } from "components/Common/ToolTip";
 import { useAppSelector } from "eduid-hooks";
+import { describeKeyType, fallbackKeyTypeLabel } from "helperFunctions/credentialTypeLine";
 import { useRef, useState } from "react";
 import { FormattedMessage, useIntl } from "react-intl";
 import passKeyGray from "../../../img/pass-key-gray.svg";
@@ -15,6 +16,10 @@ import securityKey from "../../../img/security-key.svg";
 import { useTheme } from "components/Common/ThemeContext";
 import { useReAuthenticate } from "components/Hooks/useReAuthenticate";
 import { UseSecurityKeyToggle } from "./UseSecurityKeyToggle";
+function isCrossPlatform(cred: CredentialType): boolean {
+  return cred.authenticator === "cross-platform";
+}
+
 interface SecurityKeyTable {
   wrapperRef: React.RefObject<HTMLElement | null>;
   handleVerificationWebauthnToken: (token: string, method: AuthMethod) => Promise<void>;
@@ -75,14 +80,18 @@ export function SecurityKeyTable({
       tokens.map((cred: CredentialType) => {
         // date created
         const date_created = cred.created_ts.slice(0, "YYYY-MM-DD".length);
-        const isCrossPlatform = cred.authenticator === "cross-platform";
+        // what the backend says the credential is; without it (an older backend), the attachment that was requested
+        const keyType = describeKeyType(intl, cred);
+        const isSecurityKey =
+          keyType?.kind === "security_key" || (keyType?.kind !== "passkey" && isCrossPlatform(cred));
         const isDarkTheme = theme === "dark";
         let authenticatorIcon;
         if (isDarkTheme) {
-          authenticatorIcon = isCrossPlatform ? securityKey : passKey;
+          authenticatorIcon = isSecurityKey ? securityKey : passKey;
         } else {
-          authenticatorIcon = isCrossPlatform ? securityKeyGray : passKeyGray;
+          authenticatorIcon = isSecurityKey ? securityKeyGray : passKeyGray;
         }
+        const iconLabel = keyType?.label ?? fallbackKeyTypeLabel(intl, cred);
         // date last used
         if (cred.success_ts) {
           date_success = cred.success_ts.slice(0, "YYYY-MM-DD".length);
@@ -155,12 +164,7 @@ export function SecurityKeyTable({
             data-token={cred.key}
           >
             <span className="security-key-icon" aria-hidden="true">
-              <img
-                className={`${authenticatorIcon} icon`}
-                height="20"
-                alt={`${authenticatorIcon} icon`}
-                src={authenticatorIcon}
-              />
+              <img className={`${authenticatorIcon} icon`} height="20" alt={iconLabel} src={authenticatorIcon} />
             </span>
             <div>
               <div className="flex-between">
@@ -181,6 +185,20 @@ export function SecurityKeyTable({
                   onClick={() => handleConfirmDeleteModal(cred)}
                 ></EduIDButton>
               </div>
+
+              {keyType && (
+                <div>
+                  <span aria-label="key type">
+                    <FormattedMessage
+                      id="securityKeyTable.type"
+                      description="the type of a security key or passkey"
+                      defaultMessage="Type:"
+                    />
+                    &nbsp;
+                    {keyType.line}
+                  </span>
+                </div>
+              )}
 
               <div>
                 <span aria-label="date created">

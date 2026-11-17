@@ -11,7 +11,7 @@ const config = {
   ],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/tests/__mocks__/fileMock.js",
     "\\.(css|less|sass|scss)$": "<rootDir>/src/tests/__mocks__/styleMock.js"
   },
   testEnvironment: "jest-fixed-jsdom",
@@ -27,6 +27,8 @@ const config = {
   ],
   transform: {
     "^.+\\.(mjs|[tj]sx?)$": "babel-jest",
+    // an SVG is its own file name in tests, so that a test can tell which icon was used
+    "\\.svg$": "<rootDir>/src/tests/__mocks__/svgTransform.js",
   },
   transformIgnorePatterns: [
     String.raw`/node_modules/(?!spin.js|react-intl|intl-messageformat|@formatjs|react-router|cookie-es).+\.(mjs|js)$`
