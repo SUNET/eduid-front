@@ -1,6 +1,7 @@
 import { eduIDApi } from "./common";
 import { FetchIdentitiesResponse, UserIdentities } from "./eduidPersonalData";
 import type { ApiResponse } from "./helpers/types";
+import { signalFromResponse } from "helperFunctions/webauthnSignals";
 
 export interface UpdateOfficialUserDataResponse {
   message: string;
@@ -41,6 +42,10 @@ export type CredentialDiscoverable = "yes" | "likely" | "no" | "unknown";
 
 export interface SecurityResponse {
   credentials: CredentialType[];
+  // What the Signal API needs besides the credential ids: the relying party id and the user handle (base64url).
+  // Absent from older backends.
+  rp_id?: string;
+  webauthn_user_handle?: string;
 }
 
 export interface RegisterWebAuthnRequest {
@@ -142,12 +147,14 @@ export const securityApi = eduIDApi.injectEndpoints({
         body,
       }),
       extraOptions: { service: "security" },
+      onQueryStarted: signalFromResponse(true),
     }),
     requestCredentials: builder.query<ApiResponse<SecurityResponse>, void>({
       query: () => ({
         url: "credentials",
       }),
       extraOptions: { service: "security" },
+      onQueryStarted: signalFromResponse(false),
     }),
     registerWebauthn: builder.query<ApiResponse<SecurityResponse>, RegisterWebAuthnRequest>({
       query: (body) => ({
@@ -159,6 +166,7 @@ export const securityApi = eduIDApi.injectEndpoints({
         },
       }),
       extraOptions: { service: "security" },
+      onQueryStarted: signalFromResponse(true),
     }),
     beginRegisterWebauthn: builder.query<ApiResponse<BeginRegisterWebauthnResponse>, BeginRegisterWebauthnRequest>({
       query: (body) => ({
