@@ -38,7 +38,7 @@ let issued = 0;
 let changeEpoch = 0;
 // the changes (a key added or removed) that have been asked for and not yet answered
 const changesInFlight = new Set<{ overlapped: boolean }>();
-let lastReadApplied = 0;
+let latestReadStarted = 0;
 
 /** Forget what was last signalled and the order of the requests (for tests). */
 export function resetSignalledState() {
@@ -46,7 +46,7 @@ export function resetSignalledState() {
   issued = 0;
   changeEpoch = 0;
   changesInFlight.clear();
-  lastReadApplied = 0;
+  latestReadStarted = 0;
 }
 
 /**
@@ -85,7 +85,10 @@ export async function signalAllAcceptedCredentials(
  * - a read (a request for the list) that overlapped a change (a key was added or removed) at any time, that is, was
  *   started while one was running, or was running when one started or finished, may have seen the list from before
  *   the change, and is not signalled;
- * - of two reads, only the one that was started last is signalled, if both answer;
+ * - a read is dropped as soon as a newer read has been started, even if the newer one has not answered yet, so only
+ *   the read that was started last can be signalled and an older list can never be signalled before a newer one;
+ *   (RTK Query does not start a second request for a read that is still running, so with the requests of this API
+ *   two reads cannot overlap; the rule keeps the helper correct for any caller);
  * - a change that overlapped another change is not signalled, since the order in which the server applied them is not
  *   known (the response that arrives first may be the older one); the next read, when the page is shown again,
  *   signals the list as it is then.
@@ -99,6 +102,7 @@ export async function signalOnResponse(
 ): Promise<void> {
   const seq = ++issued;
   const startedDuringChange = changesInFlight.size > 0;
+  if (!change) latestReadStarted = seq;
   let thisChange: { overlapped: boolean } | undefined;
   if (change) {
     changeEpoch++; // reads that are running now can no longer be trusted
@@ -122,8 +126,8 @@ export async function signalOnResponse(
     changeEpoch++; // reads that are running now may have seen the list from before this change
     if (thisChange.overlapped) return;
   } else {
-    if (startedDuringChange || changesInFlight.size > 0 || changeEpoch !== startEpoch || seq < lastReadApplied) return;
-    lastReadApplied = seq;
+    if (startedDuringChange || changesInFlight.size > 0 || changeEpoch !== startEpoch || seq < latestReadStarted)
+      return;
   }
   await signalAllAcceptedCredentials(payload.rp_id, payload.webauthn_user_handle, payload.credentials);
 }

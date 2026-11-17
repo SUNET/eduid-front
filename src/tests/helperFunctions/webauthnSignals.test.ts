@@ -188,44 +188,30 @@ describe("signalOnResponse", () => {
     ]);
   });
 
-  test("of two reads, the one that was started last wins, in whatever order they answer", async () => {
-    const first = deferred();
-    const second = deferred();
-    const pendingFirst = signalOnResponse(first.promise, false);
-    const pendingSecond = signalOnResponse(second.promise, false);
-    second.resolve(response("a", "b"));
-    await pendingSecond;
-    first.resolve(response("a"));
-    await pendingFirst;
+  test.each([
+    ["the older read answers first", true],
+    ["the newer read answers first", false],
+  ])("of two reads only the one that was started last is signalled: %s", async (_name, olderFirst) => {
+    const older = deferred();
+    const newer = deferred();
+    const pendingOlder = signalOnResponse(older.promise, false); // sees [a]
+    const pendingNewer = signalOnResponse(newer.promise, false); // sees [a, b]
+
+    if (olderFirst) {
+      older.resolve(response("a"));
+      await pendingOlder;
+      // the older list must not be signalled, not even for a moment: the browser may remove b for good
+      expect(signal).not.toHaveBeenCalled();
+      newer.resolve(response("a", "b"));
+      await pendingNewer;
+    } else {
+      newer.resolve(response("a", "b"));
+      await pendingNewer;
+      older.resolve(response("a"));
+      await pendingOlder;
+    }
     expect(signalledIds()).toEqual([["a", "b"]]);
   });
-
-  test.each([
-    ["the first answers first", true],
-    ["the second answers first", false],
-  ])(
-    "does not signal two changes that overlapped, whichever order they answer: %s",
-    async (_name, firstAnswersFirst) => {
-      // a removal that leaves [a] and a registration that leaves [a, b]; which of them the server applied last is not known
-      const removal = deferred();
-      const registration = deferred();
-      const pendingRemoval = signalOnResponse(removal.promise, true);
-      const pendingRegistration = signalOnResponse(registration.promise, true);
-
-      if (firstAnswersFirst) {
-        removal.resolve(response("a"));
-        await pendingRemoval;
-        registration.resolve(response("a", "b"));
-        await pendingRegistration;
-      } else {
-        registration.resolve(response("a", "b"));
-        await pendingRegistration;
-        removal.resolve(response("a"));
-        await pendingRemoval;
-      }
-      expect(signal).not.toHaveBeenCalled();
-    },
-  );
 
   test("the next read signals the list as it is after overlapping changes", async () => {
     const first = deferred();
