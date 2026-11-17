@@ -117,7 +117,7 @@ describe("fallbackKeyTypeLabel", () => {
 // This asserts on the extracted messages: languages/*.json are maintained in Transifex and not updated here
 test.each([
   "securityKeyTable.type",
-  "securityKeyTable.type.securityKey",
+  "common.securityKey",
   "securityKeyTable.type.passkey",
   "securityKeyTable.type.passkeyOnSecurityKey",
   "securityKeyTable.type.unknown",

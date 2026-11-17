@@ -3,10 +3,11 @@ import { describeCredential } from "helperFunctions/credentialDescriptor";
 import { defineMessages, IntlShape } from "react-intl";
 
 const MESSAGES = defineMessages({
+  // an id that is used elsewhere, with the same text and the same translation
   securityKey: {
-    id: "securityKeyTable.type.securityKey",
+    id: "common.securityKey",
     defaultMessage: "Security key",
-    description: "type of a credential that is a security key",
+    description: "security webauthn credential type",
   },
   passkey: {
     id: "securityKeyTable.type.passkey",
