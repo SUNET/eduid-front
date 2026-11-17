@@ -8,6 +8,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { useSignalAcceptedCredentials } from "components/Hooks/useSignalAcceptedCredentials";
 import { EduIDAppRootState } from "eduid-init-app";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
@@ -45,6 +46,7 @@ export function MultiFactorAuthentication() {
   const wrapperRef = useRef<HTMLElement | null>(null);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
+  useSignalAcceptedCredentials();
   const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();

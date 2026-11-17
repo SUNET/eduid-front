@@ -3,6 +3,7 @@ import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons/faCircleE
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UserIdentities } from "apis/eduidPersonalData";
 import { CredentialType, securityApi } from "apis/eduidSecurity";
+import { useSignalAcceptedCredentials } from "components/Hooks/useSignalAcceptedCredentials";
 import { useAppSelector } from "eduid-hooks";
 import { ACCOUNT_PATH, IDENTITY_PATH, SECURITY_PATH } from "helperFunctions/paths";
 import { useEffect } from "react";
@@ -265,6 +266,7 @@ export function Recommendations() {
       cred.credential_type === "security.webauthn_credential_type",
   );
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
+  useSignalAcceptedCredentials();
 
   useEffect(() => {
     if (isLoaded) {

@@ -41,6 +41,10 @@ export type CredentialDiscoverable = "yes" | "likely" | "no" | "unknown";
 
 export interface SecurityResponse {
   credentials: CredentialType[];
+  // What the Signal API needs besides the credential ids: the relying party id and the user handle (base64url).
+  // Absent from older backends.
+  rp_id?: string;
+  webauthn_user_handle?: string;
 }
 
 export interface RegisterWebAuthnRequest {
