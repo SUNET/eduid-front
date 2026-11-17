@@ -7,6 +7,7 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { useTheme } from "components/Common/ThemeContext";
 import { WebauthnDescriptionModal } from "components/Common/WebauthnDescriptionModal";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
+import { withRegistrationHints } from "helperFunctions/webauthnHints";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { signupSlice } from "slices/Signup";
@@ -165,7 +166,7 @@ export function SignupCredentials() {
     async (authenticator: "platform" | "cross-platform") => {
       const result = await startRegisterWebauthn({ authenticator });
       if (result.isSuccess) {
-        setRegistrationData(result.data.payload.registration_data.publicKey);
+        setRegistrationData(withRegistrationHints(result.data.payload.registration_data.publicKey, authenticator));
         setShowSecurityKeyNameModal(true);
       }
     },

@@ -9,6 +9,7 @@ import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { EduIDAppRootState } from "eduid-init-app";
+import { withRegistrationHints } from "helperFunctions/webauthnHints";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router";
@@ -171,13 +172,16 @@ export function MultiFactorAuthentication() {
         setShowSecurityKeyNameModal(false);
         const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
         if (registration.isSuccess && isMountedRef.current) {
-          const createCredentialPromise = createCredential(registration.data.payload.registration_data.publicKey);
+          const createCredentialPromise = createCredential(
+            withRegistrationHints(registration.data.payload.registration_data.publicKey, frontend_state),
+          );
           createCredentialRef.current = createCredentialPromise;
           const createResponse = await createCredentialPromise;
           if (createResponse.isSuccess) {
             const registerResponse = await registerWebauthn({
               webauthn_attestation: createResponse.data,
               description,
+              clientExtensionResults: createResponse.data?.clientExtensionResults,
             });
             wrapperRef?.current?.focus();
             if (registerResponse.isSuccess) {

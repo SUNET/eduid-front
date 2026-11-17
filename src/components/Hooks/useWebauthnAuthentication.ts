@@ -1,4 +1,5 @@
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
+import { PublicKeyCredentialHint } from "helperFunctions/webauthnHints";
 import { useCallback, useState } from "react";
 
 interface UseWebauthnAuthenticationArgs {
@@ -16,19 +17,6 @@ interface UseWebauthnAuthenticationArgs {
    */
   hints?: PublicKeyCredentialHint[];
 }
-
-/**
- * WebAuthn `hints` (Level 3), in the order of what a login button wants the browser to show first:
- * - `security-key`: a roaming hardware key (USB, NFC or Bluetooth)
- * - `client-device`: an authenticator on this device: the platform authenticator (Touch ID, Windows Hello) and the
- *   passkey provider of the browser or OS (iCloud Keychain, Google Password Manager)
- * - `hybrid`: another device, a phone or tablet, reached with a QR code or Bluetooth
- *
- * A hint is a preference for the browser's own dialog. It excludes nothing, so a passkey on a security key can
- * still be used from the passkey button. Browsers that do not support hints ignore them. A password manager
- * browser extension that takes over `navigator.credentials.get()` shows its own UI and may ignore them too.
- */
-export type PublicKeyCredentialHint = "security-key" | "client-device" | "hybrid";
 
 /**
  * Shared flow for the "log in with passkey" and "use security key" buttons: fetch a challenge,

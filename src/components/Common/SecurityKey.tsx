@@ -1,4 +1,5 @@
-import { PublicKeyCredentialHint, useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { useWebauthnAuthentication } from "components/Hooks/useWebauthnAuthentication";
+import { SECURITY_KEY_HINTS } from "helperFunctions/webauthnHints";
 import { useEffect, useRef } from "react";
 import { FormattedMessage } from "react-intl";
 import SecurityKeyGif from "../../../img/computer_animation.gif";
@@ -16,9 +17,6 @@ interface InactiveSecurityKeyProps {
   handleSecurityKey(): void;
   discoverable?: boolean;
 }
-
-// Prefer the security key option (a USB, NFC or Bluetooth key) when the browser shows its dialog. Only a preference.
-const SECURITY_KEY_HINTS: PublicKeyCredentialHint[] = ["security-key"];
 
 export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
