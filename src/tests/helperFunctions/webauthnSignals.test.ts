@@ -1,9 +1,10 @@
-import { CredentialType } from "apis/eduidSecurity";
+import { CredentialType, SecurityResponse } from "apis/eduidSecurity";
 import {
   acceptedCredentialIds,
   isSignalAllAcceptedCredentialsSupported,
   resetSignalledState,
   signalAllAcceptedCredentials,
+  signalOnResponse,
 } from "helperFunctions/webauthnSignals";
 
 const g = globalThis as unknown as Record<string, unknown>;
@@ -108,5 +109,122 @@ describe("signalAllAcceptedCredentials", () => {
   test("swallows errors from the browser", async () => {
     signal.mockRejectedValue(new DOMException("not allowed", "NotAllowedError"));
     await expect(signalAllAcceptedCredentials("eduid.docker", "handle", [passkeyA])).resolves.toBeUndefined();
+  });
+});
+
+describe("signalOnResponse", () => {
+  const originalPKC = g.PublicKeyCredential;
+  let signal: jest.Mock;
+
+  function response(...ids: string[]): SecurityResponse {
+    return {
+      credentials: ids.map((id) => credential({ key: id, keyhandle: id })),
+      rp_id: "eduid.docker",
+      webauthn_user_handle: "handle",
+    };
+  }
+
+  // a response that is answered when the test says so
+  function deferred() {
+    let resolve!: (value: SecurityResponse | undefined) => void;
+    let reject!: (reason?: unknown) => void;
+    const promise = new Promise<SecurityResponse | undefined>((res, rej) => {
+      resolve = res;
+      reject = rej;
+    });
+    return { promise, resolve, reject };
+  }
+
+  function signalledIds(): string[][] {
+    return signal.mock.calls.map((call) => call[0].allAcceptedCredentialIds);
+  }
+
+  beforeEach(() => {
+    resetSignalledState();
+    signal = jest.fn().mockResolvedValue(undefined);
+    g.PublicKeyCredential = { signalAllAcceptedCredentials: signal };
+  });
+
+  afterEach(() => {
+    g.PublicKeyCredential = originalPKC;
+  });
+
+  test("signals the list of a read", async () => {
+    await signalOnResponse(Promise.resolve(response("a", "b")), false);
+    expect(signalledIds()).toEqual([["a", "b"]]);
+  });
+
+  test("signals the list of a change", async () => {
+    await signalOnResponse(Promise.resolve(response("a")), true);
+    expect(signalledIds()).toEqual([["a"]]);
+  });
+
+  test("does not signal a read that was running when a change started", async () => {
+    const read = deferred();
+    const pendingRead = signalOnResponse(read.promise, false);
+    await signalOnResponse(Promise.resolve(response("a", "b")), true); // a key was added
+    read.resolve(response("a")); // the read answers last, with the list from before
+    await pendingRead;
+    expect(signalledIds()).toEqual([["a", "b"]]);
+  });
+
+  test("does not signal a read that was running while a change was in progress", async () => {
+    const change = deferred();
+    const pendingChange = signalOnResponse(change.promise, true);
+    const pendingRead = signalOnResponse(Promise.resolve(response("a")), false); // answers first, may be old
+    await pendingRead;
+    expect(signal).not.toHaveBeenCalled();
+    change.resolve(response("a", "b"));
+    await pendingChange;
+    expect(signalledIds()).toEqual([["a", "b"]]);
+  });
+
+  test("signals a read that was started after a change had completed", async () => {
+    await signalOnResponse(Promise.resolve(response("a", "b")), true);
+    await signalOnResponse(Promise.resolve(response("a", "b", "c")), false); // another device added a key
+    expect(signalledIds()).toEqual([
+      ["a", "b"],
+      ["a", "b", "c"],
+    ]);
+  });
+
+  test("of two reads, the one that was started last wins, in whatever order they answer", async () => {
+    const first = deferred();
+    const second = deferred();
+    const pendingFirst = signalOnResponse(first.promise, false);
+    const pendingSecond = signalOnResponse(second.promise, false);
+    second.resolve(response("a", "b"));
+    await pendingSecond;
+    first.resolve(response("a"));
+    await pendingFirst;
+    expect(signalledIds()).toEqual([["a", "b"]]);
+  });
+
+  test("of two changes, the one that was started last wins, in whatever order they answer", async () => {
+    const first = deferred();
+    const second = deferred();
+    const pendingFirst = signalOnResponse(first.promise, true);
+    const pendingSecond = signalOnResponse(second.promise, true);
+    second.resolve(response("a"));
+    await pendingSecond;
+    first.resolve(response("a", "b"));
+    await pendingFirst;
+    expect(signalledIds()).toEqual([["a"]]);
+  });
+
+  test("ignores a request that fails, and later requests still work", async () => {
+    const failing = deferred();
+    const pending = signalOnResponse(failing.promise, false);
+    failing.reject(new Error("network"));
+    await pending;
+    expect(signal).not.toHaveBeenCalled();
+
+    await signalOnResponse(Promise.resolve(response("a")), false);
+    expect(signalledIds()).toEqual([["a"]]);
+  });
+
+  test("ignores a response without a payload", async () => {
+    await signalOnResponse(Promise.resolve(undefined), false);
+    expect(signal).not.toHaveBeenCalled();
   });
 });

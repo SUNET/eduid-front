@@ -8,7 +8,6 @@ import { EduIDButton } from "components/Common/EduIDButton";
 import { ToolTip } from "components/Common/ToolTip";
 import { SecurityKeyTable } from "components/Dashboard/SecurityKeyTable";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
-import { useSignalAcceptedCredentials } from "components/Hooks/useSignalAcceptedCredentials";
 import { EduIDAppRootState } from "eduid-init-app";
 import { withRegistrationHints } from "helperFunctions/webauthnHints";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -37,7 +36,6 @@ export const filterTokensFromCredentials = createSelector([selectCredentials], (
 export function MultiFactorAuthentication() {
   const return_handled = useRef(false);
   const dispatch = useAppDispatch();
-  const credentials = useAppSelector((state) => state.security.credentials);
   const [isPlatformAuthenticatorAvailable, setIsPlatformAuthenticatorAvailable] = useState(false);
   // Start as loaded (true) if WebAuthn API doesn't exist (nothing async to wait for)
   const [isPlatformAuthLoaded, setIsPlatformAuthLoaded] = useState(() => !globalThis.PublicKeyCredential);
@@ -47,7 +45,6 @@ export function MultiFactorAuthentication() {
   const wrapperRef = useRef<HTMLElement | null>(null);
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const [requestCredentials] = securityApi.useLazyRequestCredentialsQuery();
-  useSignalAcceptedCredentials();
   const [beginRegisterWebauthn] = securityApi.useLazyBeginRegisterWebauthnQuery();
   const [registerWebauthn] = securityApi.useLazyRegisterWebauthnQuery();
   const [bankIDVerifyCredential] = bankIDApi.useLazyBankIDVerifyCredentialQuery();
@@ -235,15 +232,17 @@ export function MultiFactorAuthentication() {
 
   useEffect(() => {
     (async () => {
-      if (isLoaded && !credentials.length) {
-        // call requestCredentials once app is loaded
+      if (isLoaded) {
+        // Ask for the credentials every time the page is shown, also when a list from another page is cached: it can
+        // be old (a key added or removed on another device), and the response is what tells the browser which
+        // passkeys are still accepted.
         const response = await requestCredentials();
         if (response.isSuccess) {
           wrapperRef?.current?.focus();
         }
       }
     })();
-  }, [credentials.length, isLoaded, requestCredentials]);
+  }, [isLoaded, requestCredentials]);
 
   useEffect(
     () => {

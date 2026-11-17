@@ -1,4 +1,4 @@
-import { CredentialType } from "apis/eduidSecurity";
+import type { CredentialType, SecurityResponse } from "apis/eduidSecurity";
 
 /**
  * The WebAuthn Signal API tells the browser, and through it the password manager or phone that holds a passkey,
@@ -33,9 +33,21 @@ export function acceptedCredentialIds(credentials: CredentialType[]): string[] |
 // What was last signalled, so that the same list is not sent again every time the page is shown
 let lastSignalled: string | undefined;
 
-/** Forget what was last signalled (for tests). */
+// The order of the responses that carry the list of credentials, see signalOnResponse()
+let issued = 0;
+let changeEpoch = 0;
+let changesInFlight = 0;
+let lastChangeApplied = 0;
+let lastReadApplied = 0;
+
+/** Forget what was last signalled and the order of the requests (for tests). */
 export function resetSignalledState() {
   lastSignalled = undefined;
+  issued = 0;
+  changeEpoch = 0;
+  changesInFlight = 0;
+  lastChangeApplied = 0;
+  lastReadApplied = 0;
 }
 
 /**
@@ -64,4 +76,67 @@ export async function signalAllAcceptedCredentials(
   } catch {
     // best effort: a browser that does not support it, or a user agent that refuses it, must not affect the page
   }
+}
+
+/**
+ * Signal the credentials of a response from the backend, and only if the response is still the latest word.
+ *
+ * The browser may remove every passkey of the user that is not in the list, so a list that is older than the
+ * server's current one would remove a passkey that is valid. Requests are not answered in the order they were made, so:
+ * - a read (a request for the list) that overlapped a change (a key was added or removed) at any time, that is, was
+ *   started while one was running, or was running when one started or finished, may have seen the list from before
+ *   the change, and is not signalled;
+ * - of two reads, only the one that was started last is signalled, if both answer;
+ * - of two changes, only the one that was started last is signalled.
+ * The list is taken from the response itself and never from what is kept in the page, which may be old.
+ *
+ * `change` is true for a request that changes the credentials. A request that fails is ignored.
+ */
+export async function signalOnResponse(
+  response: Promise<SecurityResponse | undefined>,
+  change: boolean,
+): Promise<void> {
+  const seq = ++issued;
+  const startedDuringChange = changesInFlight > 0;
+  if (change) {
+    changeEpoch++; // reads that are running now can no longer be trusted
+    changesInFlight++;
+  }
+  const startEpoch = changeEpoch;
+
+  let payload: SecurityResponse | undefined;
+  try {
+    payload = await response;
+  } catch {
+    return;
+  } finally {
+    if (change) changesInFlight--;
+  }
+  if (!payload) return;
+
+  if (change) {
+    if (seq < lastChangeApplied) return;
+    lastChangeApplied = seq;
+    changeEpoch++; // reads that are running now may have seen the list from before this change
+  } else {
+    if (startedDuringChange || changesInFlight > 0 || changeEpoch !== startEpoch || seq < lastReadApplied) return;
+    lastReadApplied = seq;
+  }
+  await signalAllAcceptedCredentials(payload.rp_id, payload.webauthn_user_handle, payload.credentials);
+}
+
+/**
+ * An `onQueryStarted` for the requests of the security API that return the list of credentials: signals the list in
+ * the response, see signalOnResponse().
+ */
+export function signalFromResponse(change: boolean) {
+  return async (
+    _arg: unknown,
+    api: { queryFulfilled: Promise<{ data: { payload: SecurityResponse } }> },
+  ): Promise<void> => {
+    await signalOnResponse(
+      api.queryFulfilled.then((result) => result.data.payload),
+      change,
+    );
+  };
 }
