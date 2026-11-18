@@ -5,9 +5,12 @@ import { useCallback, useState } from "react";
 interface UseWebauthnAuthenticationArgs {
   /** Fetch the challenge (WebAuthn request options) from the backend */
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  /** Called with the credential after a successful navigator.credentials.get() */
-  onSuccess(publicKeyCredential: AuthenticationResponseJSON): Promise<void> | void;
-  /** Called when the attempt is over, whatever the outcome */
+  /**
+   * Called with the credential after a successful navigator.credentials.get().
+   * Return true when the login finished, so onComplete is not called.
+   */
+  onSuccess(publicKeyCredential: AuthenticationResponseJSON): Promise<boolean | void> | boolean | void;
+  /** Called when the attempt is over, whatever the outcome (unless onSuccess returned true) */
   onComplete?(): void;
   /**
    * Which kind of authenticator the browser should offer first (WebAuthn `hints`, in order of preference).
@@ -35,6 +38,7 @@ export function useWebauthnAuthentication({
 
   const start = useCallback(async () => {
     setActive(true);
+    let finished = false;
     try {
       const webauth_options = await setup();
       if (webauth_options) {
@@ -45,7 +49,7 @@ export function useWebauthnAuthentication({
           // Wait for credential submission to finish before calling onComplete, so that a caller restarting
           // conditional auth in onComplete doesn't fetch a new challenge while the backend is still
           // processing this credential.
-          await onSuccess(response.data);
+          finished = (await onSuccess(response.data)) === true;
         }
       }
     } catch {
@@ -53,7 +57,8 @@ export function useWebauthnAuthentication({
       // onSuccess() must not escape the click handler as an unhandled rejection.
     } finally {
       setActive(false);
-      onComplete?.();
+      // Restarting after a completed login would POST a new challenge while /next is in flight
+      if (!finished) onComplete?.();
     }
   }, [setup, performAuthentication, onSuccess, onComplete, hints]);
 

@@ -8,7 +8,10 @@ import { EduIDButton } from "./EduIDButton";
 interface SecurityKeyProps {
   disabled?: boolean;
   setup(): Promise<PublicKeyCredentialRequestOptionsJSON | undefined>;
-  onSuccess(publicKeyCredential: AuthenticationResponseJSON): void;
+  // Return value is ignored here (widened only so callers returning Promise<boolean> compile)
+  onSuccess(
+    publicKeyCredential: AuthenticationResponseJSON,
+  ): Promise<boolean | void> | boolean | void;
   discoverable?: boolean;
 }
 
@@ -18,7 +21,11 @@ interface InactiveSecurityKeyProps {
   discoverable?: boolean;
 }
 
-export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKeyProps>) {
+export function SecurityKey({
+  disabled,
+  setup,
+  onSuccess,
+}: Readonly<SecurityKeyProps>) {
   // The SecurityKey button is 'active' after first being pressed. In that mode, it shows
   // a small animation until the user has used the security key (or cancelled, or the browser
   // timed out). See useWebauthnAuthentication.
@@ -34,7 +41,10 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
         {active ? (
           <SecurityKeyActive />
         ) : (
-          <SecurityKeyInactive disabled={!!disabled} handleSecurityKey={handleSecurityKey} />
+          <SecurityKeyInactive
+            disabled={!!disabled}
+            handleSecurityKey={handleSecurityKey}
+          />
         )}
         {active && (
           <p className="help-text">
@@ -50,7 +60,11 @@ export function SecurityKey({ disabled, setup, onSuccess }: Readonly<SecurityKey
   );
 }
 
-function SecurityKeyInactive({ discoverable, handleSecurityKey, disabled }: Readonly<InactiveSecurityKeyProps>) {
+function SecurityKeyInactive({
+  discoverable,
+  handleSecurityKey,
+  disabled,
+}: Readonly<InactiveSecurityKeyProps>) {
   const ref = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -112,7 +126,10 @@ function SecurityKeyActive() {
         </h3>
       </div>
       <div className="button-pair bottom">
-        <img src={SecurityKeyGif} alt="animation of Security Key inserted into computer" />
+        <img
+          src={SecurityKeyGif}
+          alt="animation of Security Key inserted into computer"
+        />
       </div>
     </>
   );
