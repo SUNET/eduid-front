@@ -152,7 +152,7 @@ export function ManageEduIDSettings() {
                     <FormattedMessage
                       id="manageEduIDSettings.identity21"
                       description="identity eduid - list item 2-1"
-                      defaultMessage="With Swedish digital ID (Freja+/BankID) or by post."
+                      defaultMessage="With Swedish digital ID (Freja+/BankID/SverigeID) or by post."
                     />
                   </li>
                   <li>
@@ -272,7 +272,7 @@ export function ManageEduIDSettings() {
                     <FormattedMessage
                       id="manageEduIDSettings.security33"
                       description="security eduid - list item 3-3"
-                      defaultMessage="verification status / verification options (Freja+/BankID/eIDAS/Freja eID)"
+                      defaultMessage="verification status / verification options (Freja+/BankID/SverigeID/eIDAS/Freja eID)"
                     />
                   </li>
                   <li>

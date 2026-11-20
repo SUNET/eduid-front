@@ -1,6 +1,7 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import signupApi from "apis/eduidSignup";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { useCallback, useEffect } from "react";
@@ -13,11 +14,12 @@ interface SignupCallbackParams {
   authn_id?: string;
 }
 
-const statusActions: Record<string, "eidas" | "bankid" | "freja_eid"> = {
+const statusActions: Record<string, "eidas" | "bankid" | "freja_eid" | "sverigeid"> = {
   eidas: "eidas",
   samleid: "eidas",
   bankid: "bankid",
   freja_eid: "freja_eid",
+  oidceid: "sverigeid",
 };
 
 function handleIdentityCollision(
@@ -43,6 +45,7 @@ export function SignupExternalReturnHandler() {
   const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
+  const [oidceidGetStatus] = oidceidApi.useLazyOidceidGetStatusQuery();
 
   const getStatusAction = useCallback(
     (app_name: string) => {
@@ -51,16 +54,22 @@ export function SignupExternalReturnHandler() {
         samleid: eidasGetStatus,
         bankid: bankIDGetStatus,
         freja_eid: frejaeIDGetStatus,
+        oidceid: oidceidGetStatus,
       };
       return actions[app_name as keyof typeof actions];
     },
-    [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus],
+    [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus, oidceidGetStatus],
   );
 
   const processStatus = useCallback(
     async (status: GetStatusResponse, app_name: string, authn_id: string) => {
       if (status.status) {
-        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
+        dispatch(
+          showNotification({
+            message: status.status,
+            level: status.error ? "error" : "info",
+          }),
+        );
       }
 
       if (!status.frontend_action) return;

@@ -47,7 +47,7 @@ export function MultiFactorAuth() {
     leadText = (
       <FormattedMessage
         id="multiFactorAuth.paragraph"
-        defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID, Freja+, eIDAS or freja eID.`}
+        defaultMessage={`If you are unable to use the security key, please select other options below, such as BankID, Freja+, SverigeID, eIDAS or freja eID.`}
         description="MFA paragraph with swedish option"
       />
     );
@@ -101,7 +101,10 @@ export function MultiFactorAuth() {
 
   async function getChallenge() {
     if (ref) {
-      const response = await fetchMfaAuth({ ref: ref, this_device: this_device });
+      const response = await fetchMfaAuth({
+        ref: ref,
+        this_device: this_device,
+      });
       if (response.isSuccess) {
         return response.data.payload.webauthn_options;
       }
@@ -110,7 +113,11 @@ export function MultiFactorAuth() {
 
   function useCredential(credential: AuthenticationResponseJSON) {
     if (ref) {
-      fetchMfaAuth({ ref: ref, this_device: this_device, webauthn_response: credential });
+      fetchMfaAuth({
+        ref: ref,
+        this_device: this_device,
+        webauthn_response: credential,
+      });
     }
   }
 

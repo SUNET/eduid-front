@@ -154,11 +154,11 @@
   },
   "assuranceInfo.help.verify.step1": {
     "developer_comment": "Assurance info - help, verify identity",
-    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+ eller eIDAS, och följ instruktionerna för att verifiera din identitet."
+    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+, SverigeID eller eIDAS, och följ instruktionerna för att verifiera din identitet."
   },
   "assuranceInfo.help.verifyAndKey.step1": {
     "developer_comment": "Assurance info - help, step 1 verify identity",
-    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+ eller eIDAS, och följ instruktionerna för att verifiera din identitet."
+    "string": "Klicka på Gå till eduID nedan och gå sedan till sidan Identitet. Välj en identifieringsmetod som är tillgänglig för dig, till exempel BankID, Freja+, SverigeID eller eIDAS, och följ instruktionerna för att verifiera din identitet."
   },
   "assuranceInfo.help.verifyAndKey.step2": {
     "developer_comment": "Assurance info - help, step 2 add security key",
@@ -1249,7 +1249,7 @@
     "string": "Svenskt eID"
   },
   "entry.use": {
-    "string": "Använd BankID, Freja, eIDAS eller Freja eID för att registrera dig. Ditt namn och din identitet verifieras automatiskt."
+    "string": "Använd BankID, Freja, SverigeID, eIDAS eller Freja eID för att registrera dig. Ditt namn och din identitet verifieras automatiskt."
   },
   "entry.verified": {
     "developer_comment": "Verified identity",
@@ -1462,6 +1462,12 @@
   "identity.settingsTitle": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
     "string": "Frånkoppla din identitet"
+  },
+  "identity.sverigeidButton": {
+    "string": "med SverigeID"
+  },
+  "identity.sverigeidVerify": {
+    "string": "Om du kan logga in med SverigeID"
   },
   "identity.swedish": {
     "developer_comment": "Verified identity",
@@ -1887,7 +1893,7 @@
   },
   "manageEduIDSettings.identity21": {
     "developer_comment": "identity eduid - list item 2-1",
-    "string": "Med svenskt digitalt ID (Freja+/BankID) eller via post."
+    "string": "Med svenskt digitalt ID (Freja+/BankID/SverigeID) eller via post."
   },
   "manageEduIDSettings.identity22": {
     "developer_comment": "identity eduid - list item 2-2",
@@ -1963,7 +1969,7 @@
   },
   "manageEduIDSettings.security33": {
     "developer_comment": "security eduid - list item 3-3",
-    "string": "verifierings-status / alternativ (Freja+/BankID/eIDAS/Freja eID)"
+    "string": "verifierings-status / alternativ (Freja+/BankID/SverigeID/eIDAS/Freja eID)"
   },
   "manageEduIDSettings.security34": {
     "developer_comment": "security eduid - list item 3-4",
@@ -2067,7 +2073,7 @@
   },
   "multiFactorAuth.paragraph": {
     "developer_comment": "MFA paragraph with swedish option",
-    "string": "Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID, Freja+, eIDAS eller Freja eID."
+    "string": "Om du inte kan använda säkerhetsnyckeln, var vänlig välj annat alternativ nedan, t.ex. BankID, Freja+, SverigeID, eIDAS eller Freja eID."
   },
   "multiFactorAuth.serviceRequires": {
     "developer_comment": "Login MFA",
@@ -2133,6 +2139,54 @@
   "notifications.information": {
     "developer_comment": "Notification type",
     "string": "Information"
+  },
+  "oidceid.attribute_missing": {
+    "string": "SverigeID attribut saknas."
+  },
+  "oidceid.authn_context_mismatch": {
+    "string": "Fel autentiseringskontext mottagen."
+  },
+  "oidceid.authn_instant_too_old": {
+    "string": "Autentiseringstillfället är för gammalt."
+  },
+  "oidceid.authn_request_failed": {
+    "string": "Det gick inte att starta autentiseringen med SverigeID. Försök igen eller välj en annan metod."
+  },
+  "oidceid.authorization_error": {
+    "string": "Autentiseringen med SverigeID avbröts eller nekades. Försök igen eller välj en annan metod."
+  },
+  "oidceid.credential_not_found": {
+    "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
+  },
+  "oidceid.credential_verification_not_allowed": {
+    "string": "SamlID-verifiering av autentiseringsmetod är inte tillåten."
+  },
+  "oidceid.credential_verify_success": {
+    "string": "Klart"
+  },
+  "oidceid.frontend_action_not_supported": {
+    "string": "SverigeID frontend action stöds inte. "
+  },
+  "oidceid.identity_already_verified": {
+    "string": "Du har redan bekräftat din identitet"
+  },
+  "oidceid.identity_not_matching": {
+    "string": "Identiteten motsvarar inte den som är bekräftad för detta eduID"
+  },
+  "oidceid.identity_verify_success": {
+    "string": "Klart"
+  },
+  "oidceid.method_not_available": {
+    "string": "SverigeID metoden är inte tillgänglig."
+  },
+  "oidceid.mfa_authn_success": {
+    "string": "Klart"
+  },
+  "oidceid.no_redirect_url": {
+    "string": "MFA authentisering saknar en omdirigerings URL"
+  },
+  "oidceid.not_found": {
+    "string": "SverigeID hittades inte."
   },
   "orc.already_connected": {
     "string": "Ditt ORCID-konto är redan kopplat till det här kontot"
@@ -2527,6 +2581,9 @@
   "recoveryOptions.placeholder": {
     "developer_comment": "placeholder text for recovery option",
     "string": "Visa andra alternativ"
+  },
+  "recoveryOptions.sverigeid": {
+    "string": "SverigeID"
   },
   "required": {
     "string": "*Fältet kan inte vara tomt"
@@ -3554,7 +3611,7 @@
   },
   "usingEduID.login2": {
     "developer_comment": "login eduid - security key list item 2",
-    "string": "Tillagda säkerhetsalternativ listas i rullgardinsmenyn \"Andra alternativ\" nedanför säkerhetsnyckelsknappen, till exempel BankID, Freja+, eIDAS eller Freja eID, beroende på vad som gäller för din verifierade identitet."
+    "string": "Tillagda säkerhetsalternativ listas i rullgardinsmenyn \"Andra alternativ\" nedanför säkerhetsnyckelsknappen, till exempel BankID, Freja+, SverigeID, eIDAS eller Freja eID, beroende på vad som gäller för din verifierade identitet."
   },
   "usingEduID.login3": {
     "developer_comment": "login eduid - passkey list item 3",
@@ -3706,7 +3763,7 @@
   },
   "verifyCredentialModal.body": {
     "developer_comment": "verify webauthn token modal body text",
-    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+, eIDAS eller Freja eID nedan."
+    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS eller Freja eID nedan."
   },
   "verifyCredentialModal.link": {
     "developer_comment": "verify later link",
@@ -3839,6 +3896,12 @@
   "verifyIdentity.paragraph2": {
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "Du kan läsa mer om att använda Freja med ditt eduID nedan i avsnittet \"Om Freja (med Svenskt person/samordnings-nummer)\" och på deras hemsida {FrejaProtectedId}."
+  },
+  "verifyIdentity.sverigeid": {
+    "string": "användaren skickas till en extern tjänst där de loggar in med ett eID som utfärdats av en eID-leverantör inom Sweden Connect. Du måste ha ett sådant eID innan du kan slutföra verifieringen av ditt eduID."
+  },
+  "verifyIdentity.sverigeidHeading": {
+    "string": "SverigeID (elektronisk identifiering via Sweden Connect) - för innehavare av svenskt personnummer eller samordningsnummer:"
   },
   "verifyIdentity.swedish": {
     "developer_comment": "swedish nin - heading",

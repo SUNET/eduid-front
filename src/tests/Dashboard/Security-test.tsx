@@ -61,7 +61,12 @@ async function linkToSecuritySettings() {
     nav.click();
   });
   expect(screen.getByRole("button", { name: "security key" })).toBeEnabled();
-  expect(screen.getByRole("heading", { level: 2, name: "Add multi-factor Authentication (MFA)" })).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", {
+      level: 2,
+      name: "Add multi-factor Authentication (MFA)",
+    }),
+  ).toBeInTheDocument();
 }
 
 test("renders security key as expected, not security key added", async () => {
@@ -132,12 +137,20 @@ test("api call webauthn/remove", async () => {
         return new HttpResponse(null, { status: 400 });
       }
 
-      return new HttpResponse(JSON.stringify({ type: "test response", payload: response.credentials }));
+      return new HttpResponse(
+        JSON.stringify({
+          type: "test response",
+          payload: response.credentials,
+        }),
+      );
     }),
   );
 
   render(<IndexMain />, {
-    state: { ...defaultDashboardTestState, security: { credentials: response.credentials } },
+    state: {
+      ...defaultDashboardTestState,
+      security: { credentials: response.credentials },
+    },
   });
   await linkToSecuritySettings();
   await waitFor(() => {
@@ -181,7 +194,12 @@ test("render the security key table without any security keys", async () => {
   render(<IndexMain />);
   await linkToSecuritySettings();
 
-  expect(screen.getByRole("heading", { level: 2, name: "Manage your security keys" })).toBeInTheDocument();
+  expect(
+    screen.getByRole("heading", {
+      level: 2,
+      name: "Manage your security keys",
+    }),
+  ).toBeInTheDocument();
   const figure = screen.getByRole("figure");
   expect(within(figure).getByText("No security key has been added")).toBeInTheDocument();
 });
@@ -202,4 +220,62 @@ test("renders the security key table with verification methods", async () => {
   expect(within(figure).getByText("Freja+")).toBeInTheDocument();
   expect(within(figure).getByText("Freja eID")).toBeInTheDocument();
   expect(within(figure).getByText("Eidas")).toBeInTheDocument();
+});
+
+test("renders SverigeID verification option for security keys only when configured", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      config: {
+        ...defaultDashboardTestState.config,
+        oidceid_service_url: "https://oidceid.eduid.docker/services/oidceid",
+      },
+      security: {
+        credentials: [securityKeyCredential, passwordCredential],
+      },
+    },
+  });
+  await linkToSecuritySettings();
+  expect(within(screen.getByRole("figure")).getByText("SverigeID")).toBeInTheDocument();
+  expect(screen.getByLabelText(/sverigeID/)).toBeInTheDocument();
+});
+
+test("does not render SverigeID verification option without oidceid_service_url", async () => {
+  render(<IndexMain />, {
+    state: {
+      ...defaultDashboardTestState,
+      security: {
+        credentials: [securityKeyCredential, passwordCredential],
+      },
+    },
+  });
+  await linkToSecuritySettings();
+  expect(within(screen.getByRole("figure")).queryByText("SverigeID")).not.toBeInTheDocument();
+  expect(screen.queryByLabelText(/sverigeID/i)).not.toBeInTheDocument();
+});
+
+test("resets the pending action for an unknown method in the verifyCredential return state", async () => {
+  // setAuthnFrontendReset clears sessionStorage; that is how the reset is observed from outside the store
+  const clearSpy = jest.spyOn(Storage.prototype, "clear");
+  try {
+    render(<IndexMain />, {
+      state: {
+        ...defaultDashboardTestState,
+        authn: {
+          re_authenticate: false,
+          response: {
+            frontend_action: "verifyCredential",
+            frontend_state: JSON.stringify({ credential: "dummy dummy", method: "bogus" }),
+          },
+        },
+        security: {
+          credentials: [securityKeyCredential, passwordCredential],
+        },
+      },
+    });
+    await linkToSecuritySettings();
+    await waitFor(() => expect(clearSpy).toHaveBeenCalled());
+  } finally {
+    clearSpy.mockRestore();
+  }
 });

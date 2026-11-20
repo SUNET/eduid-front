@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import signupApi from "apis/eduidSignup";
 import CountryFlag from "components/Common/CountryFlag";
 import { EduIDButton } from "components/Common/EduIDButton";
@@ -27,10 +28,14 @@ export function SignupEntry() {
   const [frejaMfaRegister] = eidasApi.useLazyFrejaMfaRegisterQuery();
   const [eidasMfaRegister] = eidasApi.useLazyEidasMfaRegisterQuery();
   const [frejaeIDMfaRegister] = frejaeIDApi.useLazyFrejaeIDMfaRegisterQuery();
+  const [sverigeidMfaRegister] = oidceidApi.useLazyOidceidMfaRegisterQuery();
+  const oidceid_service_url = useAppSelector((state) => state.config.oidceid_service_url);
   const external_mfa = useAppSelector((state) => state.signup.state?.external_mfa);
   const [isEditMode, setEditMode] = useState(false);
   const currentLocale = useAppSelector((state) => state.intl.locale);
-  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  const regionNames = new Intl.DisplayNames([currentLocale], {
+    type: "region",
+  });
   const { isFetching } = signupApi.useFetchStateQuery();
   const [isLoading, setIsLoading] = useState(false);
   const [externalMfaRegister] = signupApi.useLazyExternalMfaRegisterQuery();
@@ -60,15 +65,17 @@ export function SignupEntry() {
     freja: "Freja",
     bankid: "BankID",
     eidas: "eIDAS",
+    sverigeid: "SverigeID",
   };
 
-  const handleExternalMfa = async (method: "bankid" | "freja" | "freja_eid" | "eidas") => {
+  const handleExternalMfa = async (method: "bankid" | "freja" | "freja_eid" | "eidas" | "sverigeid") => {
     setIsLoading(true);
     const authenticateMap = {
       bankid: bankIDMfaRegister,
       freja: frejaMfaRegister,
       freja_eid: frejaeIDMfaRegister,
       eidas: eidasMfaRegister,
+      sverigeid: sverigeidMfaRegister,
     };
 
     const response = await authenticateMap[method]();
@@ -146,7 +153,8 @@ export function SignupEntry() {
                   </strong>
                 </strong>
               </div>
-              {external_mfa.country_code && regionNames.of(external_mfa.country_code)}&nbsp;
+              {external_mfa.country_code && regionNames.of(external_mfa.country_code)}
+              &nbsp;
               {external_mfa.date_of_birth ?? external_mfa.masked_nin}
             </figure>
 
@@ -164,7 +172,7 @@ export function SignupEntry() {
             <p>
               <FormattedMessage
                 id="entry.use"
-                defaultMessage="Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
+                defaultMessage="Use BankID, Freja, SverigeID, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
               />
             </p>
             <p className="help-text">
@@ -227,6 +235,17 @@ export function SignupEntry() {
                     <img className="circle-icon freja" height="24" alt="" src={FrejaFlag} />
                     <span>Freja+</span>
                   </EduIDButton>
+                  {oidceid_service_url && (
+                    <EduIDButton
+                      buttonstyle="primary sm"
+                      id="signup-sverigeid"
+                      disabled={isLoading}
+                      onClick={() => handleExternalMfa("sverigeid")}
+                    >
+                      <img className="circle-icon sverigeid-icon" height="24" alt="" src={SvFlag} />
+                      <span>SverigeID</span>
+                    </EduIDButton>
+                  )}
                 </div>
               </div>
               <div>
