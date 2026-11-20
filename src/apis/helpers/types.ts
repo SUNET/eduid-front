@@ -8,14 +8,17 @@ export interface ApiResponse<T> {
 
 export type ApiError<T> = ApiResponse<T> & {
   error: true;
-  payload: T & { error?: { csrf_token?: string[]; nin?: string[] }; message?: string };
+  payload: T & {
+    error?: { csrf_token?: string[]; nin?: string[] };
+    message?: string;
+  };
 };
 
 export interface StateWithCommonConfig {
   config: EduidJSAppCommonConfig;
 }
 
-export type AuthMethod = "eidas" | "freja" | "bankid" | "freja_eid";
+export type AuthMethod = "eidas" | "freja" | "bankid" | "freja_eid" | "sverigeid";
 
 export interface AuthCommonRequest {
   frontend_state?: string;

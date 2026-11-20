@@ -7,6 +7,7 @@ import * as ladok from "./defaultMessages/ladok";
 import * as letterProofing from "./defaultMessages/letterProofing";
 import * as login from "./defaultMessages/login";
 import * as navigatorCredentials from "./defaultMessages/navigatorCredentials";
+import * as oidceid from "./defaultMessages/oidceid";
 import * as orcid from "./defaultMessages/orcid";
 import * as resetPassword from "./defaultMessages/resetPassword";
 import * as samleid from "./defaultMessages/samleid";
@@ -31,4 +32,5 @@ export const formattedMessages = {
   ...frejaeid.apiResponses,
   ...navigatorCredentials.credentialErrors,
   ...samleid.apiResponses,
+  ...oidceid.apiResponses,
 };

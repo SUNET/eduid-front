@@ -2,6 +2,7 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import { orcidApi } from "apis/eduidOrcid";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
 import { ACCOUNT_PATH, CHPASS_BASE_PATH, IDENTITY_PATH, SECURITY_PATH, START_PATH } from "helperFunctions/paths";
@@ -39,6 +40,7 @@ export function ExternalReturnHandler() {
   const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
+  const [oidceidGetStatus] = oidceidApi.useLazyOidceidGetStatusQuery();
   const [orcidGetStatus] = orcidApi.useLazyOrcidGetStatusQuery();
 
   const getStatusAction = useCallback(
@@ -48,17 +50,23 @@ export function ExternalReturnHandler() {
         samleid: eidasGetStatus,
         bankid: bankIDGetStatus,
         freja_eid: frejaeIDGetStatus,
+        oidceid: oidceidGetStatus,
         orcid: orcidGetStatus,
       };
       return actions[app_name ?? ""] ?? authnGetStatus;
     },
-    [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus, orcidGetStatus, authnGetStatus],
+    [eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus, oidceidGetStatus, orcidGetStatus, authnGetStatus],
   );
 
   const processStatus = useCallback(
     (status: GetStatusResponse) => {
       if (status.status) {
-        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
+        dispatch(
+          showNotification({
+            message: status.status,
+            level: status.error ? "error" : "info",
+          }),
+        );
       }
       navigate(status.frontend_action ? getRoute(status.frontend_action) : START_PATH);
     },

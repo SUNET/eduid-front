@@ -38,6 +38,7 @@ export function SecurityKeyTable({
     return filterTokensFromCredentials(state);
   });
   const [showConfirmRemoveSecurityKeyModal, setShowConfirmRemoveSecurityKeyModal] = useState(false);
+  const oidceid_service_url = useAppSelector((state) => state.config.oidceid_service_url);
   const { theme } = useTheme();
   const intl = useIntl();
   //Translated assistive and visual aid for clickable icon
@@ -49,7 +50,10 @@ export function SecurityKeyTable({
   const { checkAuthnStatus } = useReAuthenticate();
 
   async function handleConfirmDeleteModal(cred: CredentialType) {
-    credentialKey.current = JSON.stringify({ credential: cred.key, description: cred.description });
+    credentialKey.current = JSON.stringify({
+      credential: cred.key,
+      description: cred.description,
+    });
 
     const isAuthed = await checkAuthnStatus("removeSecurityKeyAuthn", credentialKey.current);
     if (isAuthed) {
@@ -128,7 +132,9 @@ export function SecurityKeyTable({
           );
         } else {
           btnVerify = (
-            <div aria-label="verify with freja, bankID, eidas or freja eid">
+            <div
+              aria-label={`verify with freja, bankID, ${oidceid_service_url ? "sverigeID, " : ""}eidas or freja eid`}
+            >
               <span>
                 <FormattedMessage
                   id="securityKeyTable.verifyWith"
@@ -142,6 +148,14 @@ export function SecurityKeyTable({
                 <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
                   Freja+
                 </EduIDButton>
+                {oidceid_service_url && (
+                  <EduIDButton
+                    buttonstyle="link sm"
+                    onClick={() => handleVerificationWebauthnToken(cred.key, "sverigeid")}
+                  >
+                    SverigeID
+                  </EduIDButton>
+                )}
                 <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
                   Eidas
                 </EduIDButton>

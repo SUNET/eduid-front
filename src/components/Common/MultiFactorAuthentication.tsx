@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import { CredentialType, securityApi } from "apis/eduidSecurity";
 import { navigatorCredentialsApi } from "apis/navigatorCredentials";
 import { EduIDButton } from "components/Common/EduIDButton";
@@ -53,6 +54,7 @@ export function MultiFactorAuthentication() {
   // the pending navigator.credentials.create() call, so it can be cancelled if the page is left
   const createCredentialRef = useRef<{ abort(): void } | null>(null);
   const [frejaeidVerifyCredential] = frejaeIDApi.useLazyFrejaeIDVerifyCredentialQuery();
+  const [oidceidVerifyCredential] = oidceidApi.useLazyOidceidVerifyCredentialQuery();
   const [removeWebauthnToken] = securityApi.useLazyRemoveWebauthnTokenQuery();
   const { checkAuthnStatus } = useReAuthenticate();
 
@@ -81,13 +83,20 @@ export function MultiFactorAuthentication() {
       bankid: bankIDVerifyCredential,
       eidas: eidasVerifyCredential,
       freja_eid: frejaeidVerifyCredential,
+      sverigeid: oidceidVerifyCredential,
     }),
-    [eidasVerifyCredential, bankIDVerifyCredential, frejaeidVerifyCredential],
+    [eidasVerifyCredential, bankIDVerifyCredential, frejaeidVerifyCredential, oidceidVerifyCredential],
   );
 
   const handleVerificationWebauthnToken = useCallback(
     async (token: string | undefined, method: AuthMethod) => {
       if (!token) {
+        return;
+      }
+      // method may come from the backend-echoed frontend_state, so check it at runtime; an unknown value must not
+      // leave the pending frontend action in place
+      if (!Object.hasOwn(tokenTypeMap, method)) {
+        dispatch(authnSlice.actions.setAuthnFrontendReset());
         return;
       }
       const verifyAction = tokenTypeMap[method];
@@ -169,7 +178,9 @@ export function MultiFactorAuthentication() {
         const description_value = values["describe-webauthn-token-modal"];
         const description = description_value?.trim();
         setShowSecurityKeyNameModal(false);
-        const registration = await beginRegisterWebauthn({ authenticator: frontend_state });
+        const registration = await beginRegisterWebauthn({
+          authenticator: frontend_state,
+        });
         if (registration.isSuccess && isMountedRef.current) {
           const createCredentialPromise = createCredential(
             withRegistrationHints(registration.data.payload.registration_data.publicKey, frontend_state),

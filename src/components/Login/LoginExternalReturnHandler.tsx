@@ -2,6 +2,7 @@ import authnApi from "apis/eduidAuthn";
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import personalDataApi from "apis/eduidPersonalData";
 import { resetPasswordApi } from "apis/eduidResetPassword";
 import { useAppDispatch, useAppSelector } from "eduid-hooks";
@@ -41,6 +42,7 @@ export function LoginExternalReturnHandler() {
   const [bankIDGetStatus] = bankIDApi.useLazyBankIDGetStatusQuery();
   const [eidasGetStatus] = eidasApi.useLazyEidasGetStatusQuery();
   const [frejaeIDGetStatus] = frejaeIDApi.useLazyFrejaeIDGetStatusQuery();
+  const [oidceidGetStatus] = oidceidApi.useLazyOidceidGetStatusQuery();
   const [verifyEmailLink] = resetPasswordApi.useLazyVerifyEmailLinkQuery();
 
   const handleResetPassword = useCallback(
@@ -68,7 +70,12 @@ export function LoginExternalReturnHandler() {
   const processStatus = useCallback(
     async (status: GetStatusResponse) => {
       if (status.status) {
-        dispatch(showNotification({ message: status.status, level: status.error ? "error" : "info" }));
+        dispatch(
+          showNotification({
+            message: status.status,
+            level: status.error ? "error" : "info",
+          }),
+        );
       }
 
       if (!status.frontend_action) {
@@ -107,6 +114,8 @@ export function LoginExternalReturnHandler() {
         getStatusAction = bankIDGetStatus;
       } else if (params.app_name === "freja_eid") {
         getStatusAction = frejaeIDGetStatus;
+      } else if (params.app_name === "oidceid") {
+        getStatusAction = oidceidGetStatus;
       } else {
         getStatusAction = authnGetStatus;
       }
@@ -116,7 +125,15 @@ export function LoginExternalReturnHandler() {
         await processStatus(response.data.payload);
       }
     },
-    [params.app_name, eidasGetStatus, bankIDGetStatus, frejaeIDGetStatus, authnGetStatus, processStatus],
+    [
+      params.app_name,
+      eidasGetStatus,
+      bankIDGetStatus,
+      frejaeIDGetStatus,
+      oidceidGetStatus,
+      authnGetStatus,
+      processStatus,
+    ],
   );
 
   useEffect(() => {

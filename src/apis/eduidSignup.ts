@@ -66,7 +66,7 @@ interface ExternalMFAResponse {
   given_name: string;
   masked_nin: null;
   surname: string;
-  method?: "freja" | "frejaeID" | "eidas" | "bankID";
+  method?: "freja" | "frejaeID" | "eidas" | "bankID" | "sverigeid";
 }
 
 export interface SignupStatusResponse {

@@ -128,6 +128,23 @@ export function VerificationOfIdentity() {
                   Read more about BankID below.`}
               />
             </li>
+            <li>
+              <em>
+                <FormattedMessage
+                  id="verifyIdentity.sverigeidHeading"
+                  description="swedish nin sverigeid - heading"
+                  defaultMessage="SverigeID (electronic identification via Sweden Connect) - for Swedish personal identity or coordination number holders:"
+                />
+              </em>
+              &nbsp;
+              <FormattedMessage
+                id="verifyIdentity.sverigeid"
+                description="verification methods - list item sverigeid"
+                defaultMessage={` the user will be directed to an external service where they log in with an 
+                  eID issued by a Sweden Connect eID provider. You need to have such an eID before you can complete 
+                  verification of your eduID.`}
+              />
+            </li>
           </ul>
           <p>
             <FormattedMessage

@@ -154,11 +154,11 @@
   },
   "assuranceInfo.help.verify.step1": {
     "developer_comment": "Assurance info - help, verify identity",
-    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID, Freja+, SverigeID or eIDAS and follow the instructions to verify your identity."
   },
   "assuranceInfo.help.verifyAndKey.step1": {
     "developer_comment": "Assurance info - help, step 1 verify identity",
-    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+    "string": "Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID, Freja+, SverigeID or eIDAS and follow the instructions to verify your identity."
   },
   "assuranceInfo.help.verifyAndKey.step2": {
     "developer_comment": "Assurance info - help, step 2 add security key",
@@ -427,7 +427,7 @@
     "string": "Access Error"
   },
   "common.account": {
-    "developer_comment": "security zone account link",
+    "developer_comment": "settings eduid - account handle",
     "string": "Account"
   },
   "common.add": {
@@ -506,7 +506,7 @@
     "string": "Help"
   },
   "common.identity": {
-    "developer_comment": "security zone identity link",
+    "developer_comment": "settings eduid - identity handle",
     "string": "Identity"
   },
   "common.language": {
@@ -553,7 +553,7 @@
     "string": "Save"
   },
   "common.security": {
-    "developer_comment": "security zone security link",
+    "developer_comment": "settings eduid - security handle",
     "string": "Security"
   },
   "common.securityKey": {
@@ -1249,7 +1249,7 @@
     "string": "Swedish ID"
   },
   "entry.use": {
-    "string": "Use BankID, Freja, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
+    "string": "Use BankID, Freja, SverigeID, Freja eID or eIDAS to register. Your name and identity will be verified automatically."
   },
   "entry.verified": {
     "developer_comment": "Verified identity",
@@ -1462,6 +1462,14 @@
   "identity.settingsTitle": {
     "developer_comment": "settings.remove_identity_verification_modal_title",
     "string": "Disconnect your identity"
+  },
+  "identity.sverigeidButton": {
+    "developer_comment": "SverigeID vetting button",
+    "string": "with SverigeID"
+  },
+  "identity.sverigeidVerify": {
+    "developer_comment": "verify identity vetting SverigeID tagline",
+    "string": "If you are able to log in with SverigeID"
   },
   "identity.swedish": {
     "developer_comment": "Verified identity",
@@ -1887,7 +1895,7 @@
   },
   "manageEduIDSettings.identity21": {
     "developer_comment": "identity eduid - list item 2-1",
-    "string": "With Swedish digital ID (Freja+/BankID) or by post."
+    "string": "With Swedish digital ID (Freja+/BankID/SverigeID) or by post."
   },
   "manageEduIDSettings.identity22": {
     "developer_comment": "identity eduid - list item 2-2",
@@ -1963,7 +1971,7 @@
   },
   "manageEduIDSettings.security33": {
     "developer_comment": "security eduid - list item 3-3",
-    "string": "verification status / verification options (Freja+/BankID/eIDAS/Freja eID)"
+    "string": "verification status / verification options (Freja+/BankID/SverigeID/eIDAS/Freja eID)"
   },
   "manageEduIDSettings.security34": {
     "developer_comment": "security eduid - list item 3-4",
@@ -2067,7 +2075,7 @@
   },
   "multiFactorAuth.paragraph": {
     "developer_comment": "MFA paragraph with swedish option",
-    "string": "If you are unable to use the security key, please select other options below, such as BankID, Freja+, eIDAS or freja eID."
+    "string": "If you are unable to use the security key, please select other options below, such as BankID, Freja+, SverigeID, eIDAS or freja eID."
   },
   "multiFactorAuth.serviceRequires": {
     "developer_comment": "Login MFA",
@@ -2133,6 +2141,48 @@
   "notifications.information": {
     "developer_comment": "Notification type",
     "string": "Information"
+  },
+  "oidceid.attribute_missing": {
+    "string": "SverigeID attribute is missing"
+  },
+  "oidceid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "oidceid.authn_instant_too_old": {
+    "string": "Authentication instant is too old"
+  },
+  "oidceid.credential_not_found": {
+    "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
+  },
+  "oidceid.credential_verification_not_allowed": {
+    "string": "SverigeID credential verification not allowed."
+  },
+  "oidceid.credential_verify_success": {
+    "string": "Success"
+  },
+  "oidceid.frontend_action_not_supported": {
+    "string": "SverigeID frontend action not supported."
+  },
+  "oidceid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "oidceid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "oidceid.identity_verify_success": {
+    "string": "Success"
+  },
+  "oidceid.method_not_available": {
+    "string": "SverigeID method is not available"
+  },
+  "oidceid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "oidceid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "oidceid.not_found": {
+    "string": "SverigeID not found"
   },
   "orc.already_connected": {
     "string": "ORCID already connected to this account"
@@ -2527,6 +2577,9 @@
   "recoveryOptions.placeholder": {
     "developer_comment": "placeholder text for recovery option",
     "string": "Show other options"
+  },
+  "recoveryOptions.sverigeid": {
+    "string": "SverigeID"
   },
   "required": {
     "string": "*Field cannot be empty"
@@ -2967,6 +3020,9 @@
     "developer_comment": "which type of security key - paragraph",
     "string": "We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below."
   },
+  "securityZoneInfo.account": {
+    "string": "account"
+  },
   "securityZoneInfo.add": {
     "string": "add security key"
   },
@@ -2987,19 +3043,21 @@
     "developer_comment": "security zone redirect info",
     "string": "Authenticate to continue"
   },
+  "securityZoneInfo.identity": {
+    "string": "identity"
+  },
   "securityZoneInfo.info": {
     "developer_comment": "security zone cancel info",
-    "string": "If you wish to {strong} this process without affecting a change you can return straight to {page} page."
-  },
-  "securityZoneInfo.mfa": {
-    "developer_comment": "mfa cancel - strong",
-    "string": "cancel"
+    "string": "If you wish to cancel this process without making any changes, click the button below to return to the {page} page."
   },
   "securityZoneInfo.remove": {
     "string": "remove identity"
   },
   "securityZoneInfo.removeSecurity": {
     "string": "remove security key"
+  },
+  "securityZoneInfo.security": {
+    "string": "security"
   },
   "securityZoneInfo.verify": {
     "string": "verify security key"
@@ -3554,7 +3612,7 @@
   },
   "usingEduID.login2": {
     "developer_comment": "login eduid - security key list item 2",
-    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID, Freja+, eIDAS or Freja eID, depending on what applies to your verified identity."
+    "string": "Added security alternatives are listed in the \"Other options\" dropdown below the security key button, such as BankID, Freja+, SverigeID, eIDAS or Freja eID, depending on what applies to your verified identity."
   },
   "usingEduID.login3": {
     "developer_comment": "login eduid - passkey list item 3",
@@ -3706,7 +3764,7 @@
   },
   "verifyCredentialModal.body": {
     "developer_comment": "verify webauthn token modal body text",
-    "string": "Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
+    "string": "Please click either the BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS or freja eID button to verify your security key"
   },
   "verifyCredentialModal.link": {
     "developer_comment": "verify later link",
@@ -3839,6 +3897,14 @@
   "verifyIdentity.paragraph2": {
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "You can read more about using Freja with your eduID below in the \"About Freja (with Swedish ID/COORD number)\" section and on their website at {FrejaProtectedId}."
+  },
+  "verifyIdentity.sverigeid": {
+    "developer_comment": "verification methods - list item sverigeid",
+    "string": "the user will be directed to an external service where they log in with an eID issued by a Sweden Connect eID provider. You need to have such an eID before you can complete verification of your eduID."
+  },
+  "verifyIdentity.sverigeidHeading": {
+    "developer_comment": "swedish nin sverigeid - heading",
+    "string": "SverigeID (electronic identification via Sweden Connect) - for Swedish personal identity or coordination number holders:"
   },
   "verifyIdentity.swedish": {
     "developer_comment": "swedish nin - heading",
