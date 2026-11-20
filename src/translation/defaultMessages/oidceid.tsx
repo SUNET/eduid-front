@@ -9,6 +9,20 @@ export const apiResponses = {
     <FormattedMessage id="oidceid.authn_instant_too_old" defaultMessage="Authentication instant is too old" />
   ),
 
+  "oidceid.authn_request_failed": (
+    <FormattedMessage
+      id="oidceid.authn_request_failed"
+      defaultMessage="Could not start the SverigeID authentication. Please try again or choose another method."
+    />
+  ),
+
+  "oidceid.authorization_error": (
+    <FormattedMessage
+      id="oidceid.authorization_error"
+      defaultMessage="The SverigeID authentication was cancelled or denied. Please try again or choose another method."
+    />
+  ),
+
   "oidceid.frontend_action_not_supported": (
     <FormattedMessage
       id="oidceid.frontend_action_not_supported"

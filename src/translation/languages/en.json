@@ -2134,6 +2134,54 @@
     "developer_comment": "Notification type",
     "string": "Information"
   },
+  "oidceid.attribute_missing": {
+    "string": "SverigeID attribute is missing"
+  },
+  "oidceid.authn_context_mismatch": {
+    "string": "Wrong authentication context received"
+  },
+  "oidceid.authn_instant_too_old": {
+    "string": "Authentication instant is too old"
+  },
+  "oidceid.authn_request_failed": {
+    "string": "Could not start the SverigeID authentication. Please try again or choose another method."
+  },
+  "oidceid.authorization_error": {
+    "string": "The SverigeID authentication was cancelled or denied. Please try again or choose another method."
+  },
+  "oidceid.credential_not_found": {
+    "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
+  },
+  "oidceid.credential_verification_not_allowed": {
+    "string": "SverigeID credential verification not allowed."
+  },
+  "oidceid.credential_verify_success": {
+    "string": "Success"
+  },
+  "oidceid.frontend_action_not_supported": {
+    "string": "SverigeID frontend action not supported."
+  },
+  "oidceid.identity_already_verified": {
+    "string": "You have already verified your identity"
+  },
+  "oidceid.identity_not_matching": {
+    "string": "The identity does not match the one verified for this eduID"
+  },
+  "oidceid.identity_verify_success": {
+    "string": "Success"
+  },
+  "oidceid.method_not_available": {
+    "string": "SverigeID method is not available"
+  },
+  "oidceid.mfa_authn_success": {
+    "string": "Success"
+  },
+  "oidceid.no_redirect_url": {
+    "string": "MFA authentication is missing a redirect URL"
+  },
+  "oidceid.not_found": {
+    "string": "SverigeID not found"
+  },
   "orc.already_connected": {
     "string": "ORCID already connected to this account"
   },

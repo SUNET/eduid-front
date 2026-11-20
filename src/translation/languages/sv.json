@@ -2149,6 +2149,12 @@
   "oidceid.authn_instant_too_old": {
     "string": "Autentiseringstillfället är för gammalt."
   },
+  "oidceid.authn_request_failed": {
+    "string": "Det gick inte att starta autentiseringen med SverigeID. Försök igen eller välj en annan metod."
+  },
+  "oidceid.authorization_error": {
+    "string": "Autentiseringen med SverigeID avbröts eller nekades. Försök igen eller välj en annan metod."
+  },
   "oidceid.credential_not_found": {
     "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
   },

@@ -2151,6 +2151,12 @@
   "oidceid.authn_instant_too_old": {
     "string": "Authentication instant is too old"
   },
+  "oidceid.authn_request_failed": {
+    "string": "Could not start the SverigeID authentication. Please try again or choose another method."
+  },
+  "oidceid.authorization_error": {
+    "string": "The SverigeID authentication was cancelled or denied. Please try again or choose another method."
+  },
   "oidceid.credential_not_found": {
     "string": "The passkey or security key was not recognized. Please try logging in with your password instead."
   },
