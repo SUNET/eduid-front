@@ -35,7 +35,9 @@ test.each(cases)("login ext-return for app_name %s polls the %s service", async 
   for (const [name, url] of Object.entries(urls)) {
     mswServer.use(
       http.post(`${url}/get-status`, async ({ request }) => {
-        (hits[name] ??= []).push((await request.json()) as { authn_id?: string });
+        const body = (await request.json()) as { authn_id?: string };
+        hits[name] ??= [];
+        hits[name].push(body);
         // no frontend_action: handler just navigates back to the login base path
         return HttpResponse.json({ type: "test response", payload: { method: "x" } });
       }),

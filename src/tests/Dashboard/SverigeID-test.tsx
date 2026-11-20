@@ -61,7 +61,7 @@ test("renders SverigeID option when oidceid_service_url is configured", async ()
     name: /Proceed with SverigeID/,
   });
   expect(proceed).toBeEnabled();
-  await act(async () => {
+  act(() => {
     proceed.click();
   });
   await waitFor(() => expect(postedMethod).toBe("sverigeid"));

@@ -35,7 +35,9 @@ test.each(cases)("profile ext-return for app_name %s polls the %s service", asyn
   for (const [name, url] of Object.entries(urls)) {
     mswServer.use(
       http.post(`${url}/get-status`, async ({ request }) => {
-        (hits[name] ??= []).push((await request.json()) as { authn_id?: string });
+        const body = (await request.json()) as { authn_id?: string };
+        hits[name] ??= [];
+        hits[name].push(body);
         return HttpResponse.json({ type: "test response", payload: { method: "x" } });
       }),
     );
