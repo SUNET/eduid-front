@@ -427,7 +427,7 @@
     "string": "Åtkomstfel"
   },
   "common.account": {
-    "developer_comment": "security zone account link",
+    "developer_comment": "settings eduid - account handle",
     "string": "Konto"
   },
   "common.add": {
@@ -506,7 +506,7 @@
     "string": "Hjälp"
   },
   "common.identity": {
-    "developer_comment": "security zone identity link",
+    "developer_comment": "settings eduid - identity handle",
     "string": "Identitet"
   },
   "common.language": {
@@ -553,7 +553,7 @@
     "string": "Spara"
   },
   "common.security": {
-    "developer_comment": "security zone security link",
+    "developer_comment": "settings eduid - security handle",
     "string": "Säkerhet"
   },
   "common.securityKey": {
@@ -1464,9 +1464,11 @@
     "string": "Frånkoppla din identitet"
   },
   "identity.sverigeidButton": {
+    "developer_comment": "SverigeID vetting button",
     "string": "med SverigeID"
   },
   "identity.sverigeidVerify": {
+    "developer_comment": "verify identity vetting SverigeID tagline",
     "string": "Om du kan logga in med SverigeID"
   },
   "identity.swedish": {
@@ -2150,10 +2152,10 @@
     "string": "Autentiseringstillfället är för gammalt."
   },
   "oidceid.authn_request_failed": {
-    "string": "Det gick inte att starta autentiseringen med SverigeID. Försök igen eller välj en annan metod."
+    "string": "Det gick inte att starta SverigeID-autentiseringen. Försök igen eller välj en annan metod."
   },
   "oidceid.authorization_error": {
-    "string": "Autentiseringen med SverigeID avbröts eller nekades. Försök igen eller välj en annan metod."
+    "string": "SverigeID-autentiseringen avbröts eller nekades. Försök igen eller välj en annan metod."
   },
   "oidceid.credential_not_found": {
     "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
@@ -3024,6 +3026,9 @@
     "developer_comment": "which type of security key - paragraph",
     "string": "Vi följer en standard utöver vår egen policy för vilka säkerhetsnycklar som är möjliga att användas för tjänsten. Mer information om de tekniska förutsättningarna samt en uppdaterad lista över nycklar som möter dem finns nedan."
   },
+  "securityZoneInfo.account": {
+    "string": "konto"
+  },
   "securityZoneInfo.add": {
     "string": "lägg till säkerhetsnyckel"
   },
@@ -3044,19 +3049,21 @@
     "developer_comment": "security zone redirect info",
     "string": "Autentisera dig för att fortsätta"
   },
+  "securityZoneInfo.identity": {
+    "string": "identitet"
+  },
   "securityZoneInfo.info": {
     "developer_comment": "security zone cancel info",
-    "string": "Om du vill {strong} utan att spara förändringen kan du återvända direkt till sidan {page}."
-  },
-  "securityZoneInfo.mfa": {
-    "developer_comment": "mfa cancel - strong",
-    "string": "avbryta"
+    "string": "Om du vill avbryta utan att spara förändringen kan du återvända direkt till sidan {page}."
   },
   "securityZoneInfo.remove": {
     "string": "radera identitet"
   },
   "securityZoneInfo.removeSecurity": {
     "string": "ta bort säkerhetsnyckel"
+  },
+  "securityZoneInfo.security": {
+    "string": "säkerhet"
   },
   "securityZoneInfo.verify": {
     "string": "verifiera säkerhetsnyckel"
@@ -3763,7 +3770,7 @@
   },
   "verifyCredentialModal.body": {
     "developer_comment": "verify webauthn token modal body text",
-    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS eller Freja eID nedan."
+    "string": "Klicka på knappen BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS eller Freja eID för att verifiera din säkerhetsnyckel"
   },
   "verifyCredentialModal.link": {
     "developer_comment": "verify later link",
@@ -3898,10 +3905,12 @@
     "string": "Du kan läsa mer om att använda Freja med ditt eduID nedan i avsnittet \"Om Freja (med Svenskt person/samordnings-nummer)\" och på deras hemsida {FrejaProtectedId}."
   },
   "verifyIdentity.sverigeid": {
-    "string": "användaren skickas till en extern tjänst där de loggar in med ett eID som utfärdats av en eID-leverantör inom Sweden Connect. Du måste ha ett sådant eID innan du kan slutföra verifieringen av ditt eduID."
+    "developer_comment": "verification methods - list item sverigeid",
+    "string": "Du skickas vidare till en extern tjänst där du loggar in med en e-legitimation utfärdad av en leverantör inom Sweden Connect. Du behöver ha en sådan e-legitimation innan du kan slutföra verifieringen av ditt eduID."
   },
   "verifyIdentity.sverigeidHeading": {
-    "string": "SverigeID (elektronisk identifiering via Sweden Connect) - för innehavare av svenskt personnummer eller samordningsnummer:"
+    "developer_comment": "swedish nin sverigeid - heading",
+    "string": "SverigeID (elektronisk identifiering via Sweden Connect) – med svenskt personnummer eller samordningsnummer"
   },
   "verifyIdentity.swedish": {
     "developer_comment": "swedish nin - heading",
