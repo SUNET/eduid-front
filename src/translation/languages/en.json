@@ -427,7 +427,7 @@
     "string": "Access Error"
   },
   "common.account": {
-    "developer_comment": "security zone account link",
+    "developer_comment": "settings eduid - account handle",
     "string": "Account"
   },
   "common.add": {
@@ -506,7 +506,7 @@
     "string": "Help"
   },
   "common.identity": {
-    "developer_comment": "security zone identity link",
+    "developer_comment": "settings eduid - identity handle",
     "string": "Identity"
   },
   "common.language": {
@@ -553,7 +553,7 @@
     "string": "Save"
   },
   "common.security": {
-    "developer_comment": "security zone security link",
+    "developer_comment": "settings eduid - security handle",
     "string": "Security"
   },
   "common.securityKey": {
@@ -1463,6 +1463,14 @@
     "developer_comment": "settings.remove_identity_verification_modal_title",
     "string": "Disconnect your identity"
   },
+  "identity.sverigeidButton": {
+    "developer_comment": "SverigeID vetting button",
+    "string": "with SverigeID"
+  },
+  "identity.sverigeidVerify": {
+    "developer_comment": "verify identity vetting SverigeID tagline",
+    "string": "If you are able to log in with SverigeID"
+  },
   "identity.swedish": {
     "developer_comment": "Verified identity",
     "string": "Swedish national ID number"
@@ -2141,7 +2149,7 @@
     "string": "Wrong authentication context received"
   },
   "oidceid.authn_instant_too_old": {
-    "string": "Authentication instant is too old"
+    "string": "Authentication instant is too old."
   },
   "oidceid.authn_request_failed": {
     "string": "Could not start the SverigeID authentication. Please try again or choose another method."
@@ -2575,6 +2583,9 @@
   "recoveryOptions.placeholder": {
     "developer_comment": "placeholder text for recovery option",
     "string": "Show other options"
+  },
+  "recoveryOptions.sverigeid": {
+    "string": "SverigeID"
   },
   "required": {
     "string": "*Field cannot be empty"
@@ -3015,6 +3026,9 @@
     "developer_comment": "which type of security key - paragraph",
     "string": "We follow a standard as well as our own policy for which security keys are allowed to be used with the service. More information on the standard as well as an updated list of valid keys can be found below."
   },
+  "securityZoneInfo.account": {
+    "string": "account"
+  },
   "securityZoneInfo.add": {
     "string": "add security key"
   },
@@ -3035,19 +3049,21 @@
     "developer_comment": "security zone redirect info",
     "string": "Authenticate to continue"
   },
+  "securityZoneInfo.identity": {
+    "string": "identity"
+  },
   "securityZoneInfo.info": {
     "developer_comment": "security zone cancel info",
-    "string": "If you wish to {strong} this process without affecting a change you can return straight to {page} page."
-  },
-  "securityZoneInfo.mfa": {
-    "developer_comment": "mfa cancel - strong",
-    "string": "cancel"
+    "string": "If you wish to cancel this process without making any changes, click the button below to return to the {page} page."
   },
   "securityZoneInfo.remove": {
     "string": "remove identity"
   },
   "securityZoneInfo.removeSecurity": {
     "string": "remove security key"
+  },
+  "securityZoneInfo.security": {
+    "string": "security"
   },
   "securityZoneInfo.verify": {
     "string": "verify security key"
@@ -3887,6 +3903,14 @@
   "verifyIdentity.paragraph2": {
     "developer_comment": "freja - protected ID paragraph 2",
     "string": "You can read more about using Freja with your eduID below in the \"About Freja (with Swedish ID/COORD number)\" section and on their website at {FrejaProtectedId}."
+  },
+  "verifyIdentity.sverigeid": {
+    "developer_comment": "verification methods - list item sverigeid",
+    "string": "the user will be directed to an external service where they log in with an eID issued by a Sweden Connect eID provider. You need to have such an eID before you can complete verification of your eduID."
+  },
+  "verifyIdentity.sverigeidHeading": {
+    "developer_comment": "swedish nin sverigeid - heading",
+    "string": "SverigeID (electronic identification via Sweden Connect) - for Swedish personal identity or coordination number holders:"
   },
   "verifyIdentity.swedish": {
     "developer_comment": "swedish nin - heading",
