@@ -2159,7 +2159,7 @@
     "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
   },
   "oidceid.credential_verification_not_allowed": {
-    "string": "SamlID-verifiering av autentiseringsmetod är inte tillåten."
+    "string": "SverigeID-verifiering av autentiseringsmetod är inte tillåten."
   },
   "oidceid.credential_verify_success": {
     "string": "Klart"
