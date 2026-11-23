@@ -3770,7 +3770,7 @@
   },
   "verifyCredentialModal.body": {
     "developer_comment": "verify webauthn token modal body text",
-    "string": "Klicka på knappen BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS eller Freja eID för att verifiera din säkerhetsnyckel"
+    "string": "Verifiera din säkerhetsnyckel med hjälp av knapparna för BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS eller Freja eID nedan."
   },
   "verifyCredentialModal.link": {
     "developer_comment": "verify later link",
