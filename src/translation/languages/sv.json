@@ -3910,7 +3910,7 @@
   },
   "verifyIdentity.sverigeidHeading": {
     "developer_comment": "swedish nin sverigeid - heading",
-    "string": "SverigeID (elektronisk identifiering via Sweden Connect) – med svenskt personnummer eller samordningsnummer"
+    "string": "SverigeID (elektronisk identifiering via Sweden Connect) - för innehavare av svenskt personnummer eller samordningsnummer:"
   },
   "verifyIdentity.swedish": {
     "developer_comment": "swedish nin - heading",
