@@ -2152,7 +2152,7 @@
     "string": "Autentiseringstillfället är för gammalt."
   },
   "oidceid.authn_request_failed": {
-    "string": "Det gick inte att starta SverigeID-autentiseringen. Försök igen eller välj en annan metod."
+    "string": "Det gick inte att starta autentiseringen med SverigeID. Försök igen eller välj en annan metod."
   },
   "oidceid.authorization_error": {
     "string": "SverigeID-autentiseringen avbröts eller nekades. Försök igen eller välj en annan metod."
