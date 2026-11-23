@@ -2155,7 +2155,7 @@
     "string": "Det gick inte att starta autentiseringen med SverigeID. Försök igen eller välj en annan metod."
   },
   "oidceid.authorization_error": {
-    "string": "SverigeID-autentiseringen avbröts eller nekades. Försök igen eller välj en annan metod."
+    "string": "Autentiseringen med SverigeID avbröts eller nekades. Försök igen eller välj en annan metod"
   },
   "oidceid.credential_not_found": {
     "string": "Passkey eller säkerhetsnyckeln kunde inte identifieras. Försök att logga in med ditt lösenord istället."
