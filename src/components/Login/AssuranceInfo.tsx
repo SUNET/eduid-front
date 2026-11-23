@@ -116,7 +116,7 @@ function AssuranceHelp(): React.JSX.Element | null {
           <li>
             <FormattedMessage
               id="assuranceInfo.help.verifyAndKey.step1"
-              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID, Freja+, SverigeID or eIDAS and follow the instructions to verify your identity."
               description="Assurance info - help, step 1 verify identity"
             />
           </li>
@@ -147,7 +147,7 @@ function AssuranceHelp(): React.JSX.Element | null {
           <li>
             <FormattedMessage
               id="assuranceInfo.help.verify.step1"
-              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID or Freja+, eIDAS and follow the instructions to verify your identity."
+              defaultMessage="Click Go to eduID below, then go to the Identity page. Choose an identity verification method available to you, such as BankID, Freja+, SverigeID or eIDAS and follow the instructions to verify your identity."
               description="Assurance info - help, verify identity"
             />
           </li>

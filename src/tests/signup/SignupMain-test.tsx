@@ -78,7 +78,9 @@ function happyCaseBackend(state: SignupState) {
   mswServer.use(
     http.post("https://signup.eduid.docker/services/signup/get-captcha", () => {
       getCaptchaCalled = true;
-      const payload: GetCaptchaResponse = { captcha_img: "data:image/png;base64,captcha-test-image" };
+      const payload: GetCaptchaResponse = {
+        captcha_img: "data:image/png;base64,captcha-test-image",
+      };
       return HttpResponse.json({ type: "_SIGNUP_ test success", payload });
     }),
     http.post("https://signup.eduid.docker/services/signup/captcha", async ({ request }) => {
@@ -134,7 +136,10 @@ function happyCaseBackend(state: SignupState) {
         return HttpResponse.json({
           type: "_SIGNUP_ test_FAIL",
           error: true,
-          payload: { ...payload, message: "testing-too-many-incorrect-email-codes" },
+          payload: {
+            ...payload,
+            message: "testing-too-many-incorrect-email-codes",
+          },
         });
       }
 
@@ -202,14 +207,22 @@ test("handles rejected ToU", async () => {
 
   await testInternalCaptcha();
 
-  await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: true });
+  await testTermsOfUse({
+    state: emptyState,
+    clickAccept: false,
+    clickCancel: true,
+  });
 
   await testEnterEmail({ email: testEmailAddress });
 
   // no captcha should be required this time around, since we already completed it
 
   // don't click anything, just verify the ToU is shown again
-  await testTermsOfUse({ state: emptyState, clickAccept: false, clickCancel: false });
+  await testTermsOfUse({
+    state: emptyState,
+    clickAccept: false,
+    clickCancel: false,
+  });
 });
 
 test("handles wrong email code", async () => {
@@ -338,7 +351,9 @@ async function testEnterEmail({ email, expectErrorShown = false }: { email?: str
   );
 
   // Expand the email form
-  const showEmailFormButton = await screen.findByRole("button", { name: /Show form/i });
+  const showEmailFormButton = await screen.findByRole("button", {
+    name: /Show form/i,
+  });
   await user.click(showEmailFormButton);
 
   expect(screen.queryByRole("progressbar")).not.toBeInTheDocument();
@@ -390,7 +405,9 @@ async function testInternalCaptcha() {
     expect(getCaptchaCalled).toBe(true);
   });
 
-  const captchaInput = screen.getByRole("textbox", { name: "Enter the code from the image" });
+  const captchaInput = screen.getByRole("textbox", {
+    name: "Enter the code from the image",
+  });
   expect(captchaInput).toHaveFocus();
   await user.type(captchaInput, captchaTestValue);
 
@@ -486,3 +503,77 @@ async function enterEmailCode(code: string) {
     expect(screen.queryByTestId(codeFormTestId)).not.toBeInTheDocument();
   });
 }
+
+test("shows SverigeID signup button only when oidceid_service_url is configured", async () => {
+  render(<IndexMain />, {
+    state: {
+      config: {
+        ...signupTestState.config,
+        oidceid_service_url: "https://oidceid.eduid.docker/services/oidceid",
+      },
+    },
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
+  await waitFor(() => {
+    expect(screen.getByRole("button", { name: "SverigeID" })).toBeInTheDocument();
+  });
+});
+
+test("does not show SverigeID signup button without oidceid_service_url", async () => {
+  render(<IndexMain />, {
+    state: {
+      config: { ...signupTestState.config },
+    },
+    routes: [`${SIGNUP_BASE_PATH}`],
+  });
+  await waitFor(() => {
+    expect(screen.getByText("BankID")).toBeInTheDocument();
+  });
+  expect(screen.queryByRole("button", { name: "SverigeID" })).not.toBeInTheDocument();
+});
+
+test("signup external return handler uses the oidceid service for app_name oidceid", async () => {
+  let getStatusCalled = false;
+  let registerBody: { app_name?: string; authn_id?: string } | undefined;
+  const oidceidUrl = "https://oidceid.eduid.docker/services/oidceid";
+  mswServer.use(
+    http.get("https://signup.eduid.docker/services/signup/state", () =>
+      HttpResponse.json({
+        type: "_SIGNUP_ test success",
+        payload: { state: emptyState },
+      }),
+    ),
+    http.post(`${oidceidUrl}/get-status`, () => {
+      getStatusCalled = true;
+      return HttpResponse.json({
+        type: "test response",
+        payload: { frontend_action: "signupExternalMfa", method: "sverigeid" },
+      });
+    }),
+    http.post("https://signup.eduid.docker/services/signup/external-mfa-register", async ({ request }) => {
+      registerBody = (await request.json()) as {
+        app_name?: string;
+        authn_id?: string;
+      };
+      return HttpResponse.json({
+        type: "_SIGNUP_ test success",
+        payload: { state: emptyState },
+      });
+    }),
+  );
+  render(<IndexMain />, {
+    state: {
+      config: { ...signupTestState.config, oidceid_service_url: oidceidUrl },
+    },
+    routes: ["/register/ext-return/oidceid/test-authn-id"],
+  });
+  await waitFor(() => {
+    expect(getStatusCalled).toBe(true);
+    expect(registerBody).toEqual(
+      expect.objectContaining({
+        app_name: "oidceid",
+        authn_id: "test-authn-id",
+      }),
+    );
+  });
+});

@@ -29,6 +29,7 @@ export const customBaseQuery: BaseQueryFn = async (args, api, extraOptions: { se
     bankid: state.config.bankid_service_url,
     eidas: state.config.eidas_service_url,
     frejaeID: state.config.freja_eid_service_url,
+    oidceid: state.config.oidceid_service_url,
     ladok: state.config.ladok_service_url,
     login: state.config.login_service_url,
     resetPassword: state.config.reset_password_service_url,

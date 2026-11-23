@@ -38,7 +38,8 @@ svg {
   margin-right: 0.75rem;
   vertical-align: text-top;
 
-  &.bankid-icon {
+  &.bankid-icon,
+  &.sverigeid-icon {
     background: #fff;
   }
 

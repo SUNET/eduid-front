@@ -1,5 +1,6 @@
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import personalDataApi from "apis/eduidPersonalData";
 import { securityApi } from "apis/eduidSecurity";
 import { Accordion, AccordionItemTemplate } from "components/Common/AccordionItemTemplate";
@@ -150,7 +151,9 @@ function IdentityContent() {
 function VerifiedIdentitiesTable() {
   const identities = useAppSelector((state) => state.personal_data.response?.identities);
   const currentLocale = useAppSelector((state) => state.intl.locale);
-  const regionNames = new Intl.DisplayNames([currentLocale], { type: "region" });
+  const regionNames = new Intl.DisplayNames([currentLocale], {
+    type: "region",
+  });
   const dispatch = useAppDispatch();
   const frontend_action = useAppSelector((state) => state.authn.response?.frontend_action);
   const frontend_state = useAppSelector((state) => state.authn.response?.frontend_state);
@@ -271,7 +274,8 @@ function VerifiedIdentitiesTable() {
               />
             </strong>
           </div>
-          {regionNames.of(identities.freja.country_code)}&nbsp;{identities.freja.date_of_birth}
+          {regionNames.of(identities.freja.country_code)}&nbsp;
+          {identities.freja.date_of_birth}
           <EduIDButton
             id="remove-identity-freja"
             buttonstyle="remove sm"
@@ -331,6 +335,17 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
   const nin = useAppSelector((state) => state.personal_data?.response?.identities?.nin);
   // this is where the buttons are generated
   const addedNin = Boolean(nin);
+  const oidceid_service_url = useAppSelector((state) => state.config.oidceid_service_url);
+  const [oidceidVerifyIdentity] = oidceidApi.useLazyOidceidVerifyIdentityQuery();
+
+  const handleSverigeID = useCallback(async () => {
+    const response = await oidceidVerifyIdentity({ method: "sverigeid" });
+    if (response.isSuccess) {
+      if (response.data.payload.location) {
+        globalThis.location.assign(response.data.payload.location);
+      }
+    }
+  }, [oidceidVerifyIdentity]);
 
   // proofing via letter requires the user to have added a NIN first
   const letterProofingDisabled = !addedNin;
@@ -413,6 +428,41 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
         >
           <FrejaeID />
         </AccordionItemTemplate>
+        {oidceid_service_url && (
+          <AccordionItemTemplate
+            icon={<img height="35" className="circle-icon sverigeid-icon" alt="" src={SvFlag} />}
+            title={
+              <FormattedMessage
+                id="identity.sverigeidButton"
+                description="SverigeID vetting button"
+                defaultMessage="with SverigeID"
+              />
+            }
+            additionalInfo={
+              <FormattedMessage
+                id="identity.sverigeidVerify"
+                description="verify identity vetting SverigeID tagline"
+                defaultMessage="If you are able to log in with SverigeID"
+              />
+            }
+            uuid="se-sverigeid"
+          >
+            <p>
+              <FormattedMessage
+                id="identity.externalLoginInfo"
+                description="verify identity"
+                defaultMessage="The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
+              />
+            </p>
+            <EduIDButton buttonstyle="primary sm" onClick={handleSverigeID}>
+              <FormattedMessage
+                id="letterProofing.proceedButton"
+                defaultMessage="Proceed"
+                description="button proceed"
+              />
+            </EduIDButton>
+          </AccordionItemTemplate>
+        )}
         <AccordionItemTemplate
           icon={<img height="35" className="circle-icon" alt="" src={LetterIcon} />}
           title={

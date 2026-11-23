@@ -1,6 +1,7 @@
 import { bankIDApi } from "apis/eduidBankid";
 import { eidasApi } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import { useAppSelector } from "eduid-hooks";
 import { ReactNode, useCallback } from "react";
 import { Form as FinalForm } from "react-final-form";
@@ -10,6 +11,7 @@ import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import SvFlag from "../../../img/flags/SvFlag.svg";
 import type { AuthMethod } from "./../../apis/helpers/types";
 
 interface RecoveryOptions {
@@ -40,6 +42,8 @@ export function RecoveryOptions({
   const [bankIDMfaAuthenticate] = bankIDApi.useLazyBankIDMfaAuthenticateQuery();
   const [eidasMfaAuthenticate] = eidasApi.useLazyEidasMfaAuthenticateQuery();
   const [frejaMfaAuthenticate] = frejaeIDApi.useLazyFrejaeIDMfaAuthenticateQuery();
+  const [oidceidMfaAuthenticate] = oidceidApi.useLazyOidceidMfaAuthenticateQuery();
+  const oidceid_service_url = useAppSelector((state) => state.config.oidceid_service_url);
 
   const placeholder = intl.formatMessage({
     id: "recoveryOptions.placeholder",
@@ -75,6 +79,18 @@ export function RecoveryOptions({
       available: recoveryAvailable.swedish_eid,
     },
     {
+      value: "SverigeID",
+      label: (
+        <IconWithText
+          icon={<img className="circle-icon sverigeid-icon" height="35" alt="" src={SvFlag} />}
+          text={<FormattedMessage id="recoveryOptions.sverigeid" defaultMessage={`SverigeID`} />}
+        />
+      ),
+      // swedish_eid => SverigeID-eligible is a backend decision (no separate sverigeid flag in authn_options or
+      // extra_security); the backend answers oidceid.method_not_available if the account can not use it.
+      available: recoveryAvailable.swedish_eid && Boolean(oidceid_service_url),
+    },
+    {
       value: "eIDAS",
       label: (
         <IconWithText
@@ -105,6 +121,7 @@ export function RecoveryOptions({
         freja: eidasMfaAuthenticate,
         eidas: eidasMfaAuthenticate,
         freja_eid: frejaMfaAuthenticate,
+        sverigeid: oidceidMfaAuthenticate,
       };
 
       const authenticate = authenticateMap[method];
@@ -119,7 +136,14 @@ export function RecoveryOptions({
         }
       }
     },
-    [bankIDMfaAuthenticate, eidasMfaAuthenticate, frejaMfaAuthenticate, frontend_action, frontend_state],
+    [
+      bankIDMfaAuthenticate,
+      eidasMfaAuthenticate,
+      frejaMfaAuthenticate,
+      oidceidMfaAuthenticate,
+      frontend_action,
+      frontend_state,
+    ],
   );
 
   const handleOnChange = useCallback(
@@ -128,6 +152,8 @@ export function RecoveryOptions({
         handleAuthenticate("bankid");
       } else if (newValue?.value === "Freja+") {
         handleAuthenticate("freja");
+      } else if (newValue?.value === "SverigeID") {
+        handleAuthenticate("sverigeid");
       } else if (newValue?.value === "eIDAS") {
         handleAuthenticate("eidas");
       } else if (newValue?.value === "Freja eID") {

@@ -1,9 +1,11 @@
 import { AuthMethod } from "apis/helpers/types";
+import { useAppSelector } from "eduid-hooks";
 import { FormattedMessage } from "react-intl";
 import BankIdFlag from "../../../img/flags/BankID_logo.svg";
 import EuFlag from "../../../img/flags/EuFlag.svg";
 import FrejaFlag from "../../../img/flags/FOvalIndigo.svg";
 import GlobalFlag from "../../../img/flags/GlobalFlag.svg";
+import SvFlag from "../../../img/flags/SvFlag.svg";
 import { EduIDButton } from "./EduIDButton";
 
 interface VerifyCredentialModalProps {
@@ -19,6 +21,7 @@ export function VerifyCredentialModal({
   handleVerificationWebauthnToken,
   tokenKey,
 }: Readonly<VerifyCredentialModalProps>) {
+  const oidceid_service_url = useAppSelector((state) => state.config.oidceid_service_url);
   return (
     <dialog
       open={showVerifyWebauthnModal}
@@ -48,7 +51,8 @@ export function VerifyCredentialModal({
               <FormattedMessage
                 id="verifyCredentialModal.body"
                 description="verify webauthn token modal body text"
-                defaultMessage="Please click either the BankID, Freja+, eIDAS or freja eID button to verify your security key"
+                defaultMessage="Please click either the BankID, Freja+, {hasSverigeID, select, true {SverigeID, } other {}}eIDAS or freja eID button to verify your security key"
+                values={{ hasSverigeID: String(Boolean(oidceid_service_url)) }}
               />
               <p className="help-text">
                 <FormattedMessage
@@ -78,6 +82,17 @@ export function VerifyCredentialModal({
                   <img className="freja" height="24" alt="" src={FrejaFlag} />
                   <span>Freja+</span>
                 </EduIDButton>
+                {oidceid_service_url && (
+                  <EduIDButton
+                    buttonstyle="primary icon"
+                    id="verify-webauthn-token-modal-continue-sverigeid-button"
+                    aria-label="Proceed with SverigeID"
+                    onClick={() => handleVerificationWebauthnToken(tokenKey, "sverigeid")}
+                  >
+                    <img className="circle-icon sverigeid-icon" height="24" alt="" src={SvFlag} />
+                    <span>SverigeID</span>
+                  </EduIDButton>
+                )}
                 <EduIDButton
                   buttonstyle="primary icon"
                   id="verify-webauthn-token-modal-continue-eidas-button"

@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // CreateSlice function will return an object with actions and reducer
 import { bankIDApi } from "apis/eduidBankid";
-import { eidasApi } from "apis/eduidEidas";
+import { eidasApi, GetStatusResponse } from "apis/eduidEidas";
 import { frejaeIDApi } from "apis/eduidFrejaeID";
+import { oidceidApi } from "apis/eduidOidceid";
 import {
   ExtraSecurityAlternatives,
   GetResetPasswordState,
@@ -64,6 +65,17 @@ function extraSecuritiesOrCodeEntry(state: ResetPasswordState): string {
   return state.extra_security !== undefined ? "HANDLE_EXTRA_SECURITIES" : "RESET_PW_ENTER_CODE";
 }
 
+// Only a successful password-recovery MFA may advance the reset-password flow. Status polls from login, identity
+// verification or signup, and failed authentications, must leave next_page/selected_option untouched.
+function applyRecoveryStatus(state: ResetPasswordState, payload: GetStatusResponse) {
+  state.swedishEID_status = payload.status;
+  if (payload.error || payload.frontend_action !== "resetpwMfaAuthn") {
+    return;
+  }
+  state.next_page = "SET_NEW_PASSWORD";
+  state.selected_option = "recoveryOption";
+}
+
 export const resetPasswordSlice = createSlice({
   name: "resetPassword",
   initialState,
@@ -110,7 +122,12 @@ export const resetPasswordSlice = createSlice({
         state.email_status = "success";
         if (!action.payload.payload.throttled_seconds || !action.payload.payload.throttled_max) {
           // remove once new backend that always sends this is deployed to production
-          state.email_response = { throttled_seconds: 300, throttled_max: 300, email: "", email_code_timeout: 7200 };
+          state.email_response = {
+            throttled_seconds: 300,
+            throttled_max: 300,
+            email: "",
+            email_code_timeout: 7200,
+          };
           return;
         }
         state.email_response = action.payload.payload;
@@ -192,19 +209,16 @@ export const resetPasswordSlice = createSlice({
         }
       })
       .addMatcher(eidasApi.endpoints.eidasGetStatus.matchFulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.payload.status;
-        state.next_page = "SET_NEW_PASSWORD";
-        state.selected_option = "recoveryOption";
+        applyRecoveryStatus(state, action.payload.payload);
       })
       .addMatcher(bankIDApi.endpoints.bankIDGetStatus.matchFulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.payload.status;
-        state.next_page = "SET_NEW_PASSWORD";
-        state.selected_option = "recoveryOption";
+        applyRecoveryStatus(state, action.payload.payload);
       })
       .addMatcher(frejaeIDApi.endpoints.frejaeIDGetStatus.matchFulfilled, (state, action) => {
-        state.swedishEID_status = action.payload.payload.status;
-        state.next_page = "SET_NEW_PASSWORD";
-        state.selected_option = "recoveryOption";
+        applyRecoveryStatus(state, action.payload.payload);
+      })
+      .addMatcher(oidceidApi.endpoints.oidceidGetStatus.matchFulfilled, (state, action) => {
+        applyRecoveryStatus(state, action.payload.payload);
       });
   },
 });
