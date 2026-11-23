@@ -3054,7 +3054,7 @@
   },
   "securityZoneInfo.info": {
     "developer_comment": "security zone cancel info",
-    "string": "Om du vill avbryta utan att spara förändringen kan du återvända direkt till sidan {page}."
+    "string": "Om du vill {strong} utan att spara förändringen kan du återvända direkt till sidan {page}."
   },
   "securityZoneInfo.remove": {
     "string": "radera identitet"
