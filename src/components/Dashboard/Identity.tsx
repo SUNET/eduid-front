@@ -454,7 +454,7 @@ function AccordionItemSwedish({ open }: Readonly<AccordionItemSwedishProps>) {
                 defaultMessage="The button below will take you to an external site where you log in with your electronic ID to connect your identity to eduID."
               />
             </p>
-            <EduIDButton buttonstyle="primary sm" onClick={handleSverigeID} aria-label="Proceed with SverigeID">
+            <EduIDButton buttonstyle="primary sm" onClick={handleSverigeID}>
               <FormattedMessage
                 id="letterProofing.proceedButton"
                 defaultMessage="Proceed"

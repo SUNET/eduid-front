@@ -58,7 +58,7 @@ test("renders SverigeID option when oidceid_service_url is configured", async ()
     within(group).getByText("with SverigeID").click();
   });
   const proceed = within(group).getByRole("button", {
-    name: /Proceed with SverigeID/,
+    name: /^Proceed$/,
   });
   expect(proceed).toBeEnabled();
   act(() => {
