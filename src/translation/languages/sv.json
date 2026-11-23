@@ -3906,7 +3906,7 @@
   },
   "verifyIdentity.sverigeid": {
     "developer_comment": "verification methods - list item sverigeid",
-    "string": "Du skickas vidare till en extern tjänst där du loggar in med en e-legitimation utfärdad av en leverantör inom Sweden Connect. Du behöver ha en sådan e-legitimation innan du kan slutföra verifieringen av ditt eduID."
+    "string": "användaren skickas till en extern tjänst där de loggar in med ett eID som utfärdats av en eID-leverantör inom Sweden Connect. Du måste ha ett sådant eID innan du kan slutföra verifieringen av ditt eduID."
   },
   "verifyIdentity.sverigeidHeading": {
     "developer_comment": "swedish nin sverigeid - heading",
