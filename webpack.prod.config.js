@@ -18,7 +18,9 @@ delete webpackProd.devtool;
 webpackProd.output = {
   filename: "[name].js",
   publicPath: "https://www.eduid.se/static/front-build/",
-  path: path.join(__dirname, "build"),
+  path: process.env.LOCAL_BUILDTEST === "1"
+    ? path.join(__dirname, "build-release", "production")
+    : path.join(__dirname, "build"),
 };
 
 webpackProd.plugins = [

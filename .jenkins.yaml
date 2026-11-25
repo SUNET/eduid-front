@@ -12,7 +12,11 @@ script:
   - "node --version"
   - "npm --version"
   - "echo Building branch ${GIT_LOCAL_BRANCH}"
-  - "make test"
+  - "npm ci"
+  - "npm test -- --ci"
+  - "npm run build-staging"
+  - "npm run build-production"
+  - "git diff --exit-code -- package.json package-lock.json"
 clean_workspace: true
 archive_artifacts:
   include: "build/*"

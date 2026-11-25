@@ -1,39 +1,37 @@
+# Remove top-level non-hidden build files and installed dependencies; keep the lockfile.
 clean:
-	rm -f package-lock.json
 	rm -f build/*
 	rm -rf node_modules
 
-package-lock.json:
-	npm i --package-lock-only
+# Remove local staging and production build-check output only.
+clean-buildtest:
+	rm -rf build-release/staging build-release/production
 
-node_modules: package-lock.json
-	npm install
-	touch node_modules
+# Clean and build local staging and production artifacts in separate build-release directories.
+buildtest: clean-buildtest
+	# TODO: Staging and production share build/; investigate output isolation.
+	# Work around shared release output locally by building each variant in its own directory.
+	LOCAL_BUILDTEST=1 npm run build-staging
+	LOCAL_BUILDTEST=1 npm run build-production
 
-build-staging:
-	npm run build-staging
+# Keep the legacy alias for running tests.
+just_test: test
 
-build-production:
-	npm run build-production
+# Run the Jest test suite without building artifacts.
+test:
+	npm test
 
-build: node_modules build-staging build-production
-	git rev-parse --abbrev-ref HEAD > build/revision.txt
-	git describe --always >> build/revision.txt; git log -n 1 >> build/revision.txt
-
-just_test:
-	npm run-script test
-
-test: build just_test
-	# This is the target the CI uses, which is why it includes the build step too
-
+# Format repository files in place with Prettier.
 prettier:
-	npx prettier --write --print-width 120 .
+	npm run prettier
 
+# Watch build/ and sync changes to the developer server selected by DEV (requires fswatch/rsync).
 sync_dev_files:
 	test -n '$(DEV)' || exit 1
 	fswatch -o build/ | while read n; do rsync -av --delete build/ eduid@eduid-developer-${DEV}-1.sunet.se:/opt/eduid/src/eduid-front/build/; done
 
+# Extract translatable messages from source files.
 translation:
 	npm run translations:extract
 
-.PHONY: clean build build-staging build-production test prettier sync_dev_files translation
+.PHONY: clean clean-buildtest buildtest just_test test prettier sync_dev_files translation

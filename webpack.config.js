@@ -13,6 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "build"),
+    clean: true,
     publicPath: "https://html.eduid.docker/static/front-build/",
     filename: "[name]-bundle.dev.js",
   },
