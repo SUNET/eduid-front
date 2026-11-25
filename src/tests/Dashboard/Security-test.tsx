@@ -219,7 +219,7 @@ test("renders the security key table with verification methods", async () => {
   expect(within(figure).getByText("BankID")).toBeInTheDocument();
   expect(within(figure).getByText("Freja+")).toBeInTheDocument();
   expect(within(figure).getByText("Freja eID")).toBeInTheDocument();
-  expect(within(figure).getByText("Eidas")).toBeInTheDocument();
+  expect(within(figure).getByText("eIDAS")).toBeInTheDocument();
 });
 
 test("renders SverigeID verification option for security keys only when configured", async () => {
