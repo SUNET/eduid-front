@@ -426,3 +426,7 @@ button.flex {
     padding-right: 10px;
   }
 }
+
+button.normal-case {
+  text-transform: none;
+}
