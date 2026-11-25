@@ -240,6 +240,7 @@ button.icon {
     justify-content: center;
     gap: 0.5rem;
   }
+
   button {
     min-width: 100px;
   }
@@ -255,6 +256,7 @@ button.icon {
 
   @media (--bp-xs) {
     flex-direction: column-reverse;
+
     &.flex-direction-column {
       gap: 0;
     }
