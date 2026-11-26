@@ -66,8 +66,7 @@ export function VerifyCredentialModal({
               <div className="buttons flex-direction-column">
                 <EduIDButton
                   id="verify-webauthn-token-modal-continue-bankID-button"
-                  buttonstyle="primary icon normal-case"
-                  buttonstyle="primary sm icon"
+                  buttonstyle="primary sm icon normal-case"
                   aria-label="Proceed with BankID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "bankid")}
                 >
@@ -75,8 +74,7 @@ export function VerifyCredentialModal({
                   <span>BankID</span>
                 </EduIDButton>
                 <EduIDButton
-                  buttonstyle="primary icon normal-case"
-                  buttonstyle="primary sm icon"
+                  buttonstyle="primary sm icon normal-case"
                   id="verify-webauthn-token-modal-continue-frejaID-button"
                   aria-label="Proceed with Freja eID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "freja")}
@@ -86,8 +84,7 @@ export function VerifyCredentialModal({
                 </EduIDButton>
                 {oidceid_service_url && (
                   <EduIDButton
-                    buttonstyle="primary icon normal-case"
-                    buttonstyle="primary sm icon"
+                    buttonstyle="primary sm icon normal-case"
                     id="verify-webauthn-token-modal-continue-sverigeid-button"
                     aria-label="Proceed with SverigeID"
                     onClick={() => handleVerificationWebauthnToken(tokenKey, "sverigeid")}
@@ -97,8 +94,7 @@ export function VerifyCredentialModal({
                   </EduIDButton>
                 )}
                 <EduIDButton
-                  buttonstyle="primary icon normal-case"
-                  buttonstyle="primary sm icon"
+                  buttonstyle="primary sm icon normal-case"
                   id="verify-webauthn-token-modal-continue-eidas-button"
                   aria-label="Proceed with eIDAS"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "eidas")}
@@ -107,8 +103,7 @@ export function VerifyCredentialModal({
                   <span>eIDAS</span>
                 </EduIDButton>
                 <EduIDButton
-                  buttonstyle="primary icon normal-case"
-                  buttonstyle="primary sm icon"
+                  buttonstyle="primary sm icon normal-case"
                   id={`verify-webauthn-token-modal-continue-frejaeid-button`}
                   aria-label="Proceed with Freja eID"
                   onClick={() => handleVerificationWebauthnToken(tokenKey, "freja_eid")}
