@@ -235,10 +235,10 @@ button.icon {
   width: 100%;
 
   &.flex-direction-column {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
-    width: 100%;
   }
 
   button {
@@ -258,7 +258,7 @@ button.icon {
     flex-direction: column-reverse;
 
     &.flex-direction-column {
-      grid-template-columns: 1fr;
+      gap: 0;
     }
 
     button[type="submit"] {
