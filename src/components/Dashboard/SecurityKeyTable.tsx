@@ -142,25 +142,34 @@ export function SecurityKeyTable({
                   defaultMessage="Verify with: "
                 />
                 &nbsp;
-                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}>
+                <EduIDButton
+                  buttonstyle="link sm normal-case"
+                  onClick={() => handleVerificationWebauthnToken(cred.key, "bankid")}
+                >
                   BankID
                 </EduIDButton>
-                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}>
+                <EduIDButton
+                  buttonstyle="link sm normal-case"
+                  onClick={() => handleVerificationWebauthnToken(cred.key, "freja")}
+                >
                   Freja+
                 </EduIDButton>
                 {oidceid_service_url && (
                   <EduIDButton
-                    buttonstyle="link sm"
+                    buttonstyle="link sm normal-case"
                     onClick={() => handleVerificationWebauthnToken(cred.key, "sverigeid")}
                   >
                     SverigeID
                   </EduIDButton>
                 )}
-                <EduIDButton buttonstyle="link sm" onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}>
-                  Eidas
+                <EduIDButton
+                  buttonstyle="link sm normal-case"
+                  onClick={() => handleVerificationWebauthnToken(cred.key, "eidas")}
+                >
+                  eIDAS
                 </EduIDButton>
                 <EduIDButton
-                  buttonstyle="link sm"
+                  buttonstyle="link sm normal-case"
                   onClick={() => handleVerificationWebauthnToken(cred.key, "freja_eid")}
                 >
                   Freja eID
